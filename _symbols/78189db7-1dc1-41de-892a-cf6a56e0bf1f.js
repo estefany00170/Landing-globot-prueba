@@ -1,4 +1,4 @@
-// Box - Updated September 21, 2023
+// Box - Updated September 22, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2777,7 +2777,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (51:6) {#each buttons as button}
+// (60:6) {#each buttons as button}
 function create_each_block(ctx) {
 	let a;
 	let icon;
@@ -2814,7 +2814,7 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "class", "button svelte-11jc336");
+			attr(a, "class", "button svelte-1ionlz9");
 			attr(a, "href", a_href_value = /*button*/ ctx[4].link.url);
 		},
 		m(target, anchor) {
@@ -2918,11 +2918,11 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-11jc336");
-			attr(div0, "class", "body svelte-11jc336");
-			attr(div1, "class", "buttons svelte-11jc336");
-			attr(div2, "class", "card svelte-11jc336");
-			attr(section, "class", "section-container svelte-11jc336");
+			attr(h2, "class", "heading svelte-1ionlz9");
+			attr(div0, "class", "body svelte-1ionlz9");
+			attr(div1, "class", "buttons svelte-1ionlz9");
+			attr(div2, "class", "card svelte-1ionlz9");
+			attr(section, "class", "section-container svelte-1ionlz9");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
