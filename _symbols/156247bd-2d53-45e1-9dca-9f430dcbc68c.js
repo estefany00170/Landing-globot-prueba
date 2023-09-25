@@ -1,4 +1,4 @@
-// beneficios - Updated September 22, 2023
+// beneficios - Updated September 25, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -3022,7 +3022,7 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		l(nodes) {
-			section = claim_element(nodes, "SECTION", { class: true });
+			section = claim_element(nodes, "SECTION", { id: true, class: true });
 			var section_nodes = children(section);
 			header = claim_element(section_nodes, "HEADER", { class: true });
 			var header_nodes = children(header);
@@ -3068,6 +3068,7 @@ function create_fragment(ctx) {
 			attr(header, "class", "heading-group svelte-f7ha1e");
 			attr(ul0, "class", "icon-list svelte-f7ha1e");
 			attr(ul1, "class", "cards svelte-f7ha1e");
+			attr(section, "id", "benefits");
 			attr(section, "class", "section-container svelte-f7ha1e");
 		},
 		m(target, anchor) {

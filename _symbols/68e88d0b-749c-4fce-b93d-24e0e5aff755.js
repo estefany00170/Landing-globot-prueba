@@ -1,4 +1,4 @@
-// Footer Form - Updated September 22, 2023
+// Footer Form - Updated September 25, 2023
 function noop() { }
 function run(fn) {
     return fn();
@@ -1268,7 +1268,7 @@ function create_fragment(ctx) {
 	let path;
 	let t0;
 	let section;
-	let div1;
+	let div0;
 	let img0;
 	let img0_src_value;
 	let img0_alt_value;
@@ -1277,7 +1277,7 @@ function create_fragment(ctx) {
 	let img1_src_value;
 	let img1_alt_value;
 	let t2;
-	let div0;
+	let div1;
 	let t3;
 
 	return {
@@ -1286,13 +1286,13 @@ function create_fragment(ctx) {
 			path = svg_element("path");
 			t0 = space();
 			section = element("section");
-			div1 = element("div");
+			div0 = element("div");
 			img0 = element("img");
 			t1 = space();
 			img1 = element("img");
 			t2 = space();
-			div0 = element("div");
-			t3 = text(/*subheading*/ ctx[2]);
+			div1 = element("div");
+			t3 = text(/*text*/ ctx[2]);
 			this.h();
 		},
 		l(nodes) {
@@ -1317,16 +1317,16 @@ function create_fragment(ctx) {
 			t0 = claim_space(nodes);
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
+			div0 = claim_element(section_nodes, "DIV", { class: true });
+			var div0_nodes = children(div0);
+			img0 = claim_element(div0_nodes, "IMG", { class: true, src: true, alt: true });
+			t1 = claim_space(div0_nodes);
+			img1 = claim_element(div0_nodes, "IMG", { class: true, src: true, alt: true });
+			div0_nodes.forEach(detach);
+			t2 = claim_space(section_nodes);
 			div1 = claim_element(section_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
-			img0 = claim_element(div1_nodes, "IMG", { class: true, src: true, alt: true });
-			t1 = claim_space(div1_nodes);
-			img1 = claim_element(div1_nodes, "IMG", { class: true, src: true, alt: true });
-			t2 = claim_space(div1_nodes);
-			div0 = claim_element(div1_nodes, "DIV", { class: true });
-			var div0_nodes = children(div0);
-			t3 = claim_text(div0_nodes, /*subheading*/ ctx[2]);
-			div0_nodes.forEach(detach);
+			t3 = claim_text(div1_nodes, /*text*/ ctx[2]);
 			div1_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
@@ -1335,33 +1335,33 @@ function create_fragment(ctx) {
 			attr(path, "fill-rule", "evenodd");
 			attr(path, "clip-rule", "evenodd");
 			attr(path, "d", "M1440 175H0V0C240 53.3333 480 80 720 80C960 80 1200 53.3333 1440 0V175Z");
-			attr(path, "class", "svelte-1uq0zgv");
+			attr(path, "class", "svelte-1yrlydg");
 			attr(svg, "viewBox", "0 0 1440 175");
 			attr(svg, "fill", "none");
 			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-			attr(svg, "class", "svelte-1uq0zgv");
+			attr(svg, "class", "svelte-1yrlydg");
 			attr(img0, "class", "image");
 			if (!src_url_equal(img0.src, img0_src_value = /*image*/ ctx[1].url)) attr(img0, "src", img0_src_value);
 			attr(img0, "alt", img0_alt_value = /*image*/ ctx[1].alt);
-			attr(img1, "class", "logo svelte-1uq0zgv");
+			attr(img1, "class", "logo svelte-1yrlydg");
 			if (!src_url_equal(img1.src, img1_src_value = /*logo*/ ctx[0].url)) attr(img1, "src", img1_src_value);
 			attr(img1, "alt", img1_alt_value = /*logo*/ ctx[0].alt);
-			attr(div0, "class", "subheading  svelte-1uq0zgv");
-			attr(div1, "class", "section-container svelte-1uq0zgv");
-			attr(section, "class", "svelte-1uq0zgv");
+			attr(div0, "class", "section-container svelte-1yrlydg");
+			attr(div1, "class", "text svelte-1yrlydg");
+			attr(section, "class", "svelte-1yrlydg");
 		},
 		m(target, anchor) {
 			insert_hydration(target, svg, anchor);
 			append_hydration(svg, path);
 			insert_hydration(target, t0, anchor);
 			insert_hydration(target, section, anchor);
+			append_hydration(section, div0);
+			append_hydration(div0, img0);
+			append_hydration(div0, t1);
+			append_hydration(div0, img1);
+			append_hydration(section, t2);
 			append_hydration(section, div1);
-			append_hydration(div1, img0);
-			append_hydration(div1, t1);
-			append_hydration(div1, img1);
-			append_hydration(div1, t2);
-			append_hydration(div1, div0);
-			append_hydration(div0, t3);
+			append_hydration(div1, t3);
 		},
 		p(ctx, [dirty]) {
 			if (dirty & /*image*/ 2 && !src_url_equal(img0.src, img0_src_value = /*image*/ ctx[1].url)) {
@@ -1380,7 +1380,7 @@ function create_fragment(ctx) {
 				attr(img1, "alt", img1_alt_value);
 			}
 
-			if (dirty & /*subheading*/ 4) set_data(t3, /*subheading*/ ctx[2]);
+			if (dirty & /*text*/ 4) set_data(t3, /*text*/ ctx[2]);
 		},
 		i: noop,
 		o: noop,
@@ -1397,17 +1397,17 @@ function instance($$self, $$props, $$invalidate) {
 	let { logo } = $$props;
 	let { image } = $$props;
 	let { heading } = $$props;
-	let { subheading } = $$props;
+	let { text } = $$props;
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(3, props = $$props.props);
 		if ('logo' in $$props) $$invalidate(0, logo = $$props.logo);
 		if ('image' in $$props) $$invalidate(1, image = $$props.image);
 		if ('heading' in $$props) $$invalidate(4, heading = $$props.heading);
-		if ('subheading' in $$props) $$invalidate(2, subheading = $$props.subheading);
+		if ('text' in $$props) $$invalidate(2, text = $$props.text);
 	};
 
-	return [logo, image, subheading, props, heading];
+	return [logo, image, text, props, heading];
 }
 
 class Component extends SvelteComponent {
@@ -1419,7 +1419,7 @@ class Component extends SvelteComponent {
 			logo: 0,
 			image: 1,
 			heading: 4,
-			subheading: 2
+			text: 2
 		});
 	}
 }

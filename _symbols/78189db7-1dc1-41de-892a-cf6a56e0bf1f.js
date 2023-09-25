@@ -1,4 +1,4 @@
-// Box - Updated September 22, 2023
+// Box - Updated September 25, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -20,6 +20,14 @@ function is_function(thing) {
 }
 function safe_not_equal(a, b) {
     return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+}
+let src_url_equal_anchor;
+function src_url_equal(element_src, url) {
+    if (!src_url_equal_anchor) {
+        src_url_equal_anchor = document.createElement('a');
+    }
+    src_url_equal_anchor.href = url;
+    return element_src === src_url_equal_anchor.href;
 }
 function is_empty(obj) {
     return Object.keys(obj).length === 0;
@@ -2777,7 +2785,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (60:6) {#each buttons as button}
+// (65:6) {#each buttons as button}
 function create_each_block(ctx) {
 	let a;
 	let icon;
@@ -2814,7 +2822,7 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "class", "button svelte-1ionlz9");
+			attr(a, "class", "button svelte-27eirv");
 			attr(a, "href", a_href_value = /*button*/ ctx[4].link.url);
 		},
 		m(target, anchor) {
@@ -2862,6 +2870,9 @@ function create_fragment(ctx) {
 	let raw_value = /*body*/ ctx[0].html + "";
 	let t2;
 	let div1;
+	let t3;
+	let script;
+	let script_src_value;
 	let current;
 	let each_value = /*buttons*/ ctx[1];
 	let each_blocks = [];
@@ -2889,6 +2900,8 @@ function create_fragment(ctx) {
 				each_blocks[i].c();
 			}
 
+			t3 = space();
+			script = element("script");
 			this.h();
 		},
 		l(nodes) {
@@ -2914,15 +2927,21 @@ function create_fragment(ctx) {
 
 			div1_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
+			t3 = claim_space(section_nodes);
+			script = claim_element(section_nodes, "SCRIPT", { src: true, type: true });
+			var script_nodes = children(script);
+			script_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-1ionlz9");
-			attr(div0, "class", "body svelte-1ionlz9");
-			attr(div1, "class", "buttons svelte-1ionlz9");
-			attr(div2, "class", "card svelte-1ionlz9");
-			attr(section, "class", "section-container svelte-1ionlz9");
+			attr(h2, "class", "heading svelte-27eirv");
+			attr(div0, "class", "body svelte-27eirv");
+			attr(div1, "class", "buttons svelte-27eirv");
+			attr(div2, "class", "card svelte-27eirv");
+			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
+			attr(script, "type", "module");
+			attr(section, "class", "section-container svelte-27eirv");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -2941,6 +2960,8 @@ function create_fragment(ctx) {
 				}
 			}
 
+			append_hydration(section, t3);
+			append_hydration(section, script);
 			current = true;
 		},
 		p(ctx, [dirty]) {

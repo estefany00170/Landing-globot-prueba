@@ -1,4 +1,4 @@
-// Walkthrough - Updated September 22, 2023
+// Walkthrough - Updated September 25, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2832,10 +2832,10 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "icon svelte-1uleqv2");
-			attr(span0, "class", "title svelte-1uleqv2");
-			attr(span1, "class", "description svelte-1uleqv2");
-			attr(div1, "class", "card svelte-1uleqv2");
+			attr(div0, "class", "icon svelte-8wjmh5");
+			attr(span0, "class", "title svelte-8wjmh5");
+			attr(span1, "class", "description svelte-8wjmh5");
+			attr(div1, "class", "card svelte-8wjmh5");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div1, anchor);
@@ -2931,9 +2931,9 @@ function create_fragment(ctx) {
 		},
 		h() {
 			attr(h2, "class", "heading");
-			attr(div0, "class", "cards svelte-1uleqv2");
-			attr(div1, "class", "content svelte-1uleqv2");
-			attr(section, "class", "section-container svelte-1uleqv2");
+			attr(div0, "class", "cards svelte-8wjmh5");
+			attr(div1, "class", "content svelte-8wjmh5");
+			attr(section, "class", "section-container svelte-8wjmh5");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);

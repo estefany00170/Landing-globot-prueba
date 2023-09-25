@@ -1,0 +1,208 @@
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta name="generator" content="Primo" />
+      <!-- HEAD_svelte-95cp5n_START --><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta charset="UTF-8"><link rel="preconnect" href="https://fonts.bunny.net"><link href="https://fonts.bunny.net/css?family=fredoka:300,400,500,600,700|space-grotesk:300,400,500,600,700" rel="stylesheet"><link href="https://fonts.bunny.net/css?family=fredoka:300,400,500,600,700|open-sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i|space-grotesk:300,400,500,600,700" rel="stylesheet"><link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/primoaf/image/upload/v1659676914/favicon_roaxv0.png"><style>/* Reset & standardize default styles */
+@import url("https://unpkg.com/@primo-app/primo@1.3.64/reset.css") layer;
+
+/* Design tokens (apply to components) */
+:root {
+  --color-tint: #f8fbff;
+
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "Open Sans", sans-serif;
+
+  /* Colors */
+  --color-base: #183b56;
+  --color-brand: #1565d8;
+  --color-accent: #36b37e;
+  --color-accent-2: #0d2436;
+  --color-light: #fcfcfd;
+  --color-shade: #cbcace;
+  --color-inverted: white;
+  --color-tint: #e5eaf4;
+
+  /* Base values */
+  --color: var(--color-base);
+  --box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2);
+  --border-radius: 8px;
+  --border-color: #eee;
+  --background: white;
+}
+
+/* Root element (use instead of `body`) */
+#page {
+  font-family: var(--font-body);
+  color: var(--color-base);
+  line-height: 1.2;
+  font-size: 1.125rem;
+  background: var(--background);
+}
+
+.section.has-content {
+  display: flex;
+  justify-content: center;
+  padding: 5rem 2rem;
+}
+
+.section.has-content .content {
+    max-width: 800px;
+    width: 100%;
+  }
+
+.section-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.heading-group {
+  display: grid;
+  gap: 1rem;
+  place-content: center;
+  text-align: center;
+}
+
+.heading-group .superhead {
+    font-family: var(--font-body);
+    color: var(--color-accent);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+.heading-group .subheading {
+    color: #4f6373;
+    line-height: 1.4;
+    max-width: 600px;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  line-height: 1.1;
+  font-weight: 500;
+  max-width: 600px;
+}
+
+.button {
+  color: var(--color-brand, white);
+  background: var(--color-inverted);
+  border: 2px solid var(--color-brand);
+  border-radius: 6px;
+  padding: 8px 20px;
+  transition: 0.1s background, 0.1s color;
+}
+
+.button:hover {
+    color: var(--color-inverted);
+    background: var(--color-brand);
+    border-color: var(--color-inverted);
+  }
+
+.button.inverted {
+    background: var(--color-white);
+    color: var(--color-brand);
+    border-color: #0d2436;
+  }
+
+.link {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--color-brand);
+}
+
+.link .arrow {
+    transition: transform 0.1s;
+  }
+
+.link:hover .arrow {
+    transform: translateX(4px);
+  }
+</style><!-- HEAD_svelte-95cp5n_END -->
+      <style>@import url("https://unpkg.com/modern-normalize@1.1.0/modern-normalize.css");header.svelte-14k3ui9.svelte-14k3ui9.svelte-14k3ui9{border-bottom:1px solid var(--border-color)}.section-container.svelte-14k3ui9.svelte-14k3ui9.svelte-14k3ui9{display:flex;justify-content:space-between;align-items:center;padding-top:0.75rem;padding-bottom:0.75rem}.desktop-nav.svelte-14k3ui9.svelte-14k3ui9.svelte-14k3ui9{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;width:100%}.desktop-nav.svelte-14k3ui9 .logo.svelte-14k3ui9.svelte-14k3ui9{font-size:1.5rem;font-weight:600;line-height:1.4;margin-right:1.5rem;width:var(--size)}.desktop-nav.svelte-14k3ui9 nav.svelte-14k3ui9.svelte-14k3ui9{display:flex;align-items:center;gap:2rem}.desktop-nav.svelte-14k3ui9 nav.svelte-14k3ui9 a.svelte-14k3ui9{font-size:1rem;font-weight:400;display:none}.desktop-nav.svelte-14k3ui9 nav a.nav-item.svelte-14k3ui9.svelte-14k3ui9{border-bottom:2px solid transparent;transition:border-color 0.1s}.desktop-nav.svelte-14k3ui9 nav a.nav-item.svelte-14k3ui9.svelte-14k3ui9:hover{border-color:var(--color-brand)}.desktop-nav.svelte-14k3ui9 button#open.svelte-14k3ui9.svelte-14k3ui9{font-size:1.5rem;margin-left:auto}nav#mobile-nav.svelte-14k3ui9.svelte-14k3ui9.svelte-14k3ui9{position:absolute;flex-direction:column;text-align:center;background-color:var(--background-color, white);box-shadow:var(--box-shadow);border-radius:var(--border-radius);left:0.5rem;top:0.5rem;right:0.5rem;padding:2rem;z-index:2}nav#mobile-nav.svelte-14k3ui9 a.svelte-14k3ui9.svelte-14k3ui9{display:block}nav#mobile-nav.svelte-14k3ui9 hr.svelte-14k3ui9.svelte-14k3ui9{width:100%}nav#mobile-nav.svelte-14k3ui9 .button.svelte-14k3ui9.svelte-14k3ui9{width:100%;justify-content:center;color:var(--Primary-2, #7B5CF5)}nav#mobile-nav.svelte-14k3ui9 button#close.svelte-14k3ui9.svelte-14k3ui9{display:block;position:absolute;right:1rem;top:1rem;font-size:1.5rem}@media(min-width: 600px){#open.svelte-14k3ui9.svelte-14k3ui9.svelte-14k3ui9,#mobile-nav.svelte-14k3ui9.svelte-14k3ui9.svelte-14k3ui9{display:none}.desktop-nav.svelte-14k3ui9 nav.svelte-14k3ui9 a.svelte-14k3ui9{display:inline-block}}
+.section-container.svelte-5edp3e.svelte-5edp3e{display:grid;gap:0.5rem}.heading-group.svelte-5edp3e.svelte-5edp3e{display:grid;gap:1rem;place-content:center;text-align:center}.heading-group.svelte-5edp3e .superhead.svelte-5edp3e{font-family:var(--font-body);color:var(--color-accent);font-weight:500;font-size:.875rem;letter-spacing:1.5px;text-transform:uppercase}.heading-group.svelte-5edp3e .subheading.svelte-5edp3e{line-height:1.3;max-width:700px;font-weight:400;margin:0 auto;margin-bottom:4rem}.tiers.svelte-5edp3e.svelte-5edp3e{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));place-items:start;gap:2rem}.tiers.svelte-5edp3e .tier.svelte-5edp3e{display:grid;gap:2rem;border:1px solid var(--border-color, #eee);border-radius:var(--border-radius);padding:2.5rem 2rem;width:100%}.tiers.svelte-5edp3e .tier header.svelte-5edp3e{display:grid;gap:0.5rem}.tiers.svelte-5edp3e .tier header .price.svelte-5edp3e{font-weight:600;margin-bottom:1rem}.tiers.svelte-5edp3e .tier header .price span.numerator.svelte-5edp3e{font-size:2rem;color:var(--color-brand)}.tiers.svelte-5edp3e .tier header .price span.denominator.svelte-5edp3e{opacity:0.8}.tiers.svelte-5edp3e .tier .title.svelte-5edp3e{color:var(--color);font-size:1.25rem;border-radius:2rem;font-weight:600;justify-self:flex-start;margin-bottom:0.5rem}.tiers.svelte-5edp3e .tier hr.svelte-5edp3e{width:100%;border-color:var(--border-color, #eee)}.tiers.svelte-5edp3e .tier ul.features.svelte-5edp3e{display:grid;gap:1rem}.tiers.svelte-5edp3e .tier ul.features li.svelte-5edp3e{display:flex;align-items:center;gap:.75rem}.tiers.svelte-5edp3e .tier ul.features li .icon.svelte-5edp3e{color:var(--color-accent, rebeccapurple)}.tiers.svelte-5edp3e .tier .button.svelte-5edp3e{width:100%;text-align:center;font-size:1rem}
+.section-container.svelte-1k9zsvm{display:flex;width:1660px;height:70px;padding:0px 96px ;justify-content:center;align-items:center;gap:8px;color:white;flex-shrink:0;background:var(--Primary-1, #603FDF)}.landscape.svelte-1k9zsvm{display:flex;width:105.099px;height:31.987px;flex-direction:column;justify-content:center;flex-shrink:0;color:#FFF;font-size:17px;font-style:normal;line-height:normal}.derechos.svelte-1k9zsvm{margin-left:50px;color:var(--Light-text, #FFF);text-align:center;font-family:Lato;font-size:10px;font-style:normal;font-weight:500;line-height:28px;letter-spacing:0.2px}.text.svelte-1k9zsvm{color:var(--Light-text, #FFF);text-align:center;font-size:14px;font-style:normal;font-weight:500;line-height:28px;letter-spacing:0.2px}svg.svelte-1k9zsvm{width:34.059px;height:28.95px;flex-shrink:0}</style>
+    </head>
+    <body id="page">
+       
+<div class="section" id="section-c4b5f4e6"><header class="svelte-14k3ui9"><div class="section-container svelte-14k3ui9"><div class="desktop-nav svelte-14k3ui9"><a href="/" class="logo svelte-14k3ui9" style="--size: 8rem;"><img src="https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1694636535864logo.png" alt=""></a>
+      <nav class="svelte-14k3ui9"><a class="nav-item svelte-14k3ui9" href="#benefits">Beneficios</a><a class="nav-item svelte-14k3ui9" href="#contacto">Contacto</a>
+        <a class="button svelte-14k3ui9" href="https://chatbots.landscape.cl/dashboard/login">Inicio sesión</a>
+        <button id="open" aria-label="Open mobile navigation" class="svelte-14k3ui9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--ic"><!-- HTML_TAG_START --><path fill="currentColor" d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z"/><!-- HTML_TAG_END --></svg></button></nav></div>
+    </div></header></div> 
+<div class="section" id="section-2109f294"><section class="svelte-5edp3e"><div class="section-container svelte-5edp3e"><div class="heading-group svelte-5edp3e"><span class="superhead svelte-5edp3e">Pricing</span>
+      <h2 class="heading">There's a plan for everyone.</h2>
+      <h3 class="subheading svelte-5edp3e">Whether you just need to spin up a few projects or you want to take it to the next level. We have a plan for you.</h3></div>
+    <div class="tiers svelte-5edp3e"><div class="tier svelte-5edp3e"><header class="svelte-5edp3e"><div class="price svelte-5edp3e"><span class="numerator svelte-5edp3e">$15</span>
+              <span class="denominator svelte-5edp3e">/month</span></div>
+            <h3 class="title svelte-5edp3e">Individual</h3>
+            <span class="description svelte-5edp3e"><!-- HTML_TAG_START --><p>Perfect for freelancers </p><!-- HTML_TAG_END --></span></header>
+          <hr class="svelte-5edp3e">
+          <ul class="features svelte-5edp3e"><li class="svelte-5edp3e"><span class="icon svelte-5edp3e"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-5edp3e">Veniam ut esse</span>
+              </li><li class="svelte-5edp3e"><span class="icon svelte-5edp3e"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-5edp3e">Fugiat amet id</span>
+              </li></ul>
+          <a href="/" class="button svelte-5edp3e">Get Started</a>
+        </div><div class="tier svelte-5edp3e"><header class="svelte-5edp3e"><div class="price svelte-5edp3e"><span class="numerator svelte-5edp3e">$25</span>
+              <span class="denominator svelte-5edp3e">/month</span></div>
+            <h3 class="title svelte-5edp3e">Business</h3>
+            <span class="description svelte-5edp3e"><!-- HTML_TAG_START --><p>Elit eu commodo elit excepteur aute sit sit laborum.</p><!-- HTML_TAG_END --></span></header>
+          <hr class="svelte-5edp3e">
+          <ul class="features svelte-5edp3e"><li class="svelte-5edp3e"><span class="icon svelte-5edp3e"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-5edp3e">Voluptate est deserunt</span>
+              </li><li class="svelte-5edp3e"><span class="icon svelte-5edp3e"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-5edp3e">Pariatur pariatur ut</span>
+              </li></ul>
+          <a href="/" class="button svelte-5edp3e">Get Started</a>
+        </div><div class="tier svelte-5edp3e"><header class="svelte-5edp3e"><div class="price svelte-5edp3e"><span class="numerator svelte-5edp3e">$900</span>
+              <span class="denominator svelte-5edp3e">/annual</span></div>
+            <h3 class="title svelte-5edp3e">Enterprise</h3>
+            <span class="description svelte-5edp3e"><!-- HTML_TAG_START --><p>Commodo irure ad duis nulla anim incididunt. Aute aute laboris qui tempor pariatur duis labore minim.</p><!-- HTML_TAG_END --></span></header>
+          <hr class="svelte-5edp3e">
+          <ul class="features svelte-5edp3e"><li class="svelte-5edp3e"><span class="icon svelte-5edp3e"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-5edp3e">Laboris sunt pariatur</span>
+              </li><li class="svelte-5edp3e"><span class="icon svelte-5edp3e"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-5edp3e">Velit ullamco laborum</span>
+              </li></ul>
+          <a href="/" class="button svelte-5edp3e">Contact Us</a>
+        </div></div></div></section></div> 
+<div class="section" id="section-334f6e6c"><footer class="section-container  svelte-1k9zsvm"><span class="text svelte-1k9zsvm">Esto es un producto de</span>
+  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="35" viewBox="0 0 40 35" fill="none" class="svelte-1k9zsvm"><path d="M18.3889 2.95535C18.7545 2.30648 19.449 1.87695 20.2441 1.87695C21.0392 1.87695 21.7338 2.31562 22.0993 2.95535" stroke="white" stroke-width="2.12587" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5.19215 33.151C4.79917 33.5714 4.25084 33.8273 3.62939 33.8273C2.45046 33.8273 1.5 32.8677 1.5 31.6979C1.5 31.3506 1.58225 31.0216 1.72848 30.7383" stroke="white" stroke-width="2.12587" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M38.1749 30.4727C38.4125 30.8199 38.5587 31.2404 38.5587 31.6973C38.5587 32.8762 37.5991 33.8267 36.4294 33.8267C35.9541 33.8267 35.5063 33.6713 35.1499 33.3971" stroke="white" stroke-width="2.12587" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M18.3887 2.95508L1.72827 30.7376" stroke="white" stroke-width="2.12587" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22.0992 2.95508L38.3027 30.6828" stroke="white" stroke-width="2.12587" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M32.6548 21.0053C28.4234 15.1015 20.4816 19.4242 14.258 24.4233C9.30463 28.4079 5.19208 33.151 5.19208 33.151C5.10983 33.2607 5.27433 33.0414 5.19208 33.151C14.3128 28.1977 26.029 28.4536 35.1498 33.4069" stroke="white" stroke-width="2.12587" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M35.15 33.407C35.15 33.407 23.7627 22.7143 14.2582 24.4233" stroke="white" stroke-width="2.12587" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+  <span class="landscape  svelte-1k9zsvm"><a href="https://landscape.cl/">Landscape</a></span>
+  <span class="derechos svelte-1k9zsvm">ⓒ 2023, Todos los derechos reservados, Chile. </span></footer></div> 
+
+      <script type="module">
+      import('/_symbols/6b4a2c57-3262-46b7-9911-994954e842a6.js')
+      .then(({default:App}) => {
+        
+            new App({
+              target: document.querySelector('#section-2109f294'),
+              hydrate: true,
+              props: {"superhead":"Pricing","heading":"There's a plan for everyone.","subheading":"Whether you just need to spin up a few projects or you want to take it to the next level. We have a plan for you.","tiers":[{"link":{"url":"/","label":"Get Started"},"price":{"numerator":"$15","denominator":"/month"},"title":"Individual","features":[{"icon":"mdi:check","item":"Veniam ut esse"},{"icon":"mdi:check","item":"Fugiat amet id"}],"description":{"html":"<p>Perfect for freelancers </p>","markdown":"Perfect for freelancers "}},{"link":{"url":"/","label":"Get Started"},"price":{"numerator":"$25","denominator":"/month"},"title":"Business","features":[{"icon":"mdi:check","item":"Voluptate est deserunt"},{"icon":"mdi:check","item":"Pariatur pariatur ut"}],"description":{"html":"<p>Elit eu commodo elit excepteur aute sit sit laborum.</p>","markdown":" Elit eu commodo elit excepteur aute sit sit laborum."}},{"link":{"url":"/","label":"Contact Us"},"price":{"numerator":"$900","denominator":"/annual"},"title":"Enterprise","features":[{"icon":"mdi:check","item":"Laboris sunt pariatur"},{"icon":"mdi:check","item":"Velit ullamco laborum"}],"description":{"html":"<p>Commodo irure ad duis nulla anim incididunt. Aute aute laboris qui tempor pariatur duis labore minim.</p>","markdown":"Commodo irure ad duis nulla anim incididunt. Aute aute laboris qui tempor pariatur duis labore minim."}}]}
+            })
+          
+      })
+      .catch(e => console.error(e))
+    
+
+      import('/_symbols/ef34bdaa-31dd-4625-9a09-121cae34c9b4.js')
+      .then(({default:App}) => {
+        
+            new App({
+              target: document.querySelector('#section-c4b5f4e6'),
+              hydrate: true,
+              props: {"logo":{"size":"8","image":{"alt":"","src":"https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1694636535864logo.png","url":"https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1694636535864logo.png","size":3}},"site_nav":[{"link":{"url":"/beneficios","label":"Beneficios"}},{"link":{"url":"/productos","label":"Producto"}},{"link":{"url":"/live-demo","label":"Live Demo"}},{"link":{"url":"/tarifas-y-planes","label":"Tarifas y planes"}},{"link":{"url":"/contacto","label":"Contacto","active":false}}],"cta":[{"link":{"url":"https://chatbots.landscape.cl/dashboard/login","label":"Inicio sesión"}}]}
+            })
+          
+      })
+      .catch(e => console.error(e))
+    </script>
+    </body>
+  </html>
+  
