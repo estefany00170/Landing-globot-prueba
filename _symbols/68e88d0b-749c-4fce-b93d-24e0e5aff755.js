@@ -1,4 +1,4 @@
-// Footer Form - Updated September 25, 2023
+// Footer Form - Updated September 26, 2023
 function noop() { }
 function run(fn) {
     return fn();
@@ -1292,7 +1292,7 @@ function create_fragment(ctx) {
 			img1 = element("img");
 			t2 = space();
 			div1 = element("div");
-			t3 = text(/*text*/ ctx[2]);
+			t3 = text(/*text*/ ctx[1]);
 			this.h();
 		},
 		l(nodes) {
@@ -1326,7 +1326,7 @@ function create_fragment(ctx) {
 			t2 = claim_space(section_nodes);
 			div1 = claim_element(section_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
-			t3 = claim_text(div1_nodes, /*text*/ ctx[2]);
+			t3 = claim_text(div1_nodes, /*text*/ ctx[1]);
 			div1_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
@@ -1341,8 +1341,8 @@ function create_fragment(ctx) {
 			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
 			attr(svg, "class", "svelte-1yrlydg");
 			attr(img0, "class", "image");
-			if (!src_url_equal(img0.src, img0_src_value = /*image*/ ctx[1].url)) attr(img0, "src", img0_src_value);
-			attr(img0, "alt", img0_alt_value = /*image*/ ctx[1].alt);
+			if (!src_url_equal(img0.src, img0_src_value = /*image*/ ctx[2].url)) attr(img0, "src", img0_src_value);
+			attr(img0, "alt", img0_alt_value = /*image*/ ctx[2].alt);
 			attr(img1, "class", "logo svelte-1yrlydg");
 			if (!src_url_equal(img1.src, img1_src_value = /*logo*/ ctx[0].url)) attr(img1, "src", img1_src_value);
 			attr(img1, "alt", img1_alt_value = /*logo*/ ctx[0].alt);
@@ -1364,11 +1364,11 @@ function create_fragment(ctx) {
 			append_hydration(div1, t3);
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*image*/ 2 && !src_url_equal(img0.src, img0_src_value = /*image*/ ctx[1].url)) {
+			if (dirty & /*image*/ 4 && !src_url_equal(img0.src, img0_src_value = /*image*/ ctx[2].url)) {
 				attr(img0, "src", img0_src_value);
 			}
 
-			if (dirty & /*image*/ 2 && img0_alt_value !== (img0_alt_value = /*image*/ ctx[1].alt)) {
+			if (dirty & /*image*/ 4 && img0_alt_value !== (img0_alt_value = /*image*/ ctx[2].alt)) {
 				attr(img0, "alt", img0_alt_value);
 			}
 
@@ -1380,7 +1380,7 @@ function create_fragment(ctx) {
 				attr(img1, "alt", img1_alt_value);
 			}
 
-			if (dirty & /*text*/ 4) set_data(t3, /*text*/ ctx[2]);
+			if (dirty & /*text*/ 2) set_data(t3, /*text*/ ctx[1]);
 		},
 		i: noop,
 		o: noop,
@@ -1395,19 +1395,19 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
 	let { logo } = $$props;
+	let { text } = $$props;
 	let { image } = $$props;
 	let { heading } = $$props;
-	let { text } = $$props;
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(3, props = $$props.props);
 		if ('logo' in $$props) $$invalidate(0, logo = $$props.logo);
-		if ('image' in $$props) $$invalidate(1, image = $$props.image);
+		if ('text' in $$props) $$invalidate(1, text = $$props.text);
+		if ('image' in $$props) $$invalidate(2, image = $$props.image);
 		if ('heading' in $$props) $$invalidate(4, heading = $$props.heading);
-		if ('text' in $$props) $$invalidate(2, text = $$props.text);
 	};
 
-	return [logo, image, text, props, heading];
+	return [logo, text, image, props, heading];
 }
 
 class Component extends SvelteComponent {
@@ -1417,9 +1417,9 @@ class Component extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			props: 3,
 			logo: 0,
-			image: 1,
-			heading: 4,
-			text: 2
+			text: 1,
+			image: 2,
+			heading: 4
 		});
 	}
 }
