@@ -3088,7 +3088,7 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		l(nodes) {
-			section = claim_element(nodes, "SECTION", { class: true });
+			section = claim_element(nodes, "SECTION", { id: true, class: true });
 			var section_nodes = children(section);
 			div2 = claim_element(section_nodes, "DIV", { class: true });
 			var div2_nodes = children(div2);
@@ -3135,6 +3135,7 @@ function create_fragment(ctx) {
 			attr(button, "class", "button svelte-1nodiio");
 			attr(button, "type", "submit");
 			attr(form, "class", "svelte-1nodiio");
+			attr(section, "id", "contacto");
 			attr(section, "class", "section-container svelte-1nodiio");
 		},
 		m(target, anchor) {
