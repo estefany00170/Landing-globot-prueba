@@ -1335,20 +1335,20 @@ function create_fragment(ctx) {
 			attr(path, "fill-rule", "evenodd");
 			attr(path, "clip-rule", "evenodd");
 			attr(path, "d", "M1440 175H0V0C240 53.3333 480 80 720 80C960 80 1200 53.3333 1440 0V175Z");
-			attr(path, "class", "svelte-uit1ts");
+			attr(path, "class", "svelte-19nkkqn");
 			attr(svg, "viewBox", "0 0 1440 175");
 			attr(svg, "fill", "none");
 			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-			attr(svg, "class", "svelte-uit1ts");
+			attr(svg, "class", "svelte-19nkkqn");
 			attr(img0, "class", "image");
 			if (!src_url_equal(img0.src, img0_src_value = /*image*/ ctx[2].url)) attr(img0, "src", img0_src_value);
 			attr(img0, "alt", img0_alt_value = /*image*/ ctx[2].alt);
-			attr(img1, "class", "logo svelte-uit1ts");
+			attr(img1, "class", "logo svelte-19nkkqn");
 			if (!src_url_equal(img1.src, img1_src_value = /*logo*/ ctx[0].url)) attr(img1, "src", img1_src_value);
 			attr(img1, "alt", img1_alt_value = /*logo*/ ctx[0].alt);
-			attr(div0, "class", "section-container svelte-uit1ts");
-			attr(div1, "class", "text svelte-uit1ts");
-			attr(section, "class", "svelte-uit1ts");
+			attr(div0, "class", "section-container svelte-19nkkqn");
+			attr(div1, "class", "text svelte-19nkkqn");
+			attr(section, "class", "svelte-19nkkqn");
 		},
 		m(target, anchor) {
 			insert_hydration(target, svg, anchor);
