@@ -2884,20 +2884,31 @@ function create_each_block(ctx) {
 // (88:4) {#if button.link.label}
 function create_if_block(ctx) {
 	let a;
-	let t_value = /*button*/ ctx[1].link.label + "";
-	let t;
+	let t0_value = /*button*/ ctx[1].link.label + "";
+	let t0;
+	let t1;
+	let icon;
 	let a_href_value;
+	let current;
+
+	icon = new Component$1({
+			props: { icon: "akar-icons:arrow-up-right" }
+		});
 
 	return {
 		c() {
 			a = element("a");
-			t = text(t_value);
+			t0 = text(t0_value);
+			t1 = space();
+			create_component(icon.$$.fragment);
 			this.h();
 		},
 		l(nodes) {
 			a = claim_element(nodes, "A", { class: true, href: true });
 			var a_nodes = children(a);
-			t = claim_text(a_nodes, t_value);
+			t0 = claim_text(a_nodes, t0_value);
+			t1 = claim_space(a_nodes);
+			claim_component(icon.$$.fragment, a_nodes);
 			a_nodes.forEach(detach);
 			this.h();
 		},
@@ -2907,17 +2918,30 @@ function create_if_block(ctx) {
 		},
 		m(target, anchor) {
 			insert_hydration(target, a, anchor);
-			append_hydration(a, t);
+			append_hydration(a, t0);
+			append_hydration(a, t1);
+			mount_component(icon, a, null);
+			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*button*/ 2 && t_value !== (t_value = /*button*/ ctx[1].link.label + "")) set_data(t, t_value);
+			if ((!current || dirty & /*button*/ 2) && t0_value !== (t0_value = /*button*/ ctx[1].link.label + "")) set_data(t0, t0_value);
 
-			if (dirty & /*button*/ 2 && a_href_value !== (a_href_value = /*button*/ ctx[1].link.url)) {
+			if (!current || dirty & /*button*/ 2 && a_href_value !== (a_href_value = /*button*/ ctx[1].link.url)) {
 				attr(a, "href", a_href_value);
 			}
 		},
+		i(local) {
+			if (current) return;
+			transition_in(icon.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(icon.$$.fragment, local);
+			current = false;
+		},
 		d(detaching) {
 			if (detaching) detach(a);
+			destroy_component(icon);
 		}
 	};
 }
@@ -3035,14 +3059,24 @@ function create_fragment(ctx) {
 			if (/*button*/ ctx[1].link.label) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
+
+					if (dirty & /*button*/ 2) {
+						transition_in(if_block, 1);
+					}
 				} else {
 					if_block = create_if_block(ctx);
 					if_block.c();
+					transition_in(if_block, 1);
 					if_block.m(section, null);
 				}
 			} else if (if_block) {
-				if_block.d(1);
-				if_block = null;
+				group_outros();
+
+				transition_out(if_block, 1, 1, () => {
+					if_block = null;
+				});
+
+				check_outros();
 			}
 		},
 		i(local) {
@@ -3052,6 +3086,7 @@ function create_fragment(ctx) {
 				transition_in(each_blocks[i]);
 			}
 
+			transition_in(if_block);
 			current = true;
 		},
 		o(local) {
@@ -3061,6 +3096,7 @@ function create_fragment(ctx) {
 				transition_out(each_blocks[i]);
 			}
 
+			transition_out(if_block);
 			current = false;
 		},
 		d(detaching) {
