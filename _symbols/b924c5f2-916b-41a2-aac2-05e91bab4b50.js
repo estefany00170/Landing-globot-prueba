@@ -2840,10 +2840,10 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "icon svelte-8wjmh5");
-			attr(span0, "class", "title svelte-8wjmh5");
-			attr(span1, "class", "description svelte-8wjmh5");
-			attr(div1, "class", "card svelte-8wjmh5");
+			attr(div0, "class", "icon svelte-yjgmgu");
+			attr(span0, "class", "title svelte-yjgmgu");
+			attr(span1, "class", "description svelte-yjgmgu");
+			attr(div1, "class", "card svelte-yjgmgu");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div1, anchor);
@@ -2947,12 +2947,12 @@ function create_fragment(ctx) {
 		},
 		h() {
 			attr(h2, "class", "heading");
-			attr(div0, "class", "cards svelte-8wjmh5");
-			attr(div1, "class", "content svelte-8wjmh5");
+			attr(div0, "class", "cards svelte-yjgmgu");
+			attr(div1, "class", "content svelte-yjgmgu");
 			set_style(div1, "background-image", "url('" + /*background*/ ctx[2].url + "')");
 			attr(div1, "role", "img");
 			attr(div1, "aria-label", div1_aria_label_value = /*background*/ ctx[2].alt);
-			attr(section, "class", "section-container svelte-8wjmh5");
+			attr(section, "class", "section-container svelte-yjgmgu");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
