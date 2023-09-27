@@ -333,6 +333,14 @@ function set_data(text, data) {
         return;
     text.data = data;
 }
+function set_style(node, key, value, important) {
+    if (value == null) {
+        node.style.removeProperty(key);
+    }
+    else {
+        node.style.setProperty(key, value, important ? 'important' : '');
+    }
+}
 function custom_event(type, detail, { bubbles = false, cancelable = false } = {}) {
     const e = document.createEvent('CustomEvent');
     e.initCustomEvent(type, bubbles, cancelable, detail);
@@ -2785,24 +2793,25 @@ function create_fragment(ctx) {
 	let span1;
 	let t8;
 	let a1_href_value;
+	let div2_aria_label_value;
 	let t9;
 	let script;
 	let script_src_value;
 	let current;
-	icon0 = new Component$1({ props: { icon: /*button0*/ ctx[2].icon } });
+	icon0 = new Component$1({ props: { icon: /*button0*/ ctx[1].icon } });
 
 	icon1 = new Component$1({
 			props: { icon: "akar-icons:arrow-up-right" }
 		});
 
-	icon2 = new Component$1({ props: { icon: /*button1*/ ctx[3].icon } });
+	icon2 = new Component$1({ props: { icon: /*button1*/ ctx[2].icon } });
 
 	return {
 		c() {
 			section = element("section");
 			div2 = element("div");
 			h2 = element("h2");
-			t0 = text(/*heading*/ ctx[1]);
+			t0 = text(/*heading*/ ctx[3]);
 			t1 = space();
 			div0 = element("div");
 			t2 = space();
@@ -2827,11 +2836,18 @@ function create_fragment(ctx) {
 		l(nodes) {
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
-			div2 = claim_element(section_nodes, "DIV", { class: true });
+
+			div2 = claim_element(section_nodes, "DIV", {
+				style: true,
+				role: true,
+				"aria-label": true,
+				class: true
+			});
+
 			var div2_nodes = children(div2);
 			h2 = claim_element(div2_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			t0 = claim_text(h2_nodes, /*heading*/ ctx[1]);
+			t0 = claim_text(h2_nodes, /*heading*/ ctx[3]);
 			h2_nodes.forEach(detach);
 			t1 = claim_space(div2_nodes);
 			div0 = claim_element(div2_nodes, "DIV", { class: true });
@@ -2871,17 +2887,20 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-1goe5t3");
-			attr(div0, "class", "body svelte-1goe5t3");
-			attr(a0, "class", "button button-0 svelte-1goe5t3");
-			attr(a0, "href", a0_href_value = /*button0*/ ctx[2].link);
-			attr(a1, "class", "button button-1 svelte-1goe5t3");
-			attr(a1, "href", a1_href_value = /*button1*/ ctx[3].link);
-			attr(div1, "class", "buttons svelte-1goe5t3");
-			attr(div2, "class", "card svelte-1goe5t3");
+			attr(h2, "class", "heading svelte-1hjaloq");
+			attr(div0, "class", "body svelte-1hjaloq");
+			attr(a0, "class", "button button-0 svelte-1hjaloq");
+			attr(a0, "href", a0_href_value = /*button0*/ ctx[1].link);
+			attr(a1, "class", "button button-1 svelte-1hjaloq");
+			attr(a1, "href", a1_href_value = /*button1*/ ctx[2].link);
+			attr(div1, "class", "buttons svelte-1hjaloq");
+			set_style(div2, "background-image", "url('" + /*background*/ ctx[4].url + "')");
+			attr(div2, "role", "img");
+			attr(div2, "aria-label", div2_aria_label_value = /*background*/ ctx[4].alt);
+			attr(div2, "class", "card svelte-1hjaloq");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
-			attr(section, "class", "section-container svelte-1goe5t3");
+			attr(section, "class", "section-container svelte-1hjaloq");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -2911,21 +2930,29 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*heading*/ 2) set_data(t0, /*heading*/ ctx[1]);
+			if (!current || dirty & /*heading*/ 8) set_data(t0, /*heading*/ ctx[3]);
 			if ((!current || dirty & /*body*/ 1) && raw_value !== (raw_value = /*body*/ ctx[0].html + "")) div0.innerHTML = raw_value;			const icon0_changes = {};
-			if (dirty & /*button0*/ 4) icon0_changes.icon = /*button0*/ ctx[2].icon;
+			if (dirty & /*button0*/ 2) icon0_changes.icon = /*button0*/ ctx[1].icon;
 			icon0.$set(icon0_changes);
 
-			if (!current || dirty & /*button0*/ 4 && a0_href_value !== (a0_href_value = /*button0*/ ctx[2].link)) {
+			if (!current || dirty & /*button0*/ 2 && a0_href_value !== (a0_href_value = /*button0*/ ctx[1].link)) {
 				attr(a0, "href", a0_href_value);
 			}
 
 			const icon2_changes = {};
-			if (dirty & /*button1*/ 8) icon2_changes.icon = /*button1*/ ctx[3].icon;
+			if (dirty & /*button1*/ 4) icon2_changes.icon = /*button1*/ ctx[2].icon;
 			icon2.$set(icon2_changes);
 
-			if (!current || dirty & /*button1*/ 8 && a1_href_value !== (a1_href_value = /*button1*/ ctx[3].link)) {
+			if (!current || dirty & /*button1*/ 4 && a1_href_value !== (a1_href_value = /*button1*/ ctx[2].link)) {
 				attr(a1, "href", a1_href_value);
+			}
+
+			if (!current || dirty & /*background*/ 16) {
+				set_style(div2, "background-image", "url('" + /*background*/ ctx[4].url + "')");
+			}
+
+			if (!current || dirty & /*background*/ 16 && div2_aria_label_value !== (div2_aria_label_value = /*background*/ ctx[4].alt)) {
+				attr(div2, "aria-label", div2_aria_label_value);
 			}
 		},
 		i(local) {
@@ -2953,19 +2980,21 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
 	let { body } = $$props;
-	let { heading } = $$props;
 	let { button0 } = $$props;
 	let { button1 } = $$props;
+	let { heading } = $$props;
+	let { background } = $$props;
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(4, props = $$props.props);
+		if ('props' in $$props) $$invalidate(5, props = $$props.props);
 		if ('body' in $$props) $$invalidate(0, body = $$props.body);
-		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
-		if ('button0' in $$props) $$invalidate(2, button0 = $$props.button0);
-		if ('button1' in $$props) $$invalidate(3, button1 = $$props.button1);
+		if ('button0' in $$props) $$invalidate(1, button0 = $$props.button0);
+		if ('button1' in $$props) $$invalidate(2, button1 = $$props.button1);
+		if ('heading' in $$props) $$invalidate(3, heading = $$props.heading);
+		if ('background' in $$props) $$invalidate(4, background = $$props.background);
 	};
 
-	return [body, heading, button0, button1, props];
+	return [body, button0, button1, heading, background, props];
 }
 
 class Component extends SvelteComponent {
@@ -2973,11 +3002,12 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 4,
+			props: 5,
 			body: 0,
-			heading: 1,
-			button0: 2,
-			button1: 3
+			button0: 1,
+			button1: 2,
+			heading: 3,
+			background: 4
 		});
 	}
 }

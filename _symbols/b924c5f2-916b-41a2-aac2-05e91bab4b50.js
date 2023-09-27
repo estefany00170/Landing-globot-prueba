@@ -331,6 +331,14 @@ function set_data(text, data) {
         return;
     text.data = data;
 }
+function set_style(node, key, value, important) {
+    if (value == null) {
+        node.style.removeProperty(key);
+    }
+    else {
+        node.style.setProperty(key, value, important ? 'important' : '');
+    }
+}
 function custom_event(type, detail, { bubbles = false, cancelable = false } = {}) {
     const e = document.createEvent('CustomEvent');
     e.initCustomEvent(type, bubbles, cancelable, detail);
@@ -2773,28 +2781,28 @@ let Component$1 = class Component extends SvelteComponent {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[3] = list[i].icon;
-	child_ctx[4] = list[i].title;
-	child_ctx[5] = list[i].description;
+	child_ctx[4] = list[i].icon;
+	child_ctx[5] = list[i].title;
+	child_ctx[6] = list[i].description;
 	return child_ctx;
 }
 
-// (70:6) {#each cards as { icon, title, description }}
+// (72:6) {#each cards as { icon, title, description }}
 function create_each_block(ctx) {
 	let div1;
 	let div0;
 	let icon;
 	let t0;
 	let span0;
-	let t1_value = /*title*/ ctx[4] + "";
+	let t1_value = /*title*/ ctx[5] + "";
 	let t1;
 	let t2;
 	let span1;
-	let t3_value = /*description*/ ctx[5] + "";
+	let t3_value = /*description*/ ctx[6] + "";
 	let t3;
 	let t4;
 	let current;
-	icon = new Component$1({ props: { icon: /*icon*/ ctx[3] } });
+	icon = new Component$1({ props: { icon: /*icon*/ ctx[4] } });
 
 	return {
 		c() {
@@ -2852,10 +2860,10 @@ function create_each_block(ctx) {
 		},
 		p(ctx, dirty) {
 			const icon_changes = {};
-			if (dirty & /*cards*/ 1) icon_changes.icon = /*icon*/ ctx[3];
+			if (dirty & /*cards*/ 1) icon_changes.icon = /*icon*/ ctx[4];
 			icon.$set(icon_changes);
-			if ((!current || dirty & /*cards*/ 1) && t1_value !== (t1_value = /*title*/ ctx[4] + "")) set_data(t1, t1_value);
-			if ((!current || dirty & /*cards*/ 1) && t3_value !== (t3_value = /*description*/ ctx[5] + "")) set_data(t3, t3_value);
+			if ((!current || dirty & /*cards*/ 1) && t1_value !== (t1_value = /*title*/ ctx[5] + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*cards*/ 1) && t3_value !== (t3_value = /*description*/ ctx[6] + "")) set_data(t3, t3_value);
 		},
 		i(local) {
 			if (current) return;
@@ -2880,6 +2888,7 @@ function create_fragment(ctx) {
 	let t0;
 	let t1;
 	let div0;
+	let div1_aria_label_value;
 	let current;
 	let each_value = /*cards*/ ctx[0];
 	let each_blocks = [];
@@ -2910,7 +2919,14 @@ function create_fragment(ctx) {
 		l(nodes) {
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
-			div1 = claim_element(section_nodes, "DIV", { class: true });
+
+			div1 = claim_element(section_nodes, "DIV", {
+				class: true,
+				style: true,
+				role: true,
+				"aria-label": true
+			});
+
 			var div1_nodes = children(div1);
 			h2 = claim_element(div1_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
@@ -2933,6 +2949,9 @@ function create_fragment(ctx) {
 			attr(h2, "class", "heading");
 			attr(div0, "class", "cards svelte-8wjmh5");
 			attr(div1, "class", "content svelte-8wjmh5");
+			set_style(div1, "background-image", "url('" + /*background*/ ctx[2].url + "')");
+			attr(div1, "role", "img");
+			attr(div1, "aria-label", div1_aria_label_value = /*background*/ ctx[2].alt);
 			attr(section, "class", "section-container svelte-8wjmh5");
 		},
 		m(target, anchor) {
@@ -2980,6 +2999,14 @@ function create_fragment(ctx) {
 
 				check_outros();
 			}
+
+			if (!current || dirty & /*background*/ 4) {
+				set_style(div1, "background-image", "url('" + /*background*/ ctx[2].url + "')");
+			}
+
+			if (!current || dirty & /*background*/ 4 && div1_aria_label_value !== (div1_aria_label_value = /*background*/ ctx[2].alt)) {
+				attr(div1, "aria-label", div1_aria_label_value);
+			}
 		},
 		i(local) {
 			if (current) return;
@@ -3010,20 +3037,28 @@ function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
 	let { cards } = $$props;
 	let { heading } = $$props;
+	let { background } = $$props;
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(2, props = $$props.props);
+		if ('props' in $$props) $$invalidate(3, props = $$props.props);
 		if ('cards' in $$props) $$invalidate(0, cards = $$props.cards);
 		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
+		if ('background' in $$props) $$invalidate(2, background = $$props.background);
 	};
 
-	return [cards, heading, props];
+	return [cards, heading, background, props];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { props: 2, cards: 0, heading: 1 });
+
+		init(this, options, instance, create_fragment, safe_not_equal, {
+			props: 3,
+			cards: 0,
+			heading: 1,
+			background: 2
+		});
 	}
 }
 
