@@ -3070,7 +3070,7 @@ function get_each_context_3(ctx, list, i) {
 	return child_ctx;
 }
 
-// (139:8) {:else}
+// (138:8) {:else}
 function create_else_block_1(ctx) {
 	let span;
 	let t_value = /*logo*/ ctx[2].title + "";
@@ -3100,7 +3100,7 @@ function create_else_block_1(ctx) {
 	};
 }
 
-// (137:8) {#if logo.image.url}
+// (136:8) {#if logo.image.url}
 function create_if_block_2(ctx) {
 	let img;
 	let img_src_value;
@@ -3137,7 +3137,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (144:8) {#each site_nav as { link }}
+// (143:8) {#each site_nav as { link }}
 function create_each_block_3(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[8].label + "";
@@ -3178,7 +3178,7 @@ function create_each_block_3(ctx) {
 	};
 }
 
-// (147:8) {#each cta as { link }
+// (146:8) {#each cta as { link }
 function create_each_block_2(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[8].label + "";
@@ -3219,7 +3219,7 @@ function create_each_block_2(ctx) {
 	};
 }
 
-// (158:4) {#if mobileNavOpen}
+// (157:4) {#if mobileNavOpen}
 function create_if_block(ctx) {
 	let nav;
 	let t0;
@@ -3441,7 +3441,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (162:8) {:else}
+// (161:8) {:else}
 function create_else_block(ctx) {
 	let span;
 	let t_value = /*logo*/ ctx[2].title + "";
@@ -3471,7 +3471,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (160:8) {#if logo.image.url}
+// (159:8) {#if logo.image.url}
 function create_if_block_1(ctx) {
 	let img;
 	let img_src_value;
@@ -3508,7 +3508,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (165:8) {#each site_nav as { link }}
+// (164:8) {#each site_nav as { link }}
 function create_each_block_1(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[8].label + "";
@@ -3549,7 +3549,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (169:8) {#each cta as { link }
+// (168:8) {#each cta as { link }
 function create_each_block(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[8].label + "";
@@ -3871,15 +3871,15 @@ function instance($$self, $$props, $$invalidate) {
 			link: { url: "#benefits", label: "Beneficios" }
 		},
 		{
-			link: { url: "#contacto", label: "Contacto" }
-		},
-		{
 			link: { url: "#producto", label: "Producto" }
 		},
 		{
 			link: { url: "#live-demo", label: "Live Demo" }
+		},
+		{
+			link: { url: "#", label: "Tarifas y planes" }
 		}
-	]; // Agrega más objetos aquí para más enlaces
+	];
 
 	const click_handler = () => $$invalidate(3, mobileNavOpen = true);
 	const click_handler_1 = () => $$invalidate(3, mobileNavOpen = false);

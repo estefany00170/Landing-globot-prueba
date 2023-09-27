@@ -2785,7 +2785,7 @@ function get_each_context_1(ctx, list, i) {
 	return child_ctx;
 }
 
-// (99:6) {#each social as { link, icon }}
+// (103:6) {#each social as { link, icon }}
 function create_each_block_1(ctx) {
 	let a;
 	let span;
@@ -2822,9 +2822,9 @@ function create_each_block_1(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "icon svelte-1nodiio");
+			attr(span, "class", "icon svelte-1m3u111");
 			attr(a, "href", a_href_value = /*link*/ ctx[9].url);
-			attr(a, "class", "svelte-1nodiio");
+			attr(a, "class", "svelte-1m3u111");
 		},
 		m(target, anchor) {
 			insert_hydration(target, a, anchor);
@@ -2861,7 +2861,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (116:6) {:else}
+// (120:6) {:else}
 function create_else_block(ctx) {
 	let label;
 	let span;
@@ -2900,11 +2900,11 @@ function create_else_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "svelte-1nodiio");
+			attr(span, "class", "svelte-1m3u111");
 			attr(input, "type", input_type_value = /*input*/ ctx[6].type || "text");
 			attr(input, "placeholder", input_placeholder_value = /*input*/ ctx[6].placeholder);
-			attr(input, "class", "svelte-1nodiio");
-			attr(label, "class", "svelte-1nodiio");
+			attr(input, "class", "svelte-1m3u111");
+			attr(label, "class", "svelte-1m3u111");
 		},
 		m(target, anchor) {
 			insert_hydration(target, label, anchor);
@@ -2930,7 +2930,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (111:6) {#if input.type === "textarea"}
+// (115:6) {#if input.type === "textarea"}
 function create_if_block(ctx) {
 	let label;
 	let span;
@@ -2962,9 +2962,9 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "svelte-1nodiio");
-			attr(textarea, "class", "svelte-1nodiio");
-			attr(label, "class", "svelte-1nodiio");
+			attr(span, "class", "svelte-1m3u111");
+			attr(textarea, "class", "svelte-1m3u111");
+			attr(label, "class", "svelte-1m3u111");
 		},
 		m(target, anchor) {
 			insert_hydration(target, label, anchor);
@@ -2982,7 +2982,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (110:4) {#each inputs as input, i}
+// (114:4) {#each inputs as input, i}
 function create_each_block(ctx) {
 	let if_block_anchor;
 
@@ -3029,18 +3029,21 @@ function create_each_block(ctx) {
 
 function create_fragment(ctx) {
 	let section;
-	let div2;
-	let h2;
+	let style;
 	let t0;
 	let t1;
-	let div0;
+	let div2;
+	let h2;
 	let t2;
-	let div1;
 	let t3;
-	let form;
+	let div0;
 	let t4;
-	let button;
+	let div1;
 	let t5;
+	let form;
+	let t6;
+	let button;
+	let t7;
 	let current;
 	let each_value_1 = /*social*/ ctx[1];
 	let each_blocks_1 = [];
@@ -3063,44 +3066,52 @@ function create_fragment(ctx) {
 	return {
 		c() {
 			section = element("section");
+			style = element("style");
+			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');");
+			t1 = space();
 			div2 = element("div");
 			h2 = element("h2");
-			t0 = text(/*heading*/ ctx[2]);
-			t1 = space();
+			t2 = text(/*heading*/ ctx[2]);
+			t3 = space();
 			div0 = element("div");
-			t2 = space();
+			t4 = space();
 			div1 = element("div");
 
 			for (let i = 0; i < each_blocks_1.length; i += 1) {
 				each_blocks_1[i].c();
 			}
 
-			t3 = space();
+			t5 = space();
 			form = element("form");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
-			t4 = space();
+			t6 = space();
 			button = element("button");
-			t5 = text(/*submit_label*/ ctx[4]);
+			t7 = text(/*submit_label*/ ctx[4]);
 			this.h();
 		},
 		l(nodes) {
 			section = claim_element(nodes, "SECTION", { id: true, class: true });
 			var section_nodes = children(section);
+			style = claim_element(section_nodes, "STYLE", {});
+			var style_nodes = children(style);
+			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');");
+			style_nodes.forEach(detach);
+			t1 = claim_space(section_nodes);
 			div2 = claim_element(section_nodes, "DIV", { class: true });
 			var div2_nodes = children(div2);
 			h2 = claim_element(div2_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			t0 = claim_text(h2_nodes, /*heading*/ ctx[2]);
+			t2 = claim_text(h2_nodes, /*heading*/ ctx[2]);
 			h2_nodes.forEach(detach);
-			t1 = claim_space(div2_nodes);
+			t3 = claim_space(div2_nodes);
 			div0 = claim_element(div2_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
 			div0_nodes.forEach(detach);
-			t2 = claim_space(div2_nodes);
+			t4 = claim_space(div2_nodes);
 			div1 = claim_element(div2_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
 
@@ -3110,7 +3121,7 @@ function create_fragment(ctx) {
 
 			div1_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
-			t3 = claim_space(section_nodes);
+			t5 = claim_space(section_nodes);
 			form = claim_element(section_nodes, "FORM", { class: true });
 			var form_nodes = children(form);
 
@@ -3118,10 +3129,10 @@ function create_fragment(ctx) {
 				each_blocks[i].l(form_nodes);
 			}
 
-			t4 = claim_space(form_nodes);
+			t6 = claim_space(form_nodes);
 			button = claim_element(form_nodes, "BUTTON", { class: true, type: true });
 			var button_nodes = children(button);
-			t5 = claim_text(button_nodes, /*submit_label*/ ctx[4]);
+			t7 = claim_text(button_nodes, /*submit_label*/ ctx[4]);
 			button_nodes.forEach(detach);
 			form_nodes.forEach(detach);
 			section_nodes.forEach(detach);
@@ -3129,24 +3140,27 @@ function create_fragment(ctx) {
 		},
 		h() {
 			attr(h2, "class", "heading");
-			attr(div0, "class", "body svelte-1nodiio");
-			attr(div1, "class", "social-links svelte-1nodiio");
-			attr(div2, "class", "content svelte-1nodiio");
-			attr(button, "class", "button svelte-1nodiio");
+			attr(div0, "class", "body svelte-1m3u111");
+			attr(div1, "class", "social-links svelte-1m3u111");
+			attr(div2, "class", "content svelte-1m3u111");
+			attr(button, "class", "button svelte-1m3u111");
 			attr(button, "type", "submit");
-			attr(form, "class", "svelte-1nodiio");
+			attr(form, "class", "svelte-1m3u111");
 			attr(section, "id", "contacto");
-			attr(section, "class", "section-container svelte-1nodiio");
+			attr(section, "class", "section-container svelte-1m3u111");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
+			append_hydration(section, style);
+			append_hydration(style, t0);
+			append_hydration(section, t1);
 			append_hydration(section, div2);
 			append_hydration(div2, h2);
-			append_hydration(h2, t0);
-			append_hydration(div2, t1);
+			append_hydration(h2, t2);
+			append_hydration(div2, t3);
 			append_hydration(div2, div0);
 			div0.innerHTML = /*subheading*/ ctx[3];
-			append_hydration(div2, t2);
+			append_hydration(div2, t4);
 			append_hydration(div2, div1);
 
 			for (let i = 0; i < each_blocks_1.length; i += 1) {
@@ -3155,7 +3169,7 @@ function create_fragment(ctx) {
 				}
 			}
 
-			append_hydration(section, t3);
+			append_hydration(section, t5);
 			append_hydration(section, form);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -3164,13 +3178,13 @@ function create_fragment(ctx) {
 				}
 			}
 
-			append_hydration(form, t4);
+			append_hydration(form, t6);
 			append_hydration(form, button);
-			append_hydration(button, t5);
+			append_hydration(button, t7);
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*heading*/ 4) set_data(t0, /*heading*/ ctx[2]);
+			if (!current || dirty & /*heading*/ 4) set_data(t2, /*heading*/ ctx[2]);
 			if (!current || dirty & /*subheading*/ 8) div0.innerHTML = /*subheading*/ ctx[3];
 			if (dirty & /*social*/ 2) {
 				each_value_1 = /*social*/ ctx[1];
@@ -3211,7 +3225,7 @@ function create_fragment(ctx) {
 					} else {
 						each_blocks[i] = create_each_block(child_ctx);
 						each_blocks[i].c();
-						each_blocks[i].m(form, t4);
+						each_blocks[i].m(form, t6);
 					}
 				}
 
@@ -3222,7 +3236,7 @@ function create_fragment(ctx) {
 				each_blocks.length = each_value.length;
 			}
 
-			if (!current || dirty & /*submit_label*/ 16) set_data(t5, /*submit_label*/ ctx[4]);
+			if (!current || dirty & /*submit_label*/ 16) set_data(t7, /*submit_label*/ ctx[4]);
 		},
 		i(local) {
 			if (current) return;
