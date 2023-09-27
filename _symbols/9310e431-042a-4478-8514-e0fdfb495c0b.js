@@ -1,4 +1,4 @@
-// Primary Hero - Updated September 26, 2023
+// Primary Hero - Updated September 27, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -231,6 +231,14 @@ function set_attributes(node, attributes) {
 function set_svg_attributes(node, attributes) {
     for (const key in attributes) {
         attr(node, key, attributes[key]);
+    }
+}
+function set_custom_element_data(node, prop, value) {
+    if (prop in node) {
+        node[prop] = typeof node[prop] === 'boolean' && value === '' ? true : value;
+    }
+    else {
+        attr(node, prop, value);
     }
 }
 function children(element) {
@@ -2816,7 +2824,7 @@ function create_if_block(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = /*link*/ ctx[0].url);
-			attr(a, "class", "button svelte-92p3f0");
+			attr(a, "class", "button svelte-64voza");
 			set_style(a, "display", "flex");
 			set_style(a, "align-items", "center");
 			set_style(a, "gap", "10px");
@@ -2862,11 +2870,13 @@ function create_fragment(ctx) {
 	let t2;
 	let t3;
 	let t4;
-	let figure;
-	let img;
-	let img_src_value;
-	let img_alt_value;
+	let script;
+	let script_src_value;
 	let t5;
+	let dotlottie_player;
+	let dotlottie_player_src_value;
+	let t6;
+	let figure;
 	let svg;
 	let path0;
 	let path1;
@@ -2880,16 +2890,18 @@ function create_fragment(ctx) {
 			div2 = element("div");
 			div1 = element("div");
 			h1 = element("h1");
-			t0 = text(/*heading*/ ctx[2]);
+			t0 = text(/*heading*/ ctx[1]);
 			t1 = space();
 			div0 = element("div");
-			t2 = text(/*subheading*/ ctx[4]);
+			t2 = text(/*subheading*/ ctx[3]);
 			t3 = space();
 			if (if_block) if_block.c();
 			t4 = space();
-			figure = element("figure");
-			img = element("img");
+			script = element("script");
 			t5 = space();
+			dotlottie_player = element("dotlottie-player");
+			t6 = space();
+			figure = element("figure");
 			svg = svg_element("svg");
 			path0 = svg_element("path");
 			path1 = svg_element("path");
@@ -2905,21 +2917,35 @@ function create_fragment(ctx) {
 			var div1_nodes = children(div1);
 			h1 = claim_element(div1_nodes, "H1", { class: true });
 			var h1_nodes = children(h1);
-			t0 = claim_text(h1_nodes, /*heading*/ ctx[2]);
+			t0 = claim_text(h1_nodes, /*heading*/ ctx[1]);
 			h1_nodes.forEach(detach);
 			t1 = claim_space(div1_nodes);
 			div0 = claim_element(div1_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
-			t2 = claim_text(div0_nodes, /*subheading*/ ctx[4]);
+			t2 = claim_text(div0_nodes, /*subheading*/ ctx[3]);
 			div0_nodes.forEach(detach);
 			t3 = claim_space(div1_nodes);
 			if (if_block) if_block.l(div1_nodes);
 			div1_nodes.forEach(detach);
 			t4 = claim_space(div2_nodes);
+			script = claim_element(div2_nodes, "SCRIPT", { src: true, type: true });
+			var script_nodes = children(script);
+			script_nodes.forEach(detach);
+			t5 = claim_space(div2_nodes);
+
+			dotlottie_player = claim_element(div2_nodes, "DOTLOTTIE-PLAYER", {
+				src: true,
+				background: true,
+				speed: true,
+				style: true,
+				loop: true,
+				autoplay: true
+			});
+
+			children(dotlottie_player).forEach(detach);
+			t6 = claim_space(div2_nodes);
 			figure = claim_element(div2_nodes, "FIGURE", { class: true });
 			var figure_nodes = children(figure);
-			img = claim_element(figure_nodes, "IMG", { src: true, alt: true, class: true });
-			t5 = claim_space(figure_nodes);
 
 			svg = claim_svg_element(figure_nodes, "svg", {
 				width: true,
@@ -2968,12 +2994,18 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h1, "class", "headline svelte-92p3f0");
-			attr(div0, "class", "subheading svelte-92p3f0");
-			attr(div1, "class", "body svelte-92p3f0");
-			if (!src_url_equal(img.src, img_src_value = /*image*/ ctx[1].url)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*image*/ ctx[1].alt);
-			attr(img, "class", "svelte-92p3f0");
+			attr(h1, "class", "headline svelte-64voza");
+			attr(div0, "class", "subheading svelte-64voza");
+			attr(div1, "class", "body svelte-64voza");
+			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
+			attr(script, "type", "module");
+			if (!src_url_equal(dotlottie_player.src, dotlottie_player_src_value = "https://lottie.host/ad4ba34c-42de-4a1e-846a-8d0e482ddd1f/oU4AfCBPcn.json")) set_custom_element_data(dotlottie_player, "src", dotlottie_player_src_value);
+			set_custom_element_data(dotlottie_player, "background", "transparent");
+			set_custom_element_data(dotlottie_player, "speed", "1");
+			set_style(dotlottie_player, "width", "500px");
+			set_style(dotlottie_player, "height", "500px");
+			set_custom_element_data(dotlottie_player, "loop", "");
+			set_custom_element_data(dotlottie_player, "autoplay", "");
 			attr(path0, "opacity", "0.05");
 			attr(path0, "fill-rule", "evenodd");
 			attr(path0, "clip-rule", "evenodd");
@@ -2994,11 +3026,11 @@ function create_fragment(ctx) {
 			attr(svg, "viewBox", "0 0 709 689");
 			attr(svg, "fill", "none");
 			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-			attr(svg, "class", "svelte-92p3f0");
-			attr(figure, "class", "svelte-92p3f0");
-			attr(div2, "class", "section-container svelte-92p3f0");
-			attr(section, "class", "svelte-92p3f0");
-			toggle_class(section, "image-left", /*variation*/ ctx[3] === "image_left");
+			attr(svg, "class", "svelte-64voza");
+			attr(figure, "class", "svelte-64voza");
+			attr(div2, "class", "section-container svelte-64voza");
+			attr(section, "class", "svelte-64voza");
+			toggle_class(section, "image-left", /*variation*/ ctx[2] === "image_left");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -3012,9 +3044,11 @@ function create_fragment(ctx) {
 			append_hydration(div1, t3);
 			if (if_block) if_block.m(div1, null);
 			append_hydration(div2, t4);
+			append_hydration(div2, script);
+			append_hydration(div2, t5);
+			append_hydration(div2, dotlottie_player);
+			append_hydration(div2, t6);
 			append_hydration(div2, figure);
-			append_hydration(figure, img);
-			append_hydration(figure, t5);
 			append_hydration(figure, svg);
 			append_hydration(svg, path0);
 			append_hydration(svg, path1);
@@ -3022,8 +3056,8 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*heading*/ 4) set_data(t0, /*heading*/ ctx[2]);
-			if (!current || dirty & /*subheading*/ 16) set_data(t2, /*subheading*/ ctx[4]);
+			if (!current || dirty & /*heading*/ 2) set_data(t0, /*heading*/ ctx[1]);
+			if (!current || dirty & /*subheading*/ 8) set_data(t2, /*subheading*/ ctx[3]);
 
 			if (/*link*/ ctx[0].label) {
 				if (if_block) {
@@ -3048,16 +3082,8 @@ function create_fragment(ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*image*/ 2 && !src_url_equal(img.src, img_src_value = /*image*/ ctx[1].url)) {
-				attr(img, "src", img_src_value);
-			}
-
-			if (!current || dirty & /*image*/ 2 && img_alt_value !== (img_alt_value = /*image*/ ctx[1].alt)) {
-				attr(img, "alt", img_alt_value);
-			}
-
-			if (!current || dirty & /*variation*/ 8) {
-				toggle_class(section, "image-left", /*variation*/ ctx[3] === "image_left");
+			if (!current || dirty & /*variation*/ 4) {
+				toggle_class(section, "image-left", /*variation*/ ctx[2] === "image_left");
 			}
 		},
 		i(local) {
@@ -3085,15 +3111,15 @@ function instance($$self, $$props, $$invalidate) {
 	let { subheading } = $$props;
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(5, props = $$props.props);
+		if ('props' in $$props) $$invalidate(4, props = $$props.props);
 		if ('link' in $$props) $$invalidate(0, link = $$props.link);
-		if ('image' in $$props) $$invalidate(1, image = $$props.image);
-		if ('heading' in $$props) $$invalidate(2, heading = $$props.heading);
-		if ('variation' in $$props) $$invalidate(3, variation = $$props.variation);
-		if ('subheading' in $$props) $$invalidate(4, subheading = $$props.subheading);
+		if ('image' in $$props) $$invalidate(5, image = $$props.image);
+		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
+		if ('variation' in $$props) $$invalidate(2, variation = $$props.variation);
+		if ('subheading' in $$props) $$invalidate(3, subheading = $$props.subheading);
 	};
 
-	return [link, image, heading, variation, subheading, props];
+	return [link, heading, variation, subheading, props, image];
 }
 
 class Component extends SvelteComponent {
@@ -3101,12 +3127,12 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 5,
+			props: 4,
 			link: 0,
-			image: 1,
-			heading: 2,
-			variation: 3,
-			subheading: 4
+			image: 5,
+			heading: 1,
+			variation: 2,
+			subheading: 3
 		});
 	}
 }
