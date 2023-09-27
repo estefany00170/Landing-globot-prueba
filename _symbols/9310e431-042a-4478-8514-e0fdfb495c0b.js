@@ -3002,8 +3002,8 @@ function create_fragment(ctx) {
 			if (!src_url_equal(dotlottie_player.src, dotlottie_player_src_value = "https://lottie.host/ad4ba34c-42de-4a1e-846a-8d0e482ddd1f/oU4AfCBPcn.json")) set_custom_element_data(dotlottie_player, "src", dotlottie_player_src_value);
 			set_custom_element_data(dotlottie_player, "background", "transparent");
 			set_custom_element_data(dotlottie_player, "speed", "1");
-			set_style(dotlottie_player, "width", "500px");
-			set_style(dotlottie_player, "height", "500px");
+			set_style(dotlottie_player, "width", "100%");
+			set_style(dotlottie_player, "height", "100%");
 			set_custom_element_data(dotlottie_player, "loop", "");
 			set_custom_element_data(dotlottie_player, "autoplay", "");
 			attr(path0, "opacity", "0.05");
