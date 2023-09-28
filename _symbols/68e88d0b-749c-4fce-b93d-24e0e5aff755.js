@@ -1268,17 +1268,20 @@ function create_fragment(ctx) {
 	let path;
 	let t0;
 	let section;
+	let style;
+	let t1;
+	let t2;
 	let div0;
 	let img0;
 	let img0_src_value;
 	let img0_alt_value;
-	let t1;
+	let t3;
 	let img1;
 	let img1_src_value;
 	let img1_alt_value;
-	let t2;
+	let t4;
 	let div1;
-	let t3;
+	let t5;
 
 	return {
 		c() {
@@ -1286,13 +1289,16 @@ function create_fragment(ctx) {
 			path = svg_element("path");
 			t0 = space();
 			section = element("section");
+			style = element("style");
+			t1 = text("@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');");
+			t2 = space();
 			div0 = element("div");
 			img0 = element("img");
-			t1 = space();
+			t3 = space();
 			img1 = element("img");
-			t2 = space();
+			t4 = space();
 			div1 = element("div");
-			t3 = text(/*text*/ ctx[1]);
+			t5 = text(/*text*/ ctx[1]);
 			this.h();
 		},
 		l(nodes) {
@@ -1317,16 +1323,21 @@ function create_fragment(ctx) {
 			t0 = claim_space(nodes);
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
+			style = claim_element(section_nodes, "STYLE", {});
+			var style_nodes = children(style);
+			t1 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');");
+			style_nodes.forEach(detach);
+			t2 = claim_space(section_nodes);
 			div0 = claim_element(section_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
 			img0 = claim_element(div0_nodes, "IMG", { class: true, src: true, alt: true });
-			t1 = claim_space(div0_nodes);
+			t3 = claim_space(div0_nodes);
 			img1 = claim_element(div0_nodes, "IMG", { class: true, src: true, alt: true });
 			div0_nodes.forEach(detach);
-			t2 = claim_space(section_nodes);
+			t4 = claim_space(section_nodes);
 			div1 = claim_element(section_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
-			t3 = claim_text(div1_nodes, /*text*/ ctx[1]);
+			t5 = claim_text(div1_nodes, /*text*/ ctx[1]);
 			div1_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
@@ -1335,33 +1346,36 @@ function create_fragment(ctx) {
 			attr(path, "fill-rule", "evenodd");
 			attr(path, "clip-rule", "evenodd");
 			attr(path, "d", "M1440 175H0V0C240 53.3333 480 80 720 80C960 80 1200 53.3333 1440 0V175Z");
-			attr(path, "class", "svelte-19nkkqn");
+			attr(path, "class", "svelte-jwtj5z");
 			attr(svg, "viewBox", "0 0 1440 175");
 			attr(svg, "fill", "none");
 			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-			attr(svg, "class", "svelte-19nkkqn");
+			attr(svg, "class", "svelte-jwtj5z");
 			attr(img0, "class", "image");
 			if (!src_url_equal(img0.src, img0_src_value = /*image*/ ctx[2].url)) attr(img0, "src", img0_src_value);
 			attr(img0, "alt", img0_alt_value = /*image*/ ctx[2].alt);
-			attr(img1, "class", "logo svelte-19nkkqn");
+			attr(img1, "class", "logo svelte-jwtj5z");
 			if (!src_url_equal(img1.src, img1_src_value = /*logo*/ ctx[0].url)) attr(img1, "src", img1_src_value);
 			attr(img1, "alt", img1_alt_value = /*logo*/ ctx[0].alt);
-			attr(div0, "class", "section-container svelte-19nkkqn");
-			attr(div1, "class", "text svelte-19nkkqn");
-			attr(section, "class", "svelte-19nkkqn");
+			attr(div0, "class", "section-container svelte-jwtj5z");
+			attr(div1, "class", "text svelte-jwtj5z");
+			attr(section, "class", "svelte-jwtj5z");
 		},
 		m(target, anchor) {
 			insert_hydration(target, svg, anchor);
 			append_hydration(svg, path);
 			insert_hydration(target, t0, anchor);
 			insert_hydration(target, section, anchor);
+			append_hydration(section, style);
+			append_hydration(style, t1);
+			append_hydration(section, t2);
 			append_hydration(section, div0);
 			append_hydration(div0, img0);
-			append_hydration(div0, t1);
+			append_hydration(div0, t3);
 			append_hydration(div0, img1);
-			append_hydration(section, t2);
+			append_hydration(section, t4);
 			append_hydration(section, div1);
-			append_hydration(div1, t3);
+			append_hydration(div1, t5);
 		},
 		p(ctx, [dirty]) {
 			if (dirty & /*image*/ 4 && !src_url_equal(img0.src, img0_src_value = /*image*/ ctx[2].url)) {
@@ -1380,7 +1394,7 @@ function create_fragment(ctx) {
 				attr(img1, "alt", img1_alt_value);
 			}
 
-			if (dirty & /*text*/ 2) set_data(t3, /*text*/ ctx[1]);
+			if (dirty & /*text*/ 2) set_data(t5, /*text*/ ctx[1]);
 		},
 		i: noop,
 		o: noop,

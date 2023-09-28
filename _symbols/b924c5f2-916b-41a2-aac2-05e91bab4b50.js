@@ -2787,7 +2787,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (72:6) {#each cards as { icon, title, description }}
+// (80:6) {#each cards as { icon, title, description }}
 function create_each_block(ctx) {
 	let div1;
 	let div0;
@@ -2840,10 +2840,10 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "icon svelte-yjgmgu");
-			attr(span0, "class", "title svelte-yjgmgu");
-			attr(span1, "class", "description svelte-yjgmgu");
-			attr(div1, "class", "card svelte-yjgmgu");
+			attr(div0, "class", "icon svelte-1kxwswu");
+			attr(span0, "class", "title svelte-1kxwswu");
+			attr(span1, "class", "description svelte-1kxwswu");
+			attr(div1, "class", "card svelte-1kxwswu");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div1, anchor);
@@ -2883,10 +2883,13 @@ function create_each_block(ctx) {
 
 function create_fragment(ctx) {
 	let section;
-	let div1;
-	let h2;
+	let style;
 	let t0;
 	let t1;
+	let div1;
+	let h2;
+	let t2;
+	let t3;
 	let div0;
 	let div1_aria_label_value;
 	let current;
@@ -2904,10 +2907,13 @@ function create_fragment(ctx) {
 	return {
 		c() {
 			section = element("section");
+			style = element("style");
+			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');");
+			t1 = space();
 			div1 = element("div");
 			h2 = element("h2");
-			t0 = text(/*heading*/ ctx[1]);
-			t1 = space();
+			t2 = text(/*heading*/ ctx[1]);
+			t3 = space();
 			div0 = element("div");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -2919,6 +2925,11 @@ function create_fragment(ctx) {
 		l(nodes) {
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
+			style = claim_element(section_nodes, "STYLE", {});
+			var style_nodes = children(style);
+			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');");
+			style_nodes.forEach(detach);
+			t1 = claim_space(section_nodes);
 
 			div1 = claim_element(section_nodes, "DIV", {
 				class: true,
@@ -2930,9 +2941,9 @@ function create_fragment(ctx) {
 			var div1_nodes = children(div1);
 			h2 = claim_element(div1_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			t0 = claim_text(h2_nodes, /*heading*/ ctx[1]);
+			t2 = claim_text(h2_nodes, /*heading*/ ctx[1]);
 			h2_nodes.forEach(detach);
-			t1 = claim_space(div1_nodes);
+			t3 = claim_space(div1_nodes);
 			div0 = claim_element(div1_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
 
@@ -2946,20 +2957,23 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading");
-			attr(div0, "class", "cards svelte-yjgmgu");
-			attr(div1, "class", "content svelte-yjgmgu");
+			attr(h2, "class", "heading svelte-1kxwswu");
+			attr(div0, "class", "cards svelte-1kxwswu");
+			attr(div1, "class", "content svelte-1kxwswu");
 			set_style(div1, "background-image", "url('" + /*background*/ ctx[2].url + "')");
 			attr(div1, "role", "img");
 			attr(div1, "aria-label", div1_aria_label_value = /*background*/ ctx[2].alt);
-			attr(section, "class", "section-container svelte-yjgmgu");
+			attr(section, "class", "section-container svelte-1kxwswu");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
+			append_hydration(section, style);
+			append_hydration(style, t0);
+			append_hydration(section, t1);
 			append_hydration(section, div1);
 			append_hydration(div1, h2);
-			append_hydration(h2, t0);
-			append_hydration(div1, t1);
+			append_hydration(h2, t2);
+			append_hydration(div1, t3);
 			append_hydration(div1, div0);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -2971,7 +2985,7 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*heading*/ 2) set_data(t0, /*heading*/ ctx[1]);
+			if (!current || dirty & /*heading*/ 2) set_data(t2, /*heading*/ ctx[1]);
 
 			if (dirty & /*cards*/ 1) {
 				each_value = /*cards*/ ctx[0];

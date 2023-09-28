@@ -696,29 +696,29 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "superhead svelte-1846j3b");
-			attr(h2, "class", "heading");
+			attr(div0, "class", "superhead svelte-1pmw6bf");
+			attr(h2, "class", "heading svelte-1pmw6bf");
 			attr(div1, "class", "subheading");
-			attr(header, "class", "heading-group svelte-1846j3b");
-			attr(span0, "class", "title svelte-1846j3b");
-			attr(span1, "class", "description svelte-1846j3b");
+			attr(header, "class", "heading-group svelte-1pmw6bf");
+			attr(span0, "class", "title svelte-1pmw6bf");
+			attr(span1, "class", "description svelte-1pmw6bf");
 			attr(button0, "id", "box1");
-			attr(button0, "class", "card svelte-1846j3b");
-			attr(span2, "class", "title svelte-1846j3b");
-			attr(span3, "class", "description svelte-1846j3b");
+			attr(button0, "class", "card svelte-1pmw6bf");
+			attr(span2, "class", "title svelte-1pmw6bf");
+			attr(span3, "class", "description svelte-1pmw6bf");
 			attr(button1, "id", "box2");
-			attr(button1, "class", "card svelte-1846j3b");
-			attr(span4, "class", "title svelte-1846j3b");
-			attr(span5, "class", "description svelte-1846j3b");
+			attr(button1, "class", "card svelte-1pmw6bf");
+			attr(span4, "class", "title svelte-1pmw6bf");
+			attr(span5, "class", "description svelte-1pmw6bf");
 			attr(button2, "id", "box3");
-			attr(button2, "class", "card svelte-1846j3b");
-			attr(div2, "class", "cards svelte-1846j3b");
+			attr(button2, "class", "card svelte-1pmw6bf");
+			attr(div2, "class", "cards svelte-1pmw6bf");
 			attr(img, "id", "imgbox");
 			if (!src_url_equal(img.src, img_src_value = /*currentImage*/ ctx[3])) attr(img, "src", img_src_value);
 			attr(img, "alt", /*currentAlt*/ ctx[4]);
-			attr(img, "class", "svelte-1846j3b");
-			attr(div3, "class", "content  svelte-1846j3b");
-			attr(section, "class", "section-container svelte-1846j3b");
+			attr(img, "class", "svelte-1pmw6bf");
+			attr(div3, "class", "content  svelte-1pmw6bf");
+			attr(section, "class", "section-container svelte-1pmw6bf");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);

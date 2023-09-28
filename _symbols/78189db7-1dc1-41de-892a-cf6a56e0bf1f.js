@@ -2887,20 +2887,20 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-1hjaloq");
-			attr(div0, "class", "body svelte-1hjaloq");
-			attr(a0, "class", "button button-0 svelte-1hjaloq");
+			attr(h2, "class", "heading svelte-sy4ih8");
+			attr(div0, "class", "body svelte-sy4ih8");
+			attr(a0, "class", "button button-0 svelte-sy4ih8");
 			attr(a0, "href", a0_href_value = /*button0*/ ctx[1].link);
-			attr(a1, "class", "button button-1 svelte-1hjaloq");
+			attr(a1, "class", "button button-1 svelte-sy4ih8");
 			attr(a1, "href", a1_href_value = /*button1*/ ctx[2].link);
-			attr(div1, "class", "buttons svelte-1hjaloq");
+			attr(div1, "class", "buttons svelte-sy4ih8");
 			set_style(div2, "background-image", "url('" + /*background*/ ctx[4].url + "')");
 			attr(div2, "role", "img");
 			attr(div2, "aria-label", div2_aria_label_value = /*background*/ ctx[4].alt);
-			attr(div2, "class", "card svelte-1hjaloq");
+			attr(div2, "class", "card svelte-sy4ih8");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
-			attr(section, "class", "section-container svelte-1hjaloq");
+			attr(section, "class", "section-container svelte-sy4ih8");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
