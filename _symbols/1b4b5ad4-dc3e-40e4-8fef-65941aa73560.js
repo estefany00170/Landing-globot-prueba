@@ -696,29 +696,29 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "superhead svelte-4u0j7o");
+			attr(div0, "class", "superhead svelte-1846j3b");
 			attr(h2, "class", "heading");
 			attr(div1, "class", "subheading");
-			attr(header, "class", "heading-group svelte-4u0j7o");
-			attr(span0, "class", "title svelte-4u0j7o");
-			attr(span1, "class", "description svelte-4u0j7o");
+			attr(header, "class", "heading-group svelte-1846j3b");
+			attr(span0, "class", "title svelte-1846j3b");
+			attr(span1, "class", "description svelte-1846j3b");
 			attr(button0, "id", "box1");
-			attr(button0, "class", "card svelte-4u0j7o");
-			attr(span2, "class", "title svelte-4u0j7o");
-			attr(span3, "class", "description svelte-4u0j7o");
+			attr(button0, "class", "card svelte-1846j3b");
+			attr(span2, "class", "title svelte-1846j3b");
+			attr(span3, "class", "description svelte-1846j3b");
 			attr(button1, "id", "box2");
-			attr(button1, "class", "card svelte-4u0j7o");
-			attr(span4, "class", "title svelte-4u0j7o");
-			attr(span5, "class", "description svelte-4u0j7o");
+			attr(button1, "class", "card svelte-1846j3b");
+			attr(span4, "class", "title svelte-1846j3b");
+			attr(span5, "class", "description svelte-1846j3b");
 			attr(button2, "id", "box3");
-			attr(button2, "class", "card svelte-4u0j7o");
-			attr(div2, "class", "cards svelte-4u0j7o");
+			attr(button2, "class", "card svelte-1846j3b");
+			attr(div2, "class", "cards svelte-1846j3b");
 			attr(img, "id", "imgbox");
 			if (!src_url_equal(img.src, img_src_value = /*currentImage*/ ctx[3])) attr(img, "src", img_src_value);
 			attr(img, "alt", /*currentAlt*/ ctx[4]);
-			attr(img, "class", "svelte-4u0j7o");
-			attr(div3, "class", "content  svelte-4u0j7o");
-			attr(section, "class", "section-container svelte-4u0j7o");
+			attr(img, "class", "svelte-1846j3b");
+			attr(div3, "class", "content  svelte-1846j3b");
+			attr(section, "class", "section-container svelte-1846j3b");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -822,6 +822,8 @@ function instance($$self, $$props, $$invalidate) {
 
 	let currentImage = '';
 	let currentAlt = '';
+	currentImage = 'https://s3-alpha-sig.figma.com/img/dada/170d/42d2ddef457d5eae58372fd30fa2ad9e?Expires=1696809600&Signature=Z3Q8nv-8ND~t3oMIAFqcUtNJ6LgjVzfFQDowRJZcKuymbrduTq4qkiB178R5fuoUOCUpZW0blYW6piqn9Po3H0sTIB792tbuRs~Pqlm9U~c3NzN9t3IJ4CCLu11UltKy4U19ueR17kyF3h1VVoJYBBxTbJbZerf0MqMGCtBHGPNY8szeVSMyr~fZHT01H6VAeM~gsRmbEjrIhcozY~JwA5h47p~TWZF6LguprINJFlO8eNk6VLK6YxBj-O5DJbx2pyTGVNIdHyHLOXjlhRDZKn9gp6sVFszvX4aYkrLHinLiz8~Wwx6ISKnWYe6ceIsQwfKK8vP9nBt8anEvK0zrPA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4';
+	currentAlt = 'Default image';
 
 	function changeimg(i) {
 		$$invalidate(3, currentImage = tarjetas[i].image);
