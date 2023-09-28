@@ -696,29 +696,29 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "superhead svelte-k8a7th");
+			attr(div0, "class", "superhead svelte-4u0j7o");
 			attr(h2, "class", "heading");
 			attr(div1, "class", "subheading");
-			attr(header, "class", "heading-group svelte-k8a7th");
-			attr(span0, "class", "title svelte-k8a7th");
-			attr(span1, "class", "description svelte-k8a7th");
+			attr(header, "class", "heading-group svelte-4u0j7o");
+			attr(span0, "class", "title svelte-4u0j7o");
+			attr(span1, "class", "description svelte-4u0j7o");
 			attr(button0, "id", "box1");
-			attr(button0, "class", "card svelte-k8a7th");
-			attr(span2, "class", "title svelte-k8a7th");
-			attr(span3, "class", "description svelte-k8a7th");
+			attr(button0, "class", "card svelte-4u0j7o");
+			attr(span2, "class", "title svelte-4u0j7o");
+			attr(span3, "class", "description svelte-4u0j7o");
 			attr(button1, "id", "box2");
-			attr(button1, "class", "card svelte-k8a7th");
-			attr(span4, "class", "title svelte-k8a7th");
-			attr(span5, "class", "description svelte-k8a7th");
+			attr(button1, "class", "card svelte-4u0j7o");
+			attr(span4, "class", "title svelte-4u0j7o");
+			attr(span5, "class", "description svelte-4u0j7o");
 			attr(button2, "id", "box3");
-			attr(button2, "class", "card svelte-k8a7th");
-			attr(div2, "class", "cards svelte-k8a7th");
+			attr(button2, "class", "card svelte-4u0j7o");
+			attr(div2, "class", "cards svelte-4u0j7o");
 			attr(img, "id", "imgbox");
 			if (!src_url_equal(img.src, img_src_value = /*currentImage*/ ctx[3])) attr(img, "src", img_src_value);
 			attr(img, "alt", /*currentAlt*/ ctx[4]);
-			attr(img, "class", "svelte-k8a7th");
-			attr(div3, "class", "content  svelte-k8a7th");
-			attr(section, "class", "section-container svelte-k8a7th");
+			attr(img, "class", "svelte-4u0j7o");
+			attr(div3, "class", "content  svelte-4u0j7o");
+			attr(section, "class", "section-container svelte-4u0j7o");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -803,19 +803,19 @@ function instance($$self, $$props, $$invalidate) {
 		{
 			title: 'Atención al cliente',
 			description: 'Tu chatbot responderá preguntas frecuentes, brindará asistencia inmediata y aliviará carga del personal de atención al cliente.',
-			image: 'https://helpx.adobe.com/content/dam/help/en/acrobat/how-to/combine-merge-split-extract-pdf-files_297x176.jpg',
+			image: 'https://s3-alpha-sig.figma.com/img/dada/170d/42d2ddef457d5eae58372fd30fa2ad9e?Expires=1696809600&Signature=Z3Q8nv-8ND~t3oMIAFqcUtNJ6LgjVzfFQDowRJZcKuymbrduTq4qkiB178R5fuoUOCUpZW0blYW6piqn9Po3H0sTIB792tbuRs~Pqlm9U~c3NzN9t3IJ4CCLu11UltKy4U19ueR17kyF3h1VVoJYBBxTbJbZerf0MqMGCtBHGPNY8szeVSMyr~fZHT01H6VAeM~gsRmbEjrIhcozY~JwA5h47p~TWZF6LguprINJFlO8eNk6VLK6YxBj-O5DJbx2pyTGVNIdHyHLOXjlhRDZKn9gp6sVFszvX4aYkrLHinLiz8~Wwx6ISKnWYe6ceIsQwfKK8vP9nBt8anEvK0zrPA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
 			alt: image1
 		},
 		{
 			title: 'Consultas rápidas de PDF',
 			description: 'Tu chatbot te ayudará a encontrar información en tus documentos de forma rápida.',
-			image: 'https://www.iconbunny.com/icons/media/catalog/product/3/8/3815.1-insert-image-icon-iconbunny.jpg',
+			image: 'https://s3-alpha-sig.figma.com/img/73c6/e9b0/61f65d5ab8626f8964cae78e89ba699a?Expires=1696809600&Signature=S9XKohO9-63iEsSaOJKiDCokoPRhxqzP0JNhZ5iDL92ptTCSIsD-eJYbf1qjLeluOZLjY5leJjY6CWWjmxxxWrij3-Tw8XoSKTL4Q7DAf-MRBoPx7Ry8l4DHZ7FAhc6HJExCVBs-bCv4BuYIGnzD5iHxIddl2CqqrPAoY9BBSL95Y5NktFW5IpjX5RZ~R4Tl1if~6idHPCndZXcLs9KVJHw4hZvE1vBFLE9Zx5HFdipigvQPpKK3ty8nw03gWkyp1ZyV9l58KLNWVFaaWw~8ha-uMUnn~vn6JRNTYrZUMotoPsTlJ5Bpi7ibxJoszs6gOifXgZWmD7UI8s2tZ4eHcw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
 			alt: image2
 		},
 		{
 			title: 'Experiencia de usuario personalizada',
 			description: 'Podrás crear un chatbot adaptado a los usuarios de tu sitio, para que realicen consultas específicas.',
-			image: 'https://d1eipm3vz40hy0.cloudfront.net/images/SSAC-Blog/soluciones-experiencia-cliente.jpg',
+			image: 'https://s3-alpha-sig.figma.com/img/0e90/a0ea/fd690ce11fd68bff112923e0090a2da9?Expires=1696809600&Signature=Y6aT5ZDwyz54Nl6oseBi8XthdlQZC2Nj7eseC8I677kEIbeGGbwT9GKP4jzinzTv3L6BCllXTQdIGynqS~LiUsT2l5B7JtdExgDcQOXSv9w8Z4C3nkuof8TYRwPYHS8p7Ib-Pe9p6m7seqc5OndfZIDxpZLbd245smSC~mnTZziPihVhjuwytYNtif2p7w9nN9MF6IXwaMtKUOLHE~m~pXoT4JpkJtmxmzHkgSYAbXl93K1rZukcMXeYUctBmSc-nC0g8epxyuHsT7KQL0O8pH987BFA8F6EWzxqzZhYeOSoZBuuRwA9gZTPRKeuKjyZYdRPXDWGgHjx6oO5Brctjg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
 			alt: image2
 		}
 	];
