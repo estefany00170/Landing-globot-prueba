@@ -3571,12 +3571,12 @@ function create_fragment(ctx) {
 			}
 
 			t1 = claim_space(nav_nodes);
-			a1 = claim_element(nav_nodes, "A", { href: true, class: true });
+			a1 = claim_element(nav_nodes, "A", { href: true, class: true, target: true });
 			var a1_nodes = children(a1);
 			t2 = claim_text(a1_nodes, t2_value);
 			a1_nodes.forEach(detach);
 			t3 = claim_space(nav_nodes);
-			a2 = claim_element(nav_nodes, "A", { href: true, class: true });
+			a2 = claim_element(nav_nodes, "A", { href: true, class: true, target: true });
 			var a2_nodes = children(a2);
 			t4 = claim_text(a2_nodes, t4_value);
 			a2_nodes.forEach(detach);
@@ -3605,8 +3605,10 @@ function create_fragment(ctx) {
 			set_style(a0, "--size", style___size);
 			attr(a1, "href", a1_href_value = /*cta*/ ctx[1][0].link.url);
 			attr(a1, "class", "button button-0 svelte-5c07we");
+			attr(a1, "target", "_blank");
 			attr(a2, "href", a2_href_value = /*cta*/ ctx[1][1].link.url);
 			attr(a2, "class", "button button-1 svelte-5c07we");
+			attr(a2, "target", "_blank");
 			attr(button, "id", "open");
 			attr(button, "aria-label", "Open mobile navigation");
 			attr(button, "class", "svelte-5c07we");
