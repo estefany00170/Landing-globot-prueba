@@ -2904,7 +2904,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		l(nodes) {
-			a = claim_element(nodes, "A", { class: true, href: true });
+			a = claim_element(nodes, "A", { class: true, target: true, href: true });
 			var a_nodes = children(a);
 			t0 = claim_text(a_nodes, t0_value);
 			t1 = claim_space(a_nodes);
@@ -2914,6 +2914,7 @@ function create_if_block(ctx) {
 		},
 		h() {
 			attr(a, "class", "button svelte-1rl5sgv");
+			attr(a, "target", "_blank");
 			attr(a, "href", a_href_value = /*button*/ ctx[1].link.url);
 		},
 		m(target, anchor) {
