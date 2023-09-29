@@ -1,4 +1,4 @@
-// Primary Hero - Updated September 28, 2023
+// Primary Hero - Updated September 29, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2824,7 +2824,7 @@ function create_if_block(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = /*link*/ ctx[0].url);
-			attr(a, "class", "button svelte-nu6sdd");
+			attr(a, "class", "button svelte-1msxkjn");
 			set_style(a, "display", "flex");
 			set_style(a, "align-items", "center");
 			set_style(a, "gap", "10px");
@@ -2861,21 +2861,24 @@ function create_if_block(ctx) {
 
 function create_fragment(ctx) {
 	let section;
+	let style;
+	let t0;
+	let t1;
 	let div2;
 	let div1;
 	let h1;
-	let t0;
-	let t1;
-	let div0;
 	let t2;
 	let t3;
+	let div0;
 	let t4;
+	let t5;
+	let t6;
 	let script;
 	let script_src_value;
-	let t5;
+	let t7;
 	let dotlottie_player;
 	let dotlottie_player_src_value;
-	let t6;
+	let t8;
 	let figure;
 	let svg;
 	let path0;
@@ -2887,20 +2890,23 @@ function create_fragment(ctx) {
 	return {
 		c() {
 			section = element("section");
+			style = element("style");
+			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto&display=swap');");
+			t1 = space();
 			div2 = element("div");
 			div1 = element("div");
 			h1 = element("h1");
-			t0 = text(/*heading*/ ctx[1]);
-			t1 = space();
-			div0 = element("div");
-			t2 = text(/*subheading*/ ctx[3]);
+			t2 = text(/*heading*/ ctx[1]);
 			t3 = space();
-			if (if_block) if_block.c();
-			t4 = space();
-			script = element("script");
+			div0 = element("div");
+			t4 = text(/*subheading*/ ctx[3]);
 			t5 = space();
-			dotlottie_player = element("dotlottie-player");
+			if (if_block) if_block.c();
 			t6 = space();
+			script = element("script");
+			t7 = space();
+			dotlottie_player = element("dotlottie-player");
+			t8 = space();
 			figure = element("figure");
 			svg = svg_element("svg");
 			path0 = svg_element("path");
@@ -2911,27 +2917,32 @@ function create_fragment(ctx) {
 		l(nodes) {
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
+			style = claim_element(section_nodes, "STYLE", {});
+			var style_nodes = children(style);
+			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto&display=swap');");
+			style_nodes.forEach(detach);
+			t1 = claim_space(section_nodes);
 			div2 = claim_element(section_nodes, "DIV", { class: true });
 			var div2_nodes = children(div2);
 			div1 = claim_element(div2_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
 			h1 = claim_element(div1_nodes, "H1", { class: true });
 			var h1_nodes = children(h1);
-			t0 = claim_text(h1_nodes, /*heading*/ ctx[1]);
+			t2 = claim_text(h1_nodes, /*heading*/ ctx[1]);
 			h1_nodes.forEach(detach);
-			t1 = claim_space(div1_nodes);
+			t3 = claim_space(div1_nodes);
 			div0 = claim_element(div1_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
-			t2 = claim_text(div0_nodes, /*subheading*/ ctx[3]);
+			t4 = claim_text(div0_nodes, /*subheading*/ ctx[3]);
 			div0_nodes.forEach(detach);
-			t3 = claim_space(div1_nodes);
+			t5 = claim_space(div1_nodes);
 			if (if_block) if_block.l(div1_nodes);
 			div1_nodes.forEach(detach);
-			t4 = claim_space(div2_nodes);
+			t6 = claim_space(div2_nodes);
 			script = claim_element(div2_nodes, "SCRIPT", { src: true, type: true });
 			var script_nodes = children(script);
 			script_nodes.forEach(detach);
-			t5 = claim_space(div2_nodes);
+			t7 = claim_space(div2_nodes);
 
 			dotlottie_player = claim_element(div2_nodes, "DOTLOTTIE-PLAYER", {
 				src: true,
@@ -2943,7 +2954,7 @@ function create_fragment(ctx) {
 			});
 
 			children(dotlottie_player).forEach(detach);
-			t6 = claim_space(div2_nodes);
+			t8 = claim_space(div2_nodes);
 			figure = claim_element(div2_nodes, "FIGURE", { class: true });
 			var figure_nodes = children(figure);
 
@@ -2994,9 +3005,9 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h1, "class", "headline svelte-nu6sdd");
-			attr(div0, "class", "subheading svelte-nu6sdd");
-			attr(div1, "class", "body svelte-nu6sdd");
+			attr(h1, "class", "headline svelte-1msxkjn");
+			attr(div0, "class", "subheading svelte-1msxkjn");
+			attr(div1, "class", "body svelte-1msxkjn");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
 			if (!src_url_equal(dotlottie_player.src, dotlottie_player_src_value = "https://lottie.host/ad4ba34c-42de-4a1e-846a-8d0e482ddd1f/oU4AfCBPcn.json")) set_custom_element_data(dotlottie_player, "src", dotlottie_player_src_value);
@@ -3026,28 +3037,31 @@ function create_fragment(ctx) {
 			attr(svg, "viewBox", "0 0 709 689");
 			attr(svg, "fill", "none");
 			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-			attr(svg, "class", "svelte-nu6sdd");
-			attr(figure, "class", "svelte-nu6sdd");
-			attr(div2, "class", "section-container svelte-nu6sdd");
-			attr(section, "class", "svelte-nu6sdd");
+			attr(svg, "class", "svelte-1msxkjn");
+			attr(figure, "class", "svelte-1msxkjn");
+			attr(div2, "class", "section-container svelte-1msxkjn");
+			attr(section, "class", "svelte-1msxkjn");
 			toggle_class(section, "image-left", /*variation*/ ctx[2] === "image_left");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
+			append_hydration(section, style);
+			append_hydration(style, t0);
+			append_hydration(section, t1);
 			append_hydration(section, div2);
 			append_hydration(div2, div1);
 			append_hydration(div1, h1);
-			append_hydration(h1, t0);
-			append_hydration(div1, t1);
-			append_hydration(div1, div0);
-			append_hydration(div0, t2);
+			append_hydration(h1, t2);
 			append_hydration(div1, t3);
+			append_hydration(div1, div0);
+			append_hydration(div0, t4);
+			append_hydration(div1, t5);
 			if (if_block) if_block.m(div1, null);
-			append_hydration(div2, t4);
-			append_hydration(div2, script);
-			append_hydration(div2, t5);
-			append_hydration(div2, dotlottie_player);
 			append_hydration(div2, t6);
+			append_hydration(div2, script);
+			append_hydration(div2, t7);
+			append_hydration(div2, dotlottie_player);
+			append_hydration(div2, t8);
 			append_hydration(div2, figure);
 			append_hydration(figure, svg);
 			append_hydration(svg, path0);
@@ -3056,8 +3070,8 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*heading*/ 2) set_data(t0, /*heading*/ ctx[1]);
-			if (!current || dirty & /*subheading*/ 8) set_data(t2, /*subheading*/ ctx[3]);
+			if (!current || dirty & /*heading*/ 2) set_data(t2, /*heading*/ ctx[1]);
+			if (!current || dirty & /*subheading*/ 8) set_data(t4, /*subheading*/ ctx[3]);
 
 			if (/*link*/ ctx[0].label) {
 				if (if_block) {
