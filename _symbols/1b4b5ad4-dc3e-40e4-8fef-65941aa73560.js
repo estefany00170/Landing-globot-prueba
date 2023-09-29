@@ -696,29 +696,29 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "superhead svelte-o8r9ch");
-			attr(h2, "class", "heading svelte-o8r9ch");
+			attr(div0, "class", "superhead svelte-muefkx");
+			attr(h2, "class", "heading svelte-muefkx");
 			attr(div1, "class", "subheading");
-			attr(header, "class", "heading-group svelte-o8r9ch");
-			attr(span0, "class", "title svelte-o8r9ch");
-			attr(span1, "class", "description svelte-o8r9ch");
+			attr(header, "class", "heading-group svelte-muefkx");
+			attr(span0, "class", "title svelte-muefkx");
+			attr(span1, "class", "description svelte-muefkx");
 			attr(button0, "id", "box1");
-			attr(button0, "class", "card svelte-o8r9ch");
-			attr(span2, "class", "title svelte-o8r9ch");
-			attr(span3, "class", "description svelte-o8r9ch");
+			attr(button0, "class", "card svelte-muefkx");
+			attr(span2, "class", "title svelte-muefkx");
+			attr(span3, "class", "description svelte-muefkx");
 			attr(button1, "id", "box2");
-			attr(button1, "class", "card svelte-o8r9ch");
-			attr(span4, "class", "title svelte-o8r9ch");
-			attr(span5, "class", "description svelte-o8r9ch");
+			attr(button1, "class", "card svelte-muefkx");
+			attr(span4, "class", "title svelte-muefkx");
+			attr(span5, "class", "description svelte-muefkx");
 			attr(button2, "id", "box3");
-			attr(button2, "class", "card svelte-o8r9ch");
-			attr(div2, "class", "cards svelte-o8r9ch");
+			attr(button2, "class", "card svelte-muefkx");
+			attr(div2, "class", "cards svelte-muefkx");
 			attr(img, "id", "imgbox");
 			if (!src_url_equal(img.src, img_src_value = /*currentImage*/ ctx[3])) attr(img, "src", img_src_value);
 			attr(img, "alt", /*currentAlt*/ ctx[4]);
-			attr(img, "class", "svelte-o8r9ch");
-			attr(div3, "class", "content  svelte-o8r9ch");
-			attr(section, "class", "section-container svelte-o8r9ch");
+			attr(img, "class", "svelte-muefkx");
+			attr(div3, "class", "content  svelte-muefkx");
+			attr(section, "class", "section-container svelte-muefkx");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
