@@ -547,7 +547,7 @@ function create_fragment(ctx) {
 	let div1;
 	let t3;
 	let t4;
-	let div3;
+	let div4;
 	let div2;
 	let button0;
 	let span0;
@@ -576,6 +576,7 @@ function create_fragment(ctx) {
 	let t15_value = /*tarjetas*/ ctx[5][2].description + "";
 	let t15;
 	let t16;
+	let div3;
 	let img;
 	let img_src_value;
 	let mounted;
@@ -593,7 +594,7 @@ function create_fragment(ctx) {
 			div1 = element("div");
 			t3 = text(/*subhead*/ ctx[1]);
 			t4 = space();
-			div3 = element("div");
+			div4 = element("div");
 			div2 = element("div");
 			button0 = element("button");
 			span0 = element("span");
@@ -616,6 +617,7 @@ function create_fragment(ctx) {
 			span5 = element("span");
 			t15 = text(t15_value);
 			t16 = space();
+			div3 = element("div");
 			img = element("img");
 			this.h();
 		},
@@ -639,9 +641,9 @@ function create_fragment(ctx) {
 			div1_nodes.forEach(detach);
 			header_nodes.forEach(detach);
 			t4 = claim_space(section_nodes);
-			div3 = claim_element(section_nodes, "DIV", { class: true });
-			var div3_nodes = children(div3);
-			div2 = claim_element(div3_nodes, "DIV", { class: true });
+			div4 = claim_element(section_nodes, "DIV", { class: true });
+			var div4_nodes = children(div4);
+			div2 = claim_element(div4_nodes, "DIV", { class: true });
 			var div2_nodes = children(div2);
 			button0 = claim_element(div2_nodes, "BUTTON", { id: true, class: true });
 			var button0_nodes = children(button0);
@@ -682,7 +684,9 @@ function create_fragment(ctx) {
 			span5_nodes.forEach(detach);
 			button2_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
-			t16 = claim_space(div3_nodes);
+			t16 = claim_space(div4_nodes);
+			div3 = claim_element(div4_nodes, "DIV", { class: true });
+			var div3_nodes = children(div3);
 
 			img = claim_element(div3_nodes, "IMG", {
 				id: true,
@@ -692,33 +696,35 @@ function create_fragment(ctx) {
 			});
 
 			div3_nodes.forEach(detach);
+			div4_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "superhead svelte-1ogtcux");
-			attr(h2, "class", "heading svelte-1ogtcux");
+			attr(div0, "class", "superhead svelte-1m1m3hj");
+			attr(h2, "class", "heading svelte-1m1m3hj");
 			attr(div1, "class", "subheading");
-			attr(header, "class", "heading-group svelte-1ogtcux");
-			attr(span0, "class", "title svelte-1ogtcux");
-			attr(span1, "class", "description svelte-1ogtcux");
+			attr(header, "class", "heading-group svelte-1m1m3hj");
+			attr(span0, "class", "title svelte-1m1m3hj");
+			attr(span1, "class", "description svelte-1m1m3hj");
 			attr(button0, "id", "box1");
-			attr(button0, "class", "card svelte-1ogtcux");
-			attr(span2, "class", "title svelte-1ogtcux");
-			attr(span3, "class", "description svelte-1ogtcux");
+			attr(button0, "class", "card svelte-1m1m3hj");
+			attr(span2, "class", "title svelte-1m1m3hj");
+			attr(span3, "class", "description svelte-1m1m3hj");
 			attr(button1, "id", "box2");
-			attr(button1, "class", "card svelte-1ogtcux");
-			attr(span4, "class", "title svelte-1ogtcux");
-			attr(span5, "class", "description svelte-1ogtcux");
+			attr(button1, "class", "card svelte-1m1m3hj");
+			attr(span4, "class", "title svelte-1m1m3hj");
+			attr(span5, "class", "description svelte-1m1m3hj");
 			attr(button2, "id", "box3");
-			attr(button2, "class", "card svelte-1ogtcux");
-			attr(div2, "class", "cards svelte-1ogtcux");
+			attr(button2, "class", "card svelte-1m1m3hj");
+			attr(div2, "class", "cards svelte-1m1m3hj");
 			attr(img, "id", "imgbox");
 			if (!src_url_equal(img.src, img_src_value = /*currentImage*/ ctx[3])) attr(img, "src", img_src_value);
 			attr(img, "alt", /*currentAlt*/ ctx[4]);
-			attr(img, "class", "svelte-1ogtcux");
-			attr(div3, "class", "content  svelte-1ogtcux");
-			attr(section, "class", "section-container svelte-1ogtcux");
+			attr(img, "class", "svelte-1m1m3hj");
+			attr(div3, "class", "image svelte-1m1m3hj");
+			attr(div4, "class", "content  svelte-1m1m3hj");
+			attr(section, "class", "section-container svelte-1m1m3hj");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -732,8 +738,8 @@ function create_fragment(ctx) {
 			append_hydration(header, div1);
 			append_hydration(div1, t3);
 			append_hydration(section, t4);
-			append_hydration(section, div3);
-			append_hydration(div3, div2);
+			append_hydration(section, div4);
+			append_hydration(div4, div2);
 			append_hydration(div2, button0);
 			append_hydration(button0, span0);
 			append_hydration(span0, t5);
@@ -754,7 +760,8 @@ function create_fragment(ctx) {
 			append_hydration(button2, t14);
 			append_hydration(button2, span5);
 			append_hydration(span5, t15);
-			append_hydration(div3, t16);
+			append_hydration(div4, t16);
+			append_hydration(div4, div3);
 			append_hydration(div3, img);
 
 			if (!mounted) {
