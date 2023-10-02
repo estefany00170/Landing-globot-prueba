@@ -277,12 +277,6 @@ function claim_text(nodes, data) {
 function claim_space(nodes) {
     return claim_text(nodes, ' ');
 }
-function set_data(text, data) {
-    data = '' + data;
-    if (text.data === data)
-        return;
-    text.data = data;
-}
 
 let current_component;
 function set_current_component(component) {
@@ -1271,7 +1265,7 @@ function create_fragment(ctx) {
 	let style;
 	let t1;
 	let t2;
-	let div0;
+	let div;
 	let img0;
 	let img0_src_value;
 	let img0_alt_value;
@@ -1279,9 +1273,6 @@ function create_fragment(ctx) {
 	let img1;
 	let img1_src_value;
 	let img1_alt_value;
-	let t4;
-	let div1;
-	let t5;
 
 	return {
 		c() {
@@ -1292,13 +1283,10 @@ function create_fragment(ctx) {
 			style = element("style");
 			t1 = text("@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');");
 			t2 = space();
-			div0 = element("div");
+			div = element("div");
 			img0 = element("img");
 			t3 = space();
 			img1 = element("img");
-			t4 = space();
-			div1 = element("div");
-			t5 = text(/*text*/ ctx[1]);
 			this.h();
 		},
 		l(nodes) {
@@ -1328,17 +1316,12 @@ function create_fragment(ctx) {
 			t1 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');");
 			style_nodes.forEach(detach);
 			t2 = claim_space(section_nodes);
-			div0 = claim_element(section_nodes, "DIV", { class: true });
-			var div0_nodes = children(div0);
-			img0 = claim_element(div0_nodes, "IMG", { class: true, src: true, alt: true });
-			t3 = claim_space(div0_nodes);
-			img1 = claim_element(div0_nodes, "IMG", { class: true, src: true, alt: true });
-			div0_nodes.forEach(detach);
-			t4 = claim_space(section_nodes);
-			div1 = claim_element(section_nodes, "DIV", { class: true });
-			var div1_nodes = children(div1);
-			t5 = claim_text(div1_nodes, /*text*/ ctx[1]);
-			div1_nodes.forEach(detach);
+			div = claim_element(section_nodes, "DIV", { class: true });
+			var div_nodes = children(div);
+			img0 = claim_element(div_nodes, "IMG", { class: true, src: true, alt: true });
+			t3 = claim_space(div_nodes);
+			img1 = claim_element(div_nodes, "IMG", { class: true, src: true, alt: true });
+			div_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
@@ -1352,13 +1335,12 @@ function create_fragment(ctx) {
 			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
 			attr(svg, "class", "svelte-jwtj5z");
 			attr(img0, "class", "image");
-			if (!src_url_equal(img0.src, img0_src_value = /*image*/ ctx[2].url)) attr(img0, "src", img0_src_value);
-			attr(img0, "alt", img0_alt_value = /*image*/ ctx[2].alt);
+			if (!src_url_equal(img0.src, img0_src_value = /*image*/ ctx[1].url)) attr(img0, "src", img0_src_value);
+			attr(img0, "alt", img0_alt_value = /*image*/ ctx[1].alt);
 			attr(img1, "class", "logo svelte-jwtj5z");
 			if (!src_url_equal(img1.src, img1_src_value = /*logo*/ ctx[0].url)) attr(img1, "src", img1_src_value);
 			attr(img1, "alt", img1_alt_value = /*logo*/ ctx[0].alt);
-			attr(div0, "class", "section-container svelte-jwtj5z");
-			attr(div1, "class", "text svelte-jwtj5z");
+			attr(div, "class", "section-container svelte-jwtj5z");
 			attr(section, "class", "svelte-jwtj5z");
 		},
 		m(target, anchor) {
@@ -1369,20 +1351,17 @@ function create_fragment(ctx) {
 			append_hydration(section, style);
 			append_hydration(style, t1);
 			append_hydration(section, t2);
-			append_hydration(section, div0);
-			append_hydration(div0, img0);
-			append_hydration(div0, t3);
-			append_hydration(div0, img1);
-			append_hydration(section, t4);
-			append_hydration(section, div1);
-			append_hydration(div1, t5);
+			append_hydration(section, div);
+			append_hydration(div, img0);
+			append_hydration(div, t3);
+			append_hydration(div, img1);
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*image*/ 4 && !src_url_equal(img0.src, img0_src_value = /*image*/ ctx[2].url)) {
+			if (dirty & /*image*/ 2 && !src_url_equal(img0.src, img0_src_value = /*image*/ ctx[1].url)) {
 				attr(img0, "src", img0_src_value);
 			}
 
-			if (dirty & /*image*/ 4 && img0_alt_value !== (img0_alt_value = /*image*/ ctx[2].alt)) {
+			if (dirty & /*image*/ 2 && img0_alt_value !== (img0_alt_value = /*image*/ ctx[1].alt)) {
 				attr(img0, "alt", img0_alt_value);
 			}
 
@@ -1393,8 +1372,6 @@ function create_fragment(ctx) {
 			if (dirty & /*logo*/ 1 && img1_alt_value !== (img1_alt_value = /*logo*/ ctx[0].alt)) {
 				attr(img1, "alt", img1_alt_value);
 			}
-
-			if (dirty & /*text*/ 2) set_data(t5, /*text*/ ctx[1]);
 		},
 		i: noop,
 		o: noop,
@@ -1414,14 +1391,14 @@ function instance($$self, $$props, $$invalidate) {
 	let { heading } = $$props;
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(3, props = $$props.props);
+		if ('props' in $$props) $$invalidate(2, props = $$props.props);
 		if ('logo' in $$props) $$invalidate(0, logo = $$props.logo);
-		if ('text' in $$props) $$invalidate(1, text = $$props.text);
-		if ('image' in $$props) $$invalidate(2, image = $$props.image);
+		if ('text' in $$props) $$invalidate(3, text = $$props.text);
+		if ('image' in $$props) $$invalidate(1, image = $$props.image);
 		if ('heading' in $$props) $$invalidate(4, heading = $$props.heading);
 	};
 
-	return [logo, text, image, props, heading];
+	return [logo, image, props, text, heading];
 }
 
 class Component extends SvelteComponent {
@@ -1429,10 +1406,10 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 3,
+			props: 2,
 			logo: 0,
-			text: 1,
-			image: 2,
+			text: 3,
+			image: 1,
 			heading: 4
 		});
 	}
