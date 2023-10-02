@@ -831,10 +831,30 @@ function instance($$self, $$props, $$invalidate) {
 	let currentAlt = '';
 	currentImage = 'https://s3-alpha-sig.figma.com/img/dada/170d/42d2ddef457d5eae58372fd30fa2ad9e?Expires=1696809600&Signature=Z3Q8nv-8ND~t3oMIAFqcUtNJ6LgjVzfFQDowRJZcKuymbrduTq4qkiB178R5fuoUOCUpZW0blYW6piqn9Po3H0sTIB792tbuRs~Pqlm9U~c3NzN9t3IJ4CCLu11UltKy4U19ueR17kyF3h1VVoJYBBxTbJbZerf0MqMGCtBHGPNY8szeVSMyr~fZHT01H6VAeM~gsRmbEjrIhcozY~JwA5h47p~TWZF6LguprINJFlO8eNk6VLK6YxBj-O5DJbx2pyTGVNIdHyHLOXjlhRDZKn9gp6sVFszvX4aYkrLHinLiz8~Wwx6ISKnWYe6ceIsQwfKK8vP9nBt8anEvK0zrPA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4';
 	currentAlt = 'Default image';
+	let previousButton = null;
 
 	function changeimg(i) {
 		$$invalidate(3, currentImage = tarjetas[i].image);
 		$$invalidate(4, currentAlt = tarjetas[i].alt);
+
+		// Cambiar el color del botón
+		let buttonId = 'box' + (i + 1);
+
+		let element = document.getElementById(buttonId);
+
+		// Si hay un botón previamente seleccionado, restablecer su estilo
+		if (previousButton) {
+			previousButton.style.background = "";
+			previousButton.style.border = "";
+		}
+
+		// Cambiar el estilo del botón actualmente seleccionado
+		element.style.background = "rgba(123, 92, 245, 0.15)";
+
+		element.style.border = "1px solid var(--Primary-1, #603FDF)";
+
+		// Guardar el botón actualmente seleccionado para la próxima vez
+		previousButton = element;
 	}
 
 	const click_handler = () => changeimg(0);
