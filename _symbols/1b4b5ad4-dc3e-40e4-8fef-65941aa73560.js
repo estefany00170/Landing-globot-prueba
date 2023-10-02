@@ -701,30 +701,30 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "superhead svelte-180budg");
-			attr(h2, "class", "heading svelte-180budg");
+			attr(div0, "class", "superhead svelte-2w3r80");
+			attr(h2, "class", "heading svelte-2w3r80");
 			attr(div1, "class", "subheading");
-			attr(header, "class", "heading-group svelte-180budg");
-			attr(span0, "class", "title svelte-180budg");
-			attr(span1, "class", "description svelte-180budg");
+			attr(header, "class", "heading-group svelte-2w3r80");
+			attr(span0, "class", "title svelte-2w3r80");
+			attr(span1, "class", "description svelte-2w3r80");
 			attr(button0, "id", "box1");
-			attr(button0, "class", "card svelte-180budg");
-			attr(span2, "class", "title svelte-180budg");
-			attr(span3, "class", "description svelte-180budg");
+			attr(button0, "class", "card svelte-2w3r80");
+			attr(span2, "class", "title svelte-2w3r80");
+			attr(span3, "class", "description svelte-2w3r80");
 			attr(button1, "id", "box2");
-			attr(button1, "class", "card svelte-180budg");
-			attr(span4, "class", "title svelte-180budg");
-			attr(span5, "class", "description svelte-180budg");
+			attr(button1, "class", "card svelte-2w3r80");
+			attr(span4, "class", "title svelte-2w3r80");
+			attr(span5, "class", "description svelte-2w3r80");
 			attr(button2, "id", "box3");
-			attr(button2, "class", "card svelte-180budg");
-			attr(div2, "class", "cards svelte-180budg");
+			attr(button2, "class", "card svelte-2w3r80");
+			attr(div2, "class", "cards svelte-2w3r80");
 			attr(img, "id", "imgbox");
 			if (!src_url_equal(img.src, img_src_value = /*currentImage*/ ctx[3])) attr(img, "src", img_src_value);
 			attr(img, "alt", /*currentAlt*/ ctx[4]);
-			attr(img, "class", "svelte-180budg");
-			attr(div3, "class", "image svelte-180budg");
-			attr(div4, "class", "content  svelte-180budg");
-			attr(section, "class", "section-container svelte-180budg");
+			attr(img, "class", "svelte-2w3r80");
+			attr(div3, "class", "image svelte-2w3r80");
+			attr(div4, "class", "content  svelte-2w3r80");
+			attr(section, "class", "section-container svelte-2w3r80");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
