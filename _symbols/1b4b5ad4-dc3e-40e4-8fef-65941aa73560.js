@@ -833,20 +833,15 @@ function instance($$self, $$props, $$invalidate) {
 	currentAlt = 'Default image';
 	let previousButton = null;
 
+	// Inicializa con la tarjeta de atención al cliente
 	window.onload = function () {
-		let buttonId = 'box1'; // Asume que el botón de la tarjeta de atención al cliente tiene el id 'box1'
-		let element = document.getElementById(buttonId);
-		element.style.background = "rgba(123, 92, 245, 0.15)";
-		element.style.border = "1px solid var(--Primary-1, #603FDF)";
+		changeimg(0); // Asume que la tarjeta de atención al cliente es la primera en el array 'tarjetas'
 	};
 
 	function changeimg(i) {
 		$$invalidate(3, currentImage = tarjetas[i].image);
 		$$invalidate(4, currentAlt = tarjetas[i].alt);
-
-		// Cambiar el color del botón
 		let buttonId = 'box' + (i + 1);
-
 		let element = document.getElementById(buttonId);
 
 		// Si hay un botón previamente seleccionado, restablecer su estilo
