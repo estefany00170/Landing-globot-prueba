@@ -810,26 +810,26 @@ function instance($$self, $$props, $$invalidate) {
 		{
 			title: 'Atención al cliente',
 			description: 'Tu chatbot responderá preguntas frecuentes, brindará asistencia inmediata y aliviará carga del personal de atención al cliente.',
-			image: 'https://s3-alpha-sig.figma.com/img/dada/170d/42d2ddef457d5eae58372fd30fa2ad9e?Expires=1696809600&Signature=Z3Q8nv-8ND~t3oMIAFqcUtNJ6LgjVzfFQDowRJZcKuymbrduTq4qkiB178R5fuoUOCUpZW0blYW6piqn9Po3H0sTIB792tbuRs~Pqlm9U~c3NzN9t3IJ4CCLu11UltKy4U19ueR17kyF3h1VVoJYBBxTbJbZerf0MqMGCtBHGPNY8szeVSMyr~fZHT01H6VAeM~gsRmbEjrIhcozY~JwA5h47p~TWZF6LguprINJFlO8eNk6VLK6YxBj-O5DJbx2pyTGVNIdHyHLOXjlhRDZKn9gp6sVFszvX4aYkrLHinLiz8~Wwx6ISKnWYe6ceIsQwfKK8vP9nBt8anEvK0zrPA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+			image: 'https://media.discordapp.net/attachments/1151139117011320863/1158753417498460160/posibilidades1.png?ex=651d64b7&is=651c1337&hm=7d334da505da8464a23229fe34af0b954c9f1220bf68ae3719e77c1e95f53465&=&width=1072&height=1060',
 			alt: image1
 		},
 		{
 			title: 'Consultas rápidas de PDF',
 			description: 'Tu chatbot te ayudará a encontrar información en tus documentos de forma rápida.',
-			image: 'https://s3-alpha-sig.figma.com/img/73c6/e9b0/61f65d5ab8626f8964cae78e89ba699a?Expires=1696809600&Signature=S9XKohO9-63iEsSaOJKiDCokoPRhxqzP0JNhZ5iDL92ptTCSIsD-eJYbf1qjLeluOZLjY5leJjY6CWWjmxxxWrij3-Tw8XoSKTL4Q7DAf-MRBoPx7Ry8l4DHZ7FAhc6HJExCVBs-bCv4BuYIGnzD5iHxIddl2CqqrPAoY9BBSL95Y5NktFW5IpjX5RZ~R4Tl1if~6idHPCndZXcLs9KVJHw4hZvE1vBFLE9Zx5HFdipigvQPpKK3ty8nw03gWkyp1ZyV9l58KLNWVFaaWw~8ha-uMUnn~vn6JRNTYrZUMotoPsTlJ5Bpi7ibxJoszs6gOifXgZWmD7UI8s2tZ4eHcw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+			image: 'https://media.discordapp.net/attachments/1151139117011320863/1158753418115043338/posibilidades3.png?ex=651d64b7&is=651c1337&hm=d8dc37b227aac10d2e9d7ecc54f35f5468b2d2e30fff4ca25f76260e41c3af09&=&width=1072&height=1060',
 			alt: image2
 		},
 		{
 			title: 'Experiencia de usuario personalizada',
 			description: 'Podrás crear un chatbot adaptado a los usuarios de tu sitio, para que realicen consultas específicas.',
-			image: 'https://s3-alpha-sig.figma.com/img/0e90/a0ea/fd690ce11fd68bff112923e0090a2da9?Expires=1696809600&Signature=Y6aT5ZDwyz54Nl6oseBi8XthdlQZC2Nj7eseC8I677kEIbeGGbwT9GKP4jzinzTv3L6BCllXTQdIGynqS~LiUsT2l5B7JtdExgDcQOXSv9w8Z4C3nkuof8TYRwPYHS8p7Ib-Pe9p6m7seqc5OndfZIDxpZLbd245smSC~mnTZziPihVhjuwytYNtif2p7w9nN9MF6IXwaMtKUOLHE~m~pXoT4JpkJtmxmzHkgSYAbXl93K1rZukcMXeYUctBmSc-nC0g8epxyuHsT7KQL0O8pH987BFA8F6EWzxqzZhYeOSoZBuuRwA9gZTPRKeuKjyZYdRPXDWGgHjx6oO5Brctjg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+			image: 'https://media.discordapp.net/attachments/1151139117011320863/1158753417783689277/posibilidades2.png?ex=651d64b7&is=651c1337&hm=502608768350d5a1d7deaecce62f97ad73d54f0131d694411a67e63fa4e6683a&=&width=1072&height=1060',
 			alt: image2
 		}
 	];
 
 	let currentImage = '';
 	let currentAlt = '';
-	currentImage = 'https://s3-alpha-sig.figma.com/img/dada/170d/42d2ddef457d5eae58372fd30fa2ad9e?Expires=1696809600&Signature=Z3Q8nv-8ND~t3oMIAFqcUtNJ6LgjVzfFQDowRJZcKuymbrduTq4qkiB178R5fuoUOCUpZW0blYW6piqn9Po3H0sTIB792tbuRs~Pqlm9U~c3NzN9t3IJ4CCLu11UltKy4U19ueR17kyF3h1VVoJYBBxTbJbZerf0MqMGCtBHGPNY8szeVSMyr~fZHT01H6VAeM~gsRmbEjrIhcozY~JwA5h47p~TWZF6LguprINJFlO8eNk6VLK6YxBj-O5DJbx2pyTGVNIdHyHLOXjlhRDZKn9gp6sVFszvX4aYkrLHinLiz8~Wwx6ISKnWYe6ceIsQwfKK8vP9nBt8anEvK0zrPA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4';
+	currentImage = 'https://media.discordapp.net/attachments/1151139117011320863/1158753417498460160/posibilidades1.png?ex=651d64b7&is=651c1337&hm=7d334da505da8464a23229fe34af0b954c9f1220bf68ae3719e77c1e95f53465&=&width=1072&height=1060';
 	currentAlt = 'Default image';
 	let previousButton = null;
 
