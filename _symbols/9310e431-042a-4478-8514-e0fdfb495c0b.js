@@ -1,4 +1,4 @@
-// Primary Hero - Updated October 2, 2023
+// Primary Hero - Updated October 3, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2830,7 +2830,7 @@ function create_if_block(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = /*link*/ ctx[0].url);
-			attr(a, "class", "button svelte-1msxkjn");
+			attr(a, "class", "button svelte-t6g7wx");
 			attr(a, "target", "_blank");
 			set_style(a, "display", "flex");
 			set_style(a, "align-items", "center");
@@ -2898,7 +2898,7 @@ function create_fragment(ctx) {
 		c() {
 			section = element("section");
 			style = element("style");
-			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto&display=swap');");
+			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
 			t1 = space();
 			div2 = element("div");
 			div1 = element("div");
@@ -2926,7 +2926,7 @@ function create_fragment(ctx) {
 			var section_nodes = children(section);
 			style = claim_element(section_nodes, "STYLE", {});
 			var style_nodes = children(style);
-			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto&display=swap');");
+			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
 			style_nodes.forEach(detach);
 			t1 = claim_space(section_nodes);
 			div2 = claim_element(section_nodes, "DIV", { class: true });
@@ -3012,9 +3012,9 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h1, "class", "headline svelte-1msxkjn");
-			attr(div0, "class", "subheading svelte-1msxkjn");
-			attr(div1, "class", "body svelte-1msxkjn");
+			attr(h1, "class", "headline svelte-t6g7wx");
+			attr(div0, "class", "subheading svelte-t6g7wx");
+			attr(div1, "class", "body svelte-t6g7wx");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
 			if (!src_url_equal(dotlottie_player.src, dotlottie_player_src_value = "https://lottie.host/ad4ba34c-42de-4a1e-846a-8d0e482ddd1f/oU4AfCBPcn.json")) set_custom_element_data(dotlottie_player, "src", dotlottie_player_src_value);
@@ -3044,10 +3044,10 @@ function create_fragment(ctx) {
 			attr(svg, "viewBox", "0 0 709 689");
 			attr(svg, "fill", "none");
 			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-			attr(svg, "class", "svelte-1msxkjn");
-			attr(figure, "class", "svelte-1msxkjn");
-			attr(div2, "class", "section-container svelte-1msxkjn");
-			attr(section, "class", "svelte-1msxkjn");
+			attr(svg, "class", "svelte-t6g7wx");
+			attr(figure, "class", "svelte-t6g7wx");
+			attr(div2, "class", "section-container svelte-t6g7wx");
+			attr(section, "class", "svelte-t6g7wx");
 			toggle_class(section, "image-left", /*variation*/ ctx[2] === "image_left");
 		},
 		m(target, anchor) {

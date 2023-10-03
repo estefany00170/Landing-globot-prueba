@@ -1,4 +1,4 @@
-// Accordion - Updated October 2, 2023
+// Accordion - Updated October 3, 2023
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3139,7 +3139,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (80:6) {#if activeItem === i}
+// (86:6) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
 	let raw_value = /*item*/ ctx[6].description.html + "";
@@ -3158,7 +3158,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-rh1goh");
+			attr(div, "class", "description svelte-127rxwh");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3190,7 +3190,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (72:4) {#each items as item, i (i)}
+// (78:4) {#each items as item, i (i)}
 function create_each_block(key_1, ctx) {
 	let div1;
 	let button;
@@ -3254,10 +3254,10 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(span0, "class", "svelte-rh1goh");
-			attr(span1, "class", "icon svelte-rh1goh");
-			attr(button, "class", "svelte-rh1goh");
-			attr(div1, "class", "item svelte-rh1goh");
+			attr(span0, "class", "svelte-127rxwh");
+			attr(span1, "class", "icon svelte-127rxwh");
+			attr(button, "class", "svelte-127rxwh");
+			attr(div1, "class", "item svelte-127rxwh");
 			toggle_class(div1, "active", /*activeItem*/ ctx[2] === /*i*/ ctx[8]);
 			this.first = div1;
 		},
@@ -3334,9 +3334,12 @@ function create_each_block(key_1, ctx) {
 
 function create_fragment(ctx) {
 	let section;
-	let h2;
+	let style;
 	let t0;
 	let t1;
+	let h2;
+	let t2;
+	let t3;
 	let div;
 	let each_blocks = [];
 	let each_1_lookup = new Map();
@@ -3353,9 +3356,12 @@ function create_fragment(ctx) {
 	return {
 		c() {
 			section = element("section");
-			h2 = element("h2");
-			t0 = text(/*heading*/ ctx[1]);
+			style = element("style");
+			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
 			t1 = space();
+			h2 = element("h2");
+			t2 = text(/*heading*/ ctx[1]);
+			t3 = space();
 			div = element("div");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -3367,11 +3373,16 @@ function create_fragment(ctx) {
 		l(nodes) {
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
+			style = claim_element(section_nodes, "STYLE", {});
+			var style_nodes = children(style);
+			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
+			style_nodes.forEach(detach);
+			t1 = claim_space(section_nodes);
 			h2 = claim_element(section_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			t0 = claim_text(h2_nodes, /*heading*/ ctx[1]);
+			t2 = claim_text(h2_nodes, /*heading*/ ctx[1]);
 			h2_nodes.forEach(detach);
-			t1 = claim_space(section_nodes);
+			t3 = claim_space(section_nodes);
 			div = claim_element(section_nodes, "DIV", { class: true });
 			var div_nodes = children(div);
 
@@ -3384,15 +3395,18 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-rh1goh");
-			attr(div, "class", "accordion svelte-rh1goh");
-			attr(section, "class", "section-container svelte-rh1goh");
+			attr(h2, "class", "heading svelte-127rxwh");
+			attr(div, "class", "accordion svelte-127rxwh");
+			attr(section, "class", "section-container svelte-127rxwh");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
-			append_hydration(section, h2);
-			append_hydration(h2, t0);
+			append_hydration(section, style);
+			append_hydration(style, t0);
 			append_hydration(section, t1);
+			append_hydration(section, h2);
+			append_hydration(h2, t2);
+			append_hydration(section, t3);
 			append_hydration(section, div);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -3404,7 +3418,7 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*heading*/ 2) set_data(t0, /*heading*/ ctx[1]);
+			if (!current || dirty & /*heading*/ 2) set_data(t2, /*heading*/ ctx[1]);
 
 			if (dirty & /*activeItem, items, setActiveItem*/ 13) {
 				each_value = /*items*/ ctx[0];

@@ -1,4 +1,4 @@
-// Featured List - Updated October 2, 2023
+// Featured List - Updated October 3, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2777,7 +2777,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (85:4) {#each cards as card}
+// (97:4) {#each cards as card}
 function create_each_block(ctx) {
 	let li;
 	let h3;
@@ -2840,10 +2840,10 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span1, "class", "label svelte-190mmnq");
-			attr(h3, "class", "title svelte-190mmnq");
-			attr(div, "class", "description svelte-190mmnq");
-			attr(li, "class", "svelte-190mmnq");
+			attr(span1, "class", "label svelte-hixxu9");
+			attr(h3, "class", "title svelte-hixxu9");
+			attr(div, "class", "description svelte-hixxu9");
+			attr(li, "class", "svelte-hixxu9");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -2881,7 +2881,7 @@ function create_each_block(ctx) {
 	};
 }
 
-// (101:4) {#if button.link.label}
+// (113:4) {#if button.link.label}
 function create_if_block(ctx) {
 	let a;
 	let t0_value = /*button*/ ctx[1].link.label + "";
@@ -2913,7 +2913,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "class", "button svelte-190mmnq");
+			attr(a, "class", "button svelte-hixxu9");
 			attr(a, "target", "_blank");
 			attr(a, "href", a_href_value = /*button*/ ctx[1].link.url);
 		},
@@ -2949,11 +2949,14 @@ function create_if_block(ctx) {
 
 function create_fragment(ctx) {
 	let section;
-	let h2;
+	let style;
 	let t0;
 	let t1;
-	let ul;
+	let h2;
 	let t2;
+	let t3;
+	let ul;
+	let t4;
 	let current;
 	let each_value = /*cards*/ ctx[0];
 	let each_blocks = [];
@@ -2971,27 +2974,35 @@ function create_fragment(ctx) {
 	return {
 		c() {
 			section = element("section");
-			h2 = element("h2");
-			t0 = text(/*heading*/ ctx[2]);
+			style = element("style");
+			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
 			t1 = space();
+			h2 = element("h2");
+			t2 = text(/*heading*/ ctx[2]);
+			t3 = space();
 			ul = element("ul");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
-			t2 = space();
+			t4 = space();
 			if (if_block) if_block.c();
 			this.h();
 		},
 		l(nodes) {
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
+			style = claim_element(section_nodes, "STYLE", {});
+			var style_nodes = children(style);
+			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
+			style_nodes.forEach(detach);
+			t1 = claim_space(section_nodes);
 			h2 = claim_element(section_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			t0 = claim_text(h2_nodes, /*heading*/ ctx[2]);
+			t2 = claim_text(h2_nodes, /*heading*/ ctx[2]);
 			h2_nodes.forEach(detach);
-			t1 = claim_space(section_nodes);
+			t3 = claim_space(section_nodes);
 			ul = claim_element(section_nodes, "UL", { class: true });
 			var ul_nodes = children(ul);
 
@@ -3000,21 +3011,24 @@ function create_fragment(ctx) {
 			}
 
 			ul_nodes.forEach(detach);
-			t2 = claim_space(section_nodes);
+			t4 = claim_space(section_nodes);
 			if (if_block) if_block.l(section_nodes);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-190mmnq");
-			attr(ul, "class", "svelte-190mmnq");
-			attr(section, "class", "section-container svelte-190mmnq");
+			attr(h2, "class", "heading svelte-hixxu9");
+			attr(ul, "class", "svelte-hixxu9");
+			attr(section, "class", "section-container svelte-hixxu9");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
-			append_hydration(section, h2);
-			append_hydration(h2, t0);
+			append_hydration(section, style);
+			append_hydration(style, t0);
 			append_hydration(section, t1);
+			append_hydration(section, h2);
+			append_hydration(h2, t2);
+			append_hydration(section, t3);
 			append_hydration(section, ul);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -3023,12 +3037,12 @@ function create_fragment(ctx) {
 				}
 			}
 
-			append_hydration(section, t2);
+			append_hydration(section, t4);
 			if (if_block) if_block.m(section, null);
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*heading*/ 4) set_data(t0, /*heading*/ ctx[2]);
+			if (!current || dirty & /*heading*/ 4) set_data(t2, /*heading*/ ctx[2]);
 
 			if (dirty & /*cards*/ 1) {
 				each_value = /*cards*/ ctx[0];
