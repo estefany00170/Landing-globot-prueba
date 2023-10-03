@@ -701,30 +701,30 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "superhead svelte-1hfbyi9");
-			attr(h2, "class", "heading svelte-1hfbyi9");
+			attr(div0, "class", "superhead svelte-10dcgxv");
+			attr(h2, "class", "heading svelte-10dcgxv");
 			attr(div1, "class", "subheading");
-			attr(header, "class", "heading-group svelte-1hfbyi9");
-			attr(span0, "class", "title svelte-1hfbyi9");
-			attr(span1, "class", "description svelte-1hfbyi9");
+			attr(header, "class", "heading-group svelte-10dcgxv");
+			attr(span0, "class", "title svelte-10dcgxv");
+			attr(span1, "class", "description svelte-10dcgxv");
 			attr(button0, "id", "box1");
-			attr(button0, "class", "card svelte-1hfbyi9");
-			attr(span2, "class", "title svelte-1hfbyi9");
-			attr(span3, "class", "description svelte-1hfbyi9");
+			attr(button0, "class", "card svelte-10dcgxv");
+			attr(span2, "class", "title svelte-10dcgxv");
+			attr(span3, "class", "description svelte-10dcgxv");
 			attr(button1, "id", "box2");
-			attr(button1, "class", "card svelte-1hfbyi9");
-			attr(span4, "class", "title svelte-1hfbyi9");
-			attr(span5, "class", "description svelte-1hfbyi9");
+			attr(button1, "class", "card svelte-10dcgxv");
+			attr(span4, "class", "title svelte-10dcgxv");
+			attr(span5, "class", "description svelte-10dcgxv");
 			attr(button2, "id", "box3");
-			attr(button2, "class", "card svelte-1hfbyi9");
-			attr(div2, "class", "cards svelte-1hfbyi9");
+			attr(button2, "class", "card svelte-10dcgxv");
+			attr(div2, "class", "cards svelte-10dcgxv");
 			attr(img, "id", "imgbox");
 			if (!src_url_equal(img.src, img_src_value = /*currentImage*/ ctx[3])) attr(img, "src", img_src_value);
 			attr(img, "alt", /*currentAlt*/ ctx[4]);
-			attr(img, "class", "svelte-1hfbyi9");
-			attr(div3, "class", "image svelte-1hfbyi9");
-			attr(div4, "class", "content  svelte-1hfbyi9");
-			attr(section, "class", "section-container svelte-1hfbyi9");
+			attr(img, "class", "svelte-10dcgxv");
+			attr(div3, "class", "image svelte-10dcgxv");
+			attr(div4, "class", "content  svelte-10dcgxv");
+			attr(section, "class", "section-container svelte-10dcgxv");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -832,6 +832,13 @@ function instance($$self, $$props, $$invalidate) {
 	currentImage = 'https://media.discordapp.net/attachments/1151139117011320863/1158753417498460160/posibilidades1.png?ex=651d64b7&is=651c1337&hm=7d334da505da8464a23229fe34af0b954c9f1220bf68ae3719e77c1e95f53465&=&width=1072&height=1060';
 	currentAlt = 'Default image';
 	let previousButton = null;
+
+	window.onload = function () {
+		let buttonId = 'box1'; // Asume que el botón de la tarjeta de atención al cliente tiene el id 'box1'
+		let element = document.getElementById(buttonId);
+		element.style.background = "rgba(123, 92, 245, 0.15)";
+		element.style.border = "1px solid var(--Primary-1, #603FDF)";
+	};
 
 	function changeimg(i) {
 		$$invalidate(3, currentImage = tarjetas[i].image);
