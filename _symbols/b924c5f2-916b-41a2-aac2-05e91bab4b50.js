@@ -2787,7 +2787,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (92:6) {#each cards as { icon, title, description }}
+// (97:6) {#each cards as { icon, title, description }}
 function create_each_block(ctx) {
 	let div1;
 	let div0;
@@ -2840,10 +2840,10 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "icon svelte-149wbsx");
-			attr(span0, "class", "title svelte-149wbsx");
-			attr(span1, "class", "description svelte-149wbsx");
-			attr(div1, "class", "card svelte-149wbsx");
+			attr(div0, "class", "icon svelte-1kfrh98");
+			attr(span0, "class", "title svelte-1kfrh98");
+			attr(span1, "class", "description svelte-1kfrh98");
+			attr(div1, "class", "card svelte-1kfrh98");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div1, anchor);
@@ -2957,13 +2957,13 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-149wbsx");
-			attr(div0, "class", "cards svelte-149wbsx");
-			attr(div1, "class", "content svelte-149wbsx");
+			attr(h2, "class", "heading svelte-1kfrh98");
+			attr(div0, "class", "cards svelte-1kfrh98");
+			attr(div1, "class", "content svelte-1kfrh98");
 			set_style(div1, "background-image", "url('" + /*background*/ ctx[2].url + "')");
 			attr(div1, "role", "img");
 			attr(div1, "aria-label", div1_aria_label_value = /*background*/ ctx[2].alt);
-			attr(section, "class", "section-container svelte-149wbsx");
+			attr(section, "class", "section-container svelte-1kfrh98");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);

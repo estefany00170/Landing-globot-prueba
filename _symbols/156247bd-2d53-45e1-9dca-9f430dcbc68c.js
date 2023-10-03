@@ -2784,7 +2784,7 @@ function get_each_context_1(ctx, list, i) {
 	return child_ctx;
 }
 
-// (114:4) {#each icon_list as { icon, label }}
+// (120:4) {#each icon_list as { icon, label }}
 function create_each_block_1(ctx) {
 	let li;
 	let span0;
@@ -2825,8 +2825,8 @@ function create_each_block_1(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span0, "class", "icon svelte-19ev3vn");
-			attr(li, "class", "svelte-19ev3vn");
+			attr(span0, "class", "icon svelte-1reg39k");
+			attr(li, "class", "svelte-1reg39k");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -2860,7 +2860,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (124:4) {#each cards as card}
+// (130:4) {#each cards as card}
 function create_each_block(ctx) {
 	let li;
 	let div0;
@@ -2915,11 +2915,11 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "icon svelte-19ev3vn");
-			attr(h3, "class", "title svelte-19ev3vn");
-			attr(div1, "class", "content svelte-19ev3vn");
-			attr(div2, "class", "body svelte-19ev3vn");
-			attr(li, "class", "svelte-19ev3vn");
+			attr(div0, "class", "icon svelte-1reg39k");
+			attr(h3, "class", "title svelte-1reg39k");
+			attr(div1, "class", "content svelte-1reg39k");
+			attr(div2, "class", "body svelte-1reg39k");
+			attr(li, "class", "svelte-1reg39k");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -3073,14 +3073,14 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "superhead svelte-19ev3vn");
-			attr(h2, "class", "heading svelte-19ev3vn");
+			attr(div0, "class", "superhead svelte-1reg39k");
+			attr(h2, "class", "heading svelte-1reg39k");
 			attr(div1, "class", "subheading");
-			attr(header, "class", "heading-group svelte-19ev3vn");
-			attr(ul0, "class", "icon-list svelte-19ev3vn");
-			attr(ul1, "class", "cards svelte-19ev3vn");
+			attr(header, "class", "heading-group svelte-1reg39k");
+			attr(ul0, "class", "icon-list svelte-1reg39k");
+			attr(ul1, "class", "cards svelte-1reg39k");
 			attr(section, "id", "benefits");
-			attr(section, "class", "section-container svelte-19ev3vn");
+			attr(section, "class", "section-container svelte-1reg39k");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);

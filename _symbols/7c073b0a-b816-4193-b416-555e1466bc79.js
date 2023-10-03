@@ -2785,7 +2785,7 @@ function get_each_context_1(ctx, list, i) {
 	return child_ctx;
 }
 
-// (120:6) {#each social as { link, icon }}
+// (124:6) {#each social as { link, icon }}
 function create_each_block_1(ctx) {
 	let a;
 	let span;
@@ -2822,9 +2822,9 @@ function create_each_block_1(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "icon svelte-48mhgz");
+			attr(span, "class", "icon svelte-5hadek");
 			attr(a, "href", a_href_value = /*link*/ ctx[9].url);
-			attr(a, "class", "svelte-48mhgz");
+			attr(a, "class", "svelte-5hadek");
 		},
 		m(target, anchor) {
 			insert_hydration(target, a, anchor);
@@ -2861,7 +2861,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (137:6) {:else}
+// (141:6) {:else}
 function create_else_block(ctx) {
 	let label;
 	let span;
@@ -2900,11 +2900,11 @@ function create_else_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "svelte-48mhgz");
+			attr(span, "class", "svelte-5hadek");
 			attr(input, "type", input_type_value = /*input*/ ctx[6].type || "text");
 			attr(input, "placeholder", input_placeholder_value = /*input*/ ctx[6].placeholder);
-			attr(input, "class", "svelte-48mhgz");
-			attr(label, "class", "svelte-48mhgz");
+			attr(input, "class", "svelte-5hadek");
+			attr(label, "class", "svelte-5hadek");
 		},
 		m(target, anchor) {
 			insert_hydration(target, label, anchor);
@@ -2930,7 +2930,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (132:6) {#if input.type === "textarea"}
+// (136:6) {#if input.type === "textarea"}
 function create_if_block(ctx) {
 	let label;
 	let span;
@@ -2962,9 +2962,9 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "svelte-48mhgz");
-			attr(textarea, "class", "svelte-48mhgz");
-			attr(label, "class", "svelte-48mhgz");
+			attr(span, "class", "svelte-5hadek");
+			attr(textarea, "class", "svelte-5hadek");
+			attr(label, "class", "svelte-5hadek");
 		},
 		m(target, anchor) {
 			insert_hydration(target, label, anchor);
@@ -2982,7 +2982,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (131:4) {#each inputs as input, i}
+// (135:4) {#each inputs as input, i}
 function create_each_block(ctx) {
 	let if_block_anchor;
 
@@ -3139,15 +3139,15 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-48mhgz");
-			attr(div0, "class", "body svelte-48mhgz");
-			attr(div1, "class", "social-links svelte-48mhgz");
-			attr(div2, "class", "content svelte-48mhgz");
-			attr(button, "class", "button svelte-48mhgz");
+			attr(h2, "class", "heading svelte-5hadek");
+			attr(div0, "class", "body svelte-5hadek");
+			attr(div1, "class", "social-links svelte-5hadek");
+			attr(div2, "class", "content svelte-5hadek");
+			attr(button, "class", "button svelte-5hadek");
 			attr(button, "type", "submit");
-			attr(form, "class", "svelte-48mhgz");
+			attr(form, "class", "svelte-5hadek");
 			attr(section, "id", "contacto");
-			attr(section, "class", "section-container svelte-48mhgz");
+			attr(section, "class", "section-container svelte-5hadek");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
