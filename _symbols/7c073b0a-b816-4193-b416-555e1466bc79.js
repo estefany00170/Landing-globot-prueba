@@ -3216,7 +3216,7 @@ function instance($$self, $$props, $$invalidate) {
 								name: formData.nombre,
 								email: formData.Email
 							},
-							target: 'contacto@landscape.cl'
+							target: 'estefany.garcia@landscape.cl'
 						}
 					]
 				})
