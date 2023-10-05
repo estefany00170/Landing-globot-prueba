@@ -2778,7 +2778,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (190:6) {#each social as { link, icon }}
+// (193:6) {#each social as { link, icon }}
 function create_each_block(ctx) {
 	let a;
 	let span;
@@ -2922,7 +2922,7 @@ function create_fragment(ctx) {
 			form = element("form");
 			label0 = element("label");
 			span0 = element("span");
-			t6 = text("Nomb");
+			t6 = text("Nombre");
 			t7 = space();
 			input0 = element("input");
 			t8 = space();
@@ -2977,7 +2977,7 @@ function create_fragment(ctx) {
 			var label0_nodes = children(label0);
 			span0 = claim_element(label0_nodes, "SPAN", { class: true });
 			var span0_nodes = children(span0);
-			t6 = claim_text(span0_nodes, "Nomb");
+			t6 = claim_text(span0_nodes, "Nombre");
 			span0_nodes.forEach(detach);
 			t7 = claim_space(label0_nodes);
 
@@ -3185,6 +3185,8 @@ function instance($$self, $$props, $$invalidate) {
 				formData[input.name] = input.value;
 			});
 
+			console.log('Datos del formulario:', formData);
+
 			if (!formData.nombre || !formData.Email) {
 				alert('Por favor complete el nombre y el Email.');
 				return;
@@ -3216,6 +3218,7 @@ function instance($$self, $$props, $$invalidate) {
 					throw new Error(`HTTP error! status: ${response.status}`);
 				}
 
+				console.log('servidor:', response);
 				alert('Tu mensaje ha sido enviado exitosamente.');
 			}).catch(error => {
 				alert(`Hubo un problema con la solicitud Fetch: ${error.message}`);
