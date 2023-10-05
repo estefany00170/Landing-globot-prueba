@@ -349,7 +349,7 @@ section.svelte-178ymb{background:var(--Primary-1, #603FDF)}.section-container.sv
           contacto@landscape.cl
         </a></div></div>
   
-  <form id="miFormulario" class="svelte-1ftvpcu"><label class="svelte-1ftvpcu"><span class="svelte-1ftvpcu">Nombre</span>
+  <form id="miFormulario" class="svelte-1ftvpcu"><label class="svelte-1ftvpcu"><span class="svelte-1ftvpcu">Nombr</span>
     <input type="text" name="nombre" placeholder="Nombre Apellido" required class="svelte-1ftvpcu"></label>
   <label class="svelte-1ftvpcu"><span class="svelte-1ftvpcu">Email</span>
     <input type="Email" name="Email" placeholder="nombre@mail.com" required class="svelte-1ftvpcu"></label>
@@ -357,10 +357,61 @@ section.svelte-178ymb{background:var(--Primary-1, #603FDF)}.section-container.sv
     <input type="text" name="Empresa" placeholder="Nombre de tu empresa" class="svelte-1ftvpcu"></label>
   
   <button class="button svelte-1ftvpcu" type="submit" id="enviar">Enviar</button></form>
-<script>document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('enviar').addEventListener('click', function(event) {
-    event.preventDefault();
-    console.log('El botón de enviar está funcionando');
+<script>document.addEventListener('DOMContentLoaded', () => {
+  const miFormulario = document.querySelector('#miFormulario');
+  const enviarBoton = document.querySelector('#enviar');
+
+  enviarBoton.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const formData = {};
+    const inputs = miFormulario.querySelectorAll('input, textarea');
+    inputs.forEach((input) => {
+      formData[input.name] = input.value;
+    });
+
+    console.log('Datos del formulario:', formData);
+
+    if (!formData.nombre || !formData.Email) {
+      alert('Por favor complete el nombre y el Email.');
+      return;
+    }
+
+    fetch('https://delivery.landscape.cl/v2/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        header: {
+          application: 'GLOBOT',
+          channel: 'WEB',
+          operation: 'CONTACT',
+          type: 'EMAIL'
+        },
+        messages: [
+          {
+            data: {
+              company: formData.Empresa,
+              name: formData.nombre,
+              email: formData.Email,
+
+            },
+            target: 'estefany.garcia@landscape.cl'
+          }
+        ]
+      })
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        console.log('servidor:', response);
+        alert('Tu mensaje ha sido enviado exitosamente.');
+      })
+      .catch((error) => {
+        alert(`Hubo un problema con la solicitud Fetch: ${error.message}`);
+      });
   });
 });
 </script></section></div> 

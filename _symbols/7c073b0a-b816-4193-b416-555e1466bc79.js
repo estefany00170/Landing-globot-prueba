@@ -2925,7 +2925,7 @@ function create_fragment(ctx) {
 			form = element("form");
 			label0 = element("label");
 			span0 = element("span");
-			t6 = text("Nombre");
+			t6 = text("Nombr");
 			t7 = space();
 			input0 = element("input");
 			t8 = space();
@@ -2945,7 +2945,7 @@ function create_fragment(ctx) {
 			t15 = text("Enviar");
 			t16 = space();
 			script = element("script");
-			t17 = text("document.addEventListener('DOMContentLoaded', function() {\n  document.getElementById('enviar').addEventListener('click', function(event) {\n    event.preventDefault();\n    console.log('El botón de enviar está funcionando');\n  });\n});");
+			t17 = text("document.addEventListener('DOMContentLoaded', () => {\n  const miFormulario = document.querySelector('#miFormulario');\n  const enviarBoton = document.querySelector('#enviar');\n\n  enviarBoton.addEventListener('click', (e) => {\n    e.preventDefault();\n\n    const formData = {};\n    const inputs = miFormulario.querySelectorAll('input, textarea');\n    inputs.forEach((input) => {\n      formData[input.name] = input.value;\n    });\n\n    console.log('Datos del formulario:', formData);\n\n    if (!formData.nombre || !formData.Email) {\n      alert('Por favor complete el nombre y el Email.');\n      return;\n    }\n\n    fetch('https://delivery.landscape.cl/v2/send', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify({\n        header: {\n          application: 'GLOBOT',\n          channel: 'WEB',\n          operation: 'CONTACT',\n          type: 'EMAIL'\n        },\n        messages: [\n          {\n            data: {\n              company: formData.Empresa,\n              name: formData.nombre,\n              email: formData.Email,\n\n            },\n            target: 'estefany.garcia@landscape.cl'\n          }\n        ]\n      })\n    })\n      .then((response) => {\n        if (!response.ok) {\n          throw new Error(`HTTP error! status: ${response.status}`);\n        }\n        console.log('servidor:', response);\n        alert('Tu mensaje ha sido enviado exitosamente.');\n      })\n      .catch((error) => {\n        alert(`Hubo un problema con la solicitud Fetch: ${error.message}`);\n      });\n  });\n});");
 			this.h();
 		},
 		l(nodes) {
@@ -2983,7 +2983,7 @@ function create_fragment(ctx) {
 			var label0_nodes = children(label0);
 			span0 = claim_element(label0_nodes, "SPAN", { class: true });
 			var span0_nodes = children(span0);
-			t6 = claim_text(span0_nodes, "Nombre");
+			t6 = claim_text(span0_nodes, "Nombr");
 			span0_nodes.forEach(detach);
 			t7 = claim_space(label0_nodes);
 
@@ -3038,7 +3038,7 @@ function create_fragment(ctx) {
 			t16 = claim_space(section_nodes);
 			script = claim_element(section_nodes, "SCRIPT", {});
 			var script_nodes = children(script);
-			t17 = claim_text(script_nodes, "document.addEventListener('DOMContentLoaded', function() {\n  document.getElementById('enviar').addEventListener('click', function(event) {\n    event.preventDefault();\n    console.log('El botón de enviar está funcionando');\n  });\n});");
+			t17 = claim_text(script_nodes, "document.addEventListener('DOMContentLoaded', () => {\n  const miFormulario = document.querySelector('#miFormulario');\n  const enviarBoton = document.querySelector('#enviar');\n\n  enviarBoton.addEventListener('click', (e) => {\n    e.preventDefault();\n\n    const formData = {};\n    const inputs = miFormulario.querySelectorAll('input, textarea');\n    inputs.forEach((input) => {\n      formData[input.name] = input.value;\n    });\n\n    console.log('Datos del formulario:', formData);\n\n    if (!formData.nombre || !formData.Email) {\n      alert('Por favor complete el nombre y el Email.');\n      return;\n    }\n\n    fetch('https://delivery.landscape.cl/v2/send', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify({\n        header: {\n          application: 'GLOBOT',\n          channel: 'WEB',\n          operation: 'CONTACT',\n          type: 'EMAIL'\n        },\n        messages: [\n          {\n            data: {\n              company: formData.Empresa,\n              name: formData.nombre,\n              email: formData.Email,\n\n            },\n            target: 'estefany.garcia@landscape.cl'\n          }\n        ]\n      })\n    })\n      .then((response) => {\n        if (!response.ok) {\n          throw new Error(`HTTP error! status: ${response.status}`);\n        }\n        console.log('servidor:', response);\n        alert('Tu mensaje ha sido enviado exitosamente.');\n      })\n      .catch((error) => {\n        alert(`Hubo un problema con la solicitud Fetch: ${error.message}`);\n      });\n  });\n});");
 			script_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
