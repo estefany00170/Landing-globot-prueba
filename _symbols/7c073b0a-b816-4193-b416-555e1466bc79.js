@@ -2778,7 +2778,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (183:6) {#each social as { link, icon }}
+// (189:6) {#each social as { link, icon }}
 function create_each_block(ctx) {
 	let a;
 	let span;
@@ -2934,7 +2934,7 @@ function create_fragment(ctx) {
 			t11 = space();
 			label2 = element("label");
 			span2 = element("span");
-			t12 = text("Empresa (opcional)");
+			t12 = text("Empresa (opciona)");
 			t13 = space();
 			input2 = element("input");
 			t14 = space();
@@ -3013,7 +3013,7 @@ function create_fragment(ctx) {
 			var label2_nodes = children(label2);
 			span2 = claim_element(label2_nodes, "SPAN", { class: true });
 			var span2_nodes = children(span2);
-			t12 = claim_text(span2_nodes, "Empresa (opcional)");
+			t12 = claim_text(span2_nodes, "Empresa (opciona)");
 			span2_nodes.forEach(detach);
 			t13 = claim_space(label2_nodes);
 
@@ -3041,8 +3041,8 @@ function create_fragment(ctx) {
 			attr(div2, "class", "content svelte-mhw88w");
 			attr(span0, "class", "svelte-mhw88w");
 			attr(input0, "type", "text");
-			attr(input0, "name", "Nombre");
-			attr(input0, "id", "Nombre");
+			attr(input0, "name", "nombre");
+			attr(input0, "id", "nombre");
 			attr(input0, "autocomplete", "name");
 			attr(input0, "placeholder", "Nombre Apellido");
 			input0.required = true;
@@ -3193,7 +3193,7 @@ function instance($$self, $$props, $$invalidate) {
 			});
 
 			// valida que el nombre y el correo estén completos
-			if (!formData.Nombre || !formData.Email) {
+			if (!formData.nombre || !formData.Email) {
 				alert('Por favor complete el nombre y el correo electrónico.');
 				return;
 			}
@@ -3213,7 +3213,7 @@ function instance($$self, $$props, $$invalidate) {
 						{
 							data: {
 								company: formData.Empresa,
-								name: formData.Nombre,
+								name: formData.nombre,
 								email: formData.Email
 							},
 							target: 'estefany.garcia@landscape.cl'
@@ -3221,11 +3221,14 @@ function instance($$self, $$props, $$invalidate) {
 					]
 				})
 			}).then(response => {
-				
+				if (!response.ok) {
+					throw new Error(`HTTP error! status: ${response.status}`);
+				}
+
+				alert('Tu mensaje ha sido enviado exitosamente.');
 			}).catch(error => {
-				
-			}); // maneja la respuesta del servidor
-			// maneja el error de la solicitud
+				alert(`Hubo un problema con la solicitud Fetch: ${error.message}`);
+			});
 		});
 	});
 
