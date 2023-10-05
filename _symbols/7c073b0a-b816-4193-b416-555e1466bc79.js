@@ -2778,7 +2778,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (189:6) {#each social as { link, icon }}
+// (170:6) {#each social as { link, icon }}
 function create_each_block(ctx) {
 	let a;
 	let span;
@@ -2815,9 +2815,9 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "icon svelte-mhw88w");
+			attr(span, "class", "icon svelte-1ftvpcu");
 			attr(a, "href", a_href_value = /*link*/ ctx[6].url);
-			attr(a, "class", "svelte-mhw88w");
+			attr(a, "class", "svelte-1ftvpcu");
 		},
 		m(target, anchor) {
 			insert_hydration(target, a, anchor);
@@ -2922,7 +2922,7 @@ function create_fragment(ctx) {
 			form = element("form");
 			label0 = element("label");
 			span0 = element("span");
-			t6 = text("Nombr");
+			t6 = text("Nomb");
 			t7 = space();
 			input0 = element("input");
 			t8 = space();
@@ -2977,7 +2977,7 @@ function create_fragment(ctx) {
 			var label0_nodes = children(label0);
 			span0 = claim_element(label0_nodes, "SPAN", { class: true });
 			var span0_nodes = children(span0);
-			t6 = claim_text(span0_nodes, "Nombr");
+			t6 = claim_text(span0_nodes, "Nomb");
 			span0_nodes.forEach(detach);
 			t7 = claim_space(label0_nodes);
 
@@ -3035,39 +3035,39 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-mhw88w");
-			attr(div0, "class", "body svelte-mhw88w");
-			attr(div1, "class", "social-links svelte-mhw88w");
-			attr(div2, "class", "content svelte-mhw88w");
-			attr(span0, "class", "svelte-mhw88w");
+			attr(h2, "class", "heading svelte-1ftvpcu");
+			attr(div0, "class", "body svelte-1ftvpcu");
+			attr(div1, "class", "social-links svelte-1ftvpcu");
+			attr(div2, "class", "content svelte-1ftvpcu");
+			attr(span0, "class", "svelte-1ftvpcu");
 			attr(input0, "type", "text");
 			attr(input0, "name", "nombre");
 			attr(input0, "id", "nombre");
 			attr(input0, "autocomplete", "name");
 			attr(input0, "placeholder", "Nombre Apellido");
 			input0.required = true;
-			attr(input0, "class", "svelte-mhw88w");
-			attr(label0, "class", "svelte-mhw88w");
-			attr(span1, "class", "svelte-mhw88w");
+			attr(input0, "class", "svelte-1ftvpcu");
+			attr(label0, "class", "svelte-1ftvpcu");
+			attr(span1, "class", "svelte-1ftvpcu");
 			attr(input1, "type", "Email");
 			attr(input1, "name", "Email");
 			attr(input1, "placeholder", "nombre@mail.com");
 			input1.required = true;
-			attr(input1, "class", "svelte-mhw88w");
-			attr(label1, "class", "svelte-mhw88w");
-			attr(span2, "class", "svelte-mhw88w");
+			attr(input1, "class", "svelte-1ftvpcu");
+			attr(label1, "class", "svelte-1ftvpcu");
+			attr(span2, "class", "svelte-1ftvpcu");
 			attr(input2, "type", "text");
 			attr(input2, "name", "Empresa");
 			attr(input2, "placeholder", "Nombre de tu empresa");
-			attr(input2, "class", "svelte-mhw88w");
-			attr(label2, "class", "svelte-mhw88w");
-			attr(button, "class", "button svelte-mhw88w");
+			attr(input2, "class", "svelte-1ftvpcu");
+			attr(label2, "class", "svelte-1ftvpcu");
+			attr(button, "class", "button svelte-1ftvpcu");
 			attr(button, "type", "submit");
 			attr(button, "id", "enviar");
 			attr(form, "id", "miFormulario");
-			attr(form, "class", "svelte-mhw88w");
+			attr(form, "class", "svelte-1ftvpcu");
 			attr(section, "id", "contacto");
-			attr(section, "class", "section-container svelte-mhw88w");
+			attr(section, "class", "section-container svelte-1ftvpcu");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -3176,58 +3176,36 @@ function instance($$self, $$props, $$invalidate) {
 	let { subheading } = $$props;
 	let { submit_label } = $$props;
 
-	document.addEventListener('DOMContentLoaded', () => {
-		const miFormulario = document.querySelector('#miFormulario');
-		const enviarBoton = document.querySelector('#enviar');
+	document.addEventListener('DOMContentLoaded', function () {
+		document.getElementById('miFormulario').addEventListener('submit', function (event) {
+			event.preventDefault();
+			var nombre = document.getElementById('nombre').value;
+			var email = document.getElementById('Email').value;
+			var empresa = document.getElementById('Empresa').value;
 
-		enviarBoton.addEventListener('click', e => {
-			e.preventDefault();
-
-			// crea un objeto JSON con los datos del formulario
-			const formData = {};
-
-			const inputs = miFormulario.querySelectorAll('input, textarea');
-
-			inputs.forEach(input => {
-				formData[input.name] = input.value;
-			});
-
-			// valida que el nombre y el correo estén completos
-			if (!formData.nombre || !formData.Email) {
-				alert('Por favor complete el nombre y el correo electrónico.');
-				return;
-			}
-
-			// envía la solicitud POST utilizando fetch
 			fetch('https://delivery.landscape.cl/v2/send', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					header: {
-						application: 'GLOBOT',
-						channel: 'WEB',
-						operation: 'CONTACT',
-						type: 'EMAIL'
+					"header": {
+						"application": "GLOBOT",
+						"channel": "WEB",
+						"operation": "CONTACT",
+						"type": "EMAIL"
 					},
-					messages: [
+					"messages": [
 						{
-							data: {
-								company: formData.Empresa,
-								name: formData.nombre,
-								email: formData.Email
+							"data": {
+								"company": empresa,
+								"name": nombre,
+								email
 							},
-							target: 'estefany.garcia@landscape.cl'
+							"target": "estefany.garcia@landscape.cl"
 						}
 					]
 				})
-			}).then(response => {
-				if (!response.ok) {
-					throw new Error(`HTTP error! status: ${response.status}`);
-				}
-
-				alert('Tu mensaje ha sido enviado exitosamente.');
-			}).catch(error => {
-				alert(`Hubo un problema con la solicitud Fetch: ${error.message}`);
+			}).then(response => response.json()).then(data => console.log(data)).catch(error => {
+				console.error('Error:', error);
 			});
 		});
 	});
