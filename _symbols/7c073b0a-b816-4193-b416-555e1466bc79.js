@@ -2934,7 +2934,7 @@ function create_fragment(ctx) {
 			t11 = space();
 			label2 = element("label");
 			span2 = element("span");
-			t12 = text("Empresa (opciona)");
+			t12 = text("Empresa (opcional)");
 			t13 = space();
 			input2 = element("input");
 			t14 = space();
@@ -3013,7 +3013,7 @@ function create_fragment(ctx) {
 			var label2_nodes = children(label2);
 			span2 = claim_element(label2_nodes, "SPAN", { class: true });
 			var span2_nodes = children(span2);
-			t12 = claim_text(span2_nodes, "Empresa (opciona)");
+			t12 = claim_text(span2_nodes, "Empresa (opcional)");
 			span2_nodes.forEach(detach);
 			t13 = claim_space(label2_nodes);
 
@@ -3216,7 +3216,7 @@ function instance($$self, $$props, $$invalidate) {
 								name: formData.nombre,
 								email: formData.Email
 							},
-							target: 'estefany.garcia@landscape.cl'
+							target: 'contacto@landscape.cl'
 						}
 					]
 				})
