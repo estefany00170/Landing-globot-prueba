@@ -2928,7 +2928,7 @@ function create_fragment(ctx) {
 			t8 = space();
 			label1 = element("label");
 			span1 = element("span");
-			t9 = text("Correo electrónico");
+			t9 = text("Email");
 			t10 = space();
 			input1 = element("input");
 			t11 = space();
@@ -2984,8 +2984,6 @@ function create_fragment(ctx) {
 			input0 = claim_element(label0_nodes, "INPUT", {
 				type: true,
 				name: true,
-				id: true,
-				autocomplete: true,
 				placeholder: true,
 				class: true
 			});
@@ -2996,7 +2994,7 @@ function create_fragment(ctx) {
 			var label1_nodes = children(label1);
 			span1 = claim_element(label1_nodes, "SPAN", { class: true });
 			var span1_nodes = children(span1);
-			t9 = claim_text(span1_nodes, "Correo electrónico");
+			t9 = claim_text(span1_nodes, "Email");
 			span1_nodes.forEach(detach);
 			t10 = claim_space(label1_nodes);
 
@@ -3042,8 +3040,6 @@ function create_fragment(ctx) {
 			attr(span0, "class", "svelte-1ftvpcu");
 			attr(input0, "type", "text");
 			attr(input0, "name", "nombre");
-			attr(input0, "id", "nombre");
-			attr(input0, "autocomplete", "name");
 			attr(input0, "placeholder", "Nombre Apellido");
 			input0.required = true;
 			attr(input0, "class", "svelte-1ftvpcu");
@@ -3190,7 +3186,7 @@ function instance($$self, $$props, $$invalidate) {
 			});
 
 			if (!formData.nombre || !formData.Email) {
-				alert('Por favor complete el nombre y el correo electrónico.');
+				alert('Por favor complete el nombre y el Email.');
 				return;
 			}
 
