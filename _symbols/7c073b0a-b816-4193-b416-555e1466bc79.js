@@ -3041,15 +3041,15 @@ function create_fragment(ctx) {
 			attr(div2, "class", "content svelte-mhw88w");
 			attr(span0, "class", "svelte-mhw88w");
 			attr(input0, "type", "text");
-			attr(input0, "name", "nombre");
-			attr(input0, "id", "nombre");
+			attr(input0, "name", "Nombre");
+			attr(input0, "id", "Nombre");
 			attr(input0, "autocomplete", "name");
 			attr(input0, "placeholder", "Nombre Apellido");
 			input0.required = true;
 			attr(input0, "class", "svelte-mhw88w");
 			attr(label0, "class", "svelte-mhw88w");
 			attr(span1, "class", "svelte-mhw88w");
-			attr(input1, "type", "email");
+			attr(input1, "type", "Email");
 			attr(input1, "name", "Email");
 			attr(input1, "placeholder", "nombre@mail.com");
 			input1.required = true;
