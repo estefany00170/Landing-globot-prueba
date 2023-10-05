@@ -1,4 +1,4 @@
-// Accordion - Updated October 4, 2023
+// Accordion - Updated October 5, 2023
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3139,7 +3139,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (88:6) {#if activeItem === i}
+// (87:6) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
 	let raw_value = /*item*/ ctx[6].description.html + "";
@@ -3158,7 +3158,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-74ncxj");
+			attr(div, "class", "description svelte-1mhnd77");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3190,7 +3190,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (80:4) {#each items as item, i (i)}
+// (79:4) {#each items as item, i (i)}
 function create_each_block(key_1, ctx) {
 	let div1;
 	let button;
@@ -3254,10 +3254,10 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(span0, "class", "svelte-74ncxj");
-			attr(span1, "class", "icon svelte-74ncxj");
-			attr(button, "class", "svelte-74ncxj");
-			attr(div1, "class", "item svelte-74ncxj");
+			attr(span0, "class", "svelte-1mhnd77");
+			attr(span1, "class", "icon svelte-1mhnd77");
+			attr(button, "class", "svelte-1mhnd77");
+			attr(div1, "class", "item svelte-1mhnd77");
 			toggle_class(div1, "active", /*activeItem*/ ctx[2] === /*i*/ ctx[8]);
 			this.first = div1;
 		},
@@ -3395,9 +3395,9 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-74ncxj");
-			attr(div, "class", "accordion svelte-74ncxj");
-			attr(section, "class", "section-container svelte-74ncxj");
+			attr(h2, "class", "heading svelte-1mhnd77");
+			attr(div, "class", "accordion svelte-1mhnd77");
+			attr(section, "class", "section-container svelte-1mhnd77");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);

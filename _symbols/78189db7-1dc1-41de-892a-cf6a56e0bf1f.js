@@ -1,4 +1,4 @@
-// Box - Updated October 4, 2023
+// Box - Updated October 5, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2887,20 +2887,20 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-s2w0ia");
-			attr(div0, "class", "body svelte-s2w0ia");
-			attr(a0, "class", "button button-0 svelte-s2w0ia");
+			attr(h2, "class", "heading svelte-8f5o62");
+			attr(div0, "class", "body svelte-8f5o62");
+			attr(a0, "class", "button button-0 svelte-8f5o62");
 			attr(a0, "href", a0_href_value = /*button0*/ ctx[1].link);
-			attr(a1, "class", "button button-1 svelte-s2w0ia");
+			attr(a1, "class", "button button-1 svelte-8f5o62");
 			attr(a1, "href", a1_href_value = /*button1*/ ctx[2].link);
-			attr(div1, "class", "buttons svelte-s2w0ia");
+			attr(div1, "class", "buttons svelte-8f5o62");
 			set_style(div2, "background-image", "url('" + /*background*/ ctx[4].url + "')");
 			attr(div2, "role", "img");
 			attr(div2, "aria-label", div2_aria_label_value = /*background*/ ctx[4].alt);
-			attr(div2, "class", "card svelte-s2w0ia");
+			attr(div2, "class", "card svelte-8f5o62");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
-			attr(section, "class", "section-container svelte-s2w0ia");
+			attr(section, "class", "section-container svelte-8f5o62");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
