@@ -2922,7 +2922,7 @@ function create_fragment(ctx) {
 			form = element("form");
 			label0 = element("label");
 			span0 = element("span");
-			t6 = text("Nombre");
+			t6 = text("Nombr");
 			t7 = space();
 			input0 = element("input");
 			t8 = space();
@@ -2977,7 +2977,7 @@ function create_fragment(ctx) {
 			var label0_nodes = children(label0);
 			span0 = claim_element(label0_nodes, "SPAN", { class: true });
 			var span0_nodes = children(span0);
-			t6 = claim_text(span0_nodes, "Nombre");
+			t6 = claim_text(span0_nodes, "Nombr");
 			span0_nodes.forEach(detach);
 			t7 = claim_space(label0_nodes);
 
