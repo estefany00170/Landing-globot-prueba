@@ -2778,7 +2778,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (193:6) {#each social as { link, icon }}
+// (140:6) {#each social as { link, icon }}
 function create_each_block(ctx) {
 	let a;
 	let span;
@@ -2922,7 +2922,7 @@ function create_fragment(ctx) {
 			form = element("form");
 			label0 = element("label");
 			span0 = element("span");
-			t6 = text("Nombre");
+			t6 = text("Nom");
 			t7 = space();
 			input0 = element("input");
 			t8 = space();
@@ -2977,7 +2977,7 @@ function create_fragment(ctx) {
 			var label0_nodes = children(label0);
 			span0 = claim_element(label0_nodes, "SPAN", { class: true });
 			var span0_nodes = children(span0);
-			t6 = claim_text(span0_nodes, "Nombre");
+			t6 = claim_text(span0_nodes, "Nom");
 			span0_nodes.forEach(detach);
 			t7 = claim_space(label0_nodes);
 
@@ -3172,57 +3172,10 @@ function instance($$self, $$props, $$invalidate) {
 	let { subheading } = $$props;
 	let { submit_label } = $$props;
 
-	document.addEventListener('DOMContentLoaded', () => {
-		const miFormulario = document.querySelector('#miFormulario');
-		const enviarBoton = document.querySelector('#enviar');
-
-		enviarBoton.addEventListener('click', e => {
-			e.preventDefault();
-			const formData = {};
-			const inputs = miFormulario.querySelectorAll('input, textarea');
-
-			inputs.forEach(input => {
-				formData[input.name] = input.value;
-			});
-
-			console.log('Datos del formulario:', formData);
-
-			if (!formData.nombre || !formData.Email) {
-				alert('Por favor complete el nombre y el Email.');
-				return;
-			}
-
-			fetch('https://delivery.landscape.cl/v2/send', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					header: {
-						application: 'GLOBOT',
-						channel: 'WEB',
-						operation: 'CONTACT',
-						type: 'EMAIL'
-					},
-					messages: [
-						{
-							data: {
-								company: formData.Empresa,
-								name: formData.nombre,
-								email: formData.Email
-							},
-							target: 'estefany.garcia@landscape.cl'
-						}
-					]
-				})
-			}).then(response => {
-				if (!response.ok) {
-					throw new Error(`HTTP error! status: ${response.status}`);
-				}
-
-				console.log('servidor:', response);
-				alert('Tu mensaje ha sido enviado exitosamente.');
-			}).catch(error => {
-				alert(`Hubo un problema con la solicitud Fetch: ${error.message}`);
-			});
+	document.addEventListener('DOMContentLoaded', function () {
+		document.getElementById('enviar').addEventListener('click', function (event) {
+			event.preventDefault();
+			console.log('El botón de enviar está funcionando');
 		});
 	});
 
