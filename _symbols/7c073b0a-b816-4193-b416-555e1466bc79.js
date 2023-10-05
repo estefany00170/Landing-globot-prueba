@@ -2778,7 +2778,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (140:6) {#each social as { link, icon }}
+// (133:6) {#each social as { link, icon }}
 function create_each_block(ctx) {
 	let a;
 	let span;
@@ -2888,6 +2888,9 @@ function create_fragment(ctx) {
 	let t14;
 	let button;
 	let t15;
+	let t16;
+	let script;
+	let t17;
 	let current;
 	let each_value = /*social*/ ctx[0];
 	let each_blocks = [];
@@ -2922,7 +2925,7 @@ function create_fragment(ctx) {
 			form = element("form");
 			label0 = element("label");
 			span0 = element("span");
-			t6 = text("Nom");
+			t6 = text("Nombre");
 			t7 = space();
 			input0 = element("input");
 			t8 = space();
@@ -2940,6 +2943,9 @@ function create_fragment(ctx) {
 			t14 = space();
 			button = element("button");
 			t15 = text("Enviar");
+			t16 = space();
+			script = element("script");
+			t17 = text("document.addEventListener('DOMContentLoaded', function() {\n  document.getElementById('enviar').addEventListener('click', function(event) {\n    event.preventDefault();\n    console.log('El botón de enviar está funcionando');\n  });\n});");
 			this.h();
 		},
 		l(nodes) {
@@ -2977,7 +2983,7 @@ function create_fragment(ctx) {
 			var label0_nodes = children(label0);
 			span0 = claim_element(label0_nodes, "SPAN", { class: true });
 			var span0_nodes = children(span0);
-			t6 = claim_text(span0_nodes, "Nom");
+			t6 = claim_text(span0_nodes, "Nombre");
 			span0_nodes.forEach(detach);
 			t7 = claim_space(label0_nodes);
 
@@ -3029,6 +3035,11 @@ function create_fragment(ctx) {
 			t15 = claim_text(button_nodes, "Enviar");
 			button_nodes.forEach(detach);
 			form_nodes.forEach(detach);
+			t16 = claim_space(section_nodes);
+			script = claim_element(section_nodes, "SCRIPT", {});
+			var script_nodes = children(script);
+			t17 = claim_text(script_nodes, "document.addEventListener('DOMContentLoaded', function() {\n  document.getElementById('enviar').addEventListener('click', function(event) {\n    event.preventDefault();\n    console.log('El botón de enviar está funcionando');\n  });\n});");
+			script_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
@@ -3107,6 +3118,9 @@ function create_fragment(ctx) {
 			append_hydration(form, t14);
 			append_hydration(form, button);
 			append_hydration(button, t15);
+			append_hydration(section, t16);
+			append_hydration(section, script);
+			append_hydration(script, t17);
 			current = true;
 		},
 		p(ctx, [dirty]) {
@@ -3171,13 +3185,6 @@ function instance($$self, $$props, $$invalidate) {
 	let { heading } = $$props;
 	let { subheading } = $$props;
 	let { submit_label } = $$props;
-
-	document.addEventListener('DOMContentLoaded', function () {
-		document.getElementById('enviar').addEventListener('click', function (event) {
-			event.preventDefault();
-			console.log('El botón de enviar está funcionando');
-		});
-	});
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(3, props = $$props.props);
