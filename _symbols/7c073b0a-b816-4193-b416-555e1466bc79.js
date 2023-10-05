@@ -2934,7 +2934,7 @@ function create_fragment(ctx) {
 			t11 = space();
 			label2 = element("label");
 			span2 = element("span");
-			t12 = text("Empresa");
+			t12 = text("Empresa (opcional)");
 			t13 = space();
 			input2 = element("input");
 			t14 = space();
@@ -2984,6 +2984,8 @@ function create_fragment(ctx) {
 			input0 = claim_element(label0_nodes, "INPUT", {
 				type: true,
 				name: true,
+				id: true,
+				autocomplete: true,
 				placeholder: true,
 				class: true
 			});
@@ -3011,7 +3013,7 @@ function create_fragment(ctx) {
 			var label2_nodes = children(label2);
 			span2 = claim_element(label2_nodes, "SPAN", { class: true });
 			var span2_nodes = children(span2);
-			t12 = claim_text(span2_nodes, "Empresa");
+			t12 = claim_text(span2_nodes, "Empresa (opcional)");
 			span2_nodes.forEach(detach);
 			t13 = claim_space(label2_nodes);
 
@@ -3039,7 +3041,9 @@ function create_fragment(ctx) {
 			attr(div2, "class", "content svelte-mhw88w");
 			attr(span0, "class", "svelte-mhw88w");
 			attr(input0, "type", "text");
-			attr(input0, "name", "Nombre");
+			attr(input0, "name", "nombre");
+			attr(input0, "id", "nombre");
+			attr(input0, "autocomplete", "name");
 			attr(input0, "placeholder", "Nombre Apellido");
 			input0.required = true;
 			attr(input0, "class", "svelte-mhw88w");
