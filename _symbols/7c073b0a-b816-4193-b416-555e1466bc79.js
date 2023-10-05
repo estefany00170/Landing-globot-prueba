@@ -2778,7 +2778,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (170:6) {#each social as { link, icon }}
+// (190:6) {#each social as { link, icon }}
 function create_each_block(ctx) {
 	let a;
 	let span;
@@ -3176,36 +3176,53 @@ function instance($$self, $$props, $$invalidate) {
 	let { subheading } = $$props;
 	let { submit_label } = $$props;
 
-	document.addEventListener('DOMContentLoaded', function () {
-		document.getElementById('miFormulario').addEventListener('submit', function (event) {
-			event.preventDefault();
-			var nombre = document.getElementById('nombre').value;
-			var email = document.getElementById('Email').value;
-			var empresa = document.getElementById('Empresa').value;
+	document.addEventListener('DOMContentLoaded', () => {
+		const miFormulario = document.querySelector('#miFormulario');
+		const enviarBoton = document.querySelector('#enviar');
+
+		enviarBoton.addEventListener('click', e => {
+			e.preventDefault();
+			const formData = {};
+			const inputs = miFormulario.querySelectorAll('input, textarea');
+
+			inputs.forEach(input => {
+				formData[input.name] = input.value;
+			});
+
+			if (!formData.nombre || !formData.Email) {
+				alert('Por favor complete el nombre y el correo electrónico.');
+				return;
+			}
 
 			fetch('https://delivery.landscape.cl/v2/send', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					"header": {
-						"application": "GLOBOT",
-						"channel": "WEB",
-						"operation": "CONTACT",
-						"type": "EMAIL"
+					header: {
+						application: 'GLOBOT',
+						channel: 'WEB',
+						operation: 'CONTACT',
+						type: 'EMAIL'
 					},
-					"messages": [
+					messages: [
 						{
-							"data": {
-								"company": empresa,
-								"name": nombre,
-								email
+							data: {
+								company: formData.Empresa,
+								name: formData.nombre,
+								email: formData.Email
 							},
-							"target": "estefany.garcia@landscape.cl"
+							target: 'estefany.garcia@landscape.cl'
 						}
 					]
 				})
-			}).then(response => response.json()).then(data => console.log(data)).catch(error => {
-				console.error('Error:', error);
+			}).then(response => {
+				if (!response.ok) {
+					throw new Error(`HTTP error! status: ${response.status}`);
+				}
+
+				alert('Tu mensaje ha sido enviado exitosamente.');
+			}).catch(error => {
+				alert(`Hubo un problema con la solicitud Fetch: ${error.message}`);
 			});
 		});
 	});
