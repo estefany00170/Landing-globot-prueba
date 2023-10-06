@@ -1,4 +1,4 @@
-// Box - Updated October 5, 2023
+// Box - Updated October 6, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2779,57 +2779,44 @@ function create_fragment(ctx) {
 	let t2;
 	let div1;
 	let a0;
-	let icon0;
-	let t3;
 	let span0;
+	let t3;
 	let t4;
+	let icon;
 	let t5;
-	let icon1;
-	let a0_href_value;
-	let t6;
 	let a1;
-	let icon2;
-	let t7;
 	let span1;
-	let t8;
-	let a1_href_value;
+	let t6;
 	let div2_aria_label_value;
-	let t9;
+	let t7;
 	let script;
 	let script_src_value;
 	let current;
-	icon0 = new Component$1({ props: { icon: /*button0*/ ctx[1].icon } });
 
-	icon1 = new Component$1({
+	icon = new Component$1({
 			props: { icon: "akar-icons:arrow-up-right" }
 		});
-
-	icon2 = new Component$1({ props: { icon: /*button1*/ ctx[2].icon } });
 
 	return {
 		c() {
 			section = element("section");
 			div2 = element("div");
 			h2 = element("h2");
-			t0 = text(/*heading*/ ctx[3]);
+			t0 = text(/*heading*/ ctx[1]);
 			t1 = space();
 			div0 = element("div");
 			t2 = space();
 			div1 = element("div");
 			a0 = element("a");
-			create_component(icon0.$$.fragment);
-			t3 = space();
 			span0 = element("span");
-			t4 = text("Empezar prueba gratis");
+			t3 = text("Empezar prueba gratis");
+			t4 = space();
+			create_component(icon.$$.fragment);
 			t5 = space();
-			create_component(icon1.$$.fragment);
-			t6 = space();
 			a1 = element("a");
-			create_component(icon2.$$.fragment);
-			t7 = space();
 			span1 = element("span");
-			t8 = text("Contáctanos");
-			t9 = space();
+			t6 = text("Contáctanos");
+			t7 = space();
 			script = element("script");
 			this.h();
 		},
@@ -2847,7 +2834,7 @@ function create_fragment(ctx) {
 			var div2_nodes = children(div2);
 			h2 = claim_element(div2_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			t0 = claim_text(h2_nodes, /*heading*/ ctx[3]);
+			t0 = claim_text(h2_nodes, /*heading*/ ctx[1]);
 			h2_nodes.forEach(detach);
 			t1 = claim_space(div2_nodes);
 			div0 = claim_element(div2_nodes, "DIV", { class: true });
@@ -2858,28 +2845,24 @@ function create_fragment(ctx) {
 			var div1_nodes = children(div1);
 			a0 = claim_element(div1_nodes, "A", { class: true, href: true });
 			var a0_nodes = children(a0);
-			claim_component(icon0.$$.fragment, a0_nodes);
-			t3 = claim_space(a0_nodes);
 			span0 = claim_element(a0_nodes, "SPAN", {});
 			var span0_nodes = children(span0);
-			t4 = claim_text(span0_nodes, "Empezar prueba gratis");
+			t3 = claim_text(span0_nodes, "Empezar prueba gratis");
 			span0_nodes.forEach(detach);
-			t5 = claim_space(a0_nodes);
-			claim_component(icon1.$$.fragment, a0_nodes);
+			t4 = claim_space(a0_nodes);
+			claim_component(icon.$$.fragment, a0_nodes);
 			a0_nodes.forEach(detach);
-			t6 = claim_space(div1_nodes);
+			t5 = claim_space(div1_nodes);
 			a1 = claim_element(div1_nodes, "A", { class: true, href: true });
 			var a1_nodes = children(a1);
-			claim_component(icon2.$$.fragment, a1_nodes);
-			t7 = claim_space(a1_nodes);
 			span1 = claim_element(a1_nodes, "SPAN", {});
 			var span1_nodes = children(span1);
-			t8 = claim_text(span1_nodes, "Contáctanos");
+			t6 = claim_text(span1_nodes, "Contáctanos");
 			span1_nodes.forEach(detach);
 			a1_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
-			t9 = claim_space(section_nodes);
+			t7 = claim_space(section_nodes);
 			script = claim_element(section_nodes, "SCRIPT", { src: true, type: true });
 			var script_nodes = children(script);
 			script_nodes.forEach(detach);
@@ -2890,13 +2873,13 @@ function create_fragment(ctx) {
 			attr(h2, "class", "heading svelte-8f5o62");
 			attr(div0, "class", "body svelte-8f5o62");
 			attr(a0, "class", "button button-0 svelte-8f5o62");
-			attr(a0, "href", a0_href_value = /*button0*/ ctx[1].link);
+			attr(a0, "href", "https://backoffice.globot.ai/dashboard/login");
 			attr(a1, "class", "button button-1 svelte-8f5o62");
-			attr(a1, "href", a1_href_value = /*button1*/ ctx[2].link);
+			attr(a1, "href", "#contacto");
 			attr(div1, "class", "buttons svelte-8f5o62");
-			set_style(div2, "background-image", "url('" + /*background*/ ctx[4].url + "')");
+			set_style(div2, "background-image", "url('" + /*background*/ ctx[2].url + "')");
 			attr(div2, "role", "img");
-			attr(div2, "aria-label", div2_aria_label_value = /*background*/ ctx[4].alt);
+			attr(div2, "aria-label", div2_aria_label_value = /*background*/ ctx[2].alt);
 			attr(div2, "class", "card svelte-8f5o62");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
@@ -2913,66 +2896,41 @@ function create_fragment(ctx) {
 			append_hydration(div2, t2);
 			append_hydration(div2, div1);
 			append_hydration(div1, a0);
-			mount_component(icon0, a0, null);
-			append_hydration(a0, t3);
 			append_hydration(a0, span0);
-			append_hydration(span0, t4);
-			append_hydration(a0, t5);
-			mount_component(icon1, a0, null);
-			append_hydration(div1, t6);
+			append_hydration(span0, t3);
+			append_hydration(a0, t4);
+			mount_component(icon, a0, null);
+			append_hydration(div1, t5);
 			append_hydration(div1, a1);
-			mount_component(icon2, a1, null);
-			append_hydration(a1, t7);
 			append_hydration(a1, span1);
-			append_hydration(span1, t8);
-			append_hydration(section, t9);
+			append_hydration(span1, t6);
+			append_hydration(section, t7);
 			append_hydration(section, script);
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*heading*/ 8) set_data(t0, /*heading*/ ctx[3]);
-			if ((!current || dirty & /*body*/ 1) && raw_value !== (raw_value = /*body*/ ctx[0].html + "")) div0.innerHTML = raw_value;			const icon0_changes = {};
-			if (dirty & /*button0*/ 2) icon0_changes.icon = /*button0*/ ctx[1].icon;
-			icon0.$set(icon0_changes);
-
-			if (!current || dirty & /*button0*/ 2 && a0_href_value !== (a0_href_value = /*button0*/ ctx[1].link)) {
-				attr(a0, "href", a0_href_value);
+			if (!current || dirty & /*heading*/ 2) set_data(t0, /*heading*/ ctx[1]);
+			if ((!current || dirty & /*body*/ 1) && raw_value !== (raw_value = /*body*/ ctx[0].html + "")) div0.innerHTML = raw_value;
+			if (!current || dirty & /*background*/ 4) {
+				set_style(div2, "background-image", "url('" + /*background*/ ctx[2].url + "')");
 			}
 
-			const icon2_changes = {};
-			if (dirty & /*button1*/ 4) icon2_changes.icon = /*button1*/ ctx[2].icon;
-			icon2.$set(icon2_changes);
-
-			if (!current || dirty & /*button1*/ 4 && a1_href_value !== (a1_href_value = /*button1*/ ctx[2].link)) {
-				attr(a1, "href", a1_href_value);
-			}
-
-			if (!current || dirty & /*background*/ 16) {
-				set_style(div2, "background-image", "url('" + /*background*/ ctx[4].url + "')");
-			}
-
-			if (!current || dirty & /*background*/ 16 && div2_aria_label_value !== (div2_aria_label_value = /*background*/ ctx[4].alt)) {
+			if (!current || dirty & /*background*/ 4 && div2_aria_label_value !== (div2_aria_label_value = /*background*/ ctx[2].alt)) {
 				attr(div2, "aria-label", div2_aria_label_value);
 			}
 		},
 		i(local) {
 			if (current) return;
-			transition_in(icon0.$$.fragment, local);
-			transition_in(icon1.$$.fragment, local);
-			transition_in(icon2.$$.fragment, local);
+			transition_in(icon.$$.fragment, local);
 			current = true;
 		},
 		o(local) {
-			transition_out(icon0.$$.fragment, local);
-			transition_out(icon1.$$.fragment, local);
-			transition_out(icon2.$$.fragment, local);
+			transition_out(icon.$$.fragment, local);
 			current = false;
 		},
 		d(detaching) {
 			if (detaching) detach(section);
-			destroy_component(icon0);
-			destroy_component(icon1);
-			destroy_component(icon2);
+			destroy_component(icon);
 		}
 	};
 }
@@ -2986,15 +2944,15 @@ function instance($$self, $$props, $$invalidate) {
 	let { background } = $$props;
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(5, props = $$props.props);
+		if ('props' in $$props) $$invalidate(3, props = $$props.props);
 		if ('body' in $$props) $$invalidate(0, body = $$props.body);
-		if ('button0' in $$props) $$invalidate(1, button0 = $$props.button0);
-		if ('button1' in $$props) $$invalidate(2, button1 = $$props.button1);
-		if ('heading' in $$props) $$invalidate(3, heading = $$props.heading);
-		if ('background' in $$props) $$invalidate(4, background = $$props.background);
+		if ('button0' in $$props) $$invalidate(4, button0 = $$props.button0);
+		if ('button1' in $$props) $$invalidate(5, button1 = $$props.button1);
+		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
+		if ('background' in $$props) $$invalidate(2, background = $$props.background);
 	};
 
-	return [body, button0, button1, heading, background, props];
+	return [body, heading, background, props, button0, button1];
 }
 
 class Component extends SvelteComponent {
@@ -3002,12 +2960,12 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 5,
+			props: 3,
 			body: 0,
-			button0: 1,
-			button1: 2,
-			heading: 3,
-			background: 4
+			button0: 4,
+			button1: 5,
+			heading: 1,
+			background: 2
 		});
 	}
 }
