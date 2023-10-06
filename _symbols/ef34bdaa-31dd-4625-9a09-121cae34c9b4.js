@@ -3847,7 +3847,7 @@ function instance($$self, $$props, $$invalidate) {
 			link: { url: "#live-demo", label: "Live Demo" }
 		},
 		{
-			link: { url: "#", label: "Tarifas y planes" }
+			link: { url: "#contacto", label: "Contacto" }
 		}
 	];
 
