@@ -396,7 +396,7 @@ section.svelte-178ymb{background:var(--Primary-1, #603FDF)}.section-container.sv
               email: formData.Email,
 
             },
-            target: 'contacto@landscape.cl'
+            target: 'estefany.garcia@landscape.cl'
           }
         ]
       })
@@ -408,6 +408,8 @@ section.svelte-178ymb{background:var(--Primary-1, #603FDF)}.section-container.sv
         console.log('servidor:', response);
         alert('Tu mensaje ha sido enviado exitosamente.');
       })
+      miFormulario.reset();
+
       .catch((error) => {
         alert(`Hubo un problema con la solicitud Fetch: ${error.message}`);
       });
