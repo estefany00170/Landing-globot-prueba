@@ -2843,7 +2843,7 @@ function create_fragment(ctx) {
 			t2 = claim_space(div2_nodes);
 			div1 = claim_element(div2_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
-			a0 = claim_element(div1_nodes, "A", { class: true, href: true });
+			a0 = claim_element(div1_nodes, "A", { class: true, href: true, target: true });
 			var a0_nodes = children(a0);
 			span0 = claim_element(a0_nodes, "SPAN", {});
 			var span0_nodes = children(span0);
@@ -2874,6 +2874,7 @@ function create_fragment(ctx) {
 			attr(div0, "class", "body svelte-8f5o62");
 			attr(a0, "class", "button button-0 svelte-8f5o62");
 			attr(a0, "href", "https://backoffice.globot.ai/dashboard/login");
+			attr(a0, "target", "_blank");
 			attr(a1, "class", "button button-1 svelte-8f5o62");
 			attr(a1, "href", "#contacto");
 			attr(div1, "class", "buttons svelte-8f5o62");
