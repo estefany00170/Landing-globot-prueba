@@ -404,17 +404,15 @@ section.svelte-178ymb{background:var(--Primary-1, #603FDF)}.section-container.sv
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        console.log('servidor:', response);
-        alert('Tu mensaje ha sido enviado exitosamente.');
-      })
-      miFormulario.reset();
-
-
-      .catch((error) => {
-        alert(`Hubo un problema con la solicitud Fetch: ${error.message}`);
-      });
+          console.log('servidor:', response);
+          alert('Tu mensaje ha sido enviado exitosamente.');
+          miFormulario.reset();
+        })
+        .catch((error) => {
+          alert(`Hubo un problema con la solicitud Fetch: ${error.message}`);
+        });
+    });
   });
-});
 </script></section></div> 
 <div class="section" id="section-614f3bad"><svg viewBox="0 0 1440 175" fill="none" xmlns="http://www.w3.org/2000/svg" class="svelte-jwtj5z"><path fill-rule="evenodd" clip-rule="evenodd" d="M1440 175H0V0C240 53.3333 480 80 720 80C960 80 1200 53.3333 1440 0V175Z" class="svelte-jwtj5z"></path></svg>
 <section class="svelte-jwtj5z"><div class="section-container svelte-jwtj5z"><img class="image" src="https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1695147043490Group%20(2).svg" alt="">
