@@ -2778,7 +2778,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (133:6) {#each social as { link, icon }}
+// (140:6) {#each social as { link, icon }}
 function create_each_block(ctx) {
 	let a;
 	let span;
@@ -2815,9 +2815,9 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "icon svelte-1ftvpcu");
+			attr(span, "class", "icon svelte-bjmi1e");
 			attr(a, "href", a_href_value = /*link*/ ctx[6].url);
-			attr(a, "class", "svelte-1ftvpcu");
+			attr(a, "class", "svelte-bjmi1e");
 		},
 		m(target, anchor) {
 			insert_hydration(target, a, anchor);
@@ -2889,8 +2889,10 @@ function create_fragment(ctx) {
 	let button;
 	let t15;
 	let t16;
-	let script;
+	let div3;
 	let t17;
+	let script;
+	let t18;
 	let current;
 	let each_value = /*social*/ ctx[0];
 	let each_blocks = [];
@@ -2944,8 +2946,10 @@ function create_fragment(ctx) {
 			button = element("button");
 			t15 = text("Enviar");
 			t16 = space();
+			div3 = element("div");
+			t17 = space();
 			script = element("script");
-			t17 = text("document.addEventListener('DOMContentLoaded', () => {\n  const miFormulario = document.querySelector('#miFormulario');\n  const enviarBoton = document.querySelector('#enviar');\n\n  enviarBoton.addEventListener('click', (e) => {\n    e.preventDefault();\n\n    const formData = {};\n    const inputs = miFormulario.querySelectorAll('input, textarea');\n    inputs.forEach((input) => {\n      formData[input.name] = input.value;\n    });\n\n    console.log('Datos del formulario:', formData);\n\n    if (!formData.nombre || !formData.Email) {\n      alert('Por favor complete el nombre y el Email.');\n      return;\n    }\n\n    fetch('https://delivery.landscape.cl/v2/send', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify({\n        header: {\n          application: 'GLOBOT',\n          channel: 'WEB',\n          operation: 'CONTACT',\n          type: 'EMAIL'\n        },\n        messages: [\n          {\n            data: {\n              company: formData.Empresa,\n              name: formData.nombre,\n              email: formData.Email,\n\n            },\n            target: 'contacto@landscape.cl'\n          }\n        ]\n      })\n    })\n      .then((response) => {\n        if (!response.ok) {\n          throw new Error(`HTTP error! status: ${response.status}`);\n        }\n          console.log('servidor:', response);\n          alert('Tu mensaje ha sido enviado exitosamente.');\n          miFormulario.reset();\n        })\n        .catch((error) => {\n          alert(`Hubo un problema con la solicitud Fetch: ${error.message}`);\n        });\n    });\n  });");
+			t18 = text("document.addEventListener('DOMContentLoaded', () => {\n  const miFormulario = document.querySelector('#miFormulario');\n  const enviarBoton = document.querySelector('#enviar');\n  const mensajeDiv = document.querySelector('#mensaje'); // Nuevo\n\n  enviarBoton.addEventListener('click', (e) => {\n    e.preventDefault();\n\n    const formData = {};\n    const inputs = miFormulario.querySelectorAll('input, textarea');\n    inputs.forEach((input) => {\n      formData[input.name] = input.value;\n    });\n\n    console.log('Datos del formulario:', formData);\n\n    if (!formData.nombre || !formData.Email) {\n      mensajeDiv.textContent = 'Por favor complete el nombre y el Email.'; // Modificado\n      return;\n    }\n\n    fetch('https://delivery.landscape.cl/v2/send', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify({\n        header: {\n          application: 'GLOBOT',\n          channel: 'WEB',\n          operation: 'CONTACT',\n          type: 'EMAIL'\n        },\n        messages: [\n          {\n            data: {\n              company: formData.Empresa,\n              name: formData.nombre,\n              email: formData.Email,\n\n            },\n            target: 'estefany.garcia@landscape.cl'\n          }\n        ]\n      })\n    })\n      .then((response) => {\n        if (!response.ok) {\n          throw new Error(`HTTP error! status: ${response.status}`);\n        }\n          console.log('servidor:', response);\n          mensajeDiv.textContent = 'Tu mensaje ha sido enviado exitosamente.'; // Modificado\n          miFormulario.reset();\n        })\n        .catch((error) => {\n          mensajeDiv.textContent = `Hubo un problema con la solicitud Fetch: ${error.message}`; // Modificado\n        });\n    });\n});");
 			this.h();
 		},
 		l(nodes) {
@@ -3036,45 +3040,50 @@ function create_fragment(ctx) {
 			button_nodes.forEach(detach);
 			form_nodes.forEach(detach);
 			t16 = claim_space(section_nodes);
+			div3 = claim_element(section_nodes, "DIV", { id: true, class: true });
+			children(div3).forEach(detach);
+			t17 = claim_space(section_nodes);
 			script = claim_element(section_nodes, "SCRIPT", {});
 			var script_nodes = children(script);
-			t17 = claim_text(script_nodes, "document.addEventListener('DOMContentLoaded', () => {\n  const miFormulario = document.querySelector('#miFormulario');\n  const enviarBoton = document.querySelector('#enviar');\n\n  enviarBoton.addEventListener('click', (e) => {\n    e.preventDefault();\n\n    const formData = {};\n    const inputs = miFormulario.querySelectorAll('input, textarea');\n    inputs.forEach((input) => {\n      formData[input.name] = input.value;\n    });\n\n    console.log('Datos del formulario:', formData);\n\n    if (!formData.nombre || !formData.Email) {\n      alert('Por favor complete el nombre y el Email.');\n      return;\n    }\n\n    fetch('https://delivery.landscape.cl/v2/send', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify({\n        header: {\n          application: 'GLOBOT',\n          channel: 'WEB',\n          operation: 'CONTACT',\n          type: 'EMAIL'\n        },\n        messages: [\n          {\n            data: {\n              company: formData.Empresa,\n              name: formData.nombre,\n              email: formData.Email,\n\n            },\n            target: 'contacto@landscape.cl'\n          }\n        ]\n      })\n    })\n      .then((response) => {\n        if (!response.ok) {\n          throw new Error(`HTTP error! status: ${response.status}`);\n        }\n          console.log('servidor:', response);\n          alert('Tu mensaje ha sido enviado exitosamente.');\n          miFormulario.reset();\n        })\n        .catch((error) => {\n          alert(`Hubo un problema con la solicitud Fetch: ${error.message}`);\n        });\n    });\n  });");
+			t18 = claim_text(script_nodes, "document.addEventListener('DOMContentLoaded', () => {\n  const miFormulario = document.querySelector('#miFormulario');\n  const enviarBoton = document.querySelector('#enviar');\n  const mensajeDiv = document.querySelector('#mensaje'); // Nuevo\n\n  enviarBoton.addEventListener('click', (e) => {\n    e.preventDefault();\n\n    const formData = {};\n    const inputs = miFormulario.querySelectorAll('input, textarea');\n    inputs.forEach((input) => {\n      formData[input.name] = input.value;\n    });\n\n    console.log('Datos del formulario:', formData);\n\n    if (!formData.nombre || !formData.Email) {\n      mensajeDiv.textContent = 'Por favor complete el nombre y el Email.'; // Modificado\n      return;\n    }\n\n    fetch('https://delivery.landscape.cl/v2/send', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify({\n        header: {\n          application: 'GLOBOT',\n          channel: 'WEB',\n          operation: 'CONTACT',\n          type: 'EMAIL'\n        },\n        messages: [\n          {\n            data: {\n              company: formData.Empresa,\n              name: formData.nombre,\n              email: formData.Email,\n\n            },\n            target: 'estefany.garcia@landscape.cl'\n          }\n        ]\n      })\n    })\n      .then((response) => {\n        if (!response.ok) {\n          throw new Error(`HTTP error! status: ${response.status}`);\n        }\n          console.log('servidor:', response);\n          mensajeDiv.textContent = 'Tu mensaje ha sido enviado exitosamente.'; // Modificado\n          miFormulario.reset();\n        })\n        .catch((error) => {\n          mensajeDiv.textContent = `Hubo un problema con la solicitud Fetch: ${error.message}`; // Modificado\n        });\n    });\n});");
 			script_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-1ftvpcu");
-			attr(div0, "class", "body svelte-1ftvpcu");
-			attr(div1, "class", "social-links svelte-1ftvpcu");
-			attr(div2, "class", "content svelte-1ftvpcu");
-			attr(span0, "class", "svelte-1ftvpcu");
+			attr(h2, "class", "heading svelte-bjmi1e");
+			attr(div0, "class", "body svelte-bjmi1e");
+			attr(div1, "class", "social-links svelte-bjmi1e");
+			attr(div2, "class", "content svelte-bjmi1e");
+			attr(span0, "class", "svelte-bjmi1e");
 			attr(input0, "type", "text");
 			attr(input0, "name", "nombre");
 			attr(input0, "placeholder", "Nombre Apellido");
 			input0.required = true;
-			attr(input0, "class", "svelte-1ftvpcu");
-			attr(label0, "class", "svelte-1ftvpcu");
-			attr(span1, "class", "svelte-1ftvpcu");
+			attr(input0, "class", "svelte-bjmi1e");
+			attr(label0, "class", "svelte-bjmi1e");
+			attr(span1, "class", "svelte-bjmi1e");
 			attr(input1, "type", "Email");
 			attr(input1, "name", "Email");
 			attr(input1, "placeholder", "nombre@mail.com");
 			input1.required = true;
-			attr(input1, "class", "svelte-1ftvpcu");
-			attr(label1, "class", "svelte-1ftvpcu");
-			attr(span2, "class", "svelte-1ftvpcu");
+			attr(input1, "class", "svelte-bjmi1e");
+			attr(label1, "class", "svelte-bjmi1e");
+			attr(span2, "class", "svelte-bjmi1e");
 			attr(input2, "type", "text");
 			attr(input2, "name", "Empresa");
 			attr(input2, "placeholder", "Nombre de tu empresa");
-			attr(input2, "class", "svelte-1ftvpcu");
-			attr(label2, "class", "svelte-1ftvpcu");
-			attr(button, "class", "button svelte-1ftvpcu");
+			attr(input2, "class", "svelte-bjmi1e");
+			attr(label2, "class", "svelte-bjmi1e");
+			attr(button, "class", "button svelte-bjmi1e");
 			attr(button, "type", "submit");
 			attr(button, "id", "enviar");
 			attr(form, "id", "miFormulario");
-			attr(form, "class", "svelte-1ftvpcu");
+			attr(form, "class", "svelte-bjmi1e");
+			attr(div3, "id", "mensaje");
+			attr(div3, "class", "svelte-bjmi1e");
 			attr(section, "id", "contacto");
-			attr(section, "class", "section-container svelte-1ftvpcu");
+			attr(section, "class", "section-container svelte-bjmi1e");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -3119,8 +3128,10 @@ function create_fragment(ctx) {
 			append_hydration(form, button);
 			append_hydration(button, t15);
 			append_hydration(section, t16);
+			append_hydration(section, div3);
+			append_hydration(section, t17);
 			append_hydration(section, script);
-			append_hydration(script, t17);
+			append_hydration(script, t18);
 			current = true;
 		},
 		p(ctx, [dirty]) {
