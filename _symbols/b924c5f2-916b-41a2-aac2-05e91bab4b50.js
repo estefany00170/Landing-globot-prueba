@@ -1,4 +1,4 @@
-// Walkthrough - Updated October 6, 2023
+// Walkthrough - Updated October 10, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2840,10 +2840,10 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "icon svelte-12fmvaj");
-			attr(span0, "class", "title svelte-12fmvaj");
-			attr(span1, "class", "description svelte-12fmvaj");
-			attr(div1, "class", "card svelte-12fmvaj");
+			attr(div0, "class", "icon svelte-1oah010");
+			attr(span0, "class", "title svelte-1oah010");
+			attr(span1, "class", "description svelte-1oah010");
+			attr(div1, "class", "card svelte-1oah010");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div1, anchor);
@@ -2908,7 +2908,7 @@ function create_fragment(ctx) {
 		c() {
 			section = element("section");
 			style = element("style");
-			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');");
+			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
 			t1 = space();
 			div1 = element("div");
 			h2 = element("h2");
@@ -2927,7 +2927,7 @@ function create_fragment(ctx) {
 			var section_nodes = children(section);
 			style = claim_element(section_nodes, "STYLE", {});
 			var style_nodes = children(style);
-			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');");
+			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
 			style_nodes.forEach(detach);
 			t1 = claim_space(section_nodes);
 
@@ -2957,13 +2957,13 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-12fmvaj");
-			attr(div0, "class", "cards svelte-12fmvaj");
-			attr(div1, "class", "content svelte-12fmvaj");
+			attr(h2, "class", "heading svelte-1oah010");
+			attr(div0, "class", "cards svelte-1oah010");
+			attr(div1, "class", "content svelte-1oah010");
 			set_style(div1, "background-image", "url('" + /*background*/ ctx[2].url + "')");
 			attr(div1, "role", "img");
 			attr(div1, "aria-label", div1_aria_label_value = /*background*/ ctx[2].alt);
-			attr(section, "class", "section-container svelte-12fmvaj");
+			attr(section, "class", "section-container svelte-1oah010");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
