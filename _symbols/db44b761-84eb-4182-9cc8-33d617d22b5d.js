@@ -1,4 +1,4 @@
-// Footer - Updated November 9, 2023
+// footer - Updated November 9, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2778,111 +2778,63 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-function get_each_context_1(ctx, list, i) {
-	const child_ctx = ctx.slice();
-	child_ctx[3] = list[i].link;
-	return child_ctx;
-}
-
-// (61:6) {#each footer_nav as { link }}
-function create_each_block_1(ctx) {
-	let a;
-	let t_value = /*link*/ ctx[3].label + "";
-	let t;
-	let a_href_value;
-
-	return {
-		c() {
-			a = element("a");
-			t = text(t_value);
-			this.h();
-		},
-		l(nodes) {
-			a = claim_element(nodes, "A", { href: true });
-			var a_nodes = children(a);
-			t = claim_text(a_nodes, t_value);
-			a_nodes.forEach(detach);
-			this.h();
-		},
-		h() {
-			attr(a, "href", a_href_value = /*link*/ ctx[3].url);
-		},
-		m(target, anchor) {
-			insert_hydration(target, a, anchor);
-			append_hydration(a, t);
-		},
-		p(ctx, dirty) {
-			if (dirty & /*footer_nav*/ 2 && t_value !== (t_value = /*link*/ ctx[3].label + "")) set_data(t, t_value);
-
-			if (dirty & /*footer_nav*/ 2 && a_href_value !== (a_href_value = /*link*/ ctx[3].url)) {
-				attr(a, "href", a_href_value);
-			}
-		},
-		d(detaching) {
-			if (detaching) detach(a);
-		}
-	};
-}
-
-// (67:6) {#each social as { link, icon }}
+// (143:6) {#each social as { link, icon }}
 function create_each_block(ctx) {
-	let li;
 	let a;
+	let span;
 	let icon;
+	let t0;
+	let t1_value = /*link*/ ctx[3].label + "";
+	let t1;
+	let t2;
 	let a_href_value;
-	let a_aria_label_value;
-	let t;
 	let current;
 	icon = new Component$1({ props: { icon: /*icon*/ ctx[4] } });
 
 	return {
 		c() {
-			li = element("li");
 			a = element("a");
+			span = element("span");
 			create_component(icon.$$.fragment);
-			t = space();
+			t0 = space();
+			t1 = text(t1_value);
+			t2 = space();
 			this.h();
 		},
 		l(nodes) {
-			li = claim_element(nodes, "LI", {});
-			var li_nodes = children(li);
-
-			a = claim_element(li_nodes, "A", {
-				href: true,
-				"aria-label": true,
-				class: true
-			});
-
+			a = claim_element(nodes, "A", { href: true });
 			var a_nodes = children(a);
-			claim_component(icon.$$.fragment, a_nodes);
+			span = claim_element(a_nodes, "SPAN", { class: true });
+			var span_nodes = children(span);
+			claim_component(icon.$$.fragment, span_nodes);
+			span_nodes.forEach(detach);
+			t0 = claim_space(a_nodes);
+			t1 = claim_text(a_nodes, t1_value);
+			t2 = claim_space(a_nodes);
 			a_nodes.forEach(detach);
-			t = claim_space(li_nodes);
-			li_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
+			attr(span, "class", "icon svelte-35533q");
 			attr(a, "href", a_href_value = /*link*/ ctx[3].url);
-			attr(a, "aria-label", a_aria_label_value = /*icon*/ ctx[4]);
-			attr(a, "class", "svelte-5m5swo");
 		},
 		m(target, anchor) {
-			insert_hydration(target, li, anchor);
-			append_hydration(li, a);
-			mount_component(icon, a, null);
-			append_hydration(li, t);
+			insert_hydration(target, a, anchor);
+			append_hydration(a, span);
+			mount_component(icon, span, null);
+			append_hydration(a, t0);
+			append_hydration(a, t1);
+			append_hydration(a, t2);
 			current = true;
 		},
 		p(ctx, dirty) {
 			const icon_changes = {};
-			if (dirty & /*social*/ 1) icon_changes.icon = /*icon*/ ctx[4];
+			if (dirty & /*social*/ 2) icon_changes.icon = /*icon*/ ctx[4];
 			icon.$set(icon_changes);
+			if ((!current || dirty & /*social*/ 2) && t1_value !== (t1_value = /*link*/ ctx[3].label + "")) set_data(t1, t1_value);
 
-			if (!current || dirty & /*social*/ 1 && a_href_value !== (a_href_value = /*link*/ ctx[3].url)) {
+			if (!current || dirty & /*social*/ 2 && a_href_value !== (a_href_value = /*link*/ ctx[3].url)) {
 				attr(a, "href", a_href_value);
-			}
-
-			if (!current || dirty & /*social*/ 1 && a_aria_label_value !== (a_aria_label_value = /*icon*/ ctx[4])) {
-				attr(a, "aria-label", a_aria_label_value);
 			}
 		},
 		i(local) {
@@ -2895,32 +2847,42 @@ function create_each_block(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(li);
+			if (detaching) detach(a);
 			destroy_component(icon);
 		}
 	};
 }
 
 function create_fragment(ctx) {
+	let section;
 	let footer;
-	let div;
-	let nav;
+	let style;
 	let t0;
-	let span;
-	let a;
 	let t1;
+	let div2;
+	let div0;
 	let t2;
 	let t3;
-	let ul;
+	let div1;
+	let a;
+	let svg;
+	let path0;
+	let path1;
+	let path2;
+	let path3;
+	let path4;
+	let path5;
+	let path6;
+	let path7;
+	let path8;
+	let path9;
+	let t4;
+	let div3;
+	let t5;
+	let t6;
+	let div4;
 	let current;
-	let each_value_1 = /*footer_nav*/ ctx[1];
-	let each_blocks_1 = [];
-
-	for (let i = 0; i < each_value_1.length; i += 1) {
-		each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
-	}
-
-	let each_value = /*social*/ ctx[0];
+	let each_value = /*social*/ ctx[1];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -2933,21 +2895,33 @@ function create_fragment(ctx) {
 
 	return {
 		c() {
+			section = element("section");
 			footer = element("footer");
-			div = element("div");
-			nav = element("nav");
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				each_blocks_1[i].c();
-			}
-
-			t0 = space();
-			span = element("span");
-			a = element("a");
-			t1 = text("Primo");
-			t2 = text(" Powered");
+			style = element("style");
+			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
+			t1 = space();
+			div2 = element("div");
+			div0 = element("div");
+			t2 = text(/*text*/ ctx[0]);
 			t3 = space();
-			ul = element("ul");
+			div1 = element("div");
+			a = element("a");
+			svg = svg_element("svg");
+			path0 = svg_element("path");
+			path1 = svg_element("path");
+			path2 = svg_element("path");
+			path3 = svg_element("path");
+			path4 = svg_element("path");
+			path5 = svg_element("path");
+			path6 = svg_element("path");
+			path7 = svg_element("path");
+			path8 = svg_element("path");
+			path9 = svg_element("path");
+			t4 = space();
+			div3 = element("div");
+			t5 = text("ⓒ 2023, Todos los derechos reservados, Chile.");
+			t6 = space();
+			div4 = element("div");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
@@ -2956,102 +2930,165 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		l(nodes) {
-			footer = claim_element(nodes, "FOOTER", { class: true });
+			section = claim_element(nodes, "SECTION", { class: true });
+			var section_nodes = children(section);
+			footer = claim_element(section_nodes, "FOOTER", { class: true });
 			var footer_nodes = children(footer);
-			div = claim_element(footer_nodes, "DIV", { class: true });
-			var div_nodes = children(div);
-			nav = claim_element(div_nodes, "NAV", { class: true });
-			var nav_nodes = children(nav);
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				each_blocks_1[i].l(nav_nodes);
-			}
-
-			nav_nodes.forEach(detach);
-			t0 = claim_space(div_nodes);
-			span = claim_element(div_nodes, "SPAN", { class: true });
-			var span_nodes = children(span);
-			a = claim_element(span_nodes, "A", { href: true, class: true });
+			style = claim_element(footer_nodes, "STYLE", {});
+			var style_nodes = children(style);
+			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
+			style_nodes.forEach(detach);
+			t1 = claim_space(footer_nodes);
+			div2 = claim_element(footer_nodes, "DIV", { class: true });
+			var div2_nodes = children(div2);
+			div0 = claim_element(div2_nodes, "DIV", { class: true });
+			var div0_nodes = children(div0);
+			t2 = claim_text(div0_nodes, /*text*/ ctx[0]);
+			div0_nodes.forEach(detach);
+			t3 = claim_space(div2_nodes);
+			div1 = claim_element(div2_nodes, "DIV", { class: true });
+			var div1_nodes = children(div1);
+			a = claim_element(div1_nodes, "A", { href: true, target: true });
 			var a_nodes = children(a);
-			t1 = claim_text(a_nodes, "Primo");
+
+			svg = claim_svg_element(a_nodes, "svg", {
+				xmlns: true,
+				width: true,
+				height: true,
+				viewBox: true,
+				fill: true
+			});
+
+			var svg_nodes = children(svg);
+
+			path0 = claim_svg_element(svg_nodes, "path", {
+				"fill-rule": true,
+				"clip-rule": true,
+				d: true,
+				fill: true
+			});
+
+			children(path0).forEach(detach);
+			path1 = claim_svg_element(svg_nodes, "path", { d: true, fill: true });
+			children(path1).forEach(detach);
+			path2 = claim_svg_element(svg_nodes, "path", { d: true, fill: true });
+			children(path2).forEach(detach);
+			path3 = claim_svg_element(svg_nodes, "path", { d: true, fill: true });
+			children(path3).forEach(detach);
+			path4 = claim_svg_element(svg_nodes, "path", { d: true, fill: true });
+			children(path4).forEach(detach);
+			path5 = claim_svg_element(svg_nodes, "path", { d: true, fill: true });
+			children(path5).forEach(detach);
+			path6 = claim_svg_element(svg_nodes, "path", { d: true, fill: true });
+			children(path6).forEach(detach);
+			path7 = claim_svg_element(svg_nodes, "path", { d: true, fill: true });
+			children(path7).forEach(detach);
+			path8 = claim_svg_element(svg_nodes, "path", { d: true, fill: true });
+			children(path8).forEach(detach);
+			path9 = claim_svg_element(svg_nodes, "path", { d: true, fill: true });
+			children(path9).forEach(detach);
+			svg_nodes.forEach(detach);
 			a_nodes.forEach(detach);
-			t2 = claim_text(span_nodes, " Powered");
-			span_nodes.forEach(detach);
-			t3 = claim_space(div_nodes);
-			ul = claim_element(div_nodes, "UL", { class: true });
-			var ul_nodes = children(ul);
+			div1_nodes.forEach(detach);
+			div2_nodes.forEach(detach);
+			t4 = claim_space(footer_nodes);
+			div3 = claim_element(footer_nodes, "DIV", { class: true });
+			var div3_nodes = children(div3);
+			t5 = claim_text(div3_nodes, "ⓒ 2023, Todos los derechos reservados, Chile.");
+			div3_nodes.forEach(detach);
+			t6 = claim_space(footer_nodes);
+			div4 = claim_element(footer_nodes, "DIV", { class: true });
+			var div4_nodes = children(div4);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].l(ul_nodes);
+				each_blocks[i].l(div4_nodes);
 			}
 
-			ul_nodes.forEach(detach);
-			div_nodes.forEach(detach);
+			div4_nodes.forEach(detach);
 			footer_nodes.forEach(detach);
+			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(nav, "class", "svelte-5m5swo");
-			attr(a, "href", "https://primo.so");
-			attr(a, "class", "svelte-5m5swo");
-			attr(span, "class", "primo svelte-5m5swo");
-			attr(ul, "class", "svelte-5m5swo");
-			attr(div, "class", "section-container svelte-5m5swo");
-			attr(footer, "class", "svelte-5m5swo");
+			attr(div0, "class", "text svelte-35533q");
+			attr(path0, "fill-rule", "evenodd");
+			attr(path0, "clip-rule", "evenodd");
+			attr(path0, "d", "M16.4842 1.76923C16.1489 1.76923 15.8619 1.94833 15.7109 2.2163C15.707 2.22327 15.703 2.23018 15.6989 2.23704L1.85071 25.3302C1.80055 25.435 1.76923 25.5621 1.76923 25.7027C1.76923 26.1902 2.16664 26.5902 2.65677 26.5902C2.9156 26.5902 3.13659 26.4891 3.30089 26.3187C3.30194 26.3176 3.30298 26.3164 3.30403 26.3153L3.33182 26.2835C3.35906 26.2525 3.39905 26.2071 3.45112 26.1484C3.55526 26.0312 3.70777 25.861 3.90333 25.6469C4.29435 25.2187 4.85799 24.6142 5.55159 23.9052C6.93657 22.4895 8.84967 20.647 10.9478 18.9592C13.5616 16.8597 16.6194 14.8302 19.5299 13.9748C20.9941 13.5445 22.4774 13.3942 23.8708 13.7306C23.9161 13.7415 23.9611 13.7529 24.006 13.7648L17.2601 2.22101C17.1059 1.95121 16.8137 1.76923 16.4842 1.76923ZM27.6218 16.4456C27.5977 16.3913 27.5677 16.3387 27.5318 16.2886C27.5286 16.2842 27.5254 16.2797 27.5223 16.2753L18.7939 1.33915C18.339 0.546326 17.4764 0 16.4842 0C15.5007 0 14.6352 0.53078 14.176 1.33639L0.316097 24.4491C0.306435 24.4652 0.29729 24.4817 0.288673 24.4984C0.101336 24.8613 0 25.2745 0 25.7027C0 27.1623 1.1846 28.3595 2.65677 28.3595C3.36994 28.3595 4.01256 28.0847 4.49188 27.6288C11.7876 23.7207 21.1591 23.9354 28.4629 27.9002C28.8945 28.1964 29.4133 28.359 29.9541 28.359C31.4137 28.359 32.6109 27.1744 32.6109 25.7022C32.6109 25.2486 32.4955 24.8268 32.3034 24.4602C32.2972 24.4479 32.2906 24.4357 32.2838 24.4235C32.2572 24.3746 32.2292 24.3268 32.2 24.28L27.6218 16.4456ZM26.0398 17.245C25.2872 16.2262 24.4097 15.6807 23.4557 15.4504C22.4576 15.2095 21.3045 15.2973 20.0287 15.6723C18.1896 16.2128 16.2134 17.3141 14.2977 18.6521C17.6625 18.9271 21.0016 20.5004 23.6224 22.098C25.3422 23.1464 26.8055 24.238 27.8384 25.0668C28.3555 25.4817 28.7664 25.8321 29.0494 26.08C29.191 26.204 29.3007 26.3025 29.3757 26.3707C29.3877 26.3816 29.3987 26.3916 29.4089 26.4009C29.4155 26.4057 29.4221 26.4107 29.4287 26.4157C29.5693 26.5239 29.752 26.5897 29.9541 26.5897C30.4416 26.5897 30.8416 26.1923 30.8416 25.7022C30.8416 25.555 30.8051 25.4139 30.7386 25.2857L30.6889 25.2008C30.6849 25.1946 30.6809 25.1886 30.6767 25.1825C30.6492 25.1423 30.6254 25.1005 30.6054 25.0578L26.0398 17.245ZM23.2777 23.9677C23.0892 23.8478 22.8971 23.7279 22.7016 23.6087C19.4426 21.6222 15.4386 19.9381 11.8774 20.4828C10.2685 21.7907 8.77114 23.1907 7.55745 24.3957C12.5866 22.7263 18.1357 22.6167 23.2777 23.9677Z");
+			attr(path0, "fill", "white");
+			attr(path1, "d", "M40.7115 20.765V8.99965H43.1319V18.4288H48.7876V20.765H40.7115Z");
+			attr(path1, "fill", "white");
+			attr(path2, "d", "M52.7939 20.9667C51.8527 20.9667 51.1075 20.7146 50.5585 20.2104C50.0094 19.7062 49.7349 19.0254 49.7349 18.1682C49.7349 17.608 49.8778 17.1178 50.1635 16.6976C50.4548 16.2774 50.8582 15.9524 51.3737 15.7227C51.8891 15.4874 52.4886 15.3698 53.1721 15.3698C53.5362 15.3698 53.8892 15.4006 54.231 15.4622C54.5783 15.5238 54.8725 15.6107 55.1134 15.7227V15.2101C55.1134 14.7843 54.9817 14.4622 54.7184 14.2437C54.4607 14.0195 54.0853 13.9075 53.5923 13.9075C53.1721 13.9075 52.7379 13.9831 52.2897 14.1344C51.8471 14.2857 51.3905 14.5154 50.9199 14.8235L50.2139 13.0335C50.7238 12.6917 51.2896 12.4312 51.9115 12.2519C52.539 12.0671 53.1749 11.9746 53.8192 11.9746C55.0125 11.9746 55.9061 12.2519 56.5 12.8066C57.0939 13.3612 57.3908 14.1904 57.3908 15.2941V20.765H55.1134V20.1095C54.8388 20.3897 54.5027 20.6026 54.1049 20.7482C53.7127 20.8939 53.2757 20.9667 52.7939 20.9667ZM53.3654 19.0338C53.6959 19.0338 54.0097 18.975 54.3066 18.8574C54.6091 18.7397 54.8781 18.5688 55.1134 18.3447V17.4875C54.8893 17.3867 54.6428 17.3111 54.3738 17.2606C54.1049 17.2102 53.8304 17.185 53.5503 17.185C53.0628 17.185 52.6791 17.2718 52.3989 17.4455C52.1244 17.6136 51.9871 17.8517 51.9871 18.1598C51.9871 18.4344 52.1076 18.6501 52.3485 18.8069C52.5894 18.9582 52.9284 19.0338 53.3654 19.0338Z");
+			attr(path2, "fill", "white");
+			attr(path3, "d", "M59.8248 20.765V12.1763H62.1358V12.9831C62.4104 12.6469 62.7409 12.3948 63.1275 12.2267C63.5197 12.0587 63.9651 11.9746 64.4637 11.9746C65.3993 11.9746 66.1305 12.2659 66.6571 12.8486C67.1837 13.4257 67.4471 14.2324 67.4471 15.2689V20.765H65.136V16.2186C65.136 15.5014 65.024 14.986 64.7999 14.6722C64.5758 14.3529 64.2088 14.1932 63.6989 14.1932C63.1611 14.1932 62.7661 14.3557 62.514 14.6807C62.2619 15 62.1358 15.5014 62.1358 16.1849V20.765H59.8248Z");
+			attr(path3, "fill", "white");
+			attr(path4, "d", "M73.0531 20.9667C71.9382 20.9667 71.0698 20.5717 70.4479 19.7818C69.826 18.9862 69.5151 17.8797 69.5151 16.4623C69.5151 15.5771 69.6635 14.7983 69.9605 14.126C70.263 13.4481 70.6804 12.9214 71.2126 12.5461C71.7505 12.1651 72.3724 11.9746 73.0783 11.9746C73.8178 11.9746 74.4089 12.2575 74.8515 12.8234V9.67196L77.1626 8.62988V20.765H74.8515V20.0507C74.4929 20.6614 73.8935 20.9667 73.0531 20.9667ZM73.4397 18.7481C73.787 18.7481 74.0699 18.6977 74.2884 18.5968C74.5125 18.496 74.7002 18.3391 74.8515 18.1262V14.8403C74.7002 14.6386 74.4957 14.4818 74.238 14.3697C73.9859 14.2521 73.7198 14.1932 73.4397 14.1932C72.9298 14.1932 72.532 14.3893 72.2463 14.7815C71.9662 15.1681 71.8261 15.7283 71.8261 16.4623C71.8261 16.9609 71.8877 17.3783 72.011 17.7144C72.1343 18.0506 72.3163 18.3083 72.5573 18.4876C72.7982 18.6613 73.0923 18.7481 73.4397 18.7481Z");
+			attr(path4, "fill", "white");
+			attr(path5, "d", "M82.6256 20.9667C81.9365 20.9667 81.2754 20.8211 80.6423 20.5297C80.0092 20.2328 79.5134 19.8378 79.1548 19.3448L80.6339 18.0926C80.9196 18.3839 81.2502 18.6193 81.6255 18.7985C82.0009 18.9778 82.3595 19.0675 82.7012 19.0675C83.0934 19.0675 83.3959 19.0058 83.6088 18.8826C83.8217 18.7537 83.9282 18.5716 83.9282 18.3363C83.9282 18.1907 83.8778 18.0618 83.7769 17.9497C83.6761 17.8321 83.4912 17.7088 83.2223 17.58C82.9533 17.4511 82.5668 17.2942 82.0625 17.1094C81.0877 16.7564 80.4014 16.3754 80.0036 15.9664C79.6058 15.5518 79.4069 15.028 79.4069 14.3949C79.4069 13.6722 79.6982 13.0895 80.2809 12.6469C80.8636 12.1987 81.6255 11.9746 82.5668 11.9746C83.1998 11.9746 83.7881 12.0951 84.3316 12.336C84.875 12.5769 85.3428 12.927 85.735 13.3865L84.2475 14.6218C83.7433 14.1232 83.1662 13.8739 82.5163 13.8739C82.2082 13.8739 81.9589 13.9327 81.7684 14.0504C81.5779 14.1624 81.4827 14.3081 81.4827 14.4874C81.4827 14.6666 81.5975 14.8319 81.8272 14.9832C82.0569 15.1289 82.4911 15.2997 83.1298 15.4958C83.8021 15.6975 84.3484 15.93 84.7686 16.1933C85.1944 16.4567 85.5053 16.7648 85.7014 17.1178C85.9031 17.4651 86.0039 17.8685 86.0039 18.3279C86.0039 19.1515 85.7014 19.7986 85.0963 20.2692C84.4968 20.7342 83.6733 20.9667 82.6256 20.9667Z");
+			attr(path5, "fill", "white");
+			attr(path6, "d", "M91.512 20.9667C90.6996 20.9667 89.9965 20.7846 89.4026 20.4205C88.8144 20.0563 88.3577 19.5381 88.0328 18.8658C87.7135 18.1935 87.5538 17.3979 87.5538 16.4791C87.5538 15.5603 87.7163 14.7647 88.0412 14.0924C88.3661 13.4145 88.8256 12.8934 89.4194 12.5293C90.0133 12.1595 90.7136 11.9746 91.5204 11.9746C92.456 11.9746 93.232 12.1931 93.8483 12.6301C94.4645 13.0671 94.9127 13.7114 95.1929 14.563L92.9911 15.3025C92.8566 14.944 92.6633 14.6694 92.4112 14.479C92.1647 14.2829 91.879 14.1848 91.554 14.1848C91.061 14.1848 90.6604 14.3949 90.3523 14.8151C90.0497 15.2353 89.8985 15.79 89.8985 16.4791C89.8985 17.1626 90.0469 17.7144 90.3439 18.1346C90.6408 18.5492 91.0302 18.7565 91.512 18.7565C91.8706 18.7565 92.1759 18.6529 92.428 18.4456C92.6801 18.2327 92.8734 17.9245 93.0079 17.5212L95.2013 18.1598C94.9324 19.0955 94.4869 19.7986 93.8651 20.2692C93.2432 20.7342 92.4588 20.9667 91.512 20.9667Z");
+			attr(path6, "fill", "white");
+			attr(path7, "d", "M99.8193 20.9667C98.8781 20.9667 98.1329 20.7146 97.5839 20.2104C97.0348 19.7062 96.7603 19.0254 96.7603 18.1682C96.7603 17.608 96.9032 17.1178 97.1889 16.6976C97.4802 16.2774 97.8836 15.9524 98.3991 15.7227C98.9145 15.4874 99.514 15.3698 100.197 15.3698C100.562 15.3698 100.915 15.4006 101.256 15.4622C101.604 15.5238 101.898 15.6107 102.139 15.7227V15.2101C102.139 14.7843 102.007 14.4622 101.744 14.2437C101.486 14.0195 101.111 13.9075 100.618 13.9075C100.197 13.9075 99.7633 13.9831 99.3151 14.1344C98.8725 14.2857 98.4159 14.5154 97.9453 14.8235L97.2393 13.0335C97.7492 12.6917 98.315 12.4312 98.9369 12.2519C99.5644 12.0671 100.2 11.9746 100.845 11.9746C102.038 11.9746 102.932 12.2519 103.525 12.8066C104.119 13.3612 104.416 14.1904 104.416 15.2941V20.765H102.139V20.1095C101.864 20.3897 101.528 20.6026 101.13 20.7482C100.738 20.8939 100.301 20.9667 99.8193 20.9667ZM100.391 19.0338C100.721 19.0338 101.035 18.975 101.332 18.8574C101.635 18.7397 101.903 18.5688 102.139 18.3447V17.4875C101.915 17.3867 101.668 17.3111 101.399 17.2606C101.13 17.2102 100.856 17.185 100.576 17.185C100.088 17.185 99.7045 17.2718 99.4243 17.4455C99.1498 17.6136 99.0126 17.8517 99.0126 18.1598C99.0126 18.4344 99.133 18.6501 99.3739 18.8069C99.6148 18.9582 99.9538 19.0338 100.391 19.0338Z");
+			attr(path7, "fill", "white");
+			attr(path8, "d", "M106.85 24.177V12.1763H109.161V12.7814C109.587 12.2435 110.181 11.9746 110.943 11.9746C111.682 11.9746 112.318 12.1567 112.851 12.5209C113.383 12.8794 113.792 13.3949 114.077 14.0672C114.363 14.7395 114.506 15.5434 114.506 16.4791C114.506 17.3755 114.355 18.1598 114.052 18.8321C113.755 19.5045 113.338 20.0283 112.8 20.4037C112.262 20.779 111.635 20.9667 110.918 20.9667C110.542 20.9667 110.206 20.8995 109.909 20.765C109.618 20.6306 109.369 20.4345 109.161 20.1768V23.1349L106.85 24.177ZM110.556 18.7481C111.077 18.7481 111.478 18.5492 111.758 18.1514C112.044 17.7537 112.187 17.1962 112.187 16.4791C112.187 15.7451 112.047 15.1821 111.766 14.7899C111.486 14.3921 111.083 14.1932 110.556 14.1932C110.254 14.1932 109.99 14.2437 109.766 14.3445C109.542 14.4397 109.341 14.591 109.161 14.7983V18.1094C109.262 18.2999 109.441 18.454 109.699 18.5716C109.957 18.6893 110.243 18.7481 110.556 18.7481Z");
+			attr(path8, "fill", "white");
+			attr(path9, "d", "M120.271 20.9667C119.436 20.9667 118.716 20.7846 118.111 20.4205C117.506 20.0563 117.041 19.5381 116.716 18.8658C116.391 18.1935 116.229 17.3923 116.229 16.4623C116.229 15.5434 116.394 14.7479 116.724 14.0756C117.055 13.4033 117.523 12.885 118.128 12.5209C118.733 12.1567 119.447 11.9746 120.271 11.9746C120.982 11.9746 121.627 12.1231 122.204 12.42C122.781 12.7113 123.237 13.1596 123.574 13.7646C123.915 14.3641 124.086 15.1233 124.086 16.0421C124.086 16.1989 124.083 16.3894 124.078 16.6135C124.072 16.832 124.055 17.0505 124.027 17.269H118.489C118.5 17.622 118.579 17.9273 118.725 18.1851C118.876 18.4428 119.083 18.6445 119.346 18.7901C119.61 18.9302 119.921 19.0002 120.279 19.0002C120.705 19.0002 121.066 18.933 121.363 18.7985C121.66 18.6585 121.946 18.4316 122.221 18.1178L123.548 19.4708C123.162 19.9247 122.697 20.2888 122.153 20.5633C121.615 20.8323 120.988 20.9667 120.271 20.9667ZM118.514 15.5042H121.868C121.834 15.1737 121.75 14.8907 121.615 14.6554C121.481 14.4201 121.296 14.2437 121.061 14.126C120.831 14.0027 120.551 13.9411 120.22 13.9411C119.767 13.9411 119.383 14.0756 119.069 14.3445C118.761 14.6134 118.576 15 118.514 15.5042Z");
+			attr(path9, "fill", "white");
+			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
+			attr(svg, "width", "128");
+			attr(svg, "height", "29");
+			attr(svg, "viewBox", "0 0 128 29");
+			attr(svg, "fill", "none");
+			attr(a, "href", "https://landscape.cl/");
+			attr(a, "target", "_blank");
+			attr(div1, "class", "icon");
+			attr(div2, "class", "section-one svelte-35533q");
+			attr(div3, "class", "derechos svelte-35533q");
+			attr(div4, "class", "social-links svelte-35533q");
+			attr(footer, "class", "section-container  svelte-35533q");
+			attr(section, "class", "svelte-35533q");
 		},
 		m(target, anchor) {
-			insert_hydration(target, footer, anchor);
-			append_hydration(footer, div);
-			append_hydration(div, nav);
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				if (each_blocks_1[i]) {
-					each_blocks_1[i].m(nav, null);
-				}
-			}
-
-			append_hydration(div, t0);
-			append_hydration(div, span);
-			append_hydration(span, a);
-			append_hydration(a, t1);
-			append_hydration(span, t2);
-			append_hydration(div, t3);
-			append_hydration(div, ul);
+			insert_hydration(target, section, anchor);
+			append_hydration(section, footer);
+			append_hydration(footer, style);
+			append_hydration(style, t0);
+			append_hydration(footer, t1);
+			append_hydration(footer, div2);
+			append_hydration(div2, div0);
+			append_hydration(div0, t2);
+			append_hydration(div2, t3);
+			append_hydration(div2, div1);
+			append_hydration(div1, a);
+			append_hydration(a, svg);
+			append_hydration(svg, path0);
+			append_hydration(svg, path1);
+			append_hydration(svg, path2);
+			append_hydration(svg, path3);
+			append_hydration(svg, path4);
+			append_hydration(svg, path5);
+			append_hydration(svg, path6);
+			append_hydration(svg, path7);
+			append_hydration(svg, path8);
+			append_hydration(svg, path9);
+			append_hydration(footer, t4);
+			append_hydration(footer, div3);
+			append_hydration(div3, t5);
+			append_hydration(footer, t6);
+			append_hydration(footer, div4);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				if (each_blocks[i]) {
-					each_blocks[i].m(ul, null);
+					each_blocks[i].m(div4, null);
 				}
 			}
 
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*footer_nav*/ 2) {
-				each_value_1 = /*footer_nav*/ ctx[1];
-				let i;
+			if (!current || dirty & /*text*/ 1) set_data(t2, /*text*/ ctx[0]);
 
-				for (i = 0; i < each_value_1.length; i += 1) {
-					const child_ctx = get_each_context_1(ctx, each_value_1, i);
-
-					if (each_blocks_1[i]) {
-						each_blocks_1[i].p(child_ctx, dirty);
-					} else {
-						each_blocks_1[i] = create_each_block_1(child_ctx);
-						each_blocks_1[i].c();
-						each_blocks_1[i].m(nav, null);
-					}
-				}
-
-				for (; i < each_blocks_1.length; i += 1) {
-					each_blocks_1[i].d(1);
-				}
-
-				each_blocks_1.length = each_value_1.length;
-			}
-
-			if (dirty & /*social*/ 1) {
-				each_value = /*social*/ ctx[0];
+			if (dirty & /*social*/ 2) {
+				each_value = /*social*/ ctx[1];
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -3064,7 +3101,7 @@ function create_fragment(ctx) {
 						each_blocks[i] = create_each_block(child_ctx);
 						each_blocks[i].c();
 						transition_in(each_blocks[i], 1);
-						each_blocks[i].m(ul, null);
+						each_blocks[i].m(div4, null);
 					}
 				}
 
@@ -3096,8 +3133,7 @@ function create_fragment(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(footer);
-			destroy_each(each_blocks_1, detaching);
+			if (detaching) detach(section);
 			destroy_each(each_blocks, detaching);
 		}
 	};
@@ -3105,22 +3141,22 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
+	let { text } = $$props;
 	let { social } = $$props;
-	let { footer_nav } = $$props;
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(2, props = $$props.props);
-		if ('social' in $$props) $$invalidate(0, social = $$props.social);
-		if ('footer_nav' in $$props) $$invalidate(1, footer_nav = $$props.footer_nav);
+		if ('text' in $$props) $$invalidate(0, text = $$props.text);
+		if ('social' in $$props) $$invalidate(1, social = $$props.social);
 	};
 
-	return [social, footer_nav, props];
+	return [text, social, props];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { props: 2, social: 0, footer_nav: 1 });
+		init(this, options, instance, create_fragment, safe_not_equal, { props: 2, text: 0, social: 1 });
 	}
 }
 

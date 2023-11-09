@@ -1,4 +1,4 @@
-// Primary Hero - Updated October 10, 2023
+// Primary Hero - Updated November 9, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2891,6 +2891,10 @@ function create_fragment(ctx) {
 	let path0;
 	let path1;
 	let path2;
+	let t9;
+	let img;
+	let img_src_value;
+	let img_alt_value;
 	let current;
 	let if_block = /*link*/ ctx[0].label && create_if_block(ctx);
 
@@ -2919,6 +2923,8 @@ function create_fragment(ctx) {
 			path0 = svg_element("path");
 			path1 = svg_element("path");
 			path2 = svg_element("path");
+			t9 = space();
+			img = element("img");
 			this.h();
 		},
 		l(nodes) {
@@ -3008,6 +3014,15 @@ function create_fragment(ctx) {
 			svg_nodes.forEach(detach);
 			figure_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
+			t9 = claim_space(section_nodes);
+
+			img = claim_element(section_nodes, "IMG", {
+				class: true,
+				src: true,
+				alt: true,
+				style: true
+			});
+
 			section_nodes.forEach(detach);
 			this.h();
 		},
@@ -3047,6 +3062,12 @@ function create_fragment(ctx) {
 			attr(svg, "class", "svelte-z4ttaz");
 			attr(figure, "class", "svelte-z4ttaz");
 			attr(div2, "class", "section-container svelte-z4ttaz");
+			attr(img, "class", "image");
+			if (!src_url_equal(img.src, img_src_value = /*thumbnail*/ ctx[4].url)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*thumbnail*/ ctx[4].alt);
+			set_style(img, "display", "none");
+			set_style(img, "width", "1200px");
+			set_style(img, "height", "627px");
 			attr(section, "class", "svelte-z4ttaz");
 			toggle_class(section, "image-left", /*variation*/ ctx[2] === "image_left");
 		},
@@ -3074,6 +3095,8 @@ function create_fragment(ctx) {
 			append_hydration(svg, path0);
 			append_hydration(svg, path1);
 			append_hydration(svg, path2);
+			append_hydration(section, t9);
+			append_hydration(section, img);
 			current = true;
 		},
 		p(ctx, [dirty]) {
@@ -3103,6 +3126,14 @@ function create_fragment(ctx) {
 				check_outros();
 			}
 
+			if (!current || dirty & /*thumbnail*/ 16 && !src_url_equal(img.src, img_src_value = /*thumbnail*/ ctx[4].url)) {
+				attr(img, "src", img_src_value);
+			}
+
+			if (!current || dirty & /*thumbnail*/ 16 && img_alt_value !== (img_alt_value = /*thumbnail*/ ctx[4].alt)) {
+				attr(img, "alt", img_alt_value);
+			}
+
 			if (!current || dirty & /*variation*/ 4) {
 				toggle_class(section, "image-left", /*variation*/ ctx[2] === "image_left");
 			}
@@ -3130,17 +3161,19 @@ function instance($$self, $$props, $$invalidate) {
 	let { heading } = $$props;
 	let { variation } = $$props;
 	let { subheading } = $$props;
+	let { thumbnail } = $$props;
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(4, props = $$props.props);
+		if ('props' in $$props) $$invalidate(5, props = $$props.props);
 		if ('link' in $$props) $$invalidate(0, link = $$props.link);
-		if ('image' in $$props) $$invalidate(5, image = $$props.image);
+		if ('image' in $$props) $$invalidate(6, image = $$props.image);
 		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
 		if ('variation' in $$props) $$invalidate(2, variation = $$props.variation);
 		if ('subheading' in $$props) $$invalidate(3, subheading = $$props.subheading);
+		if ('thumbnail' in $$props) $$invalidate(4, thumbnail = $$props.thumbnail);
 	};
 
-	return [link, heading, variation, subheading, props, image];
+	return [link, heading, variation, subheading, thumbnail, props, image];
 }
 
 class Component extends SvelteComponent {
@@ -3148,12 +3181,13 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 4,
+			props: 5,
 			link: 0,
-			image: 5,
+			image: 6,
 			heading: 1,
 			variation: 2,
-			subheading: 3
+			subheading: 3,
+			thumbnail: 4
 		});
 	}
 }
