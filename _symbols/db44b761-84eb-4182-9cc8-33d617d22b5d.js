@@ -2920,7 +2920,7 @@ function create_fragment(ctx) {
 			path9 = svg_element("path");
 			t4 = space();
 			div3 = element("div");
-			t5 = text("ⓒ 2023, Todos los derechos reservados, Chile.");
+			t5 = text("ⓒ 2023. Todos los derechos reservados, Chile.");
 			t6 = space();
 			div4 = element("div");
 
@@ -2995,7 +2995,7 @@ function create_fragment(ctx) {
 			t4 = claim_space(footer_nodes);
 			div3 = claim_element(footer_nodes, "DIV", { class: true });
 			var div3_nodes = children(div3);
-			t5 = claim_text(div3_nodes, "ⓒ 2023, Todos los derechos reservados, Chile.");
+			t5 = claim_text(div3_nodes, "ⓒ 2023. Todos los derechos reservados, Chile.");
 			div3_nodes.forEach(detach);
 			t6 = claim_space(footer_nodes);
 			div4 = claim_element(footer_nodes, "DIV", { class: true });

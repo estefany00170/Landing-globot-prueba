@@ -2870,21 +2870,21 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-1drkj7c");
-			attr(div0, "class", "body svelte-1drkj7c");
-			attr(a0, "class", "button button-0 svelte-1drkj7c");
+			attr(h2, "class", "heading svelte-1agzb5t");
+			attr(div0, "class", "body svelte-1agzb5t");
+			attr(a0, "class", "button button-0 svelte-1agzb5t");
 			attr(a0, "href", "https://backoffice.globot.ai/dashboard/login");
 			attr(a0, "target", "_blank");
-			attr(a1, "class", "button button-1 svelte-1drkj7c");
+			attr(a1, "class", "button button-1 svelte-1agzb5t");
 			attr(a1, "href", "#contacto");
-			attr(div1, "class", "buttons svelte-1drkj7c");
+			attr(div1, "class", "buttons svelte-1agzb5t");
 			set_style(div2, "background-image", "url('" + /*background*/ ctx[2].url + "')");
 			attr(div2, "role", "img");
 			attr(div2, "aria-label", div2_aria_label_value = /*background*/ ctx[2].alt);
-			attr(div2, "class", "card svelte-1drkj7c");
+			attr(div2, "class", "card svelte-1agzb5t");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
-			attr(section, "class", "section-container svelte-1drkj7c");
+			attr(section, "class", "section-container svelte-1agzb5t");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
