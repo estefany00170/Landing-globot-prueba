@@ -2802,7 +2802,7 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		l(nodes) {
-			a = claim_element(nodes, "A", { href: true, class: true });
+			a = claim_element(nodes, "A", { href: true, target: true, class: true });
 			var a_nodes = children(a);
 			span = claim_element(a_nodes, "SPAN", { class: true });
 			var span_nodes = children(span);
@@ -2817,6 +2817,7 @@ function create_each_block(ctx) {
 		h() {
 			attr(span, "class", "icon svelte-s3g7hi");
 			attr(a, "href", a_href_value = /*link*/ ctx[6].url);
+			attr(a, "target", "_blank");
 			attr(a, "class", "svelte-s3g7hi");
 		},
 		m(target, anchor) {
