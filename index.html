@@ -165,15 +165,13 @@ section.svelte-1cuo8y0.svelte-1cuo8y0{background:var(--Primary-1, #603FDF)}.sect
     </head>
     <body id="page">
       <script src="http://127.0.0.1:4200/assets/chat.js" type="text/javascript" defer=""></script>
-                <script defer="">
-document.addEventListener('DOMContentLoaded', function () {
-	var chatConfig = {
-		token: "5a4ede66-cfef-40ad-bad5-027342df3aad",
-		botId: "60d9b4c7-01d7-4ec6-ad34-f2504a58866a",
-	};
-	initializeChatWidget(chatConfig);
-});
-</script>
+                <script defer="">document.addEventListener('DOMContentLoaded', function () {
+    var host = window.location.host; 
+    var chatConfig = {
+    	host: host,
+    };
+    initializeChatWidget(chatConfig);
+});</script>
           
        
 <div class="section" id="section-df2f8dfc"><header class="svelte-18avcms"><div class="section-container svelte-18avcms"><div class="desktop-nav svelte-18avcms"><a href="/" class="logo svelte-18avcms" style="--size: 8rem;"><img src="https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1694636535864logo.png" alt=""></a>
