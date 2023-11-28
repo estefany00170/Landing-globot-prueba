@@ -1,4 +1,4 @@
-// Featured List - Updated November 9, 2023
+// Featured List - Updated November 28, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2777,7 +2777,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (97:4) {#each cards as card}
+// (98:4) {#each cards as card}
 function create_each_block(ctx) {
 	let li;
 	let h3;
@@ -2840,10 +2840,10 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span1, "class", "label svelte-w4suyq");
-			attr(h3, "class", "title svelte-w4suyq");
-			attr(div, "class", "description svelte-w4suyq");
-			attr(li, "class", "svelte-w4suyq");
+			attr(span1, "class", "label svelte-593ezy");
+			attr(h3, "class", "title svelte-593ezy");
+			attr(div, "class", "description svelte-593ezy");
+			attr(li, "class", "svelte-593ezy");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -2881,7 +2881,7 @@ function create_each_block(ctx) {
 	};
 }
 
-// (113:4) {#if button.link.label}
+// (114:4) {#if button.link.label}
 function create_if_block(ctx) {
 	let a;
 	let t0_value = /*button*/ ctx[1].link.label + "";
@@ -2913,7 +2913,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "class", "button svelte-w4suyq");
+			attr(a, "class", "button svelte-593ezy");
 			attr(a, "target", "_blank");
 			attr(a, "href", a_href_value = /*button*/ ctx[1].link.url);
 		},
@@ -3017,9 +3017,9 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-w4suyq");
-			attr(ul, "class", "svelte-w4suyq");
-			attr(section, "class", "section-container svelte-w4suyq");
+			attr(h2, "class", "heading svelte-593ezy");
+			attr(ul, "class", "svelte-593ezy");
+			attr(section, "class", "section-container svelte-593ezy");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);

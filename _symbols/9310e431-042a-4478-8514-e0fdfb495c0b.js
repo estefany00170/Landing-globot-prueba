@@ -1,4 +1,4 @@
-// Primary Hero - Updated November 9, 2023
+// Primary Hero - Updated November 28, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2910,7 +2910,7 @@ function create_fragment(ctx) {
 			t2 = text(/*heading*/ ctx[1]);
 			t3 = space();
 			div0 = element("div");
-			t4 = text(/*subheading*/ ctx[3]);
+			t4 = text(/*subheading*/ ctx[4]);
 			t5 = space();
 			if (if_block) if_block.c();
 			t6 = space();
@@ -2946,7 +2946,7 @@ function create_fragment(ctx) {
 			t3 = claim_space(div1_nodes);
 			div0 = claim_element(div1_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
-			t4 = claim_text(div0_nodes, /*subheading*/ ctx[3]);
+			t4 = claim_text(div0_nodes, /*subheading*/ ctx[4]);
 			div0_nodes.forEach(detach);
 			t5 = claim_space(div1_nodes);
 			if (if_block) if_block.l(div1_nodes);
@@ -3032,7 +3032,7 @@ function create_fragment(ctx) {
 			attr(div1, "class", "body svelte-z4ttaz");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
-			if (!src_url_equal(dotlottie_player.src, dotlottie_player_src_value = "https://lottie.host/ad4ba34c-42de-4a1e-846a-8d0e482ddd1f/oU4AfCBPcn.json")) set_custom_element_data(dotlottie_player, "src", dotlottie_player_src_value);
+			if (!src_url_equal(dotlottie_player.src, dotlottie_player_src_value = "https://lottie.host/e98944e0-d04e-4053-a69d-eee221f78359/VWFVOJ8R6m.json")) set_custom_element_data(dotlottie_player, "src", dotlottie_player_src_value);
 			set_custom_element_data(dotlottie_player, "background", "transparent");
 			set_custom_element_data(dotlottie_player, "speed", "1");
 			set_style(dotlottie_player, "width", "100%");
@@ -3063,13 +3063,13 @@ function create_fragment(ctx) {
 			attr(figure, "class", "svelte-z4ttaz");
 			attr(div2, "class", "section-container svelte-z4ttaz");
 			attr(img, "class", "image");
-			if (!src_url_equal(img.src, img_src_value = /*thumbnail*/ ctx[4].url)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*thumbnail*/ ctx[4].alt);
+			if (!src_url_equal(img.src, img_src_value = /*thumbnail*/ ctx[2].url)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*thumbnail*/ ctx[2].alt);
 			set_style(img, "display", "none");
 			set_style(img, "width", "1200px");
 			set_style(img, "height", "627px");
 			attr(section, "class", "svelte-z4ttaz");
-			toggle_class(section, "image-left", /*variation*/ ctx[2] === "image_left");
+			toggle_class(section, "image-left", /*variation*/ ctx[3] === "image_left");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -3101,7 +3101,7 @@ function create_fragment(ctx) {
 		},
 		p(ctx, [dirty]) {
 			if (!current || dirty & /*heading*/ 2) set_data(t2, /*heading*/ ctx[1]);
-			if (!current || dirty & /*subheading*/ 8) set_data(t4, /*subheading*/ ctx[3]);
+			if (!current || dirty & /*subheading*/ 16) set_data(t4, /*subheading*/ ctx[4]);
 
 			if (/*link*/ ctx[0].label) {
 				if (if_block) {
@@ -3126,16 +3126,16 @@ function create_fragment(ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*thumbnail*/ 16 && !src_url_equal(img.src, img_src_value = /*thumbnail*/ ctx[4].url)) {
+			if (!current || dirty & /*thumbnail*/ 4 && !src_url_equal(img.src, img_src_value = /*thumbnail*/ ctx[2].url)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (!current || dirty & /*thumbnail*/ 16 && img_alt_value !== (img_alt_value = /*thumbnail*/ ctx[4].alt)) {
+			if (!current || dirty & /*thumbnail*/ 4 && img_alt_value !== (img_alt_value = /*thumbnail*/ ctx[2].alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 
-			if (!current || dirty & /*variation*/ 4) {
-				toggle_class(section, "image-left", /*variation*/ ctx[2] === "image_left");
+			if (!current || dirty & /*variation*/ 8) {
+				toggle_class(section, "image-left", /*variation*/ ctx[3] === "image_left");
 			}
 		},
 		i(local) {
@@ -3159,21 +3159,21 @@ function instance($$self, $$props, $$invalidate) {
 	let { link } = $$props;
 	let { image } = $$props;
 	let { heading } = $$props;
+	let { thumbnail } = $$props;
 	let { variation } = $$props;
 	let { subheading } = $$props;
-	let { thumbnail } = $$props;
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(5, props = $$props.props);
 		if ('link' in $$props) $$invalidate(0, link = $$props.link);
 		if ('image' in $$props) $$invalidate(6, image = $$props.image);
 		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
-		if ('variation' in $$props) $$invalidate(2, variation = $$props.variation);
-		if ('subheading' in $$props) $$invalidate(3, subheading = $$props.subheading);
-		if ('thumbnail' in $$props) $$invalidate(4, thumbnail = $$props.thumbnail);
+		if ('thumbnail' in $$props) $$invalidate(2, thumbnail = $$props.thumbnail);
+		if ('variation' in $$props) $$invalidate(3, variation = $$props.variation);
+		if ('subheading' in $$props) $$invalidate(4, subheading = $$props.subheading);
 	};
 
-	return [link, heading, variation, subheading, thumbnail, props, image];
+	return [link, heading, thumbnail, variation, subheading, props, image];
 }
 
 class Component extends SvelteComponent {
@@ -3185,9 +3185,9 @@ class Component extends SvelteComponent {
 			link: 0,
 			image: 6,
 			heading: 1,
-			variation: 2,
-			subheading: 3,
-			thumbnail: 4
+			thumbnail: 2,
+			variation: 3,
+			subheading: 4
 		});
 	}
 }
