@@ -1,4 +1,4 @@
-// casos de uso - Updated November 28, 2023
+// casos de uso - Updated December 12, 2023
 function noop() { }
 function run(fn) {
     return fn();
