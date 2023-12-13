@@ -1,4 +1,4 @@
-// footer - Updated December 12, 2023
+// footer - Updated December 13, 2023
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2773,23 +2773,23 @@ let Component$1 = class Component extends SvelteComponent {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[3] = list[i].link;
-	child_ctx[4] = list[i].icon;
+	child_ctx[4] = list[i].link;
+	child_ctx[5] = list[i].icon;
 	return child_ctx;
 }
 
-// (144:6) {#each social as { link, icon }}
+// (157:6) {#each social as { link, icon }}
 function create_each_block(ctx) {
 	let a;
 	let span;
 	let icon;
 	let t0;
-	let t1_value = /*link*/ ctx[3].label + "";
+	let t1_value = /*link*/ ctx[4].label + "";
 	let t1;
 	let t2;
 	let a_href_value;
 	let current;
-	icon = new Component$1({ props: { icon: /*icon*/ ctx[4] } });
+	icon = new Component$1({ props: { icon: /*icon*/ ctx[5] } });
 
 	return {
 		c() {
@@ -2815,8 +2815,8 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "icon svelte-1cuo8y0");
-			attr(a, "href", a_href_value = /*link*/ ctx[3].url);
+			attr(span, "class", "icon svelte-z471gs");
+			attr(a, "href", a_href_value = /*link*/ ctx[4].url);
 			attr(a, "target", "_blank");
 		},
 		m(target, anchor) {
@@ -2830,11 +2830,11 @@ function create_each_block(ctx) {
 		},
 		p(ctx, dirty) {
 			const icon_changes = {};
-			if (dirty & /*social*/ 2) icon_changes.icon = /*icon*/ ctx[4];
+			if (dirty & /*social*/ 2) icon_changes.icon = /*icon*/ ctx[5];
 			icon.$set(icon_changes);
-			if ((!current || dirty & /*social*/ 2) && t1_value !== (t1_value = /*link*/ ctx[3].label + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*social*/ 2) && t1_value !== (t1_value = /*link*/ ctx[4].label + "")) set_data(t1, t1_value);
 
-			if (!current || dirty & /*social*/ 2 && a_href_value !== (a_href_value = /*link*/ ctx[3].url)) {
+			if (!current || dirty & /*social*/ 2 && a_href_value !== (a_href_value = /*link*/ ctx[4].url)) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -2865,7 +2865,7 @@ function create_fragment(ctx) {
 	let t2;
 	let t3;
 	let div1;
-	let a;
+	let a0;
 	let svg;
 	let path0;
 	let path1;
@@ -2882,6 +2882,12 @@ function create_fragment(ctx) {
 	let t5;
 	let t6;
 	let div4;
+	let t7;
+	let div5;
+	let a1;
+	let t8_value = /*politicas*/ ctx[2].label + "";
+	let t8;
+	let a1_href_value;
 	let current;
 	let each_value = /*social*/ ctx[1];
 	let each_blocks = [];
@@ -2906,7 +2912,7 @@ function create_fragment(ctx) {
 			t2 = text(/*text*/ ctx[0]);
 			t3 = space();
 			div1 = element("div");
-			a = element("a");
+			a0 = element("a");
 			svg = svg_element("svg");
 			path0 = svg_element("path");
 			path1 = svg_element("path");
@@ -2928,6 +2934,10 @@ function create_fragment(ctx) {
 				each_blocks[i].c();
 			}
 
+			t7 = space();
+			div5 = element("div");
+			a1 = element("a");
+			t8 = text(t8_value);
 			this.h();
 		},
 		l(nodes) {
@@ -2949,10 +2959,10 @@ function create_fragment(ctx) {
 			t3 = claim_space(div2_nodes);
 			div1 = claim_element(div2_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
-			a = claim_element(div1_nodes, "A", { href: true, target: true });
-			var a_nodes = children(a);
+			a0 = claim_element(div1_nodes, "A", { href: true, target: true });
+			var a0_nodes = children(a0);
 
-			svg = claim_svg_element(a_nodes, "svg", {
+			svg = claim_svg_element(a0_nodes, "svg", {
 				xmlns: true,
 				width: true,
 				height: true,
@@ -2989,7 +2999,7 @@ function create_fragment(ctx) {
 			path9 = claim_svg_element(svg_nodes, "path", { d: true, fill: true });
 			children(path9).forEach(detach);
 			svg_nodes.forEach(detach);
-			a_nodes.forEach(detach);
+			a0_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
 			t4 = claim_space(footer_nodes);
@@ -3006,12 +3016,20 @@ function create_fragment(ctx) {
 			}
 
 			div4_nodes.forEach(detach);
+			t7 = claim_space(footer_nodes);
+			div5 = claim_element(footer_nodes, "DIV", { class: true });
+			var div5_nodes = children(div5);
+			a1 = claim_element(div5_nodes, "A", { href: true, target: true });
+			var a1_nodes = children(a1);
+			t8 = claim_text(a1_nodes, t8_value);
+			a1_nodes.forEach(detach);
+			div5_nodes.forEach(detach);
 			footer_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "text svelte-1cuo8y0");
+			attr(div0, "class", "text svelte-z471gs");
 			attr(path0, "fill-rule", "evenodd");
 			attr(path0, "clip-rule", "evenodd");
 			attr(path0, "d", "M16.4842 1.76923C16.1489 1.76923 15.8619 1.94833 15.7109 2.2163C15.707 2.22327 15.703 2.23018 15.6989 2.23704L1.85071 25.3302C1.80055 25.435 1.76923 25.5621 1.76923 25.7027C1.76923 26.1902 2.16664 26.5902 2.65677 26.5902C2.9156 26.5902 3.13659 26.4891 3.30089 26.3187C3.30194 26.3176 3.30298 26.3164 3.30403 26.3153L3.33182 26.2835C3.35906 26.2525 3.39905 26.2071 3.45112 26.1484C3.55526 26.0312 3.70777 25.861 3.90333 25.6469C4.29435 25.2187 4.85799 24.6142 5.55159 23.9052C6.93657 22.4895 8.84967 20.647 10.9478 18.9592C13.5616 16.8597 16.6194 14.8302 19.5299 13.9748C20.9941 13.5445 22.4774 13.3942 23.8708 13.7306C23.9161 13.7415 23.9611 13.7529 24.006 13.7648L17.2601 2.22101C17.1059 1.95121 16.8137 1.76923 16.4842 1.76923ZM27.6218 16.4456C27.5977 16.3913 27.5677 16.3387 27.5318 16.2886C27.5286 16.2842 27.5254 16.2797 27.5223 16.2753L18.7939 1.33915C18.339 0.546326 17.4764 0 16.4842 0C15.5007 0 14.6352 0.53078 14.176 1.33639L0.316097 24.4491C0.306435 24.4652 0.29729 24.4817 0.288673 24.4984C0.101336 24.8613 0 25.2745 0 25.7027C0 27.1623 1.1846 28.3595 2.65677 28.3595C3.36994 28.3595 4.01256 28.0847 4.49188 27.6288C11.7876 23.7207 21.1591 23.9354 28.4629 27.9002C28.8945 28.1964 29.4133 28.359 29.9541 28.359C31.4137 28.359 32.6109 27.1744 32.6109 25.7022C32.6109 25.2486 32.4955 24.8268 32.3034 24.4602C32.2972 24.4479 32.2906 24.4357 32.2838 24.4235C32.2572 24.3746 32.2292 24.3268 32.2 24.28L27.6218 16.4456ZM26.0398 17.245C25.2872 16.2262 24.4097 15.6807 23.4557 15.4504C22.4576 15.2095 21.3045 15.2973 20.0287 15.6723C18.1896 16.2128 16.2134 17.3141 14.2977 18.6521C17.6625 18.9271 21.0016 20.5004 23.6224 22.098C25.3422 23.1464 26.8055 24.238 27.8384 25.0668C28.3555 25.4817 28.7664 25.8321 29.0494 26.08C29.191 26.204 29.3007 26.3025 29.3757 26.3707C29.3877 26.3816 29.3987 26.3916 29.4089 26.4009C29.4155 26.4057 29.4221 26.4107 29.4287 26.4157C29.5693 26.5239 29.752 26.5897 29.9541 26.5897C30.4416 26.5897 30.8416 26.1923 30.8416 25.7022C30.8416 25.555 30.8051 25.4139 30.7386 25.2857L30.6889 25.2008C30.6849 25.1946 30.6809 25.1886 30.6767 25.1825C30.6492 25.1423 30.6254 25.1005 30.6054 25.0578L26.0398 17.245ZM23.2777 23.9677C23.0892 23.8478 22.8971 23.7279 22.7016 23.6087C19.4426 21.6222 15.4386 19.9381 11.8774 20.4828C10.2685 21.7907 8.77114 23.1907 7.55745 24.3957C12.5866 22.7263 18.1357 22.6167 23.2777 23.9677Z");
@@ -3039,14 +3057,17 @@ function create_fragment(ctx) {
 			attr(svg, "height", "29");
 			attr(svg, "viewBox", "0 0 128 29");
 			attr(svg, "fill", "none");
-			attr(a, "href", "https://landscape.cl/");
-			attr(a, "target", "_blank");
+			attr(a0, "href", "https://landscape.cl/");
+			attr(a0, "target", "_blank");
 			attr(div1, "class", "icon");
-			attr(div2, "class", "section-one svelte-1cuo8y0");
-			attr(div3, "class", "derechos svelte-1cuo8y0");
-			attr(div4, "class", "social-links svelte-1cuo8y0");
-			attr(footer, "class", "section-container  svelte-1cuo8y0");
-			attr(section, "class", "svelte-1cuo8y0");
+			attr(div2, "class", "section-one svelte-z471gs");
+			attr(div3, "class", "derechos svelte-z471gs");
+			attr(div4, "class", "social-links svelte-z471gs");
+			attr(a1, "href", a1_href_value = /*politicas*/ ctx[2].url);
+			attr(a1, "target", "_blank");
+			attr(div5, "class", "politicas svelte-z471gs");
+			attr(footer, "class", "section-container  svelte-z471gs");
+			attr(section, "class", "svelte-z471gs");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -3059,8 +3080,8 @@ function create_fragment(ctx) {
 			append_hydration(div0, t2);
 			append_hydration(div2, t3);
 			append_hydration(div2, div1);
-			append_hydration(div1, a);
-			append_hydration(a, svg);
+			append_hydration(div1, a0);
+			append_hydration(a0, svg);
 			append_hydration(svg, path0);
 			append_hydration(svg, path1);
 			append_hydration(svg, path2);
@@ -3083,6 +3104,10 @@ function create_fragment(ctx) {
 				}
 			}
 
+			append_hydration(footer, t7);
+			append_hydration(footer, div5);
+			append_hydration(div5, a1);
+			append_hydration(a1, t8);
 			current = true;
 		},
 		p(ctx, [dirty]) {
@@ -3114,6 +3139,12 @@ function create_fragment(ctx) {
 
 				check_outros();
 			}
+
+			if ((!current || dirty & /*politicas*/ 4) && t8_value !== (t8_value = /*politicas*/ ctx[2].label + "")) set_data(t8, t8_value);
+
+			if (!current || dirty & /*politicas*/ 4 && a1_href_value !== (a1_href_value = /*politicas*/ ctx[2].url)) {
+				attr(a1, "href", a1_href_value);
+			}
 		},
 		i(local) {
 			if (current) return;
@@ -3144,20 +3175,28 @@ function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
 	let { text } = $$props;
 	let { social } = $$props;
+	let { politicas } = $$props;
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(2, props = $$props.props);
+		if ('props' in $$props) $$invalidate(3, props = $$props.props);
 		if ('text' in $$props) $$invalidate(0, text = $$props.text);
 		if ('social' in $$props) $$invalidate(1, social = $$props.social);
+		if ('politicas' in $$props) $$invalidate(2, politicas = $$props.politicas);
 	};
 
-	return [text, social, props];
+	return [text, social, politicas, props];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { props: 2, text: 0, social: 1 });
+
+		init(this, options, instance, create_fragment, safe_not_equal, {
+			props: 3,
+			text: 0,
+			social: 1,
+			politicas: 2
+		});
 	}
 }
 
