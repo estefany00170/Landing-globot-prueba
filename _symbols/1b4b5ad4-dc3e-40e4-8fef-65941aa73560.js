@@ -844,7 +844,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	let currentImage = '';
 	let currentAlt = '';
-	currentImage = 'https://media.discordapp.net/attachments/1151139117011320863/1158753417498460160/posibilidades1.png?ex=651d64b7&is=651c1337&hm=7d334da505da8464a23229fe34af0b954c9f1220bf68ae3719e77c1e95f53465&=&width=1072&height=1060';
+	currentImage = 'https://s3-alpha-sig.figma.com/img/959c/01f3/b3c6936ac396bcb52f468ebe164303cf?Expires=1708300800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cGk0PZkYwb~vesZ11svHF2GmC6LwoAmJz~X8y4HP0BtZfUUoat1I8Ua28I7onWAvPTv3gY4Z~n5HzC4Uhl77w5EWvBeRNh9Zt-5FiIstWvdfVq-B5Nqa~Yxu5mGe9RaEGxyAsXS64azu~yXmRHp--a3viVZHSQfuqAe90c3HoNsnCXdc02EJ6q0QiEtPe4vvgE8J6AeTA7LgG5-ATkvhF-odkW3lYlV-io3WSfEqez353C2~y8IlSEpqU4xmh1BpelDlScwaqS1S3jsYHmfN1zzYV3bOt0kj7nVbfG1is3MlPEVG3qZW-OcrQRbLDj9dyTOOz5YWwqE7UllZL2c~kA__';
 	currentAlt = 'Default image';
 	let previousButton = null;
 
