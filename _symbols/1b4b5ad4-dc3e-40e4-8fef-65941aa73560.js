@@ -1,4 +1,4 @@
-// casos de uso - Updated December 13, 2023
+// casos de uso - Updated February 5, 2024
 function noop() { }
 function run(fn) {
     return fn();
@@ -628,7 +628,7 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		l(nodes) {
-			section = claim_element(nodes, "SECTION", { class: true });
+			section = claim_element(nodes, "SECTION", { id: true, class: true });
 			var section_nodes = children(section);
 			style = claim_element(section_nodes, "STYLE", {});
 			var style_nodes = children(style);
@@ -712,30 +712,31 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "superhead svelte-1fwu062");
-			attr(h2, "class", "heading svelte-1fwu062");
+			attr(div0, "class", "superhead svelte-xcajci");
+			attr(h2, "class", "heading svelte-xcajci");
 			attr(div1, "class", "subheading");
-			attr(header, "class", "heading-group svelte-1fwu062");
-			attr(span0, "class", "title svelte-1fwu062");
-			attr(span1, "class", "description svelte-1fwu062");
+			attr(header, "class", "heading-group svelte-xcajci");
+			attr(span0, "class", "title svelte-xcajci");
+			attr(span1, "class", "description svelte-xcajci");
 			attr(button0, "id", "box1");
-			attr(button0, "class", "card svelte-1fwu062");
-			attr(span2, "class", "title svelte-1fwu062");
-			attr(span3, "class", "description svelte-1fwu062");
+			attr(button0, "class", "card svelte-xcajci");
+			attr(span2, "class", "title svelte-xcajci");
+			attr(span3, "class", "description svelte-xcajci");
 			attr(button1, "id", "box2");
-			attr(button1, "class", "card svelte-1fwu062");
-			attr(span4, "class", "title svelte-1fwu062");
-			attr(span5, "class", "description svelte-1fwu062");
+			attr(button1, "class", "card svelte-xcajci");
+			attr(span4, "class", "title svelte-xcajci");
+			attr(span5, "class", "description svelte-xcajci");
 			attr(button2, "id", "box3");
-			attr(button2, "class", "card svelte-1fwu062");
-			attr(div2, "class", "cards svelte-1fwu062");
+			attr(button2, "class", "card svelte-xcajci");
+			attr(div2, "class", "cards svelte-xcajci");
 			attr(img, "id", "imgbox");
 			if (!src_url_equal(img.src, img_src_value = /*currentImage*/ ctx[3])) attr(img, "src", img_src_value);
 			attr(img, "alt", /*currentAlt*/ ctx[4]);
-			attr(img, "class", "svelte-1fwu062");
-			attr(div3, "class", "image svelte-1fwu062");
-			attr(div4, "class", "content  svelte-1fwu062");
-			attr(section, "class", "section-container svelte-1fwu062");
+			attr(img, "class", "svelte-xcajci");
+			attr(div3, "class", "image svelte-xcajci");
+			attr(div4, "class", "content  svelte-xcajci");
+			attr(section, "id", "benefits");
+			attr(section, "class", "section-container svelte-xcajci");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -822,22 +823,22 @@ function instance($$self, $$props, $$invalidate) {
 
 	let tarjetas = [
 		{
-			title: 'Atención al cliente',
-			description: 'Tu chatbot responderá preguntas frecuentes, brindará asistencia inmediata y aliviará carga del personal de atención al cliente.',
-			image: 'https://media.discordapp.net/attachments/1151139117011320863/1158753417498460160/posibilidades1.png?ex=651d64b7&is=651c1337&hm=7d334da505da8464a23229fe34af0b954c9f1220bf68ae3719e77c1e95f53465&=&width=1072&height=1060',
+			title: 'Atención al cliente 24/7',
+			description: 'Integrando un chatbot a tu tienda online aseguras atención a tus clientes todos los días hasta fuera del horario laboral.',
+			image: 'https://s3-alpha-sig.figma.com/img/959c/01f3/b3c6936ac396bcb52f468ebe164303cf?Expires=1708300800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cGk0PZkYwb~vesZ11svHF2GmC6LwoAmJz~X8y4HP0BtZfUUoat1I8Ua28I7onWAvPTv3gY4Z~n5HzC4Uhl77w5EWvBeRNh9Zt-5FiIstWvdfVq-B5Nqa~Yxu5mGe9RaEGxyAsXS64azu~yXmRHp--a3viVZHSQfuqAe90c3HoNsnCXdc02EJ6q0QiEtPe4vvgE8J6AeTA7LgG5-ATkvhF-odkW3lYlV-io3WSfEqez353C2~y8IlSEpqU4xmh1BpelDlScwaqS1S3jsYHmfN1zzYV3bOt0kj7nVbfG1is3MlPEVG3qZW-OcrQRbLDj9dyTOOz5YWwqE7UllZL2c~kA__',
 			alt: image1
 		},
 		{
-			title: 'Consultas rápidas de PDF',
-			description: 'Tu chatbot te ayudará a encontrar información en tus documentos de forma rápida.',
-			image: 'https://media.discordapp.net/attachments/1151139117011320863/1158753418115043338/posibilidades3.png?ex=651d64b7&is=651c1337&hm=d8dc37b227aac10d2e9d7ecc54f35f5468b2d2e30fff4ca25f76260e41c3af09&=&width=1072&height=1060',
+			title: 'Reducción de tiempos de espera',
+			description: 'Un chatbot maneja múltiples consultas simultáneamente, lo que reduce los tiempos de espera para tus clientes.',
+			image: 'https://s3-alpha-sig.figma.com/img/c479/3a41/8f697dbec235d14caeb43cc22e6ba884?Expires=1708300800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JVSo8Vw5eRAFONDHBKeIf~oqYmXx89AhpdfAlmOx6lgrPscPrxG4OuIDFLAutHG7nYmVOJL1wFTquqgOBDOh45DwWm3cgsyQs3Pp6zmSuo6cqpNX-1sqNjn95lXk8C2jKUpmNWxDiRH3sBZyKAkFZZwF0cgzAEtAXPUzyMeyHLJppurJJ6tPNaweMtRqJcHfVU1543fMmIZh1D5fzATzeYNZCMjbcwcFVJyZc6I6G74vmI4IDeL1lvjlXEnIi036pKQfUnGOiCRwqdQ5-V4xz5V7qbyp~0bgWkU6-jyGTzzgrguSEtgtEwUlyZ98tGqTMGK~N-uZ7KfxjkgRB7eAIA__',
 			alt: image2
 		},
 		{
-			title: 'Experiencia de usuario personalizada',
-			description: 'Podrás crear un chatbot adaptado a los usuarios de tu sitio, para que realicen consultas específicas.',
-			image: 'https://media.discordapp.net/attachments/1151139117011320863/1158753417783689277/posibilidades2.png?ex=651d64b7&is=651c1337&hm=502608768350d5a1d7deaecce62f97ad73d54f0131d694411a67e63fa4e6683a&=&width=1072&height=1060',
-			alt: image2
+			title: 'Información difícil de encontrar',
+			description: 'Un chatbot ayudará a tus clientes a encontrar información rápidamente mejorando la experiencia de tu servicio.',
+			image: 'https://s3-alpha-sig.figma.com/img/c1cf/94e5/3a681f112f7d492f8918939bf206dae0?Expires=1708300800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YR2iwDMxFzcKfw8IYLQwZ9FMgG0qjje9FCUp60R5KZXXmDjpjj-1DNNfih7bsEY1qDcMD5miigIMiOJmHB8~tZ5-uZokThIIkH~KhTeXtgE9ZmTuJHMlzpqZYGeJkpZ4UTOMMYYiAZv4565zZZOgle6J7ntlPIcYeEt7D8Wq5nLcHZ-hit8BKyD8VYo~zHkTDjHDJy-HMGrilg9mfddtLpr8Ax3LmW5mpYCZdK0yN3es6pVbVQpZG2rYtHRjHl4lNDxa1lZcnGLSSgfggIDxMxw4svIIGFEHRuEhMH0a8TupJb1dPrYqOVQMHXTM-jktgQDLFgHEciGW-8cuQ2kaLQ__',
+			alt: image3
 		}
 	];
 

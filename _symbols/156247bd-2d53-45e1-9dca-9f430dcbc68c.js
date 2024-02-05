@@ -1,4 +1,4 @@
-// beneficios - Updated December 13, 2023
+// beneficios - Updated February 5, 2024
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -1070,6 +1070,35 @@ function calculateSize(size, ratio, precision) {
   }
 }
 
+function splitSVGDefs(content, tag = "defs") {
+  let defs = "";
+  const index = content.indexOf("<" + tag);
+  while (index >= 0) {
+    const start = content.indexOf(">", index);
+    const end = content.indexOf("</" + tag);
+    if (start === -1 || end === -1) {
+      break;
+    }
+    const endEnd = content.indexOf(">", end);
+    if (endEnd === -1) {
+      break;
+    }
+    defs += content.slice(start + 1, end).trim();
+    content = content.slice(0, index).trim() + content.slice(endEnd + 1);
+  }
+  return {
+    defs,
+    content
+  };
+}
+function mergeDefsAndContent(defs, content) {
+  return defs ? "<defs>" + defs + "</defs>" + content : content;
+}
+function wrapSVGContent(body, start, end) {
+  const split = splitSVGDefs(body);
+  return mergeDefsAndContent(split.defs, start + split.content + end);
+}
+
 const isUnsetKeyword = (value) => value === "unset" || value === "undefined" || value === "none";
 function iconToSVG(icon, customisations) {
   const fullIcon = {
@@ -1146,7 +1175,11 @@ function iconToSVG(icon, customisations) {
       }
     }
     if (transformations.length) {
-      body = '<g transform="' + transformations.join(" ") + '">' + body + "</g>";
+      body = wrapSVGContent(
+        body,
+        '<g transform="' + transformations.join(" ") + '">',
+        "</g>"
+      );
     }
   });
   const customisationsWidth = fullCustomisations.width;
@@ -1170,9 +1203,11 @@ function iconToSVG(icon, customisations) {
   };
   setAttr("width", width);
   setAttr("height", height);
-  attributes.viewBox = box.left.toString() + " " + box.top.toString() + " " + boxWidth.toString() + " " + boxHeight.toString();
+  const viewBox = [box.left, box.top, boxWidth, boxHeight];
+  attributes.viewBox = viewBox.join(" ");
   return {
     attributes,
+    viewBox,
     body
   };
 }
@@ -1809,6 +1844,7 @@ const browserCacheCountKey = browserCachePrefix + "-count";
 const browserCacheVersionKey = browserCachePrefix + "-version";
 const browserStorageHour = 36e5;
 const browserStorageCacheExpiration = 168;
+const browserStorageLimit = 50;
 
 function getStoredItem(func, key) {
   try {
@@ -1967,7 +2003,7 @@ function storeInBrowserStorage(storage, data) {
       set.delete(index = Array.from(set).shift());
     } else {
       index = getBrowserStorageItemsCount(func);
-      if (!setBrowserStorageItemsCount(func, index + 1)) {
+      if (index >= browserStorageLimit || !setBrowserStorageItemsCount(func, index + 1)) {
         return;
       }
     }
@@ -2572,7 +2608,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (113:1) {:else}
+// (115:1) {:else}
 function create_else_block(ctx) {
 	let span;
 	let span_levels = [/*data*/ ctx[0].attributes];
@@ -2607,7 +2643,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (109:1) {#if data.svg}
+// (111:1) {#if data.svg}
 function create_if_block_1(ctx) {
 	let svg;
 	let raw_value = /*data*/ ctx[0].body + "";
@@ -2784,7 +2820,7 @@ function get_each_context_1(ctx, list, i) {
 	return child_ctx;
 }
 
-// (120:4) {#each icon_list as { icon, label }}
+// (121:4) {#each icon_list as { icon, label }}
 function create_each_block_1(ctx) {
 	let li;
 	let span0;
@@ -2860,7 +2896,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (130:4) {#each cards as card}
+// (131:4) {#each cards as card}
 function create_each_block(ctx) {
 	let li;
 	let div0;
@@ -3028,7 +3064,7 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		l(nodes) {
-			section = claim_element(nodes, "SECTION", { id: true, class: true });
+			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
 			style = claim_element(section_nodes, "STYLE", {});
 			var style_nodes = children(style);
@@ -3079,7 +3115,6 @@ function create_fragment(ctx) {
 			attr(header, "class", "heading-group svelte-1reg39k");
 			attr(ul0, "class", "icon-list svelte-1reg39k");
 			attr(ul1, "class", "cards svelte-1reg39k");
-			attr(section, "id", "benefits");
 			attr(section, "class", "section-container svelte-1reg39k");
 		},
 		m(target, anchor) {
