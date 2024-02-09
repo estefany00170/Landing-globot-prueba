@@ -1,4 +1,4 @@
-// Box - Updated February 5, 2024
+// Box - Updated February 9, 2024
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -332,14 +332,6 @@ function set_data(text, data) {
     if (text.data === data)
         return;
     text.data = data;
-}
-function set_style(node, key, value, important) {
-    if (value == null) {
-        node.style.removeProperty(key);
-    }
-    else {
-        node.style.setProperty(key, value, important ? 'important' : '');
-    }
 }
 function custom_event(type, detail, { bubbles = false, cancelable = false } = {}) {
     const e = document.createEvent('CustomEvent');
@@ -2814,17 +2806,12 @@ function create_fragment(ctx) {
 	let raw_value = /*body*/ ctx[0].html + "";
 	let t2;
 	let div1;
-	let a0;
-	let span0;
+	let a;
+	let span;
 	let t3;
 	let t4;
 	let icon;
 	let t5;
-	let a1;
-	let span1;
-	let t6;
-	let div2_aria_label_value;
-	let t7;
 	let script;
 	let script_src_value;
 	let current;
@@ -2843,30 +2830,19 @@ function create_fragment(ctx) {
 			div0 = element("div");
 			t2 = space();
 			div1 = element("div");
-			a0 = element("a");
-			span0 = element("span");
+			a = element("a");
+			span = element("span");
 			t3 = text("Empezar prueba gratis");
 			t4 = space();
 			create_component(icon.$$.fragment);
 			t5 = space();
-			a1 = element("a");
-			span1 = element("span");
-			t6 = text("Contáctanos");
-			t7 = space();
 			script = element("script");
 			this.h();
 		},
 		l(nodes) {
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
-
-			div2 = claim_element(section_nodes, "DIV", {
-				style: true,
-				role: true,
-				"aria-label": true,
-				class: true
-			});
-
+			div2 = claim_element(section_nodes, "DIV", { class: true });
 			var div2_nodes = children(div2);
 			h2 = claim_element(div2_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
@@ -2879,26 +2855,18 @@ function create_fragment(ctx) {
 			t2 = claim_space(div2_nodes);
 			div1 = claim_element(div2_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
-			a0 = claim_element(div1_nodes, "A", { class: true, href: true, target: true });
-			var a0_nodes = children(a0);
-			span0 = claim_element(a0_nodes, "SPAN", {});
-			var span0_nodes = children(span0);
-			t3 = claim_text(span0_nodes, "Empezar prueba gratis");
-			span0_nodes.forEach(detach);
-			t4 = claim_space(a0_nodes);
-			claim_component(icon.$$.fragment, a0_nodes);
-			a0_nodes.forEach(detach);
-			t5 = claim_space(div1_nodes);
-			a1 = claim_element(div1_nodes, "A", { class: true, href: true });
-			var a1_nodes = children(a1);
-			span1 = claim_element(a1_nodes, "SPAN", {});
-			var span1_nodes = children(span1);
-			t6 = claim_text(span1_nodes, "Contáctanos");
-			span1_nodes.forEach(detach);
-			a1_nodes.forEach(detach);
+			a = claim_element(div1_nodes, "A", { class: true, href: true, target: true });
+			var a_nodes = children(a);
+			span = claim_element(a_nodes, "SPAN", {});
+			var span_nodes = children(span);
+			t3 = claim_text(span_nodes, "Empezar prueba gratis");
+			span_nodes.forEach(detach);
+			t4 = claim_space(a_nodes);
+			claim_component(icon.$$.fragment, a_nodes);
+			a_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
-			t7 = claim_space(section_nodes);
+			t5 = claim_space(section_nodes);
 			script = claim_element(section_nodes, "SCRIPT", { src: true, type: true });
 			var script_nodes = children(script);
 			script_nodes.forEach(detach);
@@ -2906,21 +2874,16 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-1agzb5t");
-			attr(div0, "class", "body svelte-1agzb5t");
-			attr(a0, "class", "button button-0 svelte-1agzb5t");
-			attr(a0, "href", "https://backoffice.globot.ai/dashboard/login");
-			attr(a0, "target", "_blank");
-			attr(a1, "class", "button button-1 svelte-1agzb5t");
-			attr(a1, "href", "#contacto");
-			attr(div1, "class", "buttons svelte-1agzb5t");
-			set_style(div2, "background-image", "url('" + /*background*/ ctx[2].url + "')");
-			attr(div2, "role", "img");
-			attr(div2, "aria-label", div2_aria_label_value = /*background*/ ctx[2].alt);
-			attr(div2, "class", "card svelte-1agzb5t");
+			attr(h2, "class", "heading svelte-9tot24");
+			attr(div0, "class", "body svelte-9tot24");
+			attr(a, "class", "button button-0 svelte-9tot24");
+			attr(a, "href", "https://backoffice.globot.ai/dashboard/login");
+			attr(a, "target", "_blank");
+			attr(div1, "class", "buttons svelte-9tot24");
+			attr(div2, "class", "card svelte-9tot24");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
-			attr(section, "class", "section-container svelte-1agzb5t");
+			attr(section, "class", "section-container svelte-9tot24");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -2932,30 +2895,18 @@ function create_fragment(ctx) {
 			div0.innerHTML = raw_value;
 			append_hydration(div2, t2);
 			append_hydration(div2, div1);
-			append_hydration(div1, a0);
-			append_hydration(a0, span0);
-			append_hydration(span0, t3);
-			append_hydration(a0, t4);
-			mount_component(icon, a0, null);
-			append_hydration(div1, t5);
-			append_hydration(div1, a1);
-			append_hydration(a1, span1);
-			append_hydration(span1, t6);
-			append_hydration(section, t7);
+			append_hydration(div1, a);
+			append_hydration(a, span);
+			append_hydration(span, t3);
+			append_hydration(a, t4);
+			mount_component(icon, a, null);
+			append_hydration(section, t5);
 			append_hydration(section, script);
 			current = true;
 		},
 		p(ctx, [dirty]) {
 			if (!current || dirty & /*heading*/ 2) set_data(t0, /*heading*/ ctx[1]);
-			if ((!current || dirty & /*body*/ 1) && raw_value !== (raw_value = /*body*/ ctx[0].html + "")) div0.innerHTML = raw_value;
-			if (!current || dirty & /*background*/ 4) {
-				set_style(div2, "background-image", "url('" + /*background*/ ctx[2].url + "')");
-			}
-
-			if (!current || dirty & /*background*/ 4 && div2_aria_label_value !== (div2_aria_label_value = /*background*/ ctx[2].alt)) {
-				attr(div2, "aria-label", div2_aria_label_value);
-			}
-		},
+			if ((!current || dirty & /*body*/ 1) && raw_value !== (raw_value = /*body*/ ctx[0].html + "")) div0.innerHTML = raw_value;		},
 		i(local) {
 			if (current) return;
 			transition_in(icon.$$.fragment, local);
@@ -2981,15 +2932,15 @@ function instance($$self, $$props, $$invalidate) {
 	let { background } = $$props;
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(3, props = $$props.props);
+		if ('props' in $$props) $$invalidate(2, props = $$props.props);
 		if ('body' in $$props) $$invalidate(0, body = $$props.body);
-		if ('button0' in $$props) $$invalidate(4, button0 = $$props.button0);
-		if ('button1' in $$props) $$invalidate(5, button1 = $$props.button1);
+		if ('button0' in $$props) $$invalidate(3, button0 = $$props.button0);
+		if ('button1' in $$props) $$invalidate(4, button1 = $$props.button1);
 		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
-		if ('background' in $$props) $$invalidate(2, background = $$props.background);
+		if ('background' in $$props) $$invalidate(5, background = $$props.background);
 	};
 
-	return [body, heading, background, props, button0, button1];
+	return [body, heading, props, button0, button1, background];
 }
 
 class Component extends SvelteComponent {
@@ -2997,12 +2948,12 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 3,
+			props: 2,
 			body: 0,
-			button0: 4,
-			button1: 5,
+			button0: 3,
+			button1: 4,
 			heading: 1,
-			background: 2
+			background: 5
 		});
 	}
 }
