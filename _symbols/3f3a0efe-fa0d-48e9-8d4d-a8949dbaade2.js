@@ -1,4 +1,4 @@
-// product box - Updated February 9, 2024
+// product box - Updated February 14, 2024
 function noop() { }
 function run(fn) {
     return fn();
@@ -14,14 +14,6 @@ function is_function(thing) {
 }
 function safe_not_equal(a, b) {
     return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
-}
-let src_url_equal_anchor;
-function src_url_equal(element_src, url) {
-    if (!src_url_equal_anchor) {
-        src_url_equal_anchor = document.createElement('a');
-    }
-    src_url_equal_anchor.href = url;
-    return element_src === src_url_equal_anchor.href;
 }
 function is_empty(obj) {
     return Object.keys(obj).length === 0;
@@ -1257,9 +1249,6 @@ function create_fragment(ctx) {
 	let t0;
 	let t1;
 	let div;
-	let img;
-	let img_src_value;
-	let img_alt_value;
 
 	return {
 		c() {
@@ -1268,7 +1257,6 @@ function create_fragment(ctx) {
 			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
 			t1 = space();
 			div = element("div");
-			img = element("img");
 			this.h();
 		},
 		l(nodes) {
@@ -1281,17 +1269,13 @@ function create_fragment(ctx) {
 			t1 = claim_space(section_nodes);
 			div = claim_element(section_nodes, "DIV", { class: true });
 			var div_nodes = children(div);
-			img = claim_element(div_nodes, "IMG", { class: true, src: true, alt: true });
 			div_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(img, "class", "image svelte-w72det");
-			if (!src_url_equal(img.src, img_src_value = /*image*/ ctx[0].url)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*image*/ ctx[0].alt);
-			attr(div, "class", "section-container svelte-w72det");
-			attr(section, "class", "svelte-w72det");
+			attr(div, "class", "section-container svelte-mjbkhi");
+			attr(section, "class", "svelte-mjbkhi");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -1299,17 +1283,8 @@ function create_fragment(ctx) {
 			append_hydration(style, t0);
 			append_hydration(section, t1);
 			append_hydration(section, div);
-			append_hydration(div, img);
 		},
-		p(ctx, [dirty]) {
-			if (dirty & /*image*/ 1 && !src_url_equal(img.src, img_src_value = /*image*/ ctx[0].url)) {
-				attr(img, "src", img_src_value);
-			}
-
-			if (dirty & /*image*/ 1 && img_alt_value !== (img_alt_value = /*image*/ ctx[0].alt)) {
-				attr(img, "alt", img_alt_value);
-			}
-		},
+		p: noop,
 		i: noop,
 		o: noop,
 		d(detaching) {
@@ -1326,14 +1301,14 @@ function instance($$self, $$props, $$invalidate) {
 	let { subheading } = $$props;
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(1, props = $$props.props);
-		if ('image' in $$props) $$invalidate(0, image = $$props.image);
+		if ('props' in $$props) $$invalidate(0, props = $$props.props);
+		if ('image' in $$props) $$invalidate(1, image = $$props.image);
 		if ('heading' in $$props) $$invalidate(2, heading = $$props.heading);
 		if ('superhead' in $$props) $$invalidate(3, superhead = $$props.superhead);
 		if ('subheading' in $$props) $$invalidate(4, subheading = $$props.subheading);
 	};
 
-	return [image, props, heading, superhead, subheading];
+	return [props, image, heading, superhead, subheading];
 }
 
 class Component extends SvelteComponent {
@@ -1341,8 +1316,8 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 1,
-			image: 0,
+			props: 0,
+			image: 1,
 			heading: 2,
 			superhead: 3,
 			subheading: 4
