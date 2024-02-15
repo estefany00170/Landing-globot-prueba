@@ -1,4 +1,4 @@
-// casos de uso - Updated February 14, 2024
+// casos de uso - Updated February 15, 2024
 function noop() { }
 function run(fn) {
     return fn();
@@ -825,26 +825,26 @@ function instance($$self, $$props, $$invalidate) {
 		{
 			title: 'Atención al cliente 24/7',
 			description: 'Integrando un chatbot a tu tienda online aseguras atención a tus clientes todos los días hasta fuera del horario laboral.',
-			image: 'https://s3-alpha-sig.figma.com/img/959c/01f3/b3c6936ac396bcb52f468ebe164303cf?Expires=1708300800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cGk0PZkYwb~vesZ11svHF2GmC6LwoAmJz~X8y4HP0BtZfUUoat1I8Ua28I7onWAvPTv3gY4Z~n5HzC4Uhl77w5EWvBeRNh9Zt-5FiIstWvdfVq-B5Nqa~Yxu5mGe9RaEGxyAsXS64azu~yXmRHp--a3viVZHSQfuqAe90c3HoNsnCXdc02EJ6q0QiEtPe4vvgE8J6AeTA7LgG5-ATkvhF-odkW3lYlV-io3WSfEqez353C2~y8IlSEpqU4xmh1BpelDlScwaqS1S3jsYHmfN1zzYV3bOt0kj7nVbfG1is3MlPEVG3qZW-OcrQRbLDj9dyTOOz5YWwqE7UllZL2c~kA__',
+			image: 'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1708018487971Customer%20support.svg',
 			alt: image1
 		},
 		{
 			title: 'Reducción de tiempos de espera',
 			description: 'Un chatbot maneja múltiples consultas simultáneamente, lo que reduce los tiempos de espera para tus clientes.',
-			image: 'https://s3-alpha-sig.figma.com/img/c479/3a41/8f697dbec235d14caeb43cc22e6ba884?Expires=1708300800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JVSo8Vw5eRAFONDHBKeIf~oqYmXx89AhpdfAlmOx6lgrPscPrxG4OuIDFLAutHG7nYmVOJL1wFTquqgOBDOh45DwWm3cgsyQs3Pp6zmSuo6cqpNX-1sqNjn95lXk8C2jKUpmNWxDiRH3sBZyKAkFZZwF0cgzAEtAXPUzyMeyHLJppurJJ6tPNaweMtRqJcHfVU1543fMmIZh1D5fzATzeYNZCMjbcwcFVJyZc6I6G74vmI4IDeL1lvjlXEnIi036pKQfUnGOiCRwqdQ5-V4xz5V7qbyp~0bgWkU6-jyGTzzgrguSEtgtEwUlyZ98tGqTMGK~N-uZ7KfxjkgRB7eAIA__',
+			image: 'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1708018740650Save%20time.svg',
 			alt: image2
 		},
 		{
 			title: 'Información difícil de encontrar',
 			description: 'Un chatbot ayudará a tus clientes a encontrar información rápidamente mejorando la experiencia de tu servicio.',
-			image: 'https://s3-alpha-sig.figma.com/img/c1cf/94e5/3a681f112f7d492f8918939bf206dae0?Expires=1708300800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YR2iwDMxFzcKfw8IYLQwZ9FMgG0qjje9FCUp60R5KZXXmDjpjj-1DNNfih7bsEY1qDcMD5miigIMiOJmHB8~tZ5-uZokThIIkH~KhTeXtgE9ZmTuJHMlzpqZYGeJkpZ4UTOMMYYiAZv4565zZZOgle6J7ntlPIcYeEt7D8Wq5nLcHZ-hit8BKyD8VYo~zHkTDjHDJy-HMGrilg9mfddtLpr8Ax3LmW5mpYCZdK0yN3es6pVbVQpZG2rYtHRjHl4lNDxa1lZcnGLSSgfggIDxMxw4svIIGFEHRuEhMH0a8TupJb1dPrYqOVQMHXTM-jktgQDLFgHEciGW-8cuQ2kaLQ__',
+			image: 'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1708018818022Searching.svg',
 			alt: image3
 		}
 	];
 
 	let currentImage = '';
 	let currentAlt = '';
-	currentImage = 'https://s3-alpha-sig.figma.com/img/959c/01f3/b3c6936ac396bcb52f468ebe164303cf?Expires=1708300800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cGk0PZkYwb~vesZ11svHF2GmC6LwoAmJz~X8y4HP0BtZfUUoat1I8Ua28I7onWAvPTv3gY4Z~n5HzC4Uhl77w5EWvBeRNh9Zt-5FiIstWvdfVq-B5Nqa~Yxu5mGe9RaEGxyAsXS64azu~yXmRHp--a3viVZHSQfuqAe90c3HoNsnCXdc02EJ6q0QiEtPe4vvgE8J6AeTA7LgG5-ATkvhF-odkW3lYlV-io3WSfEqez353C2~y8IlSEpqU4xmh1BpelDlScwaqS1S3jsYHmfN1zzYV3bOt0kj7nVbfG1is3MlPEVG3qZW-OcrQRbLDj9dyTOOz5YWwqE7UllZL2c~kA__';
+	currentImage = 'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1708018487971Customer%20support.svg';
 	currentAlt = 'Default image';
 	let previousButton = null;
 
