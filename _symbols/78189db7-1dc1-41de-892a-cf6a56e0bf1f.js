@@ -1,4 +1,4 @@
-// Box - Updated February 15, 2024
+// Box - Updated February 16, 2024
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2811,7 +2811,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(img, "class", "background svelte-1ci13jw");
+			attr(img, "class", "background svelte-1u1zt3g");
 			if (!src_url_equal(img.src, img_src_value = /*background*/ ctx[2].url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*background*/ ctx[2].alt);
 		},
@@ -2917,16 +2917,16 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-1ci13jw");
-			attr(div0, "class", "body svelte-1ci13jw");
-			attr(a, "class", "button button-0 svelte-1ci13jw");
+			attr(h2, "class", "heading svelte-1u1zt3g");
+			attr(div0, "class", "body svelte-1u1zt3g");
+			attr(a, "class", "button button-0 svelte-1u1zt3g");
 			attr(a, "href", "https://backoffice.globot.ai/dashboard/login");
 			attr(a, "target", "_blank");
-			attr(div1, "class", "buttons svelte-1ci13jw");
-			attr(div2, "class", "card svelte-1ci13jw");
+			attr(div1, "class", "buttons svelte-1u1zt3g");
+			attr(div2, "class", "card svelte-1u1zt3g");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
-			attr(section, "class", "section-container svelte-1ci13jw");
+			attr(section, "class", "section-container svelte-1u1zt3g");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);

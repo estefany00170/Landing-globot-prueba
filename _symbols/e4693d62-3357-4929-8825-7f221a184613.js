@@ -1,4 +1,4 @@
-// Featured List - Updated February 15, 2024
+// Featured List - Updated February 16, 2024
 function noop() { }
 function run(fn) {
     return fn();
@@ -1362,7 +1362,7 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-w9dlob");
+			attr(h2, "class", "heading svelte-5v49d8");
 			attr(iframe0, "width", "320");
 			attr(iframe0, "height", "634");
 			attr(iframe0, "id", "feed-1");
@@ -1381,8 +1381,8 @@ function create_fragment(ctx) {
 			attr(iframe2, "title", "widget-globot-3");
 			if (!src_url_equal(iframe2.src, iframe2_src_value = "https://www.instagram.com/p/C2lG1YivB2V/embed")) attr(iframe2, "src", iframe2_src_value);
 			attr(div2, "class", "card");
-			attr(div3, "class", "container svelte-w9dlob");
-			attr(section, "class", "section-container svelte-w9dlob");
+			attr(div3, "class", "container svelte-5v49d8");
+			attr(section, "class", "section-container svelte-5v49d8");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);

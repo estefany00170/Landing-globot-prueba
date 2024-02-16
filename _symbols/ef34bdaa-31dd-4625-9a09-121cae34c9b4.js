@@ -1,4 +1,4 @@
-// Header - Updated February 15, 2024
+// Header - Updated February 16, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3618,7 +3618,13 @@ function create_fragment(ctx) {
 			}
 		});
 
-	icon2 = new Component$1({ props: { icon: "ic:round-menu" } });
+	icon2 = new Component$1({
+			props: {
+				icon: "ic:round-menu",
+				style: "width: 38px; height:38px "
+			}
+		});
+
 	let if_block1 = /*mobileNavOpen*/ ctx[3] && create_if_block(ctx);
 
 	return {
