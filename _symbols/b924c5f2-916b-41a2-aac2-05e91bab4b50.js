@@ -2826,7 +2826,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (168:8) {#each cards as card, index}
+// (171:8) {#each cards as card, index}
 function create_each_block(ctx) {
 	let li;
 	let button;
@@ -2878,10 +2878,10 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "icon svelte-1kpd92e");
-			attr(h3, "class", "title svelte-1kpd92e");
+			attr(div, "class", "icon svelte-1bvrupy");
+			attr(h3, "class", "title svelte-1bvrupy");
 			attr(button, "class", "btn");
-			attr(li, "class", "svelte-1kpd92e");
+			attr(li, "class", "svelte-1bvrupy");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -3043,19 +3043,19 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "superhead svelte-1kpd92e");
-			attr(h2, "class", "heading svelte-1kpd92e");
-			attr(h3, "class", "subheading svelte-1kpd92e");
+			attr(span, "class", "superhead svelte-1bvrupy");
+			attr(h2, "class", "heading svelte-1bvrupy");
+			attr(h3, "class", "subheading svelte-1bvrupy");
 			attr(div0, "class", "heading-group");
-			attr(ul, "class", "cards svelte-1kpd92e");
+			attr(ul, "class", "cards svelte-1bvrupy");
 			attr(img, "id", "dynamic-image");
 			attr(img, "class", "img");
 			if (!src_url_equal(img.src, img_src_value = /*currentImage*/ ctx[4])) attr(img, "src", img_src_value);
 			attr(img, "alt", "Imagen dinámica");
-			attr(div1, "class", "image svelte-1kpd92e");
-			attr(div2, "class", "content svelte-1kpd92e");
-			attr(div3, "class", "section-container");
-			attr(section, "class", "svelte-1kpd92e");
+			attr(div1, "class", "image svelte-1bvrupy");
+			attr(div2, "class", "content svelte-1bvrupy");
+			attr(div3, "class", "section-container svelte-1bvrupy");
+			attr(section, "class", "svelte-1bvrupy");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
