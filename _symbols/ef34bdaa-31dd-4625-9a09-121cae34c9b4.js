@@ -3902,10 +3902,13 @@ function instance($$self, $$props, $$invalidate) {
 
 	site_nav = [
 		{
-			link: { url: "#benefits", label: "Beneficios" }
+			link: {
+				url: "#funcion",
+				label: "¿Cómo funciona?"
+			}
 		},
 		{
-			link: { url: "#producto", label: "Producto" }
+			link: { url: "#benefits", label: "Beneficios" }
 		},
 		{
 			link: { url: "#live-demo", label: "Live Demo" }
