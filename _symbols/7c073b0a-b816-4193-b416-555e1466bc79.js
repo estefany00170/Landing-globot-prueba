@@ -2814,7 +2814,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (143:6) {#each social as { link, icon }}
+// (149:6) {#each social as { link, icon }}
 function create_each_block(ctx) {
 	let a;
 	let span;
@@ -2851,10 +2851,10 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "icon svelte-s3g7hi");
+			attr(span, "class", "icon svelte-3gk7hx");
 			attr(a, "href", a_href_value = /*link*/ ctx[6].url);
 			attr(a, "target", "_blank");
-			attr(a, "class", "svelte-s3g7hi");
+			attr(a, "class", "svelte-3gk7hx");
 		},
 		m(target, anchor) {
 			insert_hydration(target, a, anchor);
@@ -3095,41 +3095,41 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-s3g7hi");
-			attr(div0, "class", "body svelte-s3g7hi");
-			attr(div1, "class", "social-links svelte-s3g7hi");
-			attr(div2, "class", "content svelte-s3g7hi");
-			attr(span0, "class", "svelte-s3g7hi");
+			attr(h2, "class", "heading svelte-3gk7hx");
+			attr(div0, "class", "body svelte-3gk7hx");
+			attr(div1, "class", "social-links svelte-3gk7hx");
+			attr(div2, "class", "content svelte-3gk7hx");
+			attr(span0, "class", "svelte-3gk7hx");
 			attr(input0, "type", "text");
 			attr(input0, "name", "nombre");
 			attr(input0, "placeholder", "Nombre Apellido");
 			input0.required = true;
-			attr(input0, "class", "svelte-s3g7hi");
-			attr(label0, "class", "svelte-s3g7hi");
-			attr(span1, "class", "svelte-s3g7hi");
+			attr(input0, "class", "svelte-3gk7hx");
+			attr(label0, "class", "svelte-3gk7hx");
+			attr(span1, "class", "svelte-3gk7hx");
 			attr(input1, "type", "Email");
 			attr(input1, "name", "Email");
 			attr(input1, "placeholder", "nombre@mail.com");
 			input1.required = true;
-			attr(input1, "class", "svelte-s3g7hi");
-			attr(label1, "class", "svelte-s3g7hi");
-			attr(span2, "class", "svelte-s3g7hi");
+			attr(input1, "class", "svelte-3gk7hx");
+			attr(label1, "class", "svelte-3gk7hx");
+			attr(span2, "class", "svelte-3gk7hx");
 			attr(input2, "type", "text");
 			attr(input2, "name", "Empresa");
 			attr(input2, "placeholder", "Nombre de tu empresa");
-			attr(input2, "class", "svelte-s3g7hi");
-			attr(label2, "class", "svelte-s3g7hi");
-			attr(button, "class", "button svelte-s3g7hi");
+			attr(input2, "class", "svelte-3gk7hx");
+			attr(label2, "class", "svelte-3gk7hx");
+			attr(button, "class", "button svelte-3gk7hx");
 			attr(button, "type", "submit");
 			attr(button, "id", "enviar");
 			attr(div3, "id", "message");
-			attr(div3, "class", "svelte-s3g7hi");
+			attr(div3, "class", "svelte-3gk7hx");
 			attr(form, "id", "miFormulario");
-			attr(form, "class", "svelte-s3g7hi");
+			attr(form, "class", "svelte-3gk7hx");
 			attr(div4, "id", "message");
-			attr(div4, "class", "svelte-s3g7hi");
+			attr(div4, "class", "svelte-3gk7hx");
 			attr(section, "id", "contacto");
-			attr(section, "class", "section-container svelte-s3g7hi");
+			attr(section, "class", "section-container svelte-3gk7hx");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
