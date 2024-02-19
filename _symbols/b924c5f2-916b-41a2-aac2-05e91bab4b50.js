@@ -2878,10 +2878,10 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "icon svelte-hi3yep");
-			attr(h3, "class", "title svelte-hi3yep");
+			attr(div, "class", "icon svelte-9eqal5");
+			attr(h3, "class", "title svelte-9eqal5");
 			attr(button, "class", "btn");
-			attr(li, "class", "svelte-hi3yep");
+			attr(li, "class", "svelte-9eqal5");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -3043,19 +3043,19 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "superhead svelte-hi3yep");
-			attr(h2, "class", "heading svelte-hi3yep");
-			attr(h3, "class", "subheading svelte-hi3yep");
+			attr(span, "class", "superhead svelte-9eqal5");
+			attr(h2, "class", "heading svelte-9eqal5");
+			attr(h3, "class", "subheading svelte-9eqal5");
 			attr(div0, "class", "heading-group");
-			attr(ul, "class", "cards svelte-hi3yep");
+			attr(ul, "class", "cards svelte-9eqal5");
 			attr(img, "id", "dynamic-image");
 			attr(img, "class", "img");
 			if (!src_url_equal(img.src, img_src_value = /*currentImage*/ ctx[4])) attr(img, "src", img_src_value);
 			attr(img, "alt", "Imagen dinámica");
-			attr(div1, "class", "image svelte-hi3yep");
-			attr(div2, "class", "content svelte-hi3yep");
-			attr(div3, "class", "section-container svelte-hi3yep");
-			attr(section, "class", "svelte-hi3yep");
+			attr(div1, "class", "image svelte-9eqal5");
+			attr(div2, "class", "content svelte-9eqal5");
+			attr(div3, "class", "section-container svelte-9eqal5");
+			attr(section, "class", "svelte-9eqal5");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
