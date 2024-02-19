@@ -1,4 +1,4 @@
-// Primary Hero - Updated February 16, 2024
+// Primary Hero - Updated February 19, 2024
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2866,7 +2866,7 @@ function create_if_block(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = /*link*/ ctx[0].url);
-			attr(a, "class", "button svelte-9tk1c6");
+			attr(a, "class", "button svelte-27ka2f");
 			attr(a, "target", "_blank");
 			set_style(a, "display", "flex");
 			set_style(a, "align-items", "center");
@@ -3063,9 +3063,9 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h1, "class", "headline svelte-9tk1c6");
-			attr(div0, "class", "subheading svelte-9tk1c6");
-			attr(div1, "class", "body svelte-9tk1c6");
+			attr(h1, "class", "headline svelte-27ka2f");
+			attr(div0, "class", "subheading svelte-27ka2f");
+			attr(div1, "class", "body svelte-27ka2f");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
 			if (!src_url_equal(dotlottie_player.src, dotlottie_player_src_value = "https://lottie.host/e98944e0-d04e-4053-a69d-eee221f78359/VWFVOJ8R6m.json")) set_custom_element_data(dotlottie_player, "src", dotlottie_player_src_value);
@@ -3095,16 +3095,16 @@ function create_fragment(ctx) {
 			attr(svg, "viewBox", "0 0 709 689");
 			attr(svg, "fill", "none");
 			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-			attr(svg, "class", "svelte-9tk1c6");
-			attr(figure, "class", "svelte-9tk1c6");
-			attr(div2, "class", "section-container svelte-9tk1c6");
+			attr(svg, "class", "svelte-27ka2f");
+			attr(figure, "class", "svelte-27ka2f");
+			attr(div2, "class", "section-container svelte-27ka2f");
 			attr(img, "class", "image");
 			if (!src_url_equal(img.src, img_src_value = /*thumbnail*/ ctx[2].url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*thumbnail*/ ctx[2].alt);
 			set_style(img, "display", "none");
 			set_style(img, "width", "1200px");
 			set_style(img, "height", "627px");
-			attr(section, "class", "svelte-9tk1c6");
+			attr(section, "class", "svelte-27ka2f");
 			toggle_class(section, "image-left", /*variation*/ ctx[3] === "image_left");
 		},
 		m(target, anchor) {
