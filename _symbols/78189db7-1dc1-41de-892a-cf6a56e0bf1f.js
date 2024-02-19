@@ -2811,7 +2811,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(img, "class", "background svelte-1u1zt3g");
+			attr(img, "class", "background svelte-6bbzs8");
 			if (!src_url_equal(img.src, img_src_value = /*background*/ ctx[2].url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*background*/ ctx[2].alt);
 		},
@@ -2835,21 +2835,24 @@ function create_if_block(ctx) {
 
 function create_fragment(ctx) {
 	let section;
+	let style;
 	let t0;
-	let div2;
-	let h2;
 	let t1;
 	let t2;
+	let div2;
+	let h2;
+	let t3;
+	let t4;
 	let div0;
 	let raw_value = /*body*/ ctx[0].html + "";
-	let t3;
+	let t5;
 	let div1;
 	let a;
 	let span;
-	let t4;
-	let t5;
-	let icon;
 	let t6;
+	let t7;
+	let icon;
+	let t8;
 	let script;
 	let script_src_value;
 	let current;
@@ -2862,54 +2865,62 @@ function create_fragment(ctx) {
 	return {
 		c() {
 			section = element("section");
+			style = element("style");
+			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
+			t1 = space();
 			if (if_block) if_block.c();
-			t0 = space();
+			t2 = space();
 			div2 = element("div");
 			h2 = element("h2");
-			t1 = text(/*heading*/ ctx[1]);
-			t2 = space();
+			t3 = text(/*heading*/ ctx[1]);
+			t4 = space();
 			div0 = element("div");
-			t3 = space();
+			t5 = space();
 			div1 = element("div");
 			a = element("a");
 			span = element("span");
-			t4 = text("Empezar prueba gratis");
-			t5 = space();
+			t6 = text("Empezar prueba gratis");
+			t7 = space();
 			create_component(icon.$$.fragment);
-			t6 = space();
+			t8 = space();
 			script = element("script");
 			this.h();
 		},
 		l(nodes) {
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
+			style = claim_element(section_nodes, "STYLE", {});
+			var style_nodes = children(style);
+			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
+			style_nodes.forEach(detach);
+			t1 = claim_space(section_nodes);
 			if (if_block) if_block.l(section_nodes);
-			t0 = claim_space(section_nodes);
+			t2 = claim_space(section_nodes);
 			div2 = claim_element(section_nodes, "DIV", { class: true });
 			var div2_nodes = children(div2);
 			h2 = claim_element(div2_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			t1 = claim_text(h2_nodes, /*heading*/ ctx[1]);
+			t3 = claim_text(h2_nodes, /*heading*/ ctx[1]);
 			h2_nodes.forEach(detach);
-			t2 = claim_space(div2_nodes);
+			t4 = claim_space(div2_nodes);
 			div0 = claim_element(div2_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
 			div0_nodes.forEach(detach);
-			t3 = claim_space(div2_nodes);
+			t5 = claim_space(div2_nodes);
 			div1 = claim_element(div2_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
 			a = claim_element(div1_nodes, "A", { class: true, href: true, target: true });
 			var a_nodes = children(a);
 			span = claim_element(a_nodes, "SPAN", {});
 			var span_nodes = children(span);
-			t4 = claim_text(span_nodes, "Empezar prueba gratis");
+			t6 = claim_text(span_nodes, "Empezar prueba gratis");
 			span_nodes.forEach(detach);
-			t5 = claim_space(a_nodes);
+			t7 = claim_space(a_nodes);
 			claim_component(icon.$$.fragment, a_nodes);
 			a_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
-			t6 = claim_space(section_nodes);
+			t8 = claim_space(section_nodes);
 			script = claim_element(section_nodes, "SCRIPT", { src: true, type: true });
 			var script_nodes = children(script);
 			script_nodes.forEach(detach);
@@ -2917,35 +2928,38 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-1u1zt3g");
-			attr(div0, "class", "body svelte-1u1zt3g");
-			attr(a, "class", "button button-0 svelte-1u1zt3g");
+			attr(h2, "class", "heading svelte-6bbzs8");
+			attr(div0, "class", "body svelte-6bbzs8");
+			attr(a, "class", "button button-0 svelte-6bbzs8");
 			attr(a, "href", "https://backoffice.globot.ai/dashboard/login");
 			attr(a, "target", "_blank");
-			attr(div1, "class", "buttons svelte-1u1zt3g");
-			attr(div2, "class", "card svelte-1u1zt3g");
+			attr(div1, "class", "buttons svelte-6bbzs8");
+			attr(div2, "class", "card svelte-6bbzs8");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
-			attr(section, "class", "section-container svelte-1u1zt3g");
+			attr(section, "class", "section-container svelte-6bbzs8");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
+			append_hydration(section, style);
+			append_hydration(style, t0);
+			append_hydration(section, t1);
 			if (if_block) if_block.m(section, null);
-			append_hydration(section, t0);
+			append_hydration(section, t2);
 			append_hydration(section, div2);
 			append_hydration(div2, h2);
-			append_hydration(h2, t1);
-			append_hydration(div2, t2);
+			append_hydration(h2, t3);
+			append_hydration(div2, t4);
 			append_hydration(div2, div0);
 			div0.innerHTML = raw_value;
-			append_hydration(div2, t3);
+			append_hydration(div2, t5);
 			append_hydration(div2, div1);
 			append_hydration(div1, a);
 			append_hydration(a, span);
-			append_hydration(span, t4);
-			append_hydration(a, t5);
+			append_hydration(span, t6);
+			append_hydration(a, t7);
 			mount_component(icon, a, null);
-			append_hydration(section, t6);
+			append_hydration(section, t8);
 			append_hydration(section, script);
 			current = true;
 		},
@@ -2956,14 +2970,14 @@ function create_fragment(ctx) {
 				} else {
 					if_block = create_if_block(ctx);
 					if_block.c();
-					if_block.m(section, t0);
+					if_block.m(section, t2);
 				}
 			} else if (if_block) {
 				if_block.d(1);
 				if_block = null;
 			}
 
-			if (!current || dirty & /*heading*/ 2) set_data(t1, /*heading*/ ctx[1]);
+			if (!current || dirty & /*heading*/ 2) set_data(t3, /*heading*/ ctx[1]);
 			if ((!current || dirty & /*body*/ 1) && raw_value !== (raw_value = /*body*/ ctx[0].html + "")) div0.innerHTML = raw_value;		},
 		i(local) {
 			if (current) return;

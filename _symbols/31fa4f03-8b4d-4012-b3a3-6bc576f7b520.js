@@ -3175,7 +3175,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (87:6) {#if activeItem === i}
+// (88:6) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
 	let raw_value = /*item*/ ctx[6].description.html + "";
@@ -3194,7 +3194,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-1mhnd77");
+			attr(div, "class", "description svelte-7lmiv0");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3226,7 +3226,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (79:4) {#each items as item, i (i)}
+// (80:4) {#each items as item, i (i)}
 function create_each_block(key_1, ctx) {
 	let div1;
 	let button;
@@ -3290,10 +3290,10 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(span0, "class", "svelte-1mhnd77");
-			attr(span1, "class", "icon svelte-1mhnd77");
-			attr(button, "class", "svelte-1mhnd77");
-			attr(div1, "class", "item svelte-1mhnd77");
+			attr(span0, "class", "svelte-7lmiv0");
+			attr(span1, "class", "icon svelte-7lmiv0");
+			attr(button, "class", "svelte-7lmiv0");
+			attr(div1, "class", "item svelte-7lmiv0");
 			toggle_class(div1, "active", /*activeItem*/ ctx[2] === /*i*/ ctx[8]);
 			this.first = div1;
 		},
@@ -3431,9 +3431,9 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-1mhnd77");
-			attr(div, "class", "accordion svelte-1mhnd77");
-			attr(section, "class", "section-container svelte-1mhnd77");
+			attr(h2, "class", "heading svelte-7lmiv0");
+			attr(div, "class", "accordion svelte-7lmiv0");
+			attr(section, "class", "section-container svelte-7lmiv0");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
