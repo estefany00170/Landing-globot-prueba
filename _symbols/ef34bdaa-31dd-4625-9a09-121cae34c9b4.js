@@ -3093,7 +3093,7 @@ function get_each_context_1(ctx, list, i) {
 }
 
 // (204:10) {:else}
-function create_else_block_1(ctx) {
+function create_else_block(ctx) {
 	let span;
 	let t_value = /*logo*/ ctx[2].title + "";
 	let t;
@@ -3123,7 +3123,7 @@ function create_else_block_1(ctx) {
 }
 
 // (202:10) {#if logo.image.url}
-function create_if_block_2(ctx) {
+function create_if_block_1(ctx) {
 	let img;
 	let img_src_value;
 	let img_alt_value;
@@ -3204,35 +3204,26 @@ function create_each_block_1(ctx) {
 function create_if_block(ctx) {
 	let nav;
 	let t0;
-	let t1;
 	let a0;
-	let t2_value = /*cta*/ ctx[1][0].link.label + "";
+	let t1_value = /*cta*/ ctx[1][0].link.label + "";
+	let t1;
 	let t2;
-	let t3;
 	let icon0;
 	let a0_href_value;
-	let t4;
+	let t3;
 	let a1;
-	let t5_value = /*cta*/ ctx[1][1].link.label + "";
+	let t4_value = /*cta*/ ctx[1][1].link.label + "";
+	let t4;
 	let t5;
-	let t6;
 	let icon1;
 	let a1_href_value;
-	let t7;
+	let t6;
 	let button;
 	let icon2;
 	let nav_transition;
 	let current;
 	let mounted;
 	let dispose;
-
-	function select_block_type_1(ctx, dirty) {
-		if (/*logo*/ ctx[2].image.url) return create_if_block_1;
-		return create_else_block;
-	}
-
-	let current_block_type = select_block_type_1(ctx);
-	let if_block = current_block_type(ctx);
 	let each_value = /*site_nav*/ ctx[0];
 	let each_blocks = [];
 
@@ -3259,24 +3250,22 @@ function create_if_block(ctx) {
 	return {
 		c() {
 			nav = element("nav");
-			if_block.c();
-			t0 = space();
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
-			t1 = space();
+			t0 = space();
 			a0 = element("a");
-			t2 = text(t2_value);
-			t3 = space();
+			t1 = text(t1_value);
+			t2 = space();
 			create_component(icon0.$$.fragment);
-			t4 = space();
+			t3 = space();
 			a1 = element("a");
-			t5 = text(t5_value);
-			t6 = space();
+			t4 = text(t4_value);
+			t5 = space();
 			create_component(icon1.$$.fragment);
-			t7 = space();
+			t6 = space();
 			button = element("button");
 			create_component(icon2.$$.fragment);
 			this.h();
@@ -3284,28 +3273,26 @@ function create_if_block(ctx) {
 		l(nodes) {
 			nav = claim_element(nodes, "NAV", { id: true, class: true });
 			var nav_nodes = children(nav);
-			if_block.l(nav_nodes);
-			t0 = claim_space(nav_nodes);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].l(nav_nodes);
 			}
 
-			t1 = claim_space(nav_nodes);
+			t0 = claim_space(nav_nodes);
 			a0 = claim_element(nav_nodes, "A", { href: true, style: true, class: true });
 			var a0_nodes = children(a0);
-			t2 = claim_text(a0_nodes, t2_value);
-			t3 = claim_space(a0_nodes);
+			t1 = claim_text(a0_nodes, t1_value);
+			t2 = claim_space(a0_nodes);
 			claim_component(icon0.$$.fragment, a0_nodes);
 			a0_nodes.forEach(detach);
-			t4 = claim_space(nav_nodes);
+			t3 = claim_space(nav_nodes);
 			a1 = claim_element(nav_nodes, "A", { href: true, style: true, class: true });
 			var a1_nodes = children(a1);
-			t5 = claim_text(a1_nodes, t5_value);
-			t6 = claim_space(a1_nodes);
+			t4 = claim_text(a1_nodes, t4_value);
+			t5 = claim_space(a1_nodes);
 			claim_component(icon1.$$.fragment, a1_nodes);
 			a1_nodes.forEach(detach);
-			t7 = claim_space(nav_nodes);
+			t6 = claim_space(nav_nodes);
 
 			button = claim_element(nav_nodes, "BUTTON", {
 				id: true,
@@ -3334,8 +3321,6 @@ function create_if_block(ctx) {
 		},
 		m(target, anchor) {
 			insert_hydration(target, nav, anchor);
-			if_block.m(nav, null);
-			append_hydration(nav, t0);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				if (each_blocks[i]) {
@@ -3343,17 +3328,17 @@ function create_if_block(ctx) {
 				}
 			}
 
-			append_hydration(nav, t1);
+			append_hydration(nav, t0);
 			append_hydration(nav, a0);
+			append_hydration(a0, t1);
 			append_hydration(a0, t2);
-			append_hydration(a0, t3);
 			mount_component(icon0, a0, null);
-			append_hydration(nav, t4);
+			append_hydration(nav, t3);
 			append_hydration(nav, a1);
+			append_hydration(a1, t4);
 			append_hydration(a1, t5);
-			append_hydration(a1, t6);
 			mount_component(icon1, a1, null);
-			append_hydration(nav, t7);
+			append_hydration(nav, t6);
 			append_hydration(nav, button);
 			mount_component(icon2, button, null);
 			current = true;
@@ -3364,18 +3349,6 @@ function create_if_block(ctx) {
 			}
 		},
 		p(ctx, dirty) {
-			if (current_block_type === (current_block_type = select_block_type_1(ctx)) && if_block) {
-				if_block.p(ctx, dirty);
-			} else {
-				if_block.d(1);
-				if_block = current_block_type(ctx);
-
-				if (if_block) {
-					if_block.c();
-					if_block.m(nav, t0);
-				}
-			}
-
 			if (dirty & /*site_nav*/ 1) {
 				each_value = /*site_nav*/ ctx[0];
 				let i;
@@ -3388,7 +3361,7 @@ function create_if_block(ctx) {
 					} else {
 						each_blocks[i] = create_each_block(child_ctx);
 						each_blocks[i].c();
-						each_blocks[i].m(nav, t1);
+						each_blocks[i].m(nav, t0);
 					}
 				}
 
@@ -3399,13 +3372,13 @@ function create_if_block(ctx) {
 				each_blocks.length = each_value.length;
 			}
 
-			if ((!current || dirty & /*cta*/ 2) && t2_value !== (t2_value = /*cta*/ ctx[1][0].link.label + "")) set_data(t2, t2_value);
+			if ((!current || dirty & /*cta*/ 2) && t1_value !== (t1_value = /*cta*/ ctx[1][0].link.label + "")) set_data(t1, t1_value);
 
 			if (!current || dirty & /*cta*/ 2 && a0_href_value !== (a0_href_value = /*cta*/ ctx[1][0].link.url)) {
 				attr(a0, "href", a0_href_value);
 			}
 
-			if ((!current || dirty & /*cta*/ 2) && t5_value !== (t5_value = /*cta*/ ctx[1][1].link.label + "")) set_data(t5, t5_value);
+			if ((!current || dirty & /*cta*/ 2) && t4_value !== (t4_value = /*cta*/ ctx[1][1].link.label + "")) set_data(t4, t4_value);
 
 			if (!current || dirty & /*cta*/ 2 && a1_href_value !== (a1_href_value = /*cta*/ ctx[1][1].link.url)) {
 				attr(a1, "href", a1_href_value);
@@ -3435,7 +3408,6 @@ function create_if_block(ctx) {
 		},
 		d(detaching) {
 			if (detaching) detach(nav);
-			if_block.d();
 			destroy_each(each_blocks, detaching);
 			destroy_component(icon0);
 			destroy_component(icon1);
@@ -3443,73 +3415,6 @@ function create_if_block(ctx) {
 			if (detaching && nav_transition) nav_transition.end();
 			mounted = false;
 			dispose();
-		}
-	};
-}
-
-// (234:8) {:else}
-function create_else_block(ctx) {
-	let span;
-	let t_value = /*logo*/ ctx[2].title + "";
-	let t;
-
-	return {
-		c() {
-			span = element("span");
-			t = text(t_value);
-		},
-		l(nodes) {
-			span = claim_element(nodes, "SPAN", {});
-			var span_nodes = children(span);
-			t = claim_text(span_nodes, t_value);
-			span_nodes.forEach(detach);
-		},
-		m(target, anchor) {
-			insert_hydration(target, span, anchor);
-			append_hydration(span, t);
-		},
-		p(ctx, dirty) {
-			if (dirty & /*logo*/ 4 && t_value !== (t_value = /*logo*/ ctx[2].title + "")) set_data(t, t_value);
-		},
-		d(detaching) {
-			if (detaching) detach(span);
-		}
-	};
-}
-
-// (232:8) {#if logo.image.url}
-function create_if_block_1(ctx) {
-	let img;
-	let img_src_value;
-	let img_alt_value;
-
-	return {
-		c() {
-			img = element("img");
-			this.h();
-		},
-		l(nodes) {
-			img = claim_element(nodes, "IMG", { src: true, alt: true });
-			this.h();
-		},
-		h() {
-			if (!src_url_equal(img.src, img_src_value = /*logo*/ ctx[2].image.url)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*logo*/ ctx[2].image.alt);
-		},
-		m(target, anchor) {
-			insert_hydration(target, img, anchor);
-		},
-		p(ctx, dirty) {
-			if (dirty & /*logo*/ 4 && !src_url_equal(img.src, img_src_value = /*logo*/ ctx[2].image.url)) {
-				attr(img, "src", img_src_value);
-			}
-
-			if (dirty & /*logo*/ 4 && img_alt_value !== (img_alt_value = /*logo*/ ctx[2].image.alt)) {
-				attr(img, "alt", img_alt_value);
-			}
-		},
-		d(detaching) {
-			if (detaching) detach(img);
 		}
 	};
 }
@@ -3591,8 +3496,8 @@ function create_fragment(ctx) {
 	let dispose;
 
 	function select_block_type(ctx, dirty) {
-		if (/*logo*/ ctx[2].image.url) return create_if_block_2;
-		return create_else_block_1;
+		if (/*logo*/ ctx[2].image.url) return create_if_block_1;
+		return create_else_block;
 	}
 
 	let current_block_type = select_block_type(ctx);
