@@ -683,30 +683,30 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "superhead svelte-1taf9ih");
-			attr(h2, "class", "heading svelte-1taf9ih");
+			attr(div0, "class", "superhead svelte-qz4308");
+			attr(h2, "class", "heading svelte-qz4308");
 			attr(div1, "class", "subheading");
-			attr(header, "class", "heading-group svelte-1taf9ih");
-			attr(span0, "class", "title svelte-1taf9ih");
+			attr(header, "class", "heading-group svelte-qz4308");
+			attr(span0, "class", "title svelte-qz4308");
 			attr(button0, "id", "box1");
-			attr(button0, "class", "card svelte-1taf9ih");
-			attr(span1, "class", "title svelte-1taf9ih");
+			attr(button0, "class", "card svelte-qz4308");
+			attr(span1, "class", "title svelte-qz4308");
 			attr(button1, "id", "box2");
-			attr(button1, "class", "card svelte-1taf9ih");
-			attr(span2, "class", "title svelte-1taf9ih");
+			attr(button1, "class", "card svelte-qz4308");
+			attr(span2, "class", "title svelte-qz4308");
 			attr(button2, "id", "box3");
-			attr(button2, "class", "card svelte-1taf9ih");
-			attr(div2, "class", "cards svelte-1taf9ih");
+			attr(button2, "class", "card svelte-qz4308");
+			attr(div2, "class", "cards svelte-qz4308");
 			attr(div3, "id", "imgdesc");
-			attr(div3, "class", "svelte-1taf9ih");
+			attr(div3, "class", "svelte-qz4308");
 			attr(img, "id", "imgbox");
 			if (!src_url_equal(img.src, img_src_value = /*currentImage*/ ctx[3])) attr(img, "src", img_src_value);
 			attr(img, "alt", /*currentAlt*/ ctx[4]);
-			attr(img, "class", "svelte-1taf9ih");
-			attr(div4, "class", "image svelte-1taf9ih");
-			attr(div5, "class", "content  svelte-1taf9ih");
+			attr(img, "class", "svelte-qz4308");
+			attr(div4, "class", "image svelte-qz4308");
+			attr(div5, "class", "content  svelte-qz4308");
 			attr(section, "id", "benefits");
-			attr(section, "class", "section-container svelte-1taf9ih");
+			attr(section, "class", "section-container svelte-qz4308");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -787,19 +787,19 @@ function instance($$self, $$props, $$invalidate) {
 	let tarjetas = [
 		{
 			title: 'Atención al cliente 24/7',
-			description: 'Integrando un chatbot a tu tienda online aseguras atención a tus clientes todos los días hasta fuera del horario laboral.',
+			description: 'Integrando un chatbot a tu tienda online <strong>aseguras atención a tus clientes todos los días</strong> hasta fuera del horario laboral.',
 			image: 'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1708018487971Customer%20support.svg',
 			alt: image1
 		},
 		{
 			title: 'Reducción de tiempos de espera',
-			description: 'Un chatbot maneja múltiples consultas simultáneamente, lo que reduce los tiempos de espera para tus clientes.',
+			description: 'Un chatbot maneja <strong>múltiples consultas simultáneamente</strong>, lo que reduce los tiempos de espera para tus clientes.',
 			image: 'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1708018740650Save%20time.svg',
 			alt: image2
 		},
 		{
 			title: 'Información difícil de encontrar',
-			description: 'Un chatbot ayudará a tus clientes a encontrar información rápidamente mejorando la experiencia de tu servicio.',
+			description: 'Un chatbot ayudará a tus clientes a <strong>encontrar la información deseada de manera más eficiente</strong>, mejorando así la experiencia de tu servicio.',
 			image: 'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1708018818022Searching.svg',
 			alt: image3
 		}
@@ -826,17 +826,19 @@ function instance($$self, $$props, $$invalidate) {
 		if (previousButton) {
 			previousButton.style.background = "";
 			previousButton.style.border = "";
+			previousButton.querySelector('.title').style.color = "";
 		}
 
 		// Cambiar el estilo del botón actualmente seleccionado
 		element.style.background = "rgba(123, 92, 245, 0.15)";
 
 		element.style.border = "1px solid var(--Primary-1, #603FDF)";
+		element.querySelector('.title').style.color = " var(--Primary-1, #603FDF)";
 
 		// Guardar el botón actualmente seleccionado para la próxima vez
 		previousButton = element;
 
-		document.getElementById('imgdesc').textContent = tarjetas[i].description;
+		document.getElementById('imgdesc').innerHTML = tarjetas[i].description;
 	}
 
 	const click_handler = () => changeimg(0);
