@@ -3813,7 +3813,10 @@ function instance($$self, $$props, $$invalidate) {
 			}
 		},
 		{
-			link: { url: "#benefits", label: "Beneficios" }
+			link: {
+				url: "https://globot.netlify.app/#benefits",
+				label: "Beneficios"
+			}
 		},
 		{
 			link: { url: "#live-demo", label: "Live Demo" }
