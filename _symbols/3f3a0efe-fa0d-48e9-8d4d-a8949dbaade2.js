@@ -1,4 +1,4 @@
-// product box - Updated February 22, 2024
+// product box - Updated March 1, 2024
 function noop() { }
 function run(fn) {
     return fn();
@@ -262,6 +262,12 @@ function claim_text(nodes, data) {
 }
 function claim_space(nodes) {
     return claim_text(nodes, ' ');
+}
+function set_data(text, data) {
+    data = '' + data;
+    if (text.data === data)
+        return;
+    text.data = data;
 }
 
 let current_component;
@@ -1245,16 +1251,17 @@ if (typeof document !== 'undefined' && typeof window !== 'undefined') {
 
 function create_fragment(ctx) {
 	let section;
-	let style;
+	let h1;
 	let t0;
 	let t1;
 	let div;
+	let raw_value = /*content*/ ctx[1].html + "";
 
 	return {
 		c() {
 			section = element("section");
-			style = element("style");
-			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
+			h1 = element("h1");
+			t0 = text(/*heading*/ ctx[0]);
 			t1 = space();
 			div = element("div");
 			this.h();
@@ -1262,10 +1269,10 @@ function create_fragment(ctx) {
 		l(nodes) {
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
-			style = claim_element(section_nodes, "STYLE", {});
-			var style_nodes = children(style);
-			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
-			style_nodes.forEach(detach);
+			h1 = claim_element(section_nodes, "H1", { class: true });
+			var h1_nodes = children(h1);
+			t0 = claim_text(h1_nodes, /*heading*/ ctx[0]);
+			h1_nodes.forEach(detach);
 			t1 = claim_space(section_nodes);
 			div = claim_element(section_nodes, "DIV", { class: true });
 			var div_nodes = children(div);
@@ -1274,17 +1281,21 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "section-container svelte-mjbkhi");
-			attr(section, "class", "svelte-mjbkhi");
+			attr(h1, "class", "heading svelte-3a77f2");
+			attr(div, "class", "content svelte-3a77f2");
+			attr(section, "class", "section-container svelte-3a77f2");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
-			append_hydration(section, style);
-			append_hydration(style, t0);
+			append_hydration(section, h1);
+			append_hydration(h1, t0);
 			append_hydration(section, t1);
 			append_hydration(section, div);
+			div.innerHTML = raw_value;
 		},
-		p: noop,
+		p(ctx, [dirty]) {
+			if (dirty & /*heading*/ 1) set_data(t0, /*heading*/ ctx[0]);
+			if (dirty & /*content*/ 2 && raw_value !== (raw_value = /*content*/ ctx[1].html + "")) div.innerHTML = raw_value;		},
 		i: noop,
 		o: noop,
 		d(detaching) {
@@ -1295,33 +1306,22 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
-	let { image } = $$props;
 	let { heading } = $$props;
-	let { superhead } = $$props;
-	let { subheading } = $$props;
+	let { content } = $$props;
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(0, props = $$props.props);
-		if ('image' in $$props) $$invalidate(1, image = $$props.image);
-		if ('heading' in $$props) $$invalidate(2, heading = $$props.heading);
-		if ('superhead' in $$props) $$invalidate(3, superhead = $$props.superhead);
-		if ('subheading' in $$props) $$invalidate(4, subheading = $$props.subheading);
+		if ('props' in $$props) $$invalidate(2, props = $$props.props);
+		if ('heading' in $$props) $$invalidate(0, heading = $$props.heading);
+		if ('content' in $$props) $$invalidate(1, content = $$props.content);
 	};
 
-	return [props, image, heading, superhead, subheading];
+	return [heading, content, props];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-
-		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 0,
-			image: 1,
-			heading: 2,
-			superhead: 3,
-			subheading: 4
-		});
+		init(this, options, instance, create_fragment, safe_not_equal, { props: 2, heading: 0, content: 1 });
 	}
 }
 
