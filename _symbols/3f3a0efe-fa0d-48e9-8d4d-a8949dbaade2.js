@@ -1,4 +1,4 @@
-// product box - Updated March 1, 2024
+// product box - Updated April 15, 2024
 function noop() { }
 function run(fn) {
     return fn();
@@ -1255,13 +1255,13 @@ function create_fragment(ctx) {
 	let t0;
 	let t1;
 	let div;
-	let raw_value = /*content*/ ctx[1].html + "";
+	let raw_value = /*content*/ ctx[0].html + "";
 
 	return {
 		c() {
 			section = element("section");
 			h1 = element("h1");
-			t0 = text(/*heading*/ ctx[0]);
+			t0 = text(/*heading*/ ctx[1]);
 			t1 = space();
 			div = element("div");
 			this.h();
@@ -1271,7 +1271,7 @@ function create_fragment(ctx) {
 			var section_nodes = children(section);
 			h1 = claim_element(section_nodes, "H1", { class: true });
 			var h1_nodes = children(h1);
-			t0 = claim_text(h1_nodes, /*heading*/ ctx[0]);
+			t0 = claim_text(h1_nodes, /*heading*/ ctx[1]);
 			h1_nodes.forEach(detach);
 			t1 = claim_space(section_nodes);
 			div = claim_element(section_nodes, "DIV", { class: true });
@@ -1294,8 +1294,8 @@ function create_fragment(ctx) {
 			div.innerHTML = raw_value;
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*heading*/ 1) set_data(t0, /*heading*/ ctx[0]);
-			if (dirty & /*content*/ 2 && raw_value !== (raw_value = /*content*/ ctx[1].html + "")) div.innerHTML = raw_value;		},
+			if (dirty & /*heading*/ 2) set_data(t0, /*heading*/ ctx[1]);
+			if (dirty & /*content*/ 1 && raw_value !== (raw_value = /*content*/ ctx[0].html + "")) div.innerHTML = raw_value;		},
 		i: noop,
 		o: noop,
 		d(detaching) {
@@ -1306,22 +1306,22 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
-	let { heading } = $$props;
 	let { content } = $$props;
+	let { heading } = $$props;
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(2, props = $$props.props);
-		if ('heading' in $$props) $$invalidate(0, heading = $$props.heading);
-		if ('content' in $$props) $$invalidate(1, content = $$props.content);
+		if ('content' in $$props) $$invalidate(0, content = $$props.content);
+		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
 	};
 
-	return [heading, content, props];
+	return [content, heading, props];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { props: 2, heading: 0, content: 1 });
+		init(this, options, instance, create_fragment, safe_not_equal, { props: 2, content: 0, heading: 1 });
 	}
 }
 

@@ -1,4 +1,4 @@
-// Header - Updated March 1, 2024
+// Header - Updated April 15, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3813,10 +3813,7 @@ function instance($$self, $$props, $$invalidate) {
 			}
 		},
 		{
-			link: {
-				url: "https://globot.netlify.app/#benefits",
-				label: "Beneficios"
-			}
+			link: { url: "#benefits", label: "Beneficios" }
 		},
 		{
 			link: { url: "#live-demo", label: "Live Demo" }

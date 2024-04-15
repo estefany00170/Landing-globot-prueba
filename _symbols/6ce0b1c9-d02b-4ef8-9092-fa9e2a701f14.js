@@ -1,5 +1,6 @@
-// Primary Hero - Updated April 15, 2024
+// Opciones - Updated April 15, 2024
 function noop() { }
+const identity = x => x;
 function assign(tar, src) {
     // @ts-ignore
     for (const k in src)
@@ -21,14 +22,6 @@ function is_function(thing) {
 function safe_not_equal(a, b) {
     return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
 }
-let src_url_equal_anchor;
-function src_url_equal(element_src, url) {
-    if (!src_url_equal_anchor) {
-        src_url_equal_anchor = document.createElement('a');
-    }
-    src_url_equal_anchor.href = url;
-    return element_src === src_url_equal_anchor.href;
-}
 function is_empty(obj) {
     return Object.keys(obj).length === 0;
 }
@@ -38,6 +31,41 @@ function exclude_internal_props(props) {
         if (k[0] !== '$')
             result[k] = props[k];
     return result;
+}
+
+const is_client = typeof window !== 'undefined';
+let now = is_client
+    ? () => window.performance.now()
+    : () => Date.now();
+let raf = is_client ? cb => requestAnimationFrame(cb) : noop;
+
+const tasks = new Set();
+function run_tasks(now) {
+    tasks.forEach(task => {
+        if (!task.c(now)) {
+            tasks.delete(task);
+            task.f();
+        }
+    });
+    if (tasks.size !== 0)
+        raf(run_tasks);
+}
+/**
+ * Creates a new task that runs on each raf frame
+ * until it returns a falsy value or is aborted
+ */
+function loop(callback) {
+    let task;
+    if (tasks.size === 0)
+        raf(run_tasks);
+    return {
+        promise: new Promise(fulfill => {
+            tasks.add(task = { c: callback, f: fulfill });
+        }),
+        abort() {
+            tasks.delete(task);
+        }
+    };
 }
 
 // Track which nodes are claimed during hydration. Unclaimed nodes can then be removed from the DOM
@@ -141,6 +169,27 @@ function init_hydrate(target) {
         target.insertBefore(toMove[i], anchor);
     }
 }
+function append(target, node) {
+    target.appendChild(node);
+}
+function get_root_for_style(node) {
+    if (!node)
+        return document;
+    const root = node.getRootNode ? node.getRootNode() : node.ownerDocument;
+    if (root && root.host) {
+        return root;
+    }
+    return node.ownerDocument;
+}
+function append_empty_stylesheet(node) {
+    const style_element = element('style');
+    append_stylesheet(get_root_for_style(node), style_element);
+    return style_element.sheet;
+}
+function append_stylesheet(node, style) {
+    append(node.head || node, style);
+    return style.sheet;
+}
 function append_hydration(target, node) {
     if (is_hydrating) {
         init_hydrate(target);
@@ -193,6 +242,10 @@ function space() {
 function empty() {
     return text('');
 }
+function listen(node, event, handler, options) {
+    node.addEventListener(event, handler, options);
+    return () => node.removeEventListener(event, handler, options);
+}
 function attr(node, attribute, value) {
     if (value == null)
         node.removeAttribute(attribute);
@@ -231,14 +284,6 @@ function set_attributes(node, attributes) {
 function set_svg_attributes(node, attributes) {
     for (const key in attributes) {
         attr(node, key, attributes[key]);
-    }
-}
-function set_custom_element_data(node, prop, value) {
-    if (prop in node) {
-        node[prop] = typeof node[prop] === 'boolean' && value === '' ? true : value;
-    }
-    else {
-        attr(node, prop, value);
     }
 }
 function children(element) {
@@ -341,14 +386,6 @@ function set_data(text, data) {
         return;
     text.data = data;
 }
-function set_style(node, key, value, important) {
-    if (value == null) {
-        node.style.removeProperty(key);
-    }
-    else {
-        node.style.setProperty(key, value, important ? 'important' : '');
-    }
-}
 function toggle_class(element, name, toggle) {
     element.classList[toggle ? 'add' : 'remove'](name);
 }
@@ -356,6 +393,71 @@ function custom_event(type, detail, { bubbles = false, cancelable = false } = {}
     const e = document.createEvent('CustomEvent');
     e.initCustomEvent(type, bubbles, cancelable, detail);
     return e;
+}
+
+// we need to store the information for multiple documents because a Svelte application could also contain iframes
+// https://github.com/sveltejs/svelte/issues/3624
+const managed_styles = new Map();
+let active = 0;
+// https://github.com/darkskyapp/string-hash/blob/master/index.js
+function hash(str) {
+    let hash = 5381;
+    let i = str.length;
+    while (i--)
+        hash = ((hash << 5) - hash) ^ str.charCodeAt(i);
+    return hash >>> 0;
+}
+function create_style_information(doc, node) {
+    const info = { stylesheet: append_empty_stylesheet(node), rules: {} };
+    managed_styles.set(doc, info);
+    return info;
+}
+function create_rule(node, a, b, duration, delay, ease, fn, uid = 0) {
+    const step = 16.666 / duration;
+    let keyframes = '{\n';
+    for (let p = 0; p <= 1; p += step) {
+        const t = a + (b - a) * ease(p);
+        keyframes += p * 100 + `%{${fn(t, 1 - t)}}\n`;
+    }
+    const rule = keyframes + `100% {${fn(b, 1 - b)}}\n}`;
+    const name = `__svelte_${hash(rule)}_${uid}`;
+    const doc = get_root_for_style(node);
+    const { stylesheet, rules } = managed_styles.get(doc) || create_style_information(doc, node);
+    if (!rules[name]) {
+        rules[name] = true;
+        stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
+    }
+    const animation = node.style.animation || '';
+    node.style.animation = `${animation ? `${animation}, ` : ''}${name} ${duration}ms linear ${delay}ms 1 both`;
+    active += 1;
+    return name;
+}
+function delete_rule(node, name) {
+    const previous = (node.style.animation || '').split(', ');
+    const next = previous.filter(name
+        ? anim => anim.indexOf(name) < 0 // remove specific animation
+        : anim => anim.indexOf('__svelte') === -1 // remove all Svelte animations
+    );
+    const deleted = previous.length - next.length;
+    if (deleted) {
+        node.style.animation = next.join(', ');
+        active -= deleted;
+        if (!active)
+            clear_rules();
+    }
+}
+function clear_rules() {
+    raf(() => {
+        if (active)
+            return;
+        managed_styles.forEach(info => {
+            const { ownerNode } = info.stylesheet;
+            // there is no ownerNode if it runs on jsdom.
+            if (ownerNode)
+                detach(ownerNode);
+        });
+        managed_styles.clear();
+    });
 }
 
 let current_component;
@@ -524,6 +626,20 @@ function flush_render_callbacks(fns) {
     targets.forEach((c) => c());
     render_callbacks = filtered;
 }
+
+let promise;
+function wait() {
+    if (!promise) {
+        promise = Promise.resolve();
+        promise.then(() => {
+            promise = null;
+        });
+    }
+    return promise;
+}
+function dispatch(node, direction, kind) {
+    node.dispatchEvent(custom_event(`${direction ? 'intro' : 'outro'}${kind}`));
+}
 const outroing = new Set();
 let outros;
 function group_outros() {
@@ -563,6 +679,196 @@ function transition_out(block, local, detach, callback) {
     else if (callback) {
         callback();
     }
+}
+const null_transition = { duration: 0 };
+function create_bidirectional_transition(node, fn, params, intro) {
+    const options = { direction: 'both' };
+    let config = fn(node, params, options);
+    let t = intro ? 0 : 1;
+    let running_program = null;
+    let pending_program = null;
+    let animation_name = null;
+    function clear_animation() {
+        if (animation_name)
+            delete_rule(node, animation_name);
+    }
+    function init(program, duration) {
+        const d = (program.b - t);
+        duration *= Math.abs(d);
+        return {
+            a: t,
+            b: program.b,
+            d,
+            duration,
+            start: program.start,
+            end: program.start + duration,
+            group: program.group
+        };
+    }
+    function go(b) {
+        const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+        const program = {
+            start: now() + delay,
+            b
+        };
+        if (!b) {
+            // @ts-ignore todo: improve typings
+            program.group = outros;
+            outros.r += 1;
+        }
+        if (running_program || pending_program) {
+            pending_program = program;
+        }
+        else {
+            // if this is an intro, and there's a delay, we need to do
+            // an initial tick and/or apply CSS animation immediately
+            if (css) {
+                clear_animation();
+                animation_name = create_rule(node, t, b, duration, delay, easing, css);
+            }
+            if (b)
+                tick(0, 1);
+            running_program = init(program, duration);
+            add_render_callback(() => dispatch(node, b, 'start'));
+            loop(now => {
+                if (pending_program && now > pending_program.start) {
+                    running_program = init(pending_program, duration);
+                    pending_program = null;
+                    dispatch(node, running_program.b, 'start');
+                    if (css) {
+                        clear_animation();
+                        animation_name = create_rule(node, t, running_program.b, running_program.duration, 0, easing, config.css);
+                    }
+                }
+                if (running_program) {
+                    if (now >= running_program.end) {
+                        tick(t = running_program.b, 1 - t);
+                        dispatch(node, running_program.b, 'end');
+                        if (!pending_program) {
+                            // we're done
+                            if (running_program.b) {
+                                // intro — we can tidy up immediately
+                                clear_animation();
+                            }
+                            else {
+                                // outro — needs to be coordinated
+                                if (!--running_program.group.r)
+                                    run_all(running_program.group.c);
+                            }
+                        }
+                        running_program = null;
+                    }
+                    else if (now >= running_program.start) {
+                        const p = now - running_program.start;
+                        t = running_program.a + running_program.d * easing(p / running_program.duration);
+                        tick(t, 1 - t);
+                    }
+                }
+                return !!(running_program || pending_program);
+            });
+        }
+    }
+    return {
+        run(b) {
+            if (is_function(config)) {
+                wait().then(() => {
+                    // @ts-ignore
+                    config = config(options);
+                    go(b);
+                });
+            }
+            else {
+                go(b);
+            }
+        },
+        end() {
+            clear_animation();
+            running_program = pending_program = null;
+        }
+    };
+}
+function outro_and_destroy_block(block, lookup) {
+    transition_out(block, 1, 1, () => {
+        lookup.delete(block.key);
+    });
+}
+function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list, lookup, node, destroy, create_each_block, next, get_context) {
+    let o = old_blocks.length;
+    let n = list.length;
+    let i = o;
+    const old_indexes = {};
+    while (i--)
+        old_indexes[old_blocks[i].key] = i;
+    const new_blocks = [];
+    const new_lookup = new Map();
+    const deltas = new Map();
+    const updates = [];
+    i = n;
+    while (i--) {
+        const child_ctx = get_context(ctx, list, i);
+        const key = get_key(child_ctx);
+        let block = lookup.get(key);
+        if (!block) {
+            block = create_each_block(key, child_ctx);
+            block.c();
+        }
+        else if (dynamic) {
+            // defer updates until all the DOM shuffling is done
+            updates.push(() => block.p(child_ctx, dirty));
+        }
+        new_lookup.set(key, new_blocks[i] = block);
+        if (key in old_indexes)
+            deltas.set(key, Math.abs(i - old_indexes[key]));
+    }
+    const will_move = new Set();
+    const did_move = new Set();
+    function insert(block) {
+        transition_in(block, 1);
+        block.m(node, next);
+        lookup.set(block.key, block);
+        next = block.first;
+        n--;
+    }
+    while (o && n) {
+        const new_block = new_blocks[n - 1];
+        const old_block = old_blocks[o - 1];
+        const new_key = new_block.key;
+        const old_key = old_block.key;
+        if (new_block === old_block) {
+            // do nothing
+            next = new_block.first;
+            o--;
+            n--;
+        }
+        else if (!new_lookup.has(old_key)) {
+            // remove old block
+            destroy(old_block, lookup);
+            o--;
+        }
+        else if (!lookup.has(new_key) || will_move.has(new_key)) {
+            insert(new_block);
+        }
+        else if (did_move.has(old_key)) {
+            o--;
+        }
+        else if (deltas.get(new_key) > deltas.get(old_key)) {
+            did_move.add(new_key);
+            insert(new_block);
+        }
+        else {
+            will_move.add(old_key);
+            o--;
+        }
+    }
+    while (o--) {
+        const old_block = old_blocks[o];
+        if (!new_lookup.has(old_block.key))
+            destroy(old_block, lookup);
+    }
+    while (n)
+        insert(new_blocks[n - 1]);
+    run_all(updates);
+    return new_blocks;
 }
 
 function get_spread_update(levels, updates) {
@@ -737,6 +1043,40 @@ class SvelteComponent {
             this.$$.skip_bound = false;
         }
     }
+}
+
+function cubicOut(t) {
+    const f = t - 1.0;
+    return f * f * f + 1.0;
+}
+
+function slide(node, { delay = 0, duration = 400, easing = cubicOut, axis = 'y' } = {}) {
+    const style = getComputedStyle(node);
+    const opacity = +style.opacity;
+    const primary_property = axis === 'y' ? 'height' : 'width';
+    const primary_property_value = parseFloat(style[primary_property]);
+    const secondary_properties = axis === 'y' ? ['top', 'bottom'] : ['left', 'right'];
+    const capitalized_secondary_properties = secondary_properties.map((e) => `${e[0].toUpperCase()}${e.slice(1)}`);
+    const padding_start_value = parseFloat(style[`padding${capitalized_secondary_properties[0]}`]);
+    const padding_end_value = parseFloat(style[`padding${capitalized_secondary_properties[1]}`]);
+    const margin_start_value = parseFloat(style[`margin${capitalized_secondary_properties[0]}`]);
+    const margin_end_value = parseFloat(style[`margin${capitalized_secondary_properties[1]}`]);
+    const border_width_start_value = parseFloat(style[`border${capitalized_secondary_properties[0]}Width`]);
+    const border_width_end_value = parseFloat(style[`border${capitalized_secondary_properties[1]}Width`]);
+    return {
+        delay,
+        duration,
+        easing,
+        css: t => 'overflow: hidden;' +
+            `opacity: ${Math.min(t * 20, 1) * opacity};` +
+            `${primary_property}: ${t * primary_property_value}px;` +
+            `padding-${secondary_properties[0]}: ${t * padding_start_value}px;` +
+            `padding-${secondary_properties[1]}: ${t * padding_end_value}px;` +
+            `margin-${secondary_properties[0]}: ${t * margin_start_value}px;` +
+            `margin-${secondary_properties[1]}: ${t * margin_end_value}px;` +
+            `border-${secondary_properties[0]}-width: ${t * border_width_start_value}px;` +
+            `border-${secondary_properties[1]}-width: ${t * border_width_end_value}px;`
+    };
 }
 
 const matchIconName = /^[a-z0-9]+(-[a-z0-9]+)*$/;
@@ -2828,329 +3168,170 @@ let Component$1 = class Component extends SvelteComponent {
 
 /* generated by Svelte v3.59.1 */
 
-function create_if_block(ctx) {
-	let a;
-	let t0_value = /*link*/ ctx[0].label + "";
-	let t0;
-	let t1;
-	let icon;
-	let a_href_value;
-	let current;
+function get_each_context(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[5] = list[i];
+	child_ctx[7] = i;
+	return child_ctx;
+}
 
-	icon = new Component$1({
-			props: { icon: "akar-icons:arrow-up-right" }
-		});
+// (85:10) {#if activeItem === i}
+function create_if_block(ctx) {
+	let div;
+	let raw_value = /*item*/ ctx[5].description.html + "";
+	let div_transition;
+	let current;
 
 	return {
 		c() {
-			a = element("a");
-			t0 = text(t0_value);
-			t1 = space();
-			create_component(icon.$$.fragment);
+			div = element("div");
 			this.h();
 		},
 		l(nodes) {
-			a = claim_element(nodes, "A", {
-				href: true,
-				class: true,
-				target: true,
-				style: true
-			});
-
-			var a_nodes = children(a);
-			t0 = claim_text(a_nodes, t0_value);
-			t1 = claim_space(a_nodes);
-			claim_component(icon.$$.fragment, a_nodes);
-			a_nodes.forEach(detach);
+			div = claim_element(nodes, "DIV", { class: true });
+			var div_nodes = children(div);
+			div_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(a, "href", a_href_value = /*link*/ ctx[0].url);
-			attr(a, "class", "button svelte-f78i81");
-			attr(a, "target", "_blank");
-			set_style(a, "display", "flex");
-			set_style(a, "align-items", "center");
-			set_style(a, "gap", "10px");
+			attr(div, "class", "description svelte-kzxtvp");
 		},
 		m(target, anchor) {
-			insert_hydration(target, a, anchor);
-			append_hydration(a, t0);
-			append_hydration(a, t1);
-			mount_component(icon, a, null);
+			insert_hydration(target, div, anchor);
+			div.innerHTML = raw_value;
 			current = true;
 		},
 		p(ctx, dirty) {
-			if ((!current || dirty & /*link*/ 1) && t0_value !== (t0_value = /*link*/ ctx[0].label + "")) set_data(t0, t0_value);
-
-			if (!current || dirty & /*link*/ 1 && a_href_value !== (a_href_value = /*link*/ ctx[0].url)) {
-				attr(a, "href", a_href_value);
-			}
-		},
+			if ((!current || dirty & /*items*/ 1) && raw_value !== (raw_value = /*item*/ ctx[5].description.html + "")) div.innerHTML = raw_value;		},
 		i(local) {
 			if (current) return;
-			transition_in(icon.$$.fragment, local);
+
+			add_render_callback(() => {
+				if (!current) return;
+				if (!div_transition) div_transition = create_bidirectional_transition(div, slide, {}, true);
+				div_transition.run(1);
+			});
+
 			current = true;
 		},
 		o(local) {
-			transition_out(icon.$$.fragment, local);
+			if (!div_transition) div_transition = create_bidirectional_transition(div, slide, {}, false);
+			div_transition.run(0);
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(a);
-			destroy_component(icon);
+			if (detaching) detach(div);
+			if (detaching && div_transition) div_transition.end();
 		}
 	};
 }
 
-function create_fragment(ctx) {
-	let section;
-	let style;
+// (77:6) {#each items as item, i (i)}
+function create_each_block(key_1, ctx) {
+	let div1;
+	let button;
+	let span0;
+	let t0_value = /*item*/ ctx[5].title + "";
 	let t0;
 	let t1;
-	let div2;
-	let div1;
-	let h1;
+	let span1;
+	let icon;
 	let t2;
 	let t3;
-	let div0;
 	let t4;
-	let t5;
-	let t6;
-	let script;
-	let script_src_value;
-	let t7;
-	let dotlottie_player;
-	let dotlottie_player_src_value;
-	let t8;
-	let figure;
-	let svg;
-	let path0;
-	let path1;
-	let path2;
-	let t9;
-	let img;
-	let img_src_value;
-	let img_alt_value;
 	let current;
-	let if_block = /*link*/ ctx[0].label && create_if_block(ctx);
+	let mounted;
+	let dispose;
+	icon = new Component$1({ props: { icon: "ph:caret-down-bold" } });
+
+	function click_handler() {
+		return /*click_handler*/ ctx[4](/*i*/ ctx[7]);
+	}
+
+	let if_block = /*activeItem*/ ctx[1] === /*i*/ ctx[7] && create_if_block(ctx);
 
 	return {
+		key: key_1,
+		first: null,
 		c() {
-			section = element("section");
-			style = element("style");
-			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
-			t1 = space();
-			div2 = element("div");
 			div1 = element("div");
-			h1 = element("h1");
-			t2 = text(/*heading*/ ctx[1]);
-			t3 = space();
-			div0 = element("div");
-			t4 = text(/*subheading*/ ctx[4]);
-			t5 = space();
+			button = element("button");
+			span0 = element("span");
+			t0 = text(t0_value);
+			t1 = space();
+			span1 = element("span");
+			create_component(icon.$$.fragment);
+			t2 = space();
 			if (if_block) if_block.c();
-			t6 = space();
-			script = element("script");
-			t7 = space();
-			dotlottie_player = element("dotlottie-player");
-			t8 = space();
-			figure = element("figure");
-			svg = svg_element("svg");
-			path0 = svg_element("path");
-			path1 = svg_element("path");
-			path2 = svg_element("path");
-			t9 = space();
-			img = element("img");
+			t3 = space();
+			t4 = space();
 			this.h();
 		},
 		l(nodes) {
-			section = claim_element(nodes, "SECTION", { class: true });
-			var section_nodes = children(section);
-			style = claim_element(section_nodes, "STYLE", {});
-			var style_nodes = children(style);
-			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
-			style_nodes.forEach(detach);
-			t1 = claim_space(section_nodes);
-			div2 = claim_element(section_nodes, "DIV", { class: true });
-			var div2_nodes = children(div2);
-			div1 = claim_element(div2_nodes, "DIV", { class: true });
+			div1 = claim_element(nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
-			h1 = claim_element(div1_nodes, "H1", { class: true });
-			var h1_nodes = children(h1);
-			t2 = claim_text(h1_nodes, /*heading*/ ctx[1]);
-			h1_nodes.forEach(detach);
-			t3 = claim_space(div1_nodes);
-			div0 = claim_element(div1_nodes, "DIV", { class: true });
-			var div0_nodes = children(div0);
-			t4 = claim_text(div0_nodes, /*subheading*/ ctx[4]);
-			div0_nodes.forEach(detach);
-			t5 = claim_space(div1_nodes);
+			button = claim_element(div1_nodes, "BUTTON", { class: true });
+			var button_nodes = children(button);
+			span0 = claim_element(button_nodes, "SPAN", { class: true });
+			var span0_nodes = children(span0);
+			t0 = claim_text(span0_nodes, t0_value);
+			span0_nodes.forEach(detach);
+			t1 = claim_space(button_nodes);
+			span1 = claim_element(button_nodes, "SPAN", { class: true });
+			var span1_nodes = children(span1);
+			claim_component(icon.$$.fragment, span1_nodes);
+			span1_nodes.forEach(detach);
+			button_nodes.forEach(detach);
+			t2 = claim_space(div1_nodes);
 			if (if_block) if_block.l(div1_nodes);
+			t3 = claim_space(div1_nodes);
+			t4 = claim_space(div1_nodes);
 			div1_nodes.forEach(detach);
-			t6 = claim_space(div2_nodes);
-			script = claim_element(div2_nodes, "SCRIPT", { src: true, type: true });
-			var script_nodes = children(script);
-			script_nodes.forEach(detach);
-			t7 = claim_space(div2_nodes);
-
-			dotlottie_player = claim_element(div2_nodes, "DOTLOTTIE-PLAYER", {
-				src: true,
-				background: true,
-				speed: true,
-				style: true,
-				loop: true,
-				autoplay: true
-			});
-
-			children(dotlottie_player).forEach(detach);
-			t8 = claim_space(div2_nodes);
-			figure = claim_element(div2_nodes, "FIGURE", { class: true });
-			var figure_nodes = children(figure);
-
-			svg = claim_svg_element(figure_nodes, "svg", {
-				width: true,
-				height: true,
-				viewBox: true,
-				fill: true,
-				xmlns: true,
-				class: true
-			});
-
-			var svg_nodes = children(svg);
-
-			path0 = claim_svg_element(svg_nodes, "path", {
-				opacity: true,
-				"fill-rule": true,
-				"clip-rule": true,
-				d: true,
-				fill: true
-			});
-
-			children(path0).forEach(detach);
-
-			path1 = claim_svg_element(svg_nodes, "path", {
-				opacity: true,
-				"fill-rule": true,
-				"clip-rule": true,
-				d: true,
-				fill: true
-			});
-
-			children(path1).forEach(detach);
-
-			path2 = claim_svg_element(svg_nodes, "path", {
-				opacity: true,
-				"fill-rule": true,
-				"clip-rule": true,
-				d: true,
-				fill: true
-			});
-
-			children(path2).forEach(detach);
-			svg_nodes.forEach(detach);
-			figure_nodes.forEach(detach);
-			div2_nodes.forEach(detach);
-			t9 = claim_space(section_nodes);
-
-			img = claim_element(section_nodes, "IMG", {
-				class: true,
-				src: true,
-				alt: true,
-				style: true
-			});
-
-			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(h1, "class", "headline svelte-f78i81");
-			attr(div0, "class", "subheading svelte-f78i81");
-			attr(div1, "class", "body svelte-f78i81");
-			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
-			attr(script, "type", "module");
-			if (!src_url_equal(dotlottie_player.src, dotlottie_player_src_value = "https://lottie.host/e98944e0-d04e-4053-a69d-eee221f78359/VWFVOJ8R6m.json")) set_custom_element_data(dotlottie_player, "src", dotlottie_player_src_value);
-			set_custom_element_data(dotlottie_player, "background", "transparent");
-			set_custom_element_data(dotlottie_player, "speed", "1");
-			set_style(dotlottie_player, "width", "100%");
-			set_style(dotlottie_player, "height", "100%");
-			set_custom_element_data(dotlottie_player, "loop", "");
-			set_custom_element_data(dotlottie_player, "autoplay", "");
-			attr(path0, "opacity", "0.05");
-			attr(path0, "fill-rule", "evenodd");
-			attr(path0, "clip-rule", "evenodd");
-			attr(path0, "d", "M250.362 34.7756C139.816 89.1131 67.3668 143.319 26.8947 207.101C4.61533 242.212 -2.94332 266.681 0.997026 292.673C4.60124 316.447 16.5768 340.207 47.4378 388.613C60.4002 408.945 60.0371 441.564 49.6915 487.99C47.2186 499.088 44.2927 510.565 40.3577 524.955C41.2971 521.519 31.5889 556.493 29.4742 564.688C26.0093 578.117 24.0811 587.645 23.5326 594.881C20.1621 639.352 54.9001 672.353 110.767 684.383C164.801 696.018 227.511 685.427 270.671 655.274C276.453 651.234 291.181 640.89 299.95 634.731C303.38 632.322 305.898 630.554 306.613 630.053C319.856 620.775 329.589 614.052 338.766 607.882C361.325 592.713 379.332 581.766 396.694 572.934C446.494 547.603 494.541 538.614 565.78 542.901C598.07 544.844 628.45 533.685 653.596 512.012C676.988 491.852 694.617 463.505 703.223 432.744C712.019 401.304 710.848 369.433 699.177 342.706C686.32 313.263 661.427 291.233 625.376 279.556C586.268 266.888 569.43 251.107 569.005 230.46C568.824 221.657 571.541 211.918 577.065 200.127C581.082 191.553 581.928 190.056 595.678 166.497C610.379 141.308 617.427 126.392 620.883 109.77C625.398 88.0522 621.377 68.3247 606.92 49.4498C584.428 20.0847 524.241 2.47769 448.511 0.238031C375.056 -1.93434 299.024 10.8562 250.362 34.7756ZM3.58288 292.383C-0.275778 266.93 7.14569 242.905 29.1841 208.174C69.3833 144.822 141.492 90.8709 251.657 36.7206C299.855 13.0296 375.416 0.318108 448.422 2.4772C523.388 4.69424 582.842 22.087 604.745 50.6819C618.819 69.0565 622.721 88.2016 618.318 109.375C614.92 125.722 607.943 140.487 593.35 165.493C579.553 189.133 578.705 190.631 574.649 199.29C569.005 211.335 566.212 221.348 566.4 230.5C566.847 252.198 584.446 268.691 624.459 281.652C659.794 293.098 684.141 314.644 696.738 343.493C708.216 369.777 709.371 401.195 700.69 432.22C692.193 462.594 674.793 490.572 651.753 510.429C627.112 531.665 597.453 542.56 565.964 540.666C494.212 536.348 445.638 545.435 395.368 571.006C377.895 579.894 359.802 590.894 337.162 606.117C327.969 612.298 318.223 619.03 304.968 628.316C304.254 628.816 301.742 630.58 298.321 632.983C289.554 639.14 274.812 649.494 269.029 653.535C226.525 683.229 164.661 693.678 111.402 682.209C56.6608 670.422 22.8546 638.306 26.1348 595.026C26.6724 587.934 28.5821 578.498 32.0201 565.173C34.1294 556.999 43.8307 522.05 42.8962 525.467C46.8388 511.05 49.7718 499.545 52.2527 488.412C62.7082 441.493 63.0757 408.477 49.7247 387.536C19.0189 339.374 7.13099 315.787 3.58288 292.383Z");
-			attr(path0, "fill", "white");
-			attr(path1, "opacity", "0.15");
-			attr(path1, "fill-rule", "evenodd");
-			attr(path1, "clip-rule", "evenodd");
-			attr(path1, "d", "M397.33 27.2727C343.179 32.0545 282.134 51.1101 228.45 78.1813C225.981 79.4262 219.504 82.6078 211.35 86.6135C192.691 95.7792 165.248 109.259 156.946 113.724C131.078 127.633 113.909 140.497 97.0005 159.654C80.3265 178.545 63.6534 204.133 42.8539 242.71C34.4888 263.275 33.3473 281.11 38.2328 298.299C41.9884 311.513 47.7933 321.819 60.868 340.936C61.2972 341.563 61.7281 342.193 62.5888 343.449C77.6086 365.384 83.6274 376.237 87.2636 391.215C92.0442 410.908 89.2721 431.928 77.2375 456.81C51.1289 514.119 42.7176 560.754 50.4159 596.281C57.2991 628.047 77.0019 650.185 106.511 661.927C160.111 683.254 241.068 666.921 291.203 626.602C297.109 621.853 314.582 607.723 318.819 604.297L319.749 603.545C330.387 594.96 338.104 588.805 345.421 583.099C363.536 568.974 377.991 558.618 391.925 550.002C436.098 522.686 478.642 511.444 544.34 511.444C600.73 511.444 646.661 465.922 658.264 406.507C663.796 378.183 660.462 350.008 648.191 326.946C634.67 301.535 611.009 283.335 578.204 274.908C542.857 265.827 526.843 252.858 524.881 234.783C524.042 227.061 525.69 218.356 529.658 207.72C532.571 199.914 533.825 197.231 543.585 177.15C556.994 149.564 562.475 134.02 562.697 116.633C562.902 100.517 557.486 85.8734 545.376 72.243C512.97 35.769 461.447 21.6109 397.33 27.2727ZM212.567 88.5959C220.759 84.5714 227.277 81.3696 229.768 80.1136C283.151 53.1947 343.848 34.2475 397.596 29.5013C460.886 23.9125 511.517 37.8251 543.304 73.6028C555.054 86.8275 560.289 100.983 560.09 116.608C559.873 133.615 554.463 148.958 541.18 176.286C531.38 196.447 530.122 199.14 527.176 207.035C523.109 217.934 521.409 226.92 522.285 234.991C524.36 254.109 541.189 267.737 577.457 277.054C609.53 285.293 632.606 303.044 645.82 327.878C657.862 350.509 661.143 378.233 655.693 406.136C644.279 464.582 599.258 509.204 544.34 509.204C478.107 509.204 435.029 520.586 390.402 548.183C376.377 556.856 361.851 567.263 343.669 581.44C336.34 587.155 328.612 593.319 317.964 601.912L317.073 602.632C312.904 606.003 295.343 620.204 289.422 624.966C240.015 664.699 160.169 680.808 107.605 659.893C78.8689 648.459 59.7074 626.929 52.9774 595.871C45.3799 560.809 53.7184 514.577 79.6535 457.649C91.8734 432.384 94.7058 410.907 89.8143 390.757C86.102 375.465 79.9933 364.451 64.8342 342.313C63.9734 341.056 63.5429 340.427 63.114 339.8C50.1623 320.863 44.4414 310.706 40.7639 297.767C35.9995 281.003 37.1128 263.61 45.2658 243.551C65.9455 205.208 82.5351 179.749 99.0761 161.008C115.78 142.084 132.712 129.396 158.327 115.623C166.577 111.187 193.913 97.7591 212.567 88.5959Z");
-			attr(path1, "fill", "white");
-			attr(path2, "opacity", "0.2");
-			attr(path2, "fill-rule", "evenodd");
-			attr(path2, "clip-rule", "evenodd");
-			attr(path2, "d", "M393.65 53.3234C356.923 60.458 317.486 75.5292 246.32 107.518C200.301 128.204 185.067 135.564 170.938 144.573C157.451 153.174 148.276 161.866 139.021 174.653C133.336 182.507 127.789 191.512 118.361 207.865C117.548 209.275 115.274 213.239 112.783 217.58C109.803 222.774 106.513 228.509 105.045 231.056C99.153 241.276 93.8182 250.4 88.1163 259.962C74.6004 282.628 69.9213 297.456 72.5119 307.421C74.6266 315.557 80.2875 319.73 93.5713 325.271C94.1179 325.499 95.5342 326.084 96.6564 326.547C97.3304 326.825 97.8983 327.06 98.1079 327.147C99.9117 327.896 101.335 328.502 102.708 329.114C117.63 335.754 125.95 343.298 129.949 357.07C135.142 374.951 131.492 401.884 117.069 440.958C115.82 444.341 114.547 447.769 112.872 452.264C113.073 451.724 109.685 460.813 108.769 463.276C105.503 472.056 103.194 478.347 101.032 484.399C95.529 499.805 91.6296 511.939 88.78 522.912C81.9545 549.193 81.3792 568.6 88.0542 584.062C104.844 622.952 140.549 638.02 187.399 632.019C225.701 627.113 269.161 607.709 298.006 584.49C299.122 583.592 301.968 581.287 305.333 578.561C311.157 573.844 318.535 567.868 321.192 565.745C329.222 559.328 335.462 554.56 341.49 550.301C362.227 535.651 381.62 526.536 410.239 518.761C418.131 516.616 425.218 514.298 431.856 511.743C437.879 509.426 443.267 507.032 449.426 504.029C449.733 503.879 450.715 503.391 452.037 502.734C455.555 500.986 461.485 498.038 463.555 497.064C478.371 490.093 490.675 487.259 511.496 487.259C559.201 487.259 598.033 448.734 607.84 398.469C612.515 374.51 609.697 350.675 599.324 331.161C587.889 309.65 567.875 294.241 540.133 287.107C510.429 279.469 495.587 264.944 491.837 243.158C488.939 226.326 491.787 209.512 501.245 174.95C501.445 174.221 501.634 173.53 501.944 172.4C509.564 144.612 512.193 132.893 512.954 119.095C513.967 100.722 509.759 86.6352 498.848 76.0643C473.083 51.1011 439.07 44.5001 393.65 53.3234ZM172.489 146.372C186.462 137.462 201.649 130.125 247.526 109.504C318.49 77.6051 357.792 62.5856 394.223 55.5085C438.788 46.8512 471.83 53.2638 496.897 77.551C507.292 87.6221 511.333 101.148 510.349 118.988C509.598 132.598 506.987 144.24 499.406 171.886C499.096 173.016 498.906 173.707 498.707 174.437C489.169 209.286 486.293 226.269 489.256 243.486C493.156 266.139 508.718 281.368 539.384 289.253C566.394 296.198 585.823 311.158 596.951 332.092C607.096 351.176 609.861 374.56 605.268 398.098C595.65 447.395 557.726 485.018 511.494 485.018C490.225 485.018 477.493 487.951 462.302 495.098C460.197 496.089 454.202 499.068 450.692 500.813C449.394 501.459 448.435 501.935 448.139 502.08C442.046 505.05 436.729 507.412 430.789 509.698C424.243 512.217 417.249 514.505 409.452 516.624C380.512 524.486 360.825 533.739 339.833 548.57C333.758 552.862 327.481 557.658 319.415 564.104C316.751 566.233 309.36 572.22 303.533 576.938C300.174 579.659 297.335 581.959 296.223 582.854C267.747 605.776 224.763 624.967 187.013 629.803C141.308 635.657 106.825 621.105 90.4958 583.282C84.0323 568.31 84.596 549.297 91.3217 523.399C94.1541 512.494 98.0368 500.412 103.522 485.057C105.68 479.015 107.986 472.731 111.249 463.958C112.165 461.496 115.553 452.408 115.353 452.947C117.028 448.45 118.301 445.021 119.551 441.635C134.107 402.202 137.809 374.889 132.476 356.527C128.271 342.047 119.434 334.034 103.905 327.123C102.506 326.501 101.063 325.886 99.2396 325.129C99.0265 325.04 98.4513 324.803 97.7711 324.522C96.6513 324.06 95.2472 323.48 94.7071 323.255C82.083 317.989 76.9426 314.199 75.0535 306.932C72.6313 297.614 77.1733 283.221 90.4337 260.984C96.1415 251.412 101.482 242.279 107.378 232.05C108.848 229.5 112.142 223.759 115.123 218.562C117.612 214.225 119.883 210.267 120.694 208.86C130.087 192.569 135.604 183.611 141.232 175.836C150.318 163.284 159.27 154.801 172.489 146.372Z");
-			attr(path2, "fill", "white");
-			attr(svg, "width", "709");
-			attr(svg, "height", "689");
-			attr(svg, "viewBox", "0 0 709 689");
-			attr(svg, "fill", "none");
-			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-			attr(svg, "class", "svelte-f78i81");
-			attr(figure, "class", "svelte-f78i81");
-			attr(div2, "class", "section-container svelte-f78i81");
-			attr(img, "class", "image");
-			if (!src_url_equal(img.src, img_src_value = /*thumbnail*/ ctx[2].url)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*thumbnail*/ ctx[2].alt);
-			set_style(img, "display", "none");
-			set_style(img, "width", "1200px");
-			set_style(img, "height", "627px");
-			attr(section, "class", "svelte-f78i81");
-			toggle_class(section, "image-left", /*variation*/ ctx[3] === "image_left");
+			attr(span0, "class", "svelte-kzxtvp");
+			attr(span1, "class", "icon svelte-kzxtvp");
+			attr(button, "class", "svelte-kzxtvp");
+			attr(div1, "class", "item svelte-kzxtvp");
+			toggle_class(div1, "active", /*activeItem*/ ctx[1] === /*i*/ ctx[7]);
+			this.first = div1;
 		},
 		m(target, anchor) {
-			insert_hydration(target, section, anchor);
-			append_hydration(section, style);
-			append_hydration(style, t0);
-			append_hydration(section, t1);
-			append_hydration(section, div2);
-			append_hydration(div2, div1);
-			append_hydration(div1, h1);
-			append_hydration(h1, t2);
-			append_hydration(div1, t3);
-			append_hydration(div1, div0);
-			append_hydration(div0, t4);
-			append_hydration(div1, t5);
+			insert_hydration(target, div1, anchor);
+			append_hydration(div1, button);
+			append_hydration(button, span0);
+			append_hydration(span0, t0);
+			append_hydration(button, t1);
+			append_hydration(button, span1);
+			mount_component(icon, span1, null);
+			append_hydration(div1, t2);
 			if (if_block) if_block.m(div1, null);
-			append_hydration(div2, t6);
-			append_hydration(div2, script);
-			append_hydration(div2, t7);
-			append_hydration(div2, dotlottie_player);
-			append_hydration(div2, t8);
-			append_hydration(div2, figure);
-			append_hydration(figure, svg);
-			append_hydration(svg, path0);
-			append_hydration(svg, path1);
-			append_hydration(svg, path2);
-			append_hydration(section, t9);
-			append_hydration(section, img);
+			append_hydration(div1, t3);
+			append_hydration(div1, t4);
 			current = true;
-		},
-		p(ctx, [dirty]) {
-			if (!current || dirty & /*heading*/ 2) set_data(t2, /*heading*/ ctx[1]);
-			if (!current || dirty & /*subheading*/ 16) set_data(t4, /*subheading*/ ctx[4]);
 
-			if (/*link*/ ctx[0].label) {
+			if (!mounted) {
+				dispose = listen(button, "click", click_handler);
+				mounted = true;
+			}
+		},
+		p(new_ctx, dirty) {
+			ctx = new_ctx;
+			if ((!current || dirty & /*items*/ 1) && t0_value !== (t0_value = /*item*/ ctx[5].title + "")) set_data(t0, t0_value);
+
+			if (/*activeItem*/ ctx[1] === /*i*/ ctx[7]) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty & /*link*/ 1) {
+					if (dirty & /*activeItem, items*/ 3) {
 						transition_in(if_block, 1);
 					}
 				} else {
 					if_block = create_if_block(ctx);
 					if_block.c();
 					transition_in(if_block, 1);
-					if_block.m(div1, null);
+					if_block.m(div1, t3);
 				}
 			} else if (if_block) {
 				group_outros();
@@ -3162,69 +3343,151 @@ function create_fragment(ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*thumbnail*/ 4 && !src_url_equal(img.src, img_src_value = /*thumbnail*/ ctx[2].url)) {
-				attr(img, "src", img_src_value);
-			}
-
-			if (!current || dirty & /*thumbnail*/ 4 && img_alt_value !== (img_alt_value = /*thumbnail*/ ctx[2].alt)) {
-				attr(img, "alt", img_alt_value);
-			}
-
-			if (!current || dirty & /*variation*/ 8) {
-				toggle_class(section, "image-left", /*variation*/ ctx[3] === "image_left");
+			if (!current || dirty & /*activeItem, items*/ 3) {
+				toggle_class(div1, "active", /*activeItem*/ ctx[1] === /*i*/ ctx[7]);
 			}
 		},
 		i(local) {
 			if (current) return;
+			transition_in(icon.$$.fragment, local);
 			transition_in(if_block);
 			current = true;
 		},
 		o(local) {
+			transition_out(icon.$$.fragment, local);
 			transition_out(if_block);
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(section);
+			if (detaching) detach(div1);
+			destroy_component(icon);
 			if (if_block) if_block.d();
+			mounted = false;
+			dispose();
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	let section;
+	let div1;
+	let div0;
+	let each_blocks = [];
+	let each_1_lookup = new Map();
+	let current;
+	let each_value = /*items*/ ctx[0];
+	const get_key = ctx => /*i*/ ctx[7];
+
+	for (let i = 0; i < each_value.length; i += 1) {
+		let child_ctx = get_each_context(ctx, each_value, i);
+		let key = get_key(child_ctx);
+		each_1_lookup.set(key, each_blocks[i] = create_each_block(key, child_ctx));
+	}
+
+	return {
+		c() {
+			section = element("section");
+			div1 = element("div");
+			div0 = element("div");
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			this.h();
+		},
+		l(nodes) {
+			section = claim_element(nodes, "SECTION", { class: true });
+			var section_nodes = children(section);
+			div1 = claim_element(section_nodes, "DIV", { class: true });
+			var div1_nodes = children(div1);
+			div0 = claim_element(div1_nodes, "DIV", { class: true });
+			var div0_nodes = children(div0);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].l(div0_nodes);
+			}
+
+			div0_nodes.forEach(detach);
+			div1_nodes.forEach(detach);
+			section_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(div0, "class", "accordion svelte-kzxtvp");
+			attr(div1, "class", "section-container svelte-kzxtvp");
+			attr(section, "class", "svelte-kzxtvp");
+		},
+		m(target, anchor) {
+			insert_hydration(target, section, anchor);
+			append_hydration(section, div1);
+			append_hydration(div1, div0);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				if (each_blocks[i]) {
+					each_blocks[i].m(div0, null);
+				}
+			}
+
+			current = true;
+		},
+		p(ctx, [dirty]) {
+			if (dirty & /*activeItem, items, setActiveItem*/ 7) {
+				each_value = /*items*/ ctx[0];
+				group_outros();
+				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div0, outro_and_destroy_block, create_each_block, null, get_each_context);
+				check_outros();
+			}
+		},
+		i(local) {
+			if (current) return;
+
+			for (let i = 0; i < each_value.length; i += 1) {
+				transition_in(each_blocks[i]);
+			}
+
+			current = true;
+		},
+		o(local) {
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				transition_out(each_blocks[i]);
+			}
+
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(section);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].d();
+			}
 		}
 	};
 }
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
-	let { link } = $$props;
-	let { image } = $$props;
-	let { heading } = $$props;
-	let { thumbnail } = $$props;
-	let { variation } = $$props;
-	let { subheading } = $$props;
+	let { items } = $$props;
+	let activeItem = 0;
+
+	function setActiveItem(i) {
+		$$invalidate(1, activeItem = activeItem === i ? null : i);
+	}
+
+	const click_handler = i => setActiveItem(i);
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(5, props = $$props.props);
-		if ('link' in $$props) $$invalidate(0, link = $$props.link);
-		if ('image' in $$props) $$invalidate(6, image = $$props.image);
-		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
-		if ('thumbnail' in $$props) $$invalidate(2, thumbnail = $$props.thumbnail);
-		if ('variation' in $$props) $$invalidate(3, variation = $$props.variation);
-		if ('subheading' in $$props) $$invalidate(4, subheading = $$props.subheading);
+		if ('props' in $$props) $$invalidate(3, props = $$props.props);
+		if ('items' in $$props) $$invalidate(0, items = $$props.items);
 	};
 
-	return [link, heading, thumbnail, variation, subheading, props, image];
+	return [items, activeItem, setActiveItem, props, click_handler];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-
-		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 5,
-			link: 0,
-			image: 6,
-			heading: 1,
-			thumbnail: 2,
-			variation: 3,
-			subheading: 4
-		});
+		init(this, options, instance, create_fragment, safe_not_equal, { props: 3, items: 0 });
 	}
 }
 
