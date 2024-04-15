@@ -3188,7 +3188,7 @@ function get_each_context_1(ctx, list, i) {
 	return child_ctx;
 }
 
-// (171:10) {#if activeItem === i}
+// (189:10) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
 	let raw_value = /*item*/ ctx[12].description.html + "";
@@ -3207,7 +3207,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-1pgjsn5");
+			attr(div, "class", "description svelte-1gbt1pr");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3239,7 +3239,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (158:6) {#each items as item, i (i)}
+// (176:6) {#each items as item, i (i)}
 function create_each_block_1(key_1, ctx) {
 	let div3;
 	let div1;
@@ -3320,12 +3320,12 @@ function create_each_block_1(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-1pgjsn5");
-			attr(span0, "class", "svelte-1pgjsn5");
-			attr(span1, "class", "icon svelte-1pgjsn5");
-			attr(button, "class", "svelte-1pgjsn5");
-			attr(div1, "class", "item-icon svelte-1pgjsn5");
-			attr(div3, "class", "item svelte-1pgjsn5");
+			attr(div0, "class", "menu-icon svelte-1gbt1pr");
+			attr(span0, "class", "svelte-1gbt1pr");
+			attr(span1, "class", "icone svelte-1gbt1pr");
+			attr(button, "class", "svelte-1gbt1pr");
+			attr(div1, "class", "item-icon svelte-1gbt1pr");
+			attr(div3, "class", "item svelte-1gbt1pr");
 			toggle_class(div3, "active", /*activeItem*/ ctx[5] === /*i*/ ctx[14]);
 			this.first = div3;
 		},
@@ -3407,10 +3407,10 @@ function create_each_block_1(key_1, ctx) {
 	};
 }
 
-// (190:8) {#each cards as card, index}
+// (208:8) {#each cards as card, index}
 function create_each_block(ctx) {
 	let li;
-	let button;
+	let div2;
 	let div0;
 	let icon;
 	let t0;
@@ -3424,7 +3424,7 @@ function create_each_block(ctx) {
 	return {
 		c() {
 			li = element("li");
-			button = element("button");
+			div2 = element("div");
 			div0 = element("div");
 			create_component(icon.$$.fragment);
 			t0 = space();
@@ -3436,35 +3436,35 @@ function create_each_block(ctx) {
 		l(nodes) {
 			li = claim_element(nodes, "LI", { class: true });
 			var li_nodes = children(li);
-			button = claim_element(li_nodes, "BUTTON", { class: true });
-			var button_nodes = children(button);
-			div0 = claim_element(button_nodes, "DIV", { class: true });
+			div2 = claim_element(li_nodes, "DIV", { class: true });
+			var div2_nodes = children(div2);
+			div0 = claim_element(div2_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
 			claim_component(icon.$$.fragment, div0_nodes);
 			div0_nodes.forEach(detach);
-			t0 = claim_space(button_nodes);
-			div1 = claim_element(button_nodes, "DIV", { class: true });
+			t0 = claim_space(div2_nodes);
+			div1 = claim_element(div2_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
 			t1 = claim_text(div1_nodes, t1_value);
 			div1_nodes.forEach(detach);
-			button_nodes.forEach(detach);
+			div2_nodes.forEach(detach);
 			t2 = claim_space(li_nodes);
 			li_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "icon svelte-1pgjsn5");
-			attr(div1, "class", "title svelte-1pgjsn5");
-			attr(button, "class", "btn svelte-1pgjsn5");
-			attr(li, "class", "svelte-1pgjsn5");
+			attr(div0, "class", "icon svelte-1gbt1pr");
+			attr(div1, "class", "title svelte-1gbt1pr");
+			attr(div2, "class", "btn svelte-1gbt1pr");
+			attr(li, "class", "svelte-1gbt1pr");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
-			append_hydration(li, button);
-			append_hydration(button, div0);
+			append_hydration(li, div2);
+			append_hydration(div2, div0);
 			mount_component(icon, div0, null);
-			append_hydration(button, t0);
-			append_hydration(button, div1);
+			append_hydration(div2, t0);
+			append_hydration(div2, div1);
 			append_hydration(div1, t1);
 			append_hydration(li, t2);
 			current = true;
@@ -3636,19 +3636,19 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-1pgjsn5");
-			attr(div1, "class", "menu svelte-1pgjsn5");
-			attr(div2, "class", "item-icon svelte-1pgjsn5");
-			attr(div3, "class", "accordion svelte-1pgjsn5");
-			attr(div4, "class", "box1 svelte-1pgjsn5");
-			attr(h2, "class", "heading");
+			attr(div0, "class", "menu-icon svelte-1gbt1pr");
+			attr(div1, "class", "menu svelte-1gbt1pr");
+			attr(div2, "class", "item-icon svelte-1gbt1pr");
+			attr(div3, "class", "accordion svelte-1gbt1pr");
+			attr(div4, "class", "box1 svelte-1gbt1pr");
+			attr(h2, "class", "heading svelte-1gbt1pr");
 			attr(h3, "class", "subheading");
-			attr(div5, "class", "heading-group");
-			attr(ul, "class", "cards svelte-1pgjsn5");
+			attr(div5, "class", "heading-group svelte-1gbt1pr");
+			attr(ul, "class", "cards svelte-1gbt1pr");
 			attr(div6, "class", "content");
-			attr(div7, "class", "box2 svelte-1pgjsn5");
-			attr(div8, "class", "section-container svelte-1pgjsn5");
-			attr(section, "class", "svelte-1pgjsn5");
+			attr(div7, "class", "box2 svelte-1gbt1pr");
+			attr(div8, "class", "section-container svelte-1gbt1pr");
+			attr(section, "class", "svelte-1gbt1pr");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
