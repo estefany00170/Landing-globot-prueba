@@ -1,4 +1,4 @@
-// Opciones - Updated April 15, 2024
+// Opciones - Updated April 16, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -21,6 +21,14 @@ function is_function(thing) {
 }
 function safe_not_equal(a, b) {
     return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+}
+let src_url_equal_anchor;
+function src_url_equal(element_src, url) {
+    if (!src_url_equal_anchor) {
+        src_url_equal_anchor = document.createElement('a');
+    }
+    src_url_equal_anchor.href = url;
+    return element_src === src_url_equal_anchor.href;
 }
 function is_empty(obj) {
     return Object.keys(obj).length === 0;
@@ -225,12 +233,6 @@ function insert_hydration(target, node, anchor) {
 function detach(node) {
     if (node.parentNode) {
         node.parentNode.removeChild(node);
-    }
-}
-function destroy_each(iterations, detaching) {
-    for (let i = 0; i < iterations.length; i += 1) {
-        if (iterations[i])
-            iterations[i].d(detaching);
     }
 }
 function element(name) {
@@ -3176,22 +3178,15 @@ let Component$1 = class Component extends SvelteComponent {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[9] = list[i];
-	child_ctx[11] = i;
+	child_ctx[14] = list[i];
+	child_ctx[16] = i;
 	return child_ctx;
 }
 
-function get_each_context_1(ctx, list, i) {
-	const child_ctx = ctx.slice();
-	child_ctx[12] = list[i];
-	child_ctx[14] = i;
-	return child_ctx;
-}
-
-// (189:10) {#if activeItem === i}
+// (174:10) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
-	let raw_value = /*item*/ ctx[12].description.html + "";
+	let raw_value = /*item*/ ctx[14].description.html + "";
 	let div_transition;
 	let current;
 
@@ -3207,7 +3202,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-1gbt1pr");
+			attr(div, "class", "description svelte-1n5z717");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3215,7 +3210,7 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if ((!current || dirty & /*items*/ 1) && raw_value !== (raw_value = /*item*/ ctx[12].description.html + "")) div.innerHTML = raw_value;		},
+			if ((!current || dirty & /*items*/ 1) && raw_value !== (raw_value = /*item*/ ctx[14].description.html + "")) div.innerHTML = raw_value;		},
 		i(local) {
 			if (current) return;
 
@@ -3239,8 +3234,8 @@ function create_if_block(ctx) {
 	};
 }
 
-// (176:6) {#each items as item, i (i)}
-function create_each_block_1(key_1, ctx) {
+// (161:6) {#each items as item, i (i)}
+function create_each_block(key_1, ctx) {
 	let div3;
 	let div1;
 	let div0;
@@ -3248,7 +3243,7 @@ function create_each_block_1(key_1, ctx) {
 	let t0;
 	let button;
 	let span0;
-	let t1_value = /*item*/ ctx[12].title + "";
+	let t1_value = /*item*/ ctx[14].title + "";
 	let t1;
 	let t2;
 	let span1;
@@ -3263,10 +3258,10 @@ function create_each_block_1(key_1, ctx) {
 	icon1 = new Component$1({ props: { icon: "ph:caret-down-bold" } });
 
 	function click_handler() {
-		return /*click_handler*/ ctx[8](/*i*/ ctx[14]);
+		return /*click_handler*/ ctx[13](/*i*/ ctx[16]);
 	}
 
-	let if_block = /*activeItem*/ ctx[5] === /*i*/ ctx[14] && create_if_block(ctx);
+	let if_block = /*activeItem*/ ctx[10] === /*i*/ ctx[16] && create_if_block(ctx);
 
 	return {
 		key: key_1,
@@ -3320,13 +3315,13 @@ function create_each_block_1(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-1gbt1pr");
-			attr(span0, "class", "svelte-1gbt1pr");
-			attr(span1, "class", "icone svelte-1gbt1pr");
-			attr(button, "class", "svelte-1gbt1pr");
-			attr(div1, "class", "item-icon svelte-1gbt1pr");
-			attr(div3, "class", "item svelte-1gbt1pr");
-			toggle_class(div3, "active", /*activeItem*/ ctx[5] === /*i*/ ctx[14]);
+			attr(div0, "class", "menu-icon svelte-1n5z717");
+			attr(span0, "class", "svelte-1n5z717");
+			attr(span1, "class", "icone svelte-1n5z717");
+			attr(button, "class", "svelte-1n5z717");
+			attr(div1, "class", "item-icon svelte-1n5z717");
+			attr(div3, "class", "item svelte-1n5z717");
+			toggle_class(div3, "active", /*activeItem*/ ctx[10] === /*i*/ ctx[16]);
 			this.first = div3;
 		},
 		m(target, anchor) {
@@ -3354,13 +3349,13 @@ function create_each_block_1(key_1, ctx) {
 		},
 		p(new_ctx, dirty) {
 			ctx = new_ctx;
-			if ((!current || dirty & /*items*/ 1) && t1_value !== (t1_value = /*item*/ ctx[12].title + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*items*/ 1) && t1_value !== (t1_value = /*item*/ ctx[14].title + "")) set_data(t1, t1_value);
 
-			if (/*activeItem*/ ctx[5] === /*i*/ ctx[14]) {
+			if (/*activeItem*/ ctx[10] === /*i*/ ctx[16]) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty & /*activeItem, items*/ 33) {
+					if (dirty & /*activeItem, items*/ 1025) {
 						transition_in(if_block, 1);
 					}
 				} else {
@@ -3379,8 +3374,8 @@ function create_each_block_1(key_1, ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*activeItem, items*/ 33) {
-				toggle_class(div3, "active", /*activeItem*/ ctx[5] === /*i*/ ctx[14]);
+			if (!current || dirty & /*activeItem, items*/ 1025) {
+				toggle_class(div3, "active", /*activeItem*/ ctx[10] === /*i*/ ctx[16]);
 			}
 		},
 		i(local) {
@@ -3407,335 +3402,769 @@ function create_each_block_1(key_1, ctx) {
 	};
 }
 
-// (208:8) {#each cards as card, index}
-function create_each_block(ctx) {
-	let li;
-	let div2;
-	let div0;
-	let icon;
-	let t0;
-	let div1;
-	let t1_value = /*card*/ ctx[9].title + "";
-	let t1;
-	let t2;
-	let current;
-	icon = new Component$1({ props: { icon: /*card*/ ctx[9].icon } });
-
-	return {
-		c() {
-			li = element("li");
-			div2 = element("div");
-			div0 = element("div");
-			create_component(icon.$$.fragment);
-			t0 = space();
-			div1 = element("div");
-			t1 = text(t1_value);
-			t2 = space();
-			this.h();
-		},
-		l(nodes) {
-			li = claim_element(nodes, "LI", { class: true });
-			var li_nodes = children(li);
-			div2 = claim_element(li_nodes, "DIV", { class: true });
-			var div2_nodes = children(div2);
-			div0 = claim_element(div2_nodes, "DIV", { class: true });
-			var div0_nodes = children(div0);
-			claim_component(icon.$$.fragment, div0_nodes);
-			div0_nodes.forEach(detach);
-			t0 = claim_space(div2_nodes);
-			div1 = claim_element(div2_nodes, "DIV", { class: true });
-			var div1_nodes = children(div1);
-			t1 = claim_text(div1_nodes, t1_value);
-			div1_nodes.forEach(detach);
-			div2_nodes.forEach(detach);
-			t2 = claim_space(li_nodes);
-			li_nodes.forEach(detach);
-			this.h();
-		},
-		h() {
-			attr(div0, "class", "icon svelte-1gbt1pr");
-			attr(div1, "class", "title svelte-1gbt1pr");
-			attr(div2, "class", "btn svelte-1gbt1pr");
-			attr(li, "class", "svelte-1gbt1pr");
-		},
-		m(target, anchor) {
-			insert_hydration(target, li, anchor);
-			append_hydration(li, div2);
-			append_hydration(div2, div0);
-			mount_component(icon, div0, null);
-			append_hydration(div2, t0);
-			append_hydration(div2, div1);
-			append_hydration(div1, t1);
-			append_hydration(li, t2);
-			current = true;
-		},
-		p(ctx, dirty) {
-			const icon_changes = {};
-			if (dirty & /*cards*/ 4) icon_changes.icon = /*card*/ ctx[9].icon;
-			icon.$set(icon_changes);
-			if ((!current || dirty & /*cards*/ 4) && t1_value !== (t1_value = /*card*/ ctx[9].title + "")) set_data(t1, t1_value);
-		},
-		i(local) {
-			if (current) return;
-			transition_in(icon.$$.fragment, local);
-			current = true;
-		},
-		o(local) {
-			transition_out(icon.$$.fragment, local);
-			current = false;
-		},
-		d(detaching) {
-			if (detaching) detach(li);
-			destroy_component(icon);
-		}
-	};
-}
-
 function create_fragment(ctx) {
 	let section;
-	let div8;
-	let div4;
-	let div2;
-	let div0;
-	let icon;
-	let t0;
+	let div10;
 	let div1;
+	let div0;
+	let each_blocks = [];
+	let each_1_lookup = new Map();
+	let t0;
+	let div9;
+	let div3;
+	let div2;
 	let t1;
 	let t2;
-	let div3;
-	let each_blocks_1 = [];
-	let each0_lookup = new Map();
+	let div8;
+	let div4;
+	let p0;
 	let t3;
-	let div7;
-	let div5;
-	let h2;
 	let t4;
+	let ul0;
+	let li0;
 	let t5;
-	let h3;
 	let t6;
+	let li1;
 	let t7;
+	let strong0;
+	let t8;
+	let t9;
+	let strong1;
+	let t10;
+	let t11;
+	let t12;
+	let div5;
+	let p1;
+	let t13;
+	let t14;
+	let ul1;
+	let li2;
+	let t15;
+	let a0;
+	let t16;
+	let t17;
+	let t18;
+	let li3;
+	let t19;
+	let strong2;
+	let t20;
+	let t21;
+	let t22;
+	let li4;
+	let t23;
+	let t24;
+	let li5;
+	let t25;
+	let t26;
+	let img0;
+	let img0_src_value;
+	let t27;
 	let div6;
-	let ul;
+	let p2;
+	let t28;
+	let t29;
+	let ul2;
+	let li6;
+	let t30;
+	let a1;
+	let t31;
+	let t32;
+	let t33;
+	let li7;
+	let t34;
+	let strong3;
+	let t35;
+	let t36;
+	let t37;
+	let img1;
+	let img1_src_value;
+	let t38;
+	let ul3;
+	let li8;
+	let t39;
+	let strong4;
+	let t40;
+	let t41;
+	let t42;
+	let img2;
+	let img2_src_value;
+	let t43;
+	let ul4;
+	let li9;
+	let t44;
+	let strong5;
+	let t45;
+	let t46;
+	let t47;
+	let img3;
+	let img3_src_value;
+	let t48;
+	let ul5;
+	let li10;
+	let t49;
+	let strong6;
+	let t50;
+	let t51;
+	let t52;
+	let img4;
+	let img4_src_value;
+	let t53;
+	let ul6;
+	let li11;
+	let t54;
+	let t55;
+	let img5;
+	let img5_src_value;
+	let t56;
+	let div7;
+	let p3;
+	let t57;
+	let t58;
+	let ul7;
+	let li12;
+	let t59;
+	let strong7;
+	let t60;
+	let t61;
+	let t62;
+	let li13;
+	let t63;
+	let strong8;
+	let t64;
+	let t65;
+	let strong9;
+	let t66;
+	let t67;
+	let t68;
+	let img6;
+	let img6_src_value;
+	let t69;
+	let ul8;
+	let li14;
+	let t70;
+	let t71;
+	let img7;
+	let img7_src_value;
 	let current;
-	icon = new Component$1({ props: { icon: "carbon:home" } });
-	let each_value_1 = /*items*/ ctx[0];
-	const get_key = ctx => /*i*/ ctx[14];
-
-	for (let i = 0; i < each_value_1.length; i += 1) {
-		let child_ctx = get_each_context_1(ctx, each_value_1, i);
-		let key = get_key(child_ctx);
-		each0_lookup.set(key, each_blocks_1[i] = create_each_block_1(key, child_ctx));
-	}
-
-	let each_value = /*cards*/ ctx[2];
-	let each_blocks = [];
+	let each_value = /*items*/ ctx[0];
+	const get_key = ctx => /*i*/ ctx[16];
 
 	for (let i = 0; i < each_value.length; i += 1) {
-		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+		let child_ctx = get_each_context(ctx, each_value, i);
+		let key = get_key(child_ctx);
+		each_1_lookup.set(key, each_blocks[i] = create_each_block(key, child_ctx));
 	}
-
-	const out = i => transition_out(each_blocks[i], 1, 1, () => {
-		each_blocks[i] = null;
-	});
 
 	return {
 		c() {
 			section = element("section");
-			div8 = element("div");
-			div4 = element("div");
-			div2 = element("div");
-			div0 = element("div");
-			create_component(icon.$$.fragment);
-			t0 = space();
+			div10 = element("div");
 			div1 = element("div");
-			t1 = text(/*menu*/ ctx[1]);
-			t2 = space();
-			div3 = element("div");
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				each_blocks_1[i].c();
-			}
-
-			t3 = space();
-			div7 = element("div");
-			div5 = element("div");
-			h2 = element("h2");
-			t4 = text(/*heading*/ ctx[3]);
-			t5 = space();
-			h3 = element("h3");
-			t6 = text(/*subheading*/ ctx[4]);
-			t7 = space();
-			div6 = element("div");
-			ul = element("ul");
+			div0 = element("div");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
+			t0 = space();
+			div9 = element("div");
+			div3 = element("div");
+			div2 = element("div");
+			t1 = text(/*heading*/ ctx[1]);
+			t2 = space();
+			div8 = element("div");
+			div4 = element("div");
+			p0 = element("p");
+			t3 = text("Paso 1: Crea tu chatbot");
+			t4 = space();
+			ul0 = element("ul");
+			li0 = element("li");
+			t5 = text("Ingresa a tu cuenta de Globot y crea un chatbot cargándole la fuente de información que desees que tenga.");
+			t6 = space();
+			li1 = element("li");
+			t7 = text("Una vez creado y configurado, dirígete a ");
+			strong0 = element("strong");
+			t8 = text("“Canales”");
+			t9 = text(" y luego ");
+			strong1 = element("strong");
+			t10 = text("“Whatsapp”");
+			t11 = text(", allí estarán los campos que tendrás que completar luego de seguir los pasos de esta sección, para configurar tu chatbot en Whatsapp.");
+			t12 = space();
+			div5 = element("div");
+			p1 = element("p");
+			t13 = text("Paso 2: Crea tu cuenta comercial en Meta (Facebook)");
+			t14 = space();
+			ul1 = element("ul");
+			li2 = element("li");
+			t15 = text("Ingresa a ");
+			a0 = element("a");
+			t16 = text("Meta Business");
+			t17 = text(" y entra con tu cuenta de Facebook.");
+			t18 = space();
+			li3 = element("li");
+			t19 = text("Haz click en ");
+			strong2 = element("strong");
+			t20 = text("“Crear una cuenta”");
+			t21 = text(" y luego completa el nombre del negocio, tu nombre y el correo electrónico de tu negocio. Dale clic a “Enviar”.");
+			t22 = space();
+			li4 = element("li");
+			t23 = text("Proporciona los datos de tu empresa y haz clic en \"Enviar\".");
+			t24 = space();
+			li5 = element("li");
+			t25 = text("Ingresa los detalles de tu empresa y haz clic en “Enviar”.");
+			t26 = space();
+			img0 = element("img");
+			t27 = space();
+			div6 = element("div");
+			p2 = element("p");
+			t28 = text("Paso 3: Crea una nueva aplicación en Meta (Facebook)");
+			t29 = space();
+			ul2 = element("ul");
+			li6 = element("li");
+			t30 = text("Ingresa a ");
+			a1 = element("a");
+			t31 = text("Meta Developers");
+			t32 = text(" y entra con tu cuenta de Facebook.");
+			t33 = space();
+			li7 = element("li");
+			t34 = text("Luego, selecciona ");
+			strong3 = element("strong");
+			t35 = text("“Mis apps”");
+			t36 = text(".");
+			t37 = space();
+			img1 = element("img");
+			t38 = space();
+			ul3 = element("ul");
+			li8 = element("li");
+			t39 = text("Haz clic en ");
+			strong4 = element("strong");
+			t40 = text("“Crear app”");
+			t41 = text(".");
+			t42 = space();
+			img2 = element("img");
+			t43 = space();
+			ul4 = element("ul");
+			li9 = element("li");
+			t44 = text("Selecciona Caso de uso: ");
+			strong5 = element("strong");
+			t45 = text("“Otro”");
+			t46 = text(" y dale clic a “Siguiente”.");
+			t47 = space();
+			img3 = element("img");
+			t48 = space();
+			ul5 = element("ul");
+			li10 = element("li");
+			t49 = text("En Tipo de App: selecciona ");
+			strong6 = element("strong");
+			t50 = text("“Negocios”");
+			t51 = text(" y dale clic a “Siguiente”.");
+			t52 = space();
+			img4 = element("img");
+			t53 = space();
+			ul6 = element("ul");
+			li11 = element("li");
+			t54 = text("Proporciona los detalles de tu app: Su nombre, el correo electrónico asociado y opcionalmente el portafolio comercial. Finalmente, dale clic en “Crear app”");
+			t55 = space();
+			img5 = element("img");
+			t56 = space();
+			div7 = element("div");
+			p3 = element("p");
+			t57 = text("Paso 4: Configura la aplicación Meta (Facebook) para la integración de Whatsapp");
+			t58 = space();
+			ul7 = element("ul");
+			li12 = element("li");
+			t59 = text("En el menú lateral izquierdo, selecciona ");
+			strong7 = element("strong");
+			t60 = text("“Panel”");
+			t61 = text(".");
+			t62 = space();
+			li13 = element("li");
+			t63 = text("Anda a ");
+			strong8 = element("strong");
+			t64 = text("“Agrega productos a tu app”, “Whatsapp”");
+			t65 = text(" y haz clic en ");
+			strong9 = element("strong");
+			t66 = text("“Configurar”");
+			t67 = text(".");
+			t68 = space();
+			img6 = element("img");
+			t69 = space();
+			ul8 = element("ul");
+			li14 = element("li");
+			t70 = text("Selecciona tu cuenta comercial de Meta.");
+			t71 = space();
+			img7 = element("img");
 			this.h();
 		},
 		l(nodes) {
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
-			div8 = claim_element(section_nodes, "DIV", { class: true });
+			div10 = claim_element(section_nodes, "DIV", { class: true });
+			var div10_nodes = children(div10);
+			div1 = claim_element(div10_nodes, "DIV", { class: true });
+			var div1_nodes = children(div1);
+			div0 = claim_element(div1_nodes, "DIV", { class: true });
+			var div0_nodes = children(div0);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].l(div0_nodes);
+			}
+
+			div0_nodes.forEach(detach);
+			div1_nodes.forEach(detach);
+			t0 = claim_space(div10_nodes);
+			div9 = claim_element(div10_nodes, "DIV", { class: true });
+			var div9_nodes = children(div9);
+			div3 = claim_element(div9_nodes, "DIV", { class: true });
+			var div3_nodes = children(div3);
+			div2 = claim_element(div3_nodes, "DIV", { class: true });
+			var div2_nodes = children(div2);
+			t1 = claim_text(div2_nodes, /*heading*/ ctx[1]);
+			div2_nodes.forEach(detach);
+			div3_nodes.forEach(detach);
+			t2 = claim_space(div9_nodes);
+			div8 = claim_element(div9_nodes, "DIV", { class: true });
 			var div8_nodes = children(div8);
 			div4 = claim_element(div8_nodes, "DIV", { class: true });
 			var div4_nodes = children(div4);
-			div2 = claim_element(div4_nodes, "DIV", { class: true });
-			var div2_nodes = children(div2);
-			div0 = claim_element(div2_nodes, "DIV", { class: true });
-			var div0_nodes = children(div0);
-			claim_component(icon.$$.fragment, div0_nodes);
-			div0_nodes.forEach(detach);
-			t0 = claim_space(div2_nodes);
-			div1 = claim_element(div2_nodes, "DIV", { class: true });
-			var div1_nodes = children(div1);
-			t1 = claim_text(div1_nodes, /*menu*/ ctx[1]);
-			div1_nodes.forEach(detach);
-			div2_nodes.forEach(detach);
-			t2 = claim_space(div4_nodes);
-			div3 = claim_element(div4_nodes, "DIV", { class: true });
-			var div3_nodes = children(div3);
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				each_blocks_1[i].l(div3_nodes);
-			}
-
-			div3_nodes.forEach(detach);
+			p0 = claim_element(div4_nodes, "P", { class: true });
+			var p0_nodes = children(p0);
+			t3 = claim_text(p0_nodes, "Paso 1: Crea tu chatbot");
+			p0_nodes.forEach(detach);
+			t4 = claim_space(div4_nodes);
+			ul0 = claim_element(div4_nodes, "UL", { class: true });
+			var ul0_nodes = children(ul0);
+			li0 = claim_element(ul0_nodes, "LI", {});
+			var li0_nodes = children(li0);
+			t5 = claim_text(li0_nodes, "Ingresa a tu cuenta de Globot y crea un chatbot cargándole la fuente de información que desees que tenga.");
+			li0_nodes.forEach(detach);
+			t6 = claim_space(ul0_nodes);
+			li1 = claim_element(ul0_nodes, "LI", {});
+			var li1_nodes = children(li1);
+			t7 = claim_text(li1_nodes, "Una vez creado y configurado, dirígete a ");
+			strong0 = claim_element(li1_nodes, "STRONG", {});
+			var strong0_nodes = children(strong0);
+			t8 = claim_text(strong0_nodes, "“Canales”");
+			strong0_nodes.forEach(detach);
+			t9 = claim_text(li1_nodes, " y luego ");
+			strong1 = claim_element(li1_nodes, "STRONG", {});
+			var strong1_nodes = children(strong1);
+			t10 = claim_text(strong1_nodes, "“Whatsapp”");
+			strong1_nodes.forEach(detach);
+			t11 = claim_text(li1_nodes, ", allí estarán los campos que tendrás que completar luego de seguir los pasos de esta sección, para configurar tu chatbot en Whatsapp.");
+			li1_nodes.forEach(detach);
+			ul0_nodes.forEach(detach);
 			div4_nodes.forEach(detach);
-			t3 = claim_space(div8_nodes);
+			t12 = claim_space(div8_nodes);
+			div5 = claim_element(div8_nodes, "DIV", { class: true });
+			var div5_nodes = children(div5);
+			p1 = claim_element(div5_nodes, "P", { class: true });
+			var p1_nodes = children(p1);
+			t13 = claim_text(p1_nodes, "Paso 2: Crea tu cuenta comercial en Meta (Facebook)");
+			p1_nodes.forEach(detach);
+			t14 = claim_space(div5_nodes);
+			ul1 = claim_element(div5_nodes, "UL", { class: true });
+			var ul1_nodes = children(ul1);
+			li2 = claim_element(ul1_nodes, "LI", {});
+			var li2_nodes = children(li2);
+			t15 = claim_text(li2_nodes, "Ingresa a ");
+			a0 = claim_element(li2_nodes, "A", { class: true, href: true });
+			var a0_nodes = children(a0);
+			t16 = claim_text(a0_nodes, "Meta Business");
+			a0_nodes.forEach(detach);
+			t17 = claim_text(li2_nodes, " y entra con tu cuenta de Facebook.");
+			li2_nodes.forEach(detach);
+			t18 = claim_space(ul1_nodes);
+			li3 = claim_element(ul1_nodes, "LI", {});
+			var li3_nodes = children(li3);
+			t19 = claim_text(li3_nodes, "Haz click en ");
+			strong2 = claim_element(li3_nodes, "STRONG", {});
+			var strong2_nodes = children(strong2);
+			t20 = claim_text(strong2_nodes, "“Crear una cuenta”");
+			strong2_nodes.forEach(detach);
+			t21 = claim_text(li3_nodes, " y luego completa el nombre del negocio, tu nombre y el correo electrónico de tu negocio. Dale clic a “Enviar”.");
+			li3_nodes.forEach(detach);
+			t22 = claim_space(ul1_nodes);
+			li4 = claim_element(ul1_nodes, "LI", {});
+			var li4_nodes = children(li4);
+			t23 = claim_text(li4_nodes, "Proporciona los datos de tu empresa y haz clic en \"Enviar\".");
+			li4_nodes.forEach(detach);
+			t24 = claim_space(ul1_nodes);
+			li5 = claim_element(ul1_nodes, "LI", {});
+			var li5_nodes = children(li5);
+			t25 = claim_text(li5_nodes, "Ingresa los detalles de tu empresa y haz clic en “Enviar”.");
+			li5_nodes.forEach(detach);
+			ul1_nodes.forEach(detach);
+			t26 = claim_space(div5_nodes);
+			img0 = claim_element(div5_nodes, "IMG", { src: true });
+			div5_nodes.forEach(detach);
+			t27 = claim_space(div8_nodes);
+			div6 = claim_element(div8_nodes, "DIV", { class: true });
+			var div6_nodes = children(div6);
+			p2 = claim_element(div6_nodes, "P", { class: true });
+			var p2_nodes = children(p2);
+			t28 = claim_text(p2_nodes, "Paso 3: Crea una nueva aplicación en Meta (Facebook)");
+			p2_nodes.forEach(detach);
+			t29 = claim_space(div6_nodes);
+			ul2 = claim_element(div6_nodes, "UL", { class: true });
+			var ul2_nodes = children(ul2);
+			li6 = claim_element(ul2_nodes, "LI", {});
+			var li6_nodes = children(li6);
+			t30 = claim_text(li6_nodes, "Ingresa a ");
+			a1 = claim_element(li6_nodes, "A", { class: true, href: true });
+			var a1_nodes = children(a1);
+			t31 = claim_text(a1_nodes, "Meta Developers");
+			a1_nodes.forEach(detach);
+			t32 = claim_text(li6_nodes, " y entra con tu cuenta de Facebook.");
+			li6_nodes.forEach(detach);
+			t33 = claim_space(ul2_nodes);
+			li7 = claim_element(ul2_nodes, "LI", {});
+			var li7_nodes = children(li7);
+			t34 = claim_text(li7_nodes, "Luego, selecciona ");
+			strong3 = claim_element(li7_nodes, "STRONG", {});
+			var strong3_nodes = children(strong3);
+			t35 = claim_text(strong3_nodes, "“Mis apps”");
+			strong3_nodes.forEach(detach);
+			t36 = claim_text(li7_nodes, ".");
+			li7_nodes.forEach(detach);
+			ul2_nodes.forEach(detach);
+			t37 = claim_space(div6_nodes);
+			img1 = claim_element(div6_nodes, "IMG", { src: true });
+			t38 = claim_space(div6_nodes);
+			ul3 = claim_element(div6_nodes, "UL", { class: true });
+			var ul3_nodes = children(ul3);
+			li8 = claim_element(ul3_nodes, "LI", {});
+			var li8_nodes = children(li8);
+			t39 = claim_text(li8_nodes, "Haz clic en ");
+			strong4 = claim_element(li8_nodes, "STRONG", {});
+			var strong4_nodes = children(strong4);
+			t40 = claim_text(strong4_nodes, "“Crear app”");
+			strong4_nodes.forEach(detach);
+			t41 = claim_text(li8_nodes, ".");
+			li8_nodes.forEach(detach);
+			ul3_nodes.forEach(detach);
+			t42 = claim_space(div6_nodes);
+			img2 = claim_element(div6_nodes, "IMG", { src: true });
+			t43 = claim_space(div6_nodes);
+			ul4 = claim_element(div6_nodes, "UL", { class: true });
+			var ul4_nodes = children(ul4);
+			li9 = claim_element(ul4_nodes, "LI", {});
+			var li9_nodes = children(li9);
+			t44 = claim_text(li9_nodes, "Selecciona Caso de uso: ");
+			strong5 = claim_element(li9_nodes, "STRONG", {});
+			var strong5_nodes = children(strong5);
+			t45 = claim_text(strong5_nodes, "“Otro”");
+			strong5_nodes.forEach(detach);
+			t46 = claim_text(li9_nodes, " y dale clic a “Siguiente”.");
+			li9_nodes.forEach(detach);
+			ul4_nodes.forEach(detach);
+			t47 = claim_space(div6_nodes);
+			img3 = claim_element(div6_nodes, "IMG", { src: true });
+			t48 = claim_space(div6_nodes);
+			ul5 = claim_element(div6_nodes, "UL", { class: true });
+			var ul5_nodes = children(ul5);
+			li10 = claim_element(ul5_nodes, "LI", {});
+			var li10_nodes = children(li10);
+			t49 = claim_text(li10_nodes, "En Tipo de App: selecciona ");
+			strong6 = claim_element(li10_nodes, "STRONG", {});
+			var strong6_nodes = children(strong6);
+			t50 = claim_text(strong6_nodes, "“Negocios”");
+			strong6_nodes.forEach(detach);
+			t51 = claim_text(li10_nodes, " y dale clic a “Siguiente”.");
+			li10_nodes.forEach(detach);
+			ul5_nodes.forEach(detach);
+			t52 = claim_space(div6_nodes);
+			img4 = claim_element(div6_nodes, "IMG", { src: true });
+			t53 = claim_space(div6_nodes);
+			ul6 = claim_element(div6_nodes, "UL", { class: true });
+			var ul6_nodes = children(ul6);
+			li11 = claim_element(ul6_nodes, "LI", {});
+			var li11_nodes = children(li11);
+			t54 = claim_text(li11_nodes, "Proporciona los detalles de tu app: Su nombre, el correo electrónico asociado y opcionalmente el portafolio comercial. Finalmente, dale clic en “Crear app”");
+			li11_nodes.forEach(detach);
+			ul6_nodes.forEach(detach);
+			t55 = claim_space(div6_nodes);
+			img5 = claim_element(div6_nodes, "IMG", { src: true });
+			div6_nodes.forEach(detach);
+			t56 = claim_space(div8_nodes);
 			div7 = claim_element(div8_nodes, "DIV", { class: true });
 			var div7_nodes = children(div7);
-			div5 = claim_element(div7_nodes, "DIV", { class: true });
-			var div5_nodes = children(div5);
-			h2 = claim_element(div5_nodes, "H2", { class: true });
-			var h2_nodes = children(h2);
-			t4 = claim_text(h2_nodes, /*heading*/ ctx[3]);
-			h2_nodes.forEach(detach);
-			t5 = claim_space(div5_nodes);
-			h3 = claim_element(div5_nodes, "H3", { class: true });
-			var h3_nodes = children(h3);
-			t6 = claim_text(h3_nodes, /*subheading*/ ctx[4]);
-			h3_nodes.forEach(detach);
-			div5_nodes.forEach(detach);
-			t7 = claim_space(div7_nodes);
-			div6 = claim_element(div7_nodes, "DIV", { class: true });
-			var div6_nodes = children(div6);
-			ul = claim_element(div6_nodes, "UL", { class: true });
-			var ul_nodes = children(ul);
-
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].l(ul_nodes);
-			}
-
-			ul_nodes.forEach(detach);
-			div6_nodes.forEach(detach);
+			p3 = claim_element(div7_nodes, "P", { class: true });
+			var p3_nodes = children(p3);
+			t57 = claim_text(p3_nodes, "Paso 4: Configura la aplicación Meta (Facebook) para la integración de Whatsapp");
+			p3_nodes.forEach(detach);
+			t58 = claim_space(div7_nodes);
+			ul7 = claim_element(div7_nodes, "UL", { class: true });
+			var ul7_nodes = children(ul7);
+			li12 = claim_element(ul7_nodes, "LI", {});
+			var li12_nodes = children(li12);
+			t59 = claim_text(li12_nodes, "En el menú lateral izquierdo, selecciona ");
+			strong7 = claim_element(li12_nodes, "STRONG", {});
+			var strong7_nodes = children(strong7);
+			t60 = claim_text(strong7_nodes, "“Panel”");
+			strong7_nodes.forEach(detach);
+			t61 = claim_text(li12_nodes, ".");
+			li12_nodes.forEach(detach);
+			t62 = claim_space(ul7_nodes);
+			li13 = claim_element(ul7_nodes, "LI", {});
+			var li13_nodes = children(li13);
+			t63 = claim_text(li13_nodes, "Anda a ");
+			strong8 = claim_element(li13_nodes, "STRONG", {});
+			var strong8_nodes = children(strong8);
+			t64 = claim_text(strong8_nodes, "“Agrega productos a tu app”, “Whatsapp”");
+			strong8_nodes.forEach(detach);
+			t65 = claim_text(li13_nodes, " y haz clic en ");
+			strong9 = claim_element(li13_nodes, "STRONG", {});
+			var strong9_nodes = children(strong9);
+			t66 = claim_text(strong9_nodes, "“Configurar”");
+			strong9_nodes.forEach(detach);
+			t67 = claim_text(li13_nodes, ".");
+			li13_nodes.forEach(detach);
+			ul7_nodes.forEach(detach);
+			t68 = claim_space(div7_nodes);
+			img6 = claim_element(div7_nodes, "IMG", { src: true });
+			t69 = claim_space(div7_nodes);
+			ul8 = claim_element(div7_nodes, "UL", { class: true });
+			var ul8_nodes = children(ul8);
+			li14 = claim_element(ul8_nodes, "LI", {});
+			var li14_nodes = children(li14);
+			t70 = claim_text(li14_nodes, "Selecciona tu cuenta comercial de Meta.");
+			li14_nodes.forEach(detach);
+			ul8_nodes.forEach(detach);
+			t71 = claim_space(div7_nodes);
+			img7 = claim_element(div7_nodes, "IMG", { src: true });
 			div7_nodes.forEach(detach);
 			div8_nodes.forEach(detach);
+			div9_nodes.forEach(detach);
+			div10_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-1gbt1pr");
-			attr(div1, "class", "menu svelte-1gbt1pr");
-			attr(div2, "class", "item-icon svelte-1gbt1pr");
-			attr(div3, "class", "accordion svelte-1gbt1pr");
-			attr(div4, "class", "box1 svelte-1gbt1pr");
-			attr(h2, "class", "heading svelte-1gbt1pr");
-			attr(h3, "class", "subheading");
-			attr(div5, "class", "heading-group svelte-1gbt1pr");
-			attr(ul, "class", "cards svelte-1gbt1pr");
-			attr(div6, "class", "content");
-			attr(div7, "class", "box2 svelte-1gbt1pr");
-			attr(div8, "class", "section-container svelte-1gbt1pr");
-			attr(section, "class", "svelte-1gbt1pr");
+			attr(div0, "class", "accordion svelte-1n5z717");
+			attr(div1, "class", "box1 svelte-1n5z717");
+			attr(div2, "class", "heading svelte-1n5z717");
+			attr(div3, "class", "heading-group svelte-1n5z717");
+			attr(p0, "class", "subtitle svelte-1n5z717");
+			attr(ul0, "class", "svelte-1n5z717");
+			attr(div4, "class", "paso1 svelte-1n5z717");
+			attr(p1, "class", "subtitle svelte-1n5z717");
+			attr(a0, "class", "link svelte-1n5z717");
+			attr(a0, "href", "https://business.facebook.com/");
+			attr(ul1, "class", "svelte-1n5z717");
+			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) attr(img0, "src", img0_src_value);
+			attr(div5, "class", "paso1 svelte-1n5z717");
+			attr(p2, "class", "subtitle svelte-1n5z717");
+			attr(a1, "class", "link svelte-1n5z717");
+			attr(a1, "href", "https://business.facebook.com/");
+			attr(ul2, "class", "svelte-1n5z717");
+			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) attr(img1, "src", img1_src_value);
+			attr(ul3, "class", "svelte-1n5z717");
+			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[4].url)) attr(img2, "src", img2_src_value);
+			attr(ul4, "class", "svelte-1n5z717");
+			if (!src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[5].url)) attr(img3, "src", img3_src_value);
+			attr(ul5, "class", "svelte-1n5z717");
+			if (!src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[6].url)) attr(img4, "src", img4_src_value);
+			attr(ul6, "class", "svelte-1n5z717");
+			if (!src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[7].url)) attr(img5, "src", img5_src_value);
+			attr(div6, "class", "paso1 svelte-1n5z717");
+			attr(p3, "class", "subtitle svelte-1n5z717");
+			attr(ul7, "class", "svelte-1n5z717");
+			if (!src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[8].url)) attr(img6, "src", img6_src_value);
+			attr(ul8, "class", "svelte-1n5z717");
+			if (!src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[9].url)) attr(img7, "src", img7_src_value);
+			attr(div7, "class", "paso1 svelte-1n5z717");
+			attr(div8, "class", "content svelte-1n5z717");
+			attr(div9, "class", "box2 svelte-1n5z717");
+			attr(div10, "class", "section-container svelte-1n5z717");
+			attr(section, "class", "svelte-1n5z717");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
-			append_hydration(section, div8);
-			append_hydration(div8, div4);
-			append_hydration(div4, div2);
-			append_hydration(div2, div0);
-			mount_component(icon, div0, null);
-			append_hydration(div2, t0);
-			append_hydration(div2, div1);
-			append_hydration(div1, t1);
-			append_hydration(div4, t2);
-			append_hydration(div4, div3);
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				if (each_blocks_1[i]) {
-					each_blocks_1[i].m(div3, null);
-				}
-			}
-
-			append_hydration(div8, t3);
-			append_hydration(div8, div7);
-			append_hydration(div7, div5);
-			append_hydration(div5, h2);
-			append_hydration(h2, t4);
-			append_hydration(div5, t5);
-			append_hydration(div5, h3);
-			append_hydration(h3, t6);
-			append_hydration(div7, t7);
-			append_hydration(div7, div6);
-			append_hydration(div6, ul);
+			append_hydration(section, div10);
+			append_hydration(div10, div1);
+			append_hydration(div1, div0);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				if (each_blocks[i]) {
-					each_blocks[i].m(ul, null);
+					each_blocks[i].m(div0, null);
 				}
 			}
 
+			append_hydration(div10, t0);
+			append_hydration(div10, div9);
+			append_hydration(div9, div3);
+			append_hydration(div3, div2);
+			append_hydration(div2, t1);
+			append_hydration(div9, t2);
+			append_hydration(div9, div8);
+			append_hydration(div8, div4);
+			append_hydration(div4, p0);
+			append_hydration(p0, t3);
+			append_hydration(div4, t4);
+			append_hydration(div4, ul0);
+			append_hydration(ul0, li0);
+			append_hydration(li0, t5);
+			append_hydration(ul0, t6);
+			append_hydration(ul0, li1);
+			append_hydration(li1, t7);
+			append_hydration(li1, strong0);
+			append_hydration(strong0, t8);
+			append_hydration(li1, t9);
+			append_hydration(li1, strong1);
+			append_hydration(strong1, t10);
+			append_hydration(li1, t11);
+			append_hydration(div8, t12);
+			append_hydration(div8, div5);
+			append_hydration(div5, p1);
+			append_hydration(p1, t13);
+			append_hydration(div5, t14);
+			append_hydration(div5, ul1);
+			append_hydration(ul1, li2);
+			append_hydration(li2, t15);
+			append_hydration(li2, a0);
+			append_hydration(a0, t16);
+			append_hydration(li2, t17);
+			append_hydration(ul1, t18);
+			append_hydration(ul1, li3);
+			append_hydration(li3, t19);
+			append_hydration(li3, strong2);
+			append_hydration(strong2, t20);
+			append_hydration(li3, t21);
+			append_hydration(ul1, t22);
+			append_hydration(ul1, li4);
+			append_hydration(li4, t23);
+			append_hydration(ul1, t24);
+			append_hydration(ul1, li5);
+			append_hydration(li5, t25);
+			append_hydration(div5, t26);
+			append_hydration(div5, img0);
+			append_hydration(div8, t27);
+			append_hydration(div8, div6);
+			append_hydration(div6, p2);
+			append_hydration(p2, t28);
+			append_hydration(div6, t29);
+			append_hydration(div6, ul2);
+			append_hydration(ul2, li6);
+			append_hydration(li6, t30);
+			append_hydration(li6, a1);
+			append_hydration(a1, t31);
+			append_hydration(li6, t32);
+			append_hydration(ul2, t33);
+			append_hydration(ul2, li7);
+			append_hydration(li7, t34);
+			append_hydration(li7, strong3);
+			append_hydration(strong3, t35);
+			append_hydration(li7, t36);
+			append_hydration(div6, t37);
+			append_hydration(div6, img1);
+			append_hydration(div6, t38);
+			append_hydration(div6, ul3);
+			append_hydration(ul3, li8);
+			append_hydration(li8, t39);
+			append_hydration(li8, strong4);
+			append_hydration(strong4, t40);
+			append_hydration(li8, t41);
+			append_hydration(div6, t42);
+			append_hydration(div6, img2);
+			append_hydration(div6, t43);
+			append_hydration(div6, ul4);
+			append_hydration(ul4, li9);
+			append_hydration(li9, t44);
+			append_hydration(li9, strong5);
+			append_hydration(strong5, t45);
+			append_hydration(li9, t46);
+			append_hydration(div6, t47);
+			append_hydration(div6, img3);
+			append_hydration(div6, t48);
+			append_hydration(div6, ul5);
+			append_hydration(ul5, li10);
+			append_hydration(li10, t49);
+			append_hydration(li10, strong6);
+			append_hydration(strong6, t50);
+			append_hydration(li10, t51);
+			append_hydration(div6, t52);
+			append_hydration(div6, img4);
+			append_hydration(div6, t53);
+			append_hydration(div6, ul6);
+			append_hydration(ul6, li11);
+			append_hydration(li11, t54);
+			append_hydration(div6, t55);
+			append_hydration(div6, img5);
+			append_hydration(div8, t56);
+			append_hydration(div8, div7);
+			append_hydration(div7, p3);
+			append_hydration(p3, t57);
+			append_hydration(div7, t58);
+			append_hydration(div7, ul7);
+			append_hydration(ul7, li12);
+			append_hydration(li12, t59);
+			append_hydration(li12, strong7);
+			append_hydration(strong7, t60);
+			append_hydration(li12, t61);
+			append_hydration(ul7, t62);
+			append_hydration(ul7, li13);
+			append_hydration(li13, t63);
+			append_hydration(li13, strong8);
+			append_hydration(strong8, t64);
+			append_hydration(li13, t65);
+			append_hydration(li13, strong9);
+			append_hydration(strong9, t66);
+			append_hydration(li13, t67);
+			append_hydration(div7, t68);
+			append_hydration(div7, img6);
+			append_hydration(div7, t69);
+			append_hydration(div7, ul8);
+			append_hydration(ul8, li14);
+			append_hydration(li14, t70);
+			append_hydration(div7, t71);
+			append_hydration(div7, img7);
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*menu*/ 2) set_data(t1, /*menu*/ ctx[1]);
-
-			if (dirty & /*activeItem, items, setActiveItem*/ 97) {
-				each_value_1 = /*items*/ ctx[0];
+			if (dirty & /*activeItem, items, setActiveItem*/ 3073) {
+				each_value = /*items*/ ctx[0];
 				group_outros();
-				each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key, 1, ctx, each_value_1, each0_lookup, div3, outro_and_destroy_block, create_each_block_1, null, get_each_context_1);
+				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div0, outro_and_destroy_block, create_each_block, null, get_each_context);
 				check_outros();
 			}
 
-			if (!current || dirty & /*heading*/ 8) set_data(t4, /*heading*/ ctx[3]);
-			if (!current || dirty & /*subheading*/ 16) set_data(t6, /*subheading*/ ctx[4]);
+			if (!current || dirty & /*heading*/ 2) set_data(t1, /*heading*/ ctx[1]);
 
-			if (dirty & /*cards*/ 4) {
-				each_value = /*cards*/ ctx[2];
-				let i;
+			if (!current || dirty & /*image1*/ 4 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) {
+				attr(img0, "src", img0_src_value);
+			}
 
-				for (i = 0; i < each_value.length; i += 1) {
-					const child_ctx = get_each_context(ctx, each_value, i);
+			if (!current || dirty & /*image2*/ 8 && !src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) {
+				attr(img1, "src", img1_src_value);
+			}
 
-					if (each_blocks[i]) {
-						each_blocks[i].p(child_ctx, dirty);
-						transition_in(each_blocks[i], 1);
-					} else {
-						each_blocks[i] = create_each_block(child_ctx);
-						each_blocks[i].c();
-						transition_in(each_blocks[i], 1);
-						each_blocks[i].m(ul, null);
-					}
-				}
+			if (!current || dirty & /*image3*/ 16 && !src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[4].url)) {
+				attr(img2, "src", img2_src_value);
+			}
 
-				group_outros();
+			if (!current || dirty & /*image4*/ 32 && !src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[5].url)) {
+				attr(img3, "src", img3_src_value);
+			}
 
-				for (i = each_value.length; i < each_blocks.length; i += 1) {
-					out(i);
-				}
+			if (!current || dirty & /*image5*/ 64 && !src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[6].url)) {
+				attr(img4, "src", img4_src_value);
+			}
 
-				check_outros();
+			if (!current || dirty & /*image6*/ 128 && !src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[7].url)) {
+				attr(img5, "src", img5_src_value);
+			}
+
+			if (!current || dirty & /*image7*/ 256 && !src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[8].url)) {
+				attr(img6, "src", img6_src_value);
+			}
+
+			if (!current || dirty & /*image8*/ 512 && !src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[9].url)) {
+				attr(img7, "src", img7_src_value);
 			}
 		},
 		i(local) {
 			if (current) return;
-			transition_in(icon.$$.fragment, local);
-
-			for (let i = 0; i < each_value_1.length; i += 1) {
-				transition_in(each_blocks_1[i]);
-			}
 
 			for (let i = 0; i < each_value.length; i += 1) {
 				transition_in(each_blocks[i]);
@@ -3744,14 +4173,6 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		o(local) {
-			transition_out(icon.$$.fragment, local);
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				transition_out(each_blocks_1[i]);
-			}
-
-			each_blocks = each_blocks.filter(Boolean);
-
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				transition_out(each_blocks[i]);
 			}
@@ -3760,13 +4181,10 @@ function create_fragment(ctx) {
 		},
 		d(detaching) {
 			if (detaching) detach(section);
-			destroy_component(icon);
 
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				each_blocks_1[i].d();
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].d();
 			}
-
-			destroy_each(each_blocks, detaching);
 		}
 	};
 }
@@ -3774,33 +4192,48 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
 	let { items } = $$props;
-	let { menu } = $$props;
-	let { cards } = $$props;
 	let { heading } = $$props;
-	let { subheading } = $$props;
+	let { image1 } = $$props;
+	let { image2 } = $$props;
+	let { image3 } = $$props;
+	let { image4 } = $$props;
+	let { image5 } = $$props;
+	let { image6 } = $$props;
+	let { image7 } = $$props;
+	let { image8 } = $$props;
 	let activeItem = 0;
 
 	function setActiveItem(i) {
-		$$invalidate(5, activeItem = activeItem === i ? null : i);
+		$$invalidate(10, activeItem = activeItem === i ? null : i);
 	}
 
 	const click_handler = i => setActiveItem(i);
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(7, props = $$props.props);
+		if ('props' in $$props) $$invalidate(12, props = $$props.props);
 		if ('items' in $$props) $$invalidate(0, items = $$props.items);
-		if ('menu' in $$props) $$invalidate(1, menu = $$props.menu);
-		if ('cards' in $$props) $$invalidate(2, cards = $$props.cards);
-		if ('heading' in $$props) $$invalidate(3, heading = $$props.heading);
-		if ('subheading' in $$props) $$invalidate(4, subheading = $$props.subheading);
+		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
+		if ('image1' in $$props) $$invalidate(2, image1 = $$props.image1);
+		if ('image2' in $$props) $$invalidate(3, image2 = $$props.image2);
+		if ('image3' in $$props) $$invalidate(4, image3 = $$props.image3);
+		if ('image4' in $$props) $$invalidate(5, image4 = $$props.image4);
+		if ('image5' in $$props) $$invalidate(6, image5 = $$props.image5);
+		if ('image6' in $$props) $$invalidate(7, image6 = $$props.image6);
+		if ('image7' in $$props) $$invalidate(8, image7 = $$props.image7);
+		if ('image8' in $$props) $$invalidate(9, image8 = $$props.image8);
 	};
 
 	return [
 		items,
-		menu,
-		cards,
 		heading,
-		subheading,
+		image1,
+		image2,
+		image3,
+		image4,
+		image5,
+		image6,
+		image7,
+		image8,
 		activeItem,
 		setActiveItem,
 		props,
@@ -3813,12 +4246,17 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 7,
+			props: 12,
 			items: 0,
-			menu: 1,
-			cards: 2,
-			heading: 3,
-			subheading: 4
+			heading: 1,
+			image1: 2,
+			image2: 3,
+			image3: 4,
+			image4: 5,
+			image5: 6,
+			image6: 7,
+			image7: 8,
+			image8: 9
 		});
 	}
 }
