@@ -3191,7 +3191,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (215:10) {#if activeItem === i}
+// (219:10) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
 	let raw_value = /*item*/ ctx[36].description.html + "";
@@ -3210,7 +3210,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-cnwcxh");
+			attr(div, "class", "description svelte-14iml7a");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3242,7 +3242,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (202:6) {#each items as item, i (i)}
+// (206:6) {#each items as item, i (i)}
 function create_each_block(key_1, ctx) {
 	let div3;
 	let div1;
@@ -3323,12 +3323,12 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-cnwcxh");
-			attr(span0, "class", "svelte-cnwcxh");
-			attr(span1, "class", "icone svelte-cnwcxh");
-			attr(button, "class", "svelte-cnwcxh");
-			attr(div1, "class", "item-icon svelte-cnwcxh");
-			attr(div3, "class", "item svelte-cnwcxh");
+			attr(div0, "class", "menu-icon svelte-14iml7a");
+			attr(span0, "class", "svelte-14iml7a");
+			attr(span1, "class", "icone svelte-14iml7a");
+			attr(button, "class", "svelte-14iml7a");
+			attr(div1, "class", "item-icon svelte-14iml7a");
+			attr(div3, "class", "item svelte-14iml7a");
 			toggle_class(div3, "active", /*activeItem*/ ctx[32] === /*i*/ ctx[38]);
 			this.first = div3;
 		},
@@ -4412,12 +4412,12 @@ function create_fragment(ctx) {
 			t11 = claim_space(div5_nodes);
 			ul0 = claim_element(div5_nodes, "UL", { class: true });
 			var ul0_nodes = children(ul0);
-			li0 = claim_element(ul0_nodes, "LI", {});
+			li0 = claim_element(ul0_nodes, "LI", { class: true });
 			var li0_nodes = children(li0);
 			t12 = claim_text(li0_nodes, "Ingresa a tu cuenta de Globot y crea un chatbot cargándole la fuente de información que desees que tenga.");
 			li0_nodes.forEach(detach);
 			t13 = claim_space(ul0_nodes);
-			li1 = claim_element(ul0_nodes, "LI", {});
+			li1 = claim_element(ul0_nodes, "LI", { class: true });
 			var li1_nodes = children(li1);
 			t14 = claim_text(li1_nodes, "Una vez creado y configurado, dirígete a ");
 			strong0 = claim_element(li1_nodes, "STRONG", {});
@@ -4443,7 +4443,7 @@ function create_fragment(ctx) {
 			t21 = claim_space(div6_nodes);
 			ul1 = claim_element(div6_nodes, "UL", { class: true });
 			var ul1_nodes = children(ul1);
-			li2 = claim_element(ul1_nodes, "LI", {});
+			li2 = claim_element(ul1_nodes, "LI", { class: true });
 			var li2_nodes = children(li2);
 			t22 = claim_text(li2_nodes, "Ingresa a ");
 			a0 = claim_element(li2_nodes, "A", { class: true, href: true });
@@ -4453,7 +4453,7 @@ function create_fragment(ctx) {
 			t24 = claim_text(li2_nodes, " y entra con tu cuenta de Facebook.");
 			li2_nodes.forEach(detach);
 			t25 = claim_space(ul1_nodes);
-			li3 = claim_element(ul1_nodes, "LI", {});
+			li3 = claim_element(ul1_nodes, "LI", { class: true });
 			var li3_nodes = children(li3);
 			t26 = claim_text(li3_nodes, "Haz click en ");
 			strong2 = claim_element(li3_nodes, "STRONG", {});
@@ -4463,12 +4463,12 @@ function create_fragment(ctx) {
 			t28 = claim_text(li3_nodes, " y luego completa el nombre del negocio, tu nombre y el correo electrónico de tu negocio. Dale clic a “Enviar”.");
 			li3_nodes.forEach(detach);
 			t29 = claim_space(ul1_nodes);
-			li4 = claim_element(ul1_nodes, "LI", {});
+			li4 = claim_element(ul1_nodes, "LI", { class: true });
 			var li4_nodes = children(li4);
 			t30 = claim_text(li4_nodes, "Proporciona los datos de tu empresa y haz clic en \"Enviar\".");
 			li4_nodes.forEach(detach);
 			t31 = claim_space(ul1_nodes);
-			li5 = claim_element(ul1_nodes, "LI", {});
+			li5 = claim_element(ul1_nodes, "LI", { class: true });
 			var li5_nodes = children(li5);
 			t32 = claim_text(li5_nodes, "Ingresa los detalles de tu empresa y haz clic en “Enviar”.");
 			li5_nodes.forEach(detach);
@@ -4486,7 +4486,7 @@ function create_fragment(ctx) {
 			t36 = claim_space(div7_nodes);
 			ul2 = claim_element(div7_nodes, "UL", { class: true });
 			var ul2_nodes = children(ul2);
-			li6 = claim_element(ul2_nodes, "LI", {});
+			li6 = claim_element(ul2_nodes, "LI", { class: true });
 			var li6_nodes = children(li6);
 			t37 = claim_text(li6_nodes, "Ingresa a ");
 			a1 = claim_element(li6_nodes, "A", { class: true, href: true });
@@ -4496,7 +4496,7 @@ function create_fragment(ctx) {
 			t39 = claim_text(li6_nodes, " y entra con tu cuenta de Facebook.");
 			li6_nodes.forEach(detach);
 			t40 = claim_space(ul2_nodes);
-			li7 = claim_element(ul2_nodes, "LI", {});
+			li7 = claim_element(ul2_nodes, "LI", { class: true });
 			var li7_nodes = children(li7);
 			t41 = claim_text(li7_nodes, "Luego, selecciona ");
 			strong3 = claim_element(li7_nodes, "STRONG", {});
@@ -4511,7 +4511,7 @@ function create_fragment(ctx) {
 			t45 = claim_space(div7_nodes);
 			ul3 = claim_element(div7_nodes, "UL", { class: true });
 			var ul3_nodes = children(ul3);
-			li8 = claim_element(ul3_nodes, "LI", {});
+			li8 = claim_element(ul3_nodes, "LI", { class: true });
 			var li8_nodes = children(li8);
 			t46 = claim_text(li8_nodes, "Haz clic en ");
 			strong4 = claim_element(li8_nodes, "STRONG", {});
@@ -4526,7 +4526,7 @@ function create_fragment(ctx) {
 			t50 = claim_space(div7_nodes);
 			ul4 = claim_element(div7_nodes, "UL", { class: true });
 			var ul4_nodes = children(ul4);
-			li9 = claim_element(ul4_nodes, "LI", {});
+			li9 = claim_element(ul4_nodes, "LI", { class: true });
 			var li9_nodes = children(li9);
 			t51 = claim_text(li9_nodes, "Selecciona Caso de uso: ");
 			strong5 = claim_element(li9_nodes, "STRONG", {});
@@ -4541,7 +4541,7 @@ function create_fragment(ctx) {
 			t55 = claim_space(div7_nodes);
 			ul5 = claim_element(div7_nodes, "UL", { class: true });
 			var ul5_nodes = children(ul5);
-			li10 = claim_element(ul5_nodes, "LI", {});
+			li10 = claim_element(ul5_nodes, "LI", { class: true });
 			var li10_nodes = children(li10);
 			t56 = claim_text(li10_nodes, "En Tipo de App: selecciona ");
 			strong6 = claim_element(li10_nodes, "STRONG", {});
@@ -4556,7 +4556,7 @@ function create_fragment(ctx) {
 			t60 = claim_space(div7_nodes);
 			ul6 = claim_element(div7_nodes, "UL", { class: true });
 			var ul6_nodes = children(ul6);
-			li11 = claim_element(ul6_nodes, "LI", {});
+			li11 = claim_element(ul6_nodes, "LI", { class: true });
 			var li11_nodes = children(li11);
 			t61 = claim_text(li11_nodes, "Proporciona los detalles de tu app: Su nombre, el correo electrónico asociado y opcionalmente el portafolio comercial. Finalmente, dale clic en “Crear app”");
 			li11_nodes.forEach(detach);
@@ -4574,7 +4574,7 @@ function create_fragment(ctx) {
 			t65 = claim_space(div8_nodes);
 			ul7 = claim_element(div8_nodes, "UL", { class: true });
 			var ul7_nodes = children(ul7);
-			li12 = claim_element(ul7_nodes, "LI", {});
+			li12 = claim_element(ul7_nodes, "LI", { class: true });
 			var li12_nodes = children(li12);
 			t66 = claim_text(li12_nodes, "En el menú lateral izquierdo, selecciona ");
 			strong7 = claim_element(li12_nodes, "STRONG", {});
@@ -4584,7 +4584,7 @@ function create_fragment(ctx) {
 			t68 = claim_text(li12_nodes, ".");
 			li12_nodes.forEach(detach);
 			t69 = claim_space(ul7_nodes);
-			li13 = claim_element(ul7_nodes, "LI", {});
+			li13 = claim_element(ul7_nodes, "LI", { class: true });
 			var li13_nodes = children(li13);
 			t70 = claim_text(li13_nodes, "Anda a ");
 			strong8 = claim_element(li13_nodes, "STRONG", {});
@@ -4604,7 +4604,7 @@ function create_fragment(ctx) {
 			t76 = claim_space(div8_nodes);
 			ul8 = claim_element(div8_nodes, "UL", { class: true });
 			var ul8_nodes = children(ul8);
-			li14 = claim_element(ul8_nodes, "LI", {});
+			li14 = claim_element(ul8_nodes, "LI", { class: true });
 			var li14_nodes = children(li14);
 			t77 = claim_text(li14_nodes, "Selecciona tu cuenta comercial de Meta.");
 			li14_nodes.forEach(detach);
@@ -4614,7 +4614,7 @@ function create_fragment(ctx) {
 			t79 = claim_space(div8_nodes);
 			ul9 = claim_element(div8_nodes, "UL", { class: true });
 			var ul9_nodes = children(ul9);
-			li15 = claim_element(ul9_nodes, "LI", {});
+			li15 = claim_element(ul9_nodes, "LI", { class: true });
 			var li15_nodes = children(li15);
 			t80 = claim_text(li15_nodes, "En el menú lateral izquierdo, selecciona ");
 			strong10 = claim_element(li15_nodes, "STRONG", {});
@@ -4639,7 +4639,7 @@ function create_fragment(ctx) {
 			t88 = claim_space(div8_nodes);
 			ul10 = claim_element(div8_nodes, "UL", { class: true });
 			var ul10_nodes = children(ul10);
-			li16 = claim_element(ul10_nodes, "LI", {});
+			li16 = claim_element(ul10_nodes, "LI", { class: true });
 			var li16_nodes = children(li16);
 			t89 = claim_text(li16_nodes, "Activa tu Modo de la app a ");
 			strong12 = claim_element(li16_nodes, "STRONG", {});
@@ -4662,7 +4662,7 @@ function create_fragment(ctx) {
 			t95 = claim_space(div9_nodes);
 			ul11 = claim_element(div9_nodes, "UL", { class: true });
 			var ul11_nodes = children(ul11);
-			li17 = claim_element(ul11_nodes, "LI", {});
+			li17 = claim_element(ul11_nodes, "LI", { class: true });
 			var li17_nodes = children(li17);
 			t96 = claim_text(li17_nodes, "Regresa a tu cuenta comercial de ");
 			a3 = claim_element(li17_nodes, "A", { class: true, href: true });
@@ -4672,7 +4672,7 @@ function create_fragment(ctx) {
 			t98 = claim_text(li17_nodes, ".");
 			li17_nodes.forEach(detach);
 			t99 = claim_space(ul11_nodes);
-			li18 = claim_element(ul11_nodes, "LI", {});
+			li18 = claim_element(ul11_nodes, "LI", { class: true });
 			var li18_nodes = children(li18);
 			t100 = claim_text(li18_nodes, "En el menú lateral izquierdo de tu portafolio comercial, selecciona  ");
 			strong13 = claim_element(li18_nodes, "STRONG", {});
@@ -4687,7 +4687,7 @@ function create_fragment(ctx) {
 			t104 = claim_space(div9_nodes);
 			ul12 = claim_element(div9_nodes, "UL", { class: true });
 			var ul12_nodes = children(ul12);
-			li19 = claim_element(ul12_nodes, "LI", {});
+			li19 = claim_element(ul12_nodes, "LI", { class: true });
 			var li19_nodes = children(li19);
 			t105 = claim_text(li19_nodes, "En el menú que se despliega, en la parte  ");
 			strong14 = claim_element(li19_nodes, "STRONG", {});
@@ -4712,7 +4712,7 @@ function create_fragment(ctx) {
 			t113 = claim_space(div9_nodes);
 			ul13 = claim_element(div9_nodes, "UL", { class: true });
 			var ul13_nodes = children(ul13);
-			li20 = claim_element(ul13_nodes, "LI", {});
+			li20 = claim_element(ul13_nodes, "LI", { class: true });
 			var li20_nodes = children(li20);
 			t114 = claim_text(li20_nodes, "Agrega un usuario con el rol de ");
 			strong17 = claim_element(li20_nodes, "STRONG", {});
@@ -4732,7 +4732,7 @@ function create_fragment(ctx) {
 			t120 = claim_space(div9_nodes);
 			ul14 = claim_element(div9_nodes, "UL", { class: true });
 			var ul14_nodes = children(ul14);
-			li21 = claim_element(ul14_nodes, "LI", {});
+			li21 = claim_element(ul14_nodes, "LI", { class: true });
 			var li21_nodes = children(li21);
 			t121 = claim_text(li21_nodes, "Una vez creado el usuario, haz clic en ");
 			strong19 = claim_element(li21_nodes, "STRONG", {});
@@ -4747,7 +4747,7 @@ function create_fragment(ctx) {
 			t125 = claim_space(div9_nodes);
 			ul15 = claim_element(div9_nodes, "UL", { class: true });
 			var ul15_nodes = children(ul15);
-			li22 = claim_element(ul15_nodes, "LI", {});
+			li22 = claim_element(ul15_nodes, "LI", { class: true });
 			var li22_nodes = children(li22);
 			t126 = claim_text(li22_nodes, "Luego selecciona ");
 			strong20 = claim_element(li22_nodes, "STRONG", {});
@@ -4772,7 +4772,7 @@ function create_fragment(ctx) {
 			t134 = claim_space(div9_nodes);
 			ul16 = claim_element(div9_nodes, "UL", { class: true });
 			var ul16_nodes = children(ul16);
-			li23 = claim_element(ul16_nodes, "LI", {});
+			li23 = claim_element(ul16_nodes, "LI", { class: true });
 			var li23_nodes = children(li23);
 			t135 = claim_text(li23_nodes, "En el mismo administrador, selecciona ");
 			strong23 = claim_element(li23_nodes, "STRONG", {});
@@ -4787,7 +4787,7 @@ function create_fragment(ctx) {
 			t139 = claim_space(div9_nodes);
 			ul17 = claim_element(div9_nodes, "UL", { class: true });
 			var ul17_nodes = children(ul17);
-			li24 = claim_element(ul17_nodes, "LI", {});
+			li24 = claim_element(ul17_nodes, "LI", { class: true });
 			var li24_nodes = children(li24);
 			t140 = claim_text(li24_nodes, "En el recuadro de generar token, en ");
 			strong24 = claim_element(li24_nodes, "STRONG", {});
@@ -4822,7 +4822,7 @@ function create_fragment(ctx) {
 			t152 = claim_space(div9_nodes);
 			ul18 = claim_element(div9_nodes, "UL", { class: true });
 			var ul18_nodes = children(ul18);
-			li25 = claim_element(ul18_nodes, "LI", {});
+			li25 = claim_element(ul18_nodes, "LI", { class: true });
 			var li25_nodes = children(li25);
 			t153 = claim_text(li25_nodes, "Copia el token de acceso y guárdalo de manera segura, más tarde será requerido. Dale clic en ");
 			strong29 = claim_element(li25_nodes, "STRONG", {});
@@ -4845,7 +4845,7 @@ function create_fragment(ctx) {
 			t159 = claim_space(div10_nodes);
 			ul19 = claim_element(div10_nodes, "UL", { class: true });
 			var ul19_nodes = children(ul19);
-			li26 = claim_element(ul19_nodes, "LI", {});
+			li26 = claim_element(ul19_nodes, "LI", { class: true });
 			var li26_nodes = children(li26);
 			t160 = claim_text(li26_nodes, "Regresa a ");
 			a4 = claim_element(li26_nodes, "A", { class: true, href: true });
@@ -4855,7 +4855,7 @@ function create_fragment(ctx) {
 			t162 = claim_text(li26_nodes, ".");
 			li26_nodes.forEach(detach);
 			t163 = claim_space(ul19_nodes);
-			li27 = claim_element(ul19_nodes, "LI", {});
+			li27 = claim_element(ul19_nodes, "LI", { class: true });
 			var li27_nodes = children(li27);
 			t164 = claim_text(li27_nodes, "En el menú izquierdo lateral selecciona ");
 			strong30 = claim_element(li27_nodes, "STRONG", {});
@@ -4870,7 +4870,7 @@ function create_fragment(ctx) {
 			t168 = claim_space(div10_nodes);
 			ul20 = claim_element(div10_nodes, "UL", { class: true });
 			var ul20_nodes = children(ul20);
-			li28 = claim_element(ul20_nodes, "LI", {});
+			li28 = claim_element(ul20_nodes, "LI", { class: true });
 			var li28_nodes = children(li28);
 			t169 = claim_text(li28_nodes, "En el ");
 			strong31 = claim_element(li28_nodes, "STRONG", {});
@@ -4885,7 +4885,7 @@ function create_fragment(ctx) {
 			t173 = claim_space(div10_nodes);
 			ul21 = claim_element(div10_nodes, "UL", { class: true });
 			var ul21_nodes = children(ul21);
-			li29 = claim_element(ul21_nodes, "LI", {});
+			li29 = claim_element(ul21_nodes, "LI", { class: true });
 			var li29_nodes = children(li29);
 			t174 = claim_text(li29_nodes, "Completa el formulario con los datos requeridos.");
 			li29_nodes.forEach(detach);
@@ -4895,12 +4895,12 @@ function create_fragment(ctx) {
 			t176 = claim_space(div10_nodes);
 			ul22 = claim_element(div10_nodes, "UL", { class: true });
 			var ul22_nodes = children(ul22);
-			li30 = claim_element(ul22_nodes, "LI", {});
+			li30 = claim_element(ul22_nodes, "LI", { class: true });
 			var li30_nodes = children(li30);
 			t177 = claim_text(li30_nodes, "Verifica tu número usando el código recibido.");
 			li30_nodes.forEach(detach);
 			t178 = claim_space(ul22_nodes);
-			li31 = claim_element(ul22_nodes, "LI", {});
+			li31 = claim_element(ul22_nodes, "LI", { class: true });
 			var li31_nodes = children(li31);
 			t179 = claim_text(li31_nodes, "Una vez agregado correctamente, selecciona tu número de teléfono en el ");
 			strong32 = claim_element(li31_nodes, "STRONG", {});
@@ -4915,7 +4915,7 @@ function create_fragment(ctx) {
 			t183 = claim_space(div10_nodes);
 			ul23 = claim_element(div10_nodes, "UL", { class: true });
 			var ul23_nodes = children(ul23);
-			li32 = claim_element(ul23_nodes, "LI", {});
+			li32 = claim_element(ul23_nodes, "LI", { class: true });
 			var li32_nodes = children(li32);
 			t184 = claim_text(li32_nodes, "Agrega un Método de pago (Para enviar mensajes a través de WhatsApp, necesitarás un método de pago válido). Para mayor información ingresa a  ");
 			a5 = claim_element(li32_nodes, "A", { class: true, href: true });
@@ -4930,7 +4930,7 @@ function create_fragment(ctx) {
 			t188 = claim_space(div10_nodes);
 			ul24 = claim_element(div10_nodes, "UL", { class: true });
 			var ul24_nodes = children(ul24);
-			li33 = claim_element(ul24_nodes, "LI", {});
+			li33 = claim_element(ul24_nodes, "LI", { class: true });
 			var li33_nodes = children(li33);
 			t189 = claim_text(li33_nodes, "Esto te redirigirá a Meta business. Allí, selecciona ");
 			strong33 = claim_element(li33_nodes, "STRONG", {});
@@ -4945,7 +4945,7 @@ function create_fragment(ctx) {
 			t193 = claim_space(div10_nodes);
 			ul25 = claim_element(div10_nodes, "UL", { class: true });
 			var ul25_nodes = children(ul25);
-			li34 = claim_element(ul25_nodes, "LI", {});
+			li34 = claim_element(ul25_nodes, "LI", { class: true });
 			var li34_nodes = children(li34);
 			t194 = claim_text(li34_nodes, "Regresa a Meta developers en ");
 			strong34 = claim_element(li34_nodes, "STRONG", {});
@@ -4954,7 +4954,7 @@ function create_fragment(ctx) {
 			strong34_nodes.forEach(detach);
 			li34_nodes.forEach(detach);
 			t196 = claim_space(ul25_nodes);
-			li35 = claim_element(ul25_nodes, "LI", {});
+			li35 = claim_element(ul25_nodes, "LI", { class: true });
 			var li35_nodes = children(li35);
 			t197 = claim_text(li35_nodes, "En ");
 			strong35 = claim_element(li35_nodes, "STRONG", {});
@@ -4980,7 +4980,7 @@ function create_fragment(ctx) {
 			t204 = claim_space(div11_nodes);
 			ul26 = claim_element(div11_nodes, "UL", { class: true });
 			var ul26_nodes = children(ul26);
-			li36 = claim_element(ul26_nodes, "LI", {});
+			li36 = claim_element(ul26_nodes, "LI", { class: true });
 			var li36_nodes = children(li36);
 			t205 = claim_text(li36_nodes, "Ingresa al chatbot que creaste al principio en ");
 			a6 = claim_element(li36_nodes, "A", { class: true, href: true });
@@ -5000,7 +5000,7 @@ function create_fragment(ctx) {
 			t211 = claim_space(div11_nodes);
 			ul27 = claim_element(div11_nodes, "UL", { class: true });
 			var ul27_nodes = children(ul27);
-			li37 = claim_element(ul27_nodes, "LI", {});
+			li37 = claim_element(ul27_nodes, "LI", { class: true });
 			var li37_nodes = children(li37);
 			t212 = claim_text(li37_nodes, "En ");
 			strong38 = claim_element(li37_nodes, "STRONG", {});
@@ -5025,7 +5025,7 @@ function create_fragment(ctx) {
 			t220 = claim_space(div11_nodes);
 			ul28 = claim_element(div11_nodes, "UL", { class: true });
 			var ul28_nodes = children(ul28);
-			li38 = claim_element(ul28_nodes, "LI", {});
+			li38 = claim_element(ul28_nodes, "LI", { class: true });
 			var li38_nodes = children(li38);
 			t221 = claim_text(li38_nodes, "Esto generará una ");
 			strong41 = claim_element(li38_nodes, "STRONG", {});
@@ -5040,7 +5040,7 @@ function create_fragment(ctx) {
 			t225 = claim_text(li38_nodes, " que deberás copiar.");
 			li38_nodes.forEach(detach);
 			t226 = claim_space(ul28_nodes);
-			li39 = claim_element(ul28_nodes, "LI", {});
+			li39 = claim_element(ul28_nodes, "LI", { class: true });
 			var li39_nodes = children(li39);
 			t227 = claim_text(li39_nodes, "Vuelve a ");
 			a7 = claim_element(li39_nodes, "A", { class: true, href: true });
@@ -5065,7 +5065,7 @@ function create_fragment(ctx) {
 			t235 = claim_space(div11_nodes);
 			ul29 = claim_element(div11_nodes, "UL", { class: true });
 			var ul29_nodes = children(ul29);
-			li40 = claim_element(ul29_nodes, "LI", {});
+			li40 = claim_element(ul29_nodes, "LI", { class: true });
 			var li40_nodes = children(li40);
 			t236 = claim_text(li40_nodes, "Pega los datos anteriores copiados en los respectivos campos y haz clic en ");
 			strong45 = claim_element(li40_nodes, "STRONG", {});
@@ -5080,7 +5080,7 @@ function create_fragment(ctx) {
 			t240 = claim_space(div11_nodes);
 			ul30 = claim_element(div11_nodes, "UL", { class: true });
 			var ul30_nodes = children(ul30);
-			li41 = claim_element(ul30_nodes, "LI", {});
+			li41 = claim_element(ul30_nodes, "LI", { class: true });
 			var li41_nodes = children(li41);
 			t241 = claim_text(li41_nodes, "Configura el campo de Webhook dándole clic en ");
 			strong46 = claim_element(li41_nodes, "STRONG", {});
@@ -5095,7 +5095,7 @@ function create_fragment(ctx) {
 			t245 = claim_space(div11_nodes);
 			ul31 = claim_element(div11_nodes, "UL", { class: true });
 			var ul31_nodes = children(ul31);
-			li42 = claim_element(ul31_nodes, "LI", {});
+			li42 = claim_element(ul31_nodes, "LI", { class: true });
 			var li42_nodes = children(li42);
 			t246 = claim_text(li42_nodes, "Busca el campo ");
 			strong47 = claim_element(li42_nodes, "STRONG", {});
@@ -5128,115 +5128,158 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "accordion svelte-cnwcxh");
-			attr(div1, "class", "box1 svelte-cnwcxh");
+			attr(div0, "class", "accordion svelte-14iml7a");
+			attr(div1, "class", "box1 svelte-14iml7a");
 			set_style(span0, "color", "#C1C2C4");
 			set_style(span1, "color", "#C1C2C4");
 			set_style(span2, "color", "var(--Primary-2, #7B5CF5)");
-			attr(div2, "class", "steps svelte-cnwcxh");
+			attr(div2, "class", "steps svelte-14iml7a");
 			set_style(div2, "display", "flex");
 			set_style(div2, "gap", "15px");
 			set_style(div2, "margin-bottom", "20px");
-			attr(div3, "class", "heading svelte-cnwcxh");
-			attr(div4, "class", "heading-group svelte-cnwcxh");
-			attr(p0, "class", "subtitle svelte-cnwcxh");
-			attr(ul0, "class", "svelte-cnwcxh");
-			attr(div5, "class", "paso1 svelte-cnwcxh");
-			attr(p1, "class", "subtitle svelte-cnwcxh");
-			attr(a0, "class", "link svelte-cnwcxh");
+			attr(div3, "class", "heading svelte-14iml7a");
+			attr(div4, "class", "heading-group svelte-14iml7a");
+			attr(p0, "class", "subtitle svelte-14iml7a");
+			attr(li0, "class", "svelte-14iml7a");
+			attr(li1, "class", "svelte-14iml7a");
+			attr(ul0, "class", "svelte-14iml7a");
+			attr(div5, "class", "paso1 svelte-14iml7a");
+			attr(p1, "class", "subtitle svelte-14iml7a");
+			attr(a0, "class", "link svelte-14iml7a");
 			attr(a0, "href", "https://business.facebook.com/");
-			attr(ul1, "class", "svelte-cnwcxh");
+			attr(li2, "class", "svelte-14iml7a");
+			attr(li3, "class", "svelte-14iml7a");
+			attr(li4, "class", "svelte-14iml7a");
+			attr(li5, "class", "svelte-14iml7a");
+			attr(ul1, "class", "svelte-14iml7a");
 			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) attr(img0, "src", img0_src_value);
-			attr(div6, "class", "paso1 svelte-cnwcxh");
-			attr(p2, "class", "subtitle svelte-cnwcxh");
-			attr(a1, "class", "link svelte-cnwcxh");
+			attr(div6, "class", "paso1 svelte-14iml7a");
+			attr(p2, "class", "subtitle svelte-14iml7a");
+			attr(a1, "class", "link svelte-14iml7a");
 			attr(a1, "href", "https://developers.facebook.com/");
-			attr(ul2, "class", "svelte-cnwcxh");
+			attr(li6, "class", "svelte-14iml7a");
+			attr(li7, "class", "svelte-14iml7a");
+			attr(ul2, "class", "svelte-14iml7a");
 			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) attr(img1, "src", img1_src_value);
-			attr(ul3, "class", "svelte-cnwcxh");
+			attr(li8, "class", "svelte-14iml7a");
+			attr(ul3, "class", "svelte-14iml7a");
 			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) attr(img2, "src", img2_src_value);
-			attr(ul4, "class", "svelte-cnwcxh");
+			attr(li9, "class", "svelte-14iml7a");
+			attr(ul4, "class", "svelte-14iml7a");
 			if (!src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[4].url)) attr(img3, "src", img3_src_value);
-			attr(ul5, "class", "svelte-cnwcxh");
+			attr(li10, "class", "svelte-14iml7a");
+			attr(ul5, "class", "svelte-14iml7a");
 			if (!src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[5].url)) attr(img4, "src", img4_src_value);
-			attr(ul6, "class", "svelte-cnwcxh");
+			attr(li11, "class", "svelte-14iml7a");
+			attr(ul6, "class", "svelte-14iml7a");
 			if (!src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[6].url)) attr(img5, "src", img5_src_value);
-			attr(div7, "class", "paso1 svelte-cnwcxh");
-			attr(p3, "class", "subtitle svelte-cnwcxh");
-			attr(ul7, "class", "svelte-cnwcxh");
+			attr(div7, "class", "paso1 svelte-14iml7a");
+			attr(p3, "class", "subtitle svelte-14iml7a");
+			attr(li12, "class", "svelte-14iml7a");
+			attr(li13, "class", "svelte-14iml7a");
+			attr(ul7, "class", "svelte-14iml7a");
 			if (!src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[7].url)) attr(img6, "src", img6_src_value);
-			attr(ul8, "class", "svelte-cnwcxh");
+			attr(li14, "class", "svelte-14iml7a");
+			attr(ul8, "class", "svelte-14iml7a");
 			if (!src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[8].url)) attr(img7, "src", img7_src_value);
-			attr(a2, "class", "link svelte-cnwcxh");
+			attr(a2, "class", "link svelte-14iml7a");
 			attr(a2, "href", "https://business.facebook.com/");
-			attr(ul9, "class", "svelte-cnwcxh");
+			attr(li15, "class", "svelte-14iml7a");
+			attr(ul9, "class", "svelte-14iml7a");
 			if (!src_url_equal(img8.src, img8_src_value = /*image9*/ ctx[9].url)) attr(img8, "src", img8_src_value);
-			attr(ul10, "class", "svelte-cnwcxh");
+			attr(li16, "class", "svelte-14iml7a");
+			attr(ul10, "class", "svelte-14iml7a");
 			if (!src_url_equal(img9.src, img9_src_value = /*image10*/ ctx[11].url)) attr(img9, "src", img9_src_value);
-			attr(div8, "class", "paso1 svelte-cnwcxh");
-			attr(p4, "class", "subtitle svelte-cnwcxh");
-			attr(a3, "class", "link svelte-cnwcxh");
+			attr(div8, "class", "paso1 svelte-14iml7a");
+			attr(p4, "class", "subtitle svelte-14iml7a");
+			attr(a3, "class", "link svelte-14iml7a");
 			attr(a3, "href", "https://business.facebook.com/");
-			attr(ul11, "class", "svelte-cnwcxh");
+			attr(li17, "class", "svelte-14iml7a");
+			attr(li18, "class", "svelte-14iml7a");
+			attr(ul11, "class", "svelte-14iml7a");
 			if (!src_url_equal(img10.src, img10_src_value = /*image11*/ ctx[12].url)) attr(img10, "src", img10_src_value);
-			attr(ul12, "class", "svelte-cnwcxh");
+			attr(li19, "class", "svelte-14iml7a");
+			attr(ul12, "class", "svelte-14iml7a");
 			if (!src_url_equal(img11.src, img11_src_value = /*image12*/ ctx[13].url)) attr(img11, "src", img11_src_value);
-			attr(ul13, "class", "svelte-cnwcxh");
+			attr(li20, "class", "svelte-14iml7a");
+			attr(ul13, "class", "svelte-14iml7a");
 			if (!src_url_equal(img12.src, img12_src_value = /*image13*/ ctx[14].url)) attr(img12, "src", img12_src_value);
-			attr(ul14, "class", "svelte-cnwcxh");
+			attr(li21, "class", "svelte-14iml7a");
+			attr(ul14, "class", "svelte-14iml7a");
 			if (!src_url_equal(img13.src, img13_src_value = /*image14*/ ctx[15].url)) attr(img13, "src", img13_src_value);
-			attr(ul15, "class", "svelte-cnwcxh");
+			attr(li22, "class", "svelte-14iml7a");
+			attr(ul15, "class", "svelte-14iml7a");
 			if (!src_url_equal(img14.src, img14_src_value = /*image15*/ ctx[16].url)) attr(img14, "src", img14_src_value);
-			attr(ul16, "class", "svelte-cnwcxh");
+			attr(li23, "class", "svelte-14iml7a");
+			attr(ul16, "class", "svelte-14iml7a");
 			if (!src_url_equal(img15.src, img15_src_value = /*image16*/ ctx[17].url)) attr(img15, "src", img15_src_value);
-			attr(ul17, "class", "svelte-cnwcxh");
+			attr(li24, "class", "svelte-14iml7a");
+			attr(ul17, "class", "svelte-14iml7a");
 			if (!src_url_equal(img16.src, img16_src_value = /*image17*/ ctx[18].url)) attr(img16, "src", img16_src_value);
-			attr(ul18, "class", "svelte-cnwcxh");
+			attr(li25, "class", "svelte-14iml7a");
+			attr(ul18, "class", "svelte-14iml7a");
 			if (!src_url_equal(img17.src, img17_src_value = /*image18*/ ctx[19].url)) attr(img17, "src", img17_src_value);
-			attr(div9, "class", "paso1 svelte-cnwcxh");
-			attr(p5, "class", "subtitle svelte-cnwcxh");
-			attr(a4, "class", "link svelte-cnwcxh");
+			attr(div9, "class", "paso1 svelte-14iml7a");
+			attr(p5, "class", "subtitle svelte-14iml7a");
+			attr(a4, "class", "link svelte-14iml7a");
 			attr(a4, "href", "https://developers.facebook.com/");
-			attr(ul19, "class", "svelte-cnwcxh");
+			attr(li26, "class", "svelte-14iml7a");
+			attr(li27, "class", "svelte-14iml7a");
+			attr(ul19, "class", "svelte-14iml7a");
 			if (!src_url_equal(img18.src, img18_src_value = /*image19*/ ctx[20].url)) attr(img18, "src", img18_src_value);
-			attr(ul20, "class", "svelte-cnwcxh");
+			attr(li28, "class", "svelte-14iml7a");
+			attr(ul20, "class", "svelte-14iml7a");
 			if (!src_url_equal(img19.src, img19_src_value = /*image20*/ ctx[21].url)) attr(img19, "src", img19_src_value);
-			attr(ul21, "class", "svelte-cnwcxh");
+			attr(li29, "class", "svelte-14iml7a");
+			attr(ul21, "class", "svelte-14iml7a");
 			if (!src_url_equal(img20.src, img20_src_value = /*image21*/ ctx[22].url)) attr(img20, "src", img20_src_value);
-			attr(ul22, "class", "svelte-cnwcxh");
+			attr(li30, "class", "svelte-14iml7a");
+			attr(li31, "class", "svelte-14iml7a");
+			attr(ul22, "class", "svelte-14iml7a");
 			if (!src_url_equal(img21.src, img21_src_value = /*image22*/ ctx[23].url)) attr(img21, "src", img21_src_value);
-			attr(a5, "class", "link svelte-cnwcxh");
+			attr(a5, "class", "link svelte-14iml7a");
 			attr(a5, "href", "https://developers.facebook.com/docs/whatsapp/pricing/");
-			attr(ul23, "class", "svelte-cnwcxh");
+			attr(li32, "class", "svelte-14iml7a");
+			attr(ul23, "class", "svelte-14iml7a");
 			if (!src_url_equal(img22.src, img22_src_value = /*image23*/ ctx[24].url)) attr(img22, "src", img22_src_value);
-			attr(ul24, "class", "svelte-cnwcxh");
+			attr(li33, "class", "svelte-14iml7a");
+			attr(ul24, "class", "svelte-14iml7a");
 			if (!src_url_equal(img23.src, img23_src_value = /*image24*/ ctx[25].url)) attr(img23, "src", img23_src_value);
-			attr(ul25, "class", "svelte-cnwcxh");
-			attr(div10, "class", "paso1 svelte-cnwcxh");
-			attr(p6, "class", "subtitle svelte-cnwcxh");
-			attr(a6, "class", "link svelte-cnwcxh");
+			attr(li34, "class", "svelte-14iml7a");
+			attr(li35, "class", "svelte-14iml7a");
+			attr(ul25, "class", "svelte-14iml7a");
+			attr(div10, "class", "paso1 svelte-14iml7a");
+			attr(p6, "class", "subtitle svelte-14iml7a");
+			attr(a6, "class", "link svelte-14iml7a");
 			attr(a6, "href", "https://backoffice.globot.ai/");
-			attr(ul26, "class", "svelte-cnwcxh");
+			attr(li36, "class", "svelte-14iml7a");
+			attr(ul26, "class", "svelte-14iml7a");
 			if (!src_url_equal(img24.src, img24_src_value = /*image25*/ ctx[26].url)) attr(img24, "src", img24_src_value);
-			attr(ul27, "class", "svelte-cnwcxh");
+			attr(li37, "class", "svelte-14iml7a");
+			attr(ul27, "class", "svelte-14iml7a");
 			if (!src_url_equal(img25.src, img25_src_value = /*image26*/ ctx[27].url)) attr(img25, "src", img25_src_value);
-			attr(a7, "class", "link svelte-cnwcxh");
+			attr(li38, "class", "svelte-14iml7a");
+			attr(a7, "class", "link svelte-14iml7a");
 			attr(a7, "href", "https://developers.facebook.com/");
-			attr(ul28, "class", "svelte-cnwcxh");
+			attr(li39, "class", "svelte-14iml7a");
+			attr(ul28, "class", "svelte-14iml7a");
 			if (!src_url_equal(img26.src, img26_src_value = /*image27*/ ctx[28].url)) attr(img26, "src", img26_src_value);
-			attr(ul29, "class", "svelte-cnwcxh");
+			attr(li40, "class", "svelte-14iml7a");
+			attr(ul29, "class", "svelte-14iml7a");
 			if (!src_url_equal(img27.src, img27_src_value = /*image28*/ ctx[29].url)) attr(img27, "src", img27_src_value);
-			attr(ul30, "class", "svelte-cnwcxh");
+			attr(li41, "class", "svelte-14iml7a");
+			attr(ul30, "class", "svelte-14iml7a");
 			if (!src_url_equal(img28.src, img28_src_value = /*image29*/ ctx[30].url)) attr(img28, "src", img28_src_value);
-			attr(ul31, "class", "svelte-cnwcxh");
+			attr(li42, "class", "svelte-14iml7a");
+			attr(ul31, "class", "svelte-14iml7a");
 			if (!src_url_equal(img29.src, img29_src_value = /*image30*/ ctx[31].url)) attr(img29, "src", img29_src_value);
-			attr(div11, "class", "paso1 svelte-cnwcxh");
-			attr(p7, "class", "subtitle svelte-cnwcxh");
-			attr(div12, "class", "paso1 svelte-cnwcxh");
-			attr(div13, "class", "content svelte-cnwcxh");
-			attr(div14, "class", "box2 svelte-cnwcxh");
-			attr(div15, "class", "section-container svelte-cnwcxh");
-			attr(section, "class", "svelte-cnwcxh");
+			attr(div11, "class", "paso1 svelte-14iml7a");
+			attr(p7, "class", "subtitle svelte-14iml7a");
+			attr(div12, "class", "paso1 svelte-14iml7a");
+			attr(div13, "class", "content svelte-14iml7a");
+			attr(div14, "class", "box2 svelte-14iml7a");
+			attr(div15, "class", "section-container svelte-14iml7a");
+			attr(section, "class", "svelte-14iml7a");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
