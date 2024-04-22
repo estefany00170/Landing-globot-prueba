@@ -1,4 +1,4 @@
-// Featured List - Updated April 18, 2024
+// Featured List - Updated April 22, 2024
 function noop() { }
 function run(fn) {
     return fn();
@@ -1367,19 +1367,19 @@ function create_fragment(ctx) {
 			attr(iframe0, "height", "634");
 			attr(iframe0, "id", "feed-1");
 			attr(iframe0, "title", "widget-globot-1");
-			if (!src_url_equal(iframe0.src, iframe0_src_value = "https://www.instagram.com/p/C3JI9A7vduI/embed")) attr(iframe0, "src", iframe0_src_value);
+			if (!src_url_equal(iframe0.src, iframe0_src_value = "https://www.instagram.com/p/C59Ct5EgYZS/embed")) attr(iframe0, "src", iframe0_src_value);
 			attr(div0, "class", "card");
 			attr(iframe1, "width", "320");
 			attr(iframe1, "height", "634");
 			attr(iframe1, "id", "feed-2");
 			attr(iframe1, "title", "widget-globot-2");
-			if (!src_url_equal(iframe1.src, iframe1_src_value = "https://www.instagram.com/p/C3Bii3oA7KJ/embed")) attr(iframe1, "src", iframe1_src_value);
+			if (!src_url_equal(iframe1.src, iframe1_src_value = "https://www.instagram.com/p/C51ELljgDkl/embed")) attr(iframe1, "src", iframe1_src_value);
 			attr(div1, "class", "card");
 			attr(iframe2, "width", "320");
 			attr(iframe2, "height", "634");
 			attr(iframe2, "id", "feed-3");
 			attr(iframe2, "title", "widget-globot-3");
-			if (!src_url_equal(iframe2.src, iframe2_src_value = "https://www.instagram.com/p/C2lG1YivB2V/embed")) attr(iframe2, "src", iframe2_src_value);
+			if (!src_url_equal(iframe2.src, iframe2_src_value = "https://www.instagram.com/p/C5ZcOGAvmLW/embed")) attr(iframe2, "src", iframe2_src_value);
 			attr(div2, "class", "card");
 			attr(div3, "class", "container svelte-91j33g");
 			attr(section, "class", "section-container svelte-91j33g");
