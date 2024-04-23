@@ -374,10 +374,16 @@ section.svelte-m653u4.svelte-m653u4{background:var(--Primary-1, #603FDF);margin:
 
     console.log('Datos del formulario:', formData);
 
-    if (!formData.nombre || !formData.Email) {
-      mensajeDiv.textContent = 'Por favor complete el nombre y el Email.'; 
-      return;
-    }
+  if (!formData.nombre) {
+  mensajeDiv.textContent = 'Por favor complete el nombre.';
+  return;
+}
+
+if (!formData.Email) {
+  mensajeDiv.textContent = 'Por favor complete el Email.';
+  return;
+}
+
 
     fetch('https://delivery.landscape.cl/v2/send', {
       method: 'POST',
