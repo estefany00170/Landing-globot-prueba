@@ -3157,7 +3157,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { subheading } = $$props;
 
 	let images = [
-		'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1713890598797bot1-_3_.webp',
+		'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1713908336132feature_1-2.webp',
 		'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1713891294196bot1-_4_.webp',
 		'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1713891540733bot1%20(3).webp',
 		'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1713905403706web%20(1)-2.webp',
