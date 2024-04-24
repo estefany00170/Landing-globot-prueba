@@ -386,18 +386,17 @@ if (!formData.Email) {
     //aqui
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.Email)) {
-      mensajeDiv.textContent = 'Por favor ingrese un correo electrónico válido.';
+      mensajeDiv.textContent = 'Por favor ingrese un email válido.';
       return;
     }
 
-    // Validar que el campo nombre no permita caracteres numéricos
     const nombreRegex = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
     if (!nombreRegex.test(formData.nombre)) {
-      mensajeDiv.textContent = 'El nombre no puede contener caracteres numéricos.';
+      mensajeDiv.textContent = 'Por favor ingrese un nombre válido.';
       return;
     }
 
-    // Si todas las validaciones pasan, puedes enviar el formulario aquí
+   
     mensajeDiv.textContent = 'Formulario válido. Enviando...';
 //hasta aca
 
