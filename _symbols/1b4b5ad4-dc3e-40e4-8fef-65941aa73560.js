@@ -810,10 +810,19 @@ function instance($$self, $$props, $$invalidate) {
 	currentImage = 'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1708018487971Customer%20support.svg';
 	currentAlt = 'Default image';
 	let previousButton = null;
+	let images = [];
+
+	function preload() {
+		for (let i = 0; i < tarjetas.length; i++) {
+			images[i] = new Image();
+			images[i].src = tarjetas[i].image;
+		}
+	}
 
 	// Inicializa con la tarjeta de atención al cliente
 	window.onload = function () {
 		changeimg(0); // Asume que la tarjeta de atención al cliente es la primera en el array 'tarjetas'
+		preload();
 	};
 
 	function changeimg(i) {
