@@ -1,4 +1,4 @@
-// casos de uso - Updated April 24, 2024
+// casos de uso - Updated May 3, 2024
 function noop() { }
 function run(fn) {
     return fn();
@@ -810,10 +810,18 @@ function instance($$self, $$props, $$invalidate) {
 	currentImage = 'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1708018487971Customer%20support.svg';
 	currentAlt = 'Default image';
 	let previousButton = null;
+	let images = [];
 
-	// Inicializa con la tarjeta de atención al cliente
+	function preload() {
+		for (let i = 0; i < tarjetas.length; i++) {
+			images[i] = new Image();
+			images[i].src = tarjetas[i].image;
+		}
+	}
+
 	window.onload = function () {
-		changeimg(0); // Asume que la tarjeta de atención al cliente es la primera en el array 'tarjetas'
+		preload();
+		changeimg(0);
 	};
 
 	function changeimg(i) {

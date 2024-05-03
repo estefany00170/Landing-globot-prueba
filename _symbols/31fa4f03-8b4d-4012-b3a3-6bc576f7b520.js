@@ -1,4 +1,4 @@
-// Accordion - Updated April 24, 2024
+// Accordion - Updated May 3, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
