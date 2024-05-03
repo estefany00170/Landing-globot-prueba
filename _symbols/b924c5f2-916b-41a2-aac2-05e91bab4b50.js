@@ -2821,12 +2821,12 @@ let Component$1 = class Component extends SvelteComponent {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[11] = list[i];
-	child_ctx[13] = i;
+	child_ctx[13] = list[i];
+	child_ctx[15] = i;
 	return child_ctx;
 }
 
-// (195:8) {#each cards as card, index}
+// (209:8) {#each cards as card, index}
 function create_each_block(ctx) {
 	let li;
 	let button;
@@ -2834,16 +2834,16 @@ function create_each_block(ctx) {
 	let icon;
 	let t0;
 	let h3;
-	let t1_value = /*card*/ ctx[11].title + "";
+	let t1_value = /*card*/ ctx[13].title + "";
 	let t1;
 	let t2;
 	let current;
 	let mounted;
 	let dispose;
-	icon = new Component$1({ props: { icon: /*card*/ ctx[11].icon } });
+	icon = new Component$1({ props: { icon: /*card*/ ctx[13].icon } });
 
 	function click_handler(...args) {
-		return /*click_handler*/ ctx[8](/*index*/ ctx[13], ...args);
+		return /*click_handler*/ ctx[8](/*index*/ ctx[15], ...args);
 	}
 
 	return {
@@ -2902,9 +2902,9 @@ function create_each_block(ctx) {
 		p(new_ctx, dirty) {
 			ctx = new_ctx;
 			const icon_changes = {};
-			if (dirty & /*cards*/ 1) icon_changes.icon = /*card*/ ctx[11].icon;
+			if (dirty & /*cards*/ 1) icon_changes.icon = /*card*/ ctx[13].icon;
 			icon.$set(icon_changes);
-			if ((!current || dirty & /*cards*/ 1) && t1_value !== (t1_value = /*card*/ ctx[11].title + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*cards*/ 1) && t1_value !== (t1_value = /*card*/ ctx[13].title + "")) set_data(t1, t1_value);
 		},
 		i(local) {
 			if (current) return;
@@ -3165,8 +3165,16 @@ function instance($$self, $$props, $$invalidate) {
 		'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1713919696000historial%20(1)-2.webp'
 	];
 
+	let imageObjects = [];
 	let currentImage = images[0];
 	let activeCard = null;
+
+	function preloadImages() {
+		for (let i = 0; i < images.length; i++) {
+			imageObjects[i] = new Image();
+			imageObjects[i].src = images[i];
+		}
+	}
 
 	function changeImage(event, index) {
 		$$invalidate(4, currentImage = images[index]);
@@ -3183,19 +3191,23 @@ function instance($$self, $$props, $$invalidate) {
 		activeCard.querySelector('.icon').style.color = "#603FDF";
 	}
 
-	setTimeout(
-		() => {
-			let firstCard = document.querySelector('.cards li');
+	window.onload = function () {
+		preloadImages();
 
-			if (firstCard) {
-				activeCard = firstCard;
-				activeCard.style.background = "var(--Grey-1, #E2E8F0)";
-				activeCard.querySelector('.title').style.color = "#603FDF";
-				activeCard.querySelector('.icon').style.color = "#603FDF";
-			}
-		},
-		0
-	);
+		setTimeout(
+			() => {
+				let firstCard = document.querySelector('.cards li');
+
+				if (firstCard) {
+					activeCard = firstCard;
+					activeCard.style.background = "var(--Grey-1, #E2E8F0)";
+					activeCard.querySelector('.title').style.color = "#603FDF";
+					activeCard.querySelector('.icon').style.color = "#603FDF";
+				}
+			},
+			0
+		);
+	};
 
 	const click_handler = (index, event) => changeImage(event, index);
 
