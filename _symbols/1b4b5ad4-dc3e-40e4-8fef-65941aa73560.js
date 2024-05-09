@@ -842,6 +842,10 @@ function instance($$self, $$props, $$invalidate) {
 		document.getElementById('imgbox').src = currentImage;
 	}
 
+	window.onload = function () {
+		changeimg(0); // Asume que la tarjeta de atención al cliente es la primera en el array 'tarjetas'
+	};
+
 	const click_handler = () => changeimg(0);
 	const click_handler_1 = () => changeimg(1);
 	const click_handler_2 = () => changeimg(2);
