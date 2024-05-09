@@ -839,6 +839,7 @@ function instance($$self, $$props, $$invalidate) {
 		previousButton = element;
 
 		document.getElementById('imgdesc').innerHTML = tarjetas[i].description;
+		document.getElementById('imgbox').src = currentImage;
 	}
 
 	const click_handler = () => changeimg(0);
