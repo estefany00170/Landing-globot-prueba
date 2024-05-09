@@ -1362,7 +1362,7 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-91j33g");
+			attr(h2, "class", "heading svelte-laczs3");
 			attr(iframe0, "width", "320");
 			attr(iframe0, "height", "634");
 			attr(iframe0, "id", "feed-1");
@@ -1381,8 +1381,8 @@ function create_fragment(ctx) {
 			attr(iframe2, "title", "widget-globot-3");
 			if (!src_url_equal(iframe2.src, iframe2_src_value = "https://www.instagram.com/p/C59Ct5EgYZS/embed")) attr(iframe2, "src", iframe2_src_value);
 			attr(div2, "class", "card");
-			attr(div3, "class", "container svelte-91j33g");
-			attr(section, "class", "section-container svelte-91j33g");
+			attr(div3, "class", "container svelte-laczs3");
+			attr(section, "class", "section-container svelte-laczs3");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
