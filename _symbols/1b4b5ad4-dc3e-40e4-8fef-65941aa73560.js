@@ -807,9 +807,9 @@ function instance($$self, $$props, $$invalidate) {
 
 	let currentImage = '';
 	let currentAlt = '';
-	currentImage = tarjetas[1].image;
+	currentImage = tarjetas[0].image;
 	currentAlt = 'Default image';
-	tarjetas[1].description;
+	tarjetas[0].description;
 	let previousButton = null;
 
 	// Inicializa con la tarjeta de atención al cliente
@@ -840,6 +840,7 @@ function instance($$self, $$props, $$invalidate) {
 		// Guardar el botón actualmente seleccionado para la próxima vez
 		previousButton = element;
 
+		document.getElementById('imgbox').src = currentImage;
 		document.getElementById('imgdesc').innerHTML = tarjetas[i].description;
 	}
 
