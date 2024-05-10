@@ -813,9 +813,9 @@ function instance($$self, $$props, $$invalidate) {
 	let previousButton = null;
 
 	// Inicializa con la tarjeta de atención al cliente
-	window.onload = function () {
+	document.addEventListener("DOMContentLoaded", function () {
 		changeimg(0); // Asume que la tarjeta de atención al cliente es la primera en el array 'tarjetas'
-	};
+	});
 
 	function changeimg(i) {
 		$$invalidate(3, currentImage = tarjetas[i].image);
@@ -843,10 +843,6 @@ function instance($$self, $$props, $$invalidate) {
 		document.getElementById('imgdesc').innerHTML = tarjetas[i].description;
 		document.getElementById('imgbox').src = currentImage;
 	}
-
-	window.onload = function () {
-		changeimg(0); // Asume que la tarjeta de atención al cliente es la primera en el array 'tarjetas'
-	};
 
 	const click_handler = () => changeimg(0);
 	const click_handler_1 = () => changeimg(1);
