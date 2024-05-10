@@ -814,6 +814,7 @@ function instance($$self, $$props, $$invalidate) {
 	let previousButton = null;
 
 	function changeimg(i) {
+		console.log('changeimg called with i =', i);
 		$$invalidate(3, currentImage = tarjetas[i].image);
 		$$invalidate(4, currentAlt = tarjetas[i].alt);
 		currentDescription = tarjetas[i].description;
