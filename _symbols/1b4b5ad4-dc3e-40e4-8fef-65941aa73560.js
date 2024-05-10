@@ -848,6 +848,13 @@ function instance($$self, $$props, $$invalidate) {
 
 		document.getElementById('imgbox').src = currentImage;
 		document.getElementById('imgdesc').innerHTML = tarjetas[i].description;
+
+		requestAnimationFrame(() => {
+			// Actualizar la imagen y la descripción en el DOM
+			document.getElementById('imgbox').src = currentImage;
+
+			document.getElementById('imgdesc').innerHTML = currentDescription;
+		});
 	}
 
 	const click_handler = () => changeimg(0);
