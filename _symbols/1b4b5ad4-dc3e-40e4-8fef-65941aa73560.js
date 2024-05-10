@@ -807,20 +807,27 @@ function instance($$self, $$props, $$invalidate) {
 
 	let currentImage = '';
 	let currentAlt = '';
+	let currentDescription = '';
 	currentImage = tarjetas[0].image;
 	currentAlt = 'Default image';
-	tarjetas[0].description;
+	currentDescription = tarjetas[0].description;
+	let index = 0;
 	let previousButton = null;
 
 	// Inicializa con la tarjeta de atención al cliente
 	window.onload = function () {
 		changeimg(0); // Asume que la tarjeta de atención al cliente es la primera en el array 'tarjetas'
+		console.log('Index:', index);
+		console.log('Current Image:', currentImage);
+		console.log('Current Alt:', currentAlt);
+		console.log('Current Description:', currentDescription);
 	};
 
 	function changeimg(i) {
+		index = i;
 		$$invalidate(3, currentImage = tarjetas[i].image);
 		$$invalidate(4, currentAlt = tarjetas[i].alt);
-		tarjetas[i].description;
+		currentDescription = tarjetas[i].description;
 		let buttonId = 'box' + (i + 1);
 		let element = document.getElementById(buttonId);
 
