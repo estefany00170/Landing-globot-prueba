@@ -1,4 +1,4 @@
-// casos de uso - Updated May 9, 2024
+// casos de uso - Updated May 10, 2024
 function noop() { }
 function run(fn) {
     return fn();
@@ -819,6 +819,7 @@ function instance($$self, $$props, $$invalidate) {
 	function changeimg(i) {
 		$$invalidate(3, currentImage = tarjetas[i].image);
 		$$invalidate(4, currentAlt = tarjetas[i].alt);
+		tarjetas[i].description;
 		let buttonId = 'box' + (i + 1);
 		let element = document.getElementById(buttonId);
 
