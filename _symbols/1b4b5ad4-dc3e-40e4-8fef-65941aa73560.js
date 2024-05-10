@@ -843,6 +843,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	document.addEventListener("DOMContentLoaded", function () {
 		changeimg(1); // Asume que la tarjeta de atención al cliente es la primera en el array 'tarjetas'
+		console.log(changeimg());
 		document.getElementById('imgdesc').innerHTML = currentDescription; // Añade esta línea
 	});
 
