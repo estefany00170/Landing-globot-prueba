@@ -814,14 +814,13 @@ function instance($$self, $$props, $$invalidate) {
 	let index = 0;
 	let previousButton = null;
 
-	// Inicializa con la tarjeta de atención al cliente
-	window.onload = function () {
-		changeimg(0); // Asume que la tarjeta de atención al cliente es la primera en el array 'tarjetas'
+	document.addEventListener("DOMContentLoaded", function () {
+		changeimg(0);
 		console.log('Index:', index);
 		console.log('Current Image:', currentImage);
 		console.log('Current Alt:', currentAlt);
 		console.log('Current Description:', currentDescription);
-	};
+	});
 
 	function changeimg(i) {
 		index = i;
