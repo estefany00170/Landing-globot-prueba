@@ -807,15 +807,16 @@ function instance($$self, $$props, $$invalidate) {
 
 	let currentImage = '';
 	let currentAlt = '';
+	let currentDescription = '';
 	currentImage = tarjetas[0].image;
 	currentAlt = 'Default image';
-	tarjetas[0].description;
+	currentDescription = tarjetas[0].description;
 	let previousButton = null;
 
 	function changeimg(i) {
 		$$invalidate(3, currentImage = tarjetas[i].image);
 		$$invalidate(4, currentAlt = tarjetas[i].alt);
-		tarjetas[i].description;
+		currentDescription = tarjetas[i].description;
 		let buttonId = 'box' + (i + 1);
 		let element = document.getElementById(buttonId);
 
@@ -839,9 +840,10 @@ function instance($$self, $$props, $$invalidate) {
 		document.getElementById('imgbox').src = currentImage;
 	}
 
-	window.onload = function () {
-		changeimg(0); // Asume que la tarjeta de atención al cliente es la primera en el array 'tarjetas'
-	};
+	document.addEventListener("DOMContentLoaded", function () {
+		changeimg(1); // Asume que la tarjeta de atención al cliente es la primera en el array 'tarjetas'
+		document.getElementById('imgdesc').innerHTML = currentDescription; // Añade esta línea
+	});
 
 	const click_handler = () => changeimg(0);
 	const click_handler_1 = () => changeimg(1);
