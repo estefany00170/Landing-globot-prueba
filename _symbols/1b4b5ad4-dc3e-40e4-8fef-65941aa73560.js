@@ -807,8 +807,9 @@ function instance($$self, $$props, $$invalidate) {
 
 	let currentImage = '';
 	let currentAlt = '';
-	currentImage = 'https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1708018487971Customer%20support.svg';
+	currentImage = tarjetas[0].image;
 	currentAlt = 'Default image';
+	tarjetas[0].description;
 	let previousButton = null;
 
 	// Inicializa con la tarjeta de atención al cliente
