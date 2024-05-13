@@ -1,4 +1,4 @@
-// Opciones - Updated May 13, 2024
+// New Block - Updated May 13, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -21,14 +21,6 @@ function is_function(thing) {
 }
 function safe_not_equal(a, b) {
     return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
-}
-let src_url_equal_anchor;
-function src_url_equal(element_src, url) {
-    if (!src_url_equal_anchor) {
-        src_url_equal_anchor = document.createElement('a');
-    }
-    src_url_equal_anchor.href = url;
-    return element_src === src_url_equal_anchor.href;
 }
 function is_empty(obj) {
     return Object.keys(obj).length === 0;
@@ -393,14 +385,6 @@ function set_data(text, data) {
     if (text.data === data)
         return;
     text.data = data;
-}
-function set_style(node, key, value, important) {
-    if (value == null) {
-        node.style.removeProperty(key);
-    }
-    else {
-        node.style.setProperty(key, value, important ? 'important' : '');
-    }
 }
 function toggle_class(element, name, toggle) {
     element.classList[toggle ? 'add' : 'remove'](name);
@@ -3186,15 +3170,15 @@ let Component$1 = class Component extends SvelteComponent {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[36] = list[i];
-	child_ctx[38] = i;
+	child_ctx[6] = list[i];
+	child_ctx[8] = i;
 	return child_ctx;
 }
 
-// (218:10) {#if activeItem === i}
+// (92:6) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
-	let raw_value = /*item*/ ctx[36].description.html + "";
+	let raw_value = /*item*/ ctx[6].description.html + "";
 	let div_transition;
 	let current;
 
@@ -3210,7 +3194,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-hw0fp");
+			attr(div, "class", "description svelte-z4gmbv");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3218,7 +3202,7 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if ((!current || dirty[0] & /*items*/ 1) && raw_value !== (raw_value = /*item*/ ctx[36].description.html + "")) div.innerHTML = raw_value;		},
+			if ((!current || dirty & /*items*/ 2) && raw_value !== (raw_value = /*item*/ ctx[6].description.html + "")) div.innerHTML = raw_value;		},
 		i(local) {
 			if (current) return;
 
@@ -3242,112 +3226,89 @@ function create_if_block(ctx) {
 	};
 }
 
-// (205:6) {#each items as item, i (i)}
+// (84:4) {#each items as item, i (i)}
 function create_each_block(key_1, ctx) {
-	let div3;
 	let div1;
-	let div0;
-	let icon0;
-	let t0;
 	let button;
 	let span0;
-	let t1_value = /*item*/ ctx[36].title + "";
+	let t0_value = /*item*/ ctx[6].title + "";
+	let t0;
 	let t1;
-	let t2;
 	let span1;
-	let icon1;
+	let icon;
+	let t2;
 	let t3;
 	let t4;
-	let t5;
 	let current;
 	let mounted;
 	let dispose;
-	icon0 = new Component$1({ props: { icon: "prime:comments" } });
-	icon1 = new Component$1({ props: { icon: "ph:caret-down-bold" } });
+	icon = new Component$1({ props: { icon: "ph:caret-down-bold" } });
 
 	function click_handler() {
-		return /*click_handler*/ ctx[35](/*i*/ ctx[38]);
+		return /*click_handler*/ ctx[5](/*i*/ ctx[8]);
 	}
 
-	let if_block = /*activeItem*/ ctx[32] === /*i*/ ctx[38] && create_if_block(ctx);
+	let if_block = /*activeItem*/ ctx[2] === /*i*/ ctx[8] && create_if_block(ctx);
 
 	return {
 		key: key_1,
 		first: null,
 		c() {
-			div3 = element("div");
 			div1 = element("div");
-			div0 = element("div");
-			create_component(icon0.$$.fragment);
-			t0 = space();
 			button = element("button");
 			span0 = element("span");
-			t1 = text(t1_value);
-			t2 = space();
+			t0 = text(t0_value);
+			t1 = space();
 			span1 = element("span");
-			create_component(icon1.$$.fragment);
-			t3 = space();
+			create_component(icon.$$.fragment);
+			t2 = space();
 			if (if_block) if_block.c();
+			t3 = space();
 			t4 = space();
-			t5 = space();
 			this.h();
 		},
 		l(nodes) {
-			div3 = claim_element(nodes, "DIV", { class: true });
-			var div3_nodes = children(div3);
-			div1 = claim_element(div3_nodes, "DIV", { class: true });
+			div1 = claim_element(nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
-			div0 = claim_element(div1_nodes, "DIV", { class: true });
-			var div0_nodes = children(div0);
-			claim_component(icon0.$$.fragment, div0_nodes);
-			div0_nodes.forEach(detach);
-			t0 = claim_space(div1_nodes);
 			button = claim_element(div1_nodes, "BUTTON", { class: true });
 			var button_nodes = children(button);
 			span0 = claim_element(button_nodes, "SPAN", { class: true });
 			var span0_nodes = children(span0);
-			t1 = claim_text(span0_nodes, t1_value);
+			t0 = claim_text(span0_nodes, t0_value);
 			span0_nodes.forEach(detach);
-			t2 = claim_space(button_nodes);
+			t1 = claim_space(button_nodes);
 			span1 = claim_element(button_nodes, "SPAN", { class: true });
 			var span1_nodes = children(span1);
-			claim_component(icon1.$$.fragment, span1_nodes);
+			claim_component(icon.$$.fragment, span1_nodes);
 			span1_nodes.forEach(detach);
 			button_nodes.forEach(detach);
+			t2 = claim_space(div1_nodes);
+			if (if_block) if_block.l(div1_nodes);
+			t3 = claim_space(div1_nodes);
+			t4 = claim_space(div1_nodes);
 			div1_nodes.forEach(detach);
-			t3 = claim_space(div3_nodes);
-			if (if_block) if_block.l(div3_nodes);
-			t4 = claim_space(div3_nodes);
-			t5 = claim_space(div3_nodes);
-			div3_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-hw0fp");
-			attr(span0, "class", "svelte-hw0fp");
-			attr(span1, "class", "icone svelte-hw0fp");
-			attr(button, "class", "svelte-hw0fp");
-			attr(div1, "class", "item-icon svelte-hw0fp");
-			attr(div3, "class", "item svelte-hw0fp");
-			toggle_class(div3, "active", /*activeItem*/ ctx[32] === /*i*/ ctx[38]);
-			this.first = div3;
+			attr(span0, "class", "svelte-z4gmbv");
+			attr(span1, "class", "icon svelte-z4gmbv");
+			attr(button, "class", "svelte-z4gmbv");
+			attr(div1, "class", "item svelte-z4gmbv");
+			toggle_class(div1, "active", /*activeItem*/ ctx[2] === /*i*/ ctx[8]);
+			this.first = div1;
 		},
 		m(target, anchor) {
-			insert_hydration(target, div3, anchor);
-			append_hydration(div3, div1);
-			append_hydration(div1, div0);
-			mount_component(icon0, div0, null);
-			append_hydration(div1, t0);
+			insert_hydration(target, div1, anchor);
 			append_hydration(div1, button);
 			append_hydration(button, span0);
-			append_hydration(span0, t1);
-			append_hydration(button, t2);
+			append_hydration(span0, t0);
+			append_hydration(button, t1);
 			append_hydration(button, span1);
-			mount_component(icon1, span1, null);
-			append_hydration(div3, t3);
-			if (if_block) if_block.m(div3, null);
-			append_hydration(div3, t4);
-			append_hydration(div3, t5);
+			mount_component(icon, span1, null);
+			append_hydration(div1, t2);
+			if (if_block) if_block.m(div1, null);
+			append_hydration(div1, t3);
+			append_hydration(div1, t4);
 			current = true;
 
 			if (!mounted) {
@@ -3357,20 +3318,20 @@ function create_each_block(key_1, ctx) {
 		},
 		p(new_ctx, dirty) {
 			ctx = new_ctx;
-			if ((!current || dirty[0] & /*items*/ 1) && t1_value !== (t1_value = /*item*/ ctx[36].title + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*items*/ 2) && t0_value !== (t0_value = /*item*/ ctx[6].title + "")) set_data(t0, t0_value);
 
-			if (/*activeItem*/ ctx[32] === /*i*/ ctx[38]) {
+			if (/*activeItem*/ ctx[2] === /*i*/ ctx[8]) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty[0] & /*items*/ 1 | dirty[1] & /*activeItem*/ 2) {
+					if (dirty & /*activeItem, items*/ 6) {
 						transition_in(if_block, 1);
 					}
 				} else {
 					if_block = create_if_block(ctx);
 					if_block.c();
 					transition_in(if_block, 1);
-					if_block.m(div3, t4);
+					if_block.m(div1, t3);
 				}
 			} else if (if_block) {
 				group_outros();
@@ -3382,27 +3343,24 @@ function create_each_block(key_1, ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty[0] & /*items*/ 1 | dirty[1] & /*activeItem*/ 2) {
-				toggle_class(div3, "active", /*activeItem*/ ctx[32] === /*i*/ ctx[38]);
+			if (!current || dirty & /*activeItem, items*/ 6) {
+				toggle_class(div1, "active", /*activeItem*/ ctx[2] === /*i*/ ctx[8]);
 			}
 		},
 		i(local) {
 			if (current) return;
-			transition_in(icon0.$$.fragment, local);
-			transition_in(icon1.$$.fragment, local);
+			transition_in(icon.$$.fragment, local);
 			transition_in(if_block);
 			current = true;
 		},
 		o(local) {
-			transition_out(icon0.$$.fragment, local);
-			transition_out(icon1.$$.fragment, local);
+			transition_out(icon.$$.fragment, local);
 			transition_out(if_block);
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(div3);
-			destroy_component(icon0);
-			destroy_component(icon1);
+			if (detaching) detach(div1);
+			destroy_component(icon);
 			if (if_block) if_block.d();
 			mounted = false;
 			dispose();
@@ -3415,482 +3373,15 @@ function create_fragment(ctx) {
 	let style;
 	let t0;
 	let t1;
-	let div15;
-	let div1;
-	let div0;
+	let h2;
+	let t2;
+	let t3;
+	let div;
 	let each_blocks = [];
 	let each_1_lookup = new Map();
-	let t2;
-	let div14;
-	let div2;
-	let span0;
-	let t3;
-	let t4;
-	let span1;
-	let t5;
-	let span2;
-	let t6;
-	let t7;
-	let div4;
-	let div3;
-	let t8;
-	let t9;
-	let div13;
-	let div5;
-	let p0;
-	let t10;
-	let t11;
-	let ul0;
-	let li0;
-	let t12;
-	let t13;
-	let li1;
-	let t14;
-	let strong0;
-	let t15;
-	let t16;
-	let strong1;
-	let t17;
-	let t18;
-	let t19;
-	let div6;
-	let p1;
-	let t20;
-	let t21;
-	let ul1;
-	let li2;
-	let t22;
-	let a0;
-	let t23;
-	let t24;
-	let t25;
-	let li3;
-	let t26;
-	let strong2;
-	let t27;
-	let t28;
-	let t29;
-	let li4;
-	let t30;
-	let t31;
-	let li5;
-	let t32;
-	let t33;
-	let img0;
-	let img0_src_value;
-	let t34;
-	let div7;
-	let p2;
-	let t35;
-	let t36;
-	let ul2;
-	let li6;
-	let t37;
-	let a1;
-	let t38;
-	let t39;
-	let t40;
-	let li7;
-	let t41;
-	let strong3;
-	let t42;
-	let t43;
-	let t44;
-	let img1;
-	let img1_src_value;
-	let t45;
-	let ul3;
-	let li8;
-	let t46;
-	let strong4;
-	let t47;
-	let t48;
-	let t49;
-	let img2;
-	let img2_src_value;
-	let t50;
-	let ul4;
-	let li9;
-	let t51;
-	let strong5;
-	let t52;
-	let t53;
-	let t54;
-	let img3;
-	let img3_src_value;
-	let t55;
-	let ul5;
-	let li10;
-	let t56;
-	let strong6;
-	let t57;
-	let t58;
-	let t59;
-	let img4;
-	let img4_src_value;
-	let t60;
-	let ul6;
-	let li11;
-	let t61;
-	let t62;
-	let img5;
-	let img5_src_value;
-	let t63;
-	let div8;
-	let p3;
-	let t64;
-	let t65;
-	let ul7;
-	let li12;
-	let t66;
-	let strong7;
-	let t67;
-	let t68;
-	let t69;
-	let li13;
-	let t70;
-	let strong8;
-	let t71;
-	let t72;
-	let strong9;
-	let t73;
-	let t74;
-	let t75;
-	let img6;
-	let img6_src_value;
-	let t76;
-	let ul8;
-	let li14;
-	let t77;
-	let t78;
-	let img7;
-	let img7_src_value;
-	let t79;
-	let ul9;
-	let li15;
-	let t80;
-	let strong10;
-	let t81;
-	let t82;
-	let strong11;
-	let t83;
-	let t84;
-	let a2;
-	let t85;
-	let t86;
-	let t87;
-	let img8;
-	let img8_src_value;
-	let t88;
-	let ul10;
-	let li16;
-	let t89;
-	let strong12;
-	let t90;
-	let t91;
-	let t92;
-	let img9;
-	let img9_src_value;
-	let t93;
-	let div9;
-	let p4;
-	let t94;
-	let t95;
-	let ul11;
-	let li17;
-	let t96;
-	let a3;
-	let t97;
-	let t98;
-	let t99;
-	let li18;
-	let t100;
-	let strong13;
-	let t101;
-	let t102;
-	let t103;
-	let img10;
-	let img10_src_value;
-	let t104;
-	let ul12;
-	let li19;
-	let t105;
-	let strong14;
-	let t106;
-	let t107;
-	let strong15;
-	let t108;
-	let t109;
-	let strong16;
-	let t110;
-	let t111;
-	let t112;
-	let img11;
-	let img11_src_value;
-	let t113;
-	let ul13;
-	let li20;
-	let t114;
-	let strong17;
-	let t115;
-	let t116;
-	let strong18;
-	let t117;
-	let t118;
-	let t119;
-	let img12;
-	let img12_src_value;
-	let t120;
-	let ul14;
-	let li21;
-	let t121;
-	let strong19;
-	let t122;
-	let t123;
-	let t124;
-	let img13;
-	let img13_src_value;
-	let t125;
-	let ul15;
-	let li22;
-	let t126;
-	let strong20;
-	let t127;
-	let t128;
-	let strong21;
-	let t129;
-	let t130;
-	let strong22;
-	let t131;
-	let t132;
-	let t133;
-	let img14;
-	let img14_src_value;
-	let t134;
-	let ul16;
-	let li23;
-	let t135;
-	let strong23;
-	let t136;
-	let t137;
-	let t138;
-	let img15;
-	let img15_src_value;
-	let t139;
-	let ul17;
-	let li24;
-	let t140;
-	let strong24;
-	let t141;
-	let t142;
-	let strong25;
-	let t143;
-	let t144;
-	let strong26;
-	let t145;
-	let t146;
-	let strong27;
-	let t147;
-	let t148;
-	let strong28;
-	let t149;
-	let t150;
-	let t151;
-	let img16;
-	let img16_src_value;
-	let t152;
-	let ul18;
-	let li25;
-	let t153;
-	let strong29;
-	let t154;
-	let t155;
-	let t156;
-	let img17;
-	let img17_src_value;
-	let t157;
-	let div10;
-	let p5;
-	let t158;
-	let t159;
-	let ul19;
-	let li26;
-	let t160;
-	let a4;
-	let t161;
-	let t162;
-	let t163;
-	let li27;
-	let t164;
-	let strong30;
-	let t165;
-	let t166;
-	let t167;
-	let img18;
-	let img18_src_value;
-	let t168;
-	let ul20;
-	let li28;
-	let t169;
-	let strong31;
-	let t170;
-	let t171;
-	let t172;
-	let img19;
-	let img19_src_value;
-	let t173;
-	let ul21;
-	let li29;
-	let t174;
-	let t175;
-	let img20;
-	let img20_src_value;
-	let t176;
-	let ul22;
-	let li30;
-	let t177;
-	let t178;
-	let li31;
-	let t179;
-	let strong32;
-	let t180;
-	let t181;
-	let t182;
-	let img21;
-	let img21_src_value;
-	let t183;
-	let ul23;
-	let li32;
-	let t184;
-	let a5;
-	let t185;
-	let t186;
-	let t187;
-	let img22;
-	let img22_src_value;
-	let t188;
-	let ul24;
-	let li33;
-	let t189;
-	let strong33;
-	let t190;
-	let t191;
-	let t192;
-	let img23;
-	let img23_src_value;
-	let t193;
-	let ul25;
-	let li34;
-	let t194;
-	let strong34;
-	let t195;
-	let t196;
-	let li35;
-	let t197;
-	let strong35;
-	let t198;
-	let t199;
-	let strong36;
-	let t200;
-	let t201;
-	let t202;
-	let div11;
-	let p6;
-	let t203;
-	let t204;
-	let ul26;
-	let li36;
-	let t205;
-	let a6;
-	let t206;
-	let t207;
-	let strong37;
-	let t208;
-	let t209;
-	let t210;
-	let img24;
-	let img24_src_value;
-	let t211;
-	let ul27;
-	let li37;
-	let t212;
-	let strong38;
-	let t213;
-	let t214;
-	let strong39;
-	let t215;
-	let t216;
-	let strong40;
-	let t217;
-	let t218;
-	let t219;
-	let img25;
-	let img25_src_value;
-	let t220;
-	let ul28;
-	let li38;
-	let t221;
-	let strong41;
-	let t222;
-	let t223;
-	let strong42;
-	let t224;
-	let t225;
-	let t226;
-	let li39;
-	let t227;
-	let a7;
-	let t228;
-	let t229;
-	let strong43;
-	let t230;
-	let t231;
-	let strong44;
-	let t232;
-	let t233;
-	let t234;
-	let img26;
-	let img26_src_value;
-	let t235;
-	let ul29;
-	let li40;
-	let t236;
-	let strong45;
-	let t237;
-	let t238;
-	let t239;
-	let img27;
-	let img27_src_value;
-	let t240;
-	let ul30;
-	let li41;
-	let t241;
-	let strong46;
-	let t242;
-	let t243;
-	let t244;
-	let img28;
-	let img28_src_value;
-	let t245;
-	let ul31;
-	let li42;
-	let t246;
-	let strong47;
-	let t247;
-	let t248;
-	let t249;
-	let img29;
-	let img29_src_value;
-	let t250;
-	let div12;
-	let p7;
-	let t251;
-	let t252;
-	let p8;
-	let t253;
 	let current;
-	let each_value = /*items*/ ctx[0];
-	const get_key = ctx => /*i*/ ctx[38];
+	let each_value = /*items*/ ctx[1];
+	const get_key = ctx => /*i*/ ctx[8];
 
 	for (let i = 0; i < each_value.length; i += 1) {
 		let child_ctx = get_each_context(ctx, each_value, i);
@@ -3902,454 +3393,17 @@ function create_fragment(ctx) {
 		c() {
 			section = element("section");
 			style = element("style");
-			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
+			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
 			t1 = space();
-			div15 = element("div");
-			div1 = element("div");
-			div0 = element("div");
+			h2 = element("h2");
+			t2 = text(/*heading*/ ctx[0]);
+			t3 = space();
+			div = element("div");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
-			t2 = space();
-			div14 = element("div");
-			div2 = element("div");
-			span0 = element("span");
-			t3 = text("Tutoriales >");
-			t4 = space();
-			span1 = element("span");
-			t5 = text("Integración canales > ");
-			span2 = element("span");
-			t6 = text("Whatsapp");
-			t7 = space();
-			div4 = element("div");
-			div3 = element("div");
-			t8 = text(/*heading*/ ctx[10]);
-			t9 = space();
-			div13 = element("div");
-			div5 = element("div");
-			p0 = element("p");
-			t10 = text("Paso 1: Crea tu chatbot");
-			t11 = space();
-			ul0 = element("ul");
-			li0 = element("li");
-			t12 = text("Ingresa a tu cuenta de Globot y crea un chatbot cargándole la fuente de información que desees que tenga.");
-			t13 = space();
-			li1 = element("li");
-			t14 = text("Una vez creado y configurado, dirígete a ");
-			strong0 = element("strong");
-			t15 = text("“Canales”");
-			t16 = text(" y luego ");
-			strong1 = element("strong");
-			t17 = text("“Whatsapp”");
-			t18 = text(", allí estarán los campos que tendrás que completar luego de seguir los pasos de esta sección, para configurar tu chatbot en Whatsapp.");
-			t19 = space();
-			div6 = element("div");
-			p1 = element("p");
-			t20 = text("Paso 2: Crea tu cuenta comercial en Meta (Facebook)");
-			t21 = space();
-			ul1 = element("ul");
-			li2 = element("li");
-			t22 = text("Ingresa a ");
-			a0 = element("a");
-			t23 = text("Meta Business");
-			t24 = text(" y entra con tu cuenta de Facebook.");
-			t25 = space();
-			li3 = element("li");
-			t26 = text("Haz click en ");
-			strong2 = element("strong");
-			t27 = text("“Crear una cuenta”");
-			t28 = text(" y luego completa el nombre del negocio, tu nombre y el correo electrónico de tu negocio. Dale clic a “Enviar”.");
-			t29 = space();
-			li4 = element("li");
-			t30 = text("Proporciona los datos de tu empresa y haz clic en \"Enviar\".");
-			t31 = space();
-			li5 = element("li");
-			t32 = text("Ingresa los detalles de tu empresa y haz clic en “Enviar”.");
-			t33 = space();
-			img0 = element("img");
-			t34 = space();
-			div7 = element("div");
-			p2 = element("p");
-			t35 = text("Paso 3: Crea una nueva aplicación en Meta (Facebook)");
-			t36 = space();
-			ul2 = element("ul");
-			li6 = element("li");
-			t37 = text("Ingresa a ");
-			a1 = element("a");
-			t38 = text("Meta Developers");
-			t39 = text(" y entra con tu cuenta de Facebook.");
-			t40 = space();
-			li7 = element("li");
-			t41 = text("Luego, selecciona ");
-			strong3 = element("strong");
-			t42 = text("“Mis apps”");
-			t43 = text(".");
-			t44 = space();
-			img1 = element("img");
-			t45 = space();
-			ul3 = element("ul");
-			li8 = element("li");
-			t46 = text("Haz clic en ");
-			strong4 = element("strong");
-			t47 = text("“Crear app”");
-			t48 = text(".");
-			t49 = space();
-			img2 = element("img");
-			t50 = space();
-			ul4 = element("ul");
-			li9 = element("li");
-			t51 = text("Selecciona Caso de uso: ");
-			strong5 = element("strong");
-			t52 = text("“Otro”");
-			t53 = text(" y dale clic a “Siguiente”.");
-			t54 = space();
-			img3 = element("img");
-			t55 = space();
-			ul5 = element("ul");
-			li10 = element("li");
-			t56 = text("En Tipo de App: selecciona ");
-			strong6 = element("strong");
-			t57 = text("“Negocios”");
-			t58 = text(" y dale clic a “Siguiente”.");
-			t59 = space();
-			img4 = element("img");
-			t60 = space();
-			ul6 = element("ul");
-			li11 = element("li");
-			t61 = text("Proporciona los detalles de tu app: Su nombre, el correo electrónico asociado y opcionalmente el portafolio comercial. Finalmente, dale clic en “Crear app”");
-			t62 = space();
-			img5 = element("img");
-			t63 = space();
-			div8 = element("div");
-			p3 = element("p");
-			t64 = text("Paso 4: Configura la aplicación Meta (Facebook) para la integración de Whatsapp");
-			t65 = space();
-			ul7 = element("ul");
-			li12 = element("li");
-			t66 = text("En el menú lateral izquierdo, selecciona ");
-			strong7 = element("strong");
-			t67 = text("“Panel”");
-			t68 = text(".");
-			t69 = space();
-			li13 = element("li");
-			t70 = text("Anda a ");
-			strong8 = element("strong");
-			t71 = text("“Agrega productos a tu app”, “Whatsapp”");
-			t72 = text(" y haz clic en ");
-			strong9 = element("strong");
-			t73 = text("“Configurar”");
-			t74 = text(".");
-			t75 = space();
-			img6 = element("img");
-			t76 = space();
-			ul8 = element("ul");
-			li14 = element("li");
-			t77 = text("Selecciona tu cuenta comercial de Meta.");
-			t78 = space();
-			img7 = element("img");
-			t79 = space();
-			ul9 = element("ul");
-			li15 = element("li");
-			t80 = text("En el menú lateral izquierdo, selecciona ");
-			strong10 = element("strong");
-			t81 = text("“Configuración de la app”,  “Básica”");
-			t82 = text(" y agrega en ");
-			strong11 = element("strong");
-			t83 = text("“URL de la política de privacidad”");
-			t84 = text(" el siguiente link: ");
-			a2 = element("a");
-			t85 = text("https://globot.ai/politicasprivacidad/");
-			t86 = text(". Dale clic en “Guardar cambios”.");
-			t87 = space();
-			img8 = element("img");
-			t88 = space();
-			ul10 = element("ul");
-			li16 = element("li");
-			t89 = text("Activa tu Modo de la app a ");
-			strong12 = element("strong");
-			t90 = text("“Activo”");
-			t91 = text(".");
-			t92 = space();
-			img9 = element("img");
-			t93 = space();
-			div9 = element("div");
-			p4 = element("p");
-			t94 = text("Paso 5: Genera el token para Whatsapp");
-			t95 = space();
-			ul11 = element("ul");
-			li17 = element("li");
-			t96 = text("Regresa a tu cuenta comercial de ");
-			a3 = element("a");
-			t97 = text("Meta Business");
-			t98 = text(".");
-			t99 = space();
-			li18 = element("li");
-			t100 = text("En el menú lateral izquierdo de tu portafolio comercial, selecciona  ");
-			strong13 = element("strong");
-			t101 = text("“Configurar”");
-			t102 = text(".");
-			t103 = space();
-			img10 = element("img");
-			t104 = space();
-			ul12 = element("ul");
-			li19 = element("li");
-			t105 = text("En el menú que se despliega, en la parte  ");
-			strong14 = element("strong");
-			t106 = text("“Usuarios” ");
-			t107 = text(", selecciona  ");
-			strong15 = element("strong");
-			t108 = text("“Usuarios del sistema”");
-			t109 = text(" y luego dale clic a  ");
-			strong16 = element("strong");
-			t110 = text("“Agregar” ");
-			t111 = text(".");
-			t112 = space();
-			img11 = element("img");
-			t113 = space();
-			ul13 = element("ul");
-			li20 = element("li");
-			t114 = text("Agrega un usuario con el rol de ");
-			strong17 = element("strong");
-			t115 = text("“Administrador”");
-			t116 = text(" y dale clic a ");
-			strong18 = element("strong");
-			t117 = text("“Crear usuario del sistema”");
-			t118 = text(".");
-			t119 = space();
-			img12 = element("img");
-			t120 = space();
-			ul14 = element("ul");
-			li21 = element("li");
-			t121 = text("Una vez creado el usuario, haz clic en ");
-			strong19 = element("strong");
-			t122 = text("“Asignar activos”");
-			t123 = text(".");
-			t124 = space();
-			img13 = element("img");
-			t125 = space();
-			ul15 = element("ul");
-			li22 = element("li");
-			t126 = text("Luego selecciona ");
-			strong20 = element("strong");
-			t127 = text("“App”");
-			t128 = text(", selecciona tu aplicación y haz click en ");
-			strong21 = element("strong");
-			t129 = text("“Control total”");
-			t130 = text(" seguido de ");
-			strong22 = element("strong");
-			t131 = text("“Guardar cambios”");
-			t132 = text(".");
-			t133 = space();
-			img14 = element("img");
-			t134 = space();
-			ul16 = element("ul");
-			li23 = element("li");
-			t135 = text("En el mismo administrador, selecciona ");
-			strong23 = element("strong");
-			t136 = text("“Generar nuevo token”");
-			t137 = text(".");
-			t138 = space();
-			img15 = element("img");
-			t139 = space();
-			ul17 = element("ul");
-			li24 = element("li");
-			t140 = text("En el recuadro de generar token, en ");
-			strong24 = element("strong");
-			t141 = text("“Caducidad del token”");
-			t142 = text(" selecciona ");
-			strong25 = element("strong");
-			t143 = text("“Nunca”");
-			t144 = text(" y en ");
-			strong26 = element("strong");
-			t145 = text("“Permisos”");
-			t146 = text(" selecciona las opciones: ");
-			strong27 = element("strong");
-			t147 = text("whatsapp_business_management y whatsapp_business_messaging");
-			t148 = text(". Luego haz clic en ");
-			strong28 = element("strong");
-			t149 = text("“Generar token”");
-			t150 = text(".");
-			t151 = space();
-			img16 = element("img");
-			t152 = space();
-			ul18 = element("ul");
-			li25 = element("li");
-			t153 = text("Copia el token de acceso y guárdalo de manera segura, más tarde será requerido. Dale clic en ");
-			strong29 = element("strong");
-			t154 = text("“Aceptar”");
-			t155 = text(".");
-			t156 = space();
-			img17 = element("img");
-			t157 = space();
-			div10 = element("div");
-			p5 = element("p");
-			t158 = text("Paso 6: Configura el API de Whatsapp");
-			t159 = space();
-			ul19 = element("ul");
-			li26 = element("li");
-			t160 = text("Regresa a ");
-			a4 = element("a");
-			t161 = text("Meta Developers");
-			t162 = text(".");
-			t163 = space();
-			li27 = element("li");
-			t164 = text("En el menú izquierdo lateral selecciona ");
-			strong30 = element("strong");
-			t165 = text("“Whatsapp” > “Configuración de la API”");
-			t166 = text(".");
-			t167 = space();
-			img18 = element("img");
-			t168 = space();
-			ul20 = element("ul");
-			li28 = element("li");
-			t169 = text("En el ");
-			strong31 = element("strong");
-			t170 = text("paso 5: Agrega un número de teléfono");
-			t171 = text(".");
-			t172 = space();
-			img19 = element("img");
-			t173 = space();
-			ul21 = element("ul");
-			li29 = element("li");
-			t174 = text("Completa el formulario con los datos requeridos.");
-			t175 = space();
-			img20 = element("img");
-			t176 = space();
-			ul22 = element("ul");
-			li30 = element("li");
-			t177 = text("Verifica tu número usando el código recibido.");
-			t178 = space();
-			li31 = element("li");
-			t179 = text("Una vez agregado correctamente, selecciona tu número de teléfono en el ");
-			strong32 = element("strong");
-			t180 = text("Paso 1 de Configuración de la API");
-			t181 = text(".");
-			t182 = space();
-			img21 = element("img");
-			t183 = space();
-			ul23 = element("ul");
-			li32 = element("li");
-			t184 = text("Agrega un Método de pago (Para enviar mensajes a través de WhatsApp, necesitarás un método de pago válido). Para mayor información ingresa a  ");
-			a5 = element("a");
-			t185 = text("Meta info");
-			t186 = text(".");
-			t187 = space();
-			img22 = element("img");
-			t188 = space();
-			ul24 = element("ul");
-			li33 = element("li");
-			t189 = text("Esto te redirigirá a Meta business. Allí, selecciona ");
-			strong33 = element("strong");
-			t190 = text("“Agregar método de pago”");
-			t191 = text(" y sigue las instrucciones.");
-			t192 = space();
-			img23 = element("img");
-			t193 = space();
-			ul25 = element("ul");
-			li34 = element("li");
-			t194 = text("Regresa a Meta developers en ");
-			strong34 = element("strong");
-			t195 = text("“Whatsapp” > “Configuración de la API” > Paso 1.");
-			t196 = space();
-			li35 = element("li");
-			t197 = text("En ");
-			strong35 = element("strong");
-			t198 = text("“Para”");
-			t199 = text(" selecciona un número de prueba y haz clic en ");
-			strong36 = element("strong");
-			t200 = text("Enviar mensaje");
-			t201 = text(". Con este paso podrás verificar si el envío de mensajes se configuró correctamente.");
-			t202 = space();
-			div11 = element("div");
-			p6 = element("p");
-			t203 = text("Paso 7: Configura la API de Globot con la API de Whatsapp");
-			t204 = space();
-			ul26 = element("ul");
-			li36 = element("li");
-			t205 = text("Ingresa al chatbot que creaste al principio en ");
-			a6 = element("a");
-			t206 = text("Globot");
-			t207 = text(" y dirígete a ");
-			strong37 = element("strong");
-			t208 = text("Canales > Whatsapp");
-			t209 = text(".");
-			t210 = space();
-			img24 = element("img");
-			t211 = space();
-			ul27 = element("ul");
-			li37 = element("li");
-			t212 = text("En ");
-			strong38 = element("strong");
-			t213 = text("“Token de acceso”");
-			t214 = text(" ingresa el token que generaste anteriormente en Meta Business > Usuarios de sistema. En ");
-			strong39 = element("strong");
-			t215 = text("“Número de teléfono”");
-			t216 = text(" ingresa el número que registraste en configuraciones de la API de Whatsapp. Finalmente, en ");
-			strong40 = element("strong");
-			t217 = text("“URL de Graph”");
-			t218 = text(" ingresa la URL que se proporciona en el “Paso 2: Enviar mensajes con la API” como se ve en la imagen debajo. Luego dale a clic en “Guardar”.");
-			t219 = space();
-			img25 = element("img");
-			t220 = space();
-			ul28 = element("ul");
-			li38 = element("li");
-			t221 = text("Esto generará una ");
-			strong41 = element("strong");
-			t222 = text("URL");
-			t223 = text(" y un ");
-			strong42 = element("strong");
-			t224 = text("Token de verificación");
-			t225 = text(" que deberás copiar.");
-			t226 = space();
-			li39 = element("li");
-			t227 = text("Vuelve a ");
-			a7 = element("a");
-			t228 = text("Meta Developers");
-			t229 = text(" en ");
-			strong43 = element("strong");
-			t230 = text("Whatsapp > Configuración");
-			t231 = text(" y haz clic en ");
-			strong44 = element("strong");
-			t232 = text("“Editar”");
-			t233 = text(".");
-			t234 = space();
-			img26 = element("img");
-			t235 = space();
-			ul29 = element("ul");
-			li40 = element("li");
-			t236 = text("Pega los datos anteriores copiados en los respectivos campos y haz clic en ");
-			strong45 = element("strong");
-			t237 = text("“Verificar y guardar”");
-			t238 = text(".");
-			t239 = space();
-			img27 = element("img");
-			t240 = space();
-			ul30 = element("ul");
-			li41 = element("li");
-			t241 = text("Configura el campo de Webhook dándole clic en ");
-			strong46 = element("strong");
-			t242 = text("“Administrar”");
-			t243 = text(".");
-			t244 = space();
-			img28 = element("img");
-			t245 = space();
-			ul31 = element("ul");
-			li42 = element("li");
-			t246 = text("Busca el campo ");
-			strong47 = element("strong");
-			t247 = text("\"messages\"");
-			t248 = text(" y suscríbete marcando la casilla. Luego, haz clic en “Listo”.");
-			t249 = space();
-			img29 = element("img");
-			t250 = space();
-			div12 = element("div");
-			p7 = element("p");
-			t251 = text("Paso 8: Verifica el funcionamiento de tu chatbot en Whatsapp");
-			t252 = space();
-			p8 = element("p");
-			t253 = text("¡Felicidades! Tu chatbot ya está listo para asistir a clientes a través de tu número de WhatsApp. Verifica que está respondiendo correctamente según la base de datos que le cargaste. Puedes habilitar, deshabilitar, editar o eliminar los ajustes de integración de WhatsApp según lo necesites.");
 			this.h();
 		},
 		l(nodes) {
@@ -4357,1513 +3411,56 @@ function create_fragment(ctx) {
 			var section_nodes = children(section);
 			style = claim_element(section_nodes, "STYLE", {});
 			var style_nodes = children(style);
-			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
+			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
 			style_nodes.forEach(detach);
 			t1 = claim_space(section_nodes);
-			div15 = claim_element(section_nodes, "DIV", { class: true });
-			var div15_nodes = children(div15);
-			div1 = claim_element(div15_nodes, "DIV", { class: true });
-			var div1_nodes = children(div1);
-			div0 = claim_element(div1_nodes, "DIV", { class: true });
-			var div0_nodes = children(div0);
+			h2 = claim_element(section_nodes, "H2", { class: true });
+			var h2_nodes = children(h2);
+			t2 = claim_text(h2_nodes, /*heading*/ ctx[0]);
+			h2_nodes.forEach(detach);
+			t3 = claim_space(section_nodes);
+			div = claim_element(section_nodes, "DIV", { class: true });
+			var div_nodes = children(div);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].l(div0_nodes);
+				each_blocks[i].l(div_nodes);
 			}
 
-			div0_nodes.forEach(detach);
-			div1_nodes.forEach(detach);
-			t2 = claim_space(div15_nodes);
-			div14 = claim_element(div15_nodes, "DIV", { class: true });
-			var div14_nodes = children(div14);
-			div2 = claim_element(div14_nodes, "DIV", { class: true, style: true });
-			var div2_nodes = children(div2);
-			span0 = claim_element(div2_nodes, "SPAN", { style: true });
-			var span0_nodes = children(span0);
-			t3 = claim_text(span0_nodes, "Tutoriales >");
-			span0_nodes.forEach(detach);
-			t4 = claim_space(div2_nodes);
-			span1 = claim_element(div2_nodes, "SPAN", { style: true });
-			var span1_nodes = children(span1);
-			t5 = claim_text(span1_nodes, "Integración canales > ");
-			span1_nodes.forEach(detach);
-			span2 = claim_element(div2_nodes, "SPAN", { style: true });
-			var span2_nodes = children(span2);
-			t6 = claim_text(span2_nodes, "Whatsapp");
-			span2_nodes.forEach(detach);
-			div2_nodes.forEach(detach);
-			t7 = claim_space(div14_nodes);
-			div4 = claim_element(div14_nodes, "DIV", { class: true });
-			var div4_nodes = children(div4);
-			div3 = claim_element(div4_nodes, "DIV", { class: true });
-			var div3_nodes = children(div3);
-			t8 = claim_text(div3_nodes, /*heading*/ ctx[10]);
-			div3_nodes.forEach(detach);
-			div4_nodes.forEach(detach);
-			t9 = claim_space(div14_nodes);
-			div13 = claim_element(div14_nodes, "DIV", { class: true });
-			var div13_nodes = children(div13);
-			div5 = claim_element(div13_nodes, "DIV", { class: true });
-			var div5_nodes = children(div5);
-			p0 = claim_element(div5_nodes, "P", { class: true });
-			var p0_nodes = children(p0);
-			t10 = claim_text(p0_nodes, "Paso 1: Crea tu chatbot");
-			p0_nodes.forEach(detach);
-			t11 = claim_space(div5_nodes);
-			ul0 = claim_element(div5_nodes, "UL", { class: true });
-			var ul0_nodes = children(ul0);
-			li0 = claim_element(ul0_nodes, "LI", { class: true });
-			var li0_nodes = children(li0);
-			t12 = claim_text(li0_nodes, "Ingresa a tu cuenta de Globot y crea un chatbot cargándole la fuente de información que desees que tenga.");
-			li0_nodes.forEach(detach);
-			t13 = claim_space(ul0_nodes);
-			li1 = claim_element(ul0_nodes, "LI", { class: true });
-			var li1_nodes = children(li1);
-			t14 = claim_text(li1_nodes, "Una vez creado y configurado, dirígete a ");
-			strong0 = claim_element(li1_nodes, "STRONG", {});
-			var strong0_nodes = children(strong0);
-			t15 = claim_text(strong0_nodes, "“Canales”");
-			strong0_nodes.forEach(detach);
-			t16 = claim_text(li1_nodes, " y luego ");
-			strong1 = claim_element(li1_nodes, "STRONG", {});
-			var strong1_nodes = children(strong1);
-			t17 = claim_text(strong1_nodes, "“Whatsapp”");
-			strong1_nodes.forEach(detach);
-			t18 = claim_text(li1_nodes, ", allí estarán los campos que tendrás que completar luego de seguir los pasos de esta sección, para configurar tu chatbot en Whatsapp.");
-			li1_nodes.forEach(detach);
-			ul0_nodes.forEach(detach);
-			div5_nodes.forEach(detach);
-			t19 = claim_space(div13_nodes);
-			div6 = claim_element(div13_nodes, "DIV", { class: true });
-			var div6_nodes = children(div6);
-			p1 = claim_element(div6_nodes, "P", { class: true });
-			var p1_nodes = children(p1);
-			t20 = claim_text(p1_nodes, "Paso 2: Crea tu cuenta comercial en Meta (Facebook)");
-			p1_nodes.forEach(detach);
-			t21 = claim_space(div6_nodes);
-			ul1 = claim_element(div6_nodes, "UL", { class: true });
-			var ul1_nodes = children(ul1);
-			li2 = claim_element(ul1_nodes, "LI", { class: true });
-			var li2_nodes = children(li2);
-			t22 = claim_text(li2_nodes, "Ingresa a ");
-			a0 = claim_element(li2_nodes, "A", { class: true, href: true });
-			var a0_nodes = children(a0);
-			t23 = claim_text(a0_nodes, "Meta Business");
-			a0_nodes.forEach(detach);
-			t24 = claim_text(li2_nodes, " y entra con tu cuenta de Facebook.");
-			li2_nodes.forEach(detach);
-			t25 = claim_space(ul1_nodes);
-			li3 = claim_element(ul1_nodes, "LI", { class: true });
-			var li3_nodes = children(li3);
-			t26 = claim_text(li3_nodes, "Haz click en ");
-			strong2 = claim_element(li3_nodes, "STRONG", {});
-			var strong2_nodes = children(strong2);
-			t27 = claim_text(strong2_nodes, "“Crear una cuenta”");
-			strong2_nodes.forEach(detach);
-			t28 = claim_text(li3_nodes, " y luego completa el nombre del negocio, tu nombre y el correo electrónico de tu negocio. Dale clic a “Enviar”.");
-			li3_nodes.forEach(detach);
-			t29 = claim_space(ul1_nodes);
-			li4 = claim_element(ul1_nodes, "LI", { class: true });
-			var li4_nodes = children(li4);
-			t30 = claim_text(li4_nodes, "Proporciona los datos de tu empresa y haz clic en \"Enviar\".");
-			li4_nodes.forEach(detach);
-			t31 = claim_space(ul1_nodes);
-			li5 = claim_element(ul1_nodes, "LI", { class: true });
-			var li5_nodes = children(li5);
-			t32 = claim_text(li5_nodes, "Ingresa los detalles de tu empresa y haz clic en “Enviar”.");
-			li5_nodes.forEach(detach);
-			ul1_nodes.forEach(detach);
-			t33 = claim_space(div6_nodes);
-			img0 = claim_element(div6_nodes, "IMG", { src: true });
-			div6_nodes.forEach(detach);
-			t34 = claim_space(div13_nodes);
-			div7 = claim_element(div13_nodes, "DIV", { class: true });
-			var div7_nodes = children(div7);
-			p2 = claim_element(div7_nodes, "P", { class: true });
-			var p2_nodes = children(p2);
-			t35 = claim_text(p2_nodes, "Paso 3: Crea una nueva aplicación en Meta (Facebook)");
-			p2_nodes.forEach(detach);
-			t36 = claim_space(div7_nodes);
-			ul2 = claim_element(div7_nodes, "UL", { class: true });
-			var ul2_nodes = children(ul2);
-			li6 = claim_element(ul2_nodes, "LI", { class: true });
-			var li6_nodes = children(li6);
-			t37 = claim_text(li6_nodes, "Ingresa a ");
-			a1 = claim_element(li6_nodes, "A", { class: true, href: true });
-			var a1_nodes = children(a1);
-			t38 = claim_text(a1_nodes, "Meta Developers");
-			a1_nodes.forEach(detach);
-			t39 = claim_text(li6_nodes, " y entra con tu cuenta de Facebook.");
-			li6_nodes.forEach(detach);
-			t40 = claim_space(ul2_nodes);
-			li7 = claim_element(ul2_nodes, "LI", { class: true });
-			var li7_nodes = children(li7);
-			t41 = claim_text(li7_nodes, "Luego, selecciona ");
-			strong3 = claim_element(li7_nodes, "STRONG", {});
-			var strong3_nodes = children(strong3);
-			t42 = claim_text(strong3_nodes, "“Mis apps”");
-			strong3_nodes.forEach(detach);
-			t43 = claim_text(li7_nodes, ".");
-			li7_nodes.forEach(detach);
-			ul2_nodes.forEach(detach);
-			t44 = claim_space(div7_nodes);
-			img1 = claim_element(div7_nodes, "IMG", { src: true });
-			t45 = claim_space(div7_nodes);
-			ul3 = claim_element(div7_nodes, "UL", { class: true });
-			var ul3_nodes = children(ul3);
-			li8 = claim_element(ul3_nodes, "LI", { class: true });
-			var li8_nodes = children(li8);
-			t46 = claim_text(li8_nodes, "Haz clic en ");
-			strong4 = claim_element(li8_nodes, "STRONG", {});
-			var strong4_nodes = children(strong4);
-			t47 = claim_text(strong4_nodes, "“Crear app”");
-			strong4_nodes.forEach(detach);
-			t48 = claim_text(li8_nodes, ".");
-			li8_nodes.forEach(detach);
-			ul3_nodes.forEach(detach);
-			t49 = claim_space(div7_nodes);
-			img2 = claim_element(div7_nodes, "IMG", { src: true });
-			t50 = claim_space(div7_nodes);
-			ul4 = claim_element(div7_nodes, "UL", { class: true });
-			var ul4_nodes = children(ul4);
-			li9 = claim_element(ul4_nodes, "LI", { class: true });
-			var li9_nodes = children(li9);
-			t51 = claim_text(li9_nodes, "Selecciona Caso de uso: ");
-			strong5 = claim_element(li9_nodes, "STRONG", {});
-			var strong5_nodes = children(strong5);
-			t52 = claim_text(strong5_nodes, "“Otro”");
-			strong5_nodes.forEach(detach);
-			t53 = claim_text(li9_nodes, " y dale clic a “Siguiente”.");
-			li9_nodes.forEach(detach);
-			ul4_nodes.forEach(detach);
-			t54 = claim_space(div7_nodes);
-			img3 = claim_element(div7_nodes, "IMG", { src: true });
-			t55 = claim_space(div7_nodes);
-			ul5 = claim_element(div7_nodes, "UL", { class: true });
-			var ul5_nodes = children(ul5);
-			li10 = claim_element(ul5_nodes, "LI", { class: true });
-			var li10_nodes = children(li10);
-			t56 = claim_text(li10_nodes, "En Tipo de App: selecciona ");
-			strong6 = claim_element(li10_nodes, "STRONG", {});
-			var strong6_nodes = children(strong6);
-			t57 = claim_text(strong6_nodes, "“Negocios”");
-			strong6_nodes.forEach(detach);
-			t58 = claim_text(li10_nodes, " y dale clic a “Siguiente”.");
-			li10_nodes.forEach(detach);
-			ul5_nodes.forEach(detach);
-			t59 = claim_space(div7_nodes);
-			img4 = claim_element(div7_nodes, "IMG", { src: true });
-			t60 = claim_space(div7_nodes);
-			ul6 = claim_element(div7_nodes, "UL", { class: true });
-			var ul6_nodes = children(ul6);
-			li11 = claim_element(ul6_nodes, "LI", { class: true });
-			var li11_nodes = children(li11);
-			t61 = claim_text(li11_nodes, "Proporciona los detalles de tu app: Su nombre, el correo electrónico asociado y opcionalmente el portafolio comercial. Finalmente, dale clic en “Crear app”");
-			li11_nodes.forEach(detach);
-			ul6_nodes.forEach(detach);
-			t62 = claim_space(div7_nodes);
-			img5 = claim_element(div7_nodes, "IMG", { src: true });
-			div7_nodes.forEach(detach);
-			t63 = claim_space(div13_nodes);
-			div8 = claim_element(div13_nodes, "DIV", { class: true });
-			var div8_nodes = children(div8);
-			p3 = claim_element(div8_nodes, "P", { class: true });
-			var p3_nodes = children(p3);
-			t64 = claim_text(p3_nodes, "Paso 4: Configura la aplicación Meta (Facebook) para la integración de Whatsapp");
-			p3_nodes.forEach(detach);
-			t65 = claim_space(div8_nodes);
-			ul7 = claim_element(div8_nodes, "UL", { class: true });
-			var ul7_nodes = children(ul7);
-			li12 = claim_element(ul7_nodes, "LI", { class: true });
-			var li12_nodes = children(li12);
-			t66 = claim_text(li12_nodes, "En el menú lateral izquierdo, selecciona ");
-			strong7 = claim_element(li12_nodes, "STRONG", {});
-			var strong7_nodes = children(strong7);
-			t67 = claim_text(strong7_nodes, "“Panel”");
-			strong7_nodes.forEach(detach);
-			t68 = claim_text(li12_nodes, ".");
-			li12_nodes.forEach(detach);
-			t69 = claim_space(ul7_nodes);
-			li13 = claim_element(ul7_nodes, "LI", { class: true });
-			var li13_nodes = children(li13);
-			t70 = claim_text(li13_nodes, "Anda a ");
-			strong8 = claim_element(li13_nodes, "STRONG", {});
-			var strong8_nodes = children(strong8);
-			t71 = claim_text(strong8_nodes, "“Agrega productos a tu app”, “Whatsapp”");
-			strong8_nodes.forEach(detach);
-			t72 = claim_text(li13_nodes, " y haz clic en ");
-			strong9 = claim_element(li13_nodes, "STRONG", {});
-			var strong9_nodes = children(strong9);
-			t73 = claim_text(strong9_nodes, "“Configurar”");
-			strong9_nodes.forEach(detach);
-			t74 = claim_text(li13_nodes, ".");
-			li13_nodes.forEach(detach);
-			ul7_nodes.forEach(detach);
-			t75 = claim_space(div8_nodes);
-			img6 = claim_element(div8_nodes, "IMG", { src: true });
-			t76 = claim_space(div8_nodes);
-			ul8 = claim_element(div8_nodes, "UL", { class: true });
-			var ul8_nodes = children(ul8);
-			li14 = claim_element(ul8_nodes, "LI", { class: true });
-			var li14_nodes = children(li14);
-			t77 = claim_text(li14_nodes, "Selecciona tu cuenta comercial de Meta.");
-			li14_nodes.forEach(detach);
-			ul8_nodes.forEach(detach);
-			t78 = claim_space(div8_nodes);
-			img7 = claim_element(div8_nodes, "IMG", { src: true });
-			t79 = claim_space(div8_nodes);
-			ul9 = claim_element(div8_nodes, "UL", { class: true });
-			var ul9_nodes = children(ul9);
-			li15 = claim_element(ul9_nodes, "LI", { class: true });
-			var li15_nodes = children(li15);
-			t80 = claim_text(li15_nodes, "En el menú lateral izquierdo, selecciona ");
-			strong10 = claim_element(li15_nodes, "STRONG", {});
-			var strong10_nodes = children(strong10);
-			t81 = claim_text(strong10_nodes, "“Configuración de la app”,  “Básica”");
-			strong10_nodes.forEach(detach);
-			t82 = claim_text(li15_nodes, " y agrega en ");
-			strong11 = claim_element(li15_nodes, "STRONG", {});
-			var strong11_nodes = children(strong11);
-			t83 = claim_text(strong11_nodes, "“URL de la política de privacidad”");
-			strong11_nodes.forEach(detach);
-			t84 = claim_text(li15_nodes, " el siguiente link: ");
-			a2 = claim_element(li15_nodes, "A", { class: true, href: true });
-			var a2_nodes = children(a2);
-			t85 = claim_text(a2_nodes, "https://globot.ai/politicasprivacidad/");
-			a2_nodes.forEach(detach);
-			t86 = claim_text(li15_nodes, ". Dale clic en “Guardar cambios”.");
-			li15_nodes.forEach(detach);
-			ul9_nodes.forEach(detach);
-			t87 = claim_space(div8_nodes);
-			img8 = claim_element(div8_nodes, "IMG", { src: true });
-			t88 = claim_space(div8_nodes);
-			ul10 = claim_element(div8_nodes, "UL", { class: true });
-			var ul10_nodes = children(ul10);
-			li16 = claim_element(ul10_nodes, "LI", { class: true });
-			var li16_nodes = children(li16);
-			t89 = claim_text(li16_nodes, "Activa tu Modo de la app a ");
-			strong12 = claim_element(li16_nodes, "STRONG", {});
-			var strong12_nodes = children(strong12);
-			t90 = claim_text(strong12_nodes, "“Activo”");
-			strong12_nodes.forEach(detach);
-			t91 = claim_text(li16_nodes, ".");
-			li16_nodes.forEach(detach);
-			ul10_nodes.forEach(detach);
-			t92 = claim_space(div8_nodes);
-			img9 = claim_element(div8_nodes, "IMG", { src: true });
-			div8_nodes.forEach(detach);
-			t93 = claim_space(div13_nodes);
-			div9 = claim_element(div13_nodes, "DIV", { class: true });
-			var div9_nodes = children(div9);
-			p4 = claim_element(div9_nodes, "P", { class: true });
-			var p4_nodes = children(p4);
-			t94 = claim_text(p4_nodes, "Paso 5: Genera el token para Whatsapp");
-			p4_nodes.forEach(detach);
-			t95 = claim_space(div9_nodes);
-			ul11 = claim_element(div9_nodes, "UL", { class: true });
-			var ul11_nodes = children(ul11);
-			li17 = claim_element(ul11_nodes, "LI", { class: true });
-			var li17_nodes = children(li17);
-			t96 = claim_text(li17_nodes, "Regresa a tu cuenta comercial de ");
-			a3 = claim_element(li17_nodes, "A", { class: true, href: true });
-			var a3_nodes = children(a3);
-			t97 = claim_text(a3_nodes, "Meta Business");
-			a3_nodes.forEach(detach);
-			t98 = claim_text(li17_nodes, ".");
-			li17_nodes.forEach(detach);
-			t99 = claim_space(ul11_nodes);
-			li18 = claim_element(ul11_nodes, "LI", { class: true });
-			var li18_nodes = children(li18);
-			t100 = claim_text(li18_nodes, "En el menú lateral izquierdo de tu portafolio comercial, selecciona  ");
-			strong13 = claim_element(li18_nodes, "STRONG", {});
-			var strong13_nodes = children(strong13);
-			t101 = claim_text(strong13_nodes, "“Configurar”");
-			strong13_nodes.forEach(detach);
-			t102 = claim_text(li18_nodes, ".");
-			li18_nodes.forEach(detach);
-			ul11_nodes.forEach(detach);
-			t103 = claim_space(div9_nodes);
-			img10 = claim_element(div9_nodes, "IMG", { src: true });
-			t104 = claim_space(div9_nodes);
-			ul12 = claim_element(div9_nodes, "UL", { class: true });
-			var ul12_nodes = children(ul12);
-			li19 = claim_element(ul12_nodes, "LI", { class: true });
-			var li19_nodes = children(li19);
-			t105 = claim_text(li19_nodes, "En el menú que se despliega, en la parte  ");
-			strong14 = claim_element(li19_nodes, "STRONG", {});
-			var strong14_nodes = children(strong14);
-			t106 = claim_text(strong14_nodes, "“Usuarios” ");
-			strong14_nodes.forEach(detach);
-			t107 = claim_text(li19_nodes, ", selecciona  ");
-			strong15 = claim_element(li19_nodes, "STRONG", {});
-			var strong15_nodes = children(strong15);
-			t108 = claim_text(strong15_nodes, "“Usuarios del sistema”");
-			strong15_nodes.forEach(detach);
-			t109 = claim_text(li19_nodes, " y luego dale clic a  ");
-			strong16 = claim_element(li19_nodes, "STRONG", {});
-			var strong16_nodes = children(strong16);
-			t110 = claim_text(strong16_nodes, "“Agregar” ");
-			strong16_nodes.forEach(detach);
-			t111 = claim_text(li19_nodes, ".");
-			li19_nodes.forEach(detach);
-			ul12_nodes.forEach(detach);
-			t112 = claim_space(div9_nodes);
-			img11 = claim_element(div9_nodes, "IMG", { src: true });
-			t113 = claim_space(div9_nodes);
-			ul13 = claim_element(div9_nodes, "UL", { class: true });
-			var ul13_nodes = children(ul13);
-			li20 = claim_element(ul13_nodes, "LI", { class: true });
-			var li20_nodes = children(li20);
-			t114 = claim_text(li20_nodes, "Agrega un usuario con el rol de ");
-			strong17 = claim_element(li20_nodes, "STRONG", {});
-			var strong17_nodes = children(strong17);
-			t115 = claim_text(strong17_nodes, "“Administrador”");
-			strong17_nodes.forEach(detach);
-			t116 = claim_text(li20_nodes, " y dale clic a ");
-			strong18 = claim_element(li20_nodes, "STRONG", {});
-			var strong18_nodes = children(strong18);
-			t117 = claim_text(strong18_nodes, "“Crear usuario del sistema”");
-			strong18_nodes.forEach(detach);
-			t118 = claim_text(li20_nodes, ".");
-			li20_nodes.forEach(detach);
-			ul13_nodes.forEach(detach);
-			t119 = claim_space(div9_nodes);
-			img12 = claim_element(div9_nodes, "IMG", { src: true });
-			t120 = claim_space(div9_nodes);
-			ul14 = claim_element(div9_nodes, "UL", { class: true });
-			var ul14_nodes = children(ul14);
-			li21 = claim_element(ul14_nodes, "LI", { class: true });
-			var li21_nodes = children(li21);
-			t121 = claim_text(li21_nodes, "Una vez creado el usuario, haz clic en ");
-			strong19 = claim_element(li21_nodes, "STRONG", {});
-			var strong19_nodes = children(strong19);
-			t122 = claim_text(strong19_nodes, "“Asignar activos”");
-			strong19_nodes.forEach(detach);
-			t123 = claim_text(li21_nodes, ".");
-			li21_nodes.forEach(detach);
-			ul14_nodes.forEach(detach);
-			t124 = claim_space(div9_nodes);
-			img13 = claim_element(div9_nodes, "IMG", { src: true });
-			t125 = claim_space(div9_nodes);
-			ul15 = claim_element(div9_nodes, "UL", { class: true });
-			var ul15_nodes = children(ul15);
-			li22 = claim_element(ul15_nodes, "LI", { class: true });
-			var li22_nodes = children(li22);
-			t126 = claim_text(li22_nodes, "Luego selecciona ");
-			strong20 = claim_element(li22_nodes, "STRONG", {});
-			var strong20_nodes = children(strong20);
-			t127 = claim_text(strong20_nodes, "“App”");
-			strong20_nodes.forEach(detach);
-			t128 = claim_text(li22_nodes, ", selecciona tu aplicación y haz click en ");
-			strong21 = claim_element(li22_nodes, "STRONG", {});
-			var strong21_nodes = children(strong21);
-			t129 = claim_text(strong21_nodes, "“Control total”");
-			strong21_nodes.forEach(detach);
-			t130 = claim_text(li22_nodes, " seguido de ");
-			strong22 = claim_element(li22_nodes, "STRONG", {});
-			var strong22_nodes = children(strong22);
-			t131 = claim_text(strong22_nodes, "“Guardar cambios”");
-			strong22_nodes.forEach(detach);
-			t132 = claim_text(li22_nodes, ".");
-			li22_nodes.forEach(detach);
-			ul15_nodes.forEach(detach);
-			t133 = claim_space(div9_nodes);
-			img14 = claim_element(div9_nodes, "IMG", { src: true });
-			t134 = claim_space(div9_nodes);
-			ul16 = claim_element(div9_nodes, "UL", { class: true });
-			var ul16_nodes = children(ul16);
-			li23 = claim_element(ul16_nodes, "LI", { class: true });
-			var li23_nodes = children(li23);
-			t135 = claim_text(li23_nodes, "En el mismo administrador, selecciona ");
-			strong23 = claim_element(li23_nodes, "STRONG", {});
-			var strong23_nodes = children(strong23);
-			t136 = claim_text(strong23_nodes, "“Generar nuevo token”");
-			strong23_nodes.forEach(detach);
-			t137 = claim_text(li23_nodes, ".");
-			li23_nodes.forEach(detach);
-			ul16_nodes.forEach(detach);
-			t138 = claim_space(div9_nodes);
-			img15 = claim_element(div9_nodes, "IMG", { src: true });
-			t139 = claim_space(div9_nodes);
-			ul17 = claim_element(div9_nodes, "UL", { class: true });
-			var ul17_nodes = children(ul17);
-			li24 = claim_element(ul17_nodes, "LI", { class: true });
-			var li24_nodes = children(li24);
-			t140 = claim_text(li24_nodes, "En el recuadro de generar token, en ");
-			strong24 = claim_element(li24_nodes, "STRONG", {});
-			var strong24_nodes = children(strong24);
-			t141 = claim_text(strong24_nodes, "“Caducidad del token”");
-			strong24_nodes.forEach(detach);
-			t142 = claim_text(li24_nodes, " selecciona ");
-			strong25 = claim_element(li24_nodes, "STRONG", {});
-			var strong25_nodes = children(strong25);
-			t143 = claim_text(strong25_nodes, "“Nunca”");
-			strong25_nodes.forEach(detach);
-			t144 = claim_text(li24_nodes, " y en ");
-			strong26 = claim_element(li24_nodes, "STRONG", {});
-			var strong26_nodes = children(strong26);
-			t145 = claim_text(strong26_nodes, "“Permisos”");
-			strong26_nodes.forEach(detach);
-			t146 = claim_text(li24_nodes, " selecciona las opciones: ");
-			strong27 = claim_element(li24_nodes, "STRONG", {});
-			var strong27_nodes = children(strong27);
-			t147 = claim_text(strong27_nodes, "whatsapp_business_management y whatsapp_business_messaging");
-			strong27_nodes.forEach(detach);
-			t148 = claim_text(li24_nodes, ". Luego haz clic en ");
-			strong28 = claim_element(li24_nodes, "STRONG", {});
-			var strong28_nodes = children(strong28);
-			t149 = claim_text(strong28_nodes, "“Generar token”");
-			strong28_nodes.forEach(detach);
-			t150 = claim_text(li24_nodes, ".");
-			li24_nodes.forEach(detach);
-			ul17_nodes.forEach(detach);
-			t151 = claim_space(div9_nodes);
-			img16 = claim_element(div9_nodes, "IMG", { src: true });
-			t152 = claim_space(div9_nodes);
-			ul18 = claim_element(div9_nodes, "UL", { class: true });
-			var ul18_nodes = children(ul18);
-			li25 = claim_element(ul18_nodes, "LI", { class: true });
-			var li25_nodes = children(li25);
-			t153 = claim_text(li25_nodes, "Copia el token de acceso y guárdalo de manera segura, más tarde será requerido. Dale clic en ");
-			strong29 = claim_element(li25_nodes, "STRONG", {});
-			var strong29_nodes = children(strong29);
-			t154 = claim_text(strong29_nodes, "“Aceptar”");
-			strong29_nodes.forEach(detach);
-			t155 = claim_text(li25_nodes, ".");
-			li25_nodes.forEach(detach);
-			ul18_nodes.forEach(detach);
-			t156 = claim_space(div9_nodes);
-			img17 = claim_element(div9_nodes, "IMG", { src: true });
-			div9_nodes.forEach(detach);
-			t157 = claim_space(div13_nodes);
-			div10 = claim_element(div13_nodes, "DIV", { class: true });
-			var div10_nodes = children(div10);
-			p5 = claim_element(div10_nodes, "P", { class: true });
-			var p5_nodes = children(p5);
-			t158 = claim_text(p5_nodes, "Paso 6: Configura el API de Whatsapp");
-			p5_nodes.forEach(detach);
-			t159 = claim_space(div10_nodes);
-			ul19 = claim_element(div10_nodes, "UL", { class: true });
-			var ul19_nodes = children(ul19);
-			li26 = claim_element(ul19_nodes, "LI", { class: true });
-			var li26_nodes = children(li26);
-			t160 = claim_text(li26_nodes, "Regresa a ");
-			a4 = claim_element(li26_nodes, "A", { class: true, href: true });
-			var a4_nodes = children(a4);
-			t161 = claim_text(a4_nodes, "Meta Developers");
-			a4_nodes.forEach(detach);
-			t162 = claim_text(li26_nodes, ".");
-			li26_nodes.forEach(detach);
-			t163 = claim_space(ul19_nodes);
-			li27 = claim_element(ul19_nodes, "LI", { class: true });
-			var li27_nodes = children(li27);
-			t164 = claim_text(li27_nodes, "En el menú izquierdo lateral selecciona ");
-			strong30 = claim_element(li27_nodes, "STRONG", {});
-			var strong30_nodes = children(strong30);
-			t165 = claim_text(strong30_nodes, "“Whatsapp” > “Configuración de la API”");
-			strong30_nodes.forEach(detach);
-			t166 = claim_text(li27_nodes, ".");
-			li27_nodes.forEach(detach);
-			ul19_nodes.forEach(detach);
-			t167 = claim_space(div10_nodes);
-			img18 = claim_element(div10_nodes, "IMG", { src: true });
-			t168 = claim_space(div10_nodes);
-			ul20 = claim_element(div10_nodes, "UL", { class: true });
-			var ul20_nodes = children(ul20);
-			li28 = claim_element(ul20_nodes, "LI", { class: true });
-			var li28_nodes = children(li28);
-			t169 = claim_text(li28_nodes, "En el ");
-			strong31 = claim_element(li28_nodes, "STRONG", {});
-			var strong31_nodes = children(strong31);
-			t170 = claim_text(strong31_nodes, "paso 5: Agrega un número de teléfono");
-			strong31_nodes.forEach(detach);
-			t171 = claim_text(li28_nodes, ".");
-			li28_nodes.forEach(detach);
-			ul20_nodes.forEach(detach);
-			t172 = claim_space(div10_nodes);
-			img19 = claim_element(div10_nodes, "IMG", { src: true });
-			t173 = claim_space(div10_nodes);
-			ul21 = claim_element(div10_nodes, "UL", { class: true });
-			var ul21_nodes = children(ul21);
-			li29 = claim_element(ul21_nodes, "LI", { class: true });
-			var li29_nodes = children(li29);
-			t174 = claim_text(li29_nodes, "Completa el formulario con los datos requeridos.");
-			li29_nodes.forEach(detach);
-			ul21_nodes.forEach(detach);
-			t175 = claim_space(div10_nodes);
-			img20 = claim_element(div10_nodes, "IMG", { src: true });
-			t176 = claim_space(div10_nodes);
-			ul22 = claim_element(div10_nodes, "UL", { class: true });
-			var ul22_nodes = children(ul22);
-			li30 = claim_element(ul22_nodes, "LI", { class: true });
-			var li30_nodes = children(li30);
-			t177 = claim_text(li30_nodes, "Verifica tu número usando el código recibido.");
-			li30_nodes.forEach(detach);
-			t178 = claim_space(ul22_nodes);
-			li31 = claim_element(ul22_nodes, "LI", { class: true });
-			var li31_nodes = children(li31);
-			t179 = claim_text(li31_nodes, "Una vez agregado correctamente, selecciona tu número de teléfono en el ");
-			strong32 = claim_element(li31_nodes, "STRONG", {});
-			var strong32_nodes = children(strong32);
-			t180 = claim_text(strong32_nodes, "Paso 1 de Configuración de la API");
-			strong32_nodes.forEach(detach);
-			t181 = claim_text(li31_nodes, ".");
-			li31_nodes.forEach(detach);
-			ul22_nodes.forEach(detach);
-			t182 = claim_space(div10_nodes);
-			img21 = claim_element(div10_nodes, "IMG", { src: true });
-			t183 = claim_space(div10_nodes);
-			ul23 = claim_element(div10_nodes, "UL", { class: true });
-			var ul23_nodes = children(ul23);
-			li32 = claim_element(ul23_nodes, "LI", { class: true });
-			var li32_nodes = children(li32);
-			t184 = claim_text(li32_nodes, "Agrega un Método de pago (Para enviar mensajes a través de WhatsApp, necesitarás un método de pago válido). Para mayor información ingresa a  ");
-			a5 = claim_element(li32_nodes, "A", { class: true, href: true });
-			var a5_nodes = children(a5);
-			t185 = claim_text(a5_nodes, "Meta info");
-			a5_nodes.forEach(detach);
-			t186 = claim_text(li32_nodes, ".");
-			li32_nodes.forEach(detach);
-			ul23_nodes.forEach(detach);
-			t187 = claim_space(div10_nodes);
-			img22 = claim_element(div10_nodes, "IMG", { src: true });
-			t188 = claim_space(div10_nodes);
-			ul24 = claim_element(div10_nodes, "UL", { class: true });
-			var ul24_nodes = children(ul24);
-			li33 = claim_element(ul24_nodes, "LI", { class: true });
-			var li33_nodes = children(li33);
-			t189 = claim_text(li33_nodes, "Esto te redirigirá a Meta business. Allí, selecciona ");
-			strong33 = claim_element(li33_nodes, "STRONG", {});
-			var strong33_nodes = children(strong33);
-			t190 = claim_text(strong33_nodes, "“Agregar método de pago”");
-			strong33_nodes.forEach(detach);
-			t191 = claim_text(li33_nodes, " y sigue las instrucciones.");
-			li33_nodes.forEach(detach);
-			ul24_nodes.forEach(detach);
-			t192 = claim_space(div10_nodes);
-			img23 = claim_element(div10_nodes, "IMG", { src: true });
-			t193 = claim_space(div10_nodes);
-			ul25 = claim_element(div10_nodes, "UL", { class: true });
-			var ul25_nodes = children(ul25);
-			li34 = claim_element(ul25_nodes, "LI", { class: true });
-			var li34_nodes = children(li34);
-			t194 = claim_text(li34_nodes, "Regresa a Meta developers en ");
-			strong34 = claim_element(li34_nodes, "STRONG", {});
-			var strong34_nodes = children(strong34);
-			t195 = claim_text(strong34_nodes, "“Whatsapp” > “Configuración de la API” > Paso 1.");
-			strong34_nodes.forEach(detach);
-			li34_nodes.forEach(detach);
-			t196 = claim_space(ul25_nodes);
-			li35 = claim_element(ul25_nodes, "LI", { class: true });
-			var li35_nodes = children(li35);
-			t197 = claim_text(li35_nodes, "En ");
-			strong35 = claim_element(li35_nodes, "STRONG", {});
-			var strong35_nodes = children(strong35);
-			t198 = claim_text(strong35_nodes, "“Para”");
-			strong35_nodes.forEach(detach);
-			t199 = claim_text(li35_nodes, " selecciona un número de prueba y haz clic en ");
-			strong36 = claim_element(li35_nodes, "STRONG", {});
-			var strong36_nodes = children(strong36);
-			t200 = claim_text(strong36_nodes, "Enviar mensaje");
-			strong36_nodes.forEach(detach);
-			t201 = claim_text(li35_nodes, ". Con este paso podrás verificar si el envío de mensajes se configuró correctamente.");
-			li35_nodes.forEach(detach);
-			ul25_nodes.forEach(detach);
-			div10_nodes.forEach(detach);
-			t202 = claim_space(div13_nodes);
-			div11 = claim_element(div13_nodes, "DIV", { class: true });
-			var div11_nodes = children(div11);
-			p6 = claim_element(div11_nodes, "P", { class: true });
-			var p6_nodes = children(p6);
-			t203 = claim_text(p6_nodes, "Paso 7: Configura la API de Globot con la API de Whatsapp");
-			p6_nodes.forEach(detach);
-			t204 = claim_space(div11_nodes);
-			ul26 = claim_element(div11_nodes, "UL", { class: true });
-			var ul26_nodes = children(ul26);
-			li36 = claim_element(ul26_nodes, "LI", { class: true });
-			var li36_nodes = children(li36);
-			t205 = claim_text(li36_nodes, "Ingresa al chatbot que creaste al principio en ");
-			a6 = claim_element(li36_nodes, "A", { class: true, href: true });
-			var a6_nodes = children(a6);
-			t206 = claim_text(a6_nodes, "Globot");
-			a6_nodes.forEach(detach);
-			t207 = claim_text(li36_nodes, " y dirígete a ");
-			strong37 = claim_element(li36_nodes, "STRONG", {});
-			var strong37_nodes = children(strong37);
-			t208 = claim_text(strong37_nodes, "Canales > Whatsapp");
-			strong37_nodes.forEach(detach);
-			t209 = claim_text(li36_nodes, ".");
-			li36_nodes.forEach(detach);
-			ul26_nodes.forEach(detach);
-			t210 = claim_space(div11_nodes);
-			img24 = claim_element(div11_nodes, "IMG", { src: true });
-			t211 = claim_space(div11_nodes);
-			ul27 = claim_element(div11_nodes, "UL", { class: true });
-			var ul27_nodes = children(ul27);
-			li37 = claim_element(ul27_nodes, "LI", { class: true });
-			var li37_nodes = children(li37);
-			t212 = claim_text(li37_nodes, "En ");
-			strong38 = claim_element(li37_nodes, "STRONG", {});
-			var strong38_nodes = children(strong38);
-			t213 = claim_text(strong38_nodes, "“Token de acceso”");
-			strong38_nodes.forEach(detach);
-			t214 = claim_text(li37_nodes, " ingresa el token que generaste anteriormente en Meta Business > Usuarios de sistema. En ");
-			strong39 = claim_element(li37_nodes, "STRONG", {});
-			var strong39_nodes = children(strong39);
-			t215 = claim_text(strong39_nodes, "“Número de teléfono”");
-			strong39_nodes.forEach(detach);
-			t216 = claim_text(li37_nodes, " ingresa el número que registraste en configuraciones de la API de Whatsapp. Finalmente, en ");
-			strong40 = claim_element(li37_nodes, "STRONG", {});
-			var strong40_nodes = children(strong40);
-			t217 = claim_text(strong40_nodes, "“URL de Graph”");
-			strong40_nodes.forEach(detach);
-			t218 = claim_text(li37_nodes, " ingresa la URL que se proporciona en el “Paso 2: Enviar mensajes con la API” como se ve en la imagen debajo. Luego dale a clic en “Guardar”.");
-			li37_nodes.forEach(detach);
-			ul27_nodes.forEach(detach);
-			t219 = claim_space(div11_nodes);
-			img25 = claim_element(div11_nodes, "IMG", { src: true });
-			t220 = claim_space(div11_nodes);
-			ul28 = claim_element(div11_nodes, "UL", { class: true });
-			var ul28_nodes = children(ul28);
-			li38 = claim_element(ul28_nodes, "LI", { class: true });
-			var li38_nodes = children(li38);
-			t221 = claim_text(li38_nodes, "Esto generará una ");
-			strong41 = claim_element(li38_nodes, "STRONG", {});
-			var strong41_nodes = children(strong41);
-			t222 = claim_text(strong41_nodes, "URL");
-			strong41_nodes.forEach(detach);
-			t223 = claim_text(li38_nodes, " y un ");
-			strong42 = claim_element(li38_nodes, "STRONG", {});
-			var strong42_nodes = children(strong42);
-			t224 = claim_text(strong42_nodes, "Token de verificación");
-			strong42_nodes.forEach(detach);
-			t225 = claim_text(li38_nodes, " que deberás copiar.");
-			li38_nodes.forEach(detach);
-			t226 = claim_space(ul28_nodes);
-			li39 = claim_element(ul28_nodes, "LI", { class: true });
-			var li39_nodes = children(li39);
-			t227 = claim_text(li39_nodes, "Vuelve a ");
-			a7 = claim_element(li39_nodes, "A", { class: true, href: true });
-			var a7_nodes = children(a7);
-			t228 = claim_text(a7_nodes, "Meta Developers");
-			a7_nodes.forEach(detach);
-			t229 = claim_text(li39_nodes, " en ");
-			strong43 = claim_element(li39_nodes, "STRONG", {});
-			var strong43_nodes = children(strong43);
-			t230 = claim_text(strong43_nodes, "Whatsapp > Configuración");
-			strong43_nodes.forEach(detach);
-			t231 = claim_text(li39_nodes, " y haz clic en ");
-			strong44 = claim_element(li39_nodes, "STRONG", {});
-			var strong44_nodes = children(strong44);
-			t232 = claim_text(strong44_nodes, "“Editar”");
-			strong44_nodes.forEach(detach);
-			t233 = claim_text(li39_nodes, ".");
-			li39_nodes.forEach(detach);
-			ul28_nodes.forEach(detach);
-			t234 = claim_space(div11_nodes);
-			img26 = claim_element(div11_nodes, "IMG", { src: true });
-			t235 = claim_space(div11_nodes);
-			ul29 = claim_element(div11_nodes, "UL", { class: true });
-			var ul29_nodes = children(ul29);
-			li40 = claim_element(ul29_nodes, "LI", { class: true });
-			var li40_nodes = children(li40);
-			t236 = claim_text(li40_nodes, "Pega los datos anteriores copiados en los respectivos campos y haz clic en ");
-			strong45 = claim_element(li40_nodes, "STRONG", {});
-			var strong45_nodes = children(strong45);
-			t237 = claim_text(strong45_nodes, "“Verificar y guardar”");
-			strong45_nodes.forEach(detach);
-			t238 = claim_text(li40_nodes, ".");
-			li40_nodes.forEach(detach);
-			ul29_nodes.forEach(detach);
-			t239 = claim_space(div11_nodes);
-			img27 = claim_element(div11_nodes, "IMG", { src: true });
-			t240 = claim_space(div11_nodes);
-			ul30 = claim_element(div11_nodes, "UL", { class: true });
-			var ul30_nodes = children(ul30);
-			li41 = claim_element(ul30_nodes, "LI", { class: true });
-			var li41_nodes = children(li41);
-			t241 = claim_text(li41_nodes, "Configura el campo de Webhook dándole clic en ");
-			strong46 = claim_element(li41_nodes, "STRONG", {});
-			var strong46_nodes = children(strong46);
-			t242 = claim_text(strong46_nodes, "“Administrar”");
-			strong46_nodes.forEach(detach);
-			t243 = claim_text(li41_nodes, ".");
-			li41_nodes.forEach(detach);
-			ul30_nodes.forEach(detach);
-			t244 = claim_space(div11_nodes);
-			img28 = claim_element(div11_nodes, "IMG", { src: true });
-			t245 = claim_space(div11_nodes);
-			ul31 = claim_element(div11_nodes, "UL", { class: true });
-			var ul31_nodes = children(ul31);
-			li42 = claim_element(ul31_nodes, "LI", { class: true });
-			var li42_nodes = children(li42);
-			t246 = claim_text(li42_nodes, "Busca el campo ");
-			strong47 = claim_element(li42_nodes, "STRONG", {});
-			var strong47_nodes = children(strong47);
-			t247 = claim_text(strong47_nodes, "\"messages\"");
-			strong47_nodes.forEach(detach);
-			t248 = claim_text(li42_nodes, " y suscríbete marcando la casilla. Luego, haz clic en “Listo”.");
-			li42_nodes.forEach(detach);
-			ul31_nodes.forEach(detach);
-			t249 = claim_space(div11_nodes);
-			img29 = claim_element(div11_nodes, "IMG", { src: true });
-			div11_nodes.forEach(detach);
-			t250 = claim_space(div13_nodes);
-			div12 = claim_element(div13_nodes, "DIV", { class: true });
-			var div12_nodes = children(div12);
-			p7 = claim_element(div12_nodes, "P", { class: true });
-			var p7_nodes = children(p7);
-			t251 = claim_text(p7_nodes, "Paso 8: Verifica el funcionamiento de tu chatbot en Whatsapp");
-			p7_nodes.forEach(detach);
-			t252 = claim_space(div12_nodes);
-			p8 = claim_element(div12_nodes, "P", {});
-			var p8_nodes = children(p8);
-			t253 = claim_text(p8_nodes, "¡Felicidades! Tu chatbot ya está listo para asistir a clientes a través de tu número de WhatsApp. Verifica que está respondiendo correctamente según la base de datos que le cargaste. Puedes habilitar, deshabilitar, editar o eliminar los ajustes de integración de WhatsApp según lo necesites.");
-			p8_nodes.forEach(detach);
-			div12_nodes.forEach(detach);
-			div13_nodes.forEach(detach);
-			div14_nodes.forEach(detach);
-			div15_nodes.forEach(detach);
+			div_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "accordion svelte-hw0fp");
-			attr(div1, "class", "box1 svelte-hw0fp");
-			set_style(span0, "color", "#C1C2C4");
-			set_style(span1, "color", "#C1C2C4");
-			set_style(span2, "color", "var(--Primary-2, #7B5CF5)");
-			attr(div2, "class", "steps svelte-hw0fp");
-			set_style(div2, "display", "flex");
-			set_style(div2, "gap", "15px");
-			set_style(div2, "margin-bottom", "20px");
-			attr(div3, "class", "heading svelte-hw0fp");
-			attr(div4, "class", "heading-group svelte-hw0fp");
-			attr(p0, "class", "subtitle svelte-hw0fp");
-			attr(li0, "class", "svelte-hw0fp");
-			attr(li1, "class", "svelte-hw0fp");
-			attr(ul0, "class", "svelte-hw0fp");
-			attr(div5, "class", "paso1 svelte-hw0fp");
-			attr(p1, "class", "subtitle svelte-hw0fp");
-			attr(a0, "class", "link svelte-hw0fp");
-			attr(a0, "href", "https://business.facebook.com/");
-			attr(li2, "class", "svelte-hw0fp");
-			attr(li3, "class", "svelte-hw0fp");
-			attr(li4, "class", "svelte-hw0fp");
-			attr(li5, "class", "svelte-hw0fp");
-			attr(ul1, "class", "svelte-hw0fp");
-			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) attr(img0, "src", img0_src_value);
-			attr(div6, "class", "paso1 svelte-hw0fp");
-			attr(p2, "class", "subtitle svelte-hw0fp");
-			attr(a1, "class", "link svelte-hw0fp");
-			attr(a1, "href", "https://developers.facebook.com/");
-			attr(li6, "class", "svelte-hw0fp");
-			attr(li7, "class", "svelte-hw0fp");
-			attr(ul2, "class", "svelte-hw0fp");
-			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) attr(img1, "src", img1_src_value);
-			attr(li8, "class", "svelte-hw0fp");
-			attr(ul3, "class", "svelte-hw0fp");
-			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) attr(img2, "src", img2_src_value);
-			attr(li9, "class", "svelte-hw0fp");
-			attr(ul4, "class", "svelte-hw0fp");
-			if (!src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[4].url)) attr(img3, "src", img3_src_value);
-			attr(li10, "class", "svelte-hw0fp");
-			attr(ul5, "class", "svelte-hw0fp");
-			if (!src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[5].url)) attr(img4, "src", img4_src_value);
-			attr(li11, "class", "svelte-hw0fp");
-			attr(ul6, "class", "svelte-hw0fp");
-			if (!src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[6].url)) attr(img5, "src", img5_src_value);
-			attr(div7, "class", "paso1 svelte-hw0fp");
-			attr(p3, "class", "subtitle svelte-hw0fp");
-			attr(li12, "class", "svelte-hw0fp");
-			attr(li13, "class", "svelte-hw0fp");
-			attr(ul7, "class", "svelte-hw0fp");
-			if (!src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[7].url)) attr(img6, "src", img6_src_value);
-			attr(li14, "class", "svelte-hw0fp");
-			attr(ul8, "class", "svelte-hw0fp");
-			if (!src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[8].url)) attr(img7, "src", img7_src_value);
-			attr(a2, "class", "link svelte-hw0fp");
-			attr(a2, "href", "https://business.facebook.com/");
-			attr(li15, "class", "svelte-hw0fp");
-			attr(ul9, "class", "svelte-hw0fp");
-			if (!src_url_equal(img8.src, img8_src_value = /*image9*/ ctx[9].url)) attr(img8, "src", img8_src_value);
-			attr(li16, "class", "svelte-hw0fp");
-			attr(ul10, "class", "svelte-hw0fp");
-			if (!src_url_equal(img9.src, img9_src_value = /*image10*/ ctx[11].url)) attr(img9, "src", img9_src_value);
-			attr(div8, "class", "paso1 svelte-hw0fp");
-			attr(p4, "class", "subtitle svelte-hw0fp");
-			attr(a3, "class", "link svelte-hw0fp");
-			attr(a3, "href", "https://business.facebook.com/");
-			attr(li17, "class", "svelte-hw0fp");
-			attr(li18, "class", "svelte-hw0fp");
-			attr(ul11, "class", "svelte-hw0fp");
-			if (!src_url_equal(img10.src, img10_src_value = /*image11*/ ctx[12].url)) attr(img10, "src", img10_src_value);
-			attr(li19, "class", "svelte-hw0fp");
-			attr(ul12, "class", "svelte-hw0fp");
-			if (!src_url_equal(img11.src, img11_src_value = /*image12*/ ctx[13].url)) attr(img11, "src", img11_src_value);
-			attr(li20, "class", "svelte-hw0fp");
-			attr(ul13, "class", "svelte-hw0fp");
-			if (!src_url_equal(img12.src, img12_src_value = /*image13*/ ctx[14].url)) attr(img12, "src", img12_src_value);
-			attr(li21, "class", "svelte-hw0fp");
-			attr(ul14, "class", "svelte-hw0fp");
-			if (!src_url_equal(img13.src, img13_src_value = /*image14*/ ctx[15].url)) attr(img13, "src", img13_src_value);
-			attr(li22, "class", "svelte-hw0fp");
-			attr(ul15, "class", "svelte-hw0fp");
-			if (!src_url_equal(img14.src, img14_src_value = /*image15*/ ctx[16].url)) attr(img14, "src", img14_src_value);
-			attr(li23, "class", "svelte-hw0fp");
-			attr(ul16, "class", "svelte-hw0fp");
-			if (!src_url_equal(img15.src, img15_src_value = /*image16*/ ctx[17].url)) attr(img15, "src", img15_src_value);
-			attr(li24, "class", "svelte-hw0fp");
-			attr(ul17, "class", "svelte-hw0fp");
-			if (!src_url_equal(img16.src, img16_src_value = /*image17*/ ctx[18].url)) attr(img16, "src", img16_src_value);
-			attr(li25, "class", "svelte-hw0fp");
-			attr(ul18, "class", "svelte-hw0fp");
-			if (!src_url_equal(img17.src, img17_src_value = /*image18*/ ctx[19].url)) attr(img17, "src", img17_src_value);
-			attr(div9, "class", "paso1 svelte-hw0fp");
-			attr(p5, "class", "subtitle svelte-hw0fp");
-			attr(a4, "class", "link svelte-hw0fp");
-			attr(a4, "href", "https://developers.facebook.com/");
-			attr(li26, "class", "svelte-hw0fp");
-			attr(li27, "class", "svelte-hw0fp");
-			attr(ul19, "class", "svelte-hw0fp");
-			if (!src_url_equal(img18.src, img18_src_value = /*image19*/ ctx[20].url)) attr(img18, "src", img18_src_value);
-			attr(li28, "class", "svelte-hw0fp");
-			attr(ul20, "class", "svelte-hw0fp");
-			if (!src_url_equal(img19.src, img19_src_value = /*image20*/ ctx[21].url)) attr(img19, "src", img19_src_value);
-			attr(li29, "class", "svelte-hw0fp");
-			attr(ul21, "class", "svelte-hw0fp");
-			if (!src_url_equal(img20.src, img20_src_value = /*image21*/ ctx[22].url)) attr(img20, "src", img20_src_value);
-			attr(li30, "class", "svelte-hw0fp");
-			attr(li31, "class", "svelte-hw0fp");
-			attr(ul22, "class", "svelte-hw0fp");
-			if (!src_url_equal(img21.src, img21_src_value = /*image22*/ ctx[23].url)) attr(img21, "src", img21_src_value);
-			attr(a5, "class", "link svelte-hw0fp");
-			attr(a5, "href", "https://developers.facebook.com/docs/whatsapp/pricing/");
-			attr(li32, "class", "svelte-hw0fp");
-			attr(ul23, "class", "svelte-hw0fp");
-			if (!src_url_equal(img22.src, img22_src_value = /*image23*/ ctx[24].url)) attr(img22, "src", img22_src_value);
-			attr(li33, "class", "svelte-hw0fp");
-			attr(ul24, "class", "svelte-hw0fp");
-			if (!src_url_equal(img23.src, img23_src_value = /*image24*/ ctx[25].url)) attr(img23, "src", img23_src_value);
-			attr(li34, "class", "svelte-hw0fp");
-			attr(li35, "class", "svelte-hw0fp");
-			attr(ul25, "class", "svelte-hw0fp");
-			attr(div10, "class", "paso1 svelte-hw0fp");
-			attr(p6, "class", "subtitle svelte-hw0fp");
-			attr(a6, "class", "link svelte-hw0fp");
-			attr(a6, "href", "https://backoffice.globot.ai/");
-			attr(li36, "class", "svelte-hw0fp");
-			attr(ul26, "class", "svelte-hw0fp");
-			if (!src_url_equal(img24.src, img24_src_value = /*image25*/ ctx[26].url)) attr(img24, "src", img24_src_value);
-			attr(li37, "class", "svelte-hw0fp");
-			attr(ul27, "class", "svelte-hw0fp");
-			if (!src_url_equal(img25.src, img25_src_value = /*image26*/ ctx[27].url)) attr(img25, "src", img25_src_value);
-			attr(li38, "class", "svelte-hw0fp");
-			attr(a7, "class", "link svelte-hw0fp");
-			attr(a7, "href", "https://developers.facebook.com/");
-			attr(li39, "class", "svelte-hw0fp");
-			attr(ul28, "class", "svelte-hw0fp");
-			if (!src_url_equal(img26.src, img26_src_value = /*image27*/ ctx[28].url)) attr(img26, "src", img26_src_value);
-			attr(li40, "class", "svelte-hw0fp");
-			attr(ul29, "class", "svelte-hw0fp");
-			if (!src_url_equal(img27.src, img27_src_value = /*image28*/ ctx[29].url)) attr(img27, "src", img27_src_value);
-			attr(li41, "class", "svelte-hw0fp");
-			attr(ul30, "class", "svelte-hw0fp");
-			if (!src_url_equal(img28.src, img28_src_value = /*image29*/ ctx[30].url)) attr(img28, "src", img28_src_value);
-			attr(li42, "class", "svelte-hw0fp");
-			attr(ul31, "class", "svelte-hw0fp");
-			if (!src_url_equal(img29.src, img29_src_value = /*image30*/ ctx[31].url)) attr(img29, "src", img29_src_value);
-			attr(div11, "class", "paso1 svelte-hw0fp");
-			attr(p7, "class", "subtitle svelte-hw0fp");
-			attr(div12, "class", "paso1 svelte-hw0fp");
-			attr(div13, "class", "content svelte-hw0fp");
-			attr(div14, "class", "box2 svelte-hw0fp");
-			attr(div15, "class", "section-container svelte-hw0fp");
-			attr(section, "class", "svelte-hw0fp");
+			attr(h2, "class", "heading svelte-z4gmbv");
+			attr(div, "class", "accordion svelte-z4gmbv");
+			attr(section, "class", "section-container svelte-z4gmbv");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
 			append_hydration(section, style);
 			append_hydration(style, t0);
 			append_hydration(section, t1);
-			append_hydration(section, div15);
-			append_hydration(div15, div1);
-			append_hydration(div1, div0);
+			append_hydration(section, h2);
+			append_hydration(h2, t2);
+			append_hydration(section, t3);
+			append_hydration(section, div);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				if (each_blocks[i]) {
-					each_blocks[i].m(div0, null);
+					each_blocks[i].m(div, null);
 				}
 			}
 
-			append_hydration(div15, t2);
-			append_hydration(div15, div14);
-			append_hydration(div14, div2);
-			append_hydration(div2, span0);
-			append_hydration(span0, t3);
-			append_hydration(div2, t4);
-			append_hydration(div2, span1);
-			append_hydration(span1, t5);
-			append_hydration(div2, span2);
-			append_hydration(span2, t6);
-			append_hydration(div14, t7);
-			append_hydration(div14, div4);
-			append_hydration(div4, div3);
-			append_hydration(div3, t8);
-			append_hydration(div14, t9);
-			append_hydration(div14, div13);
-			append_hydration(div13, div5);
-			append_hydration(div5, p0);
-			append_hydration(p0, t10);
-			append_hydration(div5, t11);
-			append_hydration(div5, ul0);
-			append_hydration(ul0, li0);
-			append_hydration(li0, t12);
-			append_hydration(ul0, t13);
-			append_hydration(ul0, li1);
-			append_hydration(li1, t14);
-			append_hydration(li1, strong0);
-			append_hydration(strong0, t15);
-			append_hydration(li1, t16);
-			append_hydration(li1, strong1);
-			append_hydration(strong1, t17);
-			append_hydration(li1, t18);
-			append_hydration(div13, t19);
-			append_hydration(div13, div6);
-			append_hydration(div6, p1);
-			append_hydration(p1, t20);
-			append_hydration(div6, t21);
-			append_hydration(div6, ul1);
-			append_hydration(ul1, li2);
-			append_hydration(li2, t22);
-			append_hydration(li2, a0);
-			append_hydration(a0, t23);
-			append_hydration(li2, t24);
-			append_hydration(ul1, t25);
-			append_hydration(ul1, li3);
-			append_hydration(li3, t26);
-			append_hydration(li3, strong2);
-			append_hydration(strong2, t27);
-			append_hydration(li3, t28);
-			append_hydration(ul1, t29);
-			append_hydration(ul1, li4);
-			append_hydration(li4, t30);
-			append_hydration(ul1, t31);
-			append_hydration(ul1, li5);
-			append_hydration(li5, t32);
-			append_hydration(div6, t33);
-			append_hydration(div6, img0);
-			append_hydration(div13, t34);
-			append_hydration(div13, div7);
-			append_hydration(div7, p2);
-			append_hydration(p2, t35);
-			append_hydration(div7, t36);
-			append_hydration(div7, ul2);
-			append_hydration(ul2, li6);
-			append_hydration(li6, t37);
-			append_hydration(li6, a1);
-			append_hydration(a1, t38);
-			append_hydration(li6, t39);
-			append_hydration(ul2, t40);
-			append_hydration(ul2, li7);
-			append_hydration(li7, t41);
-			append_hydration(li7, strong3);
-			append_hydration(strong3, t42);
-			append_hydration(li7, t43);
-			append_hydration(div7, t44);
-			append_hydration(div7, img1);
-			append_hydration(div7, t45);
-			append_hydration(div7, ul3);
-			append_hydration(ul3, li8);
-			append_hydration(li8, t46);
-			append_hydration(li8, strong4);
-			append_hydration(strong4, t47);
-			append_hydration(li8, t48);
-			append_hydration(div7, t49);
-			append_hydration(div7, img2);
-			append_hydration(div7, t50);
-			append_hydration(div7, ul4);
-			append_hydration(ul4, li9);
-			append_hydration(li9, t51);
-			append_hydration(li9, strong5);
-			append_hydration(strong5, t52);
-			append_hydration(li9, t53);
-			append_hydration(div7, t54);
-			append_hydration(div7, img3);
-			append_hydration(div7, t55);
-			append_hydration(div7, ul5);
-			append_hydration(ul5, li10);
-			append_hydration(li10, t56);
-			append_hydration(li10, strong6);
-			append_hydration(strong6, t57);
-			append_hydration(li10, t58);
-			append_hydration(div7, t59);
-			append_hydration(div7, img4);
-			append_hydration(div7, t60);
-			append_hydration(div7, ul6);
-			append_hydration(ul6, li11);
-			append_hydration(li11, t61);
-			append_hydration(div7, t62);
-			append_hydration(div7, img5);
-			append_hydration(div13, t63);
-			append_hydration(div13, div8);
-			append_hydration(div8, p3);
-			append_hydration(p3, t64);
-			append_hydration(div8, t65);
-			append_hydration(div8, ul7);
-			append_hydration(ul7, li12);
-			append_hydration(li12, t66);
-			append_hydration(li12, strong7);
-			append_hydration(strong7, t67);
-			append_hydration(li12, t68);
-			append_hydration(ul7, t69);
-			append_hydration(ul7, li13);
-			append_hydration(li13, t70);
-			append_hydration(li13, strong8);
-			append_hydration(strong8, t71);
-			append_hydration(li13, t72);
-			append_hydration(li13, strong9);
-			append_hydration(strong9, t73);
-			append_hydration(li13, t74);
-			append_hydration(div8, t75);
-			append_hydration(div8, img6);
-			append_hydration(div8, t76);
-			append_hydration(div8, ul8);
-			append_hydration(ul8, li14);
-			append_hydration(li14, t77);
-			append_hydration(div8, t78);
-			append_hydration(div8, img7);
-			append_hydration(div8, t79);
-			append_hydration(div8, ul9);
-			append_hydration(ul9, li15);
-			append_hydration(li15, t80);
-			append_hydration(li15, strong10);
-			append_hydration(strong10, t81);
-			append_hydration(li15, t82);
-			append_hydration(li15, strong11);
-			append_hydration(strong11, t83);
-			append_hydration(li15, t84);
-			append_hydration(li15, a2);
-			append_hydration(a2, t85);
-			append_hydration(li15, t86);
-			append_hydration(div8, t87);
-			append_hydration(div8, img8);
-			append_hydration(div8, t88);
-			append_hydration(div8, ul10);
-			append_hydration(ul10, li16);
-			append_hydration(li16, t89);
-			append_hydration(li16, strong12);
-			append_hydration(strong12, t90);
-			append_hydration(li16, t91);
-			append_hydration(div8, t92);
-			append_hydration(div8, img9);
-			append_hydration(div13, t93);
-			append_hydration(div13, div9);
-			append_hydration(div9, p4);
-			append_hydration(p4, t94);
-			append_hydration(div9, t95);
-			append_hydration(div9, ul11);
-			append_hydration(ul11, li17);
-			append_hydration(li17, t96);
-			append_hydration(li17, a3);
-			append_hydration(a3, t97);
-			append_hydration(li17, t98);
-			append_hydration(ul11, t99);
-			append_hydration(ul11, li18);
-			append_hydration(li18, t100);
-			append_hydration(li18, strong13);
-			append_hydration(strong13, t101);
-			append_hydration(li18, t102);
-			append_hydration(div9, t103);
-			append_hydration(div9, img10);
-			append_hydration(div9, t104);
-			append_hydration(div9, ul12);
-			append_hydration(ul12, li19);
-			append_hydration(li19, t105);
-			append_hydration(li19, strong14);
-			append_hydration(strong14, t106);
-			append_hydration(li19, t107);
-			append_hydration(li19, strong15);
-			append_hydration(strong15, t108);
-			append_hydration(li19, t109);
-			append_hydration(li19, strong16);
-			append_hydration(strong16, t110);
-			append_hydration(li19, t111);
-			append_hydration(div9, t112);
-			append_hydration(div9, img11);
-			append_hydration(div9, t113);
-			append_hydration(div9, ul13);
-			append_hydration(ul13, li20);
-			append_hydration(li20, t114);
-			append_hydration(li20, strong17);
-			append_hydration(strong17, t115);
-			append_hydration(li20, t116);
-			append_hydration(li20, strong18);
-			append_hydration(strong18, t117);
-			append_hydration(li20, t118);
-			append_hydration(div9, t119);
-			append_hydration(div9, img12);
-			append_hydration(div9, t120);
-			append_hydration(div9, ul14);
-			append_hydration(ul14, li21);
-			append_hydration(li21, t121);
-			append_hydration(li21, strong19);
-			append_hydration(strong19, t122);
-			append_hydration(li21, t123);
-			append_hydration(div9, t124);
-			append_hydration(div9, img13);
-			append_hydration(div9, t125);
-			append_hydration(div9, ul15);
-			append_hydration(ul15, li22);
-			append_hydration(li22, t126);
-			append_hydration(li22, strong20);
-			append_hydration(strong20, t127);
-			append_hydration(li22, t128);
-			append_hydration(li22, strong21);
-			append_hydration(strong21, t129);
-			append_hydration(li22, t130);
-			append_hydration(li22, strong22);
-			append_hydration(strong22, t131);
-			append_hydration(li22, t132);
-			append_hydration(div9, t133);
-			append_hydration(div9, img14);
-			append_hydration(div9, t134);
-			append_hydration(div9, ul16);
-			append_hydration(ul16, li23);
-			append_hydration(li23, t135);
-			append_hydration(li23, strong23);
-			append_hydration(strong23, t136);
-			append_hydration(li23, t137);
-			append_hydration(div9, t138);
-			append_hydration(div9, img15);
-			append_hydration(div9, t139);
-			append_hydration(div9, ul17);
-			append_hydration(ul17, li24);
-			append_hydration(li24, t140);
-			append_hydration(li24, strong24);
-			append_hydration(strong24, t141);
-			append_hydration(li24, t142);
-			append_hydration(li24, strong25);
-			append_hydration(strong25, t143);
-			append_hydration(li24, t144);
-			append_hydration(li24, strong26);
-			append_hydration(strong26, t145);
-			append_hydration(li24, t146);
-			append_hydration(li24, strong27);
-			append_hydration(strong27, t147);
-			append_hydration(li24, t148);
-			append_hydration(li24, strong28);
-			append_hydration(strong28, t149);
-			append_hydration(li24, t150);
-			append_hydration(div9, t151);
-			append_hydration(div9, img16);
-			append_hydration(div9, t152);
-			append_hydration(div9, ul18);
-			append_hydration(ul18, li25);
-			append_hydration(li25, t153);
-			append_hydration(li25, strong29);
-			append_hydration(strong29, t154);
-			append_hydration(li25, t155);
-			append_hydration(div9, t156);
-			append_hydration(div9, img17);
-			append_hydration(div13, t157);
-			append_hydration(div13, div10);
-			append_hydration(div10, p5);
-			append_hydration(p5, t158);
-			append_hydration(div10, t159);
-			append_hydration(div10, ul19);
-			append_hydration(ul19, li26);
-			append_hydration(li26, t160);
-			append_hydration(li26, a4);
-			append_hydration(a4, t161);
-			append_hydration(li26, t162);
-			append_hydration(ul19, t163);
-			append_hydration(ul19, li27);
-			append_hydration(li27, t164);
-			append_hydration(li27, strong30);
-			append_hydration(strong30, t165);
-			append_hydration(li27, t166);
-			append_hydration(div10, t167);
-			append_hydration(div10, img18);
-			append_hydration(div10, t168);
-			append_hydration(div10, ul20);
-			append_hydration(ul20, li28);
-			append_hydration(li28, t169);
-			append_hydration(li28, strong31);
-			append_hydration(strong31, t170);
-			append_hydration(li28, t171);
-			append_hydration(div10, t172);
-			append_hydration(div10, img19);
-			append_hydration(div10, t173);
-			append_hydration(div10, ul21);
-			append_hydration(ul21, li29);
-			append_hydration(li29, t174);
-			append_hydration(div10, t175);
-			append_hydration(div10, img20);
-			append_hydration(div10, t176);
-			append_hydration(div10, ul22);
-			append_hydration(ul22, li30);
-			append_hydration(li30, t177);
-			append_hydration(ul22, t178);
-			append_hydration(ul22, li31);
-			append_hydration(li31, t179);
-			append_hydration(li31, strong32);
-			append_hydration(strong32, t180);
-			append_hydration(li31, t181);
-			append_hydration(div10, t182);
-			append_hydration(div10, img21);
-			append_hydration(div10, t183);
-			append_hydration(div10, ul23);
-			append_hydration(ul23, li32);
-			append_hydration(li32, t184);
-			append_hydration(li32, a5);
-			append_hydration(a5, t185);
-			append_hydration(li32, t186);
-			append_hydration(div10, t187);
-			append_hydration(div10, img22);
-			append_hydration(div10, t188);
-			append_hydration(div10, ul24);
-			append_hydration(ul24, li33);
-			append_hydration(li33, t189);
-			append_hydration(li33, strong33);
-			append_hydration(strong33, t190);
-			append_hydration(li33, t191);
-			append_hydration(div10, t192);
-			append_hydration(div10, img23);
-			append_hydration(div10, t193);
-			append_hydration(div10, ul25);
-			append_hydration(ul25, li34);
-			append_hydration(li34, t194);
-			append_hydration(li34, strong34);
-			append_hydration(strong34, t195);
-			append_hydration(ul25, t196);
-			append_hydration(ul25, li35);
-			append_hydration(li35, t197);
-			append_hydration(li35, strong35);
-			append_hydration(strong35, t198);
-			append_hydration(li35, t199);
-			append_hydration(li35, strong36);
-			append_hydration(strong36, t200);
-			append_hydration(li35, t201);
-			append_hydration(div13, t202);
-			append_hydration(div13, div11);
-			append_hydration(div11, p6);
-			append_hydration(p6, t203);
-			append_hydration(div11, t204);
-			append_hydration(div11, ul26);
-			append_hydration(ul26, li36);
-			append_hydration(li36, t205);
-			append_hydration(li36, a6);
-			append_hydration(a6, t206);
-			append_hydration(li36, t207);
-			append_hydration(li36, strong37);
-			append_hydration(strong37, t208);
-			append_hydration(li36, t209);
-			append_hydration(div11, t210);
-			append_hydration(div11, img24);
-			append_hydration(div11, t211);
-			append_hydration(div11, ul27);
-			append_hydration(ul27, li37);
-			append_hydration(li37, t212);
-			append_hydration(li37, strong38);
-			append_hydration(strong38, t213);
-			append_hydration(li37, t214);
-			append_hydration(li37, strong39);
-			append_hydration(strong39, t215);
-			append_hydration(li37, t216);
-			append_hydration(li37, strong40);
-			append_hydration(strong40, t217);
-			append_hydration(li37, t218);
-			append_hydration(div11, t219);
-			append_hydration(div11, img25);
-			append_hydration(div11, t220);
-			append_hydration(div11, ul28);
-			append_hydration(ul28, li38);
-			append_hydration(li38, t221);
-			append_hydration(li38, strong41);
-			append_hydration(strong41, t222);
-			append_hydration(li38, t223);
-			append_hydration(li38, strong42);
-			append_hydration(strong42, t224);
-			append_hydration(li38, t225);
-			append_hydration(ul28, t226);
-			append_hydration(ul28, li39);
-			append_hydration(li39, t227);
-			append_hydration(li39, a7);
-			append_hydration(a7, t228);
-			append_hydration(li39, t229);
-			append_hydration(li39, strong43);
-			append_hydration(strong43, t230);
-			append_hydration(li39, t231);
-			append_hydration(li39, strong44);
-			append_hydration(strong44, t232);
-			append_hydration(li39, t233);
-			append_hydration(div11, t234);
-			append_hydration(div11, img26);
-			append_hydration(div11, t235);
-			append_hydration(div11, ul29);
-			append_hydration(ul29, li40);
-			append_hydration(li40, t236);
-			append_hydration(li40, strong45);
-			append_hydration(strong45, t237);
-			append_hydration(li40, t238);
-			append_hydration(div11, t239);
-			append_hydration(div11, img27);
-			append_hydration(div11, t240);
-			append_hydration(div11, ul30);
-			append_hydration(ul30, li41);
-			append_hydration(li41, t241);
-			append_hydration(li41, strong46);
-			append_hydration(strong46, t242);
-			append_hydration(li41, t243);
-			append_hydration(div11, t244);
-			append_hydration(div11, img28);
-			append_hydration(div11, t245);
-			append_hydration(div11, ul31);
-			append_hydration(ul31, li42);
-			append_hydration(li42, t246);
-			append_hydration(li42, strong47);
-			append_hydration(strong47, t247);
-			append_hydration(li42, t248);
-			append_hydration(div11, t249);
-			append_hydration(div11, img29);
-			append_hydration(div13, t250);
-			append_hydration(div13, div12);
-			append_hydration(div12, p7);
-			append_hydration(p7, t251);
-			append_hydration(div12, t252);
-			append_hydration(div12, p8);
-			append_hydration(p8, t253);
 			current = true;
 		},
-		p(ctx, dirty) {
-			if (dirty[0] & /*items*/ 1 | dirty[1] & /*activeItem, setActiveItem*/ 6) {
-				each_value = /*items*/ ctx[0];
+		p(ctx, [dirty]) {
+			if (!current || dirty & /*heading*/ 1) set_data(t2, /*heading*/ ctx[0]);
+
+			if (dirty & /*activeItem, items, setActiveItem*/ 14) {
+				each_value = /*items*/ ctx[1];
 				group_outros();
-				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div0, outro_and_destroy_block, create_each_block, null, get_each_context);
+				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div, outro_and_destroy_block, create_each_block, null, get_each_context);
 				check_outros();
-			}
-
-			if (!current || dirty[0] & /*heading*/ 1024) set_data(t8, /*heading*/ ctx[10]);
-
-			if (!current || dirty[0] & /*image1*/ 2 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) {
-				attr(img0, "src", img0_src_value);
-			}
-
-			if (!current || dirty[0] & /*image2*/ 4 && !src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) {
-				attr(img1, "src", img1_src_value);
-			}
-
-			if (!current || dirty[0] & /*image3*/ 8 && !src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) {
-				attr(img2, "src", img2_src_value);
-			}
-
-			if (!current || dirty[0] & /*image4*/ 16 && !src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[4].url)) {
-				attr(img3, "src", img3_src_value);
-			}
-
-			if (!current || dirty[0] & /*image5*/ 32 && !src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[5].url)) {
-				attr(img4, "src", img4_src_value);
-			}
-
-			if (!current || dirty[0] & /*image6*/ 64 && !src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[6].url)) {
-				attr(img5, "src", img5_src_value);
-			}
-
-			if (!current || dirty[0] & /*image7*/ 128 && !src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[7].url)) {
-				attr(img6, "src", img6_src_value);
-			}
-
-			if (!current || dirty[0] & /*image8*/ 256 && !src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[8].url)) {
-				attr(img7, "src", img7_src_value);
-			}
-
-			if (!current || dirty[0] & /*image9*/ 512 && !src_url_equal(img8.src, img8_src_value = /*image9*/ ctx[9].url)) {
-				attr(img8, "src", img8_src_value);
-			}
-
-			if (!current || dirty[0] & /*image10*/ 2048 && !src_url_equal(img9.src, img9_src_value = /*image10*/ ctx[11].url)) {
-				attr(img9, "src", img9_src_value);
-			}
-
-			if (!current || dirty[0] & /*image11*/ 4096 && !src_url_equal(img10.src, img10_src_value = /*image11*/ ctx[12].url)) {
-				attr(img10, "src", img10_src_value);
-			}
-
-			if (!current || dirty[0] & /*image12*/ 8192 && !src_url_equal(img11.src, img11_src_value = /*image12*/ ctx[13].url)) {
-				attr(img11, "src", img11_src_value);
-			}
-
-			if (!current || dirty[0] & /*image13*/ 16384 && !src_url_equal(img12.src, img12_src_value = /*image13*/ ctx[14].url)) {
-				attr(img12, "src", img12_src_value);
-			}
-
-			if (!current || dirty[0] & /*image14*/ 32768 && !src_url_equal(img13.src, img13_src_value = /*image14*/ ctx[15].url)) {
-				attr(img13, "src", img13_src_value);
-			}
-
-			if (!current || dirty[0] & /*image15*/ 65536 && !src_url_equal(img14.src, img14_src_value = /*image15*/ ctx[16].url)) {
-				attr(img14, "src", img14_src_value);
-			}
-
-			if (!current || dirty[0] & /*image16*/ 131072 && !src_url_equal(img15.src, img15_src_value = /*image16*/ ctx[17].url)) {
-				attr(img15, "src", img15_src_value);
-			}
-
-			if (!current || dirty[0] & /*image17*/ 262144 && !src_url_equal(img16.src, img16_src_value = /*image17*/ ctx[18].url)) {
-				attr(img16, "src", img16_src_value);
-			}
-
-			if (!current || dirty[0] & /*image18*/ 524288 && !src_url_equal(img17.src, img17_src_value = /*image18*/ ctx[19].url)) {
-				attr(img17, "src", img17_src_value);
-			}
-
-			if (!current || dirty[0] & /*image19*/ 1048576 && !src_url_equal(img18.src, img18_src_value = /*image19*/ ctx[20].url)) {
-				attr(img18, "src", img18_src_value);
-			}
-
-			if (!current || dirty[0] & /*image20*/ 2097152 && !src_url_equal(img19.src, img19_src_value = /*image20*/ ctx[21].url)) {
-				attr(img19, "src", img19_src_value);
-			}
-
-			if (!current || dirty[0] & /*image21*/ 4194304 && !src_url_equal(img20.src, img20_src_value = /*image21*/ ctx[22].url)) {
-				attr(img20, "src", img20_src_value);
-			}
-
-			if (!current || dirty[0] & /*image22*/ 8388608 && !src_url_equal(img21.src, img21_src_value = /*image22*/ ctx[23].url)) {
-				attr(img21, "src", img21_src_value);
-			}
-
-			if (!current || dirty[0] & /*image23*/ 16777216 && !src_url_equal(img22.src, img22_src_value = /*image23*/ ctx[24].url)) {
-				attr(img22, "src", img22_src_value);
-			}
-
-			if (!current || dirty[0] & /*image24*/ 33554432 && !src_url_equal(img23.src, img23_src_value = /*image24*/ ctx[25].url)) {
-				attr(img23, "src", img23_src_value);
-			}
-
-			if (!current || dirty[0] & /*image25*/ 67108864 && !src_url_equal(img24.src, img24_src_value = /*image25*/ ctx[26].url)) {
-				attr(img24, "src", img24_src_value);
-			}
-
-			if (!current || dirty[0] & /*image26*/ 134217728 && !src_url_equal(img25.src, img25_src_value = /*image26*/ ctx[27].url)) {
-				attr(img25, "src", img25_src_value);
-			}
-
-			if (!current || dirty[0] & /*image27*/ 268435456 && !src_url_equal(img26.src, img26_src_value = /*image27*/ ctx[28].url)) {
-				attr(img26, "src", img26_src_value);
-			}
-
-			if (!current || dirty[0] & /*image28*/ 536870912 && !src_url_equal(img27.src, img27_src_value = /*image28*/ ctx[29].url)) {
-				attr(img27, "src", img27_src_value);
-			}
-
-			if (!current || dirty[0] & /*image29*/ 1073741824 && !src_url_equal(img28.src, img28_src_value = /*image29*/ ctx[30].url)) {
-				attr(img28, "src", img28_src_value);
-			}
-
-			if (!current || dirty[1] & /*image30*/ 1 && !src_url_equal(img29.src, img29_src_value = /*image30*/ ctx[31].url)) {
-				attr(img29, "src", img29_src_value);
 			}
 		},
 		i(local) {
@@ -5894,170 +3491,29 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
-	let { items } = $$props;
-	let { image1 } = $$props;
-	let { image2 } = $$props;
-	let { image3 } = $$props;
-	let { image4 } = $$props;
-	let { image5 } = $$props;
-	let { image6 } = $$props;
-	let { image7 } = $$props;
-	let { image8 } = $$props;
-	let { image9 } = $$props;
 	let { heading } = $$props;
-	let { image10 } = $$props;
-	let { image11 } = $$props;
-	let { image12 } = $$props;
-	let { image13 } = $$props;
-	let { image14 } = $$props;
-	let { image15 } = $$props;
-	let { image16 } = $$props;
-	let { image17 } = $$props;
-	let { image18 } = $$props;
-	let { image19 } = $$props;
-	let { image20 } = $$props;
-	let { image21 } = $$props;
-	let { image22 } = $$props;
-	let { image23 } = $$props;
-	let { image24 } = $$props;
-	let { image25 } = $$props;
-	let { image26 } = $$props;
-	let { image27 } = $$props;
-	let { image28 } = $$props;
-	let { image29 } = $$props;
-	let { image30 } = $$props;
+	let { items } = $$props;
 	let activeItem = 0;
 
 	function setActiveItem(i) {
-		$$invalidate(32, activeItem = activeItem === i ? null : i);
+		$$invalidate(2, activeItem = activeItem === i ? null : i);
 	}
 
 	const click_handler = i => setActiveItem(i);
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(34, props = $$props.props);
-		if ('items' in $$props) $$invalidate(0, items = $$props.items);
-		if ('image1' in $$props) $$invalidate(1, image1 = $$props.image1);
-		if ('image2' in $$props) $$invalidate(2, image2 = $$props.image2);
-		if ('image3' in $$props) $$invalidate(3, image3 = $$props.image3);
-		if ('image4' in $$props) $$invalidate(4, image4 = $$props.image4);
-		if ('image5' in $$props) $$invalidate(5, image5 = $$props.image5);
-		if ('image6' in $$props) $$invalidate(6, image6 = $$props.image6);
-		if ('image7' in $$props) $$invalidate(7, image7 = $$props.image7);
-		if ('image8' in $$props) $$invalidate(8, image8 = $$props.image8);
-		if ('image9' in $$props) $$invalidate(9, image9 = $$props.image9);
-		if ('heading' in $$props) $$invalidate(10, heading = $$props.heading);
-		if ('image10' in $$props) $$invalidate(11, image10 = $$props.image10);
-		if ('image11' in $$props) $$invalidate(12, image11 = $$props.image11);
-		if ('image12' in $$props) $$invalidate(13, image12 = $$props.image12);
-		if ('image13' in $$props) $$invalidate(14, image13 = $$props.image13);
-		if ('image14' in $$props) $$invalidate(15, image14 = $$props.image14);
-		if ('image15' in $$props) $$invalidate(16, image15 = $$props.image15);
-		if ('image16' in $$props) $$invalidate(17, image16 = $$props.image16);
-		if ('image17' in $$props) $$invalidate(18, image17 = $$props.image17);
-		if ('image18' in $$props) $$invalidate(19, image18 = $$props.image18);
-		if ('image19' in $$props) $$invalidate(20, image19 = $$props.image19);
-		if ('image20' in $$props) $$invalidate(21, image20 = $$props.image20);
-		if ('image21' in $$props) $$invalidate(22, image21 = $$props.image21);
-		if ('image22' in $$props) $$invalidate(23, image22 = $$props.image22);
-		if ('image23' in $$props) $$invalidate(24, image23 = $$props.image23);
-		if ('image24' in $$props) $$invalidate(25, image24 = $$props.image24);
-		if ('image25' in $$props) $$invalidate(26, image25 = $$props.image25);
-		if ('image26' in $$props) $$invalidate(27, image26 = $$props.image26);
-		if ('image27' in $$props) $$invalidate(28, image27 = $$props.image27);
-		if ('image28' in $$props) $$invalidate(29, image28 = $$props.image28);
-		if ('image29' in $$props) $$invalidate(30, image29 = $$props.image29);
-		if ('image30' in $$props) $$invalidate(31, image30 = $$props.image30);
+		if ('props' in $$props) $$invalidate(4, props = $$props.props);
+		if ('heading' in $$props) $$invalidate(0, heading = $$props.heading);
+		if ('items' in $$props) $$invalidate(1, items = $$props.items);
 	};
 
-	return [
-		items,
-		image1,
-		image2,
-		image3,
-		image4,
-		image5,
-		image6,
-		image7,
-		image8,
-		image9,
-		heading,
-		image10,
-		image11,
-		image12,
-		image13,
-		image14,
-		image15,
-		image16,
-		image17,
-		image18,
-		image19,
-		image20,
-		image21,
-		image22,
-		image23,
-		image24,
-		image25,
-		image26,
-		image27,
-		image28,
-		image29,
-		image30,
-		activeItem,
-		setActiveItem,
-		props,
-		click_handler
-	];
+	return [heading, items, activeItem, setActiveItem, props, click_handler];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-
-		init(
-			this,
-			options,
-			instance,
-			create_fragment,
-			safe_not_equal,
-			{
-				props: 34,
-				items: 0,
-				image1: 1,
-				image2: 2,
-				image3: 3,
-				image4: 4,
-				image5: 5,
-				image6: 6,
-				image7: 7,
-				image8: 8,
-				image9: 9,
-				heading: 10,
-				image10: 11,
-				image11: 12,
-				image12: 13,
-				image13: 14,
-				image14: 15,
-				image15: 16,
-				image16: 17,
-				image17: 18,
-				image18: 19,
-				image19: 20,
-				image20: 21,
-				image21: 22,
-				image22: 23,
-				image23: 24,
-				image24: 25,
-				image25: 26,
-				image26: 27,
-				image27: 28,
-				image28: 29,
-				image29: 30,
-				image30: 31
-			},
-			null,
-			[-1, -1]
-		);
+		init(this, options, instance, create_fragment, safe_not_equal, { props: 4, heading: 0, items: 1 });
 	}
 }
 

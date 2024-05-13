@@ -1,0 +1,257 @@
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta name="generator" content="Primo" />
+      <title>Globot</title><!-- HEAD_svelte-648mw2_START --><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta charset="UTF-8"><link rel="preconnect" href="https://fonts.bunny.net"><link href="https://fonts.bunny.net/css?family=fredoka:300,400,500,600,700|space-grotesk:300,400,500,600,700" rel="stylesheet"><link href="https://fonts.bunny.net/css?family=fredoka:300,400,500,600,700|open-sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i|space-grotesk:300,400,500,600,700" rel="stylesheet"><meta name="description" content="globot crea chatbots con inteligencia artificial"><link rel="icon" type="image/png" sizes="32x32" href="https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1696600568313globot.ico"><style>/* Reset & standardize default styles */
+@import url("https://unpkg.com/@primo-app/primo@1.3.64/reset.css") layer;
+
+/* Design tokens (apply to components) */
+:root {
+  --color-tint: #f8fbff;
+
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "Open Sans", sans-serif;
+
+  /* Colors */
+  --color-base: #183b56;
+  --color-brand: #1565d8;
+  --color-accent: #36b37e;
+  --color-accent-2: #0d2436;
+  --color-light: #fcfcfd;
+  --color-shade: #cbcace;
+  --color-inverted: white;
+  --color-tint: #e5eaf4;
+
+  /* Base values */
+  --color: var(--color-base);
+  --box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2);
+  --border-radius: 8px;
+  --border-color: #eee;
+  --background: white;
+}
+
+/* Root element (use instead of `body`) */
+#page {
+  font-family: var(--font-body);
+  color: var(--color-base);
+  line-height: 1.2;
+  font-size: 1.125rem;
+  background: var(--background);
+}
+
+.section.has-content {
+  display: flex;
+  justify-content: center;
+  padding: 5rem 2rem;
+}
+
+.section.has-content .content {
+    max-width: 800px;
+    width: 100%;
+  }
+
+.section-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.heading-group {
+  display: grid;
+  gap: 1rem;
+  place-content: center;
+  text-align: center;
+}
+
+.heading-group .superhead {
+    font-family: var(--font-body);
+    color: var(--color-accent);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+.heading-group .subheading {
+    color: #4f6373;
+    line-height: 1.4;
+    max-width: 600px;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  line-height: 1.1;
+  font-weight: 500;
+  max-width: 600px;
+}
+
+.button {
+  color: var(--color-brand, white);
+  background: var(--color-inverted);
+  border: 2px solid var(--color-brand);
+  border-radius: 6px;
+  padding: 8px 20px;
+  transition: 0.1s background, 0.1s color;
+}
+
+.button:hover {
+    color: var(--color-inverted);
+    background: var(--color-brand);
+    border-color: var(--color-inverted);
+  }
+
+.button.inverted {
+    background: var(--color-white);
+    color: var(--color-brand);
+    border-color: #0d2436;
+  }
+
+.link {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--color-brand);
+}
+
+.link .arrow {
+    transition: transform 0.1s;
+  }
+
+.link:hover .arrow {
+    transform: translateX(4px);
+  }
+</style><!-- HEAD_svelte-648mw2_END -->
+      <style>.section-container.svelte-1rlwsv9.svelte-1rlwsv9{display:grid;max-width:1440px;padding:90px 72px;gap:0.5rem;font-family:'Lato', sans-serif}.heading-group.svelte-1rlwsv9.svelte-1rlwsv9{display:grid;gap:1rem;place-content:center;text-align:center;font-family:'Lato', sans-serif}.heading-group.svelte-1rlwsv9 .superhead.svelte-1rlwsv9{font-family:var(--font-body);color:var(--Secondary-1, #B869DE);;;font-weight:500;font-size:.875rem;letter-spacing:1.5px;text-transform:uppercase}.heading-group.svelte-1rlwsv9 .subheading.svelte-1rlwsv9{line-height:1.3;max-width:700px;font-weight:400;margin:0 auto;margin-bottom:4rem}.tiers.svelte-1rlwsv9.svelte-1rlwsv9{display:grid;grid-template-columns:repeat(4, minmax(300px, 1fr));place-items:start;gap:2rem}.tiers.svelte-1rlwsv9 .tier.svelte-1rlwsv9{display:grid;gap:2rem;border:1px solid var(--border-color, #eee);border-radius:var(--border-radius);padding:2.5rem 2rem;width:312px}.tiers.svelte-1rlwsv9 .tier header.svelte-1rlwsv9{display:grid;gap:0.5rem}.tiers.svelte-1rlwsv9 .tier header .price.svelte-1rlwsv9{font-weight:600;margin-bottom:1rem}.tiers.svelte-1rlwsv9 .tier header .price span.numerator.svelte-1rlwsv9{font-size:2rem;color:var(--Primary-2, #7B5CF5)}.tiers.svelte-1rlwsv9 .tier header .price span.denominator.svelte-1rlwsv9{opacity:0.8}.tiers.svelte-1rlwsv9 .tier .title.svelte-1rlwsv9{color:var(--color);font-size:1.25rem;border-radius:2rem;font-weight:600;justify-self:flex-start;margin-bottom:0.5rem}.tiers.svelte-1rlwsv9 .tier hr.svelte-1rlwsv9{width:100%;border-color:var(--border-color, #eee)}.tiers.svelte-1rlwsv9 .tier ul.features.svelte-1rlwsv9{display:grid;gap:1rem}.tiers.svelte-1rlwsv9 .tier ul.features li.svelte-1rlwsv9{display:flex;align-items:center;gap:.75rem}.tiers.svelte-1rlwsv9 .tier ul.features li .icon.svelte-1rlwsv9{color:#B869DE}.tiers.svelte-1rlwsv9 .tier ul.features li .item.svelte-1rlwsv9{font-size:16px}.tiers.svelte-1rlwsv9 .tier .button.svelte-1rlwsv9{width:100%;text-align:center;font-size:1rem;border:2px solid var(--Primary-2, #7B5CF5);border-radius:4px;color:var(--Primary-2, #7B5CF5)}.tiers.svelte-1rlwsv9 .tier .button.svelte-1rlwsv9:hover{background:var(--Primary-1, #603FDF);color:#F8FAFC}
+@import url('https://fonts.googleapis.com/css2?family=Nats&display=swap');.section-container.svelte-z4gmbv.svelte-z4gmbv.svelte-z4gmbv{display:grid;place-items:center;font-family:'Lato', sans-serif}@media(max-width: 600px){.section-container.svelte-z4gmbv.svelte-z4gmbv.svelte-z4gmbv{padding-top:30px
+}}.heading.svelte-z4gmbv.svelte-z4gmbv.svelte-z4gmbv{text-align:center;margin-bottom:1.5rem;font-family:'Lato', sans-serif}.accordion.svelte-z4gmbv.svelte-z4gmbv.svelte-z4gmbv{width:100%;max-width:900px}.accordion.svelte-z4gmbv .item.svelte-z4gmbv.svelte-z4gmbv{padding:1.5rem 0}.accordion.svelte-z4gmbv .item.svelte-z4gmbv.svelte-z4gmbv:not(:last-child){border-bottom:1px solid var(--border-color, #eee)}.accordion.svelte-z4gmbv .item.active button .icon.svelte-z4gmbv.svelte-z4gmbv{transform:scaleY(-1)}.accordion.svelte-z4gmbv .item button.svelte-z4gmbv.svelte-z4gmbv{display:flex;justify-content:space-between;align-items:center;width:100%}.accordion.svelte-z4gmbv .item button span.svelte-z4gmbv.svelte-z4gmbv{font-size:1.25rem;font-weight:600;text-align:left}.accordion.svelte-z4gmbv .item button .icon.svelte-z4gmbv.svelte-z4gmbv{font-size:1.25rem;color:#B869DE;transition:transform 0.2s}.accordion.svelte-z4gmbv .item button.svelte-z4gmbv+.description.svelte-z4gmbv{padding-top:0.5rem}.accordion.svelte-z4gmbv .item .description.svelte-z4gmbv.svelte-z4gmbv{padding-right:2rem;font-weight:400;line-height:28px}</style>
+    </head>
+    <body id="page">
+       
+<div class="section" id="section-9fff763a"><section class="svelte-1rlwsv9"><style>@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');
+</style>
+  <div class="section-container svelte-1rlwsv9"><div class="heading-group svelte-1rlwsv9"><span class="superhead svelte-1rlwsv9">PLANES Y PRECIOS</span>
+      <h2 class="heading">Tenemos el plan perfecto para tu negocio</h2>
+      <h3 class="subheading svelte-1rlwsv9">Nuestros planes se adaptan a cualquier etapa de tu negocio, desde emprendedores hasta grandes empresas. Explora y elige el plan que mejora responda a tus necesidades y objetivos comerciales.</h3></div>
+    <div class="tiers svelte-1rlwsv9"><div class="tier svelte-1rlwsv9"><header class="svelte-1rlwsv9"><div class="price svelte-1rlwsv9"><span class="numerator svelte-1rlwsv9">$0</span>
+              <span class="denominator svelte-1rlwsv9">/Mes</span></div>
+            <h3 class="title svelte-1rlwsv9">Plan Básico</h3>
+            <span class="description svelte-1rlwsv9"><!-- HTML_TAG_START --><p>Ideal para aquellos que desean explorar el funcionamiento de un chatbot sin coste alguno.</p><!-- HTML_TAG_END --></span></header>
+          <hr class="svelte-1rlwsv9">
+          <ul class="features svelte-1rlwsv9"><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">1 chatbot</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">20 mensajes al mes</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">Fuentes de información limitadas</span>
+              </li></ul>
+          <a href="/" class="button svelte-1rlwsv9">Empezar gratis</a>
+        </div><div class="tier svelte-1rlwsv9"><header class="svelte-1rlwsv9"><div class="price svelte-1rlwsv9"><span class="numerator svelte-1rlwsv9">$10.000</span>
+              <span class="denominator svelte-1rlwsv9">/Mes</span></div>
+            <h3 class="title svelte-1rlwsv9">Plan Emprendedor</h3>
+            <span class="description svelte-1rlwsv9"><!-- HTML_TAG_START --><p>Perfecto para tiendas online que buscan mejorar la experiencia en su sitio web.</p><!-- HTML_TAG_END --></span></header>
+          <hr class="svelte-1rlwsv9">
+          <ul class="features svelte-1rlwsv9"><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">2 chatbots</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">2.000 mensajes al mes</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">Integración Web y Wordpress</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">Todas las fuentes de información</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">Historial de conversaciones</span>
+              </li></ul>
+          <a href="/" class="button svelte-1rlwsv9">Suscribirse</a>
+        </div><div class="tier svelte-1rlwsv9"><header class="svelte-1rlwsv9"><div class="price svelte-1rlwsv9"><span class="numerator svelte-1rlwsv9">$20.000</span>
+              <span class="denominator svelte-1rlwsv9">/Mes</span></div>
+            <h3 class="title svelte-1rlwsv9">Plan Empresarial </h3>
+            <span class="description svelte-1rlwsv9"><!-- HTML_TAG_START --><p>Diseñado para negocios que necesitan gestionar múltiples canales de comunicación.</p><!-- HTML_TAG_END --></span></header>
+          <hr class="svelte-1rlwsv9">
+          <ul class="features svelte-1rlwsv9"><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">5 chatbots</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">10.000 mensajes al mes</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">Integración Web y Wordpress</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">Todas las fuentes de información</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">Historial de conversaciones</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">Integraciones Meta</span>
+              </li></ul>
+          <a href="/" class="button svelte-1rlwsv9">Suscribirse</a>
+        </div><div class="tier svelte-1rlwsv9"><header class="svelte-1rlwsv9"><div class="price svelte-1rlwsv9"><span class="numerator svelte-1rlwsv9">Indefinido </span>
+              <span class="denominator svelte-1rlwsv9"></span></div>
+            <h3 class="title svelte-1rlwsv9">Plan a tu medida</h3>
+            <span class="description svelte-1rlwsv9"><!-- HTML_TAG_START --><p>Un plan personalizado para empresas que requieren soluciones avanzadas.</p><!-- HTML_TAG_END --></span></header>
+          <hr class="svelte-1rlwsv9">
+          <ul class="features svelte-1rlwsv9"><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">Chatbots ilimitados</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">50.000 mensajes al mes</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">Integración Web y Wordpress</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">Todas las fuentes de información</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">Historial de conversaciones</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">Integraciones Meta</span>
+              </li><li class="svelte-1rlwsv9"><span class="icon svelte-1rlwsv9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START --><path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z"/><!-- HTML_TAG_END --></svg></span>
+                <span class="item svelte-1rlwsv9">Integración con Slack y Discord</span>
+              </li></ul>
+          <a href="" class="button svelte-1rlwsv9">Contáctanos</a>
+        </div></div></div></section></div> 
+<div class="section" id="section-1ee1a209"><section class="section-container svelte-z4gmbv"><style>@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');
+</style>
+  <h2 class="heading svelte-z4gmbv">Sobre planes y pagos</h2>
+  <div class="accordion svelte-z4gmbv"><div class="item svelte-z4gmbv active"><button class="svelte-z4gmbv"><span class="svelte-z4gmbv">¿Cuáles son los precios de los planes de suscripción?</span>
+        <span class="icon svelte-z4gmbv"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 256 256" class="iconify iconify--ph"><!-- HTML_TAG_START --><path fill="currentColor" d="m216.49 104.49l-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z"/><!-- HTML_TAG_END --></svg>
+        </span></button>
+      <div class="description svelte-z4gmbv"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></div> 
+      <noscript><div class="description svelte-z4gmbv"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></div></noscript>
+    </div><div class="item svelte-z4gmbv"><button class="svelte-z4gmbv"><span class="svelte-z4gmbv">¿Cómo puedo suscribirme?</span>
+        <span class="icon svelte-z4gmbv"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 256 256" class="iconify iconify--ph"><!-- HTML_TAG_START --><path fill="currentColor" d="m216.49 104.49l-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z"/><!-- HTML_TAG_END --></svg>
+        </span></button>
+       
+      <noscript><div class="description svelte-z4gmbv"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></div></noscript>
+    </div><div class="item svelte-z4gmbv"><button class="svelte-z4gmbv"><span class="svelte-z4gmbv">¿Se ofrece una prueba gratuita?</span>
+        <span class="icon svelte-z4gmbv"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 256 256" class="iconify iconify--ph"><!-- HTML_TAG_START --><path fill="currentColor" d="m216.49 104.49l-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z"/><!-- HTML_TAG_END --></svg>
+        </span></button>
+       
+      <noscript><div class="description svelte-z4gmbv"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></div></noscript>
+    </div></div></section></div> 
+
+      <script type="module">
+      import('/_symbols/42cdb72d-7351-413c-9481-40f4a3b24801.js')
+      .then(({default:App}) => {
+        
+            new App({
+              target: document.querySelector('#section-1ee1a209'),
+              hydrate: true,
+              props: {"heading":"Sobre planes y pagos","items":[{"title":"¿Cuáles son los precios de los planes de suscripción?","description":{"html":"","markdown":""}},{"title":"¿Cómo puedo suscribirme?","description":{"html":"","markdown":""}},{"title":"¿Se ofrece una prueba gratuita?","description":{"html":"","markdown":""}}]}
+            })
+          
+      })
+      .catch(e => console.error(e))
+    
+
+      import('/_symbols/288ff0aa-aa0c-41ea-887a-e0a1688e53be.js')
+      .then(({default:App}) => {
+        
+            new App({
+              target: document.querySelector('#section-9fff763a'),
+              hydrate: true,
+              props: {"superhead":"PLANES Y PRECIOS","heading":"Tenemos el plan perfecto para tu negocio","subheading":"Nuestros planes se adaptan a cualquier etapa de tu negocio, desde emprendedores hasta grandes empresas. Explora y elige el plan que mejora responda a tus necesidades y objetivos comerciales.","tiers":[{"link":{"url":"/","label":"Empezar gratis"},"price":{"numerator":"$0","denominator":"/Mes"},"title":"Plan Básico","features":[{"icon":"mdi:check","item":"1 chatbot"},{"icon":"mdi:check","item":"20 mensajes al mes"},{"icon":"mdi:check","item":"Fuentes de información limitadas"}],"description":{"html":"<p>Ideal para aquellos que desean explorar el funcionamiento de un chatbot sin coste alguno.</p>","markdown":"Ideal para aquellos que desean explorar el funcionamiento de un chatbot sin coste alguno."}},{"link":{"url":"/","label":"Suscribirse"},"price":{"numerator":"$10.000","denominator":"/Mes"},"title":"Plan Emprendedor","features":[{"icon":"mdi:check","item":"2 chatbots"},{"icon":"mdi:check","item":"2.000 mensajes al mes"},{"icon":"mdi:check","item":"Integración Web y Wordpress"},{"icon":"mdi:check","item":"Todas las fuentes de información"},{"icon":"mdi:check","item":"Historial de conversaciones"}],"description":{"html":"<p>Perfecto para tiendas online que buscan mejorar la experiencia en su sitio web.</p>","markdown":"Perfecto para tiendas online que buscan mejorar la experiencia en su sitio web."}},{"link":{"url":"/","label":"Suscribirse"},"price":{"numerator":"$20.000","denominator":"/Mes"},"title":"Plan Empresarial ","features":[{"icon":"mdi:check","item":"5 chatbots"},{"icon":"mdi:check","item":"10.000 mensajes al mes"},{"icon":"mdi:check","item":"Integración Web y Wordpress"},{"icon":"mdi:check","item":"Todas las fuentes de información"},{"icon":"mdi:check","item":"Historial de conversaciones"},{"icon":"mdi:check","item":"Integraciones Meta"}],"description":{"html":"<p>Diseñado para negocios que necesitan gestionar múltiples canales de comunicación.</p>","markdown":"Diseñado para negocios que necesitan gestionar múltiples canales de comunicación."}},{"link":{"url":"","label":"Contáctanos","active":false},"price":{"numerator":"Indefinido ","denominator":""},"title":"Plan a tu medida","features":[{"icon":"mdi:check","item":"Chatbots ilimitados"},{"icon":"mdi:check","item":"50.000 mensajes al mes"},{"icon":"mdi:check","item":"Integración Web y Wordpress"},{"icon":"mdi:check","item":"Todas las fuentes de información"},{"icon":"mdi:check","item":"Historial de conversaciones"},{"icon":"mdi:check","item":"Integraciones Meta"},{"icon":"mdi:check","item":"Integración con Slack y Discord"}],"description":{"html":"<p>Un plan personalizado para empresas que requieren soluciones avanzadas.</p>","markdown":"Un plan personalizado para empresas que requieren soluciones avanzadas."}}]}
+            })
+          
+      })
+      .catch(e => console.error(e))
+    </script>
+    </body>
+  </html>
+  
