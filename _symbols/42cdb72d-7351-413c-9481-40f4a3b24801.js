@@ -1,4 +1,4 @@
-// New Block - Updated May 13, 2024
+// New Block - Updated May 15, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3202,7 +3202,7 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if ((!current || dirty & /*items*/ 2) && raw_value !== (raw_value = /*item*/ ctx[6].description.html + "")) div.innerHTML = raw_value;		},
+			if ((!current || dirty & /*items*/ 1) && raw_value !== (raw_value = /*item*/ ctx[6].description.html + "")) div.innerHTML = raw_value;		},
 		i(local) {
 			if (current) return;
 
@@ -3318,13 +3318,13 @@ function create_each_block(key_1, ctx) {
 		},
 		p(new_ctx, dirty) {
 			ctx = new_ctx;
-			if ((!current || dirty & /*items*/ 2) && t0_value !== (t0_value = /*item*/ ctx[6].title + "")) set_data(t0, t0_value);
+			if ((!current || dirty & /*items*/ 1) && t0_value !== (t0_value = /*item*/ ctx[6].title + "")) set_data(t0, t0_value);
 
 			if (/*activeItem*/ ctx[2] === /*i*/ ctx[8]) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty & /*activeItem, items*/ 6) {
+					if (dirty & /*activeItem, items*/ 5) {
 						transition_in(if_block, 1);
 					}
 				} else {
@@ -3343,7 +3343,7 @@ function create_each_block(key_1, ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*activeItem, items*/ 6) {
+			if (!current || dirty & /*activeItem, items*/ 5) {
 				toggle_class(div1, "active", /*activeItem*/ ctx[2] === /*i*/ ctx[8]);
 			}
 		},
@@ -3380,7 +3380,7 @@ function create_fragment(ctx) {
 	let each_blocks = [];
 	let each_1_lookup = new Map();
 	let current;
-	let each_value = /*items*/ ctx[1];
+	let each_value = /*items*/ ctx[0];
 	const get_key = ctx => /*i*/ ctx[8];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -3396,7 +3396,7 @@ function create_fragment(ctx) {
 			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
 			t1 = space();
 			h2 = element("h2");
-			t2 = text(/*heading*/ ctx[0]);
+			t2 = text(/*heading*/ ctx[1]);
 			t3 = space();
 			div = element("div");
 
@@ -3416,7 +3416,7 @@ function create_fragment(ctx) {
 			t1 = claim_space(section_nodes);
 			h2 = claim_element(section_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			t2 = claim_text(h2_nodes, /*heading*/ ctx[0]);
+			t2 = claim_text(h2_nodes, /*heading*/ ctx[1]);
 			h2_nodes.forEach(detach);
 			t3 = claim_space(section_nodes);
 			div = claim_element(section_nodes, "DIV", { class: true });
@@ -3454,10 +3454,10 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*heading*/ 1) set_data(t2, /*heading*/ ctx[0]);
+			if (!current || dirty & /*heading*/ 2) set_data(t2, /*heading*/ ctx[1]);
 
-			if (dirty & /*activeItem, items, setActiveItem*/ 14) {
-				each_value = /*items*/ ctx[1];
+			if (dirty & /*activeItem, items, setActiveItem*/ 13) {
+				each_value = /*items*/ ctx[0];
 				group_outros();
 				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div, outro_and_destroy_block, create_each_block, null, get_each_context);
 				check_outros();
@@ -3491,8 +3491,8 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
-	let { heading } = $$props;
 	let { items } = $$props;
+	let { heading } = $$props;
 	let activeItem = 0;
 
 	function setActiveItem(i) {
@@ -3503,17 +3503,17 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(4, props = $$props.props);
-		if ('heading' in $$props) $$invalidate(0, heading = $$props.heading);
-		if ('items' in $$props) $$invalidate(1, items = $$props.items);
+		if ('items' in $$props) $$invalidate(0, items = $$props.items);
+		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
 	};
 
-	return [heading, items, activeItem, setActiveItem, props, click_handler];
+	return [items, heading, activeItem, setActiveItem, props, click_handler];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { props: 4, heading: 0, items: 1 });
+		init(this, options, instance, create_fragment, safe_not_equal, { props: 4, items: 0, heading: 1 });
 	}
 }
 
