@@ -2820,7 +2820,7 @@ function get_each_context_1(ctx, list, i) {
 	return child_ctx;
 }
 
-// (196:12) {#each tier.features as { item, icon }}
+// (200:12) {#each tier.features as { item, icon }}
 function create_each_block_1(ctx) {
 	let li;
 	let span0;
@@ -2861,9 +2861,9 @@ function create_each_block_1(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span0, "class", "icon svelte-wl535g");
-			attr(span1, "class", "item svelte-wl535g");
-			attr(li, "class", "svelte-wl535g");
+			attr(span0, "class", "icon svelte-1bn45l3");
+			attr(span1, "class", "item svelte-1bn45l3");
+			attr(li, "class", "svelte-1bn45l3");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -2897,7 +2897,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (205:10) {#if tier.link.label}
+// (209:10) {#if tier.link.label}
 function create_if_block(ctx) {
 	let a;
 	let t_value = /*tier*/ ctx[5].link.label + "";
@@ -2919,7 +2919,7 @@ function create_if_block(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = /*tier*/ ctx[5].link.url);
-			attr(a, "class", "button svelte-wl535g");
+			attr(a, "class", "button svelte-1bn45l3");
 		},
 		m(target, anchor) {
 			insert_hydration(target, a, anchor);
@@ -2938,7 +2938,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (184:6) {#each tiers as tier}
+// (188:6) {#each tiers as tier}
 function create_each_block(ctx) {
 	let div1;
 	let header;
@@ -3051,15 +3051,15 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span0, "class", "numerator svelte-wl535g");
-			attr(span1, "class", "denominator svelte-wl535g");
-			attr(div0, "class", "price svelte-wl535g");
-			attr(h3, "class", "title svelte-wl535g");
-			attr(span2, "class", "description svelte-wl535g");
-			attr(header, "class", "svelte-wl535g");
-			attr(hr, "class", "svelte-wl535g");
-			attr(ul, "class", "features svelte-wl535g");
-			attr(div1, "class", "tier svelte-wl535g");
+			attr(span0, "class", "numerator svelte-1bn45l3");
+			attr(span1, "class", "denominator svelte-1bn45l3");
+			attr(div0, "class", "price svelte-1bn45l3");
+			attr(h3, "class", "title svelte-1bn45l3");
+			attr(span2, "class", "description svelte-1bn45l3");
+			attr(header, "class", "svelte-1bn45l3");
+			attr(hr, "class", "svelte-1bn45l3");
+			attr(ul, "class", "features svelte-1bn45l3");
+			attr(div1, "class", "tier svelte-1bn45l3");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div1, anchor);
@@ -3258,13 +3258,13 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "superhead svelte-wl535g");
-			attr(h2, "class", "heading svelte-wl535g");
-			attr(h3, "class", "subheading svelte-wl535g");
-			attr(div0, "class", "heading-group svelte-wl535g");
-			attr(div1, "class", "tiers svelte-wl535g");
-			attr(div2, "class", "section-container svelte-wl535g");
-			attr(section, "class", "svelte-wl535g");
+			attr(span, "class", "superhead svelte-1bn45l3");
+			attr(h2, "class", "heading svelte-1bn45l3");
+			attr(h3, "class", "subheading svelte-1bn45l3");
+			attr(div0, "class", "heading-group svelte-1bn45l3");
+			attr(div1, "class", "tiers svelte-1bn45l3");
+			attr(div2, "class", "section-container svelte-1bn45l3");
+			attr(section, "class", "svelte-1bn45l3");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
