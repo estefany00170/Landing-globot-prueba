@@ -3095,7 +3095,7 @@ function get_each_context_1(ctx, list, i) {
 // (211:10) {:else}
 function create_else_block(ctx) {
 	let span;
-	let t_value = /*logo*/ ctx[1].title + "";
+	let t_value = /*logo*/ ctx[2].title + "";
 	let t;
 
 	return {
@@ -3114,7 +3114,7 @@ function create_else_block(ctx) {
 			append_hydration(span, t);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*logo*/ 2 && t_value !== (t_value = /*logo*/ ctx[1].title + "")) set_data(t, t_value);
+			if (dirty & /*logo*/ 4 && t_value !== (t_value = /*logo*/ ctx[2].title + "")) set_data(t, t_value);
 		},
 		d(detaching) {
 			if (detaching) detach(span);
@@ -3138,18 +3138,18 @@ function create_if_block_1(ctx) {
 			this.h();
 		},
 		h() {
-			if (!src_url_equal(img.src, img_src_value = /*logo*/ ctx[1].image.url)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*logo*/ ctx[1].image.alt);
+			if (!src_url_equal(img.src, img_src_value = /*logo*/ ctx[2].image.url)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*logo*/ ctx[2].image.alt);
 		},
 		m(target, anchor) {
 			insert_hydration(target, img, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*logo*/ 2 && !src_url_equal(img.src, img_src_value = /*logo*/ ctx[1].image.url)) {
+			if (dirty & /*logo*/ 4 && !src_url_equal(img.src, img_src_value = /*logo*/ ctx[2].image.url)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (dirty & /*logo*/ 2 && img_alt_value !== (img_alt_value = /*logo*/ ctx[1].image.alt)) {
+			if (dirty & /*logo*/ 4 && img_alt_value !== (img_alt_value = /*logo*/ ctx[2].image.alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 		},
@@ -3205,14 +3205,14 @@ function create_if_block(ctx) {
 	let nav;
 	let t0;
 	let a0;
-	let t1_value = /*cta*/ ctx[2][0].link.label + "";
+	let t1_value = /*cta*/ ctx[1][0].link.label + "";
 	let t1;
 	let t2;
 	let icon0;
 	let a0_href_value;
 	let t3;
 	let a1;
-	let t4_value = /*cta*/ ctx[2][1].link.label + "";
+	let t4_value = /*cta*/ ctx[1][1].link.label + "";
 	let t4;
 	let t5;
 	let icon1;
@@ -3307,10 +3307,10 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a0, "href", a0_href_value = /*cta*/ ctx[2][0].link.url);
+			attr(a0, "href", a0_href_value = /*cta*/ ctx[1][0].link.url);
 			set_style(a0, "display", "inline-block");
 			attr(a0, "class", "button button-0 svelte-tktpo7");
-			attr(a1, "href", a1_href_value = /*cta*/ ctx[2][1].link.url);
+			attr(a1, "href", a1_href_value = /*cta*/ ctx[1][1].link.url);
 			set_style(a1, "display", "inline-block");
 			attr(a1, "class", "button button-1 svelte-tktpo7");
 			attr(button, "id", "close");
@@ -3372,15 +3372,15 @@ function create_if_block(ctx) {
 				each_blocks.length = each_value.length;
 			}
 
-			if ((!current || dirty & /*cta*/ 4) && t1_value !== (t1_value = /*cta*/ ctx[2][0].link.label + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*cta*/ 2) && t1_value !== (t1_value = /*cta*/ ctx[1][0].link.label + "")) set_data(t1, t1_value);
 
-			if (!current || dirty & /*cta*/ 4 && a0_href_value !== (a0_href_value = /*cta*/ ctx[2][0].link.url)) {
+			if (!current || dirty & /*cta*/ 2 && a0_href_value !== (a0_href_value = /*cta*/ ctx[1][0].link.url)) {
 				attr(a0, "href", a0_href_value);
 			}
 
-			if ((!current || dirty & /*cta*/ 4) && t4_value !== (t4_value = /*cta*/ ctx[2][1].link.label + "")) set_data(t4, t4_value);
+			if ((!current || dirty & /*cta*/ 2) && t4_value !== (t4_value = /*cta*/ ctx[1][1].link.label + "")) set_data(t4, t4_value);
 
-			if (!current || dirty & /*cta*/ 4 && a1_href_value !== (a1_href_value = /*cta*/ ctx[2][1].link.url)) {
+			if (!current || dirty & /*cta*/ 2 && a1_href_value !== (a1_href_value = /*cta*/ ctx[1][1].link.url)) {
 				attr(a1, "href", a1_href_value);
 			}
 		},
@@ -3466,7 +3466,7 @@ function create_fragment(ctx) {
 	let div2;
 	let div0;
 	let a0;
-	let style___size = `${/*logo*/ ctx[1].size}rem`;
+	let style___size = `${/*logo*/ ctx[2].size}rem`;
 	let t0;
 	let span;
 	let t1;
@@ -3475,14 +3475,14 @@ function create_fragment(ctx) {
 	let t3;
 	let div1;
 	let a1;
-	let t4_value = /*cta*/ ctx[2][0].link.label + "";
+	let t4_value = /*cta*/ ctx[1][0].link.label + "";
 	let t4;
 	let t5;
 	let icon0;
 	let a1_href_value;
 	let t6;
 	let a2;
-	let t7_value = /*cta*/ ctx[2][1].link.label + "";
+	let t7_value = /*cta*/ ctx[1][1].link.label + "";
 	let t7;
 	let t8;
 	let icon1;
@@ -3496,7 +3496,7 @@ function create_fragment(ctx) {
 	let dispose;
 
 	function select_block_type(ctx, dirty) {
-		if (/*logo*/ ctx[1].image.url) return create_if_block_1;
+		if (/*logo*/ ctx[2].image.url) return create_if_block_1;
 		return create_else_block;
 	}
 
@@ -3637,10 +3637,10 @@ function create_fragment(ctx) {
 			set_style(a0, "--size", style___size);
 			attr(span, "class", "beta svelte-tktpo7");
 			attr(div0, "class", "logos svelte-tktpo7");
-			attr(a1, "href", a1_href_value = /*cta*/ ctx[2][0].link.url);
+			attr(a1, "href", a1_href_value = /*cta*/ ctx[1][0].link.url);
 			attr(a1, "class", "button button-0 svelte-tktpo7");
 			attr(a1, "target", "_blank");
-			attr(a2, "href", a2_href_value = /*cta*/ ctx[2][1].link.url);
+			attr(a2, "href", a2_href_value = /*cta*/ ctx[1][1].link.url);
 			attr(a2, "class", "button button-1 svelte-tktpo7");
 			attr(a2, "target", "_blank");
 			attr(div1, "class", "cta-buttons svelte-tktpo7");
@@ -3707,7 +3707,7 @@ function create_fragment(ctx) {
 				}
 			}
 
-			if (dirty & /*logo*/ 2 && style___size !== (style___size = `${/*logo*/ ctx[1].size}rem`)) {
+			if (dirty & /*logo*/ 4 && style___size !== (style___size = `${/*logo*/ ctx[2].size}rem`)) {
 				set_style(a0, "--size", style___size);
 			}
 
@@ -3734,15 +3734,15 @@ function create_fragment(ctx) {
 				each_blocks.length = each_value_1.length;
 			}
 
-			if ((!current || dirty & /*cta*/ 4) && t4_value !== (t4_value = /*cta*/ ctx[2][0].link.label + "")) set_data(t4, t4_value);
+			if ((!current || dirty & /*cta*/ 2) && t4_value !== (t4_value = /*cta*/ ctx[1][0].link.label + "")) set_data(t4, t4_value);
 
-			if (!current || dirty & /*cta*/ 4 && a1_href_value !== (a1_href_value = /*cta*/ ctx[2][0].link.url)) {
+			if (!current || dirty & /*cta*/ 2 && a1_href_value !== (a1_href_value = /*cta*/ ctx[1][0].link.url)) {
 				attr(a1, "href", a1_href_value);
 			}
 
-			if ((!current || dirty & /*cta*/ 4) && t7_value !== (t7_value = /*cta*/ ctx[2][1].link.label + "")) set_data(t7, t7_value);
+			if ((!current || dirty & /*cta*/ 2) && t7_value !== (t7_value = /*cta*/ ctx[1][1].link.label + "")) set_data(t7, t7_value);
 
-			if (!current || dirty & /*cta*/ 4 && a2_href_value !== (a2_href_value = /*cta*/ ctx[2][1].link.url)) {
+			if (!current || dirty & /*cta*/ 2 && a2_href_value !== (a2_href_value = /*cta*/ ctx[1][1].link.url)) {
 				attr(a2, "href", a2_href_value);
 			}
 
@@ -3800,8 +3800,8 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
-	let { logo } = $$props;
 	let { cta } = $$props;
+	let { logo } = $$props;
 	let { site_nav } = $$props;
 	let mobileNavOpen = false;
 
@@ -3828,18 +3828,18 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(4, props = $$props.props);
-		if ('logo' in $$props) $$invalidate(1, logo = $$props.logo);
-		if ('cta' in $$props) $$invalidate(2, cta = $$props.cta);
+		if ('cta' in $$props) $$invalidate(1, cta = $$props.cta);
+		if ('logo' in $$props) $$invalidate(2, logo = $$props.logo);
 		if ('site_nav' in $$props) $$invalidate(0, site_nav = $$props.site_nav);
 	};
 
-	return [site_nav, logo, cta, mobileNavOpen, props, click_handler, click_handler_1];
+	return [site_nav, cta, logo, mobileNavOpen, props, click_handler, click_handler_1];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { props: 4, logo: 1, cta: 2, site_nav: 0 });
+		init(this, options, instance, create_fragment, safe_not_equal, { props: 4, cta: 1, logo: 2, site_nav: 0 });
 	}
 }
 
