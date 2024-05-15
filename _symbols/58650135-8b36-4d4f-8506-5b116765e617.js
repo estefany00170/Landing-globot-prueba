@@ -3092,7 +3092,7 @@ function get_each_context_1(ctx, list, i) {
 	return child_ctx;
 }
 
-// (212:10) {:else}
+// (211:10) {:else}
 function create_else_block(ctx) {
 	let span;
 	let t_value = /*logo*/ ctx[1].title + "";
@@ -3122,7 +3122,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (210:10) {#if logo.image.url}
+// (209:10) {#if logo.image.url}
 function create_if_block_1(ctx) {
 	let img;
 	let img_src_value;
@@ -3159,7 +3159,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (219:8) {#each site_nav as { link }}
+// (218:8) {#each site_nav as { link }}
 function create_each_block_1(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[8].label + "";
@@ -3200,7 +3200,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (238:4) {#if mobileNavOpen}
+// (237:4) {#if mobileNavOpen}
 function create_if_block(ctx) {
 	let nav;
 	let t0;
@@ -3419,7 +3419,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (245:8) {#each site_nav as { link }}
+// (244:8) {#each site_nav as { link }}
 function create_each_block(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[8].label + "";
@@ -3817,9 +3817,6 @@ function instance($$self, $$props, $$invalidate) {
 		},
 		{
 			link: { url: "#live-demo", label: "Live Demo" }
-		},
-		{
-			link: { url: "#contacto", label: "Contacto" }
 		},
 		{
 			link: { url: "#precios", label: "Precios" }
