@@ -1,4 +1,4 @@
-// Pricing Table 2 - Updated May 22, 2024
+// Pricing Table 2 - Updated May 31, 2024
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -3904,7 +3904,7 @@ function create_fragment(ctx) {
 			attr(span24, "class", "item svelte-16ejaji");
 			attr(li8, "class", "svelte-16ejaji");
 			attr(ul1, "class", "features svelte-16ejaji");
-			attr(a1, "href", "https://backoffice.globot.ai/dashboard/login");
+			attr(a1, "href", "http://127.0.0.1:4200/subscription/login?type=1");
 			attr(a1, "class", "button svelte-16ejaji");
 			attr(div6, "class", "tier tier2 svelte-16ejaji");
 			attr(span25, "class", "numerator svelte-16ejaji");
@@ -3937,7 +3937,7 @@ function create_fragment(ctx) {
 			attr(span41, "class", "tooltip svelte-16ejaji");
 			attr(li14, "class", "svelte-16ejaji");
 			attr(ul2, "class", "features svelte-16ejaji");
-			attr(a2, "href", "https://backoffice.globot.ai/dashboard/login");
+			attr(a2, "href", "http://127.0.0.1:4200/subscription/login?type=2");
 			attr(a2, "class", "button svelte-16ejaji");
 			attr(div10, "class", "tier tier3 svelte-16ejaji");
 			attr(span42, "class", "numerator svelte-16ejaji");
@@ -4299,12 +4299,17 @@ function create_fragment(ctx) {
 	};
 }
 
+function toBase64(str) {
+	return btoa(str);
+}
+
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
 	let { tiers } = $$props;
 	let { heading } = $$props;
 	let { superhead } = $$props;
 	let { subheading } = $$props;
+	toBase64('BASE');
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(3, props = $$props.props);
