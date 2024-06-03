@@ -1,4 +1,4 @@
-// Pricing Table 2 - Updated May 31, 2024
+// Pricing Table 2 - Updated June 3, 2024
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -3904,7 +3904,7 @@ function create_fragment(ctx) {
 			attr(span24, "class", "item svelte-16ejaji");
 			attr(li8, "class", "svelte-16ejaji");
 			attr(ul1, "class", "features svelte-16ejaji");
-			attr(a1, "href", "https://backoffice-dev.globot.ai/subscription/login?type=1");
+			attr(a1, "href", `https://backoffice-dev.globot.ai/subscription/login?subscriptionPlan=${/*BASE*/ ctx[3]}`);
 			attr(a1, "class", "button svelte-16ejaji");
 			attr(div6, "class", "tier tier2 svelte-16ejaji");
 			attr(span25, "class", "numerator svelte-16ejaji");
@@ -3937,7 +3937,7 @@ function create_fragment(ctx) {
 			attr(span41, "class", "tooltip svelte-16ejaji");
 			attr(li14, "class", "svelte-16ejaji");
 			attr(ul2, "class", "features svelte-16ejaji");
-			attr(a2, "href", "https://backoffice-dev.globot.ai/subscription/login?type=2");
+			attr(a2, "href", `https://backoffice-dev.globot.ai/subscription/login?subscriptionPlan=${/*PREMIUM*/ ctx[4]}`);
 			attr(a2, "class", "button svelte-16ejaji");
 			attr(div10, "class", "tier tier3 svelte-16ejaji");
 			attr(span42, "class", "numerator svelte-16ejaji");
@@ -4309,17 +4309,18 @@ function instance($$self, $$props, $$invalidate) {
 	let { heading } = $$props;
 	let { superhead } = $$props;
 	let { subheading } = $$props;
-	toBase64('BASE');
+	let BASE = toBase64('BASE');
+	let PREMIUM = toBase64('PREMIUM');
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(3, props = $$props.props);
-		if ('tiers' in $$props) $$invalidate(4, tiers = $$props.tiers);
+		if ('props' in $$props) $$invalidate(5, props = $$props.props);
+		if ('tiers' in $$props) $$invalidate(6, tiers = $$props.tiers);
 		if ('heading' in $$props) $$invalidate(0, heading = $$props.heading);
 		if ('superhead' in $$props) $$invalidate(1, superhead = $$props.superhead);
 		if ('subheading' in $$props) $$invalidate(2, subheading = $$props.subheading);
 	};
 
-	return [heading, superhead, subheading, props, tiers];
+	return [heading, superhead, subheading, BASE, PREMIUM, props, tiers];
 }
 
 class Component extends SvelteComponent {
@@ -4327,8 +4328,8 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 3,
-			tiers: 4,
+			props: 5,
+			tiers: 6,
 			heading: 0,
 			superhead: 1,
 			subheading: 2
