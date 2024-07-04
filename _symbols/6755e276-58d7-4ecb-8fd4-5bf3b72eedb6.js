@@ -3191,7 +3191,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (195:10) {#if activeItem === i}
+// (196:10) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
 	let raw_value = /*item*/ ctx[13].description.html + "";
@@ -3210,7 +3210,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-kywazt");
+			attr(div, "class", "description svelte-cscos2");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3242,7 +3242,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (182:6) {#each items as item, i (i)}
+// (183:6) {#each items as item, i (i)}
 function create_each_block(key_1, ctx) {
 	let div3;
 	let div1;
@@ -3323,12 +3323,12 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-kywazt");
-			attr(span0, "class", "svelte-kywazt");
-			attr(span1, "class", "icone svelte-kywazt");
-			attr(button, "class", "svelte-kywazt");
-			attr(div1, "class", "item-icon svelte-kywazt");
-			attr(div3, "class", "item svelte-kywazt");
+			attr(div0, "class", "menu-icon svelte-cscos2");
+			attr(span0, "class", "svelte-cscos2");
+			attr(span1, "class", "icone svelte-cscos2");
+			attr(button, "class", "svelte-cscos2");
+			attr(div1, "class", "item-icon svelte-cscos2");
+			attr(div3, "class", "item svelte-cscos2");
 			toggle_class(div3, "active", /*activeItem*/ ctx[9] === /*i*/ ctx[15]);
 			this.first = div3;
 		},
@@ -3825,48 +3825,48 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "accordion svelte-kywazt");
-			attr(div1, "class", "box1 svelte-kywazt");
+			attr(div0, "class", "accordion svelte-cscos2");
+			attr(div1, "class", "box1 svelte-cscos2");
 			set_style(span0, "color", "#C1C2C4");
 			set_style(span1, "color", "#C1C2C4");
 			set_style(span2, "color", "var(--Primary-2, #7B5CF5)");
-			attr(div2, "class", "steps svelte-kywazt");
+			attr(div2, "class", "steps svelte-cscos2");
 			set_style(div2, "display", "flex");
 			set_style(div2, "gap", "15px");
 			set_style(div2, "margin-bottom", "20px");
-			attr(div3, "class", "heading svelte-kywazt");
-			attr(div4, "class", "heading-group svelte-kywazt");
-			attr(p0, "class", "subtitle svelte-kywazt");
-			attr(li0, "class", "svelte-kywazt");
-			attr(ul0, "class", "svelte-kywazt");
+			attr(div3, "class", "heading svelte-cscos2");
+			attr(div4, "class", "heading-group svelte-cscos2");
+			attr(p0, "class", "subtitle svelte-cscos2");
+			attr(li0, "class", "svelte-cscos2");
+			attr(ul0, "class", "svelte-cscos2");
 			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) attr(img0, "src", img0_src_value);
-			attr(li1, "class", "svelte-kywazt");
-			attr(ul1, "class", "svelte-kywazt");
-			attr(div5, "class", "paso1 svelte-kywazt");
-			attr(p1, "class", "subtitle svelte-kywazt");
-			attr(a, "class", "link svelte-kywazt");
+			attr(li1, "class", "svelte-cscos2");
+			attr(ul1, "class", "svelte-cscos2");
+			attr(div5, "class", "paso1 svelte-cscos2");
+			attr(p1, "class", "subtitle svelte-cscos2");
+			attr(a, "class", "link svelte-cscos2");
 			attr(a, "href", "https://business.facebook.com/");
-			attr(li2, "class", "svelte-kywazt");
-			attr(ul2, "class", "svelte-kywazt");
+			attr(li2, "class", "svelte-cscos2");
+			attr(ul2, "class", "svelte-cscos2");
 			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) attr(img1, "src", img1_src_value);
 			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[4].url)) attr(img2, "src", img2_src_value);
-			attr(li3, "class", "svelte-kywazt");
-			attr(ul3, "class", "svelte-kywazt");
+			attr(li3, "class", "svelte-cscos2");
+			attr(ul3, "class", "svelte-cscos2");
 			if (!src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[5].url)) attr(img3, "src", img3_src_value);
-			attr(li4, "class", "svelte-kywazt");
-			attr(ul4, "class", "svelte-kywazt");
+			attr(li4, "class", "svelte-cscos2");
+			attr(ul4, "class", "svelte-cscos2");
 			if (!src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[6].url)) attr(img4, "src", img4_src_value);
 			if (!src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[7].url)) attr(img5, "src", img5_src_value);
-			attr(li5, "class", "svelte-kywazt");
-			attr(ul5, "class", "svelte-kywazt");
+			attr(li5, "class", "svelte-cscos2");
+			attr(ul5, "class", "svelte-cscos2");
 			if (!src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[8].url)) attr(img6, "src", img6_src_value);
-			attr(div6, "class", "paso1 svelte-kywazt");
-			attr(p2, "class", "subtitle svelte-kywazt");
-			attr(div7, "class", "paso1 svelte-kywazt");
-			attr(div8, "class", "content svelte-kywazt");
-			attr(div9, "class", "box2 svelte-kywazt");
-			attr(div10, "class", "section-container svelte-kywazt");
-			attr(section, "class", "svelte-kywazt");
+			attr(div6, "class", "paso1 svelte-cscos2");
+			attr(p2, "class", "subtitle svelte-cscos2");
+			attr(div7, "class", "paso1 svelte-cscos2");
+			attr(div8, "class", "content svelte-cscos2");
+			attr(div9, "class", "box2 svelte-cscos2");
+			attr(div10, "class", "section-container svelte-cscos2");
+			attr(section, "class", "svelte-cscos2");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
