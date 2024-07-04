@@ -1,4 +1,4 @@
-// Header - Updated July 4, 2024
+// New Block - Updated July 4, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -235,12 +235,6 @@ function detach(node) {
         node.parentNode.removeChild(node);
     }
 }
-function destroy_each(iterations, detaching) {
-    for (let i = 0; i < iterations.length; i += 1) {
-        if (iterations[i])
-            iterations[i].d(detaching);
-    }
-}
 function element(name) {
     return document.createElement(name);
 }
@@ -407,6 +401,9 @@ function set_style(node, key, value, important) {
     else {
         node.style.setProperty(key, value, important ? 'important' : '');
     }
+}
+function toggle_class(element, name, toggle) {
+    element.classList[toggle ? 'add' : 'remove'](name);
 }
 function custom_event(type, detail, { bubbles = false, cancelable = false } = {}) {
     const e = document.createEvent('CustomEvent');
@@ -806,6 +803,89 @@ function create_bidirectional_transition(node, fn, params, intro) {
         }
     };
 }
+function outro_and_destroy_block(block, lookup) {
+    transition_out(block, 1, 1, () => {
+        lookup.delete(block.key);
+    });
+}
+function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list, lookup, node, destroy, create_each_block, next, get_context) {
+    let o = old_blocks.length;
+    let n = list.length;
+    let i = o;
+    const old_indexes = {};
+    while (i--)
+        old_indexes[old_blocks[i].key] = i;
+    const new_blocks = [];
+    const new_lookup = new Map();
+    const deltas = new Map();
+    const updates = [];
+    i = n;
+    while (i--) {
+        const child_ctx = get_context(ctx, list, i);
+        const key = get_key(child_ctx);
+        let block = lookup.get(key);
+        if (!block) {
+            block = create_each_block(key, child_ctx);
+            block.c();
+        }
+        else if (dynamic) {
+            // defer updates until all the DOM shuffling is done
+            updates.push(() => block.p(child_ctx, dirty));
+        }
+        new_lookup.set(key, new_blocks[i] = block);
+        if (key in old_indexes)
+            deltas.set(key, Math.abs(i - old_indexes[key]));
+    }
+    const will_move = new Set();
+    const did_move = new Set();
+    function insert(block) {
+        transition_in(block, 1);
+        block.m(node, next);
+        lookup.set(block.key, block);
+        next = block.first;
+        n--;
+    }
+    while (o && n) {
+        const new_block = new_blocks[n - 1];
+        const old_block = old_blocks[o - 1];
+        const new_key = new_block.key;
+        const old_key = old_block.key;
+        if (new_block === old_block) {
+            // do nothing
+            next = new_block.first;
+            o--;
+            n--;
+        }
+        else if (!new_lookup.has(old_key)) {
+            // remove old block
+            destroy(old_block, lookup);
+            o--;
+        }
+        else if (!lookup.has(new_key) || will_move.has(new_key)) {
+            insert(new_block);
+        }
+        else if (did_move.has(old_key)) {
+            o--;
+        }
+        else if (deltas.get(new_key) > deltas.get(old_key)) {
+            did_move.add(new_key);
+            insert(new_block);
+        }
+        else {
+            will_move.add(old_key);
+            o--;
+        }
+    }
+    while (o--) {
+        const old_block = old_blocks[o];
+        if (!new_lookup.has(old_block.key))
+            destroy(old_block, lookup);
+    }
+    while (n)
+        insert(new_blocks[n - 1]);
+    run_all(updates);
+    return new_blocks;
+}
 
 function get_spread_update(levels, updates) {
     const update = {};
@@ -981,13 +1061,37 @@ class SvelteComponent {
     }
 }
 
-function fade(node, { delay = 0, duration = 400, easing = identity } = {}) {
-    const o = +getComputedStyle(node).opacity;
+function cubicOut(t) {
+    const f = t - 1.0;
+    return f * f * f + 1.0;
+}
+
+function slide(node, { delay = 0, duration = 400, easing = cubicOut, axis = 'y' } = {}) {
+    const style = getComputedStyle(node);
+    const opacity = +style.opacity;
+    const primary_property = axis === 'y' ? 'height' : 'width';
+    const primary_property_value = parseFloat(style[primary_property]);
+    const secondary_properties = axis === 'y' ? ['top', 'bottom'] : ['left', 'right'];
+    const capitalized_secondary_properties = secondary_properties.map((e) => `${e[0].toUpperCase()}${e.slice(1)}`);
+    const padding_start_value = parseFloat(style[`padding${capitalized_secondary_properties[0]}`]);
+    const padding_end_value = parseFloat(style[`padding${capitalized_secondary_properties[1]}`]);
+    const margin_start_value = parseFloat(style[`margin${capitalized_secondary_properties[0]}`]);
+    const margin_end_value = parseFloat(style[`margin${capitalized_secondary_properties[1]}`]);
+    const border_width_start_value = parseFloat(style[`border${capitalized_secondary_properties[0]}Width`]);
+    const border_width_end_value = parseFloat(style[`border${capitalized_secondary_properties[1]}Width`]);
     return {
         delay,
         duration,
         easing,
-        css: t => `opacity: ${t * o}`
+        css: t => 'overflow: hidden;' +
+            `opacity: ${Math.min(t * 20, 1) * opacity};` +
+            `${primary_property}: ${t * primary_property_value}px;` +
+            `padding-${secondary_properties[0]}: ${t * padding_start_value}px;` +
+            `padding-${secondary_properties[1]}: ${t * padding_end_value}px;` +
+            `margin-${secondary_properties[0]}: ${t * margin_start_value}px;` +
+            `margin-${secondary_properties[1]}: ${t * margin_end_value}px;` +
+            `border-${secondary_properties[0]}-width: ${t * border_width_start_value}px;` +
+            `border-${secondary_properties[1]}-width: ${t * border_width_end_value}px;`
     };
 }
 
@@ -2841,8 +2945,8 @@ function create_if_block$1(ctx) {
 	let if_block_anchor;
 
 	function select_block_type(ctx, dirty) {
-		if (/*data*/ ctx[0].svg) return create_if_block_1$1;
-		return create_else_block$1;
+		if (/*data*/ ctx[0].svg) return create_if_block_1;
+		return create_else_block;
 	}
 
 	let current_block_type = select_block_type(ctx);
@@ -2882,7 +2986,7 @@ function create_if_block$1(ctx) {
 }
 
 // (115:1) {:else}
-function create_else_block$1(ctx) {
+function create_else_block(ctx) {
 	let span;
 	let span_levels = [/*data*/ ctx[0].attributes];
 	let span_data = {};
@@ -2917,7 +3021,7 @@ function create_else_block$1(ctx) {
 }
 
 // (111:1) {#if data.svg}
-function create_if_block_1$1(ctx) {
+function create_if_block_1(ctx) {
 	let svg;
 	let raw_value = /*data*/ ctx[0].body + "";
 	let svg_levels = [/*data*/ ctx[0].attributes];
@@ -3082,764 +3186,926 @@ let Component$1 = class Component extends SvelteComponent {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[8] = list[i].link;
+	child_ctx[13] = list[i];
+	child_ctx[15] = i;
 	return child_ctx;
 }
 
-function get_each_context_1(ctx, list, i) {
-	const child_ctx = ctx.slice();
-	child_ctx[8] = list[i].link;
-	return child_ctx;
-}
-
-// (211:10) {:else}
-function create_else_block(ctx) {
-	let span;
-	let t_value = /*logo*/ ctx[2].title + "";
-	let t;
-
-	return {
-		c() {
-			span = element("span");
-			t = text(t_value);
-		},
-		l(nodes) {
-			span = claim_element(nodes, "SPAN", {});
-			var span_nodes = children(span);
-			t = claim_text(span_nodes, t_value);
-			span_nodes.forEach(detach);
-		},
-		m(target, anchor) {
-			insert_hydration(target, span, anchor);
-			append_hydration(span, t);
-		},
-		p(ctx, dirty) {
-			if (dirty & /*logo*/ 4 && t_value !== (t_value = /*logo*/ ctx[2].title + "")) set_data(t, t_value);
-		},
-		d(detaching) {
-			if (detaching) detach(span);
-		}
-	};
-}
-
-// (209:10) {#if logo.image.url}
-function create_if_block_1(ctx) {
-	let img;
-	let img_src_value;
-	let img_alt_value;
-
-	return {
-		c() {
-			img = element("img");
-			this.h();
-		},
-		l(nodes) {
-			img = claim_element(nodes, "IMG", { src: true, alt: true });
-			this.h();
-		},
-		h() {
-			if (!src_url_equal(img.src, img_src_value = /*logo*/ ctx[2].image.url)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*logo*/ ctx[2].image.alt);
-		},
-		m(target, anchor) {
-			insert_hydration(target, img, anchor);
-		},
-		p(ctx, dirty) {
-			if (dirty & /*logo*/ 4 && !src_url_equal(img.src, img_src_value = /*logo*/ ctx[2].image.url)) {
-				attr(img, "src", img_src_value);
-			}
-
-			if (dirty & /*logo*/ 4 && img_alt_value !== (img_alt_value = /*logo*/ ctx[2].image.alt)) {
-				attr(img, "alt", img_alt_value);
-			}
-		},
-		d(detaching) {
-			if (detaching) detach(img);
-		}
-	};
-}
-
-// (218:8) {#each site_nav as { link }}
-function create_each_block_1(ctx) {
-	let a;
-	let t_value = /*link*/ ctx[8].label + "";
-	let t;
-	let a_href_value;
-
-	return {
-		c() {
-			a = element("a");
-			t = text(t_value);
-			this.h();
-		},
-		l(nodes) {
-			a = claim_element(nodes, "A", { class: true, href: true });
-			var a_nodes = children(a);
-			t = claim_text(a_nodes, t_value);
-			a_nodes.forEach(detach);
-			this.h();
-		},
-		h() {
-			attr(a, "class", "nav-item svelte-tktpo7");
-			attr(a, "href", a_href_value = /*link*/ ctx[8].url);
-		},
-		m(target, anchor) {
-			insert_hydration(target, a, anchor);
-			append_hydration(a, t);
-		},
-		p(ctx, dirty) {
-			if (dirty & /*site_nav*/ 1 && t_value !== (t_value = /*link*/ ctx[8].label + "")) set_data(t, t_value);
-
-			if (dirty & /*site_nav*/ 1 && a_href_value !== (a_href_value = /*link*/ ctx[8].url)) {
-				attr(a, "href", a_href_value);
-			}
-		},
-		d(detaching) {
-			if (detaching) detach(a);
-		}
-	};
-}
-
-// (237:4) {#if mobileNavOpen}
+// (195:10) {#if activeItem === i}
 function create_if_block(ctx) {
-	let nav;
+	let div;
+	let raw_value = /*item*/ ctx[13].description.html + "";
+	let div_transition;
+	let current;
+
+	return {
+		c() {
+			div = element("div");
+			this.h();
+		},
+		l(nodes) {
+			div = claim_element(nodes, "DIV", { class: true });
+			var div_nodes = children(div);
+			div_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(div, "class", "description svelte-kywazt");
+		},
+		m(target, anchor) {
+			insert_hydration(target, div, anchor);
+			div.innerHTML = raw_value;
+			current = true;
+		},
+		p(ctx, dirty) {
+			if ((!current || dirty & /*items*/ 1) && raw_value !== (raw_value = /*item*/ ctx[13].description.html + "")) div.innerHTML = raw_value;		},
+		i(local) {
+			if (current) return;
+
+			add_render_callback(() => {
+				if (!current) return;
+				if (!div_transition) div_transition = create_bidirectional_transition(div, slide, {}, true);
+				div_transition.run(1);
+			});
+
+			current = true;
+		},
+		o(local) {
+			if (!div_transition) div_transition = create_bidirectional_transition(div, slide, {}, false);
+			div_transition.run(0);
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(div);
+			if (detaching && div_transition) div_transition.end();
+		}
+	};
+}
+
+// (182:6) {#each items as item, i (i)}
+function create_each_block(key_1, ctx) {
+	let div3;
+	let div1;
+	let div0;
+	let icon0;
 	let t0;
-	let a0;
-	let t1_value = /*cta*/ ctx[1][0].link.label + "";
+	let button;
+	let span0;
+	let t1_value = /*item*/ ctx[13].title + "";
 	let t1;
 	let t2;
-	let icon0;
-	let a0_href_value;
+	let span1;
+	let icon1;
 	let t3;
-	let a1;
-	let t4_value = /*cta*/ ctx[1][1].link.label + "";
 	let t4;
 	let t5;
-	let icon1;
-	let a1_href_value;
-	let t6;
-	let button;
-	let icon2;
-	let nav_transition;
 	let current;
 	let mounted;
 	let dispose;
-	let each_value = /*site_nav*/ ctx[0];
-	let each_blocks = [];
+	icon0 = new Component$1({ props: { icon: "prime:comments" } });
+	icon1 = new Component$1({ props: { icon: "ph:caret-down-bold" } });
 
-	for (let i = 0; i < each_value.length; i += 1) {
-		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+	function click_handler() {
+		return /*click_handler*/ ctx[12](/*i*/ ctx[15]);
 	}
 
-	icon0 = new Component$1({
-			props: {
-				style: "display: inline-block",
-				icon: "akar-icons:arrow-up-right"
-			}
-		});
-
-	icon1 = new Component$1({
-			props: {
-				style: "display: inline-block",
-				icon: "akar-icons:arrow-up-right"
-			}
-		});
-
-	icon2 = new Component$1({ props: { icon: "ph:x-duotone" } });
+	let if_block = /*activeItem*/ ctx[9] === /*i*/ ctx[15] && create_if_block(ctx);
 
 	return {
+		key: key_1,
+		first: null,
 		c() {
-			nav = element("nav");
-
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].c();
-			}
-
+			div3 = element("div");
+			div1 = element("div");
+			div0 = element("div");
+			create_component(icon0.$$.fragment);
 			t0 = space();
-			a0 = element("a");
+			button = element("button");
+			span0 = element("span");
 			t1 = text(t1_value);
 			t2 = space();
-			create_component(icon0.$$.fragment);
-			t3 = space();
-			a1 = element("a");
-			t4 = text(t4_value);
-			t5 = space();
+			span1 = element("span");
 			create_component(icon1.$$.fragment);
-			t6 = space();
-			button = element("button");
-			create_component(icon2.$$.fragment);
+			t3 = space();
+			if (if_block) if_block.c();
+			t4 = space();
+			t5 = space();
 			this.h();
 		},
 		l(nodes) {
-			nav = claim_element(nodes, "NAV", { id: true, class: true });
-			var nav_nodes = children(nav);
-
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].l(nav_nodes);
-			}
-
-			t0 = claim_space(nav_nodes);
-			a0 = claim_element(nav_nodes, "A", { href: true, style: true, class: true });
-			var a0_nodes = children(a0);
-			t1 = claim_text(a0_nodes, t1_value);
-			t2 = claim_space(a0_nodes);
-			claim_component(icon0.$$.fragment, a0_nodes);
-			a0_nodes.forEach(detach);
-			t3 = claim_space(nav_nodes);
-			a1 = claim_element(nav_nodes, "A", { href: true, style: true, class: true });
-			var a1_nodes = children(a1);
-			t4 = claim_text(a1_nodes, t4_value);
-			t5 = claim_space(a1_nodes);
-			claim_component(icon1.$$.fragment, a1_nodes);
-			a1_nodes.forEach(detach);
-			t6 = claim_space(nav_nodes);
-
-			button = claim_element(nav_nodes, "BUTTON", {
-				id: true,
-				"aria-label": true,
-				class: true
-			});
-
+			div3 = claim_element(nodes, "DIV", { class: true });
+			var div3_nodes = children(div3);
+			div1 = claim_element(div3_nodes, "DIV", { class: true });
+			var div1_nodes = children(div1);
+			div0 = claim_element(div1_nodes, "DIV", { class: true });
+			var div0_nodes = children(div0);
+			claim_component(icon0.$$.fragment, div0_nodes);
+			div0_nodes.forEach(detach);
+			t0 = claim_space(div1_nodes);
+			button = claim_element(div1_nodes, "BUTTON", { class: true });
 			var button_nodes = children(button);
-			claim_component(icon2.$$.fragment, button_nodes);
+			span0 = claim_element(button_nodes, "SPAN", { class: true });
+			var span0_nodes = children(span0);
+			t1 = claim_text(span0_nodes, t1_value);
+			span0_nodes.forEach(detach);
+			t2 = claim_space(button_nodes);
+			span1 = claim_element(button_nodes, "SPAN", { class: true });
+			var span1_nodes = children(span1);
+			claim_component(icon1.$$.fragment, span1_nodes);
+			span1_nodes.forEach(detach);
 			button_nodes.forEach(detach);
-			nav_nodes.forEach(detach);
+			div1_nodes.forEach(detach);
+			t3 = claim_space(div3_nodes);
+			if (if_block) if_block.l(div3_nodes);
+			t4 = claim_space(div3_nodes);
+			t5 = claim_space(div3_nodes);
+			div3_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(a0, "href", a0_href_value = /*cta*/ ctx[1][0].link.url);
-			set_style(a0, "display", "inline-block");
-			attr(a0, "class", "button button-0 svelte-tktpo7");
-			attr(a1, "href", a1_href_value = /*cta*/ ctx[1][1].link.url);
-			set_style(a1, "display", "inline-block");
-			attr(a1, "class", "button button-1 svelte-tktpo7");
-			attr(button, "id", "close");
-			attr(button, "aria-label", "Close Navigation");
-			attr(button, "class", "svelte-tktpo7");
-			attr(nav, "id", "mobile-nav");
-			attr(nav, "class", "svelte-tktpo7");
+			attr(div0, "class", "menu-icon svelte-kywazt");
+			attr(span0, "class", "svelte-kywazt");
+			attr(span1, "class", "icone svelte-kywazt");
+			attr(button, "class", "svelte-kywazt");
+			attr(div1, "class", "item-icon svelte-kywazt");
+			attr(div3, "class", "item svelte-kywazt");
+			toggle_class(div3, "active", /*activeItem*/ ctx[9] === /*i*/ ctx[15]);
+			this.first = div3;
 		},
 		m(target, anchor) {
-			insert_hydration(target, nav, anchor);
-
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				if (each_blocks[i]) {
-					each_blocks[i].m(nav, null);
-				}
-			}
-
-			append_hydration(nav, t0);
-			append_hydration(nav, a0);
-			append_hydration(a0, t1);
-			append_hydration(a0, t2);
-			mount_component(icon0, a0, null);
-			append_hydration(nav, t3);
-			append_hydration(nav, a1);
-			append_hydration(a1, t4);
-			append_hydration(a1, t5);
-			mount_component(icon1, a1, null);
-			append_hydration(nav, t6);
-			append_hydration(nav, button);
-			mount_component(icon2, button, null);
+			insert_hydration(target, div3, anchor);
+			append_hydration(div3, div1);
+			append_hydration(div1, div0);
+			mount_component(icon0, div0, null);
+			append_hydration(div1, t0);
+			append_hydration(div1, button);
+			append_hydration(button, span0);
+			append_hydration(span0, t1);
+			append_hydration(button, t2);
+			append_hydration(button, span1);
+			mount_component(icon1, span1, null);
+			append_hydration(div3, t3);
+			if (if_block) if_block.m(div3, null);
+			append_hydration(div3, t4);
+			append_hydration(div3, t5);
 			current = true;
 
 			if (!mounted) {
-				dispose = listen(button, "click", /*click_handler_1*/ ctx[6]);
+				dispose = listen(button, "click", click_handler);
 				mounted = true;
 			}
 		},
-		p(ctx, dirty) {
-			if (dirty & /*site_nav*/ 1) {
-				each_value = /*site_nav*/ ctx[0];
-				let i;
+		p(new_ctx, dirty) {
+			ctx = new_ctx;
+			if ((!current || dirty & /*items*/ 1) && t1_value !== (t1_value = /*item*/ ctx[13].title + "")) set_data(t1, t1_value);
 
-				for (i = 0; i < each_value.length; i += 1) {
-					const child_ctx = get_each_context(ctx, each_value, i);
+			if (/*activeItem*/ ctx[9] === /*i*/ ctx[15]) {
+				if (if_block) {
+					if_block.p(ctx, dirty);
 
-					if (each_blocks[i]) {
-						each_blocks[i].p(child_ctx, dirty);
-					} else {
-						each_blocks[i] = create_each_block(child_ctx);
-						each_blocks[i].c();
-						each_blocks[i].m(nav, t0);
+					if (dirty & /*activeItem, items*/ 513) {
+						transition_in(if_block, 1);
 					}
+				} else {
+					if_block = create_if_block(ctx);
+					if_block.c();
+					transition_in(if_block, 1);
+					if_block.m(div3, t4);
 				}
+			} else if (if_block) {
+				group_outros();
 
-				for (; i < each_blocks.length; i += 1) {
-					each_blocks[i].d(1);
-				}
+				transition_out(if_block, 1, 1, () => {
+					if_block = null;
+				});
 
-				each_blocks.length = each_value.length;
+				check_outros();
 			}
 
-			if ((!current || dirty & /*cta*/ 2) && t1_value !== (t1_value = /*cta*/ ctx[1][0].link.label + "")) set_data(t1, t1_value);
-
-			if (!current || dirty & /*cta*/ 2 && a0_href_value !== (a0_href_value = /*cta*/ ctx[1][0].link.url)) {
-				attr(a0, "href", a0_href_value);
-			}
-
-			if ((!current || dirty & /*cta*/ 2) && t4_value !== (t4_value = /*cta*/ ctx[1][1].link.label + "")) set_data(t4, t4_value);
-
-			if (!current || dirty & /*cta*/ 2 && a1_href_value !== (a1_href_value = /*cta*/ ctx[1][1].link.url)) {
-				attr(a1, "href", a1_href_value);
+			if (!current || dirty & /*activeItem, items*/ 513) {
+				toggle_class(div3, "active", /*activeItem*/ ctx[9] === /*i*/ ctx[15]);
 			}
 		},
 		i(local) {
 			if (current) return;
 			transition_in(icon0.$$.fragment, local);
 			transition_in(icon1.$$.fragment, local);
-			transition_in(icon2.$$.fragment, local);
-
-			add_render_callback(() => {
-				if (!current) return;
-				if (!nav_transition) nav_transition = create_bidirectional_transition(nav, fade, { duration: 200 }, true);
-				nav_transition.run(1);
-			});
-
+			transition_in(if_block);
 			current = true;
 		},
 		o(local) {
 			transition_out(icon0.$$.fragment, local);
 			transition_out(icon1.$$.fragment, local);
-			transition_out(icon2.$$.fragment, local);
-			if (!nav_transition) nav_transition = create_bidirectional_transition(nav, fade, { duration: 200 }, false);
-			nav_transition.run(0);
+			transition_out(if_block);
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(nav);
-			destroy_each(each_blocks, detaching);
+			if (detaching) detach(div3);
 			destroy_component(icon0);
 			destroy_component(icon1);
-			destroy_component(icon2);
-			if (detaching && nav_transition) nav_transition.end();
+			if (if_block) if_block.d();
 			mounted = false;
 			dispose();
-		}
-	};
-}
-
-// (244:8) {#each site_nav as { link }}
-function create_each_block(ctx) {
-	let a;
-	let t_value = /*link*/ ctx[8].label + "";
-	let t;
-	let a_href_value;
-
-	return {
-		c() {
-			a = element("a");
-			t = text(t_value);
-			this.h();
-		},
-		l(nodes) {
-			a = claim_element(nodes, "A", { href: true, class: true });
-			var a_nodes = children(a);
-			t = claim_text(a_nodes, t_value);
-			a_nodes.forEach(detach);
-			this.h();
-		},
-		h() {
-			attr(a, "href", a_href_value = /*link*/ ctx[8].url);
-			attr(a, "class", "svelte-tktpo7");
-		},
-		m(target, anchor) {
-			insert_hydration(target, a, anchor);
-			append_hydration(a, t);
-		},
-		p(ctx, dirty) {
-			if (dirty & /*site_nav*/ 1 && t_value !== (t_value = /*link*/ ctx[8].label + "")) set_data(t, t_value);
-
-			if (dirty & /*site_nav*/ 1 && a_href_value !== (a_href_value = /*link*/ ctx[8].url)) {
-				attr(a, "href", a_href_value);
-			}
-		},
-		d(detaching) {
-			if (detaching) detach(a);
 		}
 	};
 }
 
 function create_fragment(ctx) {
-	let header;
-	let div3;
-	let div2;
-	let div0;
-	let a0;
-	let style___size = `${/*logo*/ ctx[2].size}rem`;
+	let section;
+	let style;
 	let t0;
-	let span;
 	let t1;
-	let t2;
-	let nav;
-	let t3;
+	let div10;
 	let div1;
-	let a1;
-	let t4_value = /*cta*/ ctx[1][0].link.label + "";
-	let t4;
-	let t5;
-	let icon0;
-	let a1_href_value;
-	let t6;
-	let a2;
-	let t7_value = /*cta*/ ctx[1][1].link.label + "";
-	let t7;
-	let t8;
-	let icon1;
-	let a2_href_value;
-	let t9;
-	let button;
-	let icon2;
-	let t10;
-	let current;
-	let mounted;
-	let dispose;
-
-	function select_block_type(ctx, dirty) {
-		if (/*logo*/ ctx[2].image.url) return create_if_block_1;
-		return create_else_block;
-	}
-
-	let current_block_type = select_block_type(ctx);
-	let if_block0 = current_block_type(ctx);
-	let each_value_1 = /*site_nav*/ ctx[0];
+	let div0;
 	let each_blocks = [];
+	let each_1_lookup = new Map();
+	let t2;
+	let div9;
+	let div2;
+	let span0;
+	let t3;
+	let t4;
+	let span1;
+	let t5;
+	let span2;
+	let t6;
+	let t7;
+	let div4;
+	let div3;
+	let t8;
+	let t9;
+	let div8;
+	let div5;
+	let p0;
+	let t10;
+	let t11;
+	let ul0;
+	let li0;
+	let t12;
+	let strong0;
+	let t13;
+	let t14;
+	let strong1;
+	let t15;
+	let t16;
+	let strong2;
+	let t17;
+	let t18;
+	let t19;
+	let img0;
+	let img0_src_value;
+	let t20;
+	let ul1;
+	let li1;
+	let t21;
+	let t22;
+	let div6;
+	let p1;
+	let t23;
+	let t24;
+	let ul2;
+	let li2;
+	let t25;
+	let a;
+	let t26;
+	let t27;
+	let t28;
+	let img1;
+	let img1_src_value;
+	let t29;
+	let img2;
+	let img2_src_value;
+	let t30;
+	let ul3;
+	let li3;
+	let t31;
+	let t32;
+	let img3;
+	let img3_src_value;
+	let t33;
+	let ul4;
+	let li4;
+	let t34;
+	let strong3;
+	let t35;
+	let t36;
+	let strong4;
+	let t37;
+	let t38;
+	let strong5;
+	let t39;
+	let t40;
+	let t41;
+	let img4;
+	let img4_src_value;
+	let t42;
+	let img5;
+	let img5_src_value;
+	let t43;
+	let ul5;
+	let li5;
+	let t44;
+	let strong6;
+	let t45;
+	let t46;
+	let t47;
+	let img6;
+	let img6_src_value;
+	let t48;
+	let div7;
+	let p2;
+	let t49;
+	let t50;
+	let p3;
+	let t51;
+	let current;
+	let each_value = /*items*/ ctx[0];
+	const get_key = ctx => /*i*/ ctx[15];
 
-	for (let i = 0; i < each_value_1.length; i += 1) {
-		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+	for (let i = 0; i < each_value.length; i += 1) {
+		let child_ctx = get_each_context(ctx, each_value, i);
+		let key = get_key(child_ctx);
+		each_1_lookup.set(key, each_blocks[i] = create_each_block(key, child_ctx));
 	}
-
-	icon0 = new Component$1({
-			props: {
-				style: "display: inline-block",
-				icon: "akar-icons:arrow-up-right"
-			}
-		});
-
-	icon1 = new Component$1({
-			props: {
-				style: "display: inline-block",
-				icon: "akar-icons:arrow-up-right"
-			}
-		});
-
-	icon2 = new Component$1({
-			props: {
-				icon: "ic:round-menu",
-				style: "width: 38px; height:38px "
-			}
-		});
-
-	let if_block1 = /*mobileNavOpen*/ ctx[3] && create_if_block(ctx);
 
 	return {
 		c() {
-			header = element("header");
-			div3 = element("div");
-			div2 = element("div");
+			section = element("section");
+			style = element("style");
+			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
+			t1 = space();
+			div10 = element("div");
+			div1 = element("div");
 			div0 = element("div");
-			a0 = element("a");
-			if_block0.c();
-			t0 = space();
-			span = element("span");
-			t1 = text("BETA");
-			t2 = space();
-			nav = element("nav");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
-			t3 = space();
-			div1 = element("div");
-			a1 = element("a");
-			t4 = text(t4_value);
-			t5 = space();
-			create_component(icon0.$$.fragment);
-			t6 = space();
-			a2 = element("a");
-			t7 = text(t7_value);
-			t8 = space();
-			create_component(icon1.$$.fragment);
+			t2 = space();
+			div9 = element("div");
+			div2 = element("div");
+			span0 = element("span");
+			t3 = text("Tutoriales >");
+			t4 = space();
+			span1 = element("span");
+			t5 = text("Integración canales > ");
+			span2 = element("span");
+			t6 = text("Instagram");
+			t7 = space();
+			div4 = element("div");
+			div3 = element("div");
+			t8 = text(/*heading*/ ctx[1]);
 			t9 = space();
-			button = element("button");
-			create_component(icon2.$$.fragment);
-			t10 = space();
-			if (if_block1) if_block1.c();
+			div8 = element("div");
+			div5 = element("div");
+			p0 = element("p");
+			t10 = text("Paso 1: Configura tu cuenta personal a cuenta profesional");
+			t11 = space();
+			ul0 = element("ul");
+			li0 = element("li");
+			t12 = text("Para conectar tu chatbot en tu cuenta de instagram, tu cuenta debe ser profesional. Para cambiarla debes acceder a ");
+			strong0 = element("strong");
+			t13 = text("“Configuraciones”");
+			t14 = text(" en tu cuenta de instagram, luego ");
+			strong1 = element("strong");
+			t15 = text("“Tipo de cuentas y herramientas”");
+			t16 = text(" y luego ");
+			strong2 = element("strong");
+			t17 = text("“Cambiar a cuenta profesional”");
+			t18 = text(".");
+			t19 = space();
+			img0 = element("img");
+			t20 = space();
+			ul1 = element("ul");
+			li1 = element("li");
+			t21 = text("Sigue los pasos de Instagram y llena tu información de contacto.");
+			t22 = space();
+			div6 = element("div");
+			p1 = element("p");
+			t23 = text("Paso 2: Crea un portfolio comercial de Facebook");
+			t24 = space();
+			ul2 = element("ul");
+			li2 = element("li");
+			t25 = text("Ingresa a ");
+			a = element("a");
+			t26 = text("Meta Business");
+			t27 = text(" y haz click en “Crear cuenta” para crear tu portfolio comercial. Una vez allí ingresa la información de tu negocio y verifica tu correo electrónico (Si ya tienes creado un portfolio comercial y verificado, ignora este paso)");
+			t28 = space();
+			img1 = element("img");
+			t29 = space();
+			img2 = element("img");
+			t30 = space();
+			ul3 = element("ul");
+			li3 = element("li");
+			t31 = text("Una vez confirmes tu correo electrónico e ingreses al link de Meta, llegarás a Configuraciones de tu portfolio comercial. Allí será necesario que verifiques tu portfolio, para poder realizar acciones de administración de cuentas.");
+			t32 = space();
+			img3 = element("img");
+			t33 = space();
+			ul4 = element("ul");
+			li4 = element("li");
+			t34 = text("Ingresa a ");
+			strong3 = element("strong");
+			t35 = text("“Información del negocio”");
+			t36 = text("  y rellena los campos de contacto. Luego dirígete a ");
+			strong4 = element("strong");
+			t37 = text("“Centro de seguridad”");
+			t38 = text("  y configura la autenticación de dos pasos con sus permisos. Ingresa a ");
+			strong5 = element("strong");
+			t39 = text("“Servicio de ayuda”");
+			t40 = text("  para obtener más detalle sobre la verificación de tu cuenta.");
+			t41 = space();
+			img4 = element("img");
+			t42 = space();
+			img5 = element("img");
+			t43 = space();
+			ul5 = element("ul");
+			li5 = element("li");
+			t44 = text("Una vez en el centro de ayuda haz click en ");
+			strong6 = element("strong");
+			t45 = text("“Solicitar revisión”");
+			t46 = text("  y sigue los pasos de Facebook para verificar tu portfolio comercial (Si tu cuenta ya ha sido verificada, ignora este paso)");
+			t47 = space();
+			img6 = element("img");
+			t48 = space();
+			div7 = element("div");
+			p2 = element("p");
+			t49 = text("Paso 8: Verifica el funcionamiento de tu chatbot en Whatsapp");
+			t50 = space();
+			p3 = element("p");
+			t51 = text("¡Felicidades! Tu chatbot ya está listo para asistir a clientes a través de tu número de WhatsApp. Verifica que está respondiendo correctamente según la base de datos que le cargaste. Puedes habilitar, deshabilitar, editar o eliminar los ajustes de integración de WhatsApp según lo necesites.");
 			this.h();
 		},
 		l(nodes) {
-			header = claim_element(nodes, "HEADER", { class: true });
-			var header_nodes = children(header);
-			div3 = claim_element(header_nodes, "DIV", { class: true });
-			var div3_nodes = children(div3);
-			div2 = claim_element(div3_nodes, "DIV", { class: true });
-			var div2_nodes = children(div2);
-			div0 = claim_element(div2_nodes, "DIV", { class: true });
+			section = claim_element(nodes, "SECTION", { class: true });
+			var section_nodes = children(section);
+			style = claim_element(section_nodes, "STYLE", {});
+			var style_nodes = children(style);
+			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
+			style_nodes.forEach(detach);
+			t1 = claim_space(section_nodes);
+			div10 = claim_element(section_nodes, "DIV", { class: true });
+			var div10_nodes = children(div10);
+			div1 = claim_element(div10_nodes, "DIV", { class: true });
+			var div1_nodes = children(div1);
+			div0 = claim_element(div1_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
-			a0 = claim_element(div0_nodes, "A", { href: true, class: true });
-			var a0_nodes = children(a0);
-			if_block0.l(a0_nodes);
-			a0_nodes.forEach(detach);
-			t0 = claim_space(div0_nodes);
-			span = claim_element(div0_nodes, "SPAN", { class: true });
-			var span_nodes = children(span);
-			t1 = claim_text(span_nodes, "BETA");
-			span_nodes.forEach(detach);
-			div0_nodes.forEach(detach);
-			t2 = claim_space(div2_nodes);
-			nav = claim_element(div2_nodes, "NAV", { class: true });
-			var nav_nodes = children(nav);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].l(nav_nodes);
+				each_blocks[i].l(div0_nodes);
 			}
 
-			t3 = claim_space(nav_nodes);
-			div1 = claim_element(nav_nodes, "DIV", { class: true });
-			var div1_nodes = children(div1);
-			a1 = claim_element(div1_nodes, "A", { href: true, class: true, target: true });
-			var a1_nodes = children(a1);
-			t4 = claim_text(a1_nodes, t4_value);
-			t5 = claim_space(a1_nodes);
-			claim_component(icon0.$$.fragment, a1_nodes);
-			a1_nodes.forEach(detach);
-			t6 = claim_space(div1_nodes);
-			a2 = claim_element(div1_nodes, "A", { href: true, class: true, target: true });
-			var a2_nodes = children(a2);
-			t7 = claim_text(a2_nodes, t7_value);
-			t8 = claim_space(a2_nodes);
-			claim_component(icon1.$$.fragment, a2_nodes);
-			a2_nodes.forEach(detach);
+			div0_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
-			t9 = claim_space(nav_nodes);
-
-			button = claim_element(nav_nodes, "BUTTON", {
-				id: true,
-				"aria-label": true,
-				class: true
-			});
-
-			var button_nodes = children(button);
-			claim_component(icon2.$$.fragment, button_nodes);
-			button_nodes.forEach(detach);
-			nav_nodes.forEach(detach);
+			t2 = claim_space(div10_nodes);
+			div9 = claim_element(div10_nodes, "DIV", { class: true });
+			var div9_nodes = children(div9);
+			div2 = claim_element(div9_nodes, "DIV", { class: true, style: true });
+			var div2_nodes = children(div2);
+			span0 = claim_element(div2_nodes, "SPAN", { style: true });
+			var span0_nodes = children(span0);
+			t3 = claim_text(span0_nodes, "Tutoriales >");
+			span0_nodes.forEach(detach);
+			t4 = claim_space(div2_nodes);
+			span1 = claim_element(div2_nodes, "SPAN", { style: true });
+			var span1_nodes = children(span1);
+			t5 = claim_text(span1_nodes, "Integración canales > ");
+			span1_nodes.forEach(detach);
+			span2 = claim_element(div2_nodes, "SPAN", { style: true });
+			var span2_nodes = children(span2);
+			t6 = claim_text(span2_nodes, "Instagram");
+			span2_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
-			t10 = claim_space(div3_nodes);
-			if (if_block1) if_block1.l(div3_nodes);
+			t7 = claim_space(div9_nodes);
+			div4 = claim_element(div9_nodes, "DIV", { class: true });
+			var div4_nodes = children(div4);
+			div3 = claim_element(div4_nodes, "DIV", { class: true });
+			var div3_nodes = children(div3);
+			t8 = claim_text(div3_nodes, /*heading*/ ctx[1]);
 			div3_nodes.forEach(detach);
-			header_nodes.forEach(detach);
+			div4_nodes.forEach(detach);
+			t9 = claim_space(div9_nodes);
+			div8 = claim_element(div9_nodes, "DIV", { class: true });
+			var div8_nodes = children(div8);
+			div5 = claim_element(div8_nodes, "DIV", { class: true });
+			var div5_nodes = children(div5);
+			p0 = claim_element(div5_nodes, "P", { class: true });
+			var p0_nodes = children(p0);
+			t10 = claim_text(p0_nodes, "Paso 1: Configura tu cuenta personal a cuenta profesional");
+			p0_nodes.forEach(detach);
+			t11 = claim_space(div5_nodes);
+			ul0 = claim_element(div5_nodes, "UL", { class: true });
+			var ul0_nodes = children(ul0);
+			li0 = claim_element(ul0_nodes, "LI", { class: true });
+			var li0_nodes = children(li0);
+			t12 = claim_text(li0_nodes, "Para conectar tu chatbot en tu cuenta de instagram, tu cuenta debe ser profesional. Para cambiarla debes acceder a ");
+			strong0 = claim_element(li0_nodes, "STRONG", {});
+			var strong0_nodes = children(strong0);
+			t13 = claim_text(strong0_nodes, "“Configuraciones”");
+			strong0_nodes.forEach(detach);
+			t14 = claim_text(li0_nodes, " en tu cuenta de instagram, luego ");
+			strong1 = claim_element(li0_nodes, "STRONG", {});
+			var strong1_nodes = children(strong1);
+			t15 = claim_text(strong1_nodes, "“Tipo de cuentas y herramientas”");
+			strong1_nodes.forEach(detach);
+			t16 = claim_text(li0_nodes, " y luego ");
+			strong2 = claim_element(li0_nodes, "STRONG", {});
+			var strong2_nodes = children(strong2);
+			t17 = claim_text(strong2_nodes, "“Cambiar a cuenta profesional”");
+			strong2_nodes.forEach(detach);
+			t18 = claim_text(li0_nodes, ".");
+			li0_nodes.forEach(detach);
+			ul0_nodes.forEach(detach);
+			t19 = claim_space(div5_nodes);
+			img0 = claim_element(div5_nodes, "IMG", { src: true });
+			t20 = claim_space(div5_nodes);
+			ul1 = claim_element(div5_nodes, "UL", { class: true });
+			var ul1_nodes = children(ul1);
+			li1 = claim_element(ul1_nodes, "LI", { class: true });
+			var li1_nodes = children(li1);
+			t21 = claim_text(li1_nodes, "Sigue los pasos de Instagram y llena tu información de contacto.");
+			li1_nodes.forEach(detach);
+			ul1_nodes.forEach(detach);
+			div5_nodes.forEach(detach);
+			t22 = claim_space(div8_nodes);
+			div6 = claim_element(div8_nodes, "DIV", { class: true });
+			var div6_nodes = children(div6);
+			p1 = claim_element(div6_nodes, "P", { class: true });
+			var p1_nodes = children(p1);
+			t23 = claim_text(p1_nodes, "Paso 2: Crea un portfolio comercial de Facebook");
+			p1_nodes.forEach(detach);
+			t24 = claim_space(div6_nodes);
+			ul2 = claim_element(div6_nodes, "UL", { class: true });
+			var ul2_nodes = children(ul2);
+			li2 = claim_element(ul2_nodes, "LI", { class: true });
+			var li2_nodes = children(li2);
+			t25 = claim_text(li2_nodes, "Ingresa a ");
+			a = claim_element(li2_nodes, "A", { class: true, href: true });
+			var a_nodes = children(a);
+			t26 = claim_text(a_nodes, "Meta Business");
+			a_nodes.forEach(detach);
+			t27 = claim_text(li2_nodes, " y haz click en “Crear cuenta” para crear tu portfolio comercial. Una vez allí ingresa la información de tu negocio y verifica tu correo electrónico (Si ya tienes creado un portfolio comercial y verificado, ignora este paso)");
+			li2_nodes.forEach(detach);
+			ul2_nodes.forEach(detach);
+			t28 = claim_space(div6_nodes);
+			img1 = claim_element(div6_nodes, "IMG", { src: true });
+			t29 = claim_space(div6_nodes);
+			img2 = claim_element(div6_nodes, "IMG", { src: true });
+			t30 = claim_space(div6_nodes);
+			ul3 = claim_element(div6_nodes, "UL", { class: true });
+			var ul3_nodes = children(ul3);
+			li3 = claim_element(ul3_nodes, "LI", { class: true });
+			var li3_nodes = children(li3);
+			t31 = claim_text(li3_nodes, "Una vez confirmes tu correo electrónico e ingreses al link de Meta, llegarás a Configuraciones de tu portfolio comercial. Allí será necesario que verifiques tu portfolio, para poder realizar acciones de administración de cuentas.");
+			li3_nodes.forEach(detach);
+			ul3_nodes.forEach(detach);
+			t32 = claim_space(div6_nodes);
+			img3 = claim_element(div6_nodes, "IMG", { src: true });
+			t33 = claim_space(div6_nodes);
+			ul4 = claim_element(div6_nodes, "UL", { class: true });
+			var ul4_nodes = children(ul4);
+			li4 = claim_element(ul4_nodes, "LI", { class: true });
+			var li4_nodes = children(li4);
+			t34 = claim_text(li4_nodes, "Ingresa a ");
+			strong3 = claim_element(li4_nodes, "STRONG", {});
+			var strong3_nodes = children(strong3);
+			t35 = claim_text(strong3_nodes, "“Información del negocio”");
+			strong3_nodes.forEach(detach);
+			t36 = claim_text(li4_nodes, "  y rellena los campos de contacto. Luego dirígete a ");
+			strong4 = claim_element(li4_nodes, "STRONG", {});
+			var strong4_nodes = children(strong4);
+			t37 = claim_text(strong4_nodes, "“Centro de seguridad”");
+			strong4_nodes.forEach(detach);
+			t38 = claim_text(li4_nodes, "  y configura la autenticación de dos pasos con sus permisos. Ingresa a ");
+			strong5 = claim_element(li4_nodes, "STRONG", {});
+			var strong5_nodes = children(strong5);
+			t39 = claim_text(strong5_nodes, "“Servicio de ayuda”");
+			strong5_nodes.forEach(detach);
+			t40 = claim_text(li4_nodes, "  para obtener más detalle sobre la verificación de tu cuenta.");
+			li4_nodes.forEach(detach);
+			ul4_nodes.forEach(detach);
+			t41 = claim_space(div6_nodes);
+			img4 = claim_element(div6_nodes, "IMG", { src: true });
+			t42 = claim_space(div6_nodes);
+			img5 = claim_element(div6_nodes, "IMG", { src: true });
+			t43 = claim_space(div6_nodes);
+			ul5 = claim_element(div6_nodes, "UL", { class: true });
+			var ul5_nodes = children(ul5);
+			li5 = claim_element(ul5_nodes, "LI", { class: true });
+			var li5_nodes = children(li5);
+			t44 = claim_text(li5_nodes, "Una vez en el centro de ayuda haz click en ");
+			strong6 = claim_element(li5_nodes, "STRONG", {});
+			var strong6_nodes = children(strong6);
+			t45 = claim_text(strong6_nodes, "“Solicitar revisión”");
+			strong6_nodes.forEach(detach);
+			t46 = claim_text(li5_nodes, "  y sigue los pasos de Facebook para verificar tu portfolio comercial (Si tu cuenta ya ha sido verificada, ignora este paso)");
+			li5_nodes.forEach(detach);
+			ul5_nodes.forEach(detach);
+			t47 = claim_space(div6_nodes);
+			img6 = claim_element(div6_nodes, "IMG", { src: true });
+			div6_nodes.forEach(detach);
+			t48 = claim_space(div8_nodes);
+			div7 = claim_element(div8_nodes, "DIV", { class: true });
+			var div7_nodes = children(div7);
+			p2 = claim_element(div7_nodes, "P", { class: true });
+			var p2_nodes = children(p2);
+			t49 = claim_text(p2_nodes, "Paso 8: Verifica el funcionamiento de tu chatbot en Whatsapp");
+			p2_nodes.forEach(detach);
+			t50 = claim_space(div7_nodes);
+			p3 = claim_element(div7_nodes, "P", {});
+			var p3_nodes = children(p3);
+			t51 = claim_text(p3_nodes, "¡Felicidades! Tu chatbot ya está listo para asistir a clientes a través de tu número de WhatsApp. Verifica que está respondiendo correctamente según la base de datos que le cargaste. Puedes habilitar, deshabilitar, editar o eliminar los ajustes de integración de WhatsApp según lo necesites.");
+			p3_nodes.forEach(detach);
+			div7_nodes.forEach(detach);
+			div8_nodes.forEach(detach);
+			div9_nodes.forEach(detach);
+			div10_nodes.forEach(detach);
+			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(a0, "href", "/");
-			attr(a0, "class", "logo svelte-tktpo7");
-			set_style(a0, "--size", style___size);
-			attr(span, "class", "beta svelte-tktpo7");
-			attr(div0, "class", "logos svelte-tktpo7");
-			attr(a1, "href", a1_href_value = /*cta*/ ctx[1][0].link.url);
-			attr(a1, "class", "button button-0 svelte-tktpo7");
-			attr(a1, "target", "_blank");
-			attr(a2, "href", a2_href_value = /*cta*/ ctx[1][1].link.url);
-			attr(a2, "class", "button button-1 svelte-tktpo7");
-			attr(a2, "target", "_blank");
-			attr(div1, "class", "cta-buttons svelte-tktpo7");
-			attr(button, "id", "open");
-			attr(button, "aria-label", "Open mobile navigation");
-			attr(button, "class", "svelte-tktpo7");
-			attr(nav, "class", "svelte-tktpo7");
-			attr(div2, "class", "desktop-nav svelte-tktpo7");
-			attr(div3, "class", "section-container svelte-tktpo7");
-			attr(header, "class", "svelte-tktpo7");
+			attr(div0, "class", "accordion svelte-kywazt");
+			attr(div1, "class", "box1 svelte-kywazt");
+			set_style(span0, "color", "#C1C2C4");
+			set_style(span1, "color", "#C1C2C4");
+			set_style(span2, "color", "var(--Primary-2, #7B5CF5)");
+			attr(div2, "class", "steps svelte-kywazt");
+			set_style(div2, "display", "flex");
+			set_style(div2, "gap", "15px");
+			set_style(div2, "margin-bottom", "20px");
+			attr(div3, "class", "heading svelte-kywazt");
+			attr(div4, "class", "heading-group svelte-kywazt");
+			attr(p0, "class", "subtitle svelte-kywazt");
+			attr(li0, "class", "svelte-kywazt");
+			attr(ul0, "class", "svelte-kywazt");
+			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) attr(img0, "src", img0_src_value);
+			attr(li1, "class", "svelte-kywazt");
+			attr(ul1, "class", "svelte-kywazt");
+			attr(div5, "class", "paso1 svelte-kywazt");
+			attr(p1, "class", "subtitle svelte-kywazt");
+			attr(a, "class", "link svelte-kywazt");
+			attr(a, "href", "https://business.facebook.com/");
+			attr(li2, "class", "svelte-kywazt");
+			attr(ul2, "class", "svelte-kywazt");
+			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) attr(img1, "src", img1_src_value);
+			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[4].url)) attr(img2, "src", img2_src_value);
+			attr(li3, "class", "svelte-kywazt");
+			attr(ul3, "class", "svelte-kywazt");
+			if (!src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[5].url)) attr(img3, "src", img3_src_value);
+			attr(li4, "class", "svelte-kywazt");
+			attr(ul4, "class", "svelte-kywazt");
+			if (!src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[6].url)) attr(img4, "src", img4_src_value);
+			if (!src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[7].url)) attr(img5, "src", img5_src_value);
+			attr(li5, "class", "svelte-kywazt");
+			attr(ul5, "class", "svelte-kywazt");
+			if (!src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[8].url)) attr(img6, "src", img6_src_value);
+			attr(div6, "class", "paso1 svelte-kywazt");
+			attr(p2, "class", "subtitle svelte-kywazt");
+			attr(div7, "class", "paso1 svelte-kywazt");
+			attr(div8, "class", "content svelte-kywazt");
+			attr(div9, "class", "box2 svelte-kywazt");
+			attr(div10, "class", "section-container svelte-kywazt");
+			attr(section, "class", "svelte-kywazt");
 		},
 		m(target, anchor) {
-			insert_hydration(target, header, anchor);
-			append_hydration(header, div3);
-			append_hydration(div3, div2);
-			append_hydration(div2, div0);
-			append_hydration(div0, a0);
-			if_block0.m(a0, null);
-			append_hydration(div0, t0);
-			append_hydration(div0, span);
-			append_hydration(span, t1);
-			append_hydration(div2, t2);
-			append_hydration(div2, nav);
+			insert_hydration(target, section, anchor);
+			append_hydration(section, style);
+			append_hydration(style, t0);
+			append_hydration(section, t1);
+			append_hydration(section, div10);
+			append_hydration(div10, div1);
+			append_hydration(div1, div0);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				if (each_blocks[i]) {
-					each_blocks[i].m(nav, null);
+					each_blocks[i].m(div0, null);
 				}
 			}
 
-			append_hydration(nav, t3);
-			append_hydration(nav, div1);
-			append_hydration(div1, a1);
-			append_hydration(a1, t4);
-			append_hydration(a1, t5);
-			mount_component(icon0, a1, null);
-			append_hydration(div1, t6);
-			append_hydration(div1, a2);
-			append_hydration(a2, t7);
-			append_hydration(a2, t8);
-			mount_component(icon1, a2, null);
-			append_hydration(nav, t9);
-			append_hydration(nav, button);
-			mount_component(icon2, button, null);
-			append_hydration(div3, t10);
-			if (if_block1) if_block1.m(div3, null);
+			append_hydration(div10, t2);
+			append_hydration(div10, div9);
+			append_hydration(div9, div2);
+			append_hydration(div2, span0);
+			append_hydration(span0, t3);
+			append_hydration(div2, t4);
+			append_hydration(div2, span1);
+			append_hydration(span1, t5);
+			append_hydration(div2, span2);
+			append_hydration(span2, t6);
+			append_hydration(div9, t7);
+			append_hydration(div9, div4);
+			append_hydration(div4, div3);
+			append_hydration(div3, t8);
+			append_hydration(div9, t9);
+			append_hydration(div9, div8);
+			append_hydration(div8, div5);
+			append_hydration(div5, p0);
+			append_hydration(p0, t10);
+			append_hydration(div5, t11);
+			append_hydration(div5, ul0);
+			append_hydration(ul0, li0);
+			append_hydration(li0, t12);
+			append_hydration(li0, strong0);
+			append_hydration(strong0, t13);
+			append_hydration(li0, t14);
+			append_hydration(li0, strong1);
+			append_hydration(strong1, t15);
+			append_hydration(li0, t16);
+			append_hydration(li0, strong2);
+			append_hydration(strong2, t17);
+			append_hydration(li0, t18);
+			append_hydration(div5, t19);
+			append_hydration(div5, img0);
+			append_hydration(div5, t20);
+			append_hydration(div5, ul1);
+			append_hydration(ul1, li1);
+			append_hydration(li1, t21);
+			append_hydration(div8, t22);
+			append_hydration(div8, div6);
+			append_hydration(div6, p1);
+			append_hydration(p1, t23);
+			append_hydration(div6, t24);
+			append_hydration(div6, ul2);
+			append_hydration(ul2, li2);
+			append_hydration(li2, t25);
+			append_hydration(li2, a);
+			append_hydration(a, t26);
+			append_hydration(li2, t27);
+			append_hydration(div6, t28);
+			append_hydration(div6, img1);
+			append_hydration(div6, t29);
+			append_hydration(div6, img2);
+			append_hydration(div6, t30);
+			append_hydration(div6, ul3);
+			append_hydration(ul3, li3);
+			append_hydration(li3, t31);
+			append_hydration(div6, t32);
+			append_hydration(div6, img3);
+			append_hydration(div6, t33);
+			append_hydration(div6, ul4);
+			append_hydration(ul4, li4);
+			append_hydration(li4, t34);
+			append_hydration(li4, strong3);
+			append_hydration(strong3, t35);
+			append_hydration(li4, t36);
+			append_hydration(li4, strong4);
+			append_hydration(strong4, t37);
+			append_hydration(li4, t38);
+			append_hydration(li4, strong5);
+			append_hydration(strong5, t39);
+			append_hydration(li4, t40);
+			append_hydration(div6, t41);
+			append_hydration(div6, img4);
+			append_hydration(div6, t42);
+			append_hydration(div6, img5);
+			append_hydration(div6, t43);
+			append_hydration(div6, ul5);
+			append_hydration(ul5, li5);
+			append_hydration(li5, t44);
+			append_hydration(li5, strong6);
+			append_hydration(strong6, t45);
+			append_hydration(li5, t46);
+			append_hydration(div6, t47);
+			append_hydration(div6, img6);
+			append_hydration(div8, t48);
+			append_hydration(div8, div7);
+			append_hydration(div7, p2);
+			append_hydration(p2, t49);
+			append_hydration(div7, t50);
+			append_hydration(div7, p3);
+			append_hydration(p3, t51);
 			current = true;
-
-			if (!mounted) {
-				dispose = listen(button, "click", /*click_handler*/ ctx[5]);
-				mounted = true;
-			}
 		},
 		p(ctx, [dirty]) {
-			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block0) {
-				if_block0.p(ctx, dirty);
-			} else {
-				if_block0.d(1);
-				if_block0 = current_block_type(ctx);
-
-				if (if_block0) {
-					if_block0.c();
-					if_block0.m(a0, null);
-				}
-			}
-
-			if (dirty & /*logo*/ 4 && style___size !== (style___size = `${/*logo*/ ctx[2].size}rem`)) {
-				set_style(a0, "--size", style___size);
-			}
-
-			if (dirty & /*site_nav*/ 1) {
-				each_value_1 = /*site_nav*/ ctx[0];
-				let i;
-
-				for (i = 0; i < each_value_1.length; i += 1) {
-					const child_ctx = get_each_context_1(ctx, each_value_1, i);
-
-					if (each_blocks[i]) {
-						each_blocks[i].p(child_ctx, dirty);
-					} else {
-						each_blocks[i] = create_each_block_1(child_ctx);
-						each_blocks[i].c();
-						each_blocks[i].m(nav, t3);
-					}
-				}
-
-				for (; i < each_blocks.length; i += 1) {
-					each_blocks[i].d(1);
-				}
-
-				each_blocks.length = each_value_1.length;
-			}
-
-			if ((!current || dirty & /*cta*/ 2) && t4_value !== (t4_value = /*cta*/ ctx[1][0].link.label + "")) set_data(t4, t4_value);
-
-			if (!current || dirty & /*cta*/ 2 && a1_href_value !== (a1_href_value = /*cta*/ ctx[1][0].link.url)) {
-				attr(a1, "href", a1_href_value);
-			}
-
-			if ((!current || dirty & /*cta*/ 2) && t7_value !== (t7_value = /*cta*/ ctx[1][1].link.label + "")) set_data(t7, t7_value);
-
-			if (!current || dirty & /*cta*/ 2 && a2_href_value !== (a2_href_value = /*cta*/ ctx[1][1].link.url)) {
-				attr(a2, "href", a2_href_value);
-			}
-
-			if (/*mobileNavOpen*/ ctx[3]) {
-				if (if_block1) {
-					if_block1.p(ctx, dirty);
-
-					if (dirty & /*mobileNavOpen*/ 8) {
-						transition_in(if_block1, 1);
-					}
-				} else {
-					if_block1 = create_if_block(ctx);
-					if_block1.c();
-					transition_in(if_block1, 1);
-					if_block1.m(div3, null);
-				}
-			} else if (if_block1) {
+			if (dirty & /*activeItem, items, setActiveItem*/ 1537) {
+				each_value = /*items*/ ctx[0];
 				group_outros();
-
-				transition_out(if_block1, 1, 1, () => {
-					if_block1 = null;
-				});
-
+				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div0, outro_and_destroy_block, create_each_block, null, get_each_context);
 				check_outros();
+			}
+
+			if (!current || dirty & /*heading*/ 2) set_data(t8, /*heading*/ ctx[1]);
+
+			if (!current || dirty & /*image1*/ 4 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) {
+				attr(img0, "src", img0_src_value);
+			}
+
+			if (!current || dirty & /*image2*/ 8 && !src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) {
+				attr(img1, "src", img1_src_value);
+			}
+
+			if (!current || dirty & /*image3*/ 16 && !src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[4].url)) {
+				attr(img2, "src", img2_src_value);
+			}
+
+			if (!current || dirty & /*image4*/ 32 && !src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[5].url)) {
+				attr(img3, "src", img3_src_value);
+			}
+
+			if (!current || dirty & /*image5*/ 64 && !src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[6].url)) {
+				attr(img4, "src", img4_src_value);
+			}
+
+			if (!current || dirty & /*image6*/ 128 && !src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[7].url)) {
+				attr(img5, "src", img5_src_value);
+			}
+
+			if (!current || dirty & /*image7*/ 256 && !src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[8].url)) {
+				attr(img6, "src", img6_src_value);
 			}
 		},
 		i(local) {
 			if (current) return;
-			transition_in(icon0.$$.fragment, local);
-			transition_in(icon1.$$.fragment, local);
-			transition_in(icon2.$$.fragment, local);
-			transition_in(if_block1);
+
+			for (let i = 0; i < each_value.length; i += 1) {
+				transition_in(each_blocks[i]);
+			}
+
 			current = true;
 		},
 		o(local) {
-			transition_out(icon0.$$.fragment, local);
-			transition_out(icon1.$$.fragment, local);
-			transition_out(icon2.$$.fragment, local);
-			transition_out(if_block1);
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				transition_out(each_blocks[i]);
+			}
+
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(header);
-			if_block0.d();
-			destroy_each(each_blocks, detaching);
-			destroy_component(icon0);
-			destroy_component(icon1);
-			destroy_component(icon2);
-			if (if_block1) if_block1.d();
-			mounted = false;
-			dispose();
+			if (detaching) detach(section);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].d();
+			}
 		}
 	};
 }
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
-	let { cta } = $$props;
-	let { logo } = $$props;
-	let { site_nav } = $$props;
-	let mobileNavOpen = false;
+	let { items } = $$props;
+	let { heading } = $$props;
+	let { image1 } = $$props;
+	let { image2 } = $$props;
+	let { image3 } = $$props;
+	let { image4 } = $$props;
+	let { image5 } = $$props;
+	let { image6 } = $$props;
+	let { image7 } = $$props;
+	let activeItem = 0;
 
-	site_nav = [
-		{
-			link: {
-				url: "#funcion",
-				label: "¿Cómo funciona?"
-			}
-		},
-		{
-			link: { url: "#benefits", label: "Beneficios" }
-		},
-		{
-			link: { url: "#live-demo", label: "Live Demo" }
-		},
-		{
-			link: { url: "#contacto", label: "Contacto" }
-		}
-	];
+	function setActiveItem(i) {
+		$$invalidate(9, activeItem = activeItem === i ? null : i);
+	}
 
-	const click_handler = () => $$invalidate(3, mobileNavOpen = true);
-	const click_handler_1 = () => $$invalidate(3, mobileNavOpen = false);
+	const click_handler = i => setActiveItem(i);
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(4, props = $$props.props);
-		if ('cta' in $$props) $$invalidate(1, cta = $$props.cta);
-		if ('logo' in $$props) $$invalidate(2, logo = $$props.logo);
-		if ('site_nav' in $$props) $$invalidate(0, site_nav = $$props.site_nav);
+		if ('props' in $$props) $$invalidate(11, props = $$props.props);
+		if ('items' in $$props) $$invalidate(0, items = $$props.items);
+		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
+		if ('image1' in $$props) $$invalidate(2, image1 = $$props.image1);
+		if ('image2' in $$props) $$invalidate(3, image2 = $$props.image2);
+		if ('image3' in $$props) $$invalidate(4, image3 = $$props.image3);
+		if ('image4' in $$props) $$invalidate(5, image4 = $$props.image4);
+		if ('image5' in $$props) $$invalidate(6, image5 = $$props.image5);
+		if ('image6' in $$props) $$invalidate(7, image6 = $$props.image6);
+		if ('image7' in $$props) $$invalidate(8, image7 = $$props.image7);
 	};
 
-	return [site_nav, cta, logo, mobileNavOpen, props, click_handler, click_handler_1];
+	return [
+		items,
+		heading,
+		image1,
+		image2,
+		image3,
+		image4,
+		image5,
+		image6,
+		image7,
+		activeItem,
+		setActiveItem,
+		props,
+		click_handler
+	];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { props: 4, cta: 1, logo: 2, site_nav: 0 });
+
+		init(this, options, instance, create_fragment, safe_not_equal, {
+			props: 11,
+			items: 0,
+			heading: 1,
+			image1: 2,
+			image2: 3,
+			image3: 4,
+			image4: 5,
+			image5: 6,
+			image6: 7,
+			image7: 8
+		});
 	}
 }
 

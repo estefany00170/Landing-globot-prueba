@@ -1,4 +1,4 @@
-// Tutoriales - Updated June 21, 2024
+// Tutoriales - Updated July 4, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3419,6 +3419,10 @@ function create_each_block(ctx) {
 	let t1_value = /*card*/ ctx[8].title + "";
 	let t1;
 	let t2;
+	let t3_value = /*card*/ ctx[8].link.label + "";
+	let t3;
+	let a_href_value;
+	let t4;
 	let current;
 	icon = new Component$1({ props: { icon: /*card*/ ctx[8].icon } });
 
@@ -3433,6 +3437,8 @@ function create_each_block(ctx) {
 			div1 = element("div");
 			t1 = text(t1_value);
 			t2 = space();
+			t3 = text(t3_value);
+			t4 = space();
 			this.h();
 		},
 		l(nodes) {
@@ -3452,8 +3458,10 @@ function create_each_block(ctx) {
 			t1 = claim_text(div1_nodes, t1_value);
 			div1_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
+			t2 = claim_space(a_nodes);
+			t3 = claim_text(a_nodes, t3_value);
 			a_nodes.forEach(detach);
-			t2 = claim_space(li_nodes);
+			t4 = claim_space(li_nodes);
 			li_nodes.forEach(detach);
 			this.h();
 		},
@@ -3461,7 +3469,7 @@ function create_each_block(ctx) {
 			attr(div0, "class", "icon svelte-153dajr");
 			attr(div1, "class", "title svelte-153dajr");
 			attr(div2, "class", "btn svelte-153dajr");
-			attr(a, "href", "/whatsapp");
+			attr(a, "href", a_href_value = /*card*/ ctx[8].link.url);
 			attr(li, "class", "svelte-153dajr");
 		},
 		m(target, anchor) {
@@ -3473,7 +3481,9 @@ function create_each_block(ctx) {
 			append_hydration(div2, t0);
 			append_hydration(div2, div1);
 			append_hydration(div1, t1);
-			append_hydration(li, t2);
+			append_hydration(a, t2);
+			append_hydration(a, t3);
+			append_hydration(li, t4);
 			current = true;
 		},
 		p(ctx, dirty) {
@@ -3481,6 +3491,11 @@ function create_each_block(ctx) {
 			if (dirty & /*cards*/ 1) icon_changes.icon = /*card*/ ctx[8].icon;
 			icon.$set(icon_changes);
 			if ((!current || dirty & /*cards*/ 1) && t1_value !== (t1_value = /*card*/ ctx[8].title + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*cards*/ 1) && t3_value !== (t3_value = /*card*/ ctx[8].link.label + "")) set_data(t3, t3_value);
+
+			if (!current || dirty & /*cards*/ 1 && a_href_value !== (a_href_value = /*card*/ ctx[8].link.url)) {
+				attr(a, "href", a_href_value);
+			}
 		},
 		i(local) {
 			if (current) return;
