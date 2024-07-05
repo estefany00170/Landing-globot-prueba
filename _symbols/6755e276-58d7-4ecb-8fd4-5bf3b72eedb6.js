@@ -3186,15 +3186,15 @@ let Component$1 = class Component extends SvelteComponent {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[13] = list[i];
-	child_ctx[15] = i;
+	child_ctx[22] = list[i];
+	child_ctx[24] = i;
 	return child_ctx;
 }
 
-// (196:10) {#if activeItem === i}
+// (205:10) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
-	let raw_value = /*item*/ ctx[13].description.html + "";
+	let raw_value = /*item*/ ctx[22].description.html + "";
 	let div_transition;
 	let current;
 
@@ -3218,7 +3218,7 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if ((!current || dirty & /*items*/ 1) && raw_value !== (raw_value = /*item*/ ctx[13].description.html + "")) div.innerHTML = raw_value;		},
+			if ((!current || dirty & /*items*/ 1) && raw_value !== (raw_value = /*item*/ ctx[22].description.html + "")) div.innerHTML = raw_value;		},
 		i(local) {
 			if (current) return;
 
@@ -3242,7 +3242,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (183:6) {#each items as item, i (i)}
+// (192:6) {#each items as item, i (i)}
 function create_each_block(key_1, ctx) {
 	let div3;
 	let div1;
@@ -3251,7 +3251,7 @@ function create_each_block(key_1, ctx) {
 	let t0;
 	let button;
 	let span0;
-	let t1_value = /*item*/ ctx[13].title + "";
+	let t1_value = /*item*/ ctx[22].title + "";
 	let t1;
 	let t2;
 	let span1;
@@ -3266,10 +3266,10 @@ function create_each_block(key_1, ctx) {
 	icon1 = new Component$1({ props: { icon: "ph:caret-down-bold" } });
 
 	function click_handler() {
-		return /*click_handler*/ ctx[12](/*i*/ ctx[15]);
+		return /*click_handler*/ ctx[21](/*i*/ ctx[24]);
 	}
 
-	let if_block = /*activeItem*/ ctx[9] === /*i*/ ctx[15] && create_if_block(ctx);
+	let if_block = /*activeItem*/ ctx[18] === /*i*/ ctx[24] && create_if_block(ctx);
 
 	return {
 		key: key_1,
@@ -3329,7 +3329,7 @@ function create_each_block(key_1, ctx) {
 			attr(button, "class", "svelte-cscos2");
 			attr(div1, "class", "item-icon svelte-cscos2");
 			attr(div3, "class", "item svelte-cscos2");
-			toggle_class(div3, "active", /*activeItem*/ ctx[9] === /*i*/ ctx[15]);
+			toggle_class(div3, "active", /*activeItem*/ ctx[18] === /*i*/ ctx[24]);
 			this.first = div3;
 		},
 		m(target, anchor) {
@@ -3357,13 +3357,13 @@ function create_each_block(key_1, ctx) {
 		},
 		p(new_ctx, dirty) {
 			ctx = new_ctx;
-			if ((!current || dirty & /*items*/ 1) && t1_value !== (t1_value = /*item*/ ctx[13].title + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*items*/ 1) && t1_value !== (t1_value = /*item*/ ctx[22].title + "")) set_data(t1, t1_value);
 
-			if (/*activeItem*/ ctx[9] === /*i*/ ctx[15]) {
+			if (/*activeItem*/ ctx[18] === /*i*/ ctx[24]) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty & /*activeItem, items*/ 513) {
+					if (dirty & /*activeItem, items*/ 262145) {
 						transition_in(if_block, 1);
 					}
 				} else {
@@ -3382,8 +3382,8 @@ function create_each_block(key_1, ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*activeItem, items*/ 513) {
-				toggle_class(div3, "active", /*activeItem*/ ctx[9] === /*i*/ ctx[15]);
+			if (!current || dirty & /*activeItem, items*/ 262145) {
+				toggle_class(div3, "active", /*activeItem*/ ctx[18] === /*i*/ ctx[24]);
 			}
 		},
 		i(local) {
@@ -3415,113 +3415,228 @@ function create_fragment(ctx) {
 	let style;
 	let t0;
 	let t1;
-	let div10;
+	let div11;
 	let div1;
 	let div0;
 	let each_blocks = [];
 	let each_1_lookup = new Map();
 	let t2;
-	let div9;
+	let div10;
 	let div2;
 	let span0;
 	let t3;
 	let t4;
 	let span1;
 	let t5;
-	let span2;
 	let t6;
+	let span2;
 	let t7;
+	let t8;
 	let div4;
 	let div3;
-	let t8;
 	let t9;
-	let div8;
+	let t10;
+	let div9;
 	let div5;
 	let p0;
-	let t10;
 	let t11;
+	let t12;
 	let ul0;
 	let li0;
-	let t12;
-	let strong0;
 	let t13;
+	let strong0;
 	let t14;
-	let strong1;
 	let t15;
+	let strong1;
 	let t16;
-	let strong2;
 	let t17;
+	let strong2;
 	let t18;
 	let t19;
+	let t20;
 	let img0;
 	let img0_src_value;
-	let t20;
+	let t21;
 	let ul1;
 	let li1;
-	let t21;
 	let t22;
+	let t23;
 	let div6;
 	let p1;
-	let t23;
 	let t24;
+	let t25;
 	let ul2;
 	let li2;
-	let t25;
-	let a;
 	let t26;
+	let a0;
 	let t27;
 	let t28;
+	let t29;
 	let img1;
 	let img1_src_value;
-	let t29;
+	let t30;
 	let img2;
 	let img2_src_value;
-	let t30;
+	let t31;
 	let ul3;
 	let li3;
-	let t31;
 	let t32;
+	let t33;
 	let img3;
 	let img3_src_value;
-	let t33;
+	let t34;
 	let ul4;
 	let li4;
-	let t34;
-	let strong3;
 	let t35;
+	let strong3;
 	let t36;
-	let strong4;
 	let t37;
+	let strong4;
 	let t38;
-	let strong5;
 	let t39;
+	let strong5;
 	let t40;
 	let t41;
+	let t42;
 	let img4;
 	let img4_src_value;
-	let t42;
+	let t43;
 	let img5;
 	let img5_src_value;
-	let t43;
+	let t44;
 	let ul5;
 	let li5;
-	let t44;
-	let strong6;
 	let t45;
+	let strong6;
 	let t46;
 	let t47;
+	let t48;
 	let img6;
 	let img6_src_value;
-	let t48;
+	let t49;
+	let ul6;
+	let li6;
+	let t50;
+	let t51;
 	let div7;
 	let p2;
-	let t49;
-	let t50;
+	let t52;
+	let t53;
+	let ul7;
+	let li7;
+	let t54;
+	let a1;
+	let t55;
+	let t56;
+	let strong7;
+	let t57;
+	let t58;
+	let strong8;
+	let t59;
+	let t60;
+	let strong9;
+	let t61;
+	let t62;
+	let t63;
+	let img7;
+	let img7_src_value;
+	let t64;
+	let ul8;
+	let li8;
+	let t65;
+	let strong10;
+	let t66;
+	let t67;
+	let strong11;
+	let t68;
+	let t69;
+	let t70;
+	let img8;
+	let img8_src_value;
+	let t71;
+	let ul9;
+	let li9;
+	let t72;
+	let strong12;
+	let t73;
+	let t74;
+	let t75;
+	let img9;
+	let img9_src_value;
+	let t76;
+	let ul10;
+	let li10;
+	let t77;
+	let strong13;
+	let t78;
+	let t79;
+	let t80;
+	let img10;
+	let img10_src_value;
+	let t81;
+	let ul11;
+	let li11;
+	let t82;
+	let t83;
+	let img11;
+	let img11_src_value;
+	let t84;
+	let ul12;
+	let li12;
+	let t85;
+	let strong14;
+	let t86;
+	let t87;
+	let t88;
+	let div8;
 	let p3;
-	let t51;
+	let t89;
+	let t90;
+	let ul13;
+	let li13;
+	let t91;
+	let strong15;
+	let t92;
+	let t93;
+	let t94;
+	let img12;
+	let img12_src_value;
+	let t95;
+	let ul14;
+	let li14;
+	let t96;
+	let strong16;
+	let t97;
+	let t98;
+	let t99;
+	let img13;
+	let img13_src_value;
+	let t100;
+	let img14;
+	let img14_src_value;
+	let t101;
+	let ul15;
+	let li15;
+	let t102;
+	let strong17;
+	let t103;
+	let t104;
+	let strong18;
+	let t105;
+	let t106;
+	let strong19;
+	let t107;
+	let t108;
+	let t109;
+	let img15;
+	let img15_src_value;
+	let t110;
+	let ul16;
+	let li16;
+	let t111;
 	let current;
 	let each_value = /*items*/ ctx[0];
-	const get_key = ctx => /*i*/ ctx[15];
+	const get_key = ctx => /*i*/ ctx[24];
 
 	for (let i = 0; i < each_value.length; i += 1) {
 		let child_ctx = get_each_context(ctx, each_value, i);
@@ -3535,7 +3650,7 @@ function create_fragment(ctx) {
 			style = element("style");
 			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
 			t1 = space();
-			div10 = element("div");
+			div11 = element("div");
 			div1 = element("div");
 			div0 = element("div");
 
@@ -3544,97 +3659,203 @@ function create_fragment(ctx) {
 			}
 
 			t2 = space();
-			div9 = element("div");
+			div10 = element("div");
 			div2 = element("div");
 			span0 = element("span");
-			t3 = text("Tutoriales >");
-			t4 = space();
+			t3 = text("Tutoriales");
+			t4 = text(" > ");
 			span1 = element("span");
-			t5 = text("Integración canales > ");
+			t5 = text("Integración canales");
+			t6 = text(" > ");
 			span2 = element("span");
-			t6 = text("Instagram");
-			t7 = space();
+			t7 = text("Instagram");
+			t8 = space();
 			div4 = element("div");
 			div3 = element("div");
-			t8 = text(/*heading*/ ctx[1]);
-			t9 = space();
-			div8 = element("div");
+			t9 = text(/*heading*/ ctx[1]);
+			t10 = space();
+			div9 = element("div");
 			div5 = element("div");
 			p0 = element("p");
-			t10 = text("Paso 1: Configura tu cuenta personal a cuenta profesional");
-			t11 = space();
+			t11 = text("Paso 1: Configura tu cuenta personal a cuenta profesional");
+			t12 = space();
 			ul0 = element("ul");
 			li0 = element("li");
-			t12 = text("Para conectar tu chatbot en tu cuenta de instagram, tu cuenta debe ser profesional. Para cambiarla debes acceder a ");
+			t13 = text("Para conectar tu chatbot en tu cuenta de instagram, tu cuenta debe ser profesional. Para cambiarla debes acceder a ");
 			strong0 = element("strong");
-			t13 = text("“Configuraciones”");
-			t14 = text(" en tu cuenta de instagram, luego ");
+			t14 = text("“Configuraciones”");
+			t15 = text(" en tu cuenta de instagram, luego ");
 			strong1 = element("strong");
-			t15 = text("“Tipo de cuentas y herramientas”");
-			t16 = text(" y luego ");
+			t16 = text("“Tipo de cuentas y herramientas”");
+			t17 = text(" y luego ");
 			strong2 = element("strong");
-			t17 = text("“Cambiar a cuenta profesional”");
-			t18 = text(".");
-			t19 = space();
-			img0 = element("img");
+			t18 = text("“Cambiar a cuenta profesional”");
+			t19 = text(".");
 			t20 = space();
+			img0 = element("img");
+			t21 = space();
 			ul1 = element("ul");
 			li1 = element("li");
-			t21 = text("Sigue los pasos de Instagram y llena tu información de contacto.");
-			t22 = space();
+			t22 = text("Sigue los pasos de Instagram y llena tu información de contacto.");
+			t23 = space();
 			div6 = element("div");
 			p1 = element("p");
-			t23 = text("Paso 2: Crea un portfolio comercial de Facebook");
-			t24 = space();
+			t24 = text("Paso 2: Crea un portfolio comercial de Facebook");
+			t25 = space();
 			ul2 = element("ul");
 			li2 = element("li");
-			t25 = text("Ingresa a ");
-			a = element("a");
-			t26 = text("Meta Business");
-			t27 = text(" y haz click en “Crear cuenta” para crear tu portfolio comercial. Una vez allí ingresa la información de tu negocio y verifica tu correo electrónico (Si ya tienes creado un portfolio comercial y verificado, ignora este paso)");
-			t28 = space();
-			img1 = element("img");
+			t26 = text("Ingresa a ");
+			a0 = element("a");
+			t27 = text("Meta Business");
+			t28 = text(" y haz click en “Crear cuenta” para crear tu portfolio comercial. Una vez allí ingresa la información de tu negocio y verifica tu correo electrónico (Si ya tienes creado un portfolio comercial y verificado, ignora este paso)");
 			t29 = space();
-			img2 = element("img");
+			img1 = element("img");
 			t30 = space();
+			img2 = element("img");
+			t31 = space();
 			ul3 = element("ul");
 			li3 = element("li");
-			t31 = text("Una vez confirmes tu correo electrónico e ingreses al link de Meta, llegarás a Configuraciones de tu portfolio comercial. Allí será necesario que verifiques tu portfolio, para poder realizar acciones de administración de cuentas.");
-			t32 = space();
-			img3 = element("img");
+			t32 = text("Una vez confirmes tu correo electrónico e ingreses al link de Meta, llegarás a Configuraciones de tu portfolio comercial. Allí será necesario que verifiques tu portfolio, para poder realizar acciones de administración de cuentas.");
 			t33 = space();
+			img3 = element("img");
+			t34 = space();
 			ul4 = element("ul");
 			li4 = element("li");
-			t34 = text("Ingresa a ");
+			t35 = text("Ingresa a ");
 			strong3 = element("strong");
-			t35 = text("“Información del negocio”");
-			t36 = text("  y rellena los campos de contacto. Luego dirígete a ");
+			t36 = text("“Información del negocio”");
+			t37 = text("  y rellena los campos de contacto. Luego dirígete a ");
 			strong4 = element("strong");
-			t37 = text("“Centro de seguridad”");
-			t38 = text("  y configura la autenticación de dos pasos con sus permisos. Ingresa a ");
+			t38 = text("“Centro de seguridad”");
+			t39 = text("  y configura la autenticación de dos pasos con sus permisos. Ingresa a ");
 			strong5 = element("strong");
-			t39 = text("“Servicio de ayuda”");
-			t40 = text("  para obtener más detalle sobre la verificación de tu cuenta.");
-			t41 = space();
-			img4 = element("img");
+			t40 = text("“Servicio de ayuda”");
+			t41 = text("  para obtener más detalle sobre la verificación de tu cuenta.");
 			t42 = space();
-			img5 = element("img");
+			img4 = element("img");
 			t43 = space();
+			img5 = element("img");
+			t44 = space();
 			ul5 = element("ul");
 			li5 = element("li");
-			t44 = text("Una vez en el centro de ayuda haz click en ");
+			t45 = text("Una vez en el centro de ayuda haz click en ");
 			strong6 = element("strong");
-			t45 = text("“Solicitar revisión”");
-			t46 = text("  y sigue los pasos de Facebook para verificar tu portfolio comercial (Si tu cuenta ya ha sido verificada, ignora este paso)");
-			t47 = space();
-			img6 = element("img");
+			t46 = text("“Solicitar revisión”");
+			t47 = text("  y sigue los pasos de Facebook para verificar tu portfolio comercial (Si tu cuenta ya ha sido verificada, ignora este paso)");
 			t48 = space();
+			img6 = element("img");
+			t49 = space();
+			ul6 = element("ul");
+			li6 = element("li");
+			t50 = text("La revisión puede durar un tiempo, luego de ser aceptada ya podrás tener funciones como conectar tu página de Facebook con tu cuenta de Instagram.");
+			t51 = space();
 			div7 = element("div");
 			p2 = element("p");
-			t49 = text("Paso 8: Verifica el funcionamiento de tu chatbot en Whatsapp");
-			t50 = space();
+			t52 = text("Paso 3: Vincula tu página de Facebook con tu perfil de Instagram en Meta Business Suite");
+			t53 = space();
+			ul7 = element("ul");
+			li7 = element("li");
+			t54 = text("Ingresa a ");
+			a1 = element("a");
+			t55 = text("Meta Business");
+			t56 = text(" a ");
+			strong7 = element("strong");
+			t57 = text("Configuración");
+			t58 = text(" de tu portfolio comercial recién creado (o al que tengas creado donde quieras administrar tus cuentas Meta). Dirígete a ");
+			strong8 = element("strong");
+			t59 = text("“Activos comerciales”");
+			t60 = text(" y una vez allí selecciona ");
+			strong9 = element("strong");
+			t61 = text("Agregar activos");
+			t62 = text(" en página de Facebook.");
+			t63 = space();
+			img7 = element("img");
+			t64 = space();
+			ul8 = element("ul");
+			li8 = element("li");
+			t65 = text("Puedes seleccionar una página ya creada seleccionando ");
+			strong10 = element("strong");
+			t66 = text("“Reclamar una página de Facebook existente”");
+			t67 = text(" o ");
+			strong11 = element("strong");
+			t68 = text("“Crear una nueva página de Facebook”");
+			t69 = text(" para tu cuenta de instagram.");
+			t70 = space();
+			img8 = element("img");
+			t71 = space();
+			ul9 = element("ul");
+			li9 = element("li");
+			t72 = text("Sigue los pasos para conectar tu página de Facebook, una vez agregada se visualizará como ");
+			strong12 = element("strong");
+			t73 = text("“Activo comercial”");
+			t74 = text(".");
+			t75 = space();
+			img9 = element("img");
+			t76 = space();
+			ul10 = element("ul");
+			li10 = element("li");
+			t77 = text("Haz click en tu página recién agregar y luego click a ");
+			strong13 = element("strong");
+			t78 = text("“Conectar activos”");
+			t79 = text(".");
+			t80 = space();
+			img10 = element("img");
+			t81 = space();
+			ul11 = element("ul");
+			li11 = element("li");
+			t82 = text("Sigue los pasos para conectar tu página de Facebook con tu cuenta de Instagram.");
+			t83 = space();
+			img11 = element("img");
+			t84 = space();
+			ul12 = element("ul");
+			li12 = element("li");
+			t85 = text("Una vez realizada la conexión, tu cuenta de instagram aparecerá en ");
+			strong14 = element("strong");
+			t86 = text("“Activos conectados”");
+			t87 = text(" y ya podrás avanzar al siguiente paso.");
+			t88 = space();
+			div8 = element("div");
 			p3 = element("p");
-			t51 = text("¡Felicidades! Tu chatbot ya está listo para asistir a clientes a través de tu número de WhatsApp. Verifica que está respondiendo correctamente según la base de datos que le cargaste. Puedes habilitar, deshabilitar, editar o eliminar los ajustes de integración de WhatsApp según lo necesites.");
+			t89 = text("Paso 4: Conecta tu chatbot con tu cuenta de Instagram en Globot");
+			t90 = space();
+			ul13 = element("ul");
+			li13 = element("li");
+			t91 = text("Inicia sesión en Globot, crea tu chatbot con la información que tendrá para responder y configúralo como desees. Ahora dirígete a ");
+			strong15 = element("strong");
+			t92 = text("“Canales”");
+			t93 = text(".");
+			t94 = space();
+			img12 = element("img");
+			t95 = space();
+			ul14 = element("ul");
+			li14 = element("li");
+			t96 = text("Tienes 2 maneras de agregar tu chatbot en Instagram: La primera, conectando tu página de Facebook en el canal “Messenger” donde una vez seleccionada la página donde funcionará el chatbot se habilitará el botón en canal ");
+			strong16 = element("strong");
+			t97 = text("“Instagram”, “Detectar cuenta vinculada”");
+			t98 = text(".");
+			t99 = space();
+			img13 = element("img");
+			t100 = space();
+			img14 = element("img");
+			t101 = space();
+			ul15 = element("ul");
+			li15 = element("li");
+			t102 = text("La segunda manera es desde el canal ");
+			strong17 = element("strong");
+			t103 = text("“Instagram”");
+			t104 = text(" haciendo click en ");
+			strong18 = element("strong");
+			t105 = text("“Conectar con Facebook”");
+			t106 = text(" dónde de igual manera deberás seleccionar tu página de Facebook antes parar detectar tu cuenta de instagram vinculada. De esta manera en canal ");
+			strong19 = element("strong");
+			t107 = text("“Messenger”");
+			t108 = text(" quedará inhabilitado el chatbot a menos que tú lo habilites.");
+			t109 = space();
+			img15 = element("img");
+			t110 = space();
+			ul16 = element("ul");
+			li16 = element("li");
+			t111 = text("¡Listo! Ya completaste los pasos necesarios para integrar tu chatbot en tu cuenta de Instagram, verifica que esté funcionando correctamente.");
 			this.h();
 		},
 		l(nodes) {
@@ -3645,9 +3866,9 @@ function create_fragment(ctx) {
 			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
 			style_nodes.forEach(detach);
 			t1 = claim_space(section_nodes);
-			div10 = claim_element(section_nodes, "DIV", { class: true });
-			var div10_nodes = children(div10);
-			div1 = claim_element(div10_nodes, "DIV", { class: true });
+			div11 = claim_element(section_nodes, "DIV", { class: true });
+			var div11_nodes = children(div11);
+			div1 = claim_element(div11_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
 			div0 = claim_element(div1_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
@@ -3658,182 +3879,362 @@ function create_fragment(ctx) {
 
 			div0_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
-			t2 = claim_space(div10_nodes);
-			div9 = claim_element(div10_nodes, "DIV", { class: true });
-			var div9_nodes = children(div9);
-			div2 = claim_element(div9_nodes, "DIV", { class: true, style: true });
+			t2 = claim_space(div11_nodes);
+			div10 = claim_element(div11_nodes, "DIV", { class: true });
+			var div10_nodes = children(div10);
+			div2 = claim_element(div10_nodes, "DIV", { class: true, style: true });
 			var div2_nodes = children(div2);
-			span0 = claim_element(div2_nodes, "SPAN", { style: true });
+			span0 = claim_element(div2_nodes, "SPAN", {});
 			var span0_nodes = children(span0);
-			t3 = claim_text(span0_nodes, "Tutoriales >");
+			t3 = claim_text(span0_nodes, "Tutoriales");
 			span0_nodes.forEach(detach);
-			t4 = claim_space(div2_nodes);
-			span1 = claim_element(div2_nodes, "SPAN", { style: true });
+			t4 = claim_text(div2_nodes, " > ");
+			span1 = claim_element(div2_nodes, "SPAN", {});
 			var span1_nodes = children(span1);
-			t5 = claim_text(span1_nodes, "Integración canales > ");
+			t5 = claim_text(span1_nodes, "Integración canales");
 			span1_nodes.forEach(detach);
+			t6 = claim_text(div2_nodes, " > ");
 			span2 = claim_element(div2_nodes, "SPAN", { style: true });
 			var span2_nodes = children(span2);
-			t6 = claim_text(span2_nodes, "Instagram");
+			t7 = claim_text(span2_nodes, "Instagram");
 			span2_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
-			t7 = claim_space(div9_nodes);
-			div4 = claim_element(div9_nodes, "DIV", { class: true });
+			t8 = claim_space(div10_nodes);
+			div4 = claim_element(div10_nodes, "DIV", { class: true });
 			var div4_nodes = children(div4);
 			div3 = claim_element(div4_nodes, "DIV", { class: true });
 			var div3_nodes = children(div3);
-			t8 = claim_text(div3_nodes, /*heading*/ ctx[1]);
+			t9 = claim_text(div3_nodes, /*heading*/ ctx[1]);
 			div3_nodes.forEach(detach);
 			div4_nodes.forEach(detach);
-			t9 = claim_space(div9_nodes);
-			div8 = claim_element(div9_nodes, "DIV", { class: true });
-			var div8_nodes = children(div8);
-			div5 = claim_element(div8_nodes, "DIV", { class: true });
+			t10 = claim_space(div10_nodes);
+			div9 = claim_element(div10_nodes, "DIV", { class: true });
+			var div9_nodes = children(div9);
+			div5 = claim_element(div9_nodes, "DIV", { class: true });
 			var div5_nodes = children(div5);
 			p0 = claim_element(div5_nodes, "P", { class: true });
 			var p0_nodes = children(p0);
-			t10 = claim_text(p0_nodes, "Paso 1: Configura tu cuenta personal a cuenta profesional");
+			t11 = claim_text(p0_nodes, "Paso 1: Configura tu cuenta personal a cuenta profesional");
 			p0_nodes.forEach(detach);
-			t11 = claim_space(div5_nodes);
+			t12 = claim_space(div5_nodes);
 			ul0 = claim_element(div5_nodes, "UL", { class: true });
 			var ul0_nodes = children(ul0);
 			li0 = claim_element(ul0_nodes, "LI", { class: true });
 			var li0_nodes = children(li0);
-			t12 = claim_text(li0_nodes, "Para conectar tu chatbot en tu cuenta de instagram, tu cuenta debe ser profesional. Para cambiarla debes acceder a ");
+			t13 = claim_text(li0_nodes, "Para conectar tu chatbot en tu cuenta de instagram, tu cuenta debe ser profesional. Para cambiarla debes acceder a ");
 			strong0 = claim_element(li0_nodes, "STRONG", {});
 			var strong0_nodes = children(strong0);
-			t13 = claim_text(strong0_nodes, "“Configuraciones”");
+			t14 = claim_text(strong0_nodes, "“Configuraciones”");
 			strong0_nodes.forEach(detach);
-			t14 = claim_text(li0_nodes, " en tu cuenta de instagram, luego ");
+			t15 = claim_text(li0_nodes, " en tu cuenta de instagram, luego ");
 			strong1 = claim_element(li0_nodes, "STRONG", {});
 			var strong1_nodes = children(strong1);
-			t15 = claim_text(strong1_nodes, "“Tipo de cuentas y herramientas”");
+			t16 = claim_text(strong1_nodes, "“Tipo de cuentas y herramientas”");
 			strong1_nodes.forEach(detach);
-			t16 = claim_text(li0_nodes, " y luego ");
+			t17 = claim_text(li0_nodes, " y luego ");
 			strong2 = claim_element(li0_nodes, "STRONG", {});
 			var strong2_nodes = children(strong2);
-			t17 = claim_text(strong2_nodes, "“Cambiar a cuenta profesional”");
+			t18 = claim_text(strong2_nodes, "“Cambiar a cuenta profesional”");
 			strong2_nodes.forEach(detach);
-			t18 = claim_text(li0_nodes, ".");
+			t19 = claim_text(li0_nodes, ".");
 			li0_nodes.forEach(detach);
 			ul0_nodes.forEach(detach);
-			t19 = claim_space(div5_nodes);
-			img0 = claim_element(div5_nodes, "IMG", { src: true });
 			t20 = claim_space(div5_nodes);
+			img0 = claim_element(div5_nodes, "IMG", { src: true });
+			t21 = claim_space(div5_nodes);
 			ul1 = claim_element(div5_nodes, "UL", { class: true });
 			var ul1_nodes = children(ul1);
 			li1 = claim_element(ul1_nodes, "LI", { class: true });
 			var li1_nodes = children(li1);
-			t21 = claim_text(li1_nodes, "Sigue los pasos de Instagram y llena tu información de contacto.");
+			t22 = claim_text(li1_nodes, "Sigue los pasos de Instagram y llena tu información de contacto.");
 			li1_nodes.forEach(detach);
 			ul1_nodes.forEach(detach);
 			div5_nodes.forEach(detach);
-			t22 = claim_space(div8_nodes);
-			div6 = claim_element(div8_nodes, "DIV", { class: true });
+			t23 = claim_space(div9_nodes);
+			div6 = claim_element(div9_nodes, "DIV", { class: true });
 			var div6_nodes = children(div6);
 			p1 = claim_element(div6_nodes, "P", { class: true });
 			var p1_nodes = children(p1);
-			t23 = claim_text(p1_nodes, "Paso 2: Crea un portfolio comercial de Facebook");
+			t24 = claim_text(p1_nodes, "Paso 2: Crea un portfolio comercial de Facebook");
 			p1_nodes.forEach(detach);
-			t24 = claim_space(div6_nodes);
+			t25 = claim_space(div6_nodes);
 			ul2 = claim_element(div6_nodes, "UL", { class: true });
 			var ul2_nodes = children(ul2);
 			li2 = claim_element(ul2_nodes, "LI", { class: true });
 			var li2_nodes = children(li2);
-			t25 = claim_text(li2_nodes, "Ingresa a ");
-			a = claim_element(li2_nodes, "A", { class: true, href: true });
-			var a_nodes = children(a);
-			t26 = claim_text(a_nodes, "Meta Business");
-			a_nodes.forEach(detach);
-			t27 = claim_text(li2_nodes, " y haz click en “Crear cuenta” para crear tu portfolio comercial. Una vez allí ingresa la información de tu negocio y verifica tu correo electrónico (Si ya tienes creado un portfolio comercial y verificado, ignora este paso)");
+			t26 = claim_text(li2_nodes, "Ingresa a ");
+			a0 = claim_element(li2_nodes, "A", { class: true, href: true });
+			var a0_nodes = children(a0);
+			t27 = claim_text(a0_nodes, "Meta Business");
+			a0_nodes.forEach(detach);
+			t28 = claim_text(li2_nodes, " y haz click en “Crear cuenta” para crear tu portfolio comercial. Una vez allí ingresa la información de tu negocio y verifica tu correo electrónico (Si ya tienes creado un portfolio comercial y verificado, ignora este paso)");
 			li2_nodes.forEach(detach);
 			ul2_nodes.forEach(detach);
-			t28 = claim_space(div6_nodes);
-			img1 = claim_element(div6_nodes, "IMG", { src: true });
 			t29 = claim_space(div6_nodes);
-			img2 = claim_element(div6_nodes, "IMG", { src: true });
+			img1 = claim_element(div6_nodes, "IMG", { src: true });
 			t30 = claim_space(div6_nodes);
+			img2 = claim_element(div6_nodes, "IMG", { src: true });
+			t31 = claim_space(div6_nodes);
 			ul3 = claim_element(div6_nodes, "UL", { class: true });
 			var ul3_nodes = children(ul3);
 			li3 = claim_element(ul3_nodes, "LI", { class: true });
 			var li3_nodes = children(li3);
-			t31 = claim_text(li3_nodes, "Una vez confirmes tu correo electrónico e ingreses al link de Meta, llegarás a Configuraciones de tu portfolio comercial. Allí será necesario que verifiques tu portfolio, para poder realizar acciones de administración de cuentas.");
+			t32 = claim_text(li3_nodes, "Una vez confirmes tu correo electrónico e ingreses al link de Meta, llegarás a Configuraciones de tu portfolio comercial. Allí será necesario que verifiques tu portfolio, para poder realizar acciones de administración de cuentas.");
 			li3_nodes.forEach(detach);
 			ul3_nodes.forEach(detach);
-			t32 = claim_space(div6_nodes);
-			img3 = claim_element(div6_nodes, "IMG", { src: true });
 			t33 = claim_space(div6_nodes);
+			img3 = claim_element(div6_nodes, "IMG", { src: true });
+			t34 = claim_space(div6_nodes);
 			ul4 = claim_element(div6_nodes, "UL", { class: true });
 			var ul4_nodes = children(ul4);
 			li4 = claim_element(ul4_nodes, "LI", { class: true });
 			var li4_nodes = children(li4);
-			t34 = claim_text(li4_nodes, "Ingresa a ");
+			t35 = claim_text(li4_nodes, "Ingresa a ");
 			strong3 = claim_element(li4_nodes, "STRONG", {});
 			var strong3_nodes = children(strong3);
-			t35 = claim_text(strong3_nodes, "“Información del negocio”");
+			t36 = claim_text(strong3_nodes, "“Información del negocio”");
 			strong3_nodes.forEach(detach);
-			t36 = claim_text(li4_nodes, "  y rellena los campos de contacto. Luego dirígete a ");
+			t37 = claim_text(li4_nodes, "  y rellena los campos de contacto. Luego dirígete a ");
 			strong4 = claim_element(li4_nodes, "STRONG", {});
 			var strong4_nodes = children(strong4);
-			t37 = claim_text(strong4_nodes, "“Centro de seguridad”");
+			t38 = claim_text(strong4_nodes, "“Centro de seguridad”");
 			strong4_nodes.forEach(detach);
-			t38 = claim_text(li4_nodes, "  y configura la autenticación de dos pasos con sus permisos. Ingresa a ");
+			t39 = claim_text(li4_nodes, "  y configura la autenticación de dos pasos con sus permisos. Ingresa a ");
 			strong5 = claim_element(li4_nodes, "STRONG", {});
 			var strong5_nodes = children(strong5);
-			t39 = claim_text(strong5_nodes, "“Servicio de ayuda”");
+			t40 = claim_text(strong5_nodes, "“Servicio de ayuda”");
 			strong5_nodes.forEach(detach);
-			t40 = claim_text(li4_nodes, "  para obtener más detalle sobre la verificación de tu cuenta.");
+			t41 = claim_text(li4_nodes, "  para obtener más detalle sobre la verificación de tu cuenta.");
 			li4_nodes.forEach(detach);
 			ul4_nodes.forEach(detach);
-			t41 = claim_space(div6_nodes);
-			img4 = claim_element(div6_nodes, "IMG", { src: true });
 			t42 = claim_space(div6_nodes);
-			img5 = claim_element(div6_nodes, "IMG", { src: true });
+			img4 = claim_element(div6_nodes, "IMG", { src: true });
 			t43 = claim_space(div6_nodes);
+			img5 = claim_element(div6_nodes, "IMG", { src: true });
+			t44 = claim_space(div6_nodes);
 			ul5 = claim_element(div6_nodes, "UL", { class: true });
 			var ul5_nodes = children(ul5);
 			li5 = claim_element(ul5_nodes, "LI", { class: true });
 			var li5_nodes = children(li5);
-			t44 = claim_text(li5_nodes, "Una vez en el centro de ayuda haz click en ");
+			t45 = claim_text(li5_nodes, "Una vez en el centro de ayuda haz click en ");
 			strong6 = claim_element(li5_nodes, "STRONG", {});
 			var strong6_nodes = children(strong6);
-			t45 = claim_text(strong6_nodes, "“Solicitar revisión”");
+			t46 = claim_text(strong6_nodes, "“Solicitar revisión”");
 			strong6_nodes.forEach(detach);
-			t46 = claim_text(li5_nodes, "  y sigue los pasos de Facebook para verificar tu portfolio comercial (Si tu cuenta ya ha sido verificada, ignora este paso)");
+			t47 = claim_text(li5_nodes, "  y sigue los pasos de Facebook para verificar tu portfolio comercial (Si tu cuenta ya ha sido verificada, ignora este paso)");
 			li5_nodes.forEach(detach);
 			ul5_nodes.forEach(detach);
-			t47 = claim_space(div6_nodes);
+			t48 = claim_space(div6_nodes);
 			img6 = claim_element(div6_nodes, "IMG", { src: true });
+			t49 = claim_space(div6_nodes);
+			ul6 = claim_element(div6_nodes, "UL", { class: true });
+			var ul6_nodes = children(ul6);
+			li6 = claim_element(ul6_nodes, "LI", { class: true });
+			var li6_nodes = children(li6);
+			t50 = claim_text(li6_nodes, "La revisión puede durar un tiempo, luego de ser aceptada ya podrás tener funciones como conectar tu página de Facebook con tu cuenta de Instagram.");
+			li6_nodes.forEach(detach);
+			ul6_nodes.forEach(detach);
 			div6_nodes.forEach(detach);
-			t48 = claim_space(div8_nodes);
-			div7 = claim_element(div8_nodes, "DIV", { class: true });
+			t51 = claim_space(div9_nodes);
+			div7 = claim_element(div9_nodes, "DIV", { class: true });
 			var div7_nodes = children(div7);
 			p2 = claim_element(div7_nodes, "P", { class: true });
 			var p2_nodes = children(p2);
-			t49 = claim_text(p2_nodes, "Paso 8: Verifica el funcionamiento de tu chatbot en Whatsapp");
+			t52 = claim_text(p2_nodes, "Paso 3: Vincula tu página de Facebook con tu perfil de Instagram en Meta Business Suite");
 			p2_nodes.forEach(detach);
-			t50 = claim_space(div7_nodes);
-			p3 = claim_element(div7_nodes, "P", {});
-			var p3_nodes = children(p3);
-			t51 = claim_text(p3_nodes, "¡Felicidades! Tu chatbot ya está listo para asistir a clientes a través de tu número de WhatsApp. Verifica que está respondiendo correctamente según la base de datos que le cargaste. Puedes habilitar, deshabilitar, editar o eliminar los ajustes de integración de WhatsApp según lo necesites.");
-			p3_nodes.forEach(detach);
+			t53 = claim_space(div7_nodes);
+			ul7 = claim_element(div7_nodes, "UL", { class: true });
+			var ul7_nodes = children(ul7);
+			li7 = claim_element(ul7_nodes, "LI", { class: true });
+			var li7_nodes = children(li7);
+			t54 = claim_text(li7_nodes, "Ingresa a ");
+			a1 = claim_element(li7_nodes, "A", { class: true, href: true });
+			var a1_nodes = children(a1);
+			t55 = claim_text(a1_nodes, "Meta Business");
+			a1_nodes.forEach(detach);
+			t56 = claim_text(li7_nodes, " a ");
+			strong7 = claim_element(li7_nodes, "STRONG", {});
+			var strong7_nodes = children(strong7);
+			t57 = claim_text(strong7_nodes, "Configuración");
+			strong7_nodes.forEach(detach);
+			t58 = claim_text(li7_nodes, " de tu portfolio comercial recién creado (o al que tengas creado donde quieras administrar tus cuentas Meta). Dirígete a ");
+			strong8 = claim_element(li7_nodes, "STRONG", {});
+			var strong8_nodes = children(strong8);
+			t59 = claim_text(strong8_nodes, "“Activos comerciales”");
+			strong8_nodes.forEach(detach);
+			t60 = claim_text(li7_nodes, " y una vez allí selecciona ");
+			strong9 = claim_element(li7_nodes, "STRONG", {});
+			var strong9_nodes = children(strong9);
+			t61 = claim_text(strong9_nodes, "Agregar activos");
+			strong9_nodes.forEach(detach);
+			t62 = claim_text(li7_nodes, " en página de Facebook.");
+			li7_nodes.forEach(detach);
+			ul7_nodes.forEach(detach);
+			t63 = claim_space(div7_nodes);
+			img7 = claim_element(div7_nodes, "IMG", { src: true });
+			t64 = claim_space(div7_nodes);
+			ul8 = claim_element(div7_nodes, "UL", { class: true });
+			var ul8_nodes = children(ul8);
+			li8 = claim_element(ul8_nodes, "LI", { class: true });
+			var li8_nodes = children(li8);
+			t65 = claim_text(li8_nodes, "Puedes seleccionar una página ya creada seleccionando ");
+			strong10 = claim_element(li8_nodes, "STRONG", {});
+			var strong10_nodes = children(strong10);
+			t66 = claim_text(strong10_nodes, "“Reclamar una página de Facebook existente”");
+			strong10_nodes.forEach(detach);
+			t67 = claim_text(li8_nodes, " o ");
+			strong11 = claim_element(li8_nodes, "STRONG", {});
+			var strong11_nodes = children(strong11);
+			t68 = claim_text(strong11_nodes, "“Crear una nueva página de Facebook”");
+			strong11_nodes.forEach(detach);
+			t69 = claim_text(li8_nodes, " para tu cuenta de instagram.");
+			li8_nodes.forEach(detach);
+			ul8_nodes.forEach(detach);
+			t70 = claim_space(div7_nodes);
+			img8 = claim_element(div7_nodes, "IMG", { src: true });
+			t71 = claim_space(div7_nodes);
+			ul9 = claim_element(div7_nodes, "UL", { class: true });
+			var ul9_nodes = children(ul9);
+			li9 = claim_element(ul9_nodes, "LI", { class: true });
+			var li9_nodes = children(li9);
+			t72 = claim_text(li9_nodes, "Sigue los pasos para conectar tu página de Facebook, una vez agregada se visualizará como ");
+			strong12 = claim_element(li9_nodes, "STRONG", {});
+			var strong12_nodes = children(strong12);
+			t73 = claim_text(strong12_nodes, "“Activo comercial”");
+			strong12_nodes.forEach(detach);
+			t74 = claim_text(li9_nodes, ".");
+			li9_nodes.forEach(detach);
+			ul9_nodes.forEach(detach);
+			t75 = claim_space(div7_nodes);
+			img9 = claim_element(div7_nodes, "IMG", { src: true });
+			t76 = claim_space(div7_nodes);
+			ul10 = claim_element(div7_nodes, "UL", { class: true });
+			var ul10_nodes = children(ul10);
+			li10 = claim_element(ul10_nodes, "LI", { class: true });
+			var li10_nodes = children(li10);
+			t77 = claim_text(li10_nodes, "Haz click en tu página recién agregar y luego click a ");
+			strong13 = claim_element(li10_nodes, "STRONG", {});
+			var strong13_nodes = children(strong13);
+			t78 = claim_text(strong13_nodes, "“Conectar activos”");
+			strong13_nodes.forEach(detach);
+			t79 = claim_text(li10_nodes, ".");
+			li10_nodes.forEach(detach);
+			ul10_nodes.forEach(detach);
+			t80 = claim_space(div7_nodes);
+			img10 = claim_element(div7_nodes, "IMG", { src: true });
+			t81 = claim_space(div7_nodes);
+			ul11 = claim_element(div7_nodes, "UL", { class: true });
+			var ul11_nodes = children(ul11);
+			li11 = claim_element(ul11_nodes, "LI", { class: true });
+			var li11_nodes = children(li11);
+			t82 = claim_text(li11_nodes, "Sigue los pasos para conectar tu página de Facebook con tu cuenta de Instagram.");
+			li11_nodes.forEach(detach);
+			ul11_nodes.forEach(detach);
+			t83 = claim_space(div7_nodes);
+			img11 = claim_element(div7_nodes, "IMG", { src: true });
+			t84 = claim_space(div7_nodes);
+			ul12 = claim_element(div7_nodes, "UL", { class: true });
+			var ul12_nodes = children(ul12);
+			li12 = claim_element(ul12_nodes, "LI", { class: true });
+			var li12_nodes = children(li12);
+			t85 = claim_text(li12_nodes, "Una vez realizada la conexión, tu cuenta de instagram aparecerá en ");
+			strong14 = claim_element(li12_nodes, "STRONG", {});
+			var strong14_nodes = children(strong14);
+			t86 = claim_text(strong14_nodes, "“Activos conectados”");
+			strong14_nodes.forEach(detach);
+			t87 = claim_text(li12_nodes, " y ya podrás avanzar al siguiente paso.");
+			li12_nodes.forEach(detach);
+			ul12_nodes.forEach(detach);
 			div7_nodes.forEach(detach);
+			t88 = claim_space(div9_nodes);
+			div8 = claim_element(div9_nodes, "DIV", { class: true });
+			var div8_nodes = children(div8);
+			p3 = claim_element(div8_nodes, "P", { class: true });
+			var p3_nodes = children(p3);
+			t89 = claim_text(p3_nodes, "Paso 4: Conecta tu chatbot con tu cuenta de Instagram en Globot");
+			p3_nodes.forEach(detach);
+			t90 = claim_space(div8_nodes);
+			ul13 = claim_element(div8_nodes, "UL", { class: true });
+			var ul13_nodes = children(ul13);
+			li13 = claim_element(ul13_nodes, "LI", { class: true });
+			var li13_nodes = children(li13);
+			t91 = claim_text(li13_nodes, "Inicia sesión en Globot, crea tu chatbot con la información que tendrá para responder y configúralo como desees. Ahora dirígete a ");
+			strong15 = claim_element(li13_nodes, "STRONG", {});
+			var strong15_nodes = children(strong15);
+			t92 = claim_text(strong15_nodes, "“Canales”");
+			strong15_nodes.forEach(detach);
+			t93 = claim_text(li13_nodes, ".");
+			li13_nodes.forEach(detach);
+			ul13_nodes.forEach(detach);
+			t94 = claim_space(div8_nodes);
+			img12 = claim_element(div8_nodes, "IMG", { src: true });
+			t95 = claim_space(div8_nodes);
+			ul14 = claim_element(div8_nodes, "UL", { class: true });
+			var ul14_nodes = children(ul14);
+			li14 = claim_element(ul14_nodes, "LI", { class: true });
+			var li14_nodes = children(li14);
+			t96 = claim_text(li14_nodes, "Tienes 2 maneras de agregar tu chatbot en Instagram: La primera, conectando tu página de Facebook en el canal “Messenger” donde una vez seleccionada la página donde funcionará el chatbot se habilitará el botón en canal ");
+			strong16 = claim_element(li14_nodes, "STRONG", {});
+			var strong16_nodes = children(strong16);
+			t97 = claim_text(strong16_nodes, "“Instagram”, “Detectar cuenta vinculada”");
+			strong16_nodes.forEach(detach);
+			t98 = claim_text(li14_nodes, ".");
+			li14_nodes.forEach(detach);
+			ul14_nodes.forEach(detach);
+			t99 = claim_space(div8_nodes);
+			img13 = claim_element(div8_nodes, "IMG", { src: true });
+			t100 = claim_space(div8_nodes);
+			img14 = claim_element(div8_nodes, "IMG", { src: true });
+			t101 = claim_space(div8_nodes);
+			ul15 = claim_element(div8_nodes, "UL", { class: true });
+			var ul15_nodes = children(ul15);
+			li15 = claim_element(ul15_nodes, "LI", { class: true });
+			var li15_nodes = children(li15);
+			t102 = claim_text(li15_nodes, "La segunda manera es desde el canal ");
+			strong17 = claim_element(li15_nodes, "STRONG", {});
+			var strong17_nodes = children(strong17);
+			t103 = claim_text(strong17_nodes, "“Instagram”");
+			strong17_nodes.forEach(detach);
+			t104 = claim_text(li15_nodes, " haciendo click en ");
+			strong18 = claim_element(li15_nodes, "STRONG", {});
+			var strong18_nodes = children(strong18);
+			t105 = claim_text(strong18_nodes, "“Conectar con Facebook”");
+			strong18_nodes.forEach(detach);
+			t106 = claim_text(li15_nodes, " dónde de igual manera deberás seleccionar tu página de Facebook antes parar detectar tu cuenta de instagram vinculada. De esta manera en canal ");
+			strong19 = claim_element(li15_nodes, "STRONG", {});
+			var strong19_nodes = children(strong19);
+			t107 = claim_text(strong19_nodes, "“Messenger”");
+			strong19_nodes.forEach(detach);
+			t108 = claim_text(li15_nodes, " quedará inhabilitado el chatbot a menos que tú lo habilites.");
+			li15_nodes.forEach(detach);
+			ul15_nodes.forEach(detach);
+			t109 = claim_space(div8_nodes);
+			img15 = claim_element(div8_nodes, "IMG", { src: true });
+			t110 = claim_space(div8_nodes);
+			ul16 = claim_element(div8_nodes, "UL", { class: true });
+			var ul16_nodes = children(ul16);
+			li16 = claim_element(ul16_nodes, "LI", { class: true });
+			var li16_nodes = children(li16);
+			t111 = claim_text(li16_nodes, "¡Listo! Ya completaste los pasos necesarios para integrar tu chatbot en tu cuenta de Instagram, verifica que esté funcionando correctamente.");
+			li16_nodes.forEach(detach);
+			ul16_nodes.forEach(detach);
 			div8_nodes.forEach(detach);
 			div9_nodes.forEach(detach);
 			div10_nodes.forEach(detach);
+			div11_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
 			attr(div0, "class", "accordion svelte-cscos2");
 			attr(div1, "class", "box1 svelte-cscos2");
-			set_style(span0, "color", "#C1C2C4");
-			set_style(span1, "color", "#C1C2C4");
 			set_style(span2, "color", "var(--Primary-2, #7B5CF5)");
 			attr(div2, "class", "steps svelte-cscos2");
 			set_style(div2, "display", "flex");
 			set_style(div2, "gap", "15px");
 			set_style(div2, "margin-bottom", "20px");
+			set_style(div2, "text-align", "center");
+			set_style(div2, "color", "#C1C2C4");
 			attr(div3, "class", "heading svelte-cscos2");
 			attr(div4, "class", "heading-group svelte-cscos2");
 			attr(p0, "class", "subtitle svelte-cscos2");
@@ -3844,8 +4245,8 @@ function create_fragment(ctx) {
 			attr(ul1, "class", "svelte-cscos2");
 			attr(div5, "class", "paso1 svelte-cscos2");
 			attr(p1, "class", "subtitle svelte-cscos2");
-			attr(a, "class", "link svelte-cscos2");
-			attr(a, "href", "https://business.facebook.com/");
+			attr(a0, "class", "link svelte-cscos2");
+			attr(a0, "href", "https://business.facebook.com/");
 			attr(li2, "class", "svelte-cscos2");
 			attr(ul2, "class", "svelte-cscos2");
 			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) attr(img1, "src", img1_src_value);
@@ -3860,12 +4261,47 @@ function create_fragment(ctx) {
 			attr(li5, "class", "svelte-cscos2");
 			attr(ul5, "class", "svelte-cscos2");
 			if (!src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[8].url)) attr(img6, "src", img6_src_value);
+			attr(li6, "class", "svelte-cscos2");
+			attr(ul6, "class", "svelte-cscos2");
 			attr(div6, "class", "paso1 svelte-cscos2");
 			attr(p2, "class", "subtitle svelte-cscos2");
+			attr(a1, "class", "link svelte-cscos2");
+			attr(a1, "href", "https://business.facebook.com/");
+			attr(li7, "class", "svelte-cscos2");
+			attr(ul7, "class", "svelte-cscos2");
+			if (!src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[9].url)) attr(img7, "src", img7_src_value);
+			attr(li8, "class", "svelte-cscos2");
+			attr(ul8, "class", "svelte-cscos2");
+			if (!src_url_equal(img8.src, img8_src_value = /*image9*/ ctx[10].url)) attr(img8, "src", img8_src_value);
+			attr(li9, "class", "svelte-cscos2");
+			attr(ul9, "class", "svelte-cscos2");
+			if (!src_url_equal(img9.src, img9_src_value = /*image10*/ ctx[11].url)) attr(img9, "src", img9_src_value);
+			attr(li10, "class", "svelte-cscos2");
+			attr(ul10, "class", "svelte-cscos2");
+			if (!src_url_equal(img10.src, img10_src_value = /*image11*/ ctx[12].url)) attr(img10, "src", img10_src_value);
+			attr(li11, "class", "svelte-cscos2");
+			attr(ul11, "class", "svelte-cscos2");
+			if (!src_url_equal(img11.src, img11_src_value = /*image12*/ ctx[13].url)) attr(img11, "src", img11_src_value);
+			attr(li12, "class", "svelte-cscos2");
+			attr(ul12, "class", "svelte-cscos2");
 			attr(div7, "class", "paso1 svelte-cscos2");
-			attr(div8, "class", "content svelte-cscos2");
-			attr(div9, "class", "box2 svelte-cscos2");
-			attr(div10, "class", "section-container svelte-cscos2");
+			attr(p3, "class", "subtitle svelte-cscos2");
+			attr(li13, "class", "svelte-cscos2");
+			attr(ul13, "class", "svelte-cscos2");
+			if (!src_url_equal(img12.src, img12_src_value = /*image13*/ ctx[14].url)) attr(img12, "src", img12_src_value);
+			attr(li14, "class", "svelte-cscos2");
+			attr(ul14, "class", "svelte-cscos2");
+			if (!src_url_equal(img13.src, img13_src_value = /*image14*/ ctx[15].url)) attr(img13, "src", img13_src_value);
+			if (!src_url_equal(img14.src, img14_src_value = /*image15*/ ctx[16].url)) attr(img14, "src", img14_src_value);
+			attr(li15, "class", "svelte-cscos2");
+			attr(ul15, "class", "svelte-cscos2");
+			if (!src_url_equal(img15.src, img15_src_value = /*image16*/ ctx[17].url)) attr(img15, "src", img15_src_value);
+			attr(li16, "class", "svelte-cscos2");
+			attr(ul16, "class", "svelte-cscos2");
+			attr(div8, "class", "paso1 svelte-cscos2");
+			attr(div9, "class", "content svelte-cscos2");
+			attr(div10, "class", "box2 svelte-cscos2");
+			attr(div11, "class", "section-container svelte-cscos2");
 			attr(section, "class", "svelte-cscos2");
 		},
 		m(target, anchor) {
@@ -3873,8 +4309,8 @@ function create_fragment(ctx) {
 			append_hydration(section, style);
 			append_hydration(style, t0);
 			append_hydration(section, t1);
-			append_hydration(section, div10);
-			append_hydration(div10, div1);
+			append_hydration(section, div11);
+			append_hydration(div11, div1);
 			append_hydration(div1, div0);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -3883,109 +4319,215 @@ function create_fragment(ctx) {
 				}
 			}
 
-			append_hydration(div10, t2);
-			append_hydration(div10, div9);
-			append_hydration(div9, div2);
+			append_hydration(div11, t2);
+			append_hydration(div11, div10);
+			append_hydration(div10, div2);
 			append_hydration(div2, span0);
 			append_hydration(span0, t3);
 			append_hydration(div2, t4);
 			append_hydration(div2, span1);
 			append_hydration(span1, t5);
+			append_hydration(div2, t6);
 			append_hydration(div2, span2);
-			append_hydration(span2, t6);
-			append_hydration(div9, t7);
-			append_hydration(div9, div4);
+			append_hydration(span2, t7);
+			append_hydration(div10, t8);
+			append_hydration(div10, div4);
 			append_hydration(div4, div3);
-			append_hydration(div3, t8);
-			append_hydration(div9, t9);
-			append_hydration(div9, div8);
-			append_hydration(div8, div5);
+			append_hydration(div3, t9);
+			append_hydration(div10, t10);
+			append_hydration(div10, div9);
+			append_hydration(div9, div5);
 			append_hydration(div5, p0);
-			append_hydration(p0, t10);
-			append_hydration(div5, t11);
+			append_hydration(p0, t11);
+			append_hydration(div5, t12);
 			append_hydration(div5, ul0);
 			append_hydration(ul0, li0);
-			append_hydration(li0, t12);
+			append_hydration(li0, t13);
 			append_hydration(li0, strong0);
-			append_hydration(strong0, t13);
-			append_hydration(li0, t14);
+			append_hydration(strong0, t14);
+			append_hydration(li0, t15);
 			append_hydration(li0, strong1);
-			append_hydration(strong1, t15);
-			append_hydration(li0, t16);
+			append_hydration(strong1, t16);
+			append_hydration(li0, t17);
 			append_hydration(li0, strong2);
-			append_hydration(strong2, t17);
-			append_hydration(li0, t18);
-			append_hydration(div5, t19);
-			append_hydration(div5, img0);
+			append_hydration(strong2, t18);
+			append_hydration(li0, t19);
 			append_hydration(div5, t20);
+			append_hydration(div5, img0);
+			append_hydration(div5, t21);
 			append_hydration(div5, ul1);
 			append_hydration(ul1, li1);
-			append_hydration(li1, t21);
-			append_hydration(div8, t22);
-			append_hydration(div8, div6);
+			append_hydration(li1, t22);
+			append_hydration(div9, t23);
+			append_hydration(div9, div6);
 			append_hydration(div6, p1);
-			append_hydration(p1, t23);
-			append_hydration(div6, t24);
+			append_hydration(p1, t24);
+			append_hydration(div6, t25);
 			append_hydration(div6, ul2);
 			append_hydration(ul2, li2);
-			append_hydration(li2, t25);
-			append_hydration(li2, a);
-			append_hydration(a, t26);
-			append_hydration(li2, t27);
-			append_hydration(div6, t28);
-			append_hydration(div6, img1);
+			append_hydration(li2, t26);
+			append_hydration(li2, a0);
+			append_hydration(a0, t27);
+			append_hydration(li2, t28);
 			append_hydration(div6, t29);
-			append_hydration(div6, img2);
+			append_hydration(div6, img1);
 			append_hydration(div6, t30);
+			append_hydration(div6, img2);
+			append_hydration(div6, t31);
 			append_hydration(div6, ul3);
 			append_hydration(ul3, li3);
-			append_hydration(li3, t31);
-			append_hydration(div6, t32);
-			append_hydration(div6, img3);
+			append_hydration(li3, t32);
 			append_hydration(div6, t33);
+			append_hydration(div6, img3);
+			append_hydration(div6, t34);
 			append_hydration(div6, ul4);
 			append_hydration(ul4, li4);
-			append_hydration(li4, t34);
+			append_hydration(li4, t35);
 			append_hydration(li4, strong3);
-			append_hydration(strong3, t35);
-			append_hydration(li4, t36);
+			append_hydration(strong3, t36);
+			append_hydration(li4, t37);
 			append_hydration(li4, strong4);
-			append_hydration(strong4, t37);
-			append_hydration(li4, t38);
+			append_hydration(strong4, t38);
+			append_hydration(li4, t39);
 			append_hydration(li4, strong5);
-			append_hydration(strong5, t39);
-			append_hydration(li4, t40);
-			append_hydration(div6, t41);
-			append_hydration(div6, img4);
+			append_hydration(strong5, t40);
+			append_hydration(li4, t41);
 			append_hydration(div6, t42);
-			append_hydration(div6, img5);
+			append_hydration(div6, img4);
 			append_hydration(div6, t43);
+			append_hydration(div6, img5);
+			append_hydration(div6, t44);
 			append_hydration(div6, ul5);
 			append_hydration(ul5, li5);
-			append_hydration(li5, t44);
+			append_hydration(li5, t45);
 			append_hydration(li5, strong6);
-			append_hydration(strong6, t45);
-			append_hydration(li5, t46);
-			append_hydration(div6, t47);
+			append_hydration(strong6, t46);
+			append_hydration(li5, t47);
+			append_hydration(div6, t48);
 			append_hydration(div6, img6);
-			append_hydration(div8, t48);
-			append_hydration(div8, div7);
+			append_hydration(div6, t49);
+			append_hydration(div6, ul6);
+			append_hydration(ul6, li6);
+			append_hydration(li6, t50);
+			append_hydration(div9, t51);
+			append_hydration(div9, div7);
 			append_hydration(div7, p2);
-			append_hydration(p2, t49);
-			append_hydration(div7, t50);
-			append_hydration(div7, p3);
-			append_hydration(p3, t51);
+			append_hydration(p2, t52);
+			append_hydration(div7, t53);
+			append_hydration(div7, ul7);
+			append_hydration(ul7, li7);
+			append_hydration(li7, t54);
+			append_hydration(li7, a1);
+			append_hydration(a1, t55);
+			append_hydration(li7, t56);
+			append_hydration(li7, strong7);
+			append_hydration(strong7, t57);
+			append_hydration(li7, t58);
+			append_hydration(li7, strong8);
+			append_hydration(strong8, t59);
+			append_hydration(li7, t60);
+			append_hydration(li7, strong9);
+			append_hydration(strong9, t61);
+			append_hydration(li7, t62);
+			append_hydration(div7, t63);
+			append_hydration(div7, img7);
+			append_hydration(div7, t64);
+			append_hydration(div7, ul8);
+			append_hydration(ul8, li8);
+			append_hydration(li8, t65);
+			append_hydration(li8, strong10);
+			append_hydration(strong10, t66);
+			append_hydration(li8, t67);
+			append_hydration(li8, strong11);
+			append_hydration(strong11, t68);
+			append_hydration(li8, t69);
+			append_hydration(div7, t70);
+			append_hydration(div7, img8);
+			append_hydration(div7, t71);
+			append_hydration(div7, ul9);
+			append_hydration(ul9, li9);
+			append_hydration(li9, t72);
+			append_hydration(li9, strong12);
+			append_hydration(strong12, t73);
+			append_hydration(li9, t74);
+			append_hydration(div7, t75);
+			append_hydration(div7, img9);
+			append_hydration(div7, t76);
+			append_hydration(div7, ul10);
+			append_hydration(ul10, li10);
+			append_hydration(li10, t77);
+			append_hydration(li10, strong13);
+			append_hydration(strong13, t78);
+			append_hydration(li10, t79);
+			append_hydration(div7, t80);
+			append_hydration(div7, img10);
+			append_hydration(div7, t81);
+			append_hydration(div7, ul11);
+			append_hydration(ul11, li11);
+			append_hydration(li11, t82);
+			append_hydration(div7, t83);
+			append_hydration(div7, img11);
+			append_hydration(div7, t84);
+			append_hydration(div7, ul12);
+			append_hydration(ul12, li12);
+			append_hydration(li12, t85);
+			append_hydration(li12, strong14);
+			append_hydration(strong14, t86);
+			append_hydration(li12, t87);
+			append_hydration(div9, t88);
+			append_hydration(div9, div8);
+			append_hydration(div8, p3);
+			append_hydration(p3, t89);
+			append_hydration(div8, t90);
+			append_hydration(div8, ul13);
+			append_hydration(ul13, li13);
+			append_hydration(li13, t91);
+			append_hydration(li13, strong15);
+			append_hydration(strong15, t92);
+			append_hydration(li13, t93);
+			append_hydration(div8, t94);
+			append_hydration(div8, img12);
+			append_hydration(div8, t95);
+			append_hydration(div8, ul14);
+			append_hydration(ul14, li14);
+			append_hydration(li14, t96);
+			append_hydration(li14, strong16);
+			append_hydration(strong16, t97);
+			append_hydration(li14, t98);
+			append_hydration(div8, t99);
+			append_hydration(div8, img13);
+			append_hydration(div8, t100);
+			append_hydration(div8, img14);
+			append_hydration(div8, t101);
+			append_hydration(div8, ul15);
+			append_hydration(ul15, li15);
+			append_hydration(li15, t102);
+			append_hydration(li15, strong17);
+			append_hydration(strong17, t103);
+			append_hydration(li15, t104);
+			append_hydration(li15, strong18);
+			append_hydration(strong18, t105);
+			append_hydration(li15, t106);
+			append_hydration(li15, strong19);
+			append_hydration(strong19, t107);
+			append_hydration(li15, t108);
+			append_hydration(div8, t109);
+			append_hydration(div8, img15);
+			append_hydration(div8, t110);
+			append_hydration(div8, ul16);
+			append_hydration(ul16, li16);
+			append_hydration(li16, t111);
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*activeItem, items, setActiveItem*/ 1537) {
+			if (dirty & /*activeItem, items, setActiveItem*/ 786433) {
 				each_value = /*items*/ ctx[0];
 				group_outros();
 				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div0, outro_and_destroy_block, create_each_block, null, get_each_context);
 				check_outros();
 			}
 
-			if (!current || dirty & /*heading*/ 2) set_data(t8, /*heading*/ ctx[1]);
+			if (!current || dirty & /*heading*/ 2) set_data(t9, /*heading*/ ctx[1]);
 
 			if (!current || dirty & /*image1*/ 4 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) {
 				attr(img0, "src", img0_src_value);
@@ -4013,6 +4555,42 @@ function create_fragment(ctx) {
 
 			if (!current || dirty & /*image7*/ 256 && !src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[8].url)) {
 				attr(img6, "src", img6_src_value);
+			}
+
+			if (!current || dirty & /*image8*/ 512 && !src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[9].url)) {
+				attr(img7, "src", img7_src_value);
+			}
+
+			if (!current || dirty & /*image9*/ 1024 && !src_url_equal(img8.src, img8_src_value = /*image9*/ ctx[10].url)) {
+				attr(img8, "src", img8_src_value);
+			}
+
+			if (!current || dirty & /*image10*/ 2048 && !src_url_equal(img9.src, img9_src_value = /*image10*/ ctx[11].url)) {
+				attr(img9, "src", img9_src_value);
+			}
+
+			if (!current || dirty & /*image11*/ 4096 && !src_url_equal(img10.src, img10_src_value = /*image11*/ ctx[12].url)) {
+				attr(img10, "src", img10_src_value);
+			}
+
+			if (!current || dirty & /*image12*/ 8192 && !src_url_equal(img11.src, img11_src_value = /*image12*/ ctx[13].url)) {
+				attr(img11, "src", img11_src_value);
+			}
+
+			if (!current || dirty & /*image13*/ 16384 && !src_url_equal(img12.src, img12_src_value = /*image13*/ ctx[14].url)) {
+				attr(img12, "src", img12_src_value);
+			}
+
+			if (!current || dirty & /*image14*/ 32768 && !src_url_equal(img13.src, img13_src_value = /*image14*/ ctx[15].url)) {
+				attr(img13, "src", img13_src_value);
+			}
+
+			if (!current || dirty & /*image15*/ 65536 && !src_url_equal(img14.src, img14_src_value = /*image15*/ ctx[16].url)) {
+				attr(img14, "src", img14_src_value);
+			}
+
+			if (!current || dirty & /*image16*/ 131072 && !src_url_equal(img15.src, img15_src_value = /*image16*/ ctx[17].url)) {
+				attr(img15, "src", img15_src_value);
 			}
 		},
 		i(local) {
@@ -4052,16 +4630,25 @@ function instance($$self, $$props, $$invalidate) {
 	let { image5 } = $$props;
 	let { image6 } = $$props;
 	let { image7 } = $$props;
+	let { image8 } = $$props;
+	let { image9 } = $$props;
+	let { image10 } = $$props;
+	let { image11 } = $$props;
+	let { image12 } = $$props;
+	let { image13 } = $$props;
+	let { image14 } = $$props;
+	let { image15 } = $$props;
+	let { image16 } = $$props;
 	let activeItem = 0;
 
 	function setActiveItem(i) {
-		$$invalidate(9, activeItem = activeItem === i ? null : i);
+		$$invalidate(18, activeItem = activeItem === i ? null : i);
 	}
 
 	const click_handler = i => setActiveItem(i);
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(11, props = $$props.props);
+		if ('props' in $$props) $$invalidate(20, props = $$props.props);
 		if ('items' in $$props) $$invalidate(0, items = $$props.items);
 		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
 		if ('image1' in $$props) $$invalidate(2, image1 = $$props.image1);
@@ -4071,6 +4658,15 @@ function instance($$self, $$props, $$invalidate) {
 		if ('image5' in $$props) $$invalidate(6, image5 = $$props.image5);
 		if ('image6' in $$props) $$invalidate(7, image6 = $$props.image6);
 		if ('image7' in $$props) $$invalidate(8, image7 = $$props.image7);
+		if ('image8' in $$props) $$invalidate(9, image8 = $$props.image8);
+		if ('image9' in $$props) $$invalidate(10, image9 = $$props.image9);
+		if ('image10' in $$props) $$invalidate(11, image10 = $$props.image10);
+		if ('image11' in $$props) $$invalidate(12, image11 = $$props.image11);
+		if ('image12' in $$props) $$invalidate(13, image12 = $$props.image12);
+		if ('image13' in $$props) $$invalidate(14, image13 = $$props.image13);
+		if ('image14' in $$props) $$invalidate(15, image14 = $$props.image14);
+		if ('image15' in $$props) $$invalidate(16, image15 = $$props.image15);
+		if ('image16' in $$props) $$invalidate(17, image16 = $$props.image16);
 	};
 
 	return [
@@ -4083,6 +4679,15 @@ function instance($$self, $$props, $$invalidate) {
 		image5,
 		image6,
 		image7,
+		image8,
+		image9,
+		image10,
+		image11,
+		image12,
+		image13,
+		image14,
+		image15,
+		image16,
 		activeItem,
 		setActiveItem,
 		props,
@@ -4095,7 +4700,7 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 11,
+			props: 20,
 			items: 0,
 			heading: 1,
 			image1: 2,
@@ -4104,7 +4709,16 @@ class Component extends SvelteComponent {
 			image4: 5,
 			image5: 6,
 			image6: 7,
-			image7: 8
+			image7: 8,
+			image8: 9,
+			image9: 10,
+			image10: 11,
+			image11: 12,
+			image12: 13,
+			image13: 14,
+			image14: 15,
+			image15: 16,
+			image16: 17
 		});
 	}
 }
