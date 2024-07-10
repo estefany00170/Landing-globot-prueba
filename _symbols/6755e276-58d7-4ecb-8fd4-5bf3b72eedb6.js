@@ -1,4 +1,4 @@
-// New Block - Updated July 5, 2024
+// New Block - Updated July 10, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3672,7 +3672,7 @@ function create_fragment(ctx) {
 			t8 = space();
 			div4 = element("div");
 			div3 = element("div");
-			t9 = text(/*heading*/ ctx[1]);
+			t9 = text(/*heading*/ ctx[10]);
 			t10 = space();
 			div9 = element("div");
 			div5 = element("div");
@@ -3904,7 +3904,7 @@ function create_fragment(ctx) {
 			var div4_nodes = children(div4);
 			div3 = claim_element(div4_nodes, "DIV", { class: true });
 			var div3_nodes = children(div3);
-			t9 = claim_text(div3_nodes, /*heading*/ ctx[1]);
+			t9 = claim_text(div3_nodes, /*heading*/ ctx[10]);
 			div3_nodes.forEach(detach);
 			div4_nodes.forEach(detach);
 			t10 = claim_space(div10_nodes);
@@ -4240,7 +4240,7 @@ function create_fragment(ctx) {
 			attr(p0, "class", "subtitle svelte-cscos2");
 			attr(li0, "class", "svelte-cscos2");
 			attr(ul0, "class", "svelte-cscos2");
-			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) attr(img0, "src", img0_src_value);
+			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) attr(img0, "src", img0_src_value);
 			attr(li1, "class", "svelte-cscos2");
 			attr(ul1, "class", "svelte-cscos2");
 			attr(div5, "class", "paso1 svelte-cscos2");
@@ -4249,18 +4249,18 @@ function create_fragment(ctx) {
 			attr(a0, "href", "https://business.facebook.com/");
 			attr(li2, "class", "svelte-cscos2");
 			attr(ul2, "class", "svelte-cscos2");
-			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) attr(img1, "src", img1_src_value);
-			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[4].url)) attr(img2, "src", img2_src_value);
+			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) attr(img1, "src", img1_src_value);
+			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) attr(img2, "src", img2_src_value);
 			attr(li3, "class", "svelte-cscos2");
 			attr(ul3, "class", "svelte-cscos2");
-			if (!src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[5].url)) attr(img3, "src", img3_src_value);
+			if (!src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[4].url)) attr(img3, "src", img3_src_value);
 			attr(li4, "class", "svelte-cscos2");
 			attr(ul4, "class", "svelte-cscos2");
-			if (!src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[6].url)) attr(img4, "src", img4_src_value);
-			if (!src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[7].url)) attr(img5, "src", img5_src_value);
+			if (!src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[5].url)) attr(img4, "src", img4_src_value);
+			if (!src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[6].url)) attr(img5, "src", img5_src_value);
 			attr(li5, "class", "svelte-cscos2");
 			attr(ul5, "class", "svelte-cscos2");
-			if (!src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[8].url)) attr(img6, "src", img6_src_value);
+			if (!src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[7].url)) attr(img6, "src", img6_src_value);
 			attr(li6, "class", "svelte-cscos2");
 			attr(ul6, "class", "svelte-cscos2");
 			attr(div6, "class", "paso1 svelte-cscos2");
@@ -4269,10 +4269,10 @@ function create_fragment(ctx) {
 			attr(a1, "href", "https://business.facebook.com/");
 			attr(li7, "class", "svelte-cscos2");
 			attr(ul7, "class", "svelte-cscos2");
-			if (!src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[9].url)) attr(img7, "src", img7_src_value);
+			if (!src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[8].url)) attr(img7, "src", img7_src_value);
 			attr(li8, "class", "svelte-cscos2");
 			attr(ul8, "class", "svelte-cscos2");
-			if (!src_url_equal(img8.src, img8_src_value = /*image9*/ ctx[10].url)) attr(img8, "src", img8_src_value);
+			if (!src_url_equal(img8.src, img8_src_value = /*image9*/ ctx[9].url)) attr(img8, "src", img8_src_value);
 			attr(li9, "class", "svelte-cscos2");
 			attr(ul9, "class", "svelte-cscos2");
 			if (!src_url_equal(img9.src, img9_src_value = /*image10*/ ctx[11].url)) attr(img9, "src", img9_src_value);
@@ -4527,41 +4527,41 @@ function create_fragment(ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*heading*/ 2) set_data(t9, /*heading*/ ctx[1]);
+			if (!current || dirty & /*heading*/ 1024) set_data(t9, /*heading*/ ctx[10]);
 
-			if (!current || dirty & /*image1*/ 4 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) {
+			if (!current || dirty & /*image1*/ 2 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) {
 				attr(img0, "src", img0_src_value);
 			}
 
-			if (!current || dirty & /*image2*/ 8 && !src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) {
+			if (!current || dirty & /*image2*/ 4 && !src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) {
 				attr(img1, "src", img1_src_value);
 			}
 
-			if (!current || dirty & /*image3*/ 16 && !src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[4].url)) {
+			if (!current || dirty & /*image3*/ 8 && !src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) {
 				attr(img2, "src", img2_src_value);
 			}
 
-			if (!current || dirty & /*image4*/ 32 && !src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[5].url)) {
+			if (!current || dirty & /*image4*/ 16 && !src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[4].url)) {
 				attr(img3, "src", img3_src_value);
 			}
 
-			if (!current || dirty & /*image5*/ 64 && !src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[6].url)) {
+			if (!current || dirty & /*image5*/ 32 && !src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[5].url)) {
 				attr(img4, "src", img4_src_value);
 			}
 
-			if (!current || dirty & /*image6*/ 128 && !src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[7].url)) {
+			if (!current || dirty & /*image6*/ 64 && !src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[6].url)) {
 				attr(img5, "src", img5_src_value);
 			}
 
-			if (!current || dirty & /*image7*/ 256 && !src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[8].url)) {
+			if (!current || dirty & /*image7*/ 128 && !src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[7].url)) {
 				attr(img6, "src", img6_src_value);
 			}
 
-			if (!current || dirty & /*image8*/ 512 && !src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[9].url)) {
+			if (!current || dirty & /*image8*/ 256 && !src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[8].url)) {
 				attr(img7, "src", img7_src_value);
 			}
 
-			if (!current || dirty & /*image9*/ 1024 && !src_url_equal(img8.src, img8_src_value = /*image9*/ ctx[10].url)) {
+			if (!current || dirty & /*image9*/ 512 && !src_url_equal(img8.src, img8_src_value = /*image9*/ ctx[9].url)) {
 				attr(img8, "src", img8_src_value);
 			}
 
@@ -4622,7 +4622,6 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
 	let { items } = $$props;
-	let { heading } = $$props;
 	let { image1 } = $$props;
 	let { image2 } = $$props;
 	let { image3 } = $$props;
@@ -4632,6 +4631,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { image7 } = $$props;
 	let { image8 } = $$props;
 	let { image9 } = $$props;
+	let { heading } = $$props;
 	let { image10 } = $$props;
 	let { image11 } = $$props;
 	let { image12 } = $$props;
@@ -4650,16 +4650,16 @@ function instance($$self, $$props, $$invalidate) {
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(20, props = $$props.props);
 		if ('items' in $$props) $$invalidate(0, items = $$props.items);
-		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
-		if ('image1' in $$props) $$invalidate(2, image1 = $$props.image1);
-		if ('image2' in $$props) $$invalidate(3, image2 = $$props.image2);
-		if ('image3' in $$props) $$invalidate(4, image3 = $$props.image3);
-		if ('image4' in $$props) $$invalidate(5, image4 = $$props.image4);
-		if ('image5' in $$props) $$invalidate(6, image5 = $$props.image5);
-		if ('image6' in $$props) $$invalidate(7, image6 = $$props.image6);
-		if ('image7' in $$props) $$invalidate(8, image7 = $$props.image7);
-		if ('image8' in $$props) $$invalidate(9, image8 = $$props.image8);
-		if ('image9' in $$props) $$invalidate(10, image9 = $$props.image9);
+		if ('image1' in $$props) $$invalidate(1, image1 = $$props.image1);
+		if ('image2' in $$props) $$invalidate(2, image2 = $$props.image2);
+		if ('image3' in $$props) $$invalidate(3, image3 = $$props.image3);
+		if ('image4' in $$props) $$invalidate(4, image4 = $$props.image4);
+		if ('image5' in $$props) $$invalidate(5, image5 = $$props.image5);
+		if ('image6' in $$props) $$invalidate(6, image6 = $$props.image6);
+		if ('image7' in $$props) $$invalidate(7, image7 = $$props.image7);
+		if ('image8' in $$props) $$invalidate(8, image8 = $$props.image8);
+		if ('image9' in $$props) $$invalidate(9, image9 = $$props.image9);
+		if ('heading' in $$props) $$invalidate(10, heading = $$props.heading);
 		if ('image10' in $$props) $$invalidate(11, image10 = $$props.image10);
 		if ('image11' in $$props) $$invalidate(12, image11 = $$props.image11);
 		if ('image12' in $$props) $$invalidate(13, image12 = $$props.image12);
@@ -4671,7 +4671,6 @@ function instance($$self, $$props, $$invalidate) {
 
 	return [
 		items,
-		heading,
 		image1,
 		image2,
 		image3,
@@ -4681,6 +4680,7 @@ function instance($$self, $$props, $$invalidate) {
 		image7,
 		image8,
 		image9,
+		heading,
 		image10,
 		image11,
 		image12,
@@ -4702,16 +4702,16 @@ class Component extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			props: 20,
 			items: 0,
-			heading: 1,
-			image1: 2,
-			image2: 3,
-			image3: 4,
-			image4: 5,
-			image5: 6,
-			image6: 7,
-			image7: 8,
-			image8: 9,
-			image9: 10,
+			image1: 1,
+			image2: 2,
+			image3: 3,
+			image4: 4,
+			image5: 5,
+			image6: 6,
+			image7: 7,
+			image8: 8,
+			image9: 9,
+			heading: 10,
 			image10: 11,
 			image11: 12,
 			image12: 13,
