@@ -808,9 +808,6 @@ function instance($$self, $$props, $$invalidate) {
 	let currentImage = '';
 	let currentAlt = '';
 	let currentDescription = '';
-	currentImage = tarjetas[0].image;
-	currentAlt = 'Default image';
-	currentDescription = tarjetas[0].description;
 	let previousButton = null;
 
 	function initializeContent() {
