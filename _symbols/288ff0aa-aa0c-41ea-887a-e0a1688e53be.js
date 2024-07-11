@@ -2839,11 +2839,11 @@ function create_if_block(ctx) {
 			insert_hydration(target, img, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*payments*/ 8 && !src_url_equal(img.src, img_src_value = /*payment*/ ctx[8].image.url)) {
+			if (dirty & /*payments*/ 2 && !src_url_equal(img.src, img_src_value = /*payment*/ ctx[8].image.url)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (dirty & /*payments*/ 8 && img_alt_value !== (img_alt_value = /*payment*/ ctx[8].image.alt)) {
+			if (dirty & /*payments*/ 2 && img_alt_value !== (img_alt_value = /*payment*/ ctx[8].image.alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 		},
@@ -3249,7 +3249,7 @@ function create_fragment(ctx) {
 			props: { icon: "material-symbols:check" }
 		});
 
-	let each_value = /*payments*/ ctx[3];
+	let each_value = /*payments*/ ctx[1];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -3265,13 +3265,13 @@ function create_fragment(ctx) {
 			div15 = element("div");
 			div0 = element("div");
 			span0 = element("span");
-			t2 = text(/*superhead*/ ctx[1]);
+			t2 = text(/*superhead*/ ctx[2]);
 			t3 = space();
 			h2 = element("h2");
 			t4 = text(/*heading*/ ctx[0]);
 			t5 = space();
 			h30 = element("h3");
-			t6 = text(/*subheading*/ ctx[2]);
+			t6 = text(/*subheading*/ ctx[3]);
 			t7 = space();
 			div13 = element("div");
 			div2 = element("div");
@@ -3538,7 +3538,7 @@ function create_fragment(ctx) {
 			var div0_nodes = children(div0);
 			span0 = claim_element(div0_nodes, "SPAN", { class: true });
 			var span0_nodes = children(span0);
-			t2 = claim_text(span0_nodes, /*superhead*/ ctx[1]);
+			t2 = claim_text(span0_nodes, /*superhead*/ ctx[2]);
 			span0_nodes.forEach(detach);
 			t3 = claim_space(div0_nodes);
 			h2 = claim_element(div0_nodes, "H2", { class: true });
@@ -3548,7 +3548,7 @@ function create_fragment(ctx) {
 			t5 = claim_space(div0_nodes);
 			h30 = claim_element(div0_nodes, "H3", { class: true });
 			var h30_nodes = children(h30);
-			t6 = claim_text(h30_nodes, /*subheading*/ ctx[2]);
+			t6 = claim_text(h30_nodes, /*subheading*/ ctx[3]);
 			h30_nodes.forEach(detach);
 			div0_nodes.forEach(detach);
 			t7 = claim_space(div15_nodes);
@@ -4405,12 +4405,12 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*superhead*/ 2) set_data(t2, /*superhead*/ ctx[1]);
+			if (!current || dirty & /*superhead*/ 4) set_data(t2, /*superhead*/ ctx[2]);
 			if (!current || dirty & /*heading*/ 1) set_data(t4, /*heading*/ ctx[0]);
-			if (!current || dirty & /*subheading*/ 4) set_data(t6, /*subheading*/ ctx[2]);
+			if (!current || dirty & /*subheading*/ 8) set_data(t6, /*subheading*/ ctx[3]);
 
-			if (dirty & /*payments*/ 8) {
-				each_value = /*payments*/ ctx[3];
+			if (dirty & /*payments*/ 2) {
+				each_value = /*payments*/ ctx[1];
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -4517,9 +4517,9 @@ function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
 	let { tiers } = $$props;
 	let { heading } = $$props;
+	let { payments } = $$props;
 	let { superhead } = $$props;
 	let { subheading } = $$props;
-	let { payments } = $$props;
 	let BASE = toBase64('BASE');
 	let PREMIUM = toBase64('PREMIUM');
 
@@ -4527,12 +4527,12 @@ function instance($$self, $$props, $$invalidate) {
 		if ('props' in $$props) $$invalidate(6, props = $$props.props);
 		if ('tiers' in $$props) $$invalidate(7, tiers = $$props.tiers);
 		if ('heading' in $$props) $$invalidate(0, heading = $$props.heading);
-		if ('superhead' in $$props) $$invalidate(1, superhead = $$props.superhead);
-		if ('subheading' in $$props) $$invalidate(2, subheading = $$props.subheading);
-		if ('payments' in $$props) $$invalidate(3, payments = $$props.payments);
+		if ('payments' in $$props) $$invalidate(1, payments = $$props.payments);
+		if ('superhead' in $$props) $$invalidate(2, superhead = $$props.superhead);
+		if ('subheading' in $$props) $$invalidate(3, subheading = $$props.subheading);
 	};
 
-	return [heading, superhead, subheading, payments, BASE, PREMIUM, props, tiers];
+	return [heading, payments, superhead, subheading, BASE, PREMIUM, props, tiers];
 }
 
 class Component extends SvelteComponent {
@@ -4543,9 +4543,9 @@ class Component extends SvelteComponent {
 			props: 6,
 			tiers: 7,
 			heading: 0,
-			superhead: 1,
-			subheading: 2,
-			payments: 3
+			payments: 1,
+			superhead: 2,
+			subheading: 3
 		});
 	}
 }

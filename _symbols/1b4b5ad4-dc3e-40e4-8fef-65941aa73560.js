@@ -835,7 +835,7 @@ function instance($$self, $$props, $$invalidate) {
 		}
 	}
 
-	document.addEventListener("DOMContentLoaded", initializeContent);
+	window.onload = initializeContent;
 
 	function changeimg(i) {
 		$$invalidate(3, currentImage = tarjetas[i].image);
