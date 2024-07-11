@@ -835,7 +835,10 @@ function instance($$self, $$props, $$invalidate) {
 		}
 	}
 
-	window.onload = initializeContent;
+	window.onload = function () {
+		console.log("Window loaded");
+		initializeContent();
+	};
 
 	function changeimg(i) {
 		$$invalidate(3, currentImage = tarjetas[i].image);
