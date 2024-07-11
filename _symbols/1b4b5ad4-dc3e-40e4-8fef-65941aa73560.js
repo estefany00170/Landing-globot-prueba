@@ -811,51 +811,70 @@ function instance($$self, $$props, $$invalidate) {
 	currentImage = tarjetas[0].image;
 	currentAlt = 'Default image';
 	currentDescription = tarjetas[0].description;
-	let index = 0;
 	let previousButton = null;
 
-	document.addEventListener("DOMContentLoaded", function () {
+	function initializeContent() {
 		changeimg(0);
 		let firstButton = document.getElementById('box1');
-		firstButton.style.background = "rgba(123, 92, 245, 0.15)";
-		firstButton.style.border = "1px solid var(--Primary-1, #603FDF)";
-		firstButton.querySelector('.title').style.color = "var(--Primary-1, #603FDF)";
-		previousButton = firstButton;
-		console.log('Index:', index);
-		console.log('Current Image:', currentImage);
-		console.log('Current Alt:', currentAlt);
-		console.log('Current Description:', currentDescription);
-	});
+
+		if (firstButton) {
+			firstButton.style.background = "rgba(123, 92, 245, 0.15)";
+			firstButton.style.border = "1px solid var(--Primary-1, #603FDF)";
+			firstButton.querySelector('.title').style.color = "var(--Primary-1, #603FDF)";
+			previousButton = firstButton;
+		}
+
+		let imgbox = document.getElementById('imgbox');
+
+		if (imgbox) {
+			imgbox.src = currentImage;
+			imgbox.alt = currentAlt;
+		}
+
+		let imgdesc = document.getElementById('imgdesc');
+
+		if (imgdesc) {
+			imgdesc.innerHTML = currentDescription;
+		}
+	}
+
+	document.addEventListener("DOMContentLoaded", initializeContent);
 
 	function changeimg(i) {
-		index = i;
 		$$invalidate(3, currentImage = tarjetas[i].image);
 		$$invalidate(4, currentAlt = tarjetas[i].alt);
 		currentDescription = tarjetas[i].description;
 		let buttonId = 'box' + (i + 1);
 		let element = document.getElementById(buttonId);
 
-		// Si hay un botón previamente seleccionado y es diferente al actual, restablecer su estilo
 		if (previousButton && previousButton !== element) {
 			previousButton.style.background = "";
 			previousButton.style.border = "";
-			previousButton.querySelector('.title').style.color = "";
+			let prevTitle = previousButton.querySelector('.title');
+			if (prevTitle) prevTitle.style.color = "";
 		}
 
-		// Cambiar el estilo del botón actualmente seleccionado
-		element.style.background = "rgba(123, 92, 245, 0.15)";
-
-		element.style.border = "1px solid var(--Primary-1, #603FDF)";
-		element.querySelector('.title').style.color = "var(--Primary-1, #603FDF)";
-
-		// Guardar el botón actualmente seleccionado para la próxima vez
-		previousButton = element;
+		if (element) {
+			element.style.background = "rgba(123, 92, 245, 0.15)";
+			element.style.border = "1px solid var(--Primary-1, #603FDF)";
+			let title = element.querySelector('.title');
+			if (title) title.style.color = "var(--Primary-1, #603FDF)";
+			previousButton = element;
+		}
 
 		requestAnimationFrame(() => {
-			// Actualizar la imagen y la descripción en el DOM
-			document.getElementById('imgbox').src = currentImage;
+			let imgbox = document.getElementById('imgbox');
 
-			document.getElementById('imgdesc').innerHTML = currentDescription;
+			if (imgbox) {
+				imgbox.src = currentImage;
+				imgbox.alt = currentAlt;
+			}
+
+			let imgdesc = document.getElementById('imgdesc');
+
+			if (imgdesc) {
+				imgdesc.innerHTML = currentDescription;
+			}
 		});
 	}
 
