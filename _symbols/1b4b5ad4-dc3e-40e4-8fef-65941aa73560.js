@@ -1,4 +1,4 @@
-// casos de uso - Updated July 10, 2024
+// casos de uso - Updated July 11, 2024
 function noop() { }
 function run(fn) {
     return fn();
@@ -816,6 +816,11 @@ function instance($$self, $$props, $$invalidate) {
 
 	document.addEventListener("DOMContentLoaded", function () {
 		changeimg(0);
+		let firstButton = document.getElementById('box1');
+		firstButton.style.background = "rgba(123, 92, 245, 0.15)";
+		firstButton.style.border = "1px solid var(--Primary-1, #603FDF)";
+		firstButton.querySelector('.title').style.color = "var(--Primary-1, #603FDF)";
+		previousButton = firstButton;
 		console.log('Index:', index);
 		console.log('Current Image:', currentImage);
 		console.log('Current Alt:', currentAlt);
@@ -830,8 +835,8 @@ function instance($$self, $$props, $$invalidate) {
 		let buttonId = 'box' + (i + 1);
 		let element = document.getElementById(buttonId);
 
-		// Si hay un botón previamente seleccionado, restablecer su estilo
-		if (previousButton) {
+		// Si hay un botón previamente seleccionado y es diferente al actual, restablecer su estilo
+		if (previousButton && previousButton !== element) {
 			previousButton.style.background = "";
 			previousButton.style.border = "";
 			previousButton.querySelector('.title').style.color = "";
@@ -841,13 +846,10 @@ function instance($$self, $$props, $$invalidate) {
 		element.style.background = "rgba(123, 92, 245, 0.15)";
 
 		element.style.border = "1px solid var(--Primary-1, #603FDF)";
-		element.querySelector('.title').style.color = " var(--Primary-1, #603FDF)";
+		element.querySelector('.title').style.color = "var(--Primary-1, #603FDF)";
 
 		// Guardar el botón actualmente seleccionado para la próxima vez
 		previousButton = element;
-
-		document.getElementById('imgbox').src = currentImage;
-		document.getElementById('imgdesc').innerHTML = tarjetas[i].description;
 
 		requestAnimationFrame(() => {
 			// Actualizar la imagen y la descripción en el DOM
