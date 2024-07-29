@@ -1,4 +1,4 @@
-// Tutoriales - Updated July 29, 2024
+// Facebook - Updated July 29, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -21,6 +21,14 @@ function is_function(thing) {
 }
 function safe_not_equal(a, b) {
     return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+}
+let src_url_equal_anchor;
+function src_url_equal(element_src, url) {
+    if (!src_url_equal_anchor) {
+        src_url_equal_anchor = document.createElement('a');
+    }
+    src_url_equal_anchor.href = url;
+    return element_src === src_url_equal_anchor.href;
 }
 function is_empty(obj) {
     return Object.keys(obj).length === 0;
@@ -227,12 +235,6 @@ function detach(node) {
         node.parentNode.removeChild(node);
     }
 }
-function destroy_each(iterations, detaching) {
-    for (let i = 0; i < iterations.length; i += 1) {
-        if (iterations[i])
-            iterations[i].d(detaching);
-    }
-}
 function element(name) {
     return document.createElement(name);
 }
@@ -391,6 +393,14 @@ function set_data(text, data) {
     if (text.data === data)
         return;
     text.data = data;
+}
+function set_style(node, key, value, important) {
+    if (value == null) {
+        node.style.removeProperty(key);
+    }
+    else {
+        node.style.setProperty(key, value, important ? 'important' : '');
+    }
 }
 function toggle_class(element, name, toggle) {
     element.classList[toggle ? 'add' : 'remove'](name);
@@ -3176,22 +3186,15 @@ let Component$1 = class Component extends SvelteComponent {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[8] = list[i];
-	child_ctx[10] = i;
+	child_ctx[13] = list[i];
+	child_ctx[15] = i;
 	return child_ctx;
 }
 
-function get_each_context_1(ctx, list, i) {
-	const child_ctx = ctx.slice();
-	child_ctx[11] = list[i];
-	child_ctx[13] = i;
-	return child_ctx;
-}
-
-// (208:10) {#if activeItem === i}
+// (200:10) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
-	let raw_value = /*item*/ ctx[11].description.html + "";
+	let raw_value = /*item*/ ctx[13].description.html + "";
 	let div_transition;
 	let current;
 
@@ -3207,7 +3210,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-153dajr");
+			attr(div, "class", "description svelte-6u9w4c");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3215,7 +3218,7 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if ((!current || dirty & /*items*/ 2) && raw_value !== (raw_value = /*item*/ ctx[11].description.html + "")) div.innerHTML = raw_value;		},
+			if ((!current || dirty & /*items*/ 1) && raw_value !== (raw_value = /*item*/ ctx[13].description.html + "")) div.innerHTML = raw_value;		},
 		i(local) {
 			if (current) return;
 
@@ -3239,8 +3242,8 @@ function create_if_block(ctx) {
 	};
 }
 
-// (195:6) {#each items as item, i (i)}
-function create_each_block_1(key_1, ctx) {
+// (187:6) {#each items as item, i (i)}
+function create_each_block(key_1, ctx) {
 	let div3;
 	let div1;
 	let div0;
@@ -3248,7 +3251,7 @@ function create_each_block_1(key_1, ctx) {
 	let t0;
 	let button;
 	let span0;
-	let t1_value = /*item*/ ctx[11].title + "";
+	let t1_value = /*item*/ ctx[13].title + "";
 	let t1;
 	let t2;
 	let span1;
@@ -3263,10 +3266,10 @@ function create_each_block_1(key_1, ctx) {
 	icon1 = new Component$1({ props: { icon: "ph:caret-down-bold" } });
 
 	function click_handler() {
-		return /*click_handler*/ ctx[7](/*i*/ ctx[13]);
+		return /*click_handler*/ ctx[12](/*i*/ ctx[15]);
 	}
 
-	let if_block = /*activeItem*/ ctx[4] === /*i*/ ctx[13] && create_if_block(ctx);
+	let if_block = /*activeItem*/ ctx[9] === /*i*/ ctx[15] && create_if_block(ctx);
 
 	return {
 		key: key_1,
@@ -3320,13 +3323,13 @@ function create_each_block_1(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-153dajr");
-			attr(span0, "class", "svelte-153dajr");
-			attr(span1, "class", "icone svelte-153dajr");
-			attr(button, "class", "svelte-153dajr");
-			attr(div1, "class", "item-icon svelte-153dajr");
-			attr(div3, "class", "item svelte-153dajr");
-			toggle_class(div3, "active", /*activeItem*/ ctx[4] === /*i*/ ctx[13]);
+			attr(div0, "class", "menu-icon svelte-6u9w4c");
+			attr(span0, "class", "svelte-6u9w4c");
+			attr(span1, "class", "icone svelte-6u9w4c");
+			attr(button, "class", "svelte-6u9w4c");
+			attr(div1, "class", "item-icon svelte-6u9w4c");
+			attr(div3, "class", "item svelte-6u9w4c");
+			toggle_class(div3, "active", /*activeItem*/ ctx[9] === /*i*/ ctx[15]);
 			this.first = div3;
 		},
 		m(target, anchor) {
@@ -3354,13 +3357,13 @@ function create_each_block_1(key_1, ctx) {
 		},
 		p(new_ctx, dirty) {
 			ctx = new_ctx;
-			if ((!current || dirty & /*items*/ 2) && t1_value !== (t1_value = /*item*/ ctx[11].title + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*items*/ 1) && t1_value !== (t1_value = /*item*/ ctx[13].title + "")) set_data(t1, t1_value);
 
-			if (/*activeItem*/ ctx[4] === /*i*/ ctx[13]) {
+			if (/*activeItem*/ ctx[9] === /*i*/ ctx[15]) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty & /*activeItem, items*/ 18) {
+					if (dirty & /*activeItem, items*/ 513) {
 						transition_in(if_block, 1);
 					}
 				} else {
@@ -3379,8 +3382,8 @@ function create_each_block_1(key_1, ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*activeItem, items*/ 18) {
-				toggle_class(div3, "active", /*activeItem*/ ctx[4] === /*i*/ ctx[13]);
+			if (!current || dirty & /*activeItem, items*/ 513) {
+				toggle_class(div3, "active", /*activeItem*/ ctx[9] === /*i*/ ctx[15]);
 			}
 		},
 		i(local) {
@@ -3407,153 +3410,170 @@ function create_each_block_1(key_1, ctx) {
 	};
 }
 
-// (227:8) {#each cards as card, index}
-function create_each_block(ctx) {
-	let li;
-	let a;
-	let div2;
-	let div0;
-	let icon;
-	let t0;
-	let div1;
-	let t1_value = /*card*/ ctx[8].title + "";
-	let t1;
-	let t2;
-	let t3_value = /*card*/ ctx[8].link.label + "";
-	let t3;
-	let a_href_value;
-	let t4;
-	let current;
-	icon = new Component$1({ props: { icon: /*card*/ ctx[8].icon } });
-
-	return {
-		c() {
-			li = element("li");
-			a = element("a");
-			div2 = element("div");
-			div0 = element("div");
-			create_component(icon.$$.fragment);
-			t0 = space();
-			div1 = element("div");
-			t1 = text(t1_value);
-			t2 = space();
-			t3 = text(t3_value);
-			t4 = space();
-			this.h();
-		},
-		l(nodes) {
-			li = claim_element(nodes, "LI", { class: true });
-			var li_nodes = children(li);
-			a = claim_element(li_nodes, "A", { href: true });
-			var a_nodes = children(a);
-			div2 = claim_element(a_nodes, "DIV", { class: true });
-			var div2_nodes = children(div2);
-			div0 = claim_element(div2_nodes, "DIV", { class: true });
-			var div0_nodes = children(div0);
-			claim_component(icon.$$.fragment, div0_nodes);
-			div0_nodes.forEach(detach);
-			t0 = claim_space(div2_nodes);
-			div1 = claim_element(div2_nodes, "DIV", { class: true });
-			var div1_nodes = children(div1);
-			t1 = claim_text(div1_nodes, t1_value);
-			div1_nodes.forEach(detach);
-			div2_nodes.forEach(detach);
-			t2 = claim_space(a_nodes);
-			t3 = claim_text(a_nodes, t3_value);
-			a_nodes.forEach(detach);
-			t4 = claim_space(li_nodes);
-			li_nodes.forEach(detach);
-			this.h();
-		},
-		h() {
-			attr(div0, "class", "icon svelte-153dajr");
-			attr(div1, "class", "title svelte-153dajr");
-			attr(div2, "class", "btn svelte-153dajr");
-			attr(a, "href", a_href_value = /*card*/ ctx[8].link.url);
-			attr(li, "class", "svelte-153dajr");
-		},
-		m(target, anchor) {
-			insert_hydration(target, li, anchor);
-			append_hydration(li, a);
-			append_hydration(a, div2);
-			append_hydration(div2, div0);
-			mount_component(icon, div0, null);
-			append_hydration(div2, t0);
-			append_hydration(div2, div1);
-			append_hydration(div1, t1);
-			append_hydration(a, t2);
-			append_hydration(a, t3);
-			append_hydration(li, t4);
-			current = true;
-		},
-		p(ctx, dirty) {
-			const icon_changes = {};
-			if (dirty & /*cards*/ 1) icon_changes.icon = /*card*/ ctx[8].icon;
-			icon.$set(icon_changes);
-			if ((!current || dirty & /*cards*/ 1) && t1_value !== (t1_value = /*card*/ ctx[8].title + "")) set_data(t1, t1_value);
-			if ((!current || dirty & /*cards*/ 1) && t3_value !== (t3_value = /*card*/ ctx[8].link.label + "")) set_data(t3, t3_value);
-
-			if (!current || dirty & /*cards*/ 1 && a_href_value !== (a_href_value = /*card*/ ctx[8].link.url)) {
-				attr(a, "href", a_href_value);
-			}
-		},
-		i(local) {
-			if (current) return;
-			transition_in(icon.$$.fragment, local);
-			current = true;
-		},
-		o(local) {
-			transition_out(icon.$$.fragment, local);
-			current = false;
-		},
-		d(detaching) {
-			if (detaching) detach(li);
-			destroy_component(icon);
-		}
-	};
-}
-
 function create_fragment(ctx) {
 	let section;
 	let style;
 	let t0;
 	let t1;
-	let div6;
+	let div9;
 	let div1;
 	let div0;
-	let each_blocks_1 = [];
-	let each0_lookup = new Map();
+	let each_blocks = [];
+	let each_1_lookup = new Map();
 	let t2;
-	let div5;
-	let div3;
+	let div8;
 	let div2;
+	let span0;
 	let t3;
 	let t4;
-	let h3;
+	let span1;
 	let t5;
 	let t6;
+	let span2;
+	let t7;
+	let t8;
 	let div4;
-	let ul;
+	let div3;
+	let t9;
+	let t10;
+	let div7;
+	let div5;
+	let p0;
+	let t11;
+	let t12;
+	let ul0;
+	let li0;
+	let t13;
+	let strong0;
+	let t14;
+	let t15;
+	let strong1;
+	let t16;
+	let t17;
+	let t18;
+	let div6;
+	let p1;
+	let t19;
+	let t20;
+	let ul1;
+	let li1;
+	let t21;
+	let strong2;
+	let t22;
+	let t23;
+	let t24;
+	let img0;
+	let img0_src_value;
+	let t25;
+	let ul2;
+	let li2;
+	let t26;
+	let t27;
+	let li4;
+	let t28;
+	let ol0;
+	let li3;
+	let t29;
+	let strong3;
+	let t30;
+	let t31;
+	let t32;
+	let img1;
+	let img1_src_value;
+	let t33;
+	let ul3;
+	let ol1;
+	let li5;
+	let t34;
+	let strong4;
+	let t35;
+	let t36;
+	let t37;
+	let img2;
+	let img2_src_value;
+	let t38;
+	let ul4;
+	let ol2;
+	let li6;
+	let t39;
+	let strong5;
+	let t40;
+	let t41;
+	let t42;
+	let img3;
+	let img3_src_value;
+	let t43;
+	let ul5;
+	let ol3;
+	let li7;
+	let t44;
+	let strong6;
+	let t45;
+	let t46;
+	let t47;
+	let img4;
+	let img4_src_value;
+	let t48;
+	let ul6;
+	let ol4;
+	let li8;
+	let t49;
+	let strong7;
+	let t50;
+	let t51;
+	let t52;
+	let img5;
+	let img5_src_value;
+	let t53;
+	let p2;
+	let t54;
+	let t55;
+	let ul7;
+	let li9;
+	let t56;
+	let strong8;
+	let t57;
+	let t58;
+	let t59;
+	let p3;
+	let strong9;
+	let t60;
+	let t61;
+	let ul8;
+	let li10;
+	let t62;
+	let a;
+	let t63;
+	let t64;
+	let li11;
+	let t65;
+	let strong10;
+	let t66;
+	let t67;
+	let img6;
+	let img6_src_value;
+	let t68;
+	let ul9;
+	let li12;
+	let t69;
+	let strong11;
+	let t70;
+	let t71;
+	let t72;
+	let li13;
+	let t73;
+	let strong12;
+	let t74;
+	let t75;
 	let current;
-	let each_value_1 = /*items*/ ctx[1];
-	const get_key = ctx => /*i*/ ctx[13];
-
-	for (let i = 0; i < each_value_1.length; i += 1) {
-		let child_ctx = get_each_context_1(ctx, each_value_1, i);
-		let key = get_key(child_ctx);
-		each0_lookup.set(key, each_blocks_1[i] = create_each_block_1(key, child_ctx));
-	}
-
-	let each_value = /*cards*/ ctx[0];
-	let each_blocks = [];
+	let each_value = /*items*/ ctx[0];
+	const get_key = ctx => /*i*/ ctx[15];
 
 	for (let i = 0; i < each_value.length; i += 1) {
-		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+		let child_ctx = get_each_context(ctx, each_value, i);
+		let key = get_key(child_ctx);
+		each_1_lookup.set(key, each_blocks[i] = create_each_block(key, child_ctx));
 	}
-
-	const out = i => transition_out(each_blocks[i], 1, 1, () => {
-		each_blocks[i] = null;
-	});
 
 	return {
 		c() {
@@ -3561,30 +3581,152 @@ function create_fragment(ctx) {
 			style = element("style");
 			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
 			t1 = space();
-			div6 = element("div");
+			div9 = element("div");
 			div1 = element("div");
 			div0 = element("div");
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				each_blocks_1[i].c();
-			}
-
-			t2 = space();
-			div5 = element("div");
-			div3 = element("div");
-			div2 = element("div");
-			t3 = text(/*heading*/ ctx[2]);
-			t4 = space();
-			h3 = element("h3");
-			t5 = text(/*subheading*/ ctx[3]);
-			t6 = space();
-			div4 = element("div");
-			ul = element("ul");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
+			t2 = space();
+			div8 = element("div");
+			div2 = element("div");
+			span0 = element("span");
+			t3 = text("Tutoriales");
+			t4 = text(" > ");
+			span1 = element("span");
+			t5 = text("Integración canales");
+			t6 = text(" > ");
+			span2 = element("span");
+			t7 = text("Facebook");
+			t8 = space();
+			div4 = element("div");
+			div3 = element("div");
+			t9 = text(/*heading*/ ctx[1]);
+			t10 = space();
+			div7 = element("div");
+			div5 = element("div");
+			p0 = element("p");
+			t11 = text("Paso 1: Crea tu chatbot");
+			t12 = space();
+			ul0 = element("ul");
+			li0 = element("li");
+			t13 = text("Ingresa a tu cuenta de Globot y crea un chatbot cargándose la fuente de información que desees que tenga.\nUna vez creado y configurado, dirígete a ");
+			strong0 = element("strong");
+			t14 = text("“Canales”");
+			t15 = text(" y luego a ");
+			strong1 = element("strong");
+			t16 = text("“Messenger”");
+			t17 = text(".");
+			t18 = space();
+			div6 = element("div");
+			p1 = element("p");
+			t19 = text("Paso 2: Conecta GLOBOT con messenger");
+			t20 = space();
+			ul1 = element("ul");
+			li1 = element("li");
+			t21 = text("Haz click en ");
+			strong2 = element("strong");
+			t22 = text("“Conectar con facebook” ");
+			t23 = text("e inicia sesión con tu cuenta: Asegúrate de tener acceso como administrador. Si no eres tú quién administra el portafolio comercial, contáctate con la persona que tenga acceso.");
+			t24 = space();
+			img0 = element("img");
+			t25 = space();
+			ul2 = element("ul");
+			li2 = element("li");
+			t26 = text("Una vez que hayas conectado tu portfolio siguiendo los pasos puedes ingresar a tu cuenta de facebook y empezar a conversar con los usuarios");
+			t27 = space();
+			li4 = element("li");
+			t28 = text("Una vez iniciada sesión con facebook, conecta tu portfolio comercial a globot y continua con los pasos los siguientes pasos:\n              ");
+			ol0 = element("ol");
+			li3 = element("li");
+			t29 = text("Haz click en el portfolio comercial que quieras vincular y luego en ");
+			strong3 = element("strong");
+			t30 = text("“continuar”");
+			t31 = text(".");
+			t32 = space();
+			img1 = element("img");
+			t33 = space();
+			ul3 = element("ul");
+			ol1 = element("ol");
+			li5 = element("li");
+			t34 = text("Elige la o las páginas que quieras que globot acceda y haz click en ");
+			strong4 = element("strong");
+			t35 = text("“continuar”");
+			t36 = text(".");
+			t37 = space();
+			img2 = element("img");
+			t38 = space();
+			ul4 = element("ul");
+			ol2 = element("ol");
+			li6 = element("li");
+			t39 = text("Confirma las páginas a las que quieras que acceda y haz click en ");
+			strong5 = element("strong");
+			t40 = text("“continuar”");
+			t41 = text(".");
+			t42 = space();
+			img3 = element("img");
+			t43 = space();
+			ul5 = element("ul");
+			ol3 = element("ol");
+			li7 = element("li");
+			t44 = text("Luego revisa lo que globot solicita hacer y haz click en ");
+			strong6 = element("strong");
+			t45 = text("“guardar”");
+			t46 = text(".");
+			t47 = space();
+			img4 = element("img");
+			t48 = space();
+			ul6 = element("ul");
+			ol4 = element("ol");
+			li8 = element("li");
+			t49 = text("Por último solo queda hacer click en ");
+			strong7 = element("strong");
+			t50 = text("“De acuerdo”");
+			t51 = text(" y puedes empezar a utilizar tu chatbot con messenger");
+			t52 = space();
+			img5 = element("img");
+			t53 = space();
+			p2 = element("p");
+			t54 = text("Puedes desactivar tu chatbot en el caso que decidas que no responda.");
+			t55 = space();
+			ul7 = element("ul");
+			li9 = element("li");
+			t56 = text("Haz click en ");
+			strong8 = element("strong");
+			t57 = text("“Desactivar chatbot en este canal”");
+			t58 = text(".");
+			t59 = space();
+			p3 = element("p");
+			strong9 = element("strong");
+			t60 = text("En el caso de no tener tu cuenta comercial creada en Meta sigue estos pasos (si ya tienes creado tu portafolio omite este paso)");
+			t61 = space();
+			ul8 = element("ul");
+			li10 = element("li");
+			t62 = text("Ingresa a Meta Business ");
+			a = element("a");
+			t63 = text("Business Facebook");
+			t64 = space();
+			li11 = element("li");
+			t65 = text("Haz click en “Crear una cuenta” y luego  entra con tu cuenta de Facebook.completa el nombre del negocio, tu nombre y el correo electrónico de tu negocio. Dale clic a ");
+			strong10 = element("strong");
+			t66 = text("\"Enviar\"");
+			t67 = space();
+			img6 = element("img");
+			t68 = space();
+			ul9 = element("ul");
+			li12 = element("li");
+			t69 = text("Proporciona los datos de tu empresa y haz clic en ");
+			strong11 = element("strong");
+			t70 = text("\"Enviar\"");
+			t71 = text(".");
+			t72 = space();
+			li13 = element("li");
+			t73 = text("Ingresa los detalles de tu empresa y haz clic en ");
+			strong12 = element("strong");
+			t74 = text("\"Enviar\"");
+			t75 = text(".");
 			this.h();
 		},
 		l(nodes) {
@@ -3595,142 +3737,533 @@ function create_fragment(ctx) {
 			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
 			style_nodes.forEach(detach);
 			t1 = claim_space(section_nodes);
-			div6 = claim_element(section_nodes, "DIV", { class: true });
-			var div6_nodes = children(div6);
-			div1 = claim_element(div6_nodes, "DIV", { class: true });
+			div9 = claim_element(section_nodes, "DIV", { class: true });
+			var div9_nodes = children(div9);
+			div1 = claim_element(div9_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
 			div0 = claim_element(div1_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
 
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				each_blocks_1[i].l(div0_nodes);
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].l(div0_nodes);
 			}
 
 			div0_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
-			t2 = claim_space(div6_nodes);
-			div5 = claim_element(div6_nodes, "DIV", { class: true });
-			var div5_nodes = children(div5);
-			div3 = claim_element(div5_nodes, "DIV", { class: true });
-			var div3_nodes = children(div3);
-			div2 = claim_element(div3_nodes, "DIV", { class: true });
+			t2 = claim_space(div9_nodes);
+			div8 = claim_element(div9_nodes, "DIV", { class: true });
+			var div8_nodes = children(div8);
+			div2 = claim_element(div8_nodes, "DIV", { class: true, style: true });
 			var div2_nodes = children(div2);
-			t3 = claim_text(div2_nodes, /*heading*/ ctx[2]);
+			span0 = claim_element(div2_nodes, "SPAN", {});
+			var span0_nodes = children(span0);
+			t3 = claim_text(span0_nodes, "Tutoriales");
+			span0_nodes.forEach(detach);
+			t4 = claim_text(div2_nodes, " > ");
+			span1 = claim_element(div2_nodes, "SPAN", {});
+			var span1_nodes = children(span1);
+			t5 = claim_text(span1_nodes, "Integración canales");
+			span1_nodes.forEach(detach);
+			t6 = claim_text(div2_nodes, " > ");
+			span2 = claim_element(div2_nodes, "SPAN", { style: true });
+			var span2_nodes = children(span2);
+			t7 = claim_text(span2_nodes, "Facebook");
+			span2_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
-			t4 = claim_space(div3_nodes);
-			h3 = claim_element(div3_nodes, "H3", { class: true });
-			var h3_nodes = children(h3);
-			t5 = claim_text(h3_nodes, /*subheading*/ ctx[3]);
-			h3_nodes.forEach(detach);
-			div3_nodes.forEach(detach);
-			t6 = claim_space(div5_nodes);
-			div4 = claim_element(div5_nodes, "DIV", { class: true });
+			t8 = claim_space(div8_nodes);
+			div4 = claim_element(div8_nodes, "DIV", { class: true });
 			var div4_nodes = children(div4);
-			ul = claim_element(div4_nodes, "UL", { class: true });
-			var ul_nodes = children(ul);
-
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].l(ul_nodes);
-			}
-
-			ul_nodes.forEach(detach);
+			div3 = claim_element(div4_nodes, "DIV", { class: true });
+			var div3_nodes = children(div3);
+			t9 = claim_text(div3_nodes, /*heading*/ ctx[1]);
+			div3_nodes.forEach(detach);
 			div4_nodes.forEach(detach);
+			t10 = claim_space(div8_nodes);
+			div7 = claim_element(div8_nodes, "DIV", { class: true });
+			var div7_nodes = children(div7);
+			div5 = claim_element(div7_nodes, "DIV", { class: true });
+			var div5_nodes = children(div5);
+			p0 = claim_element(div5_nodes, "P", { class: true });
+			var p0_nodes = children(p0);
+			t11 = claim_text(p0_nodes, "Paso 1: Crea tu chatbot");
+			p0_nodes.forEach(detach);
+			t12 = claim_space(div5_nodes);
+			ul0 = claim_element(div5_nodes, "UL", { class: true });
+			var ul0_nodes = children(ul0);
+			li0 = claim_element(ul0_nodes, "LI", { class: true });
+			var li0_nodes = children(li0);
+			t13 = claim_text(li0_nodes, "Ingresa a tu cuenta de Globot y crea un chatbot cargándose la fuente de información que desees que tenga.\nUna vez creado y configurado, dirígete a ");
+			strong0 = claim_element(li0_nodes, "STRONG", {});
+			var strong0_nodes = children(strong0);
+			t14 = claim_text(strong0_nodes, "“Canales”");
+			strong0_nodes.forEach(detach);
+			t15 = claim_text(li0_nodes, " y luego a ");
+			strong1 = claim_element(li0_nodes, "STRONG", {});
+			var strong1_nodes = children(strong1);
+			t16 = claim_text(strong1_nodes, "“Messenger”");
+			strong1_nodes.forEach(detach);
+			t17 = claim_text(li0_nodes, ".");
+			li0_nodes.forEach(detach);
+			ul0_nodes.forEach(detach);
 			div5_nodes.forEach(detach);
+			t18 = claim_space(div7_nodes);
+			div6 = claim_element(div7_nodes, "DIV", { class: true });
+			var div6_nodes = children(div6);
+			p1 = claim_element(div6_nodes, "P", { class: true });
+			var p1_nodes = children(p1);
+			t19 = claim_text(p1_nodes, "Paso 2: Conecta GLOBOT con messenger");
+			p1_nodes.forEach(detach);
+			t20 = claim_space(div6_nodes);
+			ul1 = claim_element(div6_nodes, "UL", { class: true });
+			var ul1_nodes = children(ul1);
+			li1 = claim_element(ul1_nodes, "LI", { class: true });
+			var li1_nodes = children(li1);
+			t21 = claim_text(li1_nodes, "Haz click en ");
+			strong2 = claim_element(li1_nodes, "STRONG", {});
+			var strong2_nodes = children(strong2);
+			t22 = claim_text(strong2_nodes, "“Conectar con facebook” ");
+			strong2_nodes.forEach(detach);
+			t23 = claim_text(li1_nodes, "e inicia sesión con tu cuenta: Asegúrate de tener acceso como administrador. Si no eres tú quién administra el portafolio comercial, contáctate con la persona que tenga acceso.");
+			li1_nodes.forEach(detach);
+			ul1_nodes.forEach(detach);
+			t24 = claim_space(div6_nodes);
+			img0 = claim_element(div6_nodes, "IMG", { src: true });
+			t25 = claim_space(div6_nodes);
+			ul2 = claim_element(div6_nodes, "UL", { class: true });
+			var ul2_nodes = children(ul2);
+			li2 = claim_element(ul2_nodes, "LI", { class: true });
+			var li2_nodes = children(li2);
+			t26 = claim_text(li2_nodes, "Una vez que hayas conectado tu portfolio siguiendo los pasos puedes ingresar a tu cuenta de facebook y empezar a conversar con los usuarios");
+			li2_nodes.forEach(detach);
+			t27 = claim_space(ul2_nodes);
+			li4 = claim_element(ul2_nodes, "LI", { class: true });
+			var li4_nodes = children(li4);
+			t28 = claim_text(li4_nodes, "Una vez iniciada sesión con facebook, conecta tu portfolio comercial a globot y continua con los pasos los siguientes pasos:\n              ");
+			ol0 = claim_element(li4_nodes, "OL", { class: true });
+			var ol0_nodes = children(ol0);
+			li3 = claim_element(ol0_nodes, "LI", { class: true });
+			var li3_nodes = children(li3);
+			t29 = claim_text(li3_nodes, "Haz click en el portfolio comercial que quieras vincular y luego en ");
+			strong3 = claim_element(li3_nodes, "STRONG", {});
+			var strong3_nodes = children(strong3);
+			t30 = claim_text(strong3_nodes, "“continuar”");
+			strong3_nodes.forEach(detach);
+			t31 = claim_text(li3_nodes, ".");
+			li3_nodes.forEach(detach);
+			ol0_nodes.forEach(detach);
+			li4_nodes.forEach(detach);
+			ul2_nodes.forEach(detach);
+			t32 = claim_space(div6_nodes);
+			img1 = claim_element(div6_nodes, "IMG", { src: true });
+			t33 = claim_space(div6_nodes);
+			ul3 = claim_element(div6_nodes, "UL", { class: true });
+			var ul3_nodes = children(ul3);
+			ol1 = claim_element(ul3_nodes, "OL", { start: true, class: true });
+			var ol1_nodes = children(ol1);
+			li5 = claim_element(ol1_nodes, "LI", { class: true });
+			var li5_nodes = children(li5);
+			t34 = claim_text(li5_nodes, "Elige la o las páginas que quieras que globot acceda y haz click en ");
+			strong4 = claim_element(li5_nodes, "STRONG", {});
+			var strong4_nodes = children(strong4);
+			t35 = claim_text(strong4_nodes, "“continuar”");
+			strong4_nodes.forEach(detach);
+			t36 = claim_text(li5_nodes, ".");
+			li5_nodes.forEach(detach);
+			ol1_nodes.forEach(detach);
+			ul3_nodes.forEach(detach);
+			t37 = claim_space(div6_nodes);
+			img2 = claim_element(div6_nodes, "IMG", { src: true });
+			t38 = claim_space(div6_nodes);
+			ul4 = claim_element(div6_nodes, "UL", { class: true });
+			var ul4_nodes = children(ul4);
+			ol2 = claim_element(ul4_nodes, "OL", { start: true, class: true });
+			var ol2_nodes = children(ol2);
+			li6 = claim_element(ol2_nodes, "LI", { class: true });
+			var li6_nodes = children(li6);
+			t39 = claim_text(li6_nodes, "Confirma las páginas a las que quieras que acceda y haz click en ");
+			strong5 = claim_element(li6_nodes, "STRONG", {});
+			var strong5_nodes = children(strong5);
+			t40 = claim_text(strong5_nodes, "“continuar”");
+			strong5_nodes.forEach(detach);
+			t41 = claim_text(li6_nodes, ".");
+			li6_nodes.forEach(detach);
+			ol2_nodes.forEach(detach);
+			ul4_nodes.forEach(detach);
+			t42 = claim_space(div6_nodes);
+			img3 = claim_element(div6_nodes, "IMG", { src: true });
+			t43 = claim_space(div6_nodes);
+			ul5 = claim_element(div6_nodes, "UL", { class: true });
+			var ul5_nodes = children(ul5);
+			ol3 = claim_element(ul5_nodes, "OL", { start: true, class: true });
+			var ol3_nodes = children(ol3);
+			li7 = claim_element(ol3_nodes, "LI", { class: true });
+			var li7_nodes = children(li7);
+			t44 = claim_text(li7_nodes, "Luego revisa lo que globot solicita hacer y haz click en ");
+			strong6 = claim_element(li7_nodes, "STRONG", {});
+			var strong6_nodes = children(strong6);
+			t45 = claim_text(strong6_nodes, "“guardar”");
+			strong6_nodes.forEach(detach);
+			t46 = claim_text(li7_nodes, ".");
+			li7_nodes.forEach(detach);
+			ol3_nodes.forEach(detach);
+			ul5_nodes.forEach(detach);
+			t47 = claim_space(div6_nodes);
+			img4 = claim_element(div6_nodes, "IMG", { src: true });
+			t48 = claim_space(div6_nodes);
+			ul6 = claim_element(div6_nodes, "UL", { class: true });
+			var ul6_nodes = children(ul6);
+			ol4 = claim_element(ul6_nodes, "OL", { start: true, class: true });
+			var ol4_nodes = children(ol4);
+			li8 = claim_element(ol4_nodes, "LI", { class: true });
+			var li8_nodes = children(li8);
+			t49 = claim_text(li8_nodes, "Por último solo queda hacer click en ");
+			strong7 = claim_element(li8_nodes, "STRONG", {});
+			var strong7_nodes = children(strong7);
+			t50 = claim_text(strong7_nodes, "“De acuerdo”");
+			strong7_nodes.forEach(detach);
+			t51 = claim_text(li8_nodes, " y puedes empezar a utilizar tu chatbot con messenger");
+			li8_nodes.forEach(detach);
+			ol4_nodes.forEach(detach);
+			ul6_nodes.forEach(detach);
+			t52 = claim_space(div6_nodes);
+			img5 = claim_element(div6_nodes, "IMG", { src: true });
+			t53 = claim_space(div6_nodes);
+			p2 = claim_element(div6_nodes, "P", {});
+			var p2_nodes = children(p2);
+			t54 = claim_text(p2_nodes, "Puedes desactivar tu chatbot en el caso que decidas que no responda.");
+			p2_nodes.forEach(detach);
+			t55 = claim_space(div6_nodes);
+			ul7 = claim_element(div6_nodes, "UL", { class: true });
+			var ul7_nodes = children(ul7);
+			li9 = claim_element(ul7_nodes, "LI", { class: true });
+			var li9_nodes = children(li9);
+			t56 = claim_text(li9_nodes, "Haz click en ");
+			strong8 = claim_element(li9_nodes, "STRONG", {});
+			var strong8_nodes = children(strong8);
+			t57 = claim_text(strong8_nodes, "“Desactivar chatbot en este canal”");
+			strong8_nodes.forEach(detach);
+			t58 = claim_text(li9_nodes, ".");
+			li9_nodes.forEach(detach);
+			ul7_nodes.forEach(detach);
+			t59 = claim_space(div6_nodes);
+			p3 = claim_element(div6_nodes, "P", {});
+			var p3_nodes = children(p3);
+			strong9 = claim_element(p3_nodes, "STRONG", {});
+			var strong9_nodes = children(strong9);
+			t60 = claim_text(strong9_nodes, "En el caso de no tener tu cuenta comercial creada en Meta sigue estos pasos (si ya tienes creado tu portafolio omite este paso)");
+			strong9_nodes.forEach(detach);
+			p3_nodes.forEach(detach);
 			div6_nodes.forEach(detach);
+			t61 = claim_space(div7_nodes);
+			ul8 = claim_element(div7_nodes, "UL", { class: true });
+			var ul8_nodes = children(ul8);
+			li10 = claim_element(ul8_nodes, "LI", { class: true });
+			var li10_nodes = children(li10);
+			t62 = claim_text(li10_nodes, "Ingresa a Meta Business ");
+			a = claim_element(li10_nodes, "A", { class: true, href: true });
+			var a_nodes = children(a);
+			t63 = claim_text(a_nodes, "Business Facebook");
+			a_nodes.forEach(detach);
+			li10_nodes.forEach(detach);
+			t64 = claim_space(ul8_nodes);
+			li11 = claim_element(ul8_nodes, "LI", { class: true });
+			var li11_nodes = children(li11);
+			t65 = claim_text(li11_nodes, "Haz click en “Crear una cuenta” y luego  entra con tu cuenta de Facebook.completa el nombre del negocio, tu nombre y el correo electrónico de tu negocio. Dale clic a ");
+			strong10 = claim_element(li11_nodes, "STRONG", {});
+			var strong10_nodes = children(strong10);
+			t66 = claim_text(strong10_nodes, "\"Enviar\"");
+			strong10_nodes.forEach(detach);
+			li11_nodes.forEach(detach);
+			ul8_nodes.forEach(detach);
+			t67 = claim_space(div7_nodes);
+			img6 = claim_element(div7_nodes, "IMG", { src: true });
+			t68 = claim_space(div7_nodes);
+			ul9 = claim_element(div7_nodes, "UL", { class: true });
+			var ul9_nodes = children(ul9);
+			li12 = claim_element(ul9_nodes, "LI", { class: true });
+			var li12_nodes = children(li12);
+			t69 = claim_text(li12_nodes, "Proporciona los datos de tu empresa y haz clic en ");
+			strong11 = claim_element(li12_nodes, "STRONG", {});
+			var strong11_nodes = children(strong11);
+			t70 = claim_text(strong11_nodes, "\"Enviar\"");
+			strong11_nodes.forEach(detach);
+			t71 = claim_text(li12_nodes, ".");
+			li12_nodes.forEach(detach);
+			t72 = claim_space(ul9_nodes);
+			li13 = claim_element(ul9_nodes, "LI", { class: true });
+			var li13_nodes = children(li13);
+			t73 = claim_text(li13_nodes, "Ingresa los detalles de tu empresa y haz clic en ");
+			strong12 = claim_element(li13_nodes, "STRONG", {});
+			var strong12_nodes = children(strong12);
+			t74 = claim_text(strong12_nodes, "\"Enviar\"");
+			strong12_nodes.forEach(detach);
+			t75 = claim_text(li13_nodes, ".");
+			li13_nodes.forEach(detach);
+			ul9_nodes.forEach(detach);
+			div7_nodes.forEach(detach);
+			div8_nodes.forEach(detach);
+			div9_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "accordion svelte-153dajr");
-			attr(div1, "class", "box1 svelte-153dajr");
-			attr(div2, "class", "heading svelte-153dajr");
-			attr(h3, "class", "subheading");
-			attr(div3, "class", "heading-group svelte-153dajr");
-			attr(ul, "class", "cards svelte-153dajr");
-			attr(div4, "class", "content svelte-153dajr");
-			attr(div5, "class", "box2 svelte-153dajr");
-			attr(div6, "class", "section-container svelte-153dajr");
-			attr(section, "class", "svelte-153dajr");
+			attr(div0, "class", "accordion svelte-6u9w4c");
+			attr(div1, "class", "box1 svelte-6u9w4c");
+			set_style(span2, "color", "var(--Primary-2, #7B5CF5)");
+			attr(div2, "class", "steps svelte-6u9w4c");
+			set_style(div2, "display", "flex");
+			set_style(div2, "gap", "15px");
+			set_style(div2, "margin-bottom", "20px");
+			set_style(div2, "text-align", "center");
+			set_style(div2, "color", "#C1C2C4");
+			attr(div3, "class", "heading svelte-6u9w4c");
+			attr(div4, "class", "heading-group svelte-6u9w4c");
+			attr(p0, "class", "subtitle svelte-6u9w4c");
+			attr(li0, "class", "svelte-6u9w4c");
+			attr(ul0, "class", "svelte-6u9w4c");
+			attr(div5, "class", "paso1 svelte-6u9w4c");
+			attr(p1, "class", "subtitle svelte-6u9w4c");
+			attr(li1, "class", "svelte-6u9w4c");
+			attr(ul1, "class", "svelte-6u9w4c");
+			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) attr(img0, "src", img0_src_value);
+			attr(li2, "class", "svelte-6u9w4c");
+			attr(li3, "class", "svelte-6u9w4c");
+			attr(ol0, "class", "svelte-6u9w4c");
+			attr(li4, "class", "svelte-6u9w4c");
+			attr(ul2, "class", "svelte-6u9w4c");
+			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) attr(img1, "src", img1_src_value);
+			attr(li5, "class", "svelte-6u9w4c");
+			attr(ol1, "start", "2");
+			attr(ol1, "class", "svelte-6u9w4c");
+			attr(ul3, "class", "svelte-6u9w4c");
+			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[4].url)) attr(img2, "src", img2_src_value);
+			attr(li6, "class", "svelte-6u9w4c");
+			attr(ol2, "start", "3");
+			attr(ol2, "class", "svelte-6u9w4c");
+			attr(ul4, "class", "svelte-6u9w4c");
+			if (!src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[5].url)) attr(img3, "src", img3_src_value);
+			attr(li7, "class", "svelte-6u9w4c");
+			attr(ol3, "start", "4");
+			attr(ol3, "class", "svelte-6u9w4c");
+			attr(ul5, "class", "svelte-6u9w4c");
+			if (!src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[6].url)) attr(img4, "src", img4_src_value);
+			attr(li8, "class", "svelte-6u9w4c");
+			attr(ol4, "start", "5");
+			attr(ol4, "class", "svelte-6u9w4c");
+			attr(ul6, "class", "svelte-6u9w4c");
+			if (!src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[7].url)) attr(img5, "src", img5_src_value);
+			attr(li9, "class", "svelte-6u9w4c");
+			attr(ul7, "class", "svelte-6u9w4c");
+			attr(div6, "class", "paso1 svelte-6u9w4c");
+			attr(a, "class", "link svelte-6u9w4c");
+			attr(a, "href", "https://business.facebook.com/business/loginpage/?next=https%3A%2F%2Fbusiness.facebook.com%2F%3Fnav_ref%3Dbiz_unified_f3_login_page_to_mbs&login_options%5B0%5D=FB&login_options%5B1%5D=IG&login_options%5B2%5D=SSO&config_ref=biz_login_tool_flavor_mbs");
+			attr(li10, "class", "svelte-6u9w4c");
+			attr(li11, "class", "svelte-6u9w4c");
+			attr(ul8, "class", "svelte-6u9w4c");
+			if (!src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[8].url)) attr(img6, "src", img6_src_value);
+			attr(li12, "class", "svelte-6u9w4c");
+			attr(li13, "class", "svelte-6u9w4c");
+			attr(ul9, "class", "svelte-6u9w4c");
+			attr(div7, "class", "content svelte-6u9w4c");
+			attr(div8, "class", "box2 svelte-6u9w4c");
+			attr(div9, "class", "section-container svelte-6u9w4c");
+			attr(section, "class", "svelte-6u9w4c");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
 			append_hydration(section, style);
 			append_hydration(style, t0);
 			append_hydration(section, t1);
-			append_hydration(section, div6);
-			append_hydration(div6, div1);
+			append_hydration(section, div9);
+			append_hydration(div9, div1);
 			append_hydration(div1, div0);
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				if (each_blocks_1[i]) {
-					each_blocks_1[i].m(div0, null);
-				}
-			}
-
-			append_hydration(div6, t2);
-			append_hydration(div6, div5);
-			append_hydration(div5, div3);
-			append_hydration(div3, div2);
-			append_hydration(div2, t3);
-			append_hydration(div3, t4);
-			append_hydration(div3, h3);
-			append_hydration(h3, t5);
-			append_hydration(div5, t6);
-			append_hydration(div5, div4);
-			append_hydration(div4, ul);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				if (each_blocks[i]) {
-					each_blocks[i].m(ul, null);
+					each_blocks[i].m(div0, null);
 				}
 			}
 
+			append_hydration(div9, t2);
+			append_hydration(div9, div8);
+			append_hydration(div8, div2);
+			append_hydration(div2, span0);
+			append_hydration(span0, t3);
+			append_hydration(div2, t4);
+			append_hydration(div2, span1);
+			append_hydration(span1, t5);
+			append_hydration(div2, t6);
+			append_hydration(div2, span2);
+			append_hydration(span2, t7);
+			append_hydration(div8, t8);
+			append_hydration(div8, div4);
+			append_hydration(div4, div3);
+			append_hydration(div3, t9);
+			append_hydration(div8, t10);
+			append_hydration(div8, div7);
+			append_hydration(div7, div5);
+			append_hydration(div5, p0);
+			append_hydration(p0, t11);
+			append_hydration(div5, t12);
+			append_hydration(div5, ul0);
+			append_hydration(ul0, li0);
+			append_hydration(li0, t13);
+			append_hydration(li0, strong0);
+			append_hydration(strong0, t14);
+			append_hydration(li0, t15);
+			append_hydration(li0, strong1);
+			append_hydration(strong1, t16);
+			append_hydration(li0, t17);
+			append_hydration(div7, t18);
+			append_hydration(div7, div6);
+			append_hydration(div6, p1);
+			append_hydration(p1, t19);
+			append_hydration(div6, t20);
+			append_hydration(div6, ul1);
+			append_hydration(ul1, li1);
+			append_hydration(li1, t21);
+			append_hydration(li1, strong2);
+			append_hydration(strong2, t22);
+			append_hydration(li1, t23);
+			append_hydration(div6, t24);
+			append_hydration(div6, img0);
+			append_hydration(div6, t25);
+			append_hydration(div6, ul2);
+			append_hydration(ul2, li2);
+			append_hydration(li2, t26);
+			append_hydration(ul2, t27);
+			append_hydration(ul2, li4);
+			append_hydration(li4, t28);
+			append_hydration(li4, ol0);
+			append_hydration(ol0, li3);
+			append_hydration(li3, t29);
+			append_hydration(li3, strong3);
+			append_hydration(strong3, t30);
+			append_hydration(li3, t31);
+			append_hydration(div6, t32);
+			append_hydration(div6, img1);
+			append_hydration(div6, t33);
+			append_hydration(div6, ul3);
+			append_hydration(ul3, ol1);
+			append_hydration(ol1, li5);
+			append_hydration(li5, t34);
+			append_hydration(li5, strong4);
+			append_hydration(strong4, t35);
+			append_hydration(li5, t36);
+			append_hydration(div6, t37);
+			append_hydration(div6, img2);
+			append_hydration(div6, t38);
+			append_hydration(div6, ul4);
+			append_hydration(ul4, ol2);
+			append_hydration(ol2, li6);
+			append_hydration(li6, t39);
+			append_hydration(li6, strong5);
+			append_hydration(strong5, t40);
+			append_hydration(li6, t41);
+			append_hydration(div6, t42);
+			append_hydration(div6, img3);
+			append_hydration(div6, t43);
+			append_hydration(div6, ul5);
+			append_hydration(ul5, ol3);
+			append_hydration(ol3, li7);
+			append_hydration(li7, t44);
+			append_hydration(li7, strong6);
+			append_hydration(strong6, t45);
+			append_hydration(li7, t46);
+			append_hydration(div6, t47);
+			append_hydration(div6, img4);
+			append_hydration(div6, t48);
+			append_hydration(div6, ul6);
+			append_hydration(ul6, ol4);
+			append_hydration(ol4, li8);
+			append_hydration(li8, t49);
+			append_hydration(li8, strong7);
+			append_hydration(strong7, t50);
+			append_hydration(li8, t51);
+			append_hydration(div6, t52);
+			append_hydration(div6, img5);
+			append_hydration(div6, t53);
+			append_hydration(div6, p2);
+			append_hydration(p2, t54);
+			append_hydration(div6, t55);
+			append_hydration(div6, ul7);
+			append_hydration(ul7, li9);
+			append_hydration(li9, t56);
+			append_hydration(li9, strong8);
+			append_hydration(strong8, t57);
+			append_hydration(li9, t58);
+			append_hydration(div6, t59);
+			append_hydration(div6, p3);
+			append_hydration(p3, strong9);
+			append_hydration(strong9, t60);
+			append_hydration(div7, t61);
+			append_hydration(div7, ul8);
+			append_hydration(ul8, li10);
+			append_hydration(li10, t62);
+			append_hydration(li10, a);
+			append_hydration(a, t63);
+			append_hydration(ul8, t64);
+			append_hydration(ul8, li11);
+			append_hydration(li11, t65);
+			append_hydration(li11, strong10);
+			append_hydration(strong10, t66);
+			append_hydration(div7, t67);
+			append_hydration(div7, img6);
+			append_hydration(div7, t68);
+			append_hydration(div7, ul9);
+			append_hydration(ul9, li12);
+			append_hydration(li12, t69);
+			append_hydration(li12, strong11);
+			append_hydration(strong11, t70);
+			append_hydration(li12, t71);
+			append_hydration(ul9, t72);
+			append_hydration(ul9, li13);
+			append_hydration(li13, t73);
+			append_hydration(li13, strong12);
+			append_hydration(strong12, t74);
+			append_hydration(li13, t75);
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*activeItem, items, setActiveItem*/ 50) {
-				each_value_1 = /*items*/ ctx[1];
+			if (dirty & /*activeItem, items, setActiveItem*/ 1537) {
+				each_value = /*items*/ ctx[0];
 				group_outros();
-				each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key, 1, ctx, each_value_1, each0_lookup, div0, outro_and_destroy_block, create_each_block_1, null, get_each_context_1);
+				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div0, outro_and_destroy_block, create_each_block, null, get_each_context);
 				check_outros();
 			}
 
-			if (!current || dirty & /*heading*/ 4) set_data(t3, /*heading*/ ctx[2]);
-			if (!current || dirty & /*subheading*/ 8) set_data(t5, /*subheading*/ ctx[3]);
+			if (!current || dirty & /*heading*/ 2) set_data(t9, /*heading*/ ctx[1]);
 
-			if (dirty & /*cards*/ 1) {
-				each_value = /*cards*/ ctx[0];
-				let i;
+			if (!current || dirty & /*image1*/ 4 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) {
+				attr(img0, "src", img0_src_value);
+			}
 
-				for (i = 0; i < each_value.length; i += 1) {
-					const child_ctx = get_each_context(ctx, each_value, i);
+			if (!current || dirty & /*image2*/ 8 && !src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) {
+				attr(img1, "src", img1_src_value);
+			}
 
-					if (each_blocks[i]) {
-						each_blocks[i].p(child_ctx, dirty);
-						transition_in(each_blocks[i], 1);
-					} else {
-						each_blocks[i] = create_each_block(child_ctx);
-						each_blocks[i].c();
-						transition_in(each_blocks[i], 1);
-						each_blocks[i].m(ul, null);
-					}
-				}
+			if (!current || dirty & /*image3*/ 16 && !src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[4].url)) {
+				attr(img2, "src", img2_src_value);
+			}
 
-				group_outros();
+			if (!current || dirty & /*image4*/ 32 && !src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[5].url)) {
+				attr(img3, "src", img3_src_value);
+			}
 
-				for (i = each_value.length; i < each_blocks.length; i += 1) {
-					out(i);
-				}
+			if (!current || dirty & /*image5*/ 64 && !src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[6].url)) {
+				attr(img4, "src", img4_src_value);
+			}
 
-				check_outros();
+			if (!current || dirty & /*image6*/ 128 && !src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[7].url)) {
+				attr(img5, "src", img5_src_value);
+			}
+
+			if (!current || dirty & /*image7*/ 256 && !src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[8].url)) {
+				attr(img6, "src", img6_src_value);
 			}
 		},
 		i(local) {
 			if (current) return;
-
-			for (let i = 0; i < each_value_1.length; i += 1) {
-				transition_in(each_blocks_1[i]);
-			}
 
 			for (let i = 0; i < each_value.length; i += 1) {
 				transition_in(each_blocks[i]);
@@ -3739,12 +4272,6 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		o(local) {
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				transition_out(each_blocks_1[i]);
-			}
-
-			each_blocks = each_blocks.filter(Boolean);
-
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				transition_out(each_blocks[i]);
 			}
@@ -3754,42 +4281,55 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(section);
 
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				each_blocks_1[i].d();
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].d();
 			}
-
-			destroy_each(each_blocks, detaching);
 		}
 	};
 }
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
-	let { cards } = $$props;
 	let { items } = $$props;
 	let { heading } = $$props;
-	let { subheading } = $$props;
+	let { image1 } = $$props;
+	let { image2 } = $$props;
+	let { image3 } = $$props;
+	let { image4 } = $$props;
+	let { image5 } = $$props;
+	let { image6 } = $$props;
+	let { image7 } = $$props;
 	let activeItem = 0;
 
 	function setActiveItem(i) {
-		$$invalidate(4, activeItem = activeItem === i ? null : i);
+		$$invalidate(9, activeItem = activeItem === i ? null : i);
 	}
 
 	const click_handler = i => setActiveItem(i);
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(6, props = $$props.props);
-		if ('cards' in $$props) $$invalidate(0, cards = $$props.cards);
-		if ('items' in $$props) $$invalidate(1, items = $$props.items);
-		if ('heading' in $$props) $$invalidate(2, heading = $$props.heading);
-		if ('subheading' in $$props) $$invalidate(3, subheading = $$props.subheading);
+		if ('props' in $$props) $$invalidate(11, props = $$props.props);
+		if ('items' in $$props) $$invalidate(0, items = $$props.items);
+		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
+		if ('image1' in $$props) $$invalidate(2, image1 = $$props.image1);
+		if ('image2' in $$props) $$invalidate(3, image2 = $$props.image2);
+		if ('image3' in $$props) $$invalidate(4, image3 = $$props.image3);
+		if ('image4' in $$props) $$invalidate(5, image4 = $$props.image4);
+		if ('image5' in $$props) $$invalidate(6, image5 = $$props.image5);
+		if ('image6' in $$props) $$invalidate(7, image6 = $$props.image6);
+		if ('image7' in $$props) $$invalidate(8, image7 = $$props.image7);
 	};
 
 	return [
-		cards,
 		items,
 		heading,
-		subheading,
+		image1,
+		image2,
+		image3,
+		image4,
+		image5,
+		image6,
+		image7,
 		activeItem,
 		setActiveItem,
 		props,
@@ -3802,11 +4342,16 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 6,
-			cards: 0,
-			items: 1,
-			heading: 2,
-			subheading: 3
+			props: 11,
+			items: 0,
+			heading: 1,
+			image1: 2,
+			image2: 3,
+			image3: 4,
+			image4: 5,
+			image5: 6,
+			image6: 7,
+			image7: 8
 		});
 	}
 }
