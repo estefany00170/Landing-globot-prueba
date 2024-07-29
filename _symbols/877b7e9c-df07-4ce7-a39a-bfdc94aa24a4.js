@@ -3444,7 +3444,7 @@ function create_each_block(ctx) {
 		l(nodes) {
 			li = claim_element(nodes, "LI", { class: true });
 			var li_nodes = children(li);
-			a = claim_element(li_nodes, "A", { href: true });
+			a = claim_element(li_nodes, "A", { href: true, target: true });
 			var a_nodes = children(a);
 			div2 = claim_element(a_nodes, "DIV", { class: true });
 			var div2_nodes = children(div2);
@@ -3470,6 +3470,7 @@ function create_each_block(ctx) {
 			attr(div1, "class", "title svelte-153dajr");
 			attr(div2, "class", "btn svelte-153dajr");
 			attr(a, "href", a_href_value = /*card*/ ctx[8].link.url);
+			attr(a, "target", "_blank");
 			attr(li, "class", "svelte-153dajr");
 		},
 		m(target, anchor) {

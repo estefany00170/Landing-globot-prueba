@@ -3963,7 +3963,7 @@ function create_fragment(ctx) {
 			li2 = claim_element(ul2_nodes, "LI", { class: true });
 			var li2_nodes = children(li2);
 			t26 = claim_text(li2_nodes, "Ingresa a ");
-			a0 = claim_element(li2_nodes, "A", { class: true, href: true });
+			a0 = claim_element(li2_nodes, "A", { class: true, href: true, target: true });
 			var a0_nodes = children(a0);
 			t27 = claim_text(a0_nodes, "Meta Business");
 			a0_nodes.forEach(detach);
@@ -4048,7 +4048,7 @@ function create_fragment(ctx) {
 			li7 = claim_element(ul7_nodes, "LI", { class: true });
 			var li7_nodes = children(li7);
 			t54 = claim_text(li7_nodes, "Ingresa a ");
-			a1 = claim_element(li7_nodes, "A", { class: true, href: true });
+			a1 = claim_element(li7_nodes, "A", { class: true, href: true, target: true });
 			var a1_nodes = children(a1);
 			t55 = claim_text(a1_nodes, "Meta Business");
 			a1_nodes.forEach(detach);
@@ -4247,6 +4247,7 @@ function create_fragment(ctx) {
 			attr(p1, "class", "subtitle svelte-cscos2");
 			attr(a0, "class", "link svelte-cscos2");
 			attr(a0, "href", "https://business.facebook.com/");
+			attr(a0, "target", "_blank");
 			attr(li2, "class", "svelte-cscos2");
 			attr(ul2, "class", "svelte-cscos2");
 			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) attr(img1, "src", img1_src_value);
@@ -4267,6 +4268,7 @@ function create_fragment(ctx) {
 			attr(p2, "class", "subtitle svelte-cscos2");
 			attr(a1, "class", "link svelte-cscos2");
 			attr(a1, "href", "https://business.facebook.com/");
+			attr(a1, "target", "_blank");
 			attr(li7, "class", "svelte-cscos2");
 			attr(ul7, "class", "svelte-cscos2");
 			if (!src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[8].url)) attr(img7, "src", img7_src_value);

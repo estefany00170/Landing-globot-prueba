@@ -4449,7 +4449,7 @@ function create_fragment(ctx) {
 			li2 = claim_element(ul1_nodes, "LI", { class: true });
 			var li2_nodes = children(li2);
 			t23 = claim_text(li2_nodes, "Ingresa a ");
-			a0 = claim_element(li2_nodes, "A", { class: true, href: true });
+			a0 = claim_element(li2_nodes, "A", { class: true, href: true, target: true });
 			var a0_nodes = children(a0);
 			t24 = claim_text(a0_nodes, "Meta Business");
 			a0_nodes.forEach(detach);
@@ -4492,7 +4492,7 @@ function create_fragment(ctx) {
 			li6 = claim_element(ul2_nodes, "LI", { class: true });
 			var li6_nodes = children(li6);
 			t38 = claim_text(li6_nodes, "Ingresa a ");
-			a1 = claim_element(li6_nodes, "A", { class: true, href: true });
+			a1 = claim_element(li6_nodes, "A", { class: true, href: true, target: true });
 			var a1_nodes = children(a1);
 			t39 = claim_text(a1_nodes, "Meta Developers");
 			a1_nodes.forEach(detach);
@@ -4668,7 +4668,7 @@ function create_fragment(ctx) {
 			li17 = claim_element(ul11_nodes, "LI", { class: true });
 			var li17_nodes = children(li17);
 			t97 = claim_text(li17_nodes, "Regresa a tu cuenta comercial de ");
-			a3 = claim_element(li17_nodes, "A", { class: true, href: true });
+			a3 = claim_element(li17_nodes, "A", { class: true, href: true, target: true });
 			var a3_nodes = children(a3);
 			t98 = claim_text(a3_nodes, "Meta Business");
 			a3_nodes.forEach(detach);
@@ -4851,7 +4851,7 @@ function create_fragment(ctx) {
 			li26 = claim_element(ul19_nodes, "LI", { class: true });
 			var li26_nodes = children(li26);
 			t161 = claim_text(li26_nodes, "Regresa a ");
-			a4 = claim_element(li26_nodes, "A", { class: true, href: true });
+			a4 = claim_element(li26_nodes, "A", { class: true, href: true, target: true });
 			var a4_nodes = children(a4);
 			t162 = claim_text(a4_nodes, "Meta Developers");
 			a4_nodes.forEach(detach);
@@ -4986,7 +4986,7 @@ function create_fragment(ctx) {
 			li36 = claim_element(ul26_nodes, "LI", { class: true });
 			var li36_nodes = children(li36);
 			t206 = claim_text(li36_nodes, "Ingresa al chatbot que creaste al principio en ");
-			a6 = claim_element(li36_nodes, "A", { class: true, href: true });
+			a6 = claim_element(li36_nodes, "A", { class: true, href: true, target: true });
 			var a6_nodes = children(a6);
 			t207 = claim_text(a6_nodes, "Globot");
 			a6_nodes.forEach(detach);
@@ -5046,7 +5046,7 @@ function create_fragment(ctx) {
 			li39 = claim_element(ul28_nodes, "LI", { class: true });
 			var li39_nodes = children(li39);
 			t228 = claim_text(li39_nodes, "Vuelve a ");
-			a7 = claim_element(li39_nodes, "A", { class: true, href: true });
+			a7 = claim_element(li39_nodes, "A", { class: true, href: true, target: true });
 			var a7_nodes = children(a7);
 			t229 = claim_text(a7_nodes, "Meta Developers");
 			a7_nodes.forEach(detach);
@@ -5150,6 +5150,7 @@ function create_fragment(ctx) {
 			attr(p1, "class", "subtitle svelte-hw0fp");
 			attr(a0, "class", "link svelte-hw0fp");
 			attr(a0, "href", "https://business.facebook.com/");
+			attr(a0, "target", "_blank");
 			attr(li2, "class", "svelte-hw0fp");
 			attr(li3, "class", "svelte-hw0fp");
 			attr(li4, "class", "svelte-hw0fp");
@@ -5160,6 +5161,7 @@ function create_fragment(ctx) {
 			attr(p2, "class", "subtitle svelte-hw0fp");
 			attr(a1, "class", "link svelte-hw0fp");
 			attr(a1, "href", "https://developers.facebook.com/");
+			attr(a1, "target", "_blank");
 			attr(li6, "class", "svelte-hw0fp");
 			attr(li7, "class", "svelte-hw0fp");
 			attr(ul2, "class", "svelte-hw0fp");
@@ -5197,6 +5199,7 @@ function create_fragment(ctx) {
 			attr(p4, "class", "subtitle svelte-hw0fp");
 			attr(a3, "class", "link svelte-hw0fp");
 			attr(a3, "href", "https://business.facebook.com/");
+			attr(a3, "target", "_blank");
 			attr(li17, "class", "svelte-hw0fp");
 			attr(li18, "class", "svelte-hw0fp");
 			attr(ul11, "class", "svelte-hw0fp");
@@ -5226,6 +5229,7 @@ function create_fragment(ctx) {
 			attr(p5, "class", "subtitle svelte-hw0fp");
 			attr(a4, "class", "link svelte-hw0fp");
 			attr(a4, "href", "https://developers.facebook.com/");
+			attr(a4, "target", "_blank");
 			attr(li26, "class", "svelte-hw0fp");
 			attr(li27, "class", "svelte-hw0fp");
 			attr(ul19, "class", "svelte-hw0fp");
@@ -5255,6 +5259,7 @@ function create_fragment(ctx) {
 			attr(p6, "class", "subtitle svelte-hw0fp");
 			attr(a6, "class", "link svelte-hw0fp");
 			attr(a6, "href", "https://backoffice.globot.ai/");
+			attr(a6, "target", "_blank");
 			attr(li36, "class", "svelte-hw0fp");
 			attr(ul26, "class", "svelte-hw0fp");
 			if (!src_url_equal(img24.src, img24_src_value = /*image25*/ ctx[26].url)) attr(img24, "src", img24_src_value);
@@ -5264,6 +5269,7 @@ function create_fragment(ctx) {
 			attr(li38, "class", "svelte-hw0fp");
 			attr(a7, "class", "link svelte-hw0fp");
 			attr(a7, "href", "https://developers.facebook.com/");
+			attr(a7, "target", "_blank");
 			attr(li39, "class", "svelte-hw0fp");
 			attr(ul28, "class", "svelte-hw0fp");
 			if (!src_url_equal(img26.src, img26_src_value = /*image27*/ ctx[28].url)) attr(img26, "src", img26_src_value);
