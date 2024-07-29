@@ -4630,7 +4630,7 @@ function create_fragment(ctx) {
 			t84 = claim_text(strong11_nodes, "“URL de la política de privacidad”");
 			strong11_nodes.forEach(detach);
 			t85 = claim_text(li15_nodes, " el siguiente link: ");
-			a2 = claim_element(li15_nodes, "A", { class: true, href: true });
+			a2 = claim_element(li15_nodes, "A", { class: true, href: true, target: true });
 			var a2_nodes = children(a2);
 			t86 = claim_text(a2_nodes, "https://globot.ai/politicasprivacidad/");
 			a2_nodes.forEach(detach);
@@ -4921,7 +4921,7 @@ function create_fragment(ctx) {
 			li32 = claim_element(ul23_nodes, "LI", { class: true });
 			var li32_nodes = children(li32);
 			t185 = claim_text(li32_nodes, "Agrega un Método de pago (Para enviar mensajes a través de WhatsApp, necesitarás un método de pago válido). Para mayor información ingresa a  ");
-			a5 = claim_element(li32_nodes, "A", { class: true, href: true });
+			a5 = claim_element(li32_nodes, "A", { class: true, href: true, target: true });
 			var a5_nodes = children(a5);
 			t186 = claim_text(a5_nodes, "Meta info");
 			a5_nodes.forEach(detach);
@@ -5188,7 +5188,8 @@ function create_fragment(ctx) {
 			attr(ul8, "class", "svelte-hw0fp");
 			if (!src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[8].url)) attr(img7, "src", img7_src_value);
 			attr(a2, "class", "link svelte-hw0fp");
-			attr(a2, "href", "https://business.facebook.com/");
+			attr(a2, "href", "https://globot.ai/politicasprivacidad/");
+			attr(a2, "target", "_blank");
 			attr(li15, "class", "svelte-hw0fp");
 			attr(ul9, "class", "svelte-hw0fp");
 			if (!src_url_equal(img8.src, img8_src_value = /*image9*/ ctx[9].url)) attr(img8, "src", img8_src_value);
@@ -5246,6 +5247,7 @@ function create_fragment(ctx) {
 			if (!src_url_equal(img21.src, img21_src_value = /*image22*/ ctx[23].url)) attr(img21, "src", img21_src_value);
 			attr(a5, "class", "link svelte-hw0fp");
 			attr(a5, "href", "https://developers.facebook.com/docs/whatsapp/pricing/");
+			attr(a5, "target", "_blank");
 			attr(li32, "class", "svelte-hw0fp");
 			attr(ul23, "class", "svelte-hw0fp");
 			if (!src_url_equal(img22.src, img22_src_value = /*image23*/ ctx[24].url)) attr(img22, "src", img22_src_value);
