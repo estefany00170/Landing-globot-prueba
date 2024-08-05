@@ -1281,9 +1281,9 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h1, "class", "heading svelte-13mc5mw");
-			attr(div, "class", "content svelte-13mc5mw");
-			attr(section, "class", "section-container svelte-13mc5mw");
+			attr(h1, "class", "heading svelte-r08frn");
+			attr(div, "class", "content svelte-r08frn");
+			attr(section, "class", "section-container svelte-r08frn");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
