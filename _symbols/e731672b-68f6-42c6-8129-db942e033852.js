@@ -3202,7 +3202,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-6jj2w0");
+			attr(div, "class", "description svelte-125irh4");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3315,12 +3315,12 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-6jj2w0");
-			attr(span0, "class", "svelte-6jj2w0");
-			attr(span1, "class", "icone svelte-6jj2w0");
-			attr(button, "class", "svelte-6jj2w0");
-			attr(div1, "class", "item-icon svelte-6jj2w0");
-			attr(div3, "class", "item svelte-6jj2w0");
+			attr(div0, "class", "menu-icon svelte-125irh4");
+			attr(span0, "class", "svelte-125irh4");
+			attr(span1, "class", "icone svelte-125irh4");
+			attr(button, "class", "svelte-125irh4");
+			attr(div1, "class", "item-icon svelte-125irh4");
+			attr(div3, "class", "item svelte-125irh4");
 			toggle_class(div3, "active", /*activeItem*/ ctx[2] === /*i*/ ctx[8]);
 			this.first = div3;
 		},
@@ -3798,44 +3798,44 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-6jj2w0");
+			attr(div0, "class", "menu-icon svelte-125irh4");
 			attr(a, "href", "/tutoriales");
 			attr(a, "target", "_blank");
-			attr(div1, "class", "item-icon svelte-6jj2w0");
+			attr(div1, "class", "item-icon svelte-125irh4");
 			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-6jj2w0");
-			attr(div4, "class", "accordion svelte-6jj2w0");
-			attr(div5, "class", "box1 svelte-6jj2w0");
+			attr(div3, "class", "tutoriales svelte-125irh4");
+			attr(div4, "class", "accordion svelte-125irh4");
+			attr(div5, "class", "box1 svelte-125irh4");
 			set_style(span2, "color", "var(--Primary-2, #7B5CF5)");
-			attr(div6, "class", "steps svelte-6jj2w0");
+			attr(div6, "class", "steps svelte-125irh4");
 			set_style(div6, "display", "flex");
 			set_style(div6, "gap", "15px");
 			set_style(div6, "margin-bottom", "20px");
 			set_style(div6, "text-align", "center");
 			set_style(div6, "color", "#C1C2C4");
-			attr(div7, "class", "heading svelte-6jj2w0");
-			attr(div8, "class", "heading-group svelte-6jj2w0");
-			attr(p0, "class", "subtitle svelte-6jj2w0");
-			attr(p1, "class", "text svelte-6jj2w0");
-			attr(li0, "class", "svelte-6jj2w0");
-			attr(li1, "class", "svelte-6jj2w0");
-			attr(li2, "class", "svelte-6jj2w0");
-			attr(li3, "class", "svelte-6jj2w0");
-			attr(li4, "class", "svelte-6jj2w0");
-			attr(ul0, "class", "svelte-6jj2w0");
-			attr(li5, "class", "svelte-6jj2w0");
-			attr(ul1, "class", "svelte-6jj2w0");
-			attr(p2, "class", "text svelte-6jj2w0");
-			attr(li6, "class", "svelte-6jj2w0");
-			attr(li7, "class", "svelte-6jj2w0");
-			attr(li8, "class", "svelte-6jj2w0");
-			attr(li9, "class", "svelte-6jj2w0");
-			attr(ul2, "class", "svelte-6jj2w0");
-			attr(div9, "class", "paso1 svelte-6jj2w0");
-			attr(div10, "class", "content svelte-6jj2w0");
-			attr(div11, "class", "box2 svelte-6jj2w0");
-			attr(div12, "class", "section-container svelte-6jj2w0");
-			attr(section, "class", "svelte-6jj2w0");
+			attr(div7, "class", "heading svelte-125irh4");
+			attr(div8, "class", "heading-group svelte-125irh4");
+			attr(p0, "class", "subtitle svelte-125irh4");
+			attr(p1, "class", "text svelte-125irh4");
+			attr(li0, "class", "svelte-125irh4");
+			attr(li1, "class", "svelte-125irh4");
+			attr(li2, "class", "svelte-125irh4");
+			attr(li3, "class", "svelte-125irh4");
+			attr(li4, "class", "svelte-125irh4");
+			attr(ul0, "class", "svelte-125irh4");
+			attr(li5, "class", "svelte-125irh4");
+			attr(ul1, "class", "svelte-125irh4");
+			attr(p2, "class", "text svelte-125irh4");
+			attr(li6, "class", "svelte-125irh4");
+			attr(li7, "class", "svelte-125irh4");
+			attr(li8, "class", "svelte-125irh4");
+			attr(li9, "class", "svelte-125irh4");
+			attr(ul2, "class", "svelte-125irh4");
+			attr(div9, "class", "paso1 svelte-125irh4");
+			attr(div10, "class", "content svelte-125irh4");
+			attr(div11, "class", "box2 svelte-125irh4");
+			attr(div12, "class", "section-container svelte-125irh4");
+			attr(section, "class", "svelte-125irh4");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
