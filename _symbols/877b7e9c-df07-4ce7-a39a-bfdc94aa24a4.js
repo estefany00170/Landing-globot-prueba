@@ -3633,7 +3633,7 @@ function create_fragment(ctx) {
 			claim_component(icon.$$.fragment, div0_nodes);
 			div0_nodes.forEach(detach);
 			t2 = claim_space(div1_nodes);
-			a = claim_element(div1_nodes, "A", { href: true, target: true });
+			a = claim_element(div1_nodes, "A", { href: true });
 			var a_nodes = children(a);
 			t3 = claim_text(a_nodes, "Tutoriales");
 			a_nodes.forEach(detach);
@@ -3685,7 +3685,6 @@ function create_fragment(ctx) {
 		h() {
 			attr(div0, "class", "menu-icon svelte-8byoty");
 			attr(a, "href", "/tutoriales");
-			attr(a, "target", "_blank");
 			attr(div1, "class", "item-icon svelte-8byoty");
 			attr(div2, "class", "item");
 			attr(div3, "class", "tutoriales svelte-8byoty");
