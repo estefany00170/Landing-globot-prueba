@@ -3940,7 +3940,7 @@ function create_fragment(ctx) {
 			div6 = element("div");
 			a1 = element("a");
 			t6 = text("Tutoriales");
-			t7 = space();
+			t7 = text(" > ");
 			span0 = element("span");
 			t8 = text("Integración canales");
 			t9 = text(" > ");
@@ -4425,7 +4425,7 @@ function create_fragment(ctx) {
 			var a1_nodes = children(a1);
 			t6 = claim_text(a1_nodes, "Tutoriales");
 			a1_nodes.forEach(detach);
-			t7 = claim_space(div6_nodes);
+			t7 = claim_text(div6_nodes, " > ");
 			span0 = claim_element(div6_nodes, "SPAN", {});
 			var span0_nodes = children(span0);
 			t8 = claim_text(span0_nodes, "Integración canales");
