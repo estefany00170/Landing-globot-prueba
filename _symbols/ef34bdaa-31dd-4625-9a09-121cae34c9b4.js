@@ -3808,18 +3808,27 @@ function instance($$self, $$props, $$invalidate) {
 	site_nav = [
 		{
 			link: {
-				url: "#funcion",
+				url: "https://globot.ai/#funcion",
 				label: "¿Cómo funciona?"
 			}
 		},
 		{
-			link: { url: "#benefits", label: "Beneficios" }
+			link: {
+				url: "https://globot.ai/#benefits",
+				label: "Beneficios"
+			}
 		},
 		{
-			link: { url: "#live-demo", label: "Live Demo" }
+			link: {
+				url: "https://globot.ai/#live-demo",
+				label: "Live Demo"
+			}
 		},
 		{
-			link: { url: "#contacto", label: "Contacto" }
+			link: {
+				url: "https://globot.ai/#contacto",
+				label: "Contacto"
+			}
 		}
 	];
 
