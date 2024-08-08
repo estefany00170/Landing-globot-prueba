@@ -1,4 +1,4 @@
-// Facebook - Updated August 6, 2024
+// Facebook - Updated August 8, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3435,13 +3435,13 @@ function create_fragment(ctx) {
 	let t5;
 	let div12;
 	let div6;
-	let span0;
+	let a1;
 	let t6;
 	let t7;
-	let span1;
+	let span0;
 	let t8;
 	let t9;
-	let span2;
+	let span1;
 	let t10;
 	let t11;
 	let div8;
@@ -3554,7 +3554,7 @@ function create_fragment(ctx) {
 	let ul8;
 	let li10;
 	let t65;
-	let a1;
+	let a2;
 	let t66;
 	let t67;
 	let li11;
@@ -3614,13 +3614,13 @@ function create_fragment(ctx) {
 			t5 = space();
 			div12 = element("div");
 			div6 = element("div");
-			span0 = element("span");
+			a1 = element("a");
 			t6 = text("Tutoriales");
 			t7 = text(" > ");
-			span1 = element("span");
+			span0 = element("span");
 			t8 = text("Integración canales");
 			t9 = text(" > ");
-			span2 = element("span");
+			span1 = element("span");
 			t10 = text("Facebook");
 			t11 = space();
 			div8 = element("div");
@@ -3727,7 +3727,7 @@ function create_fragment(ctx) {
 			ul8 = element("ul");
 			li10 = element("li");
 			t65 = text("Ingresa a Meta Business ");
-			a1 = element("a");
+			a2 = element("a");
 			t66 = text("Business Facebook");
 			t67 = space();
 			li11 = element("li");
@@ -3796,20 +3796,20 @@ function create_fragment(ctx) {
 			var div12_nodes = children(div12);
 			div6 = claim_element(div12_nodes, "DIV", { class: true, style: true });
 			var div6_nodes = children(div6);
+			a1 = claim_element(div6_nodes, "A", { href: true });
+			var a1_nodes = children(a1);
+			t6 = claim_text(a1_nodes, "Tutoriales");
+			a1_nodes.forEach(detach);
+			t7 = claim_text(div6_nodes, " > ");
 			span0 = claim_element(div6_nodes, "SPAN", {});
 			var span0_nodes = children(span0);
-			t6 = claim_text(span0_nodes, "Tutoriales");
+			t8 = claim_text(span0_nodes, "Integración canales");
 			span0_nodes.forEach(detach);
-			t7 = claim_text(div6_nodes, " > ");
-			span1 = claim_element(div6_nodes, "SPAN", {});
-			var span1_nodes = children(span1);
-			t8 = claim_text(span1_nodes, "Integración canales");
-			span1_nodes.forEach(detach);
 			t9 = claim_text(div6_nodes, " > ");
-			span2 = claim_element(div6_nodes, "SPAN", { style: true });
-			var span2_nodes = children(span2);
-			t10 = claim_text(span2_nodes, "Facebook");
-			span2_nodes.forEach(detach);
+			span1 = claim_element(div6_nodes, "SPAN", { style: true });
+			var span1_nodes = children(span1);
+			t10 = claim_text(span1_nodes, "Facebook");
+			span1_nodes.forEach(detach);
 			div6_nodes.forEach(detach);
 			t11 = claim_space(div12_nodes);
 			div8 = claim_element(div12_nodes, "DIV", { class: true });
@@ -4001,10 +4001,10 @@ function create_fragment(ctx) {
 			li10 = claim_element(ul8_nodes, "LI", { class: true });
 			var li10_nodes = children(li10);
 			t65 = claim_text(li10_nodes, "Ingresa a Meta Business ");
-			a1 = claim_element(li10_nodes, "A", { class: true, href: true, target: true });
-			var a1_nodes = children(a1);
-			t66 = claim_text(a1_nodes, "Business Facebook");
-			a1_nodes.forEach(detach);
+			a2 = claim_element(li10_nodes, "A", { class: true, href: true, target: true });
+			var a2_nodes = children(a2);
+			t66 = claim_text(a2_nodes, "Business Facebook");
+			a2_nodes.forEach(detach);
 			li10_nodes.forEach(detach);
 			t67 = claim_space(ul8_nodes);
 			li11 = claim_element(ul8_nodes, "LI", { class: true });
@@ -4056,7 +4056,8 @@ function create_fragment(ctx) {
 			attr(div3, "class", "tutoriales svelte-1xw2q1u");
 			attr(div4, "class", "accordion svelte-1xw2q1u");
 			attr(div5, "class", "box1 svelte-1xw2q1u");
-			set_style(span2, "color", "var(--Primary-2, #7B5CF5)");
+			attr(a1, "href", "/tutoriales");
+			set_style(span1, "color", "var(--Primary-2, #7B5CF5)");
 			attr(div6, "class", "steps svelte-1xw2q1u");
 			set_style(div6, "display", "flex");
 			set_style(div6, "gap", "15px");
@@ -4102,9 +4103,9 @@ function create_fragment(ctx) {
 			attr(li9, "class", "svelte-1xw2q1u");
 			attr(ul7, "class", "svelte-1xw2q1u");
 			attr(div10, "class", "paso1 svelte-1xw2q1u");
-			attr(a1, "class", "link svelte-1xw2q1u");
-			attr(a1, "href", "https://business.facebook.com/business/loginpage/?next=https%3A%2F%2Fbusiness.facebook.com%2F%3Fnav_ref%3Dbiz_unified_f3_login_page_to_mbs&login_options%5B0%5D=FB&login_options%5B1%5D=IG&login_options%5B2%5D=SSO&config_ref=biz_login_tool_flavor_mbs");
-			attr(a1, "target", "_blank");
+			attr(a2, "class", "link svelte-1xw2q1u");
+			attr(a2, "href", "https://business.facebook.com/business/loginpage/?next=https%3A%2F%2Fbusiness.facebook.com%2F%3Fnav_ref%3Dbiz_unified_f3_login_page_to_mbs&login_options%5B0%5D=FB&login_options%5B1%5D=IG&login_options%5B2%5D=SSO&config_ref=biz_login_tool_flavor_mbs");
+			attr(a2, "target", "_blank");
 			attr(li10, "class", "svelte-1xw2q1u");
 			attr(li11, "class", "svelte-1xw2q1u");
 			attr(ul8, "class", "svelte-1xw2q1u");
@@ -4144,14 +4145,14 @@ function create_fragment(ctx) {
 			append_hydration(div13, t5);
 			append_hydration(div13, div12);
 			append_hydration(div12, div6);
-			append_hydration(div6, span0);
-			append_hydration(span0, t6);
+			append_hydration(div6, a1);
+			append_hydration(a1, t6);
 			append_hydration(div6, t7);
-			append_hydration(div6, span1);
-			append_hydration(span1, t8);
+			append_hydration(div6, span0);
+			append_hydration(span0, t8);
 			append_hydration(div6, t9);
-			append_hydration(div6, span2);
-			append_hydration(span2, t10);
+			append_hydration(div6, span1);
+			append_hydration(span1, t10);
 			append_hydration(div12, t11);
 			append_hydration(div12, div8);
 			append_hydration(div8, div7);
@@ -4257,8 +4258,8 @@ function create_fragment(ctx) {
 			append_hydration(div11, ul8);
 			append_hydration(ul8, li10);
 			append_hydration(li10, t65);
-			append_hydration(li10, a1);
-			append_hydration(a1, t66);
+			append_hydration(li10, a2);
+			append_hydration(a2, t66);
 			append_hydration(ul8, t67);
 			append_hydration(ul8, li11);
 			append_hydration(li11, t68);
