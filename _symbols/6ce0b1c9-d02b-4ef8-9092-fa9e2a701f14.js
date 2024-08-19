@@ -1,4 +1,4 @@
-// Opciones - Updated August 8, 2024
+// Opciones - Updated August 19, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -5173,13 +5173,13 @@ function create_fragment(ctx) {
 		},
 		h() {
 			attr(div0, "class", "menu-icon svelte-1uq18rw");
-			attr(a0, "href", "/tutoriales");
+			attr(a0, "href", "/tutoriales/");
 			attr(div1, "class", "item-icon svelte-1uq18rw");
 			attr(div2, "class", "item");
 			attr(div3, "class", "tutoriales svelte-1uq18rw");
 			attr(div4, "class", "accordion svelte-1uq18rw");
 			attr(div5, "class", "box1 svelte-1uq18rw");
-			attr(a1, "href", "/tutoriales");
+			attr(a1, "href", "/tutoriales/");
 			set_style(span1, "color", "var(--Primary-2, #7B5CF5)");
 			attr(div6, "class", "steps svelte-1uq18rw");
 			set_style(div6, "display", "flex");

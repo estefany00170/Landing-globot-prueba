@@ -1,4 +1,4 @@
-// Tutoriales - Updated August 8, 2024
+// Tutoriales - Updated August 19, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3207,7 +3207,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-8byoty");
+			attr(div, "class", "description svelte-1qzu8n1");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3320,12 +3320,12 @@ function create_each_block_1(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-8byoty");
-			attr(span0, "class", "svelte-8byoty");
-			attr(span1, "class", "icone svelte-8byoty");
-			attr(button, "class", "svelte-8byoty");
-			attr(div1, "class", "item-icon svelte-8byoty");
-			attr(div3, "class", "item svelte-8byoty");
+			attr(div0, "class", "menu-icon svelte-1qzu8n1");
+			attr(span0, "class", "svelte-1qzu8n1");
+			attr(span1, "class", "icone svelte-1qzu8n1");
+			attr(button, "class", "svelte-1qzu8n1");
+			attr(div1, "class", "item-icon svelte-1qzu8n1");
+			attr(div3, "class", "item svelte-1qzu8n1");
 			toggle_class(div3, "active", /*activeItem*/ ctx[4] === /*i*/ ctx[13]);
 			this.first = div3;
 		},
@@ -3447,7 +3447,7 @@ function create_each_block(ctx) {
 		l(nodes) {
 			li = claim_element(nodes, "LI", { class: true });
 			var li_nodes = children(li);
-			a = claim_element(li_nodes, "A", { href: true, target: true });
+			a = claim_element(li_nodes, "A", { href: true });
 			var a_nodes = children(a);
 			div2 = claim_element(a_nodes, "DIV", { class: true });
 			var div2_nodes = children(div2);
@@ -3469,12 +3469,11 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "icon svelte-8byoty");
-			attr(div1, "class", "title svelte-8byoty");
-			attr(div2, "class", "btn svelte-8byoty");
+			attr(div0, "class", "icon svelte-1qzu8n1");
+			attr(div1, "class", "title svelte-1qzu8n1");
+			attr(div2, "class", "btn svelte-1qzu8n1");
 			attr(a, "href", a_href_value = /*card*/ ctx[8].link.url);
-			attr(a, "target", "_blank");
-			attr(li, "class", "svelte-8byoty");
+			attr(li, "class", "svelte-1qzu8n1");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -3683,21 +3682,21 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-8byoty");
-			attr(a, "href", "/tutoriales");
-			attr(div1, "class", "item-icon svelte-8byoty");
+			attr(div0, "class", "menu-icon svelte-1qzu8n1");
+			attr(a, "href", "/tutoriales/");
+			attr(div1, "class", "item-icon svelte-1qzu8n1");
 			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-8byoty");
-			attr(div4, "class", "accordion svelte-8byoty");
-			attr(div5, "class", "box1 svelte-8byoty");
-			attr(div6, "class", "heading svelte-8byoty");
+			attr(div3, "class", "tutoriales svelte-1qzu8n1");
+			attr(div4, "class", "accordion svelte-1qzu8n1");
+			attr(div5, "class", "box1 svelte-1qzu8n1");
+			attr(div6, "class", "heading svelte-1qzu8n1");
 			attr(h3, "class", "subheading");
-			attr(div7, "class", "heading-group svelte-8byoty");
-			attr(ul, "class", "cards svelte-8byoty");
-			attr(div8, "class", "content svelte-8byoty");
-			attr(div9, "class", "box2 svelte-8byoty");
-			attr(div10, "class", "section-container svelte-8byoty");
-			attr(section, "class", "svelte-8byoty");
+			attr(div7, "class", "heading-group svelte-1qzu8n1");
+			attr(ul, "class", "cards svelte-1qzu8n1");
+			attr(div8, "class", "content svelte-1qzu8n1");
+			attr(div9, "class", "box2 svelte-1qzu8n1");
+			attr(div10, "class", "section-container svelte-1qzu8n1");
+			attr(section, "class", "svelte-1qzu8n1");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
