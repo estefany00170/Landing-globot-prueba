@@ -1,4 +1,4 @@
-// Configuraciones - Updated August 19, 2024
+// Configuraciones - Updated August 20, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3183,7 +3183,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (208:10) {#if activeItem === i}
+// (209:10) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
 	let raw_value = /*item*/ ctx[6].description.html + "";
@@ -3202,7 +3202,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-n56h19");
+			attr(div, "class", "description svelte-1v7awfp");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3234,7 +3234,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (195:6) {#each items as item, i (i)}
+// (196:6) {#each items as item, i (i)}
 function create_each_block(key_1, ctx) {
 	let div3;
 	let div1;
@@ -3315,12 +3315,12 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-n56h19");
-			attr(span0, "class", "svelte-n56h19");
-			attr(span1, "class", "icone svelte-n56h19");
-			attr(button, "class", "svelte-n56h19");
-			attr(div1, "class", "item-icon svelte-n56h19");
-			attr(div3, "class", "item svelte-n56h19");
+			attr(div0, "class", "menu-icon svelte-1v7awfp");
+			attr(span0, "class", "svelte-1v7awfp");
+			attr(span1, "class", "icone svelte-1v7awfp");
+			attr(button, "class", "svelte-1v7awfp");
+			attr(div1, "class", "item-icon svelte-1v7awfp");
+			attr(div3, "class", "item svelte-1v7awfp");
 			toggle_class(div3, "active", /*activeItem*/ ctx[2] === /*i*/ ctx[8]);
 			this.first = div3;
 		},
@@ -3575,7 +3575,7 @@ function create_fragment(ctx) {
 			li2 = element("li");
 			strong3 = element("strong");
 			t26 = text("Formal:");
-			t27 = text("Serio y profesional, brindando respuestas técnicas y precisas.");
+			t27 = text(" Serio y profesional, brindando respuestas técnicas y precisas.");
 			t28 = space();
 			li3 = element("li");
 			strong4 = element("strong");
@@ -3600,7 +3600,7 @@ function create_fragment(ctx) {
 			br = element("br");
 			t41 = space();
 			strong9 = element("strong");
-			t42 = text("Ten en cuenta:");
+			t42 = text("💡 Ten en cuenta:");
 			t43 = text(" Este mensaje sólo aparecerá cuando agregues tu chatbot a tu sitio web. En integraciones con redes sociales, el cliente será el que iniciará las conversaciones.");
 			t44 = space();
 			p2 = element("p");
@@ -3726,7 +3726,7 @@ function create_fragment(ctx) {
 			var strong3_nodes = children(strong3);
 			t26 = claim_text(strong3_nodes, "Formal:");
 			strong3_nodes.forEach(detach);
-			t27 = claim_text(li2_nodes, "Serio y profesional, brindando respuestas técnicas y precisas.");
+			t27 = claim_text(li2_nodes, " Serio y profesional, brindando respuestas técnicas y precisas.");
 			li2_nodes.forEach(detach);
 			t28 = claim_space(ul0_nodes);
 			li3 = claim_element(ul0_nodes, "LI", { class: true });
@@ -3769,7 +3769,7 @@ function create_fragment(ctx) {
 			t41 = claim_space(li5_nodes);
 			strong9 = claim_element(li5_nodes, "STRONG", {});
 			var strong9_nodes = children(strong9);
-			t42 = claim_text(strong9_nodes, "Ten en cuenta:");
+			t42 = claim_text(strong9_nodes, "💡 Ten en cuenta:");
 			strong9_nodes.forEach(detach);
 			t43 = claim_text(li5_nodes, " Este mensaje sólo aparecerá cuando agregues tu chatbot a tu sitio web. En integraciones con redes sociales, el cliente será el que iniciará las conversaciones.");
 			li5_nodes.forEach(detach);
@@ -3792,36 +3792,36 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-n56h19");
+			attr(div0, "class", "menu-icon svelte-1v7awfp");
 			attr(a0, "href", "/tutoriales/");
-			attr(div1, "class", "item-icon svelte-n56h19");
+			attr(div1, "class", "item-icon svelte-1v7awfp");
 			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-n56h19");
-			attr(div4, "class", "accordion svelte-n56h19");
-			attr(div5, "class", "box1 svelte-n56h19");
+			attr(div3, "class", "tutoriales svelte-1v7awfp");
+			attr(div4, "class", "accordion svelte-1v7awfp");
+			attr(div5, "class", "box1 svelte-1v7awfp");
 			attr(a1, "href", "/tutoriales/");
 			set_style(span1, "color", "var(--Primary-2, #7B5CF5)");
-			attr(div6, "class", "steps svelte-n56h19");
+			attr(div6, "class", "steps svelte-1v7awfp");
 			set_style(div6, "display", "flex");
 			set_style(div6, "gap", "15px");
 			set_style(div6, "margin-bottom", "20px");
 			set_style(div6, "text-align", "center");
 			set_style(div6, "color", "#C1C2C4");
-			attr(div7, "class", "heading svelte-n56h19");
-			attr(div8, "class", "heading-group svelte-n56h19");
-			attr(li0, "class", "svelte-n56h19");
-			attr(li1, "class", "svelte-n56h19");
-			attr(li2, "class", "svelte-n56h19");
-			attr(li3, "class", "svelte-n56h19");
-			attr(ul0, "class", "svelte-n56h19");
-			attr(li4, "class", "svelte-n56h19");
-			attr(li5, "class", "svelte-n56h19");
-			attr(ul1, "class", "svelte-n56h19");
-			attr(div9, "class", "paso1 svelte-n56h19");
-			attr(div10, "class", "content svelte-n56h19");
-			attr(div11, "class", "box2 svelte-n56h19");
-			attr(div12, "class", "section-container svelte-n56h19");
-			attr(section, "class", "svelte-n56h19");
+			attr(div7, "class", "heading svelte-1v7awfp");
+			attr(div8, "class", "heading-group svelte-1v7awfp");
+			attr(li0, "class", "svelte-1v7awfp");
+			attr(li1, "class", "svelte-1v7awfp");
+			attr(li2, "class", "svelte-1v7awfp");
+			attr(li3, "class", "svelte-1v7awfp");
+			attr(ul0, "class", "svelte-1v7awfp");
+			attr(li4, "class", "svelte-1v7awfp");
+			attr(li5, "class", "svelte-1v7awfp");
+			attr(ul1, "class", "svelte-1v7awfp");
+			attr(div9, "class", "paso1 svelte-1v7awfp");
+			attr(div10, "class", "content svelte-1v7awfp");
+			attr(div11, "class", "box2 svelte-1v7awfp");
+			attr(div12, "class", "section-container svelte-1v7awfp");
+			attr(section, "class", "svelte-1v7awfp");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);

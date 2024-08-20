@@ -1,4 +1,4 @@
-// Facebook - Updated August 19, 2024
+// Facebook - Updated August 20, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3191,7 +3191,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (215:10) {#if activeItem === i}
+// (216:10) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
 	let raw_value = /*item*/ ctx[13].description.html + "";
@@ -3210,7 +3210,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-1xw2q1u");
+			attr(div, "class", "description svelte-1prd7wm");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3242,7 +3242,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (202:6) {#each items as item, i (i)}
+// (203:6) {#each items as item, i (i)}
 function create_each_block(key_1, ctx) {
 	let div3;
 	let div1;
@@ -3323,12 +3323,12 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-1xw2q1u");
-			attr(span0, "class", "svelte-1xw2q1u");
-			attr(span1, "class", "icone svelte-1xw2q1u");
-			attr(button, "class", "svelte-1xw2q1u");
-			attr(div1, "class", "item-icon svelte-1xw2q1u");
-			attr(div3, "class", "item svelte-1xw2q1u");
+			attr(div0, "class", "menu-icon svelte-1prd7wm");
+			attr(span0, "class", "svelte-1prd7wm");
+			attr(span1, "class", "icone svelte-1prd7wm");
+			attr(button, "class", "svelte-1prd7wm");
+			attr(div1, "class", "item-icon svelte-1prd7wm");
+			attr(div3, "class", "item svelte-1prd7wm");
 			toggle_class(div3, "active", /*activeItem*/ ctx[9] === /*i*/ ctx[15]);
 			this.first = div3;
 		},
@@ -4048,74 +4048,74 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-1xw2q1u");
+			attr(div0, "class", "menu-icon svelte-1prd7wm");
 			attr(a0, "href", "/tutoriales/");
-			attr(div1, "class", "item-icon svelte-1xw2q1u");
+			attr(div1, "class", "item-icon svelte-1prd7wm");
 			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-1xw2q1u");
-			attr(div4, "class", "accordion svelte-1xw2q1u");
-			attr(div5, "class", "box1 svelte-1xw2q1u");
+			attr(div3, "class", "tutoriales svelte-1prd7wm");
+			attr(div4, "class", "accordion svelte-1prd7wm");
+			attr(div5, "class", "box1 svelte-1prd7wm");
 			attr(a1, "href", "/tutoriales/");
 			set_style(span1, "color", "var(--Primary-2, #7B5CF5)");
-			attr(div6, "class", "steps svelte-1xw2q1u");
+			attr(div6, "class", "steps svelte-1prd7wm");
 			set_style(div6, "display", "flex");
 			set_style(div6, "gap", "15px");
 			set_style(div6, "margin-bottom", "20px");
 			set_style(div6, "text-align", "center");
 			set_style(div6, "color", "#C1C2C4");
-			attr(div7, "class", "heading svelte-1xw2q1u");
-			attr(div8, "class", "heading-group svelte-1xw2q1u");
-			attr(p0, "class", "subtitle svelte-1xw2q1u");
-			attr(li0, "class", "svelte-1xw2q1u");
-			attr(ul0, "class", "svelte-1xw2q1u");
-			attr(div9, "class", "paso1 svelte-1xw2q1u");
-			attr(p1, "class", "subtitle svelte-1xw2q1u");
-			attr(li1, "class", "svelte-1xw2q1u");
-			attr(ul1, "class", "svelte-1xw2q1u");
+			attr(div7, "class", "heading svelte-1prd7wm");
+			attr(div8, "class", "heading-group svelte-1prd7wm");
+			attr(p0, "class", "subtitle svelte-1prd7wm");
+			attr(li0, "class", "svelte-1prd7wm");
+			attr(ul0, "class", "svelte-1prd7wm");
+			attr(div9, "class", "paso1 svelte-1prd7wm");
+			attr(p1, "class", "subtitle svelte-1prd7wm");
+			attr(li1, "class", "svelte-1prd7wm");
+			attr(ul1, "class", "svelte-1prd7wm");
 			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) attr(img0, "src", img0_src_value);
-			attr(li2, "class", "svelte-1xw2q1u");
-			attr(li3, "class", "svelte-1xw2q1u");
-			attr(ol0, "class", "svelte-1xw2q1u");
-			attr(li4, "class", "svelte-1xw2q1u");
-			attr(ul2, "class", "svelte-1xw2q1u");
+			attr(li2, "class", "svelte-1prd7wm");
+			attr(li3, "class", "svelte-1prd7wm");
+			attr(ol0, "class", "svelte-1prd7wm");
+			attr(li4, "class", "svelte-1prd7wm");
+			attr(ul2, "class", "svelte-1prd7wm");
 			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) attr(img1, "src", img1_src_value);
-			attr(li5, "class", "svelte-1xw2q1u");
+			attr(li5, "class", "svelte-1prd7wm");
 			attr(ol1, "start", "2");
-			attr(ol1, "class", "svelte-1xw2q1u");
-			attr(ul3, "class", "svelte-1xw2q1u");
+			attr(ol1, "class", "svelte-1prd7wm");
+			attr(ul3, "class", "svelte-1prd7wm");
 			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) attr(img2, "src", img2_src_value);
-			attr(li6, "class", "svelte-1xw2q1u");
+			attr(li6, "class", "svelte-1prd7wm");
 			attr(ol2, "start", "3");
-			attr(ol2, "class", "svelte-1xw2q1u");
-			attr(ul4, "class", "svelte-1xw2q1u");
+			attr(ol2, "class", "svelte-1prd7wm");
+			attr(ul4, "class", "svelte-1prd7wm");
 			if (!src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[4].url)) attr(img3, "src", img3_src_value);
-			attr(li7, "class", "svelte-1xw2q1u");
+			attr(li7, "class", "svelte-1prd7wm");
 			attr(ol3, "start", "4");
-			attr(ol3, "class", "svelte-1xw2q1u");
-			attr(ul5, "class", "svelte-1xw2q1u");
+			attr(ol3, "class", "svelte-1prd7wm");
+			attr(ul5, "class", "svelte-1prd7wm");
 			if (!src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[5].url)) attr(img4, "src", img4_src_value);
-			attr(li8, "class", "svelte-1xw2q1u");
+			attr(li8, "class", "svelte-1prd7wm");
 			attr(ol4, "start", "5");
-			attr(ol4, "class", "svelte-1xw2q1u");
-			attr(ul6, "class", "svelte-1xw2q1u");
+			attr(ol4, "class", "svelte-1prd7wm");
+			attr(ul6, "class", "svelte-1prd7wm");
 			if (!src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[6].url)) attr(img5, "src", img5_src_value);
-			attr(li9, "class", "svelte-1xw2q1u");
-			attr(ul7, "class", "svelte-1xw2q1u");
-			attr(div10, "class", "paso1 svelte-1xw2q1u");
-			attr(a2, "class", "link svelte-1xw2q1u");
+			attr(li9, "class", "svelte-1prd7wm");
+			attr(ul7, "class", "svelte-1prd7wm");
+			attr(div10, "class", "paso1 svelte-1prd7wm");
+			attr(a2, "class", "link svelte-1prd7wm");
 			attr(a2, "href", "https://business.facebook.com/business/loginpage/?next=https%3A%2F%2Fbusiness.facebook.com%2F%3Fnav_ref%3Dbiz_unified_f3_login_page_to_mbs&login_options%5B0%5D=FB&login_options%5B1%5D=IG&login_options%5B2%5D=SSO&config_ref=biz_login_tool_flavor_mbs");
 			attr(a2, "target", "_blank");
-			attr(li10, "class", "svelte-1xw2q1u");
-			attr(li11, "class", "svelte-1xw2q1u");
-			attr(ul8, "class", "svelte-1xw2q1u");
+			attr(li10, "class", "svelte-1prd7wm");
+			attr(li11, "class", "svelte-1prd7wm");
+			attr(ul8, "class", "svelte-1prd7wm");
 			if (!src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[7].url)) attr(img6, "src", img6_src_value);
-			attr(li12, "class", "svelte-1xw2q1u");
-			attr(li13, "class", "svelte-1xw2q1u");
-			attr(ul9, "class", "svelte-1xw2q1u");
-			attr(div11, "class", "content svelte-1xw2q1u");
-			attr(div12, "class", "box2 svelte-1xw2q1u");
-			attr(div13, "class", "section-container svelte-1xw2q1u");
-			attr(section, "class", "svelte-1xw2q1u");
+			attr(li12, "class", "svelte-1prd7wm");
+			attr(li13, "class", "svelte-1prd7wm");
+			attr(ul9, "class", "svelte-1prd7wm");
+			attr(div11, "class", "content svelte-1prd7wm");
+			attr(div12, "class", "box2 svelte-1prd7wm");
+			attr(div13, "class", "section-container svelte-1prd7wm");
+			attr(section, "class", "svelte-1prd7wm");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
