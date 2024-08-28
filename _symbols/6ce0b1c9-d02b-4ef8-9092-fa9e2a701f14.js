@@ -3210,7 +3210,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-7ia5hn");
+			attr(div, "class", "description svelte-1ge8q8b");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3218,7 +3218,7 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if ((!current || dirty[0] & /*items*/ 1) && raw_value !== (raw_value = /*item*/ ctx[38].description.html + "")) div.innerHTML = raw_value;		},
+			if ((!current || dirty[0] & /*items*/ 2) && raw_value !== (raw_value = /*item*/ ctx[38].description.html + "")) div.innerHTML = raw_value;		},
 		i(local) {
 			if (current) return;
 
@@ -3323,12 +3323,12 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-7ia5hn");
-			attr(span0, "class", "svelte-7ia5hn");
-			attr(span1, "class", "icone svelte-7ia5hn");
-			attr(button, "class", "svelte-7ia5hn");
-			attr(div1, "class", "item-icon svelte-7ia5hn");
-			attr(div3, "class", "item svelte-7ia5hn");
+			attr(div0, "class", "menu-icon svelte-1ge8q8b");
+			attr(span0, "class", "svelte-1ge8q8b");
+			attr(span1, "class", "icone svelte-1ge8q8b");
+			attr(button, "class", "svelte-1ge8q8b");
+			attr(div1, "class", "item-icon svelte-1ge8q8b");
+			attr(div3, "class", "item svelte-1ge8q8b");
 			toggle_class(div3, "active", /*activeItem*/ ctx[34] === /*i*/ ctx[40]);
 			this.first = div3;
 		},
@@ -3358,15 +3358,15 @@ function create_each_block(key_1, ctx) {
 		p(new_ctx, dirty) {
 			ctx = new_ctx;
 			const icon0_changes = {};
-			if (dirty[0] & /*items*/ 1) icon0_changes.icon = /*item*/ ctx[38].icon;
+			if (dirty[0] & /*items*/ 2) icon0_changes.icon = /*item*/ ctx[38].icon;
 			icon0.$set(icon0_changes);
-			if ((!current || dirty[0] & /*items*/ 1) && t1_value !== (t1_value = /*item*/ ctx[38].title + "")) set_data(t1, t1_value);
+			if ((!current || dirty[0] & /*items*/ 2) && t1_value !== (t1_value = /*item*/ ctx[38].title + "")) set_data(t1, t1_value);
 
 			if (/*activeItem*/ ctx[34] === /*i*/ ctx[40]) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty[0] & /*items*/ 1 | dirty[1] & /*activeItem*/ 8) {
+					if (dirty[0] & /*items*/ 2 | dirty[1] & /*activeItem*/ 8) {
 						transition_in(if_block, 1);
 					}
 				} else {
@@ -3385,7 +3385,7 @@ function create_each_block(key_1, ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty[0] & /*items*/ 1 | dirty[1] & /*activeItem*/ 8) {
+			if (!current || dirty[0] & /*items*/ 2 | dirty[1] & /*activeItem*/ 8) {
 				toggle_class(div3, "active", /*activeItem*/ ctx[34] === /*i*/ ctx[40]);
 			}
 		},
@@ -3914,7 +3914,7 @@ function create_fragment(ctx) {
 	let t262;
 	let current;
 	icon0 = new Component$1({ props: { icon: "carbon:home" } });
-	let each_value = /*items*/ ctx[0];
+	let each_value = /*items*/ ctx[1];
 	const get_key = ctx => /*i*/ ctx[40];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -3925,7 +3925,7 @@ function create_fragment(ctx) {
 
 	icon1 = new Component$1({
 			props: {
-				icon: /*icono*/ ctx[32],
+				icon: /*icono*/ ctx[0],
 				style: "color:#7B5CF5; font-size:21px"
 			}
 		});
@@ -3967,7 +3967,7 @@ function create_fragment(ctx) {
 			t11 = space();
 			div8 = element("div");
 			div7 = element("div");
-			t12 = text(/*heading*/ ctx[10]);
+			t12 = text(/*heading*/ ctx[11]);
 			t13 = space();
 			div19 = element("div");
 			div10 = element("div");
@@ -4470,7 +4470,7 @@ function create_fragment(ctx) {
 			var div8_nodes = children(div8);
 			div7 = claim_element(div8_nodes, "DIV", { class: true });
 			var div7_nodes = children(div7);
-			t12 = claim_text(div7_nodes, /*heading*/ ctx[10]);
+			t12 = claim_text(div7_nodes, /*heading*/ ctx[11]);
 			div7_nodes.forEach(detach);
 			div8_nodes.forEach(detach);
 			t13 = claim_space(div20_nodes);
@@ -5222,26 +5222,26 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-7ia5hn");
+			attr(div0, "class", "menu-icon svelte-1ge8q8b");
 			attr(a0, "href", "/tutoriales/");
-			attr(div1, "class", "item-icon svelte-7ia5hn");
+			attr(div1, "class", "item-icon svelte-1ge8q8b");
 			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-7ia5hn");
-			attr(div4, "class", "accordion svelte-7ia5hn");
-			attr(div5, "class", "box1 svelte-7ia5hn");
+			attr(div3, "class", "tutoriales svelte-1ge8q8b");
+			attr(div4, "class", "accordion svelte-1ge8q8b");
+			attr(div5, "class", "box1 svelte-1ge8q8b");
 			attr(a1, "href", "/tutoriales/");
 			set_style(span1, "color", "var(--Primary-2, #7B5CF5)");
-			attr(div6, "class", "steps svelte-7ia5hn");
+			attr(div6, "class", "steps svelte-1ge8q8b");
 			set_style(div6, "display", "flex");
 			set_style(div6, "gap", "15px");
 			set_style(div6, "margin-bottom", "20px");
 			set_style(div6, "text-align", "center");
 			set_style(div6, "color", "#C1C2C4");
-			attr(div7, "class", "heading svelte-7ia5hn");
-			attr(div8, "class", "heading-group svelte-7ia5hn");
+			attr(div7, "class", "heading svelte-1ge8q8b");
+			attr(div8, "class", "heading-group svelte-1ge8q8b");
 			set_style(span2, "padding-top", "5px");
-			attr(span3, "class", "infoText svelte-7ia5hn");
-			attr(div9, "class", "information svelte-7ia5hn");
+			attr(span3, "class", "infoText svelte-1ge8q8b");
+			attr(div9, "class", "information svelte-1ge8q8b");
 			attr(a2, "href", "https://developers.facebook.com/docs/whatsapp/cloud-api/phone-numbers");
 			attr(a2, "target", "_blank");
 			set_style(a2, "text-decoration-line", "underline");
@@ -5250,156 +5250,156 @@ function create_fragment(ctx) {
 			set_style(a2, "width", "100%");
 			set_style(a2, "color", "#603FDF");
 			set_style(a2, "font-size", "16px");
-			attr(div10, "class", "info svelte-7ia5hn");
-			attr(p0, "class", "subtitle svelte-7ia5hn");
-			attr(li0, "class", "svelte-7ia5hn");
-			attr(li1, "class", "svelte-7ia5hn");
-			attr(ul0, "class", "svelte-7ia5hn");
-			attr(div11, "class", "paso1 svelte-7ia5hn");
-			attr(p1, "class", "subtitle svelte-7ia5hn");
-			attr(a3, "class", "link svelte-7ia5hn");
+			attr(div10, "class", "info svelte-1ge8q8b");
+			attr(p0, "class", "subtitle svelte-1ge8q8b");
+			attr(li0, "class", "svelte-1ge8q8b");
+			attr(li1, "class", "svelte-1ge8q8b");
+			attr(ul0, "class", "svelte-1ge8q8b");
+			attr(div11, "class", "paso1 svelte-1ge8q8b");
+			attr(p1, "class", "subtitle svelte-1ge8q8b");
+			attr(a3, "class", "link svelte-1ge8q8b");
 			attr(a3, "href", "https://business.facebook.com/");
 			attr(a3, "target", "_blank");
-			attr(li2, "class", "svelte-7ia5hn");
-			attr(li3, "class", "svelte-7ia5hn");
-			attr(li4, "class", "svelte-7ia5hn");
-			attr(li5, "class", "svelte-7ia5hn");
-			attr(ul1, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) attr(img0, "src", img0_src_value);
-			attr(div12, "class", "paso1 svelte-7ia5hn");
-			attr(p2, "class", "subtitle svelte-7ia5hn");
-			attr(a4, "class", "link svelte-7ia5hn");
+			attr(li2, "class", "svelte-1ge8q8b");
+			attr(li3, "class", "svelte-1ge8q8b");
+			attr(li4, "class", "svelte-1ge8q8b");
+			attr(li5, "class", "svelte-1ge8q8b");
+			attr(ul1, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) attr(img0, "src", img0_src_value);
+			attr(div12, "class", "paso1 svelte-1ge8q8b");
+			attr(p2, "class", "subtitle svelte-1ge8q8b");
+			attr(a4, "class", "link svelte-1ge8q8b");
 			attr(a4, "href", "https://developers.facebook.com/");
 			attr(a4, "target", "_blank");
-			attr(li6, "class", "svelte-7ia5hn");
-			attr(li7, "class", "svelte-7ia5hn");
-			attr(ul2, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) attr(img1, "src", img1_src_value);
-			attr(li8, "class", "svelte-7ia5hn");
-			attr(ul3, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) attr(img2, "src", img2_src_value);
-			attr(li9, "class", "svelte-7ia5hn");
-			attr(ul4, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[4].url)) attr(img3, "src", img3_src_value);
-			attr(li10, "class", "svelte-7ia5hn");
-			attr(ul5, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[5].url)) attr(img4, "src", img4_src_value);
-			attr(li11, "class", "svelte-7ia5hn");
-			attr(ul6, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[6].url)) attr(img5, "src", img5_src_value);
-			attr(div13, "class", "paso1 svelte-7ia5hn");
-			attr(p3, "class", "subtitle svelte-7ia5hn");
-			attr(li12, "class", "svelte-7ia5hn");
-			attr(li13, "class", "svelte-7ia5hn");
-			attr(ul7, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[7].url)) attr(img6, "src", img6_src_value);
-			attr(li14, "class", "svelte-7ia5hn");
-			attr(ul8, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[8].url)) attr(img7, "src", img7_src_value);
-			attr(a5, "class", "link svelte-7ia5hn");
+			attr(li6, "class", "svelte-1ge8q8b");
+			attr(li7, "class", "svelte-1ge8q8b");
+			attr(ul2, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) attr(img1, "src", img1_src_value);
+			attr(li8, "class", "svelte-1ge8q8b");
+			attr(ul3, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[4].url)) attr(img2, "src", img2_src_value);
+			attr(li9, "class", "svelte-1ge8q8b");
+			attr(ul4, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[5].url)) attr(img3, "src", img3_src_value);
+			attr(li10, "class", "svelte-1ge8q8b");
+			attr(ul5, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[6].url)) attr(img4, "src", img4_src_value);
+			attr(li11, "class", "svelte-1ge8q8b");
+			attr(ul6, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[7].url)) attr(img5, "src", img5_src_value);
+			attr(div13, "class", "paso1 svelte-1ge8q8b");
+			attr(p3, "class", "subtitle svelte-1ge8q8b");
+			attr(li12, "class", "svelte-1ge8q8b");
+			attr(li13, "class", "svelte-1ge8q8b");
+			attr(ul7, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[8].url)) attr(img6, "src", img6_src_value);
+			attr(li14, "class", "svelte-1ge8q8b");
+			attr(ul8, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[9].url)) attr(img7, "src", img7_src_value);
+			attr(a5, "class", "link svelte-1ge8q8b");
 			attr(a5, "href", "https://globot.ai/politicasprivacidad/");
 			attr(a5, "target", "_blank");
-			attr(li15, "class", "svelte-7ia5hn");
-			attr(ul9, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img8.src, img8_src_value = /*image9*/ ctx[9].url)) attr(img8, "src", img8_src_value);
-			attr(li16, "class", "svelte-7ia5hn");
-			attr(ul10, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img9.src, img9_src_value = /*image10*/ ctx[11].url)) attr(img9, "src", img9_src_value);
-			attr(div14, "class", "paso1 svelte-7ia5hn");
-			attr(p4, "class", "subtitle svelte-7ia5hn");
-			attr(a6, "class", "link svelte-7ia5hn");
+			attr(li15, "class", "svelte-1ge8q8b");
+			attr(ul9, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img8.src, img8_src_value = /*image9*/ ctx[10].url)) attr(img8, "src", img8_src_value);
+			attr(li16, "class", "svelte-1ge8q8b");
+			attr(ul10, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img9.src, img9_src_value = /*image10*/ ctx[12].url)) attr(img9, "src", img9_src_value);
+			attr(div14, "class", "paso1 svelte-1ge8q8b");
+			attr(p4, "class", "subtitle svelte-1ge8q8b");
+			attr(a6, "class", "link svelte-1ge8q8b");
 			attr(a6, "href", "https://business.facebook.com/");
 			attr(a6, "target", "_blank");
-			attr(li17, "class", "svelte-7ia5hn");
-			attr(li18, "class", "svelte-7ia5hn");
-			attr(ul11, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img10.src, img10_src_value = /*image11*/ ctx[12].url)) attr(img10, "src", img10_src_value);
-			attr(li19, "class", "svelte-7ia5hn");
-			attr(ul12, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img11.src, img11_src_value = /*image12*/ ctx[13].url)) attr(img11, "src", img11_src_value);
-			attr(li20, "class", "svelte-7ia5hn");
-			attr(ul13, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img12.src, img12_src_value = /*image13*/ ctx[14].url)) attr(img12, "src", img12_src_value);
-			attr(li21, "class", "svelte-7ia5hn");
-			attr(ul14, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img13.src, img13_src_value = /*image14*/ ctx[15].url)) attr(img13, "src", img13_src_value);
-			attr(li22, "class", "svelte-7ia5hn");
-			attr(ul15, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img14.src, img14_src_value = /*image15*/ ctx[16].url)) attr(img14, "src", img14_src_value);
-			attr(li23, "class", "svelte-7ia5hn");
-			attr(ul16, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img15.src, img15_src_value = /*image16*/ ctx[17].url)) attr(img15, "src", img15_src_value);
-			attr(li24, "class", "svelte-7ia5hn");
-			attr(ul17, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img16.src, img16_src_value = /*image17*/ ctx[18].url)) attr(img16, "src", img16_src_value);
-			attr(li25, "class", "svelte-7ia5hn");
-			attr(ul18, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img17.src, img17_src_value = /*image18*/ ctx[19].url)) attr(img17, "src", img17_src_value);
-			attr(div15, "class", "paso1 svelte-7ia5hn");
-			attr(p5, "class", "subtitle svelte-7ia5hn");
-			attr(a7, "class", "link svelte-7ia5hn");
+			attr(li17, "class", "svelte-1ge8q8b");
+			attr(li18, "class", "svelte-1ge8q8b");
+			attr(ul11, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img10.src, img10_src_value = /*image11*/ ctx[13].url)) attr(img10, "src", img10_src_value);
+			attr(li19, "class", "svelte-1ge8q8b");
+			attr(ul12, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img11.src, img11_src_value = /*image12*/ ctx[14].url)) attr(img11, "src", img11_src_value);
+			attr(li20, "class", "svelte-1ge8q8b");
+			attr(ul13, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img12.src, img12_src_value = /*image13*/ ctx[15].url)) attr(img12, "src", img12_src_value);
+			attr(li21, "class", "svelte-1ge8q8b");
+			attr(ul14, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img13.src, img13_src_value = /*image14*/ ctx[16].url)) attr(img13, "src", img13_src_value);
+			attr(li22, "class", "svelte-1ge8q8b");
+			attr(ul15, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img14.src, img14_src_value = /*image15*/ ctx[17].url)) attr(img14, "src", img14_src_value);
+			attr(li23, "class", "svelte-1ge8q8b");
+			attr(ul16, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img15.src, img15_src_value = /*image16*/ ctx[18].url)) attr(img15, "src", img15_src_value);
+			attr(li24, "class", "svelte-1ge8q8b");
+			attr(ul17, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img16.src, img16_src_value = /*image17*/ ctx[19].url)) attr(img16, "src", img16_src_value);
+			attr(li25, "class", "svelte-1ge8q8b");
+			attr(ul18, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img17.src, img17_src_value = /*image18*/ ctx[20].url)) attr(img17, "src", img17_src_value);
+			attr(div15, "class", "paso1 svelte-1ge8q8b");
+			attr(p5, "class", "subtitle svelte-1ge8q8b");
+			attr(a7, "class", "link svelte-1ge8q8b");
 			attr(a7, "href", "https://developers.facebook.com/");
 			attr(a7, "target", "_blank");
-			attr(li26, "class", "svelte-7ia5hn");
-			attr(li27, "class", "svelte-7ia5hn");
-			attr(ul19, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img18.src, img18_src_value = /*image19*/ ctx[20].url)) attr(img18, "src", img18_src_value);
-			attr(li28, "class", "svelte-7ia5hn");
-			attr(ul20, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img19.src, img19_src_value = /*image20*/ ctx[21].url)) attr(img19, "src", img19_src_value);
-			attr(li29, "class", "svelte-7ia5hn");
-			attr(ul21, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img20.src, img20_src_value = /*image21*/ ctx[22].url)) attr(img20, "src", img20_src_value);
-			attr(li30, "class", "svelte-7ia5hn");
-			attr(li31, "class", "svelte-7ia5hn");
-			attr(ul22, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img21.src, img21_src_value = /*image22*/ ctx[23].url)) attr(img21, "src", img21_src_value);
-			attr(a8, "class", "link svelte-7ia5hn");
+			attr(li26, "class", "svelte-1ge8q8b");
+			attr(li27, "class", "svelte-1ge8q8b");
+			attr(ul19, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img18.src, img18_src_value = /*image19*/ ctx[21].url)) attr(img18, "src", img18_src_value);
+			attr(li28, "class", "svelte-1ge8q8b");
+			attr(ul20, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img19.src, img19_src_value = /*image20*/ ctx[22].url)) attr(img19, "src", img19_src_value);
+			attr(li29, "class", "svelte-1ge8q8b");
+			attr(ul21, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img20.src, img20_src_value = /*image21*/ ctx[23].url)) attr(img20, "src", img20_src_value);
+			attr(li30, "class", "svelte-1ge8q8b");
+			attr(li31, "class", "svelte-1ge8q8b");
+			attr(ul22, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img21.src, img21_src_value = /*image22*/ ctx[24].url)) attr(img21, "src", img21_src_value);
+			attr(a8, "class", "link svelte-1ge8q8b");
 			attr(a8, "href", "https://developers.facebook.com/docs/whatsapp/pricing/");
 			attr(a8, "target", "_blank");
-			attr(li32, "class", "svelte-7ia5hn");
-			attr(ul23, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img22.src, img22_src_value = /*image23*/ ctx[24].url)) attr(img22, "src", img22_src_value);
-			attr(li33, "class", "svelte-7ia5hn");
-			attr(ul24, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img23.src, img23_src_value = /*image24*/ ctx[25].url)) attr(img23, "src", img23_src_value);
-			attr(li34, "class", "svelte-7ia5hn");
-			attr(li35, "class", "svelte-7ia5hn");
-			attr(ul25, "class", "svelte-7ia5hn");
-			attr(div16, "class", "paso1 svelte-7ia5hn");
-			attr(p6, "class", "subtitle svelte-7ia5hn");
-			attr(a9, "class", "link svelte-7ia5hn");
+			attr(li32, "class", "svelte-1ge8q8b");
+			attr(ul23, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img22.src, img22_src_value = /*image23*/ ctx[25].url)) attr(img22, "src", img22_src_value);
+			attr(li33, "class", "svelte-1ge8q8b");
+			attr(ul24, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img23.src, img23_src_value = /*image24*/ ctx[26].url)) attr(img23, "src", img23_src_value);
+			attr(li34, "class", "svelte-1ge8q8b");
+			attr(li35, "class", "svelte-1ge8q8b");
+			attr(ul25, "class", "svelte-1ge8q8b");
+			attr(div16, "class", "paso1 svelte-1ge8q8b");
+			attr(p6, "class", "subtitle svelte-1ge8q8b");
+			attr(a9, "class", "link svelte-1ge8q8b");
 			attr(a9, "href", "https://backoffice.globot.ai/");
 			attr(a9, "target", "_blank");
-			attr(li36, "class", "svelte-7ia5hn");
-			attr(ul26, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img24.src, img24_src_value = /*image25*/ ctx[26].url)) attr(img24, "src", img24_src_value);
-			attr(li37, "class", "svelte-7ia5hn");
-			attr(ul27, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img25.src, img25_src_value = /*image26*/ ctx[27].url)) attr(img25, "src", img25_src_value);
-			attr(li38, "class", "svelte-7ia5hn");
-			attr(a10, "class", "link svelte-7ia5hn");
+			attr(li36, "class", "svelte-1ge8q8b");
+			attr(ul26, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img24.src, img24_src_value = /*image25*/ ctx[27].url)) attr(img24, "src", img24_src_value);
+			attr(li37, "class", "svelte-1ge8q8b");
+			attr(ul27, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img25.src, img25_src_value = /*image26*/ ctx[28].url)) attr(img25, "src", img25_src_value);
+			attr(li38, "class", "svelte-1ge8q8b");
+			attr(a10, "class", "link svelte-1ge8q8b");
 			attr(a10, "href", "https://developers.facebook.com/");
 			attr(a10, "target", "_blank");
-			attr(li39, "class", "svelte-7ia5hn");
-			attr(ul28, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img26.src, img26_src_value = /*image27*/ ctx[28].url)) attr(img26, "src", img26_src_value);
-			attr(li40, "class", "svelte-7ia5hn");
-			attr(ul29, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img27.src, img27_src_value = /*image28*/ ctx[29].url)) attr(img27, "src", img27_src_value);
-			attr(li41, "class", "svelte-7ia5hn");
-			attr(ul30, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img28.src, img28_src_value = /*image29*/ ctx[30].url)) attr(img28, "src", img28_src_value);
-			attr(li42, "class", "svelte-7ia5hn");
-			attr(ul31, "class", "svelte-7ia5hn");
-			if (!src_url_equal(img29.src, img29_src_value = /*image30*/ ctx[31].url)) attr(img29, "src", img29_src_value);
-			attr(div17, "class", "paso1 svelte-7ia5hn");
-			attr(p7, "class", "subtitle svelte-7ia5hn");
-			attr(div18, "class", "paso1 svelte-7ia5hn");
-			attr(div19, "class", "content svelte-7ia5hn");
-			attr(div20, "class", "box2 svelte-7ia5hn");
-			attr(div21, "class", "section-container svelte-7ia5hn");
-			attr(section, "class", "svelte-7ia5hn");
+			attr(li39, "class", "svelte-1ge8q8b");
+			attr(ul28, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img26.src, img26_src_value = /*image27*/ ctx[29].url)) attr(img26, "src", img26_src_value);
+			attr(li40, "class", "svelte-1ge8q8b");
+			attr(ul29, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img27.src, img27_src_value = /*image28*/ ctx[30].url)) attr(img27, "src", img27_src_value);
+			attr(li41, "class", "svelte-1ge8q8b");
+			attr(ul30, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img28.src, img28_src_value = /*image29*/ ctx[31].url)) attr(img28, "src", img28_src_value);
+			attr(li42, "class", "svelte-1ge8q8b");
+			attr(ul31, "class", "svelte-1ge8q8b");
+			if (!src_url_equal(img29.src, img29_src_value = /*image30*/ ctx[32].url)) attr(img29, "src", img29_src_value);
+			attr(div17, "class", "paso1 svelte-1ge8q8b");
+			attr(p7, "class", "subtitle svelte-1ge8q8b");
+			attr(div18, "class", "paso1 svelte-1ge8q8b");
+			attr(div19, "class", "content svelte-1ge8q8b");
+			attr(div20, "class", "box2 svelte-1ge8q8b");
+			attr(div21, "class", "section-container svelte-1ge8q8b");
+			attr(section, "class", "svelte-1ge8q8b");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -5878,136 +5878,136 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty[0] & /*items*/ 1 | dirty[1] & /*activeItem, setActiveItem*/ 24) {
-				each_value = /*items*/ ctx[0];
+			if (dirty[0] & /*items*/ 2 | dirty[1] & /*activeItem, setActiveItem*/ 24) {
+				each_value = /*items*/ ctx[1];
 				group_outros();
 				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div4, outro_and_destroy_block, create_each_block, null, get_each_context);
 				check_outros();
 			}
 
-			if (!current || dirty[0] & /*heading*/ 1024) set_data(t12, /*heading*/ ctx[10]);
+			if (!current || dirty[0] & /*heading*/ 2048) set_data(t12, /*heading*/ ctx[11]);
 			const icon1_changes = {};
-			if (dirty[1] & /*icono*/ 2) icon1_changes.icon = /*icono*/ ctx[32];
+			if (dirty[0] & /*icono*/ 1) icon1_changes.icon = /*icono*/ ctx[0];
 			icon1.$set(icon1_changes);
 			if (!current || dirty[1] & /*information*/ 4) set_data(t15, /*information*/ ctx[33]);
 
-			if (!current || dirty[0] & /*image1*/ 2 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) {
+			if (!current || dirty[0] & /*image1*/ 4 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) {
 				attr(img0, "src", img0_src_value);
 			}
 
-			if (!current || dirty[0] & /*image2*/ 4 && !src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) {
+			if (!current || dirty[0] & /*image2*/ 8 && !src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) {
 				attr(img1, "src", img1_src_value);
 			}
 
-			if (!current || dirty[0] & /*image3*/ 8 && !src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) {
+			if (!current || dirty[0] & /*image3*/ 16 && !src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[4].url)) {
 				attr(img2, "src", img2_src_value);
 			}
 
-			if (!current || dirty[0] & /*image4*/ 16 && !src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[4].url)) {
+			if (!current || dirty[0] & /*image4*/ 32 && !src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[5].url)) {
 				attr(img3, "src", img3_src_value);
 			}
 
-			if (!current || dirty[0] & /*image5*/ 32 && !src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[5].url)) {
+			if (!current || dirty[0] & /*image5*/ 64 && !src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[6].url)) {
 				attr(img4, "src", img4_src_value);
 			}
 
-			if (!current || dirty[0] & /*image6*/ 64 && !src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[6].url)) {
+			if (!current || dirty[0] & /*image6*/ 128 && !src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[7].url)) {
 				attr(img5, "src", img5_src_value);
 			}
 
-			if (!current || dirty[0] & /*image7*/ 128 && !src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[7].url)) {
+			if (!current || dirty[0] & /*image7*/ 256 && !src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[8].url)) {
 				attr(img6, "src", img6_src_value);
 			}
 
-			if (!current || dirty[0] & /*image8*/ 256 && !src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[8].url)) {
+			if (!current || dirty[0] & /*image8*/ 512 && !src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[9].url)) {
 				attr(img7, "src", img7_src_value);
 			}
 
-			if (!current || dirty[0] & /*image9*/ 512 && !src_url_equal(img8.src, img8_src_value = /*image9*/ ctx[9].url)) {
+			if (!current || dirty[0] & /*image9*/ 1024 && !src_url_equal(img8.src, img8_src_value = /*image9*/ ctx[10].url)) {
 				attr(img8, "src", img8_src_value);
 			}
 
-			if (!current || dirty[0] & /*image10*/ 2048 && !src_url_equal(img9.src, img9_src_value = /*image10*/ ctx[11].url)) {
+			if (!current || dirty[0] & /*image10*/ 4096 && !src_url_equal(img9.src, img9_src_value = /*image10*/ ctx[12].url)) {
 				attr(img9, "src", img9_src_value);
 			}
 
-			if (!current || dirty[0] & /*image11*/ 4096 && !src_url_equal(img10.src, img10_src_value = /*image11*/ ctx[12].url)) {
+			if (!current || dirty[0] & /*image11*/ 8192 && !src_url_equal(img10.src, img10_src_value = /*image11*/ ctx[13].url)) {
 				attr(img10, "src", img10_src_value);
 			}
 
-			if (!current || dirty[0] & /*image12*/ 8192 && !src_url_equal(img11.src, img11_src_value = /*image12*/ ctx[13].url)) {
+			if (!current || dirty[0] & /*image12*/ 16384 && !src_url_equal(img11.src, img11_src_value = /*image12*/ ctx[14].url)) {
 				attr(img11, "src", img11_src_value);
 			}
 
-			if (!current || dirty[0] & /*image13*/ 16384 && !src_url_equal(img12.src, img12_src_value = /*image13*/ ctx[14].url)) {
+			if (!current || dirty[0] & /*image13*/ 32768 && !src_url_equal(img12.src, img12_src_value = /*image13*/ ctx[15].url)) {
 				attr(img12, "src", img12_src_value);
 			}
 
-			if (!current || dirty[0] & /*image14*/ 32768 && !src_url_equal(img13.src, img13_src_value = /*image14*/ ctx[15].url)) {
+			if (!current || dirty[0] & /*image14*/ 65536 && !src_url_equal(img13.src, img13_src_value = /*image14*/ ctx[16].url)) {
 				attr(img13, "src", img13_src_value);
 			}
 
-			if (!current || dirty[0] & /*image15*/ 65536 && !src_url_equal(img14.src, img14_src_value = /*image15*/ ctx[16].url)) {
+			if (!current || dirty[0] & /*image15*/ 131072 && !src_url_equal(img14.src, img14_src_value = /*image15*/ ctx[17].url)) {
 				attr(img14, "src", img14_src_value);
 			}
 
-			if (!current || dirty[0] & /*image16*/ 131072 && !src_url_equal(img15.src, img15_src_value = /*image16*/ ctx[17].url)) {
+			if (!current || dirty[0] & /*image16*/ 262144 && !src_url_equal(img15.src, img15_src_value = /*image16*/ ctx[18].url)) {
 				attr(img15, "src", img15_src_value);
 			}
 
-			if (!current || dirty[0] & /*image17*/ 262144 && !src_url_equal(img16.src, img16_src_value = /*image17*/ ctx[18].url)) {
+			if (!current || dirty[0] & /*image17*/ 524288 && !src_url_equal(img16.src, img16_src_value = /*image17*/ ctx[19].url)) {
 				attr(img16, "src", img16_src_value);
 			}
 
-			if (!current || dirty[0] & /*image18*/ 524288 && !src_url_equal(img17.src, img17_src_value = /*image18*/ ctx[19].url)) {
+			if (!current || dirty[0] & /*image18*/ 1048576 && !src_url_equal(img17.src, img17_src_value = /*image18*/ ctx[20].url)) {
 				attr(img17, "src", img17_src_value);
 			}
 
-			if (!current || dirty[0] & /*image19*/ 1048576 && !src_url_equal(img18.src, img18_src_value = /*image19*/ ctx[20].url)) {
+			if (!current || dirty[0] & /*image19*/ 2097152 && !src_url_equal(img18.src, img18_src_value = /*image19*/ ctx[21].url)) {
 				attr(img18, "src", img18_src_value);
 			}
 
-			if (!current || dirty[0] & /*image20*/ 2097152 && !src_url_equal(img19.src, img19_src_value = /*image20*/ ctx[21].url)) {
+			if (!current || dirty[0] & /*image20*/ 4194304 && !src_url_equal(img19.src, img19_src_value = /*image20*/ ctx[22].url)) {
 				attr(img19, "src", img19_src_value);
 			}
 
-			if (!current || dirty[0] & /*image21*/ 4194304 && !src_url_equal(img20.src, img20_src_value = /*image21*/ ctx[22].url)) {
+			if (!current || dirty[0] & /*image21*/ 8388608 && !src_url_equal(img20.src, img20_src_value = /*image21*/ ctx[23].url)) {
 				attr(img20, "src", img20_src_value);
 			}
 
-			if (!current || dirty[0] & /*image22*/ 8388608 && !src_url_equal(img21.src, img21_src_value = /*image22*/ ctx[23].url)) {
+			if (!current || dirty[0] & /*image22*/ 16777216 && !src_url_equal(img21.src, img21_src_value = /*image22*/ ctx[24].url)) {
 				attr(img21, "src", img21_src_value);
 			}
 
-			if (!current || dirty[0] & /*image23*/ 16777216 && !src_url_equal(img22.src, img22_src_value = /*image23*/ ctx[24].url)) {
+			if (!current || dirty[0] & /*image23*/ 33554432 && !src_url_equal(img22.src, img22_src_value = /*image23*/ ctx[25].url)) {
 				attr(img22, "src", img22_src_value);
 			}
 
-			if (!current || dirty[0] & /*image24*/ 33554432 && !src_url_equal(img23.src, img23_src_value = /*image24*/ ctx[25].url)) {
+			if (!current || dirty[0] & /*image24*/ 67108864 && !src_url_equal(img23.src, img23_src_value = /*image24*/ ctx[26].url)) {
 				attr(img23, "src", img23_src_value);
 			}
 
-			if (!current || dirty[0] & /*image25*/ 67108864 && !src_url_equal(img24.src, img24_src_value = /*image25*/ ctx[26].url)) {
+			if (!current || dirty[0] & /*image25*/ 134217728 && !src_url_equal(img24.src, img24_src_value = /*image25*/ ctx[27].url)) {
 				attr(img24, "src", img24_src_value);
 			}
 
-			if (!current || dirty[0] & /*image26*/ 134217728 && !src_url_equal(img25.src, img25_src_value = /*image26*/ ctx[27].url)) {
+			if (!current || dirty[0] & /*image26*/ 268435456 && !src_url_equal(img25.src, img25_src_value = /*image26*/ ctx[28].url)) {
 				attr(img25, "src", img25_src_value);
 			}
 
-			if (!current || dirty[0] & /*image27*/ 268435456 && !src_url_equal(img26.src, img26_src_value = /*image27*/ ctx[28].url)) {
+			if (!current || dirty[0] & /*image27*/ 536870912 && !src_url_equal(img26.src, img26_src_value = /*image27*/ ctx[29].url)) {
 				attr(img26, "src", img26_src_value);
 			}
 
-			if (!current || dirty[0] & /*image28*/ 536870912 && !src_url_equal(img27.src, img27_src_value = /*image28*/ ctx[29].url)) {
+			if (!current || dirty[0] & /*image28*/ 1073741824 && !src_url_equal(img27.src, img27_src_value = /*image28*/ ctx[30].url)) {
 				attr(img27, "src", img27_src_value);
 			}
 
-			if (!current || dirty[0] & /*image29*/ 1073741824 && !src_url_equal(img28.src, img28_src_value = /*image29*/ ctx[30].url)) {
+			if (!current || dirty[1] & /*image29*/ 1 && !src_url_equal(img28.src, img28_src_value = /*image29*/ ctx[31].url)) {
 				attr(img28, "src", img28_src_value);
 			}
 
-			if (!current || dirty[1] & /*image30*/ 1 && !src_url_equal(img29.src, img29_src_value = /*image30*/ ctx[31].url)) {
+			if (!current || dirty[1] & /*image30*/ 2 && !src_url_equal(img29.src, img29_src_value = /*image30*/ ctx[32].url)) {
 				attr(img29, "src", img29_src_value);
 			}
 		},
@@ -6047,6 +6047,7 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
+	let { icono } = $$props;
 	let { items } = $$props;
 	let { image1 } = $$props;
 	let { image2 } = $$props;
@@ -6079,7 +6080,6 @@ function instance($$self, $$props, $$invalidate) {
 	let { image28 } = $$props;
 	let { image29 } = $$props;
 	let { image30 } = $$props;
-	let { icono } = $$props;
 	let { information } = $$props;
 	let activeItem = 0;
 
@@ -6091,43 +6091,44 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(36, props = $$props.props);
-		if ('items' in $$props) $$invalidate(0, items = $$props.items);
-		if ('image1' in $$props) $$invalidate(1, image1 = $$props.image1);
-		if ('image2' in $$props) $$invalidate(2, image2 = $$props.image2);
-		if ('image3' in $$props) $$invalidate(3, image3 = $$props.image3);
-		if ('image4' in $$props) $$invalidate(4, image4 = $$props.image4);
-		if ('image5' in $$props) $$invalidate(5, image5 = $$props.image5);
-		if ('image6' in $$props) $$invalidate(6, image6 = $$props.image6);
-		if ('image7' in $$props) $$invalidate(7, image7 = $$props.image7);
-		if ('image8' in $$props) $$invalidate(8, image8 = $$props.image8);
-		if ('image9' in $$props) $$invalidate(9, image9 = $$props.image9);
-		if ('heading' in $$props) $$invalidate(10, heading = $$props.heading);
-		if ('image10' in $$props) $$invalidate(11, image10 = $$props.image10);
-		if ('image11' in $$props) $$invalidate(12, image11 = $$props.image11);
-		if ('image12' in $$props) $$invalidate(13, image12 = $$props.image12);
-		if ('image13' in $$props) $$invalidate(14, image13 = $$props.image13);
-		if ('image14' in $$props) $$invalidate(15, image14 = $$props.image14);
-		if ('image15' in $$props) $$invalidate(16, image15 = $$props.image15);
-		if ('image16' in $$props) $$invalidate(17, image16 = $$props.image16);
-		if ('image17' in $$props) $$invalidate(18, image17 = $$props.image17);
-		if ('image18' in $$props) $$invalidate(19, image18 = $$props.image18);
-		if ('image19' in $$props) $$invalidate(20, image19 = $$props.image19);
-		if ('image20' in $$props) $$invalidate(21, image20 = $$props.image20);
-		if ('image21' in $$props) $$invalidate(22, image21 = $$props.image21);
-		if ('image22' in $$props) $$invalidate(23, image22 = $$props.image22);
-		if ('image23' in $$props) $$invalidate(24, image23 = $$props.image23);
-		if ('image24' in $$props) $$invalidate(25, image24 = $$props.image24);
-		if ('image25' in $$props) $$invalidate(26, image25 = $$props.image25);
-		if ('image26' in $$props) $$invalidate(27, image26 = $$props.image26);
-		if ('image27' in $$props) $$invalidate(28, image27 = $$props.image27);
-		if ('image28' in $$props) $$invalidate(29, image28 = $$props.image28);
-		if ('image29' in $$props) $$invalidate(30, image29 = $$props.image29);
-		if ('image30' in $$props) $$invalidate(31, image30 = $$props.image30);
-		if ('icono' in $$props) $$invalidate(32, icono = $$props.icono);
+		if ('icono' in $$props) $$invalidate(0, icono = $$props.icono);
+		if ('items' in $$props) $$invalidate(1, items = $$props.items);
+		if ('image1' in $$props) $$invalidate(2, image1 = $$props.image1);
+		if ('image2' in $$props) $$invalidate(3, image2 = $$props.image2);
+		if ('image3' in $$props) $$invalidate(4, image3 = $$props.image3);
+		if ('image4' in $$props) $$invalidate(5, image4 = $$props.image4);
+		if ('image5' in $$props) $$invalidate(6, image5 = $$props.image5);
+		if ('image6' in $$props) $$invalidate(7, image6 = $$props.image6);
+		if ('image7' in $$props) $$invalidate(8, image7 = $$props.image7);
+		if ('image8' in $$props) $$invalidate(9, image8 = $$props.image8);
+		if ('image9' in $$props) $$invalidate(10, image9 = $$props.image9);
+		if ('heading' in $$props) $$invalidate(11, heading = $$props.heading);
+		if ('image10' in $$props) $$invalidate(12, image10 = $$props.image10);
+		if ('image11' in $$props) $$invalidate(13, image11 = $$props.image11);
+		if ('image12' in $$props) $$invalidate(14, image12 = $$props.image12);
+		if ('image13' in $$props) $$invalidate(15, image13 = $$props.image13);
+		if ('image14' in $$props) $$invalidate(16, image14 = $$props.image14);
+		if ('image15' in $$props) $$invalidate(17, image15 = $$props.image15);
+		if ('image16' in $$props) $$invalidate(18, image16 = $$props.image16);
+		if ('image17' in $$props) $$invalidate(19, image17 = $$props.image17);
+		if ('image18' in $$props) $$invalidate(20, image18 = $$props.image18);
+		if ('image19' in $$props) $$invalidate(21, image19 = $$props.image19);
+		if ('image20' in $$props) $$invalidate(22, image20 = $$props.image20);
+		if ('image21' in $$props) $$invalidate(23, image21 = $$props.image21);
+		if ('image22' in $$props) $$invalidate(24, image22 = $$props.image22);
+		if ('image23' in $$props) $$invalidate(25, image23 = $$props.image23);
+		if ('image24' in $$props) $$invalidate(26, image24 = $$props.image24);
+		if ('image25' in $$props) $$invalidate(27, image25 = $$props.image25);
+		if ('image26' in $$props) $$invalidate(28, image26 = $$props.image26);
+		if ('image27' in $$props) $$invalidate(29, image27 = $$props.image27);
+		if ('image28' in $$props) $$invalidate(30, image28 = $$props.image28);
+		if ('image29' in $$props) $$invalidate(31, image29 = $$props.image29);
+		if ('image30' in $$props) $$invalidate(32, image30 = $$props.image30);
 		if ('information' in $$props) $$invalidate(33, information = $$props.information);
 	};
 
 	return [
+		icono,
 		items,
 		image1,
 		image2,
@@ -6160,7 +6161,6 @@ function instance($$self, $$props, $$invalidate) {
 		image28,
 		image29,
 		image30,
-		icono,
 		information,
 		activeItem,
 		setActiveItem,
@@ -6181,39 +6181,39 @@ class Component extends SvelteComponent {
 			safe_not_equal,
 			{
 				props: 36,
-				items: 0,
-				image1: 1,
-				image2: 2,
-				image3: 3,
-				image4: 4,
-				image5: 5,
-				image6: 6,
-				image7: 7,
-				image8: 8,
-				image9: 9,
-				heading: 10,
-				image10: 11,
-				image11: 12,
-				image12: 13,
-				image13: 14,
-				image14: 15,
-				image15: 16,
-				image16: 17,
-				image17: 18,
-				image18: 19,
-				image19: 20,
-				image20: 21,
-				image21: 22,
-				image22: 23,
-				image23: 24,
-				image24: 25,
-				image25: 26,
-				image26: 27,
-				image27: 28,
-				image28: 29,
-				image29: 30,
-				image30: 31,
-				icono: 32,
+				icono: 0,
+				items: 1,
+				image1: 2,
+				image2: 3,
+				image3: 4,
+				image4: 5,
+				image5: 6,
+				image6: 7,
+				image7: 8,
+				image8: 9,
+				image9: 10,
+				heading: 11,
+				image10: 12,
+				image11: 13,
+				image12: 14,
+				image13: 15,
+				image14: 16,
+				image15: 17,
+				image16: 18,
+				image17: 19,
+				image18: 20,
+				image19: 21,
+				image20: 22,
+				image21: 23,
+				image22: 24,
+				image23: 25,
+				image24: 26,
+				image25: 27,
+				image26: 28,
+				image27: 29,
+				image28: 30,
+				image29: 31,
+				image30: 32,
 				information: 33
 			},
 			null,
