@@ -6081,7 +6081,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { image30 } = $$props;
 	let { icono } = $$props;
 	let { information } = $$props;
-	let activeItem = 0;
+	let activeItem = null;
 
 	function setActiveItem(i) {
 		$$invalidate(34, activeItem = activeItem === i ? null : i);
