@@ -1,4 +1,4 @@
-// Pricing Table 2 - Updated August 29, 2024
+// New Block - Updated August 29, 2024
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -521,6 +521,19 @@ function flush_render_callbacks(fns) {
 }
 const outroing = new Set();
 let outros;
+function group_outros() {
+    outros = {
+        r: 0,
+        c: [],
+        p: outros // parent group
+    };
+}
+function check_outros() {
+    if (!outros.r) {
+        run_all(outros.c);
+    }
+    outros = outros.p;
+}
 function transition_in(block, local) {
     if (block && block.i) {
         outroing.delete(block);
@@ -2571,7 +2584,7 @@ function create_if_block$1(ctx) {
 	let if_block_anchor;
 
 	function select_block_type(ctx, dirty) {
-		if (/*data*/ ctx[0].svg) return create_if_block_1;
+		if (/*data*/ ctx[0].svg) return create_if_block_1$1;
 		return create_else_block;
 	}
 
@@ -2647,7 +2660,7 @@ function create_else_block(ctx) {
 }
 
 // (111:1) {#if data.svg}
-function create_if_block_1(ctx) {
+function create_if_block_1$1(ctx) {
 	let svg;
 	let raw_value = /*data*/ ctx[0].body + "";
 	let svg_levels = [/*data*/ ctx[0].attributes];
@@ -2812,12 +2825,27 @@ let Component$1 = class Component extends SvelteComponent {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[8] = list[i];
+	child_ctx[4] = list[i].link_red;
+	child_ctx[5] = list[i].icon;
 	return child_ctx;
 }
 
-// (444:8) {#if payment.image.url}
-function create_if_block(ctx) {
+function get_each_context_1(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[8] = list[i].label;
+	child_ctx[9] = list[i].link_list;
+	return child_ctx;
+}
+
+function get_each_context_2(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[12] = list[i].link;
+	child_ctx[5] = list[i].icon;
+	return child_ctx;
+}
+
+// (165:31) 
+function create_if_block_1(ctx) {
 	let img;
 	let img_src_value;
 	let img_alt_value;
@@ -2832,18 +2860,18 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			if (!src_url_equal(img.src, img_src_value = /*payment*/ ctx[8].image.url)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*payment*/ ctx[8].image.alt);
+			if (!src_url_equal(img.src, img_src_value = /*logo*/ ctx[0].image.url)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*logo*/ ctx[0].image.alt);
 		},
 		m(target, anchor) {
 			insert_hydration(target, img, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*payments*/ 2 && !src_url_equal(img.src, img_src_value = /*payment*/ ctx[8].image.url)) {
+			if (dirty & /*logo*/ 1 && !src_url_equal(img.src, img_src_value = /*logo*/ ctx[0].image.url)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (dirty & /*payments*/ 2 && img_alt_value !== (img_alt_value = /*payment*/ ctx[8].image.alt)) {
+			if (dirty & /*logo*/ 1 && img_alt_value !== (img_alt_value = /*logo*/ ctx[0].image.alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 		},
@@ -2853,670 +2881,421 @@ function create_if_block(ctx) {
 	};
 }
 
-// (442:13) {#each payments as payment}
-function create_each_block(ctx) {
-	let div;
+// (163:6) {#if logo.title}
+function create_if_block(ctx) {
+	let t_value = /*logo*/ ctx[0].title + "";
 	let t;
-	let if_block = /*payment*/ ctx[8].image.url && create_if_block(ctx);
+
+	return {
+		c() {
+			t = text(t_value);
+		},
+		l(nodes) {
+			t = claim_text(nodes, t_value);
+		},
+		m(target, anchor) {
+			insert_hydration(target, t, anchor);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*logo*/ 1 && t_value !== (t_value = /*logo*/ ctx[0].title + "")) set_data(t, t_value);
+		},
+		d(detaching) {
+			if (detaching) detach(t);
+		}
+	};
+}
+
+// (175:12) {#each link_list as { link, icon }}
+function create_each_block_2(ctx) {
+	let a;
+	let div;
+	let t0_value = /*link*/ ctx[12].label + "";
+	let t0;
+	let t1;
+	let icon;
+	let t2;
+	let a_href_value;
+	let current;
+	icon = new Component$1({ props: { icon: /*icon*/ ctx[5] } });
+
+	return {
+		c() {
+			a = element("a");
+			div = element("div");
+			t0 = text(t0_value);
+			t1 = space();
+			create_component(icon.$$.fragment);
+			t2 = space();
+			this.h();
+		},
+		l(nodes) {
+			a = claim_element(nodes, "A", { class: true, href: true, target: true });
+			var a_nodes = children(a);
+			div = claim_element(a_nodes, "DIV", { class: true });
+			var div_nodes = children(div);
+			t0 = claim_text(div_nodes, t0_value);
+			t1 = claim_space(div_nodes);
+			claim_component(icon.$$.fragment, div_nodes);
+			div_nodes.forEach(detach);
+			t2 = claim_space(a_nodes);
+			a_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(div, "class", "item-icon svelte-1wo2h4b");
+			attr(a, "class", "link svelte-1wo2h4b");
+			attr(a, "href", a_href_value = /*link*/ ctx[12].url);
+			attr(a, "target", "_blank");
+		},
+		m(target, anchor) {
+			insert_hydration(target, a, anchor);
+			append_hydration(a, div);
+			append_hydration(div, t0);
+			append_hydration(div, t1);
+			mount_component(icon, div, null);
+			append_hydration(a, t2);
+			current = true;
+		},
+		p(ctx, dirty) {
+			if ((!current || dirty & /*footer_links*/ 4) && t0_value !== (t0_value = /*link*/ ctx[12].label + "")) set_data(t0, t0_value);
+			const icon_changes = {};
+			if (dirty & /*footer_links*/ 4) icon_changes.icon = /*icon*/ ctx[5];
+			icon.$set(icon_changes);
+
+			if (!current || dirty & /*footer_links*/ 4 && a_href_value !== (a_href_value = /*link*/ ctx[12].url)) {
+				attr(a, "href", a_href_value);
+			}
+		},
+		i(local) {
+			if (current) return;
+			transition_in(icon.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(icon.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(a);
+			destroy_component(icon);
+		}
+	};
+}
+
+// (171:4) {#each footer_links as { label, link_list }}
+function create_each_block_1(ctx) {
+	let div;
+	let h4;
+	let t0_value = /*label*/ ctx[8] + "";
+	let t0;
+	let t1;
+	let nav;
+	let t2;
+	let current;
+	let each_value_2 = /*link_list*/ ctx[9];
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value_2.length; i += 1) {
+		each_blocks[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
+	}
+
+	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+		each_blocks[i] = null;
+	});
 
 	return {
 		c() {
 			div = element("div");
-			if (if_block) if_block.c();
-			t = space();
+			h4 = element("h4");
+			t0 = text(t0_value);
+			t1 = space();
+			nav = element("nav");
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			t2 = space();
 			this.h();
 		},
 		l(nodes) {
 			div = claim_element(nodes, "DIV", { class: true });
 			var div_nodes = children(div);
-			if (if_block) if_block.l(div_nodes);
-			t = claim_space(div_nodes);
+			h4 = claim_element(div_nodes, "H4", { class: true });
+			var h4_nodes = children(h4);
+			t0 = claim_text(h4_nodes, t0_value);
+			h4_nodes.forEach(detach);
+			t1 = claim_space(div_nodes);
+			nav = claim_element(div_nodes, "NAV", { class: true });
+			var nav_nodes = children(nav);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].l(nav_nodes);
+			}
+
+			nav_nodes.forEach(detach);
+			t2 = claim_space(div_nodes);
 			div_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(div, "class", "payment");
+			attr(h4, "class", "label svelte-1wo2h4b");
+			attr(nav, "class", "svelte-1wo2h4b");
+			attr(div, "class", "item svelte-1wo2h4b");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
-			if (if_block) if_block.m(div, null);
-			append_hydration(div, t);
+			append_hydration(div, h4);
+			append_hydration(h4, t0);
+			append_hydration(div, t1);
+			append_hydration(div, nav);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				if (each_blocks[i]) {
+					each_blocks[i].m(nav, null);
+				}
+			}
+
+			append_hydration(div, t2);
+			current = true;
 		},
 		p(ctx, dirty) {
-			if (/*payment*/ ctx[8].image.url) {
-				if (if_block) {
-					if_block.p(ctx, dirty);
-				} else {
-					if_block = create_if_block(ctx);
-					if_block.c();
-					if_block.m(div, t);
+			if ((!current || dirty & /*footer_links*/ 4) && t0_value !== (t0_value = /*label*/ ctx[8] + "")) set_data(t0, t0_value);
+
+			if (dirty & /*footer_links*/ 4) {
+				each_value_2 = /*link_list*/ ctx[9];
+				let i;
+
+				for (i = 0; i < each_value_2.length; i += 1) {
+					const child_ctx = get_each_context_2(ctx, each_value_2, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(child_ctx, dirty);
+						transition_in(each_blocks[i], 1);
+					} else {
+						each_blocks[i] = create_each_block_2(child_ctx);
+						each_blocks[i].c();
+						transition_in(each_blocks[i], 1);
+						each_blocks[i].m(nav, null);
+					}
 				}
-			} else if (if_block) {
-				if_block.d(1);
-				if_block = null;
+
+				group_outros();
+
+				for (i = each_value_2.length; i < each_blocks.length; i += 1) {
+					out(i);
+				}
+
+				check_outros();
 			}
+		},
+		i(local) {
+			if (current) return;
+
+			for (let i = 0; i < each_value_2.length; i += 1) {
+				transition_in(each_blocks[i]);
+			}
+
+			current = true;
+		},
+		o(local) {
+			each_blocks = each_blocks.filter(Boolean);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				transition_out(each_blocks[i]);
+			}
+
+			current = false;
 		},
 		d(detaching) {
 			if (detaching) detach(div);
-			if (if_block) if_block.d();
+			destroy_each(each_blocks, detaching);
+		}
+	};
+}
+
+// (207:6) {#each social as { link_red, icon }}
+function create_each_block(ctx) {
+	let a;
+	let span;
+	let icon;
+	let t0;
+	let t1_value = /*link_red*/ ctx[4].label + "";
+	let t1;
+	let t2;
+	let a_href_value;
+	let current;
+	icon = new Component$1({ props: { icon: /*icon*/ ctx[5] } });
+
+	return {
+		c() {
+			a = element("a");
+			span = element("span");
+			create_component(icon.$$.fragment);
+			t0 = space();
+			t1 = text(t1_value);
+			t2 = space();
+			this.h();
+		},
+		l(nodes) {
+			a = claim_element(nodes, "A", { href: true, target: true });
+			var a_nodes = children(a);
+			span = claim_element(a_nodes, "SPAN", { class: true });
+			var span_nodes = children(span);
+			claim_component(icon.$$.fragment, span_nodes);
+			span_nodes.forEach(detach);
+			t0 = claim_space(a_nodes);
+			t1 = claim_text(a_nodes, t1_value);
+			t2 = claim_space(a_nodes);
+			a_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(span, "class", "icon svelte-1wo2h4b");
+			attr(a, "href", a_href_value = /*link_red*/ ctx[4].url);
+			attr(a, "target", "_blank");
+		},
+		m(target, anchor) {
+			insert_hydration(target, a, anchor);
+			append_hydration(a, span);
+			mount_component(icon, span, null);
+			append_hydration(a, t0);
+			append_hydration(a, t1);
+			append_hydration(a, t2);
+			current = true;
+		},
+		p(ctx, dirty) {
+			const icon_changes = {};
+			if (dirty & /*social*/ 2) icon_changes.icon = /*icon*/ ctx[5];
+			icon.$set(icon_changes);
+			if ((!current || dirty & /*social*/ 2) && t1_value !== (t1_value = /*link_red*/ ctx[4].label + "")) set_data(t1, t1_value);
+
+			if (!current || dirty & /*social*/ 2 && a_href_value !== (a_href_value = /*link_red*/ ctx[4].url)) {
+				attr(a, "href", a_href_value);
+			}
+		},
+		i(local) {
+			if (current) return;
+			transition_in(icon.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(icon.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(a);
+			destroy_component(icon);
 		}
 	};
 }
 
 function create_fragment(ctx) {
 	let section;
-	let style;
-	let t0;
-	let t1;
-	let div15;
-	let div0;
-	let span0;
-	let t2;
-	let t3;
-	let h2;
-	let t4;
-	let t5;
-	let h30;
-	let t6;
-	let t7;
-	let div13;
+	let footer;
 	let div2;
-	let header0;
+	let div0;
+	let a;
+	let t0;
 	let div1;
+	let t1;
+	let div3;
+	let hr;
+	let t2;
+	let div6;
+	let span0;
+	let t3;
+	let t4;
+	let div4;
 	let span1;
+	let t5;
+	let t6;
+	let span2;
+	let svg;
+	let path0;
+	let path1;
+	let path2;
+	let path3;
+	let path4;
+	let path5;
+	let path6;
+	let t7;
+	let span3;
 	let t8;
 	let t9;
-	let span2;
-	let t10;
-	let t11;
-	let h31;
-	let t12;
-	let t13;
-	let span3;
-	let t14;
-	let t15;
-	let hr0;
-	let t16;
-	let ul0;
-	let li0;
-	let span4;
-	let icon0;
-	let t17;
-	let span5;
-	let t18;
-	let t19;
-	let li1;
-	let span6;
-	let icon1;
-	let t20;
-	let span7;
-	let t21;
-	let t22;
-	let li2;
-	let span8;
-	let icon2;
-	let t23;
-	let span9;
-	let t24;
-	let t25;
-	let li3;
-	let span10;
-	let icon3;
-	let t26;
-	let span11;
-	let t27;
-	let t28;
-	let a0;
-	let t29;
-	let t30;
-	let div6;
-	let header1;
 	let div5;
-	let div3;
-	let span12;
-	let t31;
-	let t32;
-	let span13;
-	let t33;
-	let t34;
-	let div4;
-	let t35;
-	let t36;
-	let h32;
-	let t37;
-	let t38;
-	let span14;
-	let t39;
-	let t40;
-	let hr1;
-	let t41;
-	let ul1;
-	let li4;
-	let span15;
-	let icon4;
-	let t42;
-	let span16;
-	let t43;
-	let t44;
-	let li5;
-	let span17;
-	let icon5;
-	let t45;
-	let span18;
-	let t46;
-	let t47;
-	let li6;
-	let span19;
-	let icon6;
-	let t48;
-	let span20;
-	let t49;
-	let t50;
-	let li7;
-	let span21;
-	let icon7;
-	let t51;
-	let span22;
-	let t52;
-	let t53;
-	let li8;
-	let span23;
-	let icon8;
-	let t54;
-	let span24;
-	let t55;
-	let t56;
-	let li9;
-	let span25;
-	let icon9;
-	let t57;
-	let span26;
-	let t58;
-	let t59;
-	let a1;
-	let t60;
-	let t61;
-	let div10;
-	let header2;
-	let div9;
-	let div7;
-	let span27;
-	let t62;
-	let t63;
-	let span28;
-	let t64;
-	let t65;
-	let div8;
-	let t66;
-	let t67;
-	let h33;
-	let t68;
-	let t69;
-	let span29;
-	let t70;
-	let t71;
-	let hr2;
-	let t72;
-	let ul2;
-	let li10;
-	let span30;
-	let icon10;
-	let t73;
-	let span31;
-	let t74;
-	let t75;
-	let li11;
-	let span32;
-	let icon11;
-	let t76;
-	let span33;
-	let t77;
-	let t78;
-	let li12;
-	let span34;
-	let icon12;
-	let t79;
-	let span35;
-	let t80;
-	let t81;
-	let li13;
-	let span36;
-	let icon13;
-	let t82;
-	let span37;
-	let t83;
-	let t84;
-	let li14;
-	let span38;
-	let icon14;
-	let t85;
-	let span39;
-	let t86;
-	let t87;
-	let li15;
-	let span40;
-	let icon15;
-	let t88;
-	let span41;
-	let t89;
-	let t90;
-	let span43;
-	let icon16;
-	let t91;
-	let span42;
-	let t92;
-	let br0;
-	let t93;
-	let br1;
-	let t94;
-	let t95;
-	let a2;
-	let t96;
-	let t97;
-	let div12;
-	let header3;
-	let div11;
-	let span44;
-	let t98;
-	let t99;
-	let h34;
-	let t100;
-	let t101;
-	let span45;
-	let t102;
-	let t103;
-	let hr3;
-	let t104;
-	let span46;
-	let t105;
-	let t106;
-	let ul3;
-	let li16;
-	let span47;
-	let icon17;
-	let t107;
-	let span48;
-	let t108;
-	let t109;
-	let li17;
-	let span49;
-	let icon18;
-	let t110;
-	let span50;
-	let t111;
-	let t112;
-	let li18;
-	let span51;
-	let icon19;
-	let t113;
-	let span52;
-	let t114;
-	let t115;
-	let li19;
-	let span53;
-	let icon20;
-	let t116;
-	let span54;
-	let t117;
-	let t118;
-	let a3;
-	let t119;
-	let t120;
-	let div14;
 	let current;
 
-	icon0 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
+	function select_block_type(ctx, dirty) {
+		if (/*logo*/ ctx[0].title) return create_if_block;
+		if (/*logo*/ ctx[0].image.url) return create_if_block_1;
+	}
 
-	icon1 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
+	let current_block_type = select_block_type(ctx);
+	let if_block = current_block_type && current_block_type(ctx);
+	let each_value_1 = /*footer_links*/ ctx[2];
+	let each_blocks_1 = [];
 
-	icon2 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
+	for (let i = 0; i < each_value_1.length; i += 1) {
+		each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+	}
 
-	icon3 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
+	const out = i => transition_out(each_blocks_1[i], 1, 1, () => {
+		each_blocks_1[i] = null;
+	});
 
-	icon4 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	icon5 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	icon6 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	icon7 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	icon8 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	icon9 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	icon10 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	icon11 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	icon12 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	icon13 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	icon14 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	icon15 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	icon16 = new Component$1({
-			props: { icon: "heroicons:exclamation-circle" }
-		});
-
-	icon17 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	icon18 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	icon19 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	icon20 = new Component$1({
-			props: { icon: "material-symbols:check" }
-		});
-
-	let each_value = /*payments*/ ctx[1];
+	let each_value = /*social*/ ctx[1];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
 		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
 	}
 
+	const out_1 = i => transition_out(each_blocks[i], 1, 1, () => {
+		each_blocks[i] = null;
+	});
+
 	return {
 		c() {
 			section = element("section");
-			style = element("style");
-			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
-			t1 = space();
-			div15 = element("div");
-			div0 = element("div");
-			span0 = element("span");
-			t2 = text(/*superhead*/ ctx[2]);
-			t3 = space();
-			h2 = element("h2");
-			t4 = text(/*heading*/ ctx[0]);
-			t5 = space();
-			h30 = element("h3");
-			t6 = text(/*subheading*/ ctx[3]);
-			t7 = space();
-			div13 = element("div");
+			footer = element("footer");
 			div2 = element("div");
-			header0 = element("header");
+			div0 = element("div");
+			a = element("a");
+			if (if_block) if_block.c();
+			t0 = space();
 			div1 = element("div");
-			span1 = element("span");
-			t8 = text("$0");
-			t9 = space();
-			span2 = element("span");
-			t10 = text("/Mes");
-			t11 = space();
-			h31 = element("h3");
-			t12 = text("Gratuito");
-			t13 = space();
-			span3 = element("span");
-			t14 = text("Ideal para quienes desean explorar el funcionamiento de un chatbot sin coste alguno.");
-			t15 = space();
-			hr0 = element("hr");
-			t16 = space();
-			ul0 = element("ul");
-			li0 = element("li");
-			span4 = element("span");
-			create_component(icon0.$$.fragment);
-			t17 = space();
-			span5 = element("span");
-			t18 = text("1 chatbot");
-			t19 = space();
-			li1 = element("li");
-			span6 = element("span");
-			create_component(icon1.$$.fragment);
-			t20 = space();
-			span7 = element("span");
-			t21 = text("20 mensajes al mes");
-			t22 = space();
-			li2 = element("li");
-			span8 = element("span");
-			create_component(icon2.$$.fragment);
-			t23 = space();
-			span9 = element("span");
-			t24 = text("Integración Web y Wordpress");
-			t25 = space();
-			li3 = element("li");
-			span10 = element("span");
-			create_component(icon3.$$.fragment);
-			t26 = space();
-			span11 = element("span");
-			t27 = text("Fuentes de información limitadas");
-			t28 = space();
-			a0 = element("a");
-			t29 = text("Empezar gratis");
-			t30 = space();
-			div6 = element("div");
-			header1 = element("header");
-			div5 = element("div");
+
+			for (let i = 0; i < each_blocks_1.length; i += 1) {
+				each_blocks_1[i].c();
+			}
+
+			t1 = space();
 			div3 = element("div");
-			span12 = element("span");
-			t31 = text("$10.000");
-			t32 = space();
-			span13 = element("span");
-			t33 = text("/Mes");
-			t34 = space();
+			hr = element("hr");
+			t2 = space();
+			div6 = element("div");
+			span0 = element("span");
+			t3 = text("ⓒ Globot 2024 | Todos los derechos reservados");
+			t4 = space();
 			div4 = element("div");
-			t35 = text("IVA incluido");
-			t36 = space();
-			h32 = element("h3");
-			t37 = text("Standard");
-			t38 = space();
-			span14 = element("span");
-			t39 = text("Perfecto para tiendas online que buscan mejorar la experiencia en su sitio web.");
-			t40 = space();
-			hr1 = element("hr");
-			t41 = space();
-			ul1 = element("ul");
-			li4 = element("li");
-			span15 = element("span");
-			create_component(icon4.$$.fragment);
-			t42 = space();
-			span16 = element("span");
-			t43 = text("2 chatbots");
-			t44 = space();
-			li5 = element("li");
-			span17 = element("span");
-			create_component(icon5.$$.fragment);
-			t45 = space();
-			span18 = element("span");
-			t46 = text("2.000 mensajes al mes");
-			t47 = space();
-			li6 = element("li");
-			span19 = element("span");
-			create_component(icon6.$$.fragment);
-			t48 = space();
-			span20 = element("span");
-			t49 = text("Fuentes de información limitadas");
-			t50 = space();
-			li7 = element("li");
-			span21 = element("span");
-			create_component(icon7.$$.fragment);
-			t51 = space();
-			span22 = element("span");
-			t52 = text("Integración Web y Wordpress");
-			t53 = space();
-			li8 = element("li");
-			span23 = element("span");
-			create_component(icon8.$$.fragment);
-			t54 = space();
-			span24 = element("span");
-			t55 = text("Todas las fuentes de información");
-			t56 = space();
-			li9 = element("li");
-			span25 = element("span");
-			create_component(icon9.$$.fragment);
-			t57 = space();
-			span26 = element("span");
-			t58 = text("Historial de conversaciones");
-			t59 = space();
-			a1 = element("a");
-			t60 = text("Suscribirse");
-			t61 = space();
-			div10 = element("div");
-			header2 = element("header");
-			div9 = element("div");
-			div7 = element("div");
-			span27 = element("span");
-			t62 = text("$20.000");
-			t63 = space();
-			span28 = element("span");
-			t64 = text("/Mes");
-			t65 = space();
-			div8 = element("div");
-			t66 = text("IVA incluido");
-			t67 = space();
-			h33 = element("h3");
-			t68 = text("Premium");
-			t69 = space();
-			span29 = element("span");
-			t70 = text("Perfecto para tiendas online que buscan mejorar la experiencia en su sitio web.");
-			t71 = space();
-			hr2 = element("hr");
-			t72 = space();
-			ul2 = element("ul");
-			li10 = element("li");
-			span30 = element("span");
-			create_component(icon10.$$.fragment);
-			t73 = space();
-			span31 = element("span");
-			t74 = text("5 chatbots");
-			t75 = space();
-			li11 = element("li");
-			span32 = element("span");
-			create_component(icon11.$$.fragment);
-			t76 = space();
-			span33 = element("span");
-			t77 = text("10.000 mensajes al mes");
-			t78 = space();
-			li12 = element("li");
-			span34 = element("span");
-			create_component(icon12.$$.fragment);
-			t79 = space();
-			span35 = element("span");
-			t80 = text("Integración Web y Wordpress");
-			t81 = space();
-			li13 = element("li");
-			span36 = element("span");
-			create_component(icon13.$$.fragment);
-			t82 = space();
-			span37 = element("span");
-			t83 = text("Todas las fuentes de información");
-			t84 = space();
-			li14 = element("li");
-			span38 = element("span");
-			create_component(icon14.$$.fragment);
-			t85 = space();
-			span39 = element("span");
-			t86 = text("Historial de conversaciones");
-			t87 = space();
-			li15 = element("li");
-			span40 = element("span");
-			create_component(icon15.$$.fragment);
-			t88 = space();
-			span41 = element("span");
-			t89 = text("Integraciones Meta");
-			t90 = space();
-			span43 = element("span");
-			create_component(icon16.$$.fragment);
-			t91 = space();
-			span42 = element("span");
-			t92 = text("Whatsapp");
-			br0 = element("br");
-			t93 = text("\n      Facebook");
-			br1 = element("br");
-			t94 = text("\n      Instagram");
-			t95 = space();
-			a2 = element("a");
-			t96 = text("Suscribirse");
-			t97 = space();
-			div12 = element("div");
-			header3 = element("header");
-			div11 = element("div");
-			span44 = element("span");
-			t98 = text("A convenir");
-			t99 = space();
-			h34 = element("h3");
-			t100 = text("Personalizado");
-			t101 = space();
-			span45 = element("span");
-			t102 = text("Pensado para organizaciones que requieran soluciones avanzadas.");
-			t103 = space();
-			hr3 = element("hr");
-			t104 = space();
-			span46 = element("span");
-			t105 = text("Todo lo del plan empresarial más...");
-			t106 = space();
-			ul3 = element("ul");
-			li16 = element("li");
-			span47 = element("span");
-			create_component(icon17.$$.fragment);
-			t107 = space();
-			span48 = element("span");
-			t108 = text("Chatbots ilimitados");
-			t109 = space();
-			li17 = element("li");
-			span49 = element("span");
-			create_component(icon18.$$.fragment);
-			t110 = space();
-			span50 = element("span");
-			t111 = text("50.000 mensajes al mes");
-			t112 = space();
-			li18 = element("li");
-			span51 = element("span");
-			create_component(icon19.$$.fragment);
-			t113 = space();
-			span52 = element("span");
-			t114 = text("Integración con Slack y Discord");
-			t115 = space();
-			li19 = element("li");
-			span53 = element("span");
-			create_component(icon20.$$.fragment);
-			t116 = space();
-			span54 = element("span");
-			t117 = text("Integración a opción.");
-			t118 = space();
-			a3 = element("a");
-			t119 = text("Contáctanos");
-			t120 = space();
-			div14 = element("div");
+			span1 = element("span");
+			t5 = text("Un producto");
+			t6 = space();
+			span2 = element("span");
+			svg = svg_element("svg");
+			path0 = svg_element("path");
+			path1 = svg_element("path");
+			path2 = svg_element("path");
+			path3 = svg_element("path");
+			path4 = svg_element("path");
+			path5 = svg_element("path");
+			path6 = svg_element("path");
+			t7 = space();
+			span3 = element("span");
+			t8 = text("Landscape");
+			t9 = space();
+			div5 = element("div");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
@@ -3527,890 +3306,319 @@ function create_fragment(ctx) {
 		l(nodes) {
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
-			style = claim_element(section_nodes, "STYLE", {});
-			var style_nodes = children(style);
-			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
-			style_nodes.forEach(detach);
-			t1 = claim_space(section_nodes);
-			div15 = claim_element(section_nodes, "DIV", { class: true });
-			var div15_nodes = children(div15);
-			div0 = claim_element(div15_nodes, "DIV", { class: true });
-			var div0_nodes = children(div0);
-			span0 = claim_element(div0_nodes, "SPAN", { class: true });
-			var span0_nodes = children(span0);
-			t2 = claim_text(span0_nodes, /*superhead*/ ctx[2]);
-			span0_nodes.forEach(detach);
-			t3 = claim_space(div0_nodes);
-			h2 = claim_element(div0_nodes, "H2", { class: true });
-			var h2_nodes = children(h2);
-			t4 = claim_text(h2_nodes, /*heading*/ ctx[0]);
-			h2_nodes.forEach(detach);
-			t5 = claim_space(div0_nodes);
-			h30 = claim_element(div0_nodes, "H3", { class: true });
-			var h30_nodes = children(h30);
-			t6 = claim_text(h30_nodes, /*subheading*/ ctx[3]);
-			h30_nodes.forEach(detach);
-			div0_nodes.forEach(detach);
-			t7 = claim_space(div15_nodes);
-			div13 = claim_element(div15_nodes, "DIV", { class: true });
-			var div13_nodes = children(div13);
-			div2 = claim_element(div13_nodes, "DIV", { class: true });
+			footer = claim_element(section_nodes, "FOOTER", { class: true });
+			var footer_nodes = children(footer);
+			div2 = claim_element(footer_nodes, "DIV", { class: true });
 			var div2_nodes = children(div2);
-			header0 = claim_element(div2_nodes, "HEADER", { class: true });
-			var header0_nodes = children(header0);
-			div1 = claim_element(header0_nodes, "DIV", { class: true, style: true });
+			div0 = claim_element(div2_nodes, "DIV", { class: true });
+			var div0_nodes = children(div0);
+			a = claim_element(div0_nodes, "A", { href: true, class: true });
+			var a_nodes = children(a);
+			if (if_block) if_block.l(a_nodes);
+			a_nodes.forEach(detach);
+			div0_nodes.forEach(detach);
+			t0 = claim_space(div2_nodes);
+			div1 = claim_element(div2_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
-			span1 = claim_element(div1_nodes, "SPAN", { class: true });
-			var span1_nodes = children(span1);
-			t8 = claim_text(span1_nodes, "$0");
-			span1_nodes.forEach(detach);
-			t9 = claim_space(div1_nodes);
-			span2 = claim_element(div1_nodes, "SPAN", { class: true });
-			var span2_nodes = children(span2);
-			t10 = claim_text(span2_nodes, "/Mes");
-			span2_nodes.forEach(detach);
-			div1_nodes.forEach(detach);
-			t11 = claim_space(header0_nodes);
-			h31 = claim_element(header0_nodes, "H3", { class: true });
-			var h31_nodes = children(h31);
-			t12 = claim_text(h31_nodes, "Gratuito");
-			h31_nodes.forEach(detach);
-			t13 = claim_space(header0_nodes);
-			span3 = claim_element(header0_nodes, "SPAN", { class: true });
-			var span3_nodes = children(span3);
-			t14 = claim_text(span3_nodes, "Ideal para quienes desean explorar el funcionamiento de un chatbot sin coste alguno.");
-			span3_nodes.forEach(detach);
-			header0_nodes.forEach(detach);
-			t15 = claim_space(div2_nodes);
-			hr0 = claim_element(div2_nodes, "HR", { class: true });
-			t16 = claim_space(div2_nodes);
-			ul0 = claim_element(div2_nodes, "UL", { class: true });
-			var ul0_nodes = children(ul0);
-			li0 = claim_element(ul0_nodes, "LI", { class: true });
-			var li0_nodes = children(li0);
-			span4 = claim_element(li0_nodes, "SPAN", { class: true });
-			var span4_nodes = children(span4);
-			claim_component(icon0.$$.fragment, span4_nodes);
-			span4_nodes.forEach(detach);
-			t17 = claim_space(li0_nodes);
-			span5 = claim_element(li0_nodes, "SPAN", { class: true });
-			var span5_nodes = children(span5);
-			t18 = claim_text(span5_nodes, "1 chatbot");
-			span5_nodes.forEach(detach);
-			li0_nodes.forEach(detach);
-			t19 = claim_space(ul0_nodes);
-			li1 = claim_element(ul0_nodes, "LI", { class: true });
-			var li1_nodes = children(li1);
-			span6 = claim_element(li1_nodes, "SPAN", { class: true });
-			var span6_nodes = children(span6);
-			claim_component(icon1.$$.fragment, span6_nodes);
-			span6_nodes.forEach(detach);
-			t20 = claim_space(li1_nodes);
-			span7 = claim_element(li1_nodes, "SPAN", { class: true });
-			var span7_nodes = children(span7);
-			t21 = claim_text(span7_nodes, "20 mensajes al mes");
-			span7_nodes.forEach(detach);
-			li1_nodes.forEach(detach);
-			t22 = claim_space(ul0_nodes);
-			li2 = claim_element(ul0_nodes, "LI", { class: true });
-			var li2_nodes = children(li2);
-			span8 = claim_element(li2_nodes, "SPAN", { class: true });
-			var span8_nodes = children(span8);
-			claim_component(icon2.$$.fragment, span8_nodes);
-			span8_nodes.forEach(detach);
-			t23 = claim_space(li2_nodes);
-			span9 = claim_element(li2_nodes, "SPAN", { class: true });
-			var span9_nodes = children(span9);
-			t24 = claim_text(span9_nodes, "Integración Web y Wordpress");
-			span9_nodes.forEach(detach);
-			li2_nodes.forEach(detach);
-			t25 = claim_space(ul0_nodes);
-			li3 = claim_element(ul0_nodes, "LI", { class: true });
-			var li3_nodes = children(li3);
-			span10 = claim_element(li3_nodes, "SPAN", { class: true });
-			var span10_nodes = children(span10);
-			claim_component(icon3.$$.fragment, span10_nodes);
-			span10_nodes.forEach(detach);
-			t26 = claim_space(li3_nodes);
-			span11 = claim_element(li3_nodes, "SPAN", { class: true });
-			var span11_nodes = children(span11);
-			t27 = claim_text(span11_nodes, "Fuentes de información limitadas");
-			span11_nodes.forEach(detach);
-			li3_nodes.forEach(detach);
-			ul0_nodes.forEach(detach);
-			t28 = claim_space(div2_nodes);
-			a0 = claim_element(div2_nodes, "A", { href: true, class: true });
-			var a0_nodes = children(a0);
-			t29 = claim_text(a0_nodes, "Empezar gratis");
-			a0_nodes.forEach(detach);
-			div2_nodes.forEach(detach);
-			t30 = claim_space(div13_nodes);
-			div6 = claim_element(div13_nodes, "DIV", { class: true });
-			var div6_nodes = children(div6);
-			header1 = claim_element(div6_nodes, "HEADER", { class: true });
-			var header1_nodes = children(header1);
-			div5 = claim_element(header1_nodes, "DIV", { class: true });
-			var div5_nodes = children(div5);
-			div3 = claim_element(div5_nodes, "DIV", { class: true });
-			var div3_nodes = children(div3);
-			span12 = claim_element(div3_nodes, "SPAN", { class: true });
-			var span12_nodes = children(span12);
-			t31 = claim_text(span12_nodes, "$10.000");
-			span12_nodes.forEach(detach);
-			t32 = claim_space(div3_nodes);
-			span13 = claim_element(div3_nodes, "SPAN", { class: true });
-			var span13_nodes = children(span13);
-			t33 = claim_text(span13_nodes, "/Mes");
-			span13_nodes.forEach(detach);
-			div3_nodes.forEach(detach);
-			t34 = claim_space(div5_nodes);
-			div4 = claim_element(div5_nodes, "DIV", { class: true });
-			var div4_nodes = children(div4);
-			t35 = claim_text(div4_nodes, "IVA incluido");
-			div4_nodes.forEach(detach);
-			div5_nodes.forEach(detach);
-			t36 = claim_space(header1_nodes);
-			h32 = claim_element(header1_nodes, "H3", { class: true });
-			var h32_nodes = children(h32);
-			t37 = claim_text(h32_nodes, "Standard");
-			h32_nodes.forEach(detach);
-			t38 = claim_space(header1_nodes);
-			span14 = claim_element(header1_nodes, "SPAN", { class: true });
-			var span14_nodes = children(span14);
-			t39 = claim_text(span14_nodes, "Perfecto para tiendas online que buscan mejorar la experiencia en su sitio web.");
-			span14_nodes.forEach(detach);
-			header1_nodes.forEach(detach);
-			t40 = claim_space(div6_nodes);
-			hr1 = claim_element(div6_nodes, "HR", { class: true });
-			t41 = claim_space(div6_nodes);
-			ul1 = claim_element(div6_nodes, "UL", { class: true });
-			var ul1_nodes = children(ul1);
-			li4 = claim_element(ul1_nodes, "LI", { class: true });
-			var li4_nodes = children(li4);
-			span15 = claim_element(li4_nodes, "SPAN", { class: true });
-			var span15_nodes = children(span15);
-			claim_component(icon4.$$.fragment, span15_nodes);
-			span15_nodes.forEach(detach);
-			t42 = claim_space(li4_nodes);
-			span16 = claim_element(li4_nodes, "SPAN", { class: true });
-			var span16_nodes = children(span16);
-			t43 = claim_text(span16_nodes, "2 chatbots");
-			span16_nodes.forEach(detach);
-			li4_nodes.forEach(detach);
-			t44 = claim_space(ul1_nodes);
-			li5 = claim_element(ul1_nodes, "LI", { class: true });
-			var li5_nodes = children(li5);
-			span17 = claim_element(li5_nodes, "SPAN", { class: true });
-			var span17_nodes = children(span17);
-			claim_component(icon5.$$.fragment, span17_nodes);
-			span17_nodes.forEach(detach);
-			t45 = claim_space(li5_nodes);
-			span18 = claim_element(li5_nodes, "SPAN", { class: true });
-			var span18_nodes = children(span18);
-			t46 = claim_text(span18_nodes, "2.000 mensajes al mes");
-			span18_nodes.forEach(detach);
-			li5_nodes.forEach(detach);
-			t47 = claim_space(ul1_nodes);
-			li6 = claim_element(ul1_nodes, "LI", { class: true });
-			var li6_nodes = children(li6);
-			span19 = claim_element(li6_nodes, "SPAN", { class: true });
-			var span19_nodes = children(span19);
-			claim_component(icon6.$$.fragment, span19_nodes);
-			span19_nodes.forEach(detach);
-			t48 = claim_space(li6_nodes);
-			span20 = claim_element(li6_nodes, "SPAN", { class: true });
-			var span20_nodes = children(span20);
-			t49 = claim_text(span20_nodes, "Fuentes de información limitadas");
-			span20_nodes.forEach(detach);
-			li6_nodes.forEach(detach);
-			t50 = claim_space(ul1_nodes);
-			li7 = claim_element(ul1_nodes, "LI", { class: true });
-			var li7_nodes = children(li7);
-			span21 = claim_element(li7_nodes, "SPAN", { class: true });
-			var span21_nodes = children(span21);
-			claim_component(icon7.$$.fragment, span21_nodes);
-			span21_nodes.forEach(detach);
-			t51 = claim_space(li7_nodes);
-			span22 = claim_element(li7_nodes, "SPAN", { class: true });
-			var span22_nodes = children(span22);
-			t52 = claim_text(span22_nodes, "Integración Web y Wordpress");
-			span22_nodes.forEach(detach);
-			li7_nodes.forEach(detach);
-			t53 = claim_space(ul1_nodes);
-			li8 = claim_element(ul1_nodes, "LI", { class: true });
-			var li8_nodes = children(li8);
-			span23 = claim_element(li8_nodes, "SPAN", { class: true });
-			var span23_nodes = children(span23);
-			claim_component(icon8.$$.fragment, span23_nodes);
-			span23_nodes.forEach(detach);
-			t54 = claim_space(li8_nodes);
-			span24 = claim_element(li8_nodes, "SPAN", { class: true });
-			var span24_nodes = children(span24);
-			t55 = claim_text(span24_nodes, "Todas las fuentes de información");
-			span24_nodes.forEach(detach);
-			li8_nodes.forEach(detach);
-			t56 = claim_space(ul1_nodes);
-			li9 = claim_element(ul1_nodes, "LI", { class: true });
-			var li9_nodes = children(li9);
-			span25 = claim_element(li9_nodes, "SPAN", { class: true });
-			var span25_nodes = children(span25);
-			claim_component(icon9.$$.fragment, span25_nodes);
-			span25_nodes.forEach(detach);
-			t57 = claim_space(li9_nodes);
-			span26 = claim_element(li9_nodes, "SPAN", { class: true });
-			var span26_nodes = children(span26);
-			t58 = claim_text(span26_nodes, "Historial de conversaciones");
-			span26_nodes.forEach(detach);
-			li9_nodes.forEach(detach);
-			ul1_nodes.forEach(detach);
-			t59 = claim_space(div6_nodes);
-			a1 = claim_element(div6_nodes, "A", { href: true, class: true });
-			var a1_nodes = children(a1);
-			t60 = claim_text(a1_nodes, "Suscribirse");
-			a1_nodes.forEach(detach);
-			div6_nodes.forEach(detach);
-			t61 = claim_space(div13_nodes);
-			div10 = claim_element(div13_nodes, "DIV", { class: true });
-			var div10_nodes = children(div10);
-			header2 = claim_element(div10_nodes, "HEADER", { class: true });
-			var header2_nodes = children(header2);
-			div9 = claim_element(header2_nodes, "DIV", { class: true });
-			var div9_nodes = children(div9);
-			div7 = claim_element(div9_nodes, "DIV", { class: true });
-			var div7_nodes = children(div7);
-			span27 = claim_element(div7_nodes, "SPAN", { class: true });
-			var span27_nodes = children(span27);
-			t62 = claim_text(span27_nodes, "$20.000");
-			span27_nodes.forEach(detach);
-			t63 = claim_space(div7_nodes);
-			span28 = claim_element(div7_nodes, "SPAN", { class: true });
-			var span28_nodes = children(span28);
-			t64 = claim_text(span28_nodes, "/Mes");
-			span28_nodes.forEach(detach);
-			div7_nodes.forEach(detach);
-			t65 = claim_space(div9_nodes);
-			div8 = claim_element(div9_nodes, "DIV", { class: true });
-			var div8_nodes = children(div8);
-			t66 = claim_text(div8_nodes, "IVA incluido");
-			div8_nodes.forEach(detach);
-			div9_nodes.forEach(detach);
-			t67 = claim_space(header2_nodes);
-			h33 = claim_element(header2_nodes, "H3", { class: true });
-			var h33_nodes = children(h33);
-			t68 = claim_text(h33_nodes, "Premium");
-			h33_nodes.forEach(detach);
-			t69 = claim_space(header2_nodes);
-			span29 = claim_element(header2_nodes, "SPAN", { class: true });
-			var span29_nodes = children(span29);
-			t70 = claim_text(span29_nodes, "Perfecto para tiendas online que buscan mejorar la experiencia en su sitio web.");
-			span29_nodes.forEach(detach);
-			header2_nodes.forEach(detach);
-			t71 = claim_space(div10_nodes);
-			hr2 = claim_element(div10_nodes, "HR", { class: true });
-			t72 = claim_space(div10_nodes);
-			ul2 = claim_element(div10_nodes, "UL", { class: true });
-			var ul2_nodes = children(ul2);
-			li10 = claim_element(ul2_nodes, "LI", { class: true });
-			var li10_nodes = children(li10);
-			span30 = claim_element(li10_nodes, "SPAN", { class: true });
-			var span30_nodes = children(span30);
-			claim_component(icon10.$$.fragment, span30_nodes);
-			span30_nodes.forEach(detach);
-			t73 = claim_space(li10_nodes);
-			span31 = claim_element(li10_nodes, "SPAN", { class: true });
-			var span31_nodes = children(span31);
-			t74 = claim_text(span31_nodes, "5 chatbots");
-			span31_nodes.forEach(detach);
-			li10_nodes.forEach(detach);
-			t75 = claim_space(ul2_nodes);
-			li11 = claim_element(ul2_nodes, "LI", { class: true });
-			var li11_nodes = children(li11);
-			span32 = claim_element(li11_nodes, "SPAN", { class: true });
-			var span32_nodes = children(span32);
-			claim_component(icon11.$$.fragment, span32_nodes);
-			span32_nodes.forEach(detach);
-			t76 = claim_space(li11_nodes);
-			span33 = claim_element(li11_nodes, "SPAN", { class: true });
-			var span33_nodes = children(span33);
-			t77 = claim_text(span33_nodes, "10.000 mensajes al mes");
-			span33_nodes.forEach(detach);
-			li11_nodes.forEach(detach);
-			t78 = claim_space(ul2_nodes);
-			li12 = claim_element(ul2_nodes, "LI", { class: true });
-			var li12_nodes = children(li12);
-			span34 = claim_element(li12_nodes, "SPAN", { class: true });
-			var span34_nodes = children(span34);
-			claim_component(icon12.$$.fragment, span34_nodes);
-			span34_nodes.forEach(detach);
-			t79 = claim_space(li12_nodes);
-			span35 = claim_element(li12_nodes, "SPAN", { class: true });
-			var span35_nodes = children(span35);
-			t80 = claim_text(span35_nodes, "Integración Web y Wordpress");
-			span35_nodes.forEach(detach);
-			li12_nodes.forEach(detach);
-			t81 = claim_space(ul2_nodes);
-			li13 = claim_element(ul2_nodes, "LI", { class: true });
-			var li13_nodes = children(li13);
-			span36 = claim_element(li13_nodes, "SPAN", { class: true });
-			var span36_nodes = children(span36);
-			claim_component(icon13.$$.fragment, span36_nodes);
-			span36_nodes.forEach(detach);
-			t82 = claim_space(li13_nodes);
-			span37 = claim_element(li13_nodes, "SPAN", { class: true });
-			var span37_nodes = children(span37);
-			t83 = claim_text(span37_nodes, "Todas las fuentes de información");
-			span37_nodes.forEach(detach);
-			li13_nodes.forEach(detach);
-			t84 = claim_space(ul2_nodes);
-			li14 = claim_element(ul2_nodes, "LI", { class: true });
-			var li14_nodes = children(li14);
-			span38 = claim_element(li14_nodes, "SPAN", { class: true });
-			var span38_nodes = children(span38);
-			claim_component(icon14.$$.fragment, span38_nodes);
-			span38_nodes.forEach(detach);
-			t85 = claim_space(li14_nodes);
-			span39 = claim_element(li14_nodes, "SPAN", { class: true });
-			var span39_nodes = children(span39);
-			t86 = claim_text(span39_nodes, "Historial de conversaciones");
-			span39_nodes.forEach(detach);
-			li14_nodes.forEach(detach);
-			t87 = claim_space(ul2_nodes);
-			li15 = claim_element(ul2_nodes, "LI", { class: true });
-			var li15_nodes = children(li15);
-			span40 = claim_element(li15_nodes, "SPAN", { class: true });
-			var span40_nodes = children(span40);
-			claim_component(icon15.$$.fragment, span40_nodes);
-			span40_nodes.forEach(detach);
-			t88 = claim_space(li15_nodes);
-			span41 = claim_element(li15_nodes, "SPAN", { class: true });
-			var span41_nodes = children(span41);
-			t89 = claim_text(span41_nodes, "Integraciones Meta");
-			span41_nodes.forEach(detach);
-			t90 = claim_space(li15_nodes);
-			span43 = claim_element(li15_nodes, "SPAN", { class: true });
-			var span43_nodes = children(span43);
-			claim_component(icon16.$$.fragment, span43_nodes);
-			t91 = claim_space(span43_nodes);
-			span42 = claim_element(span43_nodes, "SPAN", { class: true });
-			var span42_nodes = children(span42);
-			t92 = claim_text(span42_nodes, "Whatsapp");
-			br0 = claim_element(span42_nodes, "BR", {});
-			t93 = claim_text(span42_nodes, "\n      Facebook");
-			br1 = claim_element(span42_nodes, "BR", {});
-			t94 = claim_text(span42_nodes, "\n      Instagram");
-			span42_nodes.forEach(detach);
-			span43_nodes.forEach(detach);
-			li15_nodes.forEach(detach);
-			ul2_nodes.forEach(detach);
-			t95 = claim_space(div10_nodes);
-			a2 = claim_element(div10_nodes, "A", { href: true, class: true });
-			var a2_nodes = children(a2);
-			t96 = claim_text(a2_nodes, "Suscribirse");
-			a2_nodes.forEach(detach);
-			div10_nodes.forEach(detach);
-			t97 = claim_space(div13_nodes);
-			div12 = claim_element(div13_nodes, "DIV", { class: true });
-			var div12_nodes = children(div12);
-			header3 = claim_element(div12_nodes, "HEADER", { class: true });
-			var header3_nodes = children(header3);
-			div11 = claim_element(header3_nodes, "DIV", { class: true, style: true });
-			var div11_nodes = children(div11);
-			span44 = claim_element(div11_nodes, "SPAN", { class: true });
-			var span44_nodes = children(span44);
-			t98 = claim_text(span44_nodes, "A convenir");
-			span44_nodes.forEach(detach);
-			div11_nodes.forEach(detach);
-			t99 = claim_space(header3_nodes);
-			h34 = claim_element(header3_nodes, "H3", { class: true });
-			var h34_nodes = children(h34);
-			t100 = claim_text(h34_nodes, "Personalizado");
-			h34_nodes.forEach(detach);
-			t101 = claim_space(header3_nodes);
-			span45 = claim_element(header3_nodes, "SPAN", { class: true });
-			var span45_nodes = children(span45);
-			t102 = claim_text(span45_nodes, "Pensado para organizaciones que requieran soluciones avanzadas.");
-			span45_nodes.forEach(detach);
-			header3_nodes.forEach(detach);
-			t103 = claim_space(div12_nodes);
-			hr3 = claim_element(div12_nodes, "HR", { class: true });
-			t104 = claim_space(div12_nodes);
-			span46 = claim_element(div12_nodes, "SPAN", { class: true });
-			var span46_nodes = children(span46);
-			t105 = claim_text(span46_nodes, "Todo lo del plan empresarial más...");
-			span46_nodes.forEach(detach);
-			t106 = claim_space(div12_nodes);
-			ul3 = claim_element(div12_nodes, "UL", { class: true });
-			var ul3_nodes = children(ul3);
-			li16 = claim_element(ul3_nodes, "LI", { class: true });
-			var li16_nodes = children(li16);
-			span47 = claim_element(li16_nodes, "SPAN", { class: true });
-			var span47_nodes = children(span47);
-			claim_component(icon17.$$.fragment, span47_nodes);
-			span47_nodes.forEach(detach);
-			t107 = claim_space(li16_nodes);
-			span48 = claim_element(li16_nodes, "SPAN", { class: true });
-			var span48_nodes = children(span48);
-			t108 = claim_text(span48_nodes, "Chatbots ilimitados");
-			span48_nodes.forEach(detach);
-			li16_nodes.forEach(detach);
-			t109 = claim_space(ul3_nodes);
-			li17 = claim_element(ul3_nodes, "LI", { class: true });
-			var li17_nodes = children(li17);
-			span49 = claim_element(li17_nodes, "SPAN", { class: true });
-			var span49_nodes = children(span49);
-			claim_component(icon18.$$.fragment, span49_nodes);
-			span49_nodes.forEach(detach);
-			t110 = claim_space(li17_nodes);
-			span50 = claim_element(li17_nodes, "SPAN", { class: true });
-			var span50_nodes = children(span50);
-			t111 = claim_text(span50_nodes, "50.000 mensajes al mes");
-			span50_nodes.forEach(detach);
-			li17_nodes.forEach(detach);
-			t112 = claim_space(ul3_nodes);
-			li18 = claim_element(ul3_nodes, "LI", { class: true });
-			var li18_nodes = children(li18);
-			span51 = claim_element(li18_nodes, "SPAN", { class: true });
-			var span51_nodes = children(span51);
-			claim_component(icon19.$$.fragment, span51_nodes);
-			span51_nodes.forEach(detach);
-			t113 = claim_space(li18_nodes);
-			span52 = claim_element(li18_nodes, "SPAN", { class: true });
-			var span52_nodes = children(span52);
-			t114 = claim_text(span52_nodes, "Integración con Slack y Discord");
-			span52_nodes.forEach(detach);
-			li18_nodes.forEach(detach);
-			t115 = claim_space(ul3_nodes);
-			li19 = claim_element(ul3_nodes, "LI", { class: true });
-			var li19_nodes = children(li19);
-			span53 = claim_element(li19_nodes, "SPAN", { class: true });
-			var span53_nodes = children(span53);
-			claim_component(icon20.$$.fragment, span53_nodes);
-			span53_nodes.forEach(detach);
-			t116 = claim_space(li19_nodes);
-			span54 = claim_element(li19_nodes, "SPAN", { class: true });
-			var span54_nodes = children(span54);
-			t117 = claim_text(span54_nodes, "Integración a opción.");
-			span54_nodes.forEach(detach);
-			li19_nodes.forEach(detach);
-			ul3_nodes.forEach(detach);
-			t118 = claim_space(div12_nodes);
-			a3 = claim_element(div12_nodes, "A", { href: true, class: true });
-			var a3_nodes = children(a3);
-			t119 = claim_text(a3_nodes, "Contáctanos");
-			a3_nodes.forEach(detach);
-			div12_nodes.forEach(detach);
-			div13_nodes.forEach(detach);
-			t120 = claim_space(div15_nodes);
-			div14 = claim_element(div15_nodes, "DIV", { class: true });
-			var div14_nodes = children(div14);
 
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].l(div14_nodes);
+			for (let i = 0; i < each_blocks_1.length; i += 1) {
+				each_blocks_1[i].l(div1_nodes);
 			}
 
-			div14_nodes.forEach(detach);
-			div15_nodes.forEach(detach);
+			div1_nodes.forEach(detach);
+			div2_nodes.forEach(detach);
+			t1 = claim_space(footer_nodes);
+			div3 = claim_element(footer_nodes, "DIV", { class: true });
+			var div3_nodes = children(div3);
+			hr = claim_element(div3_nodes, "HR", { class: true });
+			div3_nodes.forEach(detach);
+			t2 = claim_space(footer_nodes);
+			div6 = claim_element(footer_nodes, "DIV", { class: true });
+			var div6_nodes = children(div6);
+			span0 = claim_element(div6_nodes, "SPAN", { class: true });
+			var span0_nodes = children(span0);
+			t3 = claim_text(span0_nodes, "ⓒ Globot 2024 | Todos los derechos reservados");
+			span0_nodes.forEach(detach);
+			t4 = claim_space(div6_nodes);
+			div4 = claim_element(div6_nodes, "DIV", { style: true });
+			var div4_nodes = children(div4);
+			span1 = claim_element(div4_nodes, "SPAN", { class: true });
+			var span1_nodes = children(span1);
+			t5 = claim_text(span1_nodes, "Un producto");
+			span1_nodes.forEach(detach);
+			t6 = claim_space(div4_nodes);
+			span2 = claim_element(div4_nodes, "SPAN", {});
+			var span2_nodes = children(span2);
+
+			svg = claim_svg_element(span2_nodes, "svg", {
+				xmlns: true,
+				width: true,
+				height: true,
+				viewBox: true,
+				fill: true
+			});
+
+			var svg_nodes = children(svg);
+
+			path0 = claim_svg_element(svg_nodes, "path", {
+				d: true,
+				stroke: true,
+				"stroke-width": true,
+				"stroke-miterlimit": true,
+				"stroke-linecap": true,
+				"stroke-linejoin": true
+			});
+
+			children(path0).forEach(detach);
+
+			path1 = claim_svg_element(svg_nodes, "path", {
+				d: true,
+				stroke: true,
+				"stroke-width": true,
+				"stroke-miterlimit": true,
+				"stroke-linecap": true,
+				"stroke-linejoin": true
+			});
+
+			children(path1).forEach(detach);
+
+			path2 = claim_svg_element(svg_nodes, "path", {
+				d: true,
+				stroke: true,
+				"stroke-width": true,
+				"stroke-miterlimit": true,
+				"stroke-linecap": true,
+				"stroke-linejoin": true
+			});
+
+			children(path2).forEach(detach);
+
+			path3 = claim_svg_element(svg_nodes, "path", {
+				d: true,
+				stroke: true,
+				"stroke-width": true,
+				"stroke-miterlimit": true,
+				"stroke-linecap": true,
+				"stroke-linejoin": true
+			});
+
+			children(path3).forEach(detach);
+
+			path4 = claim_svg_element(svg_nodes, "path", {
+				d: true,
+				stroke: true,
+				"stroke-width": true,
+				"stroke-miterlimit": true,
+				"stroke-linecap": true,
+				"stroke-linejoin": true
+			});
+
+			children(path4).forEach(detach);
+
+			path5 = claim_svg_element(svg_nodes, "path", {
+				d: true,
+				stroke: true,
+				"stroke-width": true,
+				"stroke-miterlimit": true,
+				"stroke-linecap": true,
+				"stroke-linejoin": true
+			});
+
+			children(path5).forEach(detach);
+
+			path6 = claim_svg_element(svg_nodes, "path", {
+				d: true,
+				stroke: true,
+				"stroke-width": true,
+				"stroke-miterlimit": true,
+				"stroke-linecap": true,
+				"stroke-linejoin": true
+			});
+
+			children(path6).forEach(detach);
+			svg_nodes.forEach(detach);
+			span2_nodes.forEach(detach);
+			t7 = claim_space(div4_nodes);
+			span3 = claim_element(div4_nodes, "SPAN", { style: true });
+			var span3_nodes = children(span3);
+			t8 = claim_text(span3_nodes, "Landscape");
+			span3_nodes.forEach(detach);
+			div4_nodes.forEach(detach);
+			t9 = claim_space(div6_nodes);
+			div5 = claim_element(div6_nodes, "DIV", { class: true });
+			var div5_nodes = children(div5);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].l(div5_nodes);
+			}
+
+			div5_nodes.forEach(detach);
+			div6_nodes.forEach(detach);
+			footer_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(span0, "class", "superhead svelte-l7tsid");
-			attr(h2, "class", "heading svelte-l7tsid");
-			attr(h30, "class", "subheading svelte-l7tsid");
-			attr(div0, "class", "heading-group svelte-l7tsid");
-			attr(span1, "class", "numerator svelte-l7tsid");
-			attr(span2, "class", "denominator svelte-l7tsid");
-			attr(div1, "class", "price svelte-l7tsid");
-			set_style(div1, "margin-bottom", "1rem");
-			attr(h31, "class", "title svelte-l7tsid");
-			attr(span3, "class", "description svelte-l7tsid");
-			attr(header0, "class", "svelte-l7tsid");
-			attr(hr0, "class", "svelte-l7tsid");
-			attr(span4, "class", "icon svelte-l7tsid");
-			attr(span5, "class", "item svelte-l7tsid");
-			attr(li0, "class", "svelte-l7tsid");
-			attr(span6, "class", "icon svelte-l7tsid");
-			attr(span7, "class", "item svelte-l7tsid");
-			attr(li1, "class", "svelte-l7tsid");
-			attr(span8, "class", "icon svelte-l7tsid");
-			attr(span9, "class", "item svelte-l7tsid");
-			attr(li2, "class", "svelte-l7tsid");
-			attr(span10, "class", "icon svelte-l7tsid");
-			attr(span11, "class", "item svelte-l7tsid");
-			attr(li3, "class", "svelte-l7tsid");
-			attr(ul0, "class", "features svelte-l7tsid");
-			attr(a0, "href", "https://backoffice.globot.ai/dashboard/login");
-			attr(a0, "class", "button svelte-l7tsid");
-			attr(div2, "class", "tier tier1 svelte-l7tsid");
-			attr(span12, "class", "numerator svelte-l7tsid");
-			attr(span13, "class", "denominator svelte-l7tsid");
-			attr(div3, "class", "price svelte-l7tsid");
-			attr(div4, "class", "iva");
-			attr(div5, "class", "plan svelte-l7tsid");
-			attr(h32, "class", "title svelte-l7tsid");
-			attr(span14, "class", "description svelte-l7tsid");
-			attr(header1, "class", "svelte-l7tsid");
-			attr(hr1, "class", "svelte-l7tsid");
-			attr(span15, "class", "icon svelte-l7tsid");
-			attr(span16, "class", "item svelte-l7tsid");
-			attr(li4, "class", "svelte-l7tsid");
-			attr(span17, "class", "icon svelte-l7tsid");
-			attr(span18, "class", "item svelte-l7tsid");
-			attr(li5, "class", "svelte-l7tsid");
-			attr(span19, "class", "icon svelte-l7tsid");
-			attr(span20, "class", "item svelte-l7tsid");
-			attr(li6, "class", "svelte-l7tsid");
-			attr(span21, "class", "icon svelte-l7tsid");
-			attr(span22, "class", "item svelte-l7tsid");
-			attr(li7, "class", "svelte-l7tsid");
-			attr(span23, "class", "icon svelte-l7tsid");
-			attr(span24, "class", "item svelte-l7tsid");
-			attr(li8, "class", "svelte-l7tsid");
-			attr(span25, "class", "icon svelte-l7tsid");
-			attr(span26, "class", "item svelte-l7tsid");
-			attr(li9, "class", "svelte-l7tsid");
-			attr(ul1, "class", "features svelte-l7tsid");
-			attr(a1, "href", `https://backoffice-dev.globot.ai/subscription/login?subscriptionPlan=${/*BASE*/ ctx[4]}`);
-			attr(a1, "class", "button svelte-l7tsid");
-			attr(div6, "class", "tier tier2 svelte-l7tsid");
-			attr(span27, "class", "numerator svelte-l7tsid");
-			attr(span28, "class", "denominator svelte-l7tsid");
-			attr(div7, "class", "price svelte-l7tsid");
-			attr(div8, "class", "iva");
-			attr(div9, "class", "plan svelte-l7tsid");
-			attr(h33, "class", "title svelte-l7tsid");
-			attr(span29, "class", "description svelte-l7tsid");
-			attr(header2, "class", "svelte-l7tsid");
-			attr(hr2, "class", "svelte-l7tsid");
-			attr(span30, "class", "icon svelte-l7tsid");
-			attr(span31, "class", "item svelte-l7tsid");
-			attr(li10, "class", "svelte-l7tsid");
-			attr(span32, "class", "icon svelte-l7tsid");
-			attr(span33, "class", "item svelte-l7tsid");
-			attr(li11, "class", "svelte-l7tsid");
-			attr(span34, "class", "icon svelte-l7tsid");
-			attr(span35, "class", "item svelte-l7tsid");
-			attr(li12, "class", "svelte-l7tsid");
-			attr(span36, "class", "icon svelte-l7tsid");
-			attr(span37, "class", "item svelte-l7tsid");
-			attr(li13, "class", "svelte-l7tsid");
-			attr(span38, "class", "icon svelte-l7tsid");
-			attr(span39, "class", "item svelte-l7tsid");
-			attr(li14, "class", "svelte-l7tsid");
-			attr(span40, "class", "icon svelte-l7tsid");
-			attr(span41, "class", "item svelte-l7tsid");
-			attr(span42, "class", "tooltiptext svelte-l7tsid");
-			attr(span43, "class", "tooltip svelte-l7tsid");
-			attr(li15, "class", "svelte-l7tsid");
-			attr(ul2, "class", "features svelte-l7tsid");
-			attr(a2, "href", `https://backoffice-dev.globot.ai/subscription/login?subscriptionPlan=${/*PREMIUM*/ ctx[5]}`);
-			attr(a2, "class", "button svelte-l7tsid");
-			attr(div10, "class", "tier tier3 svelte-l7tsid");
-			attr(span44, "class", "numerator svelte-l7tsid");
-			attr(div11, "class", "price svelte-l7tsid");
-			set_style(div11, "margin-bottom", "1rem");
-			attr(h34, "class", "title svelte-l7tsid");
-			attr(span45, "class", "description svelte-l7tsid");
-			attr(header3, "class", "svelte-l7tsid");
-			attr(hr3, "class", "svelte-l7tsid");
-			attr(span46, "class", "text svelte-l7tsid");
-			attr(span47, "class", "icon svelte-l7tsid");
-			attr(span48, "class", "item svelte-l7tsid");
-			attr(li16, "class", "svelte-l7tsid");
-			attr(span49, "class", "icon svelte-l7tsid");
-			attr(span50, "class", "item svelte-l7tsid");
-			attr(li17, "class", "svelte-l7tsid");
-			attr(span51, "class", "icon svelte-l7tsid");
-			attr(span52, "class", "item svelte-l7tsid");
-			attr(li18, "class", "svelte-l7tsid");
-			attr(span53, "class", "icon svelte-l7tsid");
-			attr(span54, "class", "item svelte-l7tsid");
-			attr(li19, "class", "svelte-l7tsid");
-			attr(ul3, "class", "features svelte-l7tsid");
-			attr(a3, "href", "https://globot.ai/#contacto");
-			attr(a3, "class", "button svelte-l7tsid");
-			attr(div12, "class", "tier tier4 svelte-l7tsid");
-			attr(div13, "class", "tiers svelte-l7tsid");
-			attr(div14, "class", "payments svelte-l7tsid");
-			attr(div15, "class", "section-container svelte-l7tsid");
-			attr(section, "class", "svelte-l7tsid");
+			attr(a, "href", "/");
+			attr(a, "class", "logo");
+			attr(div0, "class", "main svelte-1wo2h4b");
+			attr(div1, "class", "links svelte-1wo2h4b");
+			attr(div2, "class", "container svelte-1wo2h4b");
+			attr(hr, "class", "svelte-1wo2h4b");
+			attr(div3, "class", "line svelte-1wo2h4b");
+			attr(span0, "class", "minText svelte-1wo2h4b");
+			attr(span1, "class", "minText svelte-1wo2h4b");
+			attr(path0, "d", "M13.4519 1.76686C13.7231 1.28546 14.2384 0.966797 14.8283 0.966797C15.4182 0.966797 15.9335 1.29224 16.2047 1.76686");
+			attr(path0, "stroke", "#EEF2FF");
+			attr(path0, "stroke-width", "1.57719");
+			attr(path0, "stroke-miterlimit", "10");
+			attr(path0, "stroke-linecap", "round");
+			attr(path0, "stroke-linejoin", "round");
+			attr(path1, "d", "M3.6612 24.1689C3.36965 24.4808 2.96285 24.6706 2.50179 24.6706C1.62714 24.6706 0.921992 23.9587 0.921992 23.0908C0.921992 22.8332 0.983014 22.5891 1.0915 22.3789");
+			attr(path1, "stroke", "#EEF2FF");
+			attr(path1, "stroke-width", "1.57719");
+			attr(path1, "stroke-miterlimit", "10");
+			attr(path1, "stroke-linecap", "round");
+			attr(path1, "stroke-linejoin", "round");
+			attr(path2, "d", "M28.1312 22.1821C28.3074 22.4398 28.4159 22.7517 28.4159 23.0907C28.4159 23.9654 27.704 24.6705 26.8361 24.6705C26.4836 24.6705 26.1513 24.5552 25.8869 24.3518");
+			attr(path2, "stroke", "#EEF2FF");
+			attr(path2, "stroke-width", "1.57719");
+			attr(path2, "stroke-miterlimit", "10");
+			attr(path2, "stroke-linecap", "round");
+			attr(path2, "stroke-linejoin", "round");
+			attr(path3, "d", "M13.4517 1.7666L1.09134 22.3785");
+			attr(path3, "stroke", "#EEF2FF");
+			attr(path3, "stroke-width", "1.57719");
+			attr(path3, "stroke-miterlimit", "10");
+			attr(path3, "stroke-linecap", "round");
+			attr(path3, "stroke-linejoin", "round");
+			attr(path4, "d", "M16.2046 1.7666L28.226 22.3378");
+			attr(path4, "stroke", "#EEF2FF");
+			attr(path4, "stroke-width", "1.57719");
+			attr(path4, "stroke-miterlimit", "10");
+			attr(path4, "stroke-linecap", "round");
+			attr(path4, "stroke-linejoin", "round");
+			attr(path5, "d", "M24.0358 15.1581C20.8965 10.7781 15.0045 13.9851 10.3871 17.6939C6.71225 20.6501 3.66114 24.1691 3.66114 24.1691C3.60012 24.2504 3.72217 24.0877 3.66114 24.1691C10.4278 20.4942 19.1201 20.684 25.8868 24.3589");
+			attr(path5, "stroke", "#EEF2FF");
+			attr(path5, "stroke-width", "1.57719");
+			attr(path5, "stroke-miterlimit", "10");
+			attr(path5, "stroke-linecap", "round");
+			attr(path5, "stroke-linejoin", "round");
+			attr(path6, "d", "M25.8869 24.3594C25.8869 24.3594 17.4388 16.4265 10.3873 17.6944");
+			attr(path6, "stroke", "#EEF2FF");
+			attr(path6, "stroke-width", "1.57719");
+			attr(path6, "stroke-miterlimit", "10");
+			attr(path6, "stroke-linecap", "round");
+			attr(path6, "stroke-linejoin", "round");
+			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
+			attr(svg, "width", "27.5");
+			attr(svg, "height", "23.7");
+			attr(svg, "viewBox", "0 0 27 24");
+			attr(svg, "fill", "none");
+			set_style(span3, "font-size", "14.983px");
+			set_style(span3, "color", "#EEF2FF");
+			set_style(span3, "font-weight", "700");
+			set_style(div4, "display", "flex");
+			set_style(div4, "align-items", "center");
+			set_style(div4, "gap", "8.915px");
+			attr(div5, "class", "social-links svelte-1wo2h4b");
+			attr(div6, "class", "footer2 svelte-1wo2h4b");
+			attr(footer, "class", "section-container svelte-1wo2h4b");
+			attr(section, "class", "svelte-1wo2h4b");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
-			append_hydration(section, style);
-			append_hydration(style, t0);
-			append_hydration(section, t1);
-			append_hydration(section, div15);
-			append_hydration(div15, div0);
-			append_hydration(div0, span0);
-			append_hydration(span0, t2);
-			append_hydration(div0, t3);
-			append_hydration(div0, h2);
-			append_hydration(h2, t4);
-			append_hydration(div0, t5);
-			append_hydration(div0, h30);
-			append_hydration(h30, t6);
-			append_hydration(div15, t7);
-			append_hydration(div15, div13);
-			append_hydration(div13, div2);
-			append_hydration(div2, header0);
-			append_hydration(header0, div1);
-			append_hydration(div1, span1);
-			append_hydration(span1, t8);
-			append_hydration(div1, t9);
-			append_hydration(div1, span2);
-			append_hydration(span2, t10);
-			append_hydration(header0, t11);
-			append_hydration(header0, h31);
-			append_hydration(h31, t12);
-			append_hydration(header0, t13);
-			append_hydration(header0, span3);
-			append_hydration(span3, t14);
-			append_hydration(div2, t15);
-			append_hydration(div2, hr0);
-			append_hydration(div2, t16);
-			append_hydration(div2, ul0);
-			append_hydration(ul0, li0);
-			append_hydration(li0, span4);
-			mount_component(icon0, span4, null);
-			append_hydration(li0, t17);
-			append_hydration(li0, span5);
-			append_hydration(span5, t18);
-			append_hydration(ul0, t19);
-			append_hydration(ul0, li1);
-			append_hydration(li1, span6);
-			mount_component(icon1, span6, null);
-			append_hydration(li1, t20);
-			append_hydration(li1, span7);
-			append_hydration(span7, t21);
-			append_hydration(ul0, t22);
-			append_hydration(ul0, li2);
-			append_hydration(li2, span8);
-			mount_component(icon2, span8, null);
-			append_hydration(li2, t23);
-			append_hydration(li2, span9);
-			append_hydration(span9, t24);
-			append_hydration(ul0, t25);
-			append_hydration(ul0, li3);
-			append_hydration(li3, span10);
-			mount_component(icon3, span10, null);
-			append_hydration(li3, t26);
-			append_hydration(li3, span11);
-			append_hydration(span11, t27);
-			append_hydration(div2, t28);
-			append_hydration(div2, a0);
-			append_hydration(a0, t29);
-			append_hydration(div13, t30);
-			append_hydration(div13, div6);
-			append_hydration(div6, header1);
-			append_hydration(header1, div5);
-			append_hydration(div5, div3);
-			append_hydration(div3, span12);
-			append_hydration(span12, t31);
-			append_hydration(div3, t32);
-			append_hydration(div3, span13);
-			append_hydration(span13, t33);
-			append_hydration(div5, t34);
-			append_hydration(div5, div4);
-			append_hydration(div4, t35);
-			append_hydration(header1, t36);
-			append_hydration(header1, h32);
-			append_hydration(h32, t37);
-			append_hydration(header1, t38);
-			append_hydration(header1, span14);
-			append_hydration(span14, t39);
-			append_hydration(div6, t40);
-			append_hydration(div6, hr1);
-			append_hydration(div6, t41);
-			append_hydration(div6, ul1);
-			append_hydration(ul1, li4);
-			append_hydration(li4, span15);
-			mount_component(icon4, span15, null);
-			append_hydration(li4, t42);
-			append_hydration(li4, span16);
-			append_hydration(span16, t43);
-			append_hydration(ul1, t44);
-			append_hydration(ul1, li5);
-			append_hydration(li5, span17);
-			mount_component(icon5, span17, null);
-			append_hydration(li5, t45);
-			append_hydration(li5, span18);
-			append_hydration(span18, t46);
-			append_hydration(ul1, t47);
-			append_hydration(ul1, li6);
-			append_hydration(li6, span19);
-			mount_component(icon6, span19, null);
-			append_hydration(li6, t48);
-			append_hydration(li6, span20);
-			append_hydration(span20, t49);
-			append_hydration(ul1, t50);
-			append_hydration(ul1, li7);
-			append_hydration(li7, span21);
-			mount_component(icon7, span21, null);
-			append_hydration(li7, t51);
-			append_hydration(li7, span22);
-			append_hydration(span22, t52);
-			append_hydration(ul1, t53);
-			append_hydration(ul1, li8);
-			append_hydration(li8, span23);
-			mount_component(icon8, span23, null);
-			append_hydration(li8, t54);
-			append_hydration(li8, span24);
-			append_hydration(span24, t55);
-			append_hydration(ul1, t56);
-			append_hydration(ul1, li9);
-			append_hydration(li9, span25);
-			mount_component(icon9, span25, null);
-			append_hydration(li9, t57);
-			append_hydration(li9, span26);
-			append_hydration(span26, t58);
-			append_hydration(div6, t59);
-			append_hydration(div6, a1);
-			append_hydration(a1, t60);
-			append_hydration(div13, t61);
-			append_hydration(div13, div10);
-			append_hydration(div10, header2);
-			append_hydration(header2, div9);
-			append_hydration(div9, div7);
-			append_hydration(div7, span27);
-			append_hydration(span27, t62);
-			append_hydration(div7, t63);
-			append_hydration(div7, span28);
-			append_hydration(span28, t64);
-			append_hydration(div9, t65);
-			append_hydration(div9, div8);
-			append_hydration(div8, t66);
-			append_hydration(header2, t67);
-			append_hydration(header2, h33);
-			append_hydration(h33, t68);
-			append_hydration(header2, t69);
-			append_hydration(header2, span29);
-			append_hydration(span29, t70);
-			append_hydration(div10, t71);
-			append_hydration(div10, hr2);
-			append_hydration(div10, t72);
-			append_hydration(div10, ul2);
-			append_hydration(ul2, li10);
-			append_hydration(li10, span30);
-			mount_component(icon10, span30, null);
-			append_hydration(li10, t73);
-			append_hydration(li10, span31);
-			append_hydration(span31, t74);
-			append_hydration(ul2, t75);
-			append_hydration(ul2, li11);
-			append_hydration(li11, span32);
-			mount_component(icon11, span32, null);
-			append_hydration(li11, t76);
-			append_hydration(li11, span33);
-			append_hydration(span33, t77);
-			append_hydration(ul2, t78);
-			append_hydration(ul2, li12);
-			append_hydration(li12, span34);
-			mount_component(icon12, span34, null);
-			append_hydration(li12, t79);
-			append_hydration(li12, span35);
-			append_hydration(span35, t80);
-			append_hydration(ul2, t81);
-			append_hydration(ul2, li13);
-			append_hydration(li13, span36);
-			mount_component(icon13, span36, null);
-			append_hydration(li13, t82);
-			append_hydration(li13, span37);
-			append_hydration(span37, t83);
-			append_hydration(ul2, t84);
-			append_hydration(ul2, li14);
-			append_hydration(li14, span38);
-			mount_component(icon14, span38, null);
-			append_hydration(li14, t85);
-			append_hydration(li14, span39);
-			append_hydration(span39, t86);
-			append_hydration(ul2, t87);
-			append_hydration(ul2, li15);
-			append_hydration(li15, span40);
-			mount_component(icon15, span40, null);
-			append_hydration(li15, t88);
-			append_hydration(li15, span41);
-			append_hydration(span41, t89);
-			append_hydration(li15, t90);
-			append_hydration(li15, span43);
-			mount_component(icon16, span43, null);
-			append_hydration(span43, t91);
-			append_hydration(span43, span42);
-			append_hydration(span42, t92);
-			append_hydration(span42, br0);
-			append_hydration(span42, t93);
-			append_hydration(span42, br1);
-			append_hydration(span42, t94);
-			append_hydration(div10, t95);
-			append_hydration(div10, a2);
-			append_hydration(a2, t96);
-			append_hydration(div13, t97);
-			append_hydration(div13, div12);
-			append_hydration(div12, header3);
-			append_hydration(header3, div11);
-			append_hydration(div11, span44);
-			append_hydration(span44, t98);
-			append_hydration(header3, t99);
-			append_hydration(header3, h34);
-			append_hydration(h34, t100);
-			append_hydration(header3, t101);
-			append_hydration(header3, span45);
-			append_hydration(span45, t102);
-			append_hydration(div12, t103);
-			append_hydration(div12, hr3);
-			append_hydration(div12, t104);
-			append_hydration(div12, span46);
-			append_hydration(span46, t105);
-			append_hydration(div12, t106);
-			append_hydration(div12, ul3);
-			append_hydration(ul3, li16);
-			append_hydration(li16, span47);
-			mount_component(icon17, span47, null);
-			append_hydration(li16, t107);
-			append_hydration(li16, span48);
-			append_hydration(span48, t108);
-			append_hydration(ul3, t109);
-			append_hydration(ul3, li17);
-			append_hydration(li17, span49);
-			mount_component(icon18, span49, null);
-			append_hydration(li17, t110);
-			append_hydration(li17, span50);
-			append_hydration(span50, t111);
-			append_hydration(ul3, t112);
-			append_hydration(ul3, li18);
-			append_hydration(li18, span51);
-			mount_component(icon19, span51, null);
-			append_hydration(li18, t113);
-			append_hydration(li18, span52);
-			append_hydration(span52, t114);
-			append_hydration(ul3, t115);
-			append_hydration(ul3, li19);
-			append_hydration(li19, span53);
-			mount_component(icon20, span53, null);
-			append_hydration(li19, t116);
-			append_hydration(li19, span54);
-			append_hydration(span54, t117);
-			append_hydration(div12, t118);
-			append_hydration(div12, a3);
-			append_hydration(a3, t119);
-			append_hydration(div15, t120);
-			append_hydration(div15, div14);
+			append_hydration(section, footer);
+			append_hydration(footer, div2);
+			append_hydration(div2, div0);
+			append_hydration(div0, a);
+			if (if_block) if_block.m(a, null);
+			append_hydration(div2, t0);
+			append_hydration(div2, div1);
+
+			for (let i = 0; i < each_blocks_1.length; i += 1) {
+				if (each_blocks_1[i]) {
+					each_blocks_1[i].m(div1, null);
+				}
+			}
+
+			append_hydration(footer, t1);
+			append_hydration(footer, div3);
+			append_hydration(div3, hr);
+			append_hydration(footer, t2);
+			append_hydration(footer, div6);
+			append_hydration(div6, span0);
+			append_hydration(span0, t3);
+			append_hydration(div6, t4);
+			append_hydration(div6, div4);
+			append_hydration(div4, span1);
+			append_hydration(span1, t5);
+			append_hydration(div4, t6);
+			append_hydration(div4, span2);
+			append_hydration(span2, svg);
+			append_hydration(svg, path0);
+			append_hydration(svg, path1);
+			append_hydration(svg, path2);
+			append_hydration(svg, path3);
+			append_hydration(svg, path4);
+			append_hydration(svg, path5);
+			append_hydration(svg, path6);
+			append_hydration(div4, t7);
+			append_hydration(div4, span3);
+			append_hydration(span3, t8);
+			append_hydration(div6, t9);
+			append_hydration(div6, div5);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				if (each_blocks[i]) {
-					each_blocks[i].m(div14, null);
+					each_blocks[i].m(div5, null);
 				}
 			}
 
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*superhead*/ 4) set_data(t2, /*superhead*/ ctx[2]);
-			if (!current || dirty & /*heading*/ 1) set_data(t4, /*heading*/ ctx[0]);
-			if (!current || dirty & /*subheading*/ 8) set_data(t6, /*subheading*/ ctx[3]);
+			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+				if_block.p(ctx, dirty);
+			} else {
+				if (if_block) if_block.d(1);
+				if_block = current_block_type && current_block_type(ctx);
 
-			if (dirty & /*payments*/ 2) {
-				each_value = /*payments*/ ctx[1];
+				if (if_block) {
+					if_block.c();
+					if_block.m(a, null);
+				}
+			}
+
+			if (dirty & /*footer_links*/ 4) {
+				each_value_1 = /*footer_links*/ ctx[2];
+				let i;
+
+				for (i = 0; i < each_value_1.length; i += 1) {
+					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+
+					if (each_blocks_1[i]) {
+						each_blocks_1[i].p(child_ctx, dirty);
+						transition_in(each_blocks_1[i], 1);
+					} else {
+						each_blocks_1[i] = create_each_block_1(child_ctx);
+						each_blocks_1[i].c();
+						transition_in(each_blocks_1[i], 1);
+						each_blocks_1[i].m(div1, null);
+					}
+				}
+
+				group_outros();
+
+				for (i = each_value_1.length; i < each_blocks_1.length; i += 1) {
+					out(i);
+				}
+
+				check_outros();
+			}
+
+			if (dirty & /*social*/ 2) {
+				each_value = /*social*/ ctx[1];
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -4418,121 +3626,79 @@ function create_fragment(ctx) {
 
 					if (each_blocks[i]) {
 						each_blocks[i].p(child_ctx, dirty);
+						transition_in(each_blocks[i], 1);
 					} else {
 						each_blocks[i] = create_each_block(child_ctx);
 						each_blocks[i].c();
-						each_blocks[i].m(div14, null);
+						transition_in(each_blocks[i], 1);
+						each_blocks[i].m(div5, null);
 					}
 				}
 
-				for (; i < each_blocks.length; i += 1) {
-					each_blocks[i].d(1);
+				group_outros();
+
+				for (i = each_value.length; i < each_blocks.length; i += 1) {
+					out_1(i);
 				}
 
-				each_blocks.length = each_value.length;
+				check_outros();
 			}
 		},
 		i(local) {
 			if (current) return;
-			transition_in(icon0.$$.fragment, local);
-			transition_in(icon1.$$.fragment, local);
-			transition_in(icon2.$$.fragment, local);
-			transition_in(icon3.$$.fragment, local);
-			transition_in(icon4.$$.fragment, local);
-			transition_in(icon5.$$.fragment, local);
-			transition_in(icon6.$$.fragment, local);
-			transition_in(icon7.$$.fragment, local);
-			transition_in(icon8.$$.fragment, local);
-			transition_in(icon9.$$.fragment, local);
-			transition_in(icon10.$$.fragment, local);
-			transition_in(icon11.$$.fragment, local);
-			transition_in(icon12.$$.fragment, local);
-			transition_in(icon13.$$.fragment, local);
-			transition_in(icon14.$$.fragment, local);
-			transition_in(icon15.$$.fragment, local);
-			transition_in(icon16.$$.fragment, local);
-			transition_in(icon17.$$.fragment, local);
-			transition_in(icon18.$$.fragment, local);
-			transition_in(icon19.$$.fragment, local);
-			transition_in(icon20.$$.fragment, local);
+
+			for (let i = 0; i < each_value_1.length; i += 1) {
+				transition_in(each_blocks_1[i]);
+			}
+
+			for (let i = 0; i < each_value.length; i += 1) {
+				transition_in(each_blocks[i]);
+			}
+
 			current = true;
 		},
 		o(local) {
-			transition_out(icon0.$$.fragment, local);
-			transition_out(icon1.$$.fragment, local);
-			transition_out(icon2.$$.fragment, local);
-			transition_out(icon3.$$.fragment, local);
-			transition_out(icon4.$$.fragment, local);
-			transition_out(icon5.$$.fragment, local);
-			transition_out(icon6.$$.fragment, local);
-			transition_out(icon7.$$.fragment, local);
-			transition_out(icon8.$$.fragment, local);
-			transition_out(icon9.$$.fragment, local);
-			transition_out(icon10.$$.fragment, local);
-			transition_out(icon11.$$.fragment, local);
-			transition_out(icon12.$$.fragment, local);
-			transition_out(icon13.$$.fragment, local);
-			transition_out(icon14.$$.fragment, local);
-			transition_out(icon15.$$.fragment, local);
-			transition_out(icon16.$$.fragment, local);
-			transition_out(icon17.$$.fragment, local);
-			transition_out(icon18.$$.fragment, local);
-			transition_out(icon19.$$.fragment, local);
-			transition_out(icon20.$$.fragment, local);
+			each_blocks_1 = each_blocks_1.filter(Boolean);
+
+			for (let i = 0; i < each_blocks_1.length; i += 1) {
+				transition_out(each_blocks_1[i]);
+			}
+
+			each_blocks = each_blocks.filter(Boolean);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				transition_out(each_blocks[i]);
+			}
+
 			current = false;
 		},
 		d(detaching) {
 			if (detaching) detach(section);
-			destroy_component(icon0);
-			destroy_component(icon1);
-			destroy_component(icon2);
-			destroy_component(icon3);
-			destroy_component(icon4);
-			destroy_component(icon5);
-			destroy_component(icon6);
-			destroy_component(icon7);
-			destroy_component(icon8);
-			destroy_component(icon9);
-			destroy_component(icon10);
-			destroy_component(icon11);
-			destroy_component(icon12);
-			destroy_component(icon13);
-			destroy_component(icon14);
-			destroy_component(icon15);
-			destroy_component(icon16);
-			destroy_component(icon17);
-			destroy_component(icon18);
-			destroy_component(icon19);
-			destroy_component(icon20);
+
+			if (if_block) {
+				if_block.d();
+			}
+
+			destroy_each(each_blocks_1, detaching);
 			destroy_each(each_blocks, detaching);
 		}
 	};
 }
 
-function toBase64(str) {
-	return btoa(str);
-}
-
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
-	let { tiers } = $$props;
-	let { heading } = $$props;
-	let { payments } = $$props;
-	let { superhead } = $$props;
-	let { subheading } = $$props;
-	let BASE = toBase64('BASE');
-	let PREMIUM = toBase64('PREMIUM');
+	let { logo } = $$props;
+	let { social } = $$props;
+	let { footer_links } = $$props;
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(6, props = $$props.props);
-		if ('tiers' in $$props) $$invalidate(7, tiers = $$props.tiers);
-		if ('heading' in $$props) $$invalidate(0, heading = $$props.heading);
-		if ('payments' in $$props) $$invalidate(1, payments = $$props.payments);
-		if ('superhead' in $$props) $$invalidate(2, superhead = $$props.superhead);
-		if ('subheading' in $$props) $$invalidate(3, subheading = $$props.subheading);
+		if ('props' in $$props) $$invalidate(3, props = $$props.props);
+		if ('logo' in $$props) $$invalidate(0, logo = $$props.logo);
+		if ('social' in $$props) $$invalidate(1, social = $$props.social);
+		if ('footer_links' in $$props) $$invalidate(2, footer_links = $$props.footer_links);
 	};
 
-	return [heading, payments, superhead, subheading, BASE, PREMIUM, props, tiers];
+	return [logo, social, footer_links, props];
 }
 
 class Component extends SvelteComponent {
@@ -4540,12 +3706,10 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 6,
-			tiers: 7,
-			heading: 0,
-			payments: 1,
-			superhead: 2,
-			subheading: 3
+			props: 3,
+			logo: 0,
+			social: 1,
+			footer_links: 2
 		});
 	}
 }
