@@ -1,4 +1,4 @@
-// New Block - Updated August 29, 2024
+// New footer - Updated August 29, 2024
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -3195,7 +3195,7 @@ function create_fragment(ctx) {
 	let footer;
 	let div2;
 	let div0;
-	let a;
+	let a0;
 	let t0;
 	let div1;
 	let t1;
@@ -3220,7 +3220,7 @@ function create_fragment(ctx) {
 	let path5;
 	let path6;
 	let t7;
-	let span3;
+	let a1;
 	let t8;
 	let t9;
 	let div5;
@@ -3261,7 +3261,7 @@ function create_fragment(ctx) {
 			footer = element("footer");
 			div2 = element("div");
 			div0 = element("div");
-			a = element("a");
+			a0 = element("a");
 			if (if_block) if_block.c();
 			t0 = space();
 			div1 = element("div");
@@ -3292,7 +3292,7 @@ function create_fragment(ctx) {
 			path5 = svg_element("path");
 			path6 = svg_element("path");
 			t7 = space();
-			span3 = element("span");
+			a1 = element("a");
 			t8 = text("Landscape");
 			t9 = space();
 			div5 = element("div");
@@ -3312,10 +3312,10 @@ function create_fragment(ctx) {
 			var div2_nodes = children(div2);
 			div0 = claim_element(div2_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
-			a = claim_element(div0_nodes, "A", { href: true, class: true });
-			var a_nodes = children(a);
-			if (if_block) if_block.l(a_nodes);
-			a_nodes.forEach(detach);
+			a0 = claim_element(div0_nodes, "A", { href: true, class: true });
+			var a0_nodes = children(a0);
+			if (if_block) if_block.l(a0_nodes);
+			a0_nodes.forEach(detach);
 			div0_nodes.forEach(detach);
 			t0 = claim_space(div2_nodes);
 			div1 = claim_element(div2_nodes, "DIV", { class: true });
@@ -3439,10 +3439,10 @@ function create_fragment(ctx) {
 			svg_nodes.forEach(detach);
 			span2_nodes.forEach(detach);
 			t7 = claim_space(div4_nodes);
-			span3 = claim_element(div4_nodes, "SPAN", { style: true });
-			var span3_nodes = children(span3);
-			t8 = claim_text(span3_nodes, "Landscape");
-			span3_nodes.forEach(detach);
+			a1 = claim_element(div4_nodes, "A", { href: true, target: true, style: true });
+			var a1_nodes = children(a1);
+			t8 = claim_text(a1_nodes, "Landscape");
+			a1_nodes.forEach(detach);
 			div4_nodes.forEach(detach);
 			t9 = claim_space(div6_nodes);
 			div5 = claim_element(div6_nodes, "DIV", { class: true });
@@ -3459,8 +3459,8 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "href", "/");
-			attr(a, "class", "logo");
+			attr(a0, "href", "/");
+			attr(a0, "class", "logo");
 			attr(div0, "class", "main svelte-1ylarmc");
 			attr(div1, "class", "links svelte-1ylarmc");
 			attr(div2, "class", "container svelte-1ylarmc");
@@ -3515,9 +3515,11 @@ function create_fragment(ctx) {
 			attr(svg, "height", "23.7");
 			attr(svg, "viewBox", "0 0 27 24");
 			attr(svg, "fill", "none");
-			set_style(span3, "font-size", "14.983px");
-			set_style(span3, "color", "#EEF2FF");
-			set_style(span3, "font-weight", "700");
+			attr(a1, "href", "https://landscape.cl/?utm_source=website_globot&utm_medium=web&utm_campaign=promotion");
+			attr(a1, "target", "_blank");
+			set_style(a1, "font-size", "14.983px");
+			set_style(a1, "color", "#EEF2FF");
+			set_style(a1, "font-weight", "700");
 			set_style(div4, "display", "flex");
 			set_style(div4, "align-items", "center");
 			set_style(div4, "gap", "8.915px");
@@ -3531,8 +3533,8 @@ function create_fragment(ctx) {
 			append_hydration(section, footer);
 			append_hydration(footer, div2);
 			append_hydration(div2, div0);
-			append_hydration(div0, a);
-			if (if_block) if_block.m(a, null);
+			append_hydration(div0, a0);
+			if (if_block) if_block.m(a0, null);
 			append_hydration(div2, t0);
 			append_hydration(div2, div1);
 
@@ -3564,8 +3566,8 @@ function create_fragment(ctx) {
 			append_hydration(svg, path5);
 			append_hydration(svg, path6);
 			append_hydration(div4, t7);
-			append_hydration(div4, span3);
-			append_hydration(span3, t8);
+			append_hydration(div4, a1);
+			append_hydration(a1, t8);
 			append_hydration(div6, t9);
 			append_hydration(div6, div5);
 
@@ -3586,7 +3588,7 @@ function create_fragment(ctx) {
 
 				if (if_block) {
 					if_block.c();
-					if_block.m(a, null);
+					if_block.m(a0, null);
 				}
 			}
 
