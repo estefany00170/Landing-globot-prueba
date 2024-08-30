@@ -1,4 +1,4 @@
-// product box - Updated August 29, 2024
+// product box - Updated August 30, 2024
 function noop() { }
 function run(fn) {
     return fn();
@@ -1281,9 +1281,9 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h1, "class", "heading svelte-r08frn");
-			attr(div, "class", "content svelte-r08frn");
-			attr(section, "class", "section-container svelte-r08frn");
+			attr(h1, "class", "heading svelte-1mlr1yo");
+			attr(div, "class", "content svelte-1mlr1yo");
+			attr(section, "class", "section-container svelte-1mlr1yo");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
