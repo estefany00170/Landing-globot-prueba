@@ -2822,7 +2822,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (67:8) {#each cards as card, index}
+// (121:8) {#each cards as card, index}
 function create_each_block(ctx) {
 	let li;
 	let div2;
@@ -2830,10 +2830,11 @@ function create_each_block(ctx) {
 	let img_src_value;
 	let t0;
 	let div0;
-	let span;
+	let span0;
 	let t1_value = /*card*/ ctx[4].name + "";
 	let t1;
 	let t2;
+	let span1;
 	let icon;
 	let t3;
 	let div1;
@@ -2850,9 +2851,10 @@ function create_each_block(ctx) {
 			img = element("img");
 			t0 = space();
 			div0 = element("div");
-			span = element("span");
+			span0 = element("span");
 			t1 = text(t1_value);
 			t2 = space();
+			span1 = element("span");
 			create_component(icon.$$.fragment);
 			t3 = space();
 			div1 = element("div");
@@ -2865,16 +2867,19 @@ function create_each_block(ctx) {
 			var li_nodes = children(li);
 			div2 = claim_element(li_nodes, "DIV", { class: true });
 			var div2_nodes = children(div2);
-			img = claim_element(div2_nodes, "IMG", { src: true });
+			img = claim_element(div2_nodes, "IMG", { src: true, class: true });
 			t0 = claim_space(div2_nodes);
 			div0 = claim_element(div2_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
-			span = claim_element(div0_nodes, "SPAN", {});
-			var span_nodes = children(span);
-			t1 = claim_text(span_nodes, t1_value);
-			span_nodes.forEach(detach);
+			span0 = claim_element(div0_nodes, "SPAN", { class: true });
+			var span0_nodes = children(span0);
+			t1 = claim_text(span0_nodes, t1_value);
+			span0_nodes.forEach(detach);
 			t2 = claim_space(div0_nodes);
-			claim_component(icon.$$.fragment, div0_nodes);
+			span1 = claim_element(div0_nodes, "SPAN", { class: true });
+			var span1_nodes = children(span1);
+			claim_component(icon.$$.fragment, span1_nodes);
+			span1_nodes.forEach(detach);
 			div0_nodes.forEach(detach);
 			t3 = claim_space(div2_nodes);
 			div1 = claim_element(div2_nodes, "DIV", { class: true });
@@ -2888,9 +2893,12 @@ function create_each_block(ctx) {
 		},
 		h() {
 			if (!src_url_equal(img.src, img_src_value = /*card*/ ctx[4].image.url)) attr(img, "src", img_src_value);
-			attr(div0, "class", "person svelte-pome7n");
-			attr(div1, "class", "position");
-			attr(div2, "class", "card svelte-pome7n");
+			attr(img, "class", "svelte-mnhwh6");
+			attr(span0, "class", "name svelte-mnhwh6");
+			attr(span1, "class", "icon svelte-mnhwh6");
+			attr(div0, "class", "person svelte-mnhwh6");
+			attr(div1, "class", "position svelte-mnhwh6");
+			attr(div2, "class", "card svelte-mnhwh6");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -2898,10 +2906,11 @@ function create_each_block(ctx) {
 			append_hydration(div2, img);
 			append_hydration(div2, t0);
 			append_hydration(div2, div0);
-			append_hydration(div0, span);
-			append_hydration(span, t1);
+			append_hydration(div0, span0);
+			append_hydration(span0, t1);
 			append_hydration(div0, t2);
-			mount_component(icon, div0, null);
+			append_hydration(div0, span1);
+			mount_component(icon, span1, null);
 			append_hydration(div2, t3);
 			append_hydration(div2, div1);
 			append_hydration(div1, t4);
@@ -3021,13 +3030,13 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "superhead svelte-pome7n");
-			attr(h2, "class", "heading svelte-pome7n");
+			attr(div0, "class", "superhead svelte-mnhwh6");
+			attr(h2, "class", "heading svelte-mnhwh6");
 			attr(header, "class", "heading-group");
-			attr(ul, "class", "cards svelte-pome7n");
-			attr(div1, "class", "content  svelte-pome7n");
-			attr(div2, "class", "section-container svelte-pome7n");
-			attr(section, "class", "svelte-pome7n");
+			attr(ul, "class", "cards svelte-mnhwh6");
+			attr(div1, "class", "content  svelte-mnhwh6");
+			attr(div2, "class", "section-container svelte-mnhwh6");
+			attr(section, "class", "svelte-mnhwh6");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
