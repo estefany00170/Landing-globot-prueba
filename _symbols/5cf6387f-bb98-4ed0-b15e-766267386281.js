@@ -2964,7 +2964,7 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		l(nodes) {
-			li = claim_element(nodes, "LI", {});
+			li = claim_element(nodes, "LI", { class: true });
 			var li_nodes = children(li);
 			div0 = claim_element(li_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
@@ -2992,6 +2992,7 @@ function create_each_block(ctx) {
 			attr(span0, "class", "title1 svelte-1jmxyzg");
 			attr(span1, "class", "description1 svelte-1jmxyzg");
 			attr(div1, "class", "text svelte-1jmxyzg");
+			attr(li, "class", "card svelte-1jmxyzg");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
