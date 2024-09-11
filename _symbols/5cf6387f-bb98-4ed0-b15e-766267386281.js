@@ -2887,11 +2887,11 @@ function create_each_block_1(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "icon svelte-opkk6l");
-			attr(span0, "class", "title1 svelte-opkk6l");
-			attr(span1, "class", "description1 svelte-opkk6l");
-			attr(div1, "class", "text svelte-opkk6l");
-			attr(li, "class", "svelte-opkk6l");
+			attr(div0, "class", "icon svelte-1134g16");
+			attr(span0, "class", "title1 svelte-1134g16");
+			attr(span1, "class", "description1 svelte-1134g16");
+			attr(div1, "class", "text svelte-1134g16");
+			attr(li, "class", "svelte-1134g16");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -2988,11 +2988,11 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "icon svelte-opkk6l");
-			attr(span0, "class", "title1 svelte-opkk6l");
-			attr(span1, "class", "description1 svelte-opkk6l");
-			attr(div1, "class", "text svelte-opkk6l");
-			attr(li, "class", "svelte-opkk6l");
+			attr(div0, "class", "icon svelte-1134g16");
+			attr(span0, "class", "title1 svelte-1134g16");
+			attr(span1, "class", "description1 svelte-1134g16");
+			attr(div1, "class", "text svelte-1134g16");
+			attr(li, "class", "svelte-1134g16");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -3010,10 +3010,10 @@ function create_each_block(ctx) {
 		},
 		p(ctx, dirty) {
 			const icon_changes = {};
-			if (dirty & /*cards2*/ 8) icon_changes.icon = /*card2*/ ctx[5].icon2;
+			if (dirty & /*cards2*/ 2) icon_changes.icon = /*card2*/ ctx[5].icon2;
 			icon.$set(icon_changes);
-			if ((!current || dirty & /*cards2*/ 8) && t1_value !== (t1_value = /*card2*/ ctx[5].title2 + "")) set_data(t1, t1_value);
-			if ((!current || dirty & /*cards2*/ 8) && t3_value !== (t3_value = /*card2*/ ctx[5].description2 + "")) set_data(t3, t3_value);
+			if ((!current || dirty & /*cards2*/ 2) && t1_value !== (t1_value = /*card2*/ ctx[5].title2 + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*cards2*/ 2) && t3_value !== (t3_value = /*card2*/ ctx[5].description2 + "")) set_data(t3, t3_value);
 		},
 		i(local) {
 			if (current) return;
@@ -3065,7 +3065,7 @@ function create_fragment(ctx) {
 		each_blocks_1[i] = null;
 	});
 
-	let each_value = /*cards2*/ ctx[3];
+	let each_value = /*cards2*/ ctx[1];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -3162,17 +3162,17 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) attr(img0, "src", img0_src_value);
-			attr(h10, "class", "svelte-opkk6l");
-			attr(ul0, "class", "cards svelte-opkk6l");
-			attr(div0, "class", "content svelte-opkk6l");
-			attr(div1, "class", "business svelte-opkk6l");
-			attr(h11, "class", "svelte-opkk6l");
-			attr(ul1, "class", "cards svelte-opkk6l");
-			attr(div2, "class", "content svelte-opkk6l");
-			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) attr(img1, "src", img1_src_value);
-			attr(div3, "class", "customer svelte-opkk6l");
-			attr(div4, "class", "section-container svelte-opkk6l");
+			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) attr(img0, "src", img0_src_value);
+			attr(h10, "class", "svelte-1134g16");
+			attr(ul0, "class", "cards svelte-1134g16");
+			attr(div0, "class", "content svelte-1134g16");
+			attr(div1, "class", "business svelte-1134g16");
+			attr(h11, "class", "svelte-1134g16");
+			attr(ul1, "class", "cards svelte-1134g16");
+			attr(div2, "class", "content svelte-1134g16");
+			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) attr(img1, "src", img1_src_value);
+			attr(div3, "class", "customer svelte-1134g16");
+			attr(div4, "class", "section-container svelte-1134g16");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -3211,7 +3211,7 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*image1*/ 2 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) {
+			if (!current || dirty & /*image1*/ 4 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) {
 				attr(img0, "src", img0_src_value);
 			}
 
@@ -3242,8 +3242,8 @@ function create_fragment(ctx) {
 				check_outros();
 			}
 
-			if (dirty & /*cards2*/ 8) {
-				each_value = /*cards2*/ ctx[3];
+			if (dirty & /*cards2*/ 2) {
+				each_value = /*cards2*/ ctx[1];
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -3269,7 +3269,7 @@ function create_fragment(ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*image2*/ 4 && !src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) {
+			if (!current || dirty & /*image2*/ 8 && !src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) {
 				attr(img1, "src", img1_src_value);
 			}
 		},
@@ -3312,19 +3312,19 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
 	let { cards } = $$props;
+	let { cards2 } = $$props;
 	let { image1 } = $$props;
 	let { image2 } = $$props;
-	let { cards2 } = $$props;
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(4, props = $$props.props);
 		if ('cards' in $$props) $$invalidate(0, cards = $$props.cards);
-		if ('image1' in $$props) $$invalidate(1, image1 = $$props.image1);
-		if ('image2' in $$props) $$invalidate(2, image2 = $$props.image2);
-		if ('cards2' in $$props) $$invalidate(3, cards2 = $$props.cards2);
+		if ('cards2' in $$props) $$invalidate(1, cards2 = $$props.cards2);
+		if ('image1' in $$props) $$invalidate(2, image1 = $$props.image1);
+		if ('image2' in $$props) $$invalidate(3, image2 = $$props.image2);
 	};
 
-	return [cards, image1, image2, cards2, props];
+	return [cards, cards2, image1, image2, props];
 }
 
 class Component extends SvelteComponent {
@@ -3334,9 +3334,9 @@ class Component extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			props: 4,
 			cards: 0,
-			image1: 1,
-			image2: 2,
-			cards2: 3
+			cards2: 1,
+			image1: 2,
+			image2: 3
 		});
 	}
 }
