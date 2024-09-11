@@ -2813,7 +2813,7 @@ function create_if_block(ctx) {
 		h() {
 			if (!src_url_equal(img.src, img_src_value = /*image*/ ctx[1].url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*image*/ ctx[1].alt);
-			attr(img, "class", "svelte-1ekcyx");
+			attr(img, "class", "svelte-1k1qboz");
 		},
 		m(target, anchor) {
 			insert_hydration(target, img, anchor);
@@ -2894,11 +2894,11 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "icon svelte-1ekcyx");
-			attr(div1, "class", "quote svelte-1ekcyx");
+			attr(div0, "class", "icon svelte-1k1qboz");
+			attr(div1, "class", "quote svelte-1k1qboz");
 			attr(div2, "class", "name");
-			attr(div3, "class", "testimonial svelte-1ekcyx");
-			attr(div4, "class", "section-container svelte-1ekcyx");
+			attr(div3, "class", "testimonial svelte-1k1qboz");
+			attr(div4, "class", "section-container svelte-1k1qboz");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
