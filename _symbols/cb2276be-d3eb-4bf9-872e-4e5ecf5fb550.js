@@ -2822,7 +2822,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (123:8) {#each cards as card, index}
+// (124:8) {#each cards as card, index}
 function create_each_block(ctx) {
 	let li;
 	let div2;
@@ -2893,12 +2893,12 @@ function create_each_block(ctx) {
 		},
 		h() {
 			if (!src_url_equal(img.src, img_src_value = /*card*/ ctx[4].image.url)) attr(img, "src", img_src_value);
-			attr(img, "class", "svelte-156fszn");
-			attr(span0, "class", "name svelte-156fszn");
-			attr(span1, "class", "icon svelte-156fszn");
-			attr(div0, "class", "person svelte-156fszn");
-			attr(div1, "class", "position svelte-156fszn");
-			attr(div2, "class", "card svelte-156fszn");
+			attr(img, "class", "svelte-1nt2lmo");
+			attr(span0, "class", "name svelte-1nt2lmo");
+			attr(span1, "class", "icon svelte-1nt2lmo");
+			attr(div0, "class", "person svelte-1nt2lmo");
+			attr(div1, "class", "position svelte-1nt2lmo");
+			attr(div2, "class", "card svelte-1nt2lmo");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -3030,13 +3030,13 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "superhead svelte-156fszn");
-			attr(h2, "class", "heading svelte-156fszn");
+			attr(div0, "class", "superhead svelte-1nt2lmo");
+			attr(h2, "class", "heading svelte-1nt2lmo");
 			attr(header, "class", "heading-group");
-			attr(ul, "class", "cards svelte-156fszn");
-			attr(div1, "class", "content  svelte-156fszn");
-			attr(div2, "class", "section-container svelte-156fszn");
-			attr(section, "class", "svelte-156fszn");
+			attr(ul, "class", "cards svelte-1nt2lmo");
+			attr(div1, "class", "content  svelte-1nt2lmo");
+			attr(div2, "class", "section-container svelte-1nt2lmo");
+			attr(section, "class", "svelte-1nt2lmo");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
