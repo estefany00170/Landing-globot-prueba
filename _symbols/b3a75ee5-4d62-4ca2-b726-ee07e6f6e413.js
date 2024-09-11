@@ -1,6 +1,5 @@
-// Tutoriales - Updated September 11, 2024
+// Featured Quote - Updated September 11, 2024
 function noop() { }
-const identity = x => x;
 function assign(tar, src) {
     // @ts-ignore
     for (const k in src)
@@ -22,6 +21,14 @@ function is_function(thing) {
 function safe_not_equal(a, b) {
     return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
 }
+let src_url_equal_anchor;
+function src_url_equal(element_src, url) {
+    if (!src_url_equal_anchor) {
+        src_url_equal_anchor = document.createElement('a');
+    }
+    src_url_equal_anchor.href = url;
+    return element_src === src_url_equal_anchor.href;
+}
 function is_empty(obj) {
     return Object.keys(obj).length === 0;
 }
@@ -31,41 +38,6 @@ function exclude_internal_props(props) {
         if (k[0] !== '$')
             result[k] = props[k];
     return result;
-}
-
-const is_client = typeof window !== 'undefined';
-let now = is_client
-    ? () => window.performance.now()
-    : () => Date.now();
-let raf = is_client ? cb => requestAnimationFrame(cb) : noop;
-
-const tasks = new Set();
-function run_tasks(now) {
-    tasks.forEach(task => {
-        if (!task.c(now)) {
-            tasks.delete(task);
-            task.f();
-        }
-    });
-    if (tasks.size !== 0)
-        raf(run_tasks);
-}
-/**
- * Creates a new task that runs on each raf frame
- * until it returns a falsy value or is aborted
- */
-function loop(callback) {
-    let task;
-    if (tasks.size === 0)
-        raf(run_tasks);
-    return {
-        promise: new Promise(fulfill => {
-            tasks.add(task = { c: callback, f: fulfill });
-        }),
-        abort() {
-            tasks.delete(task);
-        }
-    };
 }
 
 // Track which nodes are claimed during hydration. Unclaimed nodes can then be removed from the DOM
@@ -169,27 +141,6 @@ function init_hydrate(target) {
         target.insertBefore(toMove[i], anchor);
     }
 }
-function append(target, node) {
-    target.appendChild(node);
-}
-function get_root_for_style(node) {
-    if (!node)
-        return document;
-    const root = node.getRootNode ? node.getRootNode() : node.ownerDocument;
-    if (root && root.host) {
-        return root;
-    }
-    return node.ownerDocument;
-}
-function append_empty_stylesheet(node) {
-    const style_element = element('style');
-    append_stylesheet(get_root_for_style(node), style_element);
-    return style_element.sheet;
-}
-function append_stylesheet(node, style) {
-    append(node.head || node, style);
-    return style.sheet;
-}
 function append_hydration(target, node) {
     if (is_hydrating) {
         init_hydrate(target);
@@ -227,12 +178,6 @@ function detach(node) {
         node.parentNode.removeChild(node);
     }
 }
-function destroy_each(iterations, detaching) {
-    for (let i = 0; i < iterations.length; i += 1) {
-        if (iterations[i])
-            iterations[i].d(detaching);
-    }
-}
 function element(name) {
     return document.createElement(name);
 }
@@ -247,10 +192,6 @@ function space() {
 }
 function empty() {
     return text('');
-}
-function listen(node, event, handler, options) {
-    node.addEventListener(event, handler, options);
-    return () => node.removeEventListener(event, handler, options);
 }
 function attr(node, attribute, value) {
     if (value == null)
@@ -392,78 +333,10 @@ function set_data(text, data) {
         return;
     text.data = data;
 }
-function toggle_class(element, name, toggle) {
-    element.classList[toggle ? 'add' : 'remove'](name);
-}
 function custom_event(type, detail, { bubbles = false, cancelable = false } = {}) {
     const e = document.createEvent('CustomEvent');
     e.initCustomEvent(type, bubbles, cancelable, detail);
     return e;
-}
-
-// we need to store the information for multiple documents because a Svelte application could also contain iframes
-// https://github.com/sveltejs/svelte/issues/3624
-const managed_styles = new Map();
-let active = 0;
-// https://github.com/darkskyapp/string-hash/blob/master/index.js
-function hash(str) {
-    let hash = 5381;
-    let i = str.length;
-    while (i--)
-        hash = ((hash << 5) - hash) ^ str.charCodeAt(i);
-    return hash >>> 0;
-}
-function create_style_information(doc, node) {
-    const info = { stylesheet: append_empty_stylesheet(node), rules: {} };
-    managed_styles.set(doc, info);
-    return info;
-}
-function create_rule(node, a, b, duration, delay, ease, fn, uid = 0) {
-    const step = 16.666 / duration;
-    let keyframes = '{\n';
-    for (let p = 0; p <= 1; p += step) {
-        const t = a + (b - a) * ease(p);
-        keyframes += p * 100 + `%{${fn(t, 1 - t)}}\n`;
-    }
-    const rule = keyframes + `100% {${fn(b, 1 - b)}}\n}`;
-    const name = `__svelte_${hash(rule)}_${uid}`;
-    const doc = get_root_for_style(node);
-    const { stylesheet, rules } = managed_styles.get(doc) || create_style_information(doc, node);
-    if (!rules[name]) {
-        rules[name] = true;
-        stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
-    }
-    const animation = node.style.animation || '';
-    node.style.animation = `${animation ? `${animation}, ` : ''}${name} ${duration}ms linear ${delay}ms 1 both`;
-    active += 1;
-    return name;
-}
-function delete_rule(node, name) {
-    const previous = (node.style.animation || '').split(', ');
-    const next = previous.filter(name
-        ? anim => anim.indexOf(name) < 0 // remove specific animation
-        : anim => anim.indexOf('__svelte') === -1 // remove all Svelte animations
-    );
-    const deleted = previous.length - next.length;
-    if (deleted) {
-        node.style.animation = next.join(', ');
-        active -= deleted;
-        if (!active)
-            clear_rules();
-    }
-}
-function clear_rules() {
-    raf(() => {
-        if (active)
-            return;
-        managed_styles.forEach(info => {
-            const { ownerNode } = info.stylesheet;
-            // there is no ownerNode if it runs on jsdom.
-            if (ownerNode)
-                detach(ownerNode);
-        });
-        managed_styles.clear();
-    });
 }
 
 let current_component;
@@ -632,35 +505,8 @@ function flush_render_callbacks(fns) {
     targets.forEach((c) => c());
     render_callbacks = filtered;
 }
-
-let promise;
-function wait() {
-    if (!promise) {
-        promise = Promise.resolve();
-        promise.then(() => {
-            promise = null;
-        });
-    }
-    return promise;
-}
-function dispatch(node, direction, kind) {
-    node.dispatchEvent(custom_event(`${direction ? 'intro' : 'outro'}${kind}`));
-}
 const outroing = new Set();
 let outros;
-function group_outros() {
-    outros = {
-        r: 0,
-        c: [],
-        p: outros // parent group
-    };
-}
-function check_outros() {
-    if (!outros.r) {
-        run_all(outros.c);
-    }
-    outros = outros.p;
-}
 function transition_in(block, local) {
     if (block && block.i) {
         outroing.delete(block);
@@ -685,196 +531,6 @@ function transition_out(block, local, detach, callback) {
     else if (callback) {
         callback();
     }
-}
-const null_transition = { duration: 0 };
-function create_bidirectional_transition(node, fn, params, intro) {
-    const options = { direction: 'both' };
-    let config = fn(node, params, options);
-    let t = intro ? 0 : 1;
-    let running_program = null;
-    let pending_program = null;
-    let animation_name = null;
-    function clear_animation() {
-        if (animation_name)
-            delete_rule(node, animation_name);
-    }
-    function init(program, duration) {
-        const d = (program.b - t);
-        duration *= Math.abs(d);
-        return {
-            a: t,
-            b: program.b,
-            d,
-            duration,
-            start: program.start,
-            end: program.start + duration,
-            group: program.group
-        };
-    }
-    function go(b) {
-        const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
-        const program = {
-            start: now() + delay,
-            b
-        };
-        if (!b) {
-            // @ts-ignore todo: improve typings
-            program.group = outros;
-            outros.r += 1;
-        }
-        if (running_program || pending_program) {
-            pending_program = program;
-        }
-        else {
-            // if this is an intro, and there's a delay, we need to do
-            // an initial tick and/or apply CSS animation immediately
-            if (css) {
-                clear_animation();
-                animation_name = create_rule(node, t, b, duration, delay, easing, css);
-            }
-            if (b)
-                tick(0, 1);
-            running_program = init(program, duration);
-            add_render_callback(() => dispatch(node, b, 'start'));
-            loop(now => {
-                if (pending_program && now > pending_program.start) {
-                    running_program = init(pending_program, duration);
-                    pending_program = null;
-                    dispatch(node, running_program.b, 'start');
-                    if (css) {
-                        clear_animation();
-                        animation_name = create_rule(node, t, running_program.b, running_program.duration, 0, easing, config.css);
-                    }
-                }
-                if (running_program) {
-                    if (now >= running_program.end) {
-                        tick(t = running_program.b, 1 - t);
-                        dispatch(node, running_program.b, 'end');
-                        if (!pending_program) {
-                            // we're done
-                            if (running_program.b) {
-                                // intro — we can tidy up immediately
-                                clear_animation();
-                            }
-                            else {
-                                // outro — needs to be coordinated
-                                if (!--running_program.group.r)
-                                    run_all(running_program.group.c);
-                            }
-                        }
-                        running_program = null;
-                    }
-                    else if (now >= running_program.start) {
-                        const p = now - running_program.start;
-                        t = running_program.a + running_program.d * easing(p / running_program.duration);
-                        tick(t, 1 - t);
-                    }
-                }
-                return !!(running_program || pending_program);
-            });
-        }
-    }
-    return {
-        run(b) {
-            if (is_function(config)) {
-                wait().then(() => {
-                    // @ts-ignore
-                    config = config(options);
-                    go(b);
-                });
-            }
-            else {
-                go(b);
-            }
-        },
-        end() {
-            clear_animation();
-            running_program = pending_program = null;
-        }
-    };
-}
-function outro_and_destroy_block(block, lookup) {
-    transition_out(block, 1, 1, () => {
-        lookup.delete(block.key);
-    });
-}
-function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list, lookup, node, destroy, create_each_block, next, get_context) {
-    let o = old_blocks.length;
-    let n = list.length;
-    let i = o;
-    const old_indexes = {};
-    while (i--)
-        old_indexes[old_blocks[i].key] = i;
-    const new_blocks = [];
-    const new_lookup = new Map();
-    const deltas = new Map();
-    const updates = [];
-    i = n;
-    while (i--) {
-        const child_ctx = get_context(ctx, list, i);
-        const key = get_key(child_ctx);
-        let block = lookup.get(key);
-        if (!block) {
-            block = create_each_block(key, child_ctx);
-            block.c();
-        }
-        else if (dynamic) {
-            // defer updates until all the DOM shuffling is done
-            updates.push(() => block.p(child_ctx, dirty));
-        }
-        new_lookup.set(key, new_blocks[i] = block);
-        if (key in old_indexes)
-            deltas.set(key, Math.abs(i - old_indexes[key]));
-    }
-    const will_move = new Set();
-    const did_move = new Set();
-    function insert(block) {
-        transition_in(block, 1);
-        block.m(node, next);
-        lookup.set(block.key, block);
-        next = block.first;
-        n--;
-    }
-    while (o && n) {
-        const new_block = new_blocks[n - 1];
-        const old_block = old_blocks[o - 1];
-        const new_key = new_block.key;
-        const old_key = old_block.key;
-        if (new_block === old_block) {
-            // do nothing
-            next = new_block.first;
-            o--;
-            n--;
-        }
-        else if (!new_lookup.has(old_key)) {
-            // remove old block
-            destroy(old_block, lookup);
-            o--;
-        }
-        else if (!lookup.has(new_key) || will_move.has(new_key)) {
-            insert(new_block);
-        }
-        else if (did_move.has(old_key)) {
-            o--;
-        }
-        else if (deltas.get(new_key) > deltas.get(old_key)) {
-            did_move.add(new_key);
-            insert(new_block);
-        }
-        else {
-            will_move.add(old_key);
-            o--;
-        }
-    }
-    while (o--) {
-        const old_block = old_blocks[o];
-        if (!new_lookup.has(old_block.key))
-            destroy(old_block, lookup);
-    }
-    while (n)
-        insert(new_blocks[n - 1]);
-    run_all(updates);
-    return new_blocks;
 }
 
 function get_spread_update(levels, updates) {
@@ -1049,40 +705,6 @@ class SvelteComponent {
             this.$$.skip_bound = false;
         }
     }
-}
-
-function cubicOut(t) {
-    const f = t - 1.0;
-    return f * f * f + 1.0;
-}
-
-function slide(node, { delay = 0, duration = 400, easing = cubicOut, axis = 'y' } = {}) {
-    const style = getComputedStyle(node);
-    const opacity = +style.opacity;
-    const primary_property = axis === 'y' ? 'height' : 'width';
-    const primary_property_value = parseFloat(style[primary_property]);
-    const secondary_properties = axis === 'y' ? ['top', 'bottom'] : ['left', 'right'];
-    const capitalized_secondary_properties = secondary_properties.map((e) => `${e[0].toUpperCase()}${e.slice(1)}`);
-    const padding_start_value = parseFloat(style[`padding${capitalized_secondary_properties[0]}`]);
-    const padding_end_value = parseFloat(style[`padding${capitalized_secondary_properties[1]}`]);
-    const margin_start_value = parseFloat(style[`margin${capitalized_secondary_properties[0]}`]);
-    const margin_end_value = parseFloat(style[`margin${capitalized_secondary_properties[1]}`]);
-    const border_width_start_value = parseFloat(style[`border${capitalized_secondary_properties[0]}Width`]);
-    const border_width_end_value = parseFloat(style[`border${capitalized_secondary_properties[1]}Width`]);
-    return {
-        delay,
-        duration,
-        easing,
-        css: t => 'overflow: hidden;' +
-            `opacity: ${Math.min(t * 20, 1) * opacity};` +
-            `${primary_property}: ${t * primary_property_value}px;` +
-            `padding-${secondary_properties[0]}: ${t * padding_start_value}px;` +
-            `padding-${secondary_properties[1]}: ${t * padding_end_value}px;` +
-            `margin-${secondary_properties[0]}: ${t * margin_start_value}px;` +
-            `margin-${secondary_properties[1]}: ${t * margin_end_value}px;` +
-            `border-${secondary_properties[0]}-width: ${t * border_width_start_value}px;` +
-            `border-${secondary_properties[1]}-width: ${t * border_width_end_value}px;`
-    };
 }
 
 const matchIconName = /^[a-z0-9]+(-[a-z0-9]+)*$/;
@@ -3174,699 +2796,179 @@ let Component$1 = class Component extends SvelteComponent {
 
 /* generated by Svelte v3.59.1 */
 
-function get_each_context(ctx, list, i) {
-	const child_ctx = ctx.slice();
-	child_ctx[8] = list[i];
-	child_ctx[10] = i;
-	return child_ctx;
-}
-
-function get_each_context_1(ctx, list, i) {
-	const child_ctx = ctx.slice();
-	child_ctx[11] = list[i];
-	child_ctx[13] = i;
-	return child_ctx;
-}
-
-// (223:10) {#if activeItem === i}
 function create_if_block(ctx) {
-	let div;
-	let raw_value = /*item*/ ctx[11].description.html + "";
-	let div_transition;
-	let current;
+	let img;
+	let img_src_value;
+	let img_alt_value;
 
 	return {
 		c() {
-			div = element("div");
+			img = element("img");
 			this.h();
 		},
 		l(nodes) {
-			div = claim_element(nodes, "DIV", { class: true });
-			var div_nodes = children(div);
-			div_nodes.forEach(detach);
+			img = claim_element(nodes, "IMG", { src: true, alt: true, class: true });
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-yllo68");
+			if (!src_url_equal(img.src, img_src_value = /*image*/ ctx[1].url)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*image*/ ctx[1].alt);
+			attr(img, "class", "svelte-1lavrb0");
 		},
 		m(target, anchor) {
-			insert_hydration(target, div, anchor);
-			div.innerHTML = raw_value;
-			current = true;
+			insert_hydration(target, img, anchor);
 		},
 		p(ctx, dirty) {
-			if ((!current || dirty & /*items*/ 2) && raw_value !== (raw_value = /*item*/ ctx[11].description.html + "")) div.innerHTML = raw_value;		},
-		i(local) {
-			if (current) return;
+			if (dirty & /*image*/ 2 && !src_url_equal(img.src, img_src_value = /*image*/ ctx[1].url)) {
+				attr(img, "src", img_src_value);
+			}
 
-			add_render_callback(() => {
-				if (!current) return;
-				if (!div_transition) div_transition = create_bidirectional_transition(div, slide, {}, true);
-				div_transition.run(1);
-			});
-
-			current = true;
-		},
-		o(local) {
-			if (!div_transition) div_transition = create_bidirectional_transition(div, slide, {}, false);
-			div_transition.run(0);
-			current = false;
+			if (dirty & /*image*/ 2 && img_alt_value !== (img_alt_value = /*image*/ ctx[1].alt)) {
+				attr(img, "alt", img_alt_value);
+			}
 		},
 		d(detaching) {
-			if (detaching) detach(div);
-			if (detaching && div_transition) div_transition.end();
-		}
-	};
-}
-
-// (210:6) {#each items as item, i (i)}
-function create_each_block_1(key_1, ctx) {
-	let div3;
-	let div1;
-	let div0;
-	let icon0;
-	let t0;
-	let button;
-	let span0;
-	let t1_value = /*item*/ ctx[11].title + "";
-	let t1;
-	let t2;
-	let span1;
-	let icon1;
-	let t3;
-	let t4;
-	let t5;
-	let current;
-	let mounted;
-	let dispose;
-	icon0 = new Component$1({ props: { icon: /*item*/ ctx[11].icon } });
-	icon1 = new Component$1({ props: { icon: "ph:caret-down-bold" } });
-
-	function click_handler() {
-		return /*click_handler*/ ctx[7](/*i*/ ctx[13]);
-	}
-
-	let if_block = /*activeItem*/ ctx[4] === /*i*/ ctx[13] && create_if_block(ctx);
-
-	return {
-		key: key_1,
-		first: null,
-		c() {
-			div3 = element("div");
-			div1 = element("div");
-			div0 = element("div");
-			create_component(icon0.$$.fragment);
-			t0 = space();
-			button = element("button");
-			span0 = element("span");
-			t1 = text(t1_value);
-			t2 = space();
-			span1 = element("span");
-			create_component(icon1.$$.fragment);
-			t3 = space();
-			if (if_block) if_block.c();
-			t4 = space();
-			t5 = space();
-			this.h();
-		},
-		l(nodes) {
-			div3 = claim_element(nodes, "DIV", { class: true });
-			var div3_nodes = children(div3);
-			div1 = claim_element(div3_nodes, "DIV", { class: true });
-			var div1_nodes = children(div1);
-			div0 = claim_element(div1_nodes, "DIV", { class: true });
-			var div0_nodes = children(div0);
-			claim_component(icon0.$$.fragment, div0_nodes);
-			div0_nodes.forEach(detach);
-			t0 = claim_space(div1_nodes);
-			button = claim_element(div1_nodes, "BUTTON", { class: true });
-			var button_nodes = children(button);
-			span0 = claim_element(button_nodes, "SPAN", { class: true });
-			var span0_nodes = children(span0);
-			t1 = claim_text(span0_nodes, t1_value);
-			span0_nodes.forEach(detach);
-			t2 = claim_space(button_nodes);
-			span1 = claim_element(button_nodes, "SPAN", { class: true });
-			var span1_nodes = children(span1);
-			claim_component(icon1.$$.fragment, span1_nodes);
-			span1_nodes.forEach(detach);
-			button_nodes.forEach(detach);
-			div1_nodes.forEach(detach);
-			t3 = claim_space(div3_nodes);
-			if (if_block) if_block.l(div3_nodes);
-			t4 = claim_space(div3_nodes);
-			t5 = claim_space(div3_nodes);
-			div3_nodes.forEach(detach);
-			this.h();
-		},
-		h() {
-			attr(div0, "class", "menu-icon svelte-yllo68");
-			attr(span0, "class", "svelte-yllo68");
-			attr(span1, "class", "icone svelte-yllo68");
-			attr(button, "class", "svelte-yllo68");
-			attr(div1, "class", "item-icon svelte-yllo68");
-			attr(div3, "class", "item svelte-yllo68");
-			toggle_class(div3, "active", /*activeItem*/ ctx[4] === /*i*/ ctx[13]);
-			this.first = div3;
-		},
-		m(target, anchor) {
-			insert_hydration(target, div3, anchor);
-			append_hydration(div3, div1);
-			append_hydration(div1, div0);
-			mount_component(icon0, div0, null);
-			append_hydration(div1, t0);
-			append_hydration(div1, button);
-			append_hydration(button, span0);
-			append_hydration(span0, t1);
-			append_hydration(button, t2);
-			append_hydration(button, span1);
-			mount_component(icon1, span1, null);
-			append_hydration(div3, t3);
-			if (if_block) if_block.m(div3, null);
-			append_hydration(div3, t4);
-			append_hydration(div3, t5);
-			current = true;
-
-			if (!mounted) {
-				dispose = listen(button, "click", click_handler);
-				mounted = true;
-			}
-		},
-		p(new_ctx, dirty) {
-			ctx = new_ctx;
-			const icon0_changes = {};
-			if (dirty & /*items*/ 2) icon0_changes.icon = /*item*/ ctx[11].icon;
-			icon0.$set(icon0_changes);
-			if ((!current || dirty & /*items*/ 2) && t1_value !== (t1_value = /*item*/ ctx[11].title + "")) set_data(t1, t1_value);
-
-			if (/*activeItem*/ ctx[4] === /*i*/ ctx[13]) {
-				if (if_block) {
-					if_block.p(ctx, dirty);
-
-					if (dirty & /*activeItem, items*/ 18) {
-						transition_in(if_block, 1);
-					}
-				} else {
-					if_block = create_if_block(ctx);
-					if_block.c();
-					transition_in(if_block, 1);
-					if_block.m(div3, t4);
-				}
-			} else if (if_block) {
-				group_outros();
-
-				transition_out(if_block, 1, 1, () => {
-					if_block = null;
-				});
-
-				check_outros();
-			}
-
-			if (!current || dirty & /*activeItem, items*/ 18) {
-				toggle_class(div3, "active", /*activeItem*/ ctx[4] === /*i*/ ctx[13]);
-			}
-		},
-		i(local) {
-			if (current) return;
-			transition_in(icon0.$$.fragment, local);
-			transition_in(icon1.$$.fragment, local);
-			transition_in(if_block);
-			current = true;
-		},
-		o(local) {
-			transition_out(icon0.$$.fragment, local);
-			transition_out(icon1.$$.fragment, local);
-			transition_out(if_block);
-			current = false;
-		},
-		d(detaching) {
-			if (detaching) detach(div3);
-			destroy_component(icon0);
-			destroy_component(icon1);
-			if (if_block) if_block.d();
-			mounted = false;
-			dispose();
-		}
-	};
-}
-
-// (242:8) {#each cards as card, index}
-function create_each_block(ctx) {
-	let li;
-	let a;
-	let div2;
-	let div0;
-	let icon;
-	let t0;
-	let div1;
-	let t1_value = /*card*/ ctx[8].title + "";
-	let t1;
-	let t2;
-	let t3_value = /*card*/ ctx[8].link.label + "";
-	let t3;
-	let a_href_value;
-	let t4;
-	let current;
-	icon = new Component$1({ props: { icon: /*card*/ ctx[8].icon } });
-
-	return {
-		c() {
-			li = element("li");
-			a = element("a");
-			div2 = element("div");
-			div0 = element("div");
-			create_component(icon.$$.fragment);
-			t0 = space();
-			div1 = element("div");
-			t1 = text(t1_value);
-			t2 = space();
-			t3 = text(t3_value);
-			t4 = space();
-			this.h();
-		},
-		l(nodes) {
-			li = claim_element(nodes, "LI", { class: true });
-			var li_nodes = children(li);
-			a = claim_element(li_nodes, "A", { href: true });
-			var a_nodes = children(a);
-			div2 = claim_element(a_nodes, "DIV", { class: true });
-			var div2_nodes = children(div2);
-			div0 = claim_element(div2_nodes, "DIV", { class: true });
-			var div0_nodes = children(div0);
-			claim_component(icon.$$.fragment, div0_nodes);
-			div0_nodes.forEach(detach);
-			t0 = claim_space(div2_nodes);
-			div1 = claim_element(div2_nodes, "DIV", { class: true });
-			var div1_nodes = children(div1);
-			t1 = claim_text(div1_nodes, t1_value);
-			div1_nodes.forEach(detach);
-			div2_nodes.forEach(detach);
-			t2 = claim_space(a_nodes);
-			t3 = claim_text(a_nodes, t3_value);
-			a_nodes.forEach(detach);
-			t4 = claim_space(li_nodes);
-			li_nodes.forEach(detach);
-			this.h();
-		},
-		h() {
-			attr(div0, "class", "icon svelte-yllo68");
-			attr(div1, "class", "title svelte-yllo68");
-			attr(div2, "class", "btn svelte-yllo68");
-			attr(a, "href", a_href_value = /*card*/ ctx[8].link.url);
-			attr(li, "class", "svelte-yllo68");
-		},
-		m(target, anchor) {
-			insert_hydration(target, li, anchor);
-			append_hydration(li, a);
-			append_hydration(a, div2);
-			append_hydration(div2, div0);
-			mount_component(icon, div0, null);
-			append_hydration(div2, t0);
-			append_hydration(div2, div1);
-			append_hydration(div1, t1);
-			append_hydration(a, t2);
-			append_hydration(a, t3);
-			append_hydration(li, t4);
-			current = true;
-		},
-		p(ctx, dirty) {
-			const icon_changes = {};
-			if (dirty & /*cards*/ 1) icon_changes.icon = /*card*/ ctx[8].icon;
-			icon.$set(icon_changes);
-			if ((!current || dirty & /*cards*/ 1) && t1_value !== (t1_value = /*card*/ ctx[8].title + "")) set_data(t1, t1_value);
-			if ((!current || dirty & /*cards*/ 1) && t3_value !== (t3_value = /*card*/ ctx[8].link.label + "")) set_data(t3, t3_value);
-
-			if (!current || dirty & /*cards*/ 1 && a_href_value !== (a_href_value = /*card*/ ctx[8].link.url)) {
-				attr(a, "href", a_href_value);
-			}
-		},
-		i(local) {
-			if (current) return;
-			transition_in(icon.$$.fragment, local);
-			current = true;
-		},
-		o(local) {
-			transition_out(icon.$$.fragment, local);
-			current = false;
-		},
-		d(detaching) {
-			if (detaching) detach(li);
-			destroy_component(icon);
+			if (detaching) detach(img);
 		}
 	};
 }
 
 function create_fragment(ctx) {
 	let section;
-	let style;
-	let t0;
-	let t1;
-	let div10;
-	let div5;
+	let div4;
 	let div3;
-	let div2;
-	let div1;
 	let div0;
 	let icon;
+	let t0;
+	let div1;
+	let raw_value = /*quote*/ ctx[2].html + "";
+	let t1;
+	let div2;
 	let t2;
-	let a;
 	let t3;
-	let t4;
-	let div4;
-	let each_blocks_1 = [];
-	let each0_lookup = new Map();
-	let t5;
-	let div9;
-	let div7;
-	let div6;
-	let t6;
-	let t7;
-	let h3;
-	let t8;
-	let t9;
-	let div8;
-	let ul;
 	let current;
-	icon = new Component$1({ props: { icon: "carbon:home" } });
-	let each_value_1 = /*items*/ ctx[1];
-	const get_key = ctx => /*i*/ ctx[13];
-
-	for (let i = 0; i < each_value_1.length; i += 1) {
-		let child_ctx = get_each_context_1(ctx, each_value_1, i);
-		let key = get_key(child_ctx);
-		each0_lookup.set(key, each_blocks_1[i] = create_each_block_1(key, child_ctx));
-	}
-
-	let each_value = /*cards*/ ctx[0];
-	let each_blocks = [];
-
-	for (let i = 0; i < each_value.length; i += 1) {
-		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
-	}
-
-	const out = i => transition_out(each_blocks[i], 1, 1, () => {
-		each_blocks[i] = null;
-	});
+	icon = new Component$1({ props: { icon: "fa:quote-left" } });
+	let if_block = /*image*/ ctx[1].url && create_if_block(ctx);
 
 	return {
 		c() {
 			section = element("section");
-			style = element("style");
-			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
-			t1 = space();
-			div10 = element("div");
-			div5 = element("div");
+			div4 = element("div");
 			div3 = element("div");
-			div2 = element("div");
-			div1 = element("div");
 			div0 = element("div");
 			create_component(icon.$$.fragment);
-			t2 = space();
-			a = element("a");
-			t3 = text("Tutoriales");
-			t4 = space();
-			div4 = element("div");
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				each_blocks_1[i].c();
-			}
-
-			t5 = space();
-			div9 = element("div");
-			div7 = element("div");
-			div6 = element("div");
-			t6 = text(/*heading*/ ctx[2]);
-			t7 = space();
-			h3 = element("h3");
-			t8 = text(/*subheading*/ ctx[3]);
-			t9 = space();
-			div8 = element("div");
-			ul = element("ul");
-
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].c();
-			}
-
+			t0 = space();
+			div1 = element("div");
+			t1 = space();
+			div2 = element("div");
+			t2 = text(/*name*/ ctx[0]);
+			t3 = space();
+			if (if_block) if_block.c();
 			this.h();
 		},
 		l(nodes) {
-			section = claim_element(nodes, "SECTION", { class: true });
+			section = claim_element(nodes, "SECTION", {});
 			var section_nodes = children(section);
-			style = claim_element(section_nodes, "STYLE", {});
-			var style_nodes = children(style);
-			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
-			style_nodes.forEach(detach);
-			t1 = claim_space(section_nodes);
-			div10 = claim_element(section_nodes, "DIV", { class: true });
-			var div10_nodes = children(div10);
-			div5 = claim_element(div10_nodes, "DIV", { class: true });
-			var div5_nodes = children(div5);
-			div3 = claim_element(div5_nodes, "DIV", { class: true });
+			div4 = claim_element(section_nodes, "DIV", { class: true });
+			var div4_nodes = children(div4);
+			div3 = claim_element(div4_nodes, "DIV", { class: true });
 			var div3_nodes = children(div3);
-			div2 = claim_element(div3_nodes, "DIV", { class: true });
-			var div2_nodes = children(div2);
-			div1 = claim_element(div2_nodes, "DIV", { class: true });
-			var div1_nodes = children(div1);
-			div0 = claim_element(div1_nodes, "DIV", { class: true });
+			div0 = claim_element(div3_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
 			claim_component(icon.$$.fragment, div0_nodes);
 			div0_nodes.forEach(detach);
-			t2 = claim_space(div1_nodes);
-			a = claim_element(div1_nodes, "A", { href: true });
-			var a_nodes = children(a);
-			t3 = claim_text(a_nodes, "Tutoriales");
-			a_nodes.forEach(detach);
+			t0 = claim_space(div3_nodes);
+			div1 = claim_element(div3_nodes, "DIV", { class: true });
+			var div1_nodes = children(div1);
 			div1_nodes.forEach(detach);
+			t1 = claim_space(div3_nodes);
+			div2 = claim_element(div3_nodes, "DIV", { class: true });
+			var div2_nodes = children(div2);
+			t2 = claim_text(div2_nodes, /*name*/ ctx[0]);
 			div2_nodes.forEach(detach);
+			t3 = claim_space(div3_nodes);
+			if (if_block) if_block.l(div3_nodes);
 			div3_nodes.forEach(detach);
-			t4 = claim_space(div5_nodes);
-			div4 = claim_element(div5_nodes, "DIV", { class: true });
-			var div4_nodes = children(div4);
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				each_blocks_1[i].l(div4_nodes);
-			}
-
 			div4_nodes.forEach(detach);
-			div5_nodes.forEach(detach);
-			t5 = claim_space(div10_nodes);
-			div9 = claim_element(div10_nodes, "DIV", { class: true });
-			var div9_nodes = children(div9);
-			div7 = claim_element(div9_nodes, "DIV", { class: true });
-			var div7_nodes = children(div7);
-			div6 = claim_element(div7_nodes, "DIV", { class: true });
-			var div6_nodes = children(div6);
-			t6 = claim_text(div6_nodes, /*heading*/ ctx[2]);
-			div6_nodes.forEach(detach);
-			t7 = claim_space(div7_nodes);
-			h3 = claim_element(div7_nodes, "H3", { class: true });
-			var h3_nodes = children(h3);
-			t8 = claim_text(h3_nodes, /*subheading*/ ctx[3]);
-			h3_nodes.forEach(detach);
-			div7_nodes.forEach(detach);
-			t9 = claim_space(div9_nodes);
-			div8 = claim_element(div9_nodes, "DIV", { class: true });
-			var div8_nodes = children(div8);
-			ul = claim_element(div8_nodes, "UL", { class: true });
-			var ul_nodes = children(ul);
-
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].l(ul_nodes);
-			}
-
-			ul_nodes.forEach(detach);
-			div8_nodes.forEach(detach);
-			div9_nodes.forEach(detach);
-			div10_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-yllo68");
-			attr(a, "href", "/tutoriales/");
-			attr(div1, "class", "item-icon svelte-yllo68");
-			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-yllo68");
-			attr(div4, "class", "accordion svelte-yllo68");
-			attr(div5, "class", "box1 svelte-yllo68");
-			attr(div6, "class", "heading svelte-yllo68");
-			attr(h3, "class", "subheading");
-			attr(div7, "class", "heading-group svelte-yllo68");
-			attr(ul, "class", "cards svelte-yllo68");
-			attr(div8, "class", "content svelte-yllo68");
-			attr(div9, "class", "box2 svelte-yllo68");
-			attr(div10, "class", "section-container svelte-yllo68");
-			attr(section, "class", "svelte-yllo68");
+			attr(div0, "class", "icon svelte-1lavrb0");
+			attr(div1, "class", "quote svelte-1lavrb0");
+			attr(div2, "class", "name");
+			attr(div3, "class", "testimonial svelte-1lavrb0");
+			attr(div4, "class", "section-container svelte-1lavrb0");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
-			append_hydration(section, style);
-			append_hydration(style, t0);
-			append_hydration(section, t1);
-			append_hydration(section, div10);
-			append_hydration(div10, div5);
-			append_hydration(div5, div3);
-			append_hydration(div3, div2);
-			append_hydration(div2, div1);
-			append_hydration(div1, div0);
+			append_hydration(section, div4);
+			append_hydration(div4, div3);
+			append_hydration(div3, div0);
 			mount_component(icon, div0, null);
-			append_hydration(div1, t2);
-			append_hydration(div1, a);
-			append_hydration(a, t3);
-			append_hydration(div5, t4);
-			append_hydration(div5, div4);
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				if (each_blocks_1[i]) {
-					each_blocks_1[i].m(div4, null);
-				}
-			}
-
-			append_hydration(div10, t5);
-			append_hydration(div10, div9);
-			append_hydration(div9, div7);
-			append_hydration(div7, div6);
-			append_hydration(div6, t6);
-			append_hydration(div7, t7);
-			append_hydration(div7, h3);
-			append_hydration(h3, t8);
-			append_hydration(div9, t9);
-			append_hydration(div9, div8);
-			append_hydration(div8, ul);
-
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				if (each_blocks[i]) {
-					each_blocks[i].m(ul, null);
-				}
-			}
-
+			append_hydration(div3, t0);
+			append_hydration(div3, div1);
+			div1.innerHTML = raw_value;
+			append_hydration(div3, t1);
+			append_hydration(div3, div2);
+			append_hydration(div2, t2);
+			append_hydration(div3, t3);
+			if (if_block) if_block.m(div3, null);
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*activeItem, items, setActiveItem*/ 50) {
-				each_value_1 = /*items*/ ctx[1];
-				group_outros();
-				each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key, 1, ctx, each_value_1, each0_lookup, div4, outro_and_destroy_block, create_each_block_1, null, get_each_context_1);
-				check_outros();
-			}
+			if ((!current || dirty & /*quote*/ 4) && raw_value !== (raw_value = /*quote*/ ctx[2].html + "")) div1.innerHTML = raw_value;			if (!current || dirty & /*name*/ 1) set_data(t2, /*name*/ ctx[0]);
 
-			if (!current || dirty & /*heading*/ 4) set_data(t6, /*heading*/ ctx[2]);
-			if (!current || dirty & /*subheading*/ 8) set_data(t8, /*subheading*/ ctx[3]);
-
-			if (dirty & /*cards*/ 1) {
-				each_value = /*cards*/ ctx[0];
-				let i;
-
-				for (i = 0; i < each_value.length; i += 1) {
-					const child_ctx = get_each_context(ctx, each_value, i);
-
-					if (each_blocks[i]) {
-						each_blocks[i].p(child_ctx, dirty);
-						transition_in(each_blocks[i], 1);
-					} else {
-						each_blocks[i] = create_each_block(child_ctx);
-						each_blocks[i].c();
-						transition_in(each_blocks[i], 1);
-						each_blocks[i].m(ul, null);
-					}
+			if (/*image*/ ctx[1].url) {
+				if (if_block) {
+					if_block.p(ctx, dirty);
+				} else {
+					if_block = create_if_block(ctx);
+					if_block.c();
+					if_block.m(div3, null);
 				}
-
-				group_outros();
-
-				for (i = each_value.length; i < each_blocks.length; i += 1) {
-					out(i);
-				}
-
-				check_outros();
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
 			}
 		},
 		i(local) {
 			if (current) return;
 			transition_in(icon.$$.fragment, local);
-
-			for (let i = 0; i < each_value_1.length; i += 1) {
-				transition_in(each_blocks_1[i]);
-			}
-
-			for (let i = 0; i < each_value.length; i += 1) {
-				transition_in(each_blocks[i]);
-			}
-
 			current = true;
 		},
 		o(local) {
 			transition_out(icon.$$.fragment, local);
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				transition_out(each_blocks_1[i]);
-			}
-
-			each_blocks = each_blocks.filter(Boolean);
-
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				transition_out(each_blocks[i]);
-			}
-
 			current = false;
 		},
 		d(detaching) {
 			if (detaching) detach(section);
 			destroy_component(icon);
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				each_blocks_1[i].d();
-			}
-
-			destroy_each(each_blocks, detaching);
+			if (if_block) if_block.d();
 		}
 	};
 }
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
-	let { cards } = $$props;
-	let { items } = $$props;
-	let { heading } = $$props;
-	let { subheading } = $$props;
-	let activeItem = null;
-
-	function setActiveItem(i) {
-		$$invalidate(4, activeItem = activeItem === i ? null : i);
-	}
-
-	const click_handler = i => setActiveItem(i);
+	let { name } = $$props;
+	let { image } = $$props;
+	let { quote } = $$props;
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(6, props = $$props.props);
-		if ('cards' in $$props) $$invalidate(0, cards = $$props.cards);
-		if ('items' in $$props) $$invalidate(1, items = $$props.items);
-		if ('heading' in $$props) $$invalidate(2, heading = $$props.heading);
-		if ('subheading' in $$props) $$invalidate(3, subheading = $$props.subheading);
+		if ('props' in $$props) $$invalidate(3, props = $$props.props);
+		if ('name' in $$props) $$invalidate(0, name = $$props.name);
+		if ('image' in $$props) $$invalidate(1, image = $$props.image);
+		if ('quote' in $$props) $$invalidate(2, quote = $$props.quote);
 	};
 
-	return [
-		cards,
-		items,
-		heading,
-		subheading,
-		activeItem,
-		setActiveItem,
-		props,
-		click_handler
-	];
+	return [name, image, quote, props];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-
-		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 6,
-			cards: 0,
-			items: 1,
-			heading: 2,
-			subheading: 3
-		});
+		init(this, options, instance, create_fragment, safe_not_equal, { props: 3, name: 0, image: 1, quote: 2 });
 	}
 }
 
