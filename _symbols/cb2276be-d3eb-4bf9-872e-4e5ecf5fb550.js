@@ -2918,15 +2918,15 @@ function create_each_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (!current || dirty & /*cards*/ 4 && !src_url_equal(img.src, img_src_value = /*card*/ ctx[4].image.url)) {
+			if (!current || dirty & /*cards*/ 1 && !src_url_equal(img.src, img_src_value = /*card*/ ctx[4].image.url)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if ((!current || dirty & /*cards*/ 4) && t1_value !== (t1_value = /*card*/ ctx[4].name + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*cards*/ 1) && t1_value !== (t1_value = /*card*/ ctx[4].name + "")) set_data(t1, t1_value);
 			const icon_changes = {};
-			if (dirty & /*cards*/ 4) icon_changes.icon = /*card*/ ctx[4].icon;
+			if (dirty & /*cards*/ 1) icon_changes.icon = /*card*/ ctx[4].icon;
 			icon.$set(icon_changes);
-			if ((!current || dirty & /*cards*/ 4) && t4_value !== (t4_value = /*card*/ ctx[4].position + "")) set_data(t4, t4_value);
+			if ((!current || dirty & /*cards*/ 1) && t4_value !== (t4_value = /*card*/ ctx[4].position + "")) set_data(t4, t4_value);
 		},
 		i(local) {
 			if (current) return;
@@ -2959,7 +2959,7 @@ function create_fragment(ctx) {
 	let div1;
 	let ul;
 	let current;
-	let each_value = /*cards*/ ctx[2];
+	let each_value = /*cards*/ ctx[0];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -2979,7 +2979,7 @@ function create_fragment(ctx) {
 			t1 = space();
 			header = element("header");
 			div0 = element("div");
-			t2 = text(/*superhead*/ ctx[1]);
+			t2 = text(/*superhead*/ ctx[2]);
 			t3 = space();
 			h2 = element("h2");
 			t4 = space();
@@ -3006,7 +3006,7 @@ function create_fragment(ctx) {
 			var header_nodes = children(header);
 			div0 = claim_element(header_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
-			t2 = claim_text(div0_nodes, /*superhead*/ ctx[1]);
+			t2 = claim_text(div0_nodes, /*superhead*/ ctx[2]);
 			div0_nodes.forEach(detach);
 			t3 = claim_space(header_nodes);
 			h2 = claim_element(header_nodes, "H2", { class: true });
@@ -3049,7 +3049,7 @@ function create_fragment(ctx) {
 			append_hydration(div0, t2);
 			append_hydration(header, t3);
 			append_hydration(header, h2);
-			h2.innerHTML = /*heading*/ ctx[0];
+			h2.innerHTML = /*heading*/ ctx[1];
 			append_hydration(div2, t4);
 			append_hydration(div2, div1);
 			append_hydration(div1, ul);
@@ -3063,10 +3063,10 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*superhead*/ 2) set_data(t2, /*superhead*/ ctx[1]);
-			if (!current || dirty & /*heading*/ 1) h2.innerHTML = /*heading*/ ctx[0];
-			if (dirty & /*cards*/ 4) {
-				each_value = /*cards*/ ctx[2];
+			if (!current || dirty & /*superhead*/ 4) set_data(t2, /*superhead*/ ctx[2]);
+			if (!current || dirty & /*heading*/ 2) h2.innerHTML = /*heading*/ ctx[1];
+			if (dirty & /*cards*/ 1) {
+				each_value = /*cards*/ ctx[0];
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -3119,18 +3119,18 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
+	let { cards } = $$props;
 	let { heading } = $$props;
 	let { superhead } = $$props;
-	let { cards } = $$props;
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(3, props = $$props.props);
-		if ('heading' in $$props) $$invalidate(0, heading = $$props.heading);
-		if ('superhead' in $$props) $$invalidate(1, superhead = $$props.superhead);
-		if ('cards' in $$props) $$invalidate(2, cards = $$props.cards);
+		if ('cards' in $$props) $$invalidate(0, cards = $$props.cards);
+		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
+		if ('superhead' in $$props) $$invalidate(2, superhead = $$props.superhead);
 	};
 
-	return [heading, superhead, cards, props];
+	return [cards, heading, superhead, props];
 }
 
 class Component extends SvelteComponent {
@@ -3139,9 +3139,9 @@ class Component extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			props: 3,
-			heading: 0,
-			superhead: 1,
-			cards: 2
+			cards: 0,
+			heading: 1,
+			superhead: 2
 		});
 	}
 }
