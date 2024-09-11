@@ -2887,11 +2887,11 @@ function create_each_block_1(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "icon svelte-jj1pxo");
-			attr(span0, "class", "title1 svelte-jj1pxo");
-			attr(span1, "class", "description1 svelte-jj1pxo");
-			attr(div1, "class", "text svelte-jj1pxo");
-			attr(li, "class", "svelte-jj1pxo");
+			attr(div0, "class", "icon svelte-1jmxyzg");
+			attr(span0, "class", "title1 svelte-1jmxyzg");
+			attr(span1, "class", "description1 svelte-1jmxyzg");
+			attr(div1, "class", "text svelte-1jmxyzg");
+			attr(li, "class", "card svelte-1jmxyzg");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -2964,7 +2964,7 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		l(nodes) {
-			li = claim_element(nodes, "LI", { class: true });
+			li = claim_element(nodes, "LI", {});
 			var li_nodes = children(li);
 			div0 = claim_element(li_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
@@ -2988,11 +2988,10 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "icon svelte-jj1pxo");
-			attr(span0, "class", "title1 svelte-jj1pxo");
-			attr(span1, "class", "description1 svelte-jj1pxo");
-			attr(div1, "class", "text svelte-jj1pxo");
-			attr(li, "class", "svelte-jj1pxo");
+			attr(div0, "class", "icon svelte-1jmxyzg");
+			attr(span0, "class", "title1 svelte-1jmxyzg");
+			attr(span1, "class", "description1 svelte-1jmxyzg");
+			attr(div1, "class", "text svelte-1jmxyzg");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -3163,16 +3162,16 @@ function create_fragment(ctx) {
 		},
 		h() {
 			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) attr(img0, "src", img0_src_value);
-			attr(h10, "class", "svelte-jj1pxo");
-			attr(ul0, "class", "cards svelte-jj1pxo");
-			attr(div0, "class", "content svelte-jj1pxo");
-			attr(div1, "class", "business svelte-jj1pxo");
-			attr(h11, "class", "svelte-jj1pxo");
-			attr(ul1, "class", "cards svelte-jj1pxo");
-			attr(div2, "class", "content svelte-jj1pxo");
+			attr(h10, "class", "svelte-1jmxyzg");
+			attr(ul0, "class", "cards svelte-1jmxyzg");
+			attr(div0, "class", "content svelte-1jmxyzg");
+			attr(div1, "class", "business svelte-1jmxyzg");
+			attr(h11, "class", "svelte-1jmxyzg");
+			attr(ul1, "class", "cards svelte-1jmxyzg");
+			attr(div2, "class", "content svelte-1jmxyzg");
 			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) attr(img1, "src", img1_src_value);
-			attr(div3, "class", "customer svelte-jj1pxo");
-			attr(div4, "class", "container svelte-jj1pxo");
+			attr(div3, "class", "customer svelte-1jmxyzg");
+			attr(div4, "class", "container svelte-1jmxyzg");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
