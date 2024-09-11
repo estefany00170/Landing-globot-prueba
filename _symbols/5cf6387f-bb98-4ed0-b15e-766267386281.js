@@ -3110,7 +3110,7 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		l(nodes) {
-			section = claim_element(nodes, "SECTION", {});
+			section = claim_element(nodes, "SECTION", { id: true });
 			var section_nodes = children(section);
 			div4 = claim_element(section_nodes, "DIV", { class: true });
 			var div4_nodes = children(div4);
@@ -3173,6 +3173,7 @@ function create_fragment(ctx) {
 			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) attr(img1, "src", img1_src_value);
 			attr(div3, "class", "customer svelte-1hxzmef");
 			attr(div4, "class", "container svelte-1hxzmef");
+			attr(section, "id", "benefits");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
