@@ -2966,11 +2966,11 @@ function create_each_block(ctx) {
 		h() {
 			if (!src_url_equal(img.src, img_src_value = /*card*/ ctx[3].image.url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*card*/ ctx[3].title);
-			attr(img, "class", "svelte-us96kw");
+			attr(img, "class", "svelte-1rr72zk");
 			set_style(div0, "display", "flex");
 			set_style(div0, "justify-content", "space-between");
 			set_style(div0, "width", "100%");
-			attr(div1, "class", "date svelte-us96kw");
+			attr(div1, "class", "date svelte-1rr72zk");
 			attr(span2, "class", "label");
 			attr(path, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path, "stroke", "#7B5CF5");
@@ -2985,9 +2985,9 @@ function create_each_block(ctx) {
 			attr(a, "class", "link");
 			attr(a, "href", a_href_value = /*card*/ ctx[3].link.url);
 			attr(a, "target", "_blank");
-			attr(div3, "class", "text svelte-us96kw");
-			attr(div4, "class", "part2 svelte-us96kw");
-			set_custom_element_data(sl_carousel_item, "class", "card svelte-us96kw");
+			attr(div3, "class", "text svelte-1rr72zk");
+			attr(div4, "class", "part2 svelte-1rr72zk");
+			set_custom_element_data(sl_carousel_item, "class", "card svelte-1rr72zk");
 		},
 		m(target, anchor) {
 			insert_hydration(target, sl_carousel_item, anchor);
@@ -3087,9 +3087,8 @@ function create_fragment(ctx) {
 			var div1_nodes = children(div1);
 
 			sl_carousel = claim_element(div1_nodes, "SL-CAROUSEL", {
-				pagination: true,
-				navigation: true,
 				loop: true,
+				navigation: true,
 				"per-page": true,
 				"slide-per-page": true
 			});
@@ -3111,14 +3110,13 @@ function create_fragment(ctx) {
 		h() {
 			attr(h2, "class", "heading");
 			attr(div0, "class", "title");
-			attr(ul, "class", "cards svelte-us96kw");
-			set_custom_element_data(sl_carousel, "pagination", "");
-			set_custom_element_data(sl_carousel, "navigation", "");
+			attr(ul, "class", "cards svelte-1rr72zk");
 			set_custom_element_data(sl_carousel, "loop", "");
+			set_custom_element_data(sl_carousel, "navigation", "");
 			set_custom_element_data(sl_carousel, "per-page", "4");
 			set_custom_element_data(sl_carousel, "slide-per-page", "1");
-			attr(div1, "class", "carousel svelte-us96kw");
-			attr(section, "class", "news-carousel svelte-us96kw");
+			attr(div1, "class", "carousel svelte-1rr72zk");
+			attr(section, "class", "news-carousel svelte-1rr72zk");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
