@@ -1,4 +1,4 @@
-// Tutoriales - Updated September 11, 2024
+// Tutoriales - Updated September 12, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3521,7 +3521,7 @@ function create_fragment(ctx) {
 	let style;
 	let t0;
 	let t1;
-	let div10;
+	let div9;
 	let div5;
 	let div3;
 	let div2;
@@ -3536,15 +3536,15 @@ function create_fragment(ctx) {
 	let each_blocks_1 = [];
 	let each0_lookup = new Map();
 	let t5;
-	let div9;
-	let div7;
+	let div8;
 	let div6;
+	let h1;
 	let t6;
 	let t7;
 	let h3;
 	let t8;
 	let t9;
-	let div8;
+	let div7;
 	let ul;
 	let current;
 	icon = new Component$1({ props: { icon: "carbon:home" } });
@@ -3574,7 +3574,7 @@ function create_fragment(ctx) {
 			style = element("style");
 			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
 			t1 = space();
-			div10 = element("div");
+			div9 = element("div");
 			div5 = element("div");
 			div3 = element("div");
 			div2 = element("div");
@@ -3592,15 +3592,15 @@ function create_fragment(ctx) {
 			}
 
 			t5 = space();
-			div9 = element("div");
-			div7 = element("div");
+			div8 = element("div");
 			div6 = element("div");
+			h1 = element("h1");
 			t6 = text(/*heading*/ ctx[2]);
 			t7 = space();
 			h3 = element("h3");
 			t8 = text(/*subheading*/ ctx[3]);
 			t9 = space();
-			div8 = element("div");
+			div7 = element("div");
 			ul = element("ul");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -3617,9 +3617,9 @@ function create_fragment(ctx) {
 			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
 			style_nodes.forEach(detach);
 			t1 = claim_space(section_nodes);
-			div10 = claim_element(section_nodes, "DIV", { class: true });
-			var div10_nodes = children(div10);
-			div5 = claim_element(div10_nodes, "DIV", { class: true });
+			div9 = claim_element(section_nodes, "DIV", { class: true });
+			var div9_nodes = children(div9);
+			div5 = claim_element(div9_nodes, "DIV", { class: true });
 			var div5_nodes = children(div5);
 			div3 = claim_element(div5_nodes, "DIV", { class: true });
 			var div3_nodes = children(div3);
@@ -3649,25 +3649,25 @@ function create_fragment(ctx) {
 
 			div4_nodes.forEach(detach);
 			div5_nodes.forEach(detach);
-			t5 = claim_space(div10_nodes);
-			div9 = claim_element(div10_nodes, "DIV", { class: true });
-			var div9_nodes = children(div9);
-			div7 = claim_element(div9_nodes, "DIV", { class: true });
-			var div7_nodes = children(div7);
-			div6 = claim_element(div7_nodes, "DIV", { class: true });
+			t5 = claim_space(div9_nodes);
+			div8 = claim_element(div9_nodes, "DIV", { class: true });
+			var div8_nodes = children(div8);
+			div6 = claim_element(div8_nodes, "DIV", { class: true });
 			var div6_nodes = children(div6);
-			t6 = claim_text(div6_nodes, /*heading*/ ctx[2]);
-			div6_nodes.forEach(detach);
-			t7 = claim_space(div7_nodes);
-			h3 = claim_element(div7_nodes, "H3", { class: true });
+			h1 = claim_element(div6_nodes, "H1", { class: true });
+			var h1_nodes = children(h1);
+			t6 = claim_text(h1_nodes, /*heading*/ ctx[2]);
+			h1_nodes.forEach(detach);
+			t7 = claim_space(div6_nodes);
+			h3 = claim_element(div6_nodes, "H3", { class: true });
 			var h3_nodes = children(h3);
 			t8 = claim_text(h3_nodes, /*subheading*/ ctx[3]);
 			h3_nodes.forEach(detach);
-			div7_nodes.forEach(detach);
-			t9 = claim_space(div9_nodes);
-			div8 = claim_element(div9_nodes, "DIV", { class: true });
-			var div8_nodes = children(div8);
-			ul = claim_element(div8_nodes, "UL", { class: true });
+			div6_nodes.forEach(detach);
+			t9 = claim_space(div8_nodes);
+			div7 = claim_element(div8_nodes, "DIV", { class: true });
+			var div7_nodes = children(div7);
+			ul = claim_element(div7_nodes, "UL", { class: true });
 			var ul_nodes = children(ul);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -3675,9 +3675,9 @@ function create_fragment(ctx) {
 			}
 
 			ul_nodes.forEach(detach);
+			div7_nodes.forEach(detach);
 			div8_nodes.forEach(detach);
 			div9_nodes.forEach(detach);
-			div10_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
@@ -3689,13 +3689,13 @@ function create_fragment(ctx) {
 			attr(div3, "class", "tutoriales svelte-yllo68");
 			attr(div4, "class", "accordion svelte-yllo68");
 			attr(div5, "class", "box1 svelte-yllo68");
-			attr(div6, "class", "heading svelte-yllo68");
+			attr(h1, "class", "heading svelte-yllo68");
 			attr(h3, "class", "subheading");
-			attr(div7, "class", "heading-group svelte-yllo68");
+			attr(div6, "class", "heading-group svelte-yllo68");
 			attr(ul, "class", "cards svelte-yllo68");
-			attr(div8, "class", "content svelte-yllo68");
-			attr(div9, "class", "box2 svelte-yllo68");
-			attr(div10, "class", "section-container svelte-yllo68");
+			attr(div7, "class", "content svelte-yllo68");
+			attr(div8, "class", "box2 svelte-yllo68");
+			attr(div9, "class", "section-container svelte-yllo68");
 			attr(section, "class", "svelte-yllo68");
 		},
 		m(target, anchor) {
@@ -3703,8 +3703,8 @@ function create_fragment(ctx) {
 			append_hydration(section, style);
 			append_hydration(style, t0);
 			append_hydration(section, t1);
-			append_hydration(section, div10);
-			append_hydration(div10, div5);
+			append_hydration(section, div9);
+			append_hydration(div9, div5);
 			append_hydration(div5, div3);
 			append_hydration(div3, div2);
 			append_hydration(div2, div1);
@@ -3722,17 +3722,17 @@ function create_fragment(ctx) {
 				}
 			}
 
-			append_hydration(div10, t5);
-			append_hydration(div10, div9);
-			append_hydration(div9, div7);
-			append_hydration(div7, div6);
-			append_hydration(div6, t6);
-			append_hydration(div7, t7);
-			append_hydration(div7, h3);
-			append_hydration(h3, t8);
-			append_hydration(div9, t9);
+			append_hydration(div9, t5);
 			append_hydration(div9, div8);
-			append_hydration(div8, ul);
+			append_hydration(div8, div6);
+			append_hydration(div6, h1);
+			append_hydration(h1, t6);
+			append_hydration(div6, t7);
+			append_hydration(div6, h3);
+			append_hydration(h3, t8);
+			append_hydration(div8, t9);
+			append_hydration(div8, div7);
+			append_hydration(div7, ul);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				if (each_blocks[i]) {
