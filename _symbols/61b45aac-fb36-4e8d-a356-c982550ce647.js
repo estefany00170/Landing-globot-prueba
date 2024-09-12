@@ -3149,15 +3149,15 @@ function create_fragment(ctx) {
 			sl_carousel = claim_element(div31_nodes, "SL-CAROUSEL", {
 				loop: true,
 				navigation: true,
-				"per-page": true,
-				"slide-per-page": true,
+				"slides-per-page": true,
+				"slides-per-move": true,
 				class: true
 			});
 
 			var sl_carousel_nodes = children(sl_carousel);
 			sl_carousel_item0 = claim_element(sl_carousel_nodes, "SL-CAROUSEL-ITEM", { class: true });
 			var sl_carousel_item0_nodes = children(sl_carousel_item0);
-			img0 = claim_element(sl_carousel_item0_nodes, "IMG", { src: true, alt: true });
+			img0 = claim_element(sl_carousel_item0_nodes, "IMG", { src: true, alt: true, class: true });
 			t2 = claim_space(sl_carousel_item0_nodes);
 			div5 = claim_element(sl_carousel_item0_nodes, "DIV", { class: true });
 			var div5_nodes = children(div5);
@@ -3222,7 +3222,7 @@ function create_fragment(ctx) {
 			t11 = claim_space(sl_carousel_nodes);
 			sl_carousel_item1 = claim_element(sl_carousel_nodes, "SL-CAROUSEL-ITEM", { class: true });
 			var sl_carousel_item1_nodes = children(sl_carousel_item1);
-			img1 = claim_element(sl_carousel_item1_nodes, "IMG", { src: true, alt: true });
+			img1 = claim_element(sl_carousel_item1_nodes, "IMG", { src: true, alt: true, class: true });
 			t12 = claim_space(sl_carousel_item1_nodes);
 			div10 = claim_element(sl_carousel_item1_nodes, "DIV", { class: true });
 			var div10_nodes = children(div10);
@@ -3287,7 +3287,7 @@ function create_fragment(ctx) {
 			t21 = claim_space(sl_carousel_nodes);
 			sl_carousel_item2 = claim_element(sl_carousel_nodes, "SL-CAROUSEL-ITEM", { class: true });
 			var sl_carousel_item2_nodes = children(sl_carousel_item2);
-			img2 = claim_element(sl_carousel_item2_nodes, "IMG", { src: true, alt: true });
+			img2 = claim_element(sl_carousel_item2_nodes, "IMG", { src: true, alt: true, class: true });
 			t22 = claim_space(sl_carousel_item2_nodes);
 			div15 = claim_element(sl_carousel_item2_nodes, "DIV", { class: true });
 			var div15_nodes = children(div15);
@@ -3352,7 +3352,7 @@ function create_fragment(ctx) {
 			t31 = claim_space(sl_carousel_nodes);
 			sl_carousel_item3 = claim_element(sl_carousel_nodes, "SL-CAROUSEL-ITEM", { class: true });
 			var sl_carousel_item3_nodes = children(sl_carousel_item3);
-			img3 = claim_element(sl_carousel_item3_nodes, "IMG", { src: true, alt: true });
+			img3 = claim_element(sl_carousel_item3_nodes, "IMG", { src: true, alt: true, class: true });
 			t32 = claim_space(sl_carousel_item3_nodes);
 			div20 = claim_element(sl_carousel_item3_nodes, "DIV", { class: true });
 			var div20_nodes = children(div20);
@@ -3417,7 +3417,7 @@ function create_fragment(ctx) {
 			t41 = claim_space(sl_carousel_nodes);
 			sl_carousel_item4 = claim_element(sl_carousel_nodes, "SL-CAROUSEL-ITEM", { class: true });
 			var sl_carousel_item4_nodes = children(sl_carousel_item4);
-			img4 = claim_element(sl_carousel_item4_nodes, "IMG", { src: true, alt: true });
+			img4 = claim_element(sl_carousel_item4_nodes, "IMG", { src: true, alt: true, class: true });
 			t42 = claim_space(sl_carousel_item4_nodes);
 			div25 = claim_element(sl_carousel_item4_nodes, "DIV", { class: true });
 			var div25_nodes = children(div25);
@@ -3482,7 +3482,7 @@ function create_fragment(ctx) {
 			t51 = claim_space(sl_carousel_nodes);
 			sl_carousel_item5 = claim_element(sl_carousel_nodes, "SL-CAROUSEL-ITEM", { class: true });
 			var sl_carousel_item5_nodes = children(sl_carousel_item5);
-			img5 = claim_element(sl_carousel_item5_nodes, "IMG", { src: true, alt: true });
+			img5 = claim_element(sl_carousel_item5_nodes, "IMG", { src: true, alt: true, class: true });
 			t52 = claim_space(sl_carousel_item5_nodes);
 			div30 = claim_element(sl_carousel_item5_nodes, "DIV", { class: true });
 			var div30_nodes = children(div30);
@@ -3554,10 +3554,11 @@ function create_fragment(ctx) {
 			attr(div0, "class", "title");
 			if (!src_url_equal(img0.src, img0_src_value = "https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1726151745924view%201%20(1).svg")) attr(img0, "src", img0_src_value);
 			attr(img0, "alt", "imagen1");
+			attr(img0, "class", "svelte-1uj5uge");
 			set_style(div1, "display", "flex");
 			set_style(div1, "justify-content", "space-between");
 			set_style(div1, "width", "100%");
-			attr(div2, "class", "date svelte-10xqi10");
+			attr(div2, "class", "date svelte-1uj5uge");
 			attr(span2, "class", "label");
 			attr(path0, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path0, "stroke", "#7B5CF5");
@@ -3572,15 +3573,16 @@ function create_fragment(ctx) {
 			attr(a0, "class", "link");
 			attr(a0, "href", "https://www.tourinnovacion.cl/transformacion-digital/globot-el-asistente-virtual-para-pymes-que-nunca-duerme/");
 			attr(a0, "target", "_blank");
-			attr(div4, "class", "text svelte-10xqi10");
-			attr(div5, "class", "part2 svelte-10xqi10");
-			set_custom_element_data(sl_carousel_item0, "class", "card svelte-10xqi10");
+			attr(div4, "class", "text svelte-1uj5uge");
+			attr(div5, "class", "part2 svelte-1uj5uge");
+			set_custom_element_data(sl_carousel_item0, "class", "card svelte-1uj5uge");
 			if (!src_url_equal(img1.src, img1_src_value = "https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1726151745924view%201%20(1).svg")) attr(img1, "src", img1_src_value);
 			attr(img1, "alt", "imagen1");
+			attr(img1, "class", "svelte-1uj5uge");
 			set_style(div6, "display", "flex");
 			set_style(div6, "justify-content", "space-between");
 			set_style(div6, "width", "100%");
-			attr(div7, "class", "date svelte-10xqi10");
+			attr(div7, "class", "date svelte-1uj5uge");
 			attr(span5, "class", "label");
 			attr(path1, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path1, "stroke", "#7B5CF5");
@@ -3595,15 +3597,16 @@ function create_fragment(ctx) {
 			attr(a1, "class", "link");
 			attr(a1, "href", "https://www.tourinnovacion.cl/transformacion-digital/globot-el-asistente-virtual-para-pymes-que-nunca-duerme/");
 			attr(a1, "target", "_blank");
-			attr(div9, "class", "text svelte-10xqi10");
-			attr(div10, "class", "part2 svelte-10xqi10");
-			set_custom_element_data(sl_carousel_item1, "class", "card svelte-10xqi10");
-			if (!src_url_equal(img2.src, img2_src_value = "https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1726151745924view%201%20(1).svg")) attr(img2, "src", img2_src_value);
+			attr(div9, "class", "text svelte-1uj5uge");
+			attr(div10, "class", "part2 svelte-1uj5uge");
+			set_custom_element_data(sl_carousel_item1, "class", "card svelte-1uj5uge");
+			if (!src_url_equal(img2.src, img2_src_value = "https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1726150725486view%201.svg")) attr(img2, "src", img2_src_value);
 			attr(img2, "alt", "imagen1");
+			attr(img2, "class", "svelte-1uj5uge");
 			set_style(div11, "display", "flex");
 			set_style(div11, "justify-content", "space-between");
 			set_style(div11, "width", "100%");
-			attr(div12, "class", "date svelte-10xqi10");
+			attr(div12, "class", "date svelte-1uj5uge");
 			attr(span8, "class", "label");
 			attr(path2, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path2, "stroke", "#7B5CF5");
@@ -3618,15 +3621,16 @@ function create_fragment(ctx) {
 			attr(a2, "class", "link");
 			attr(a2, "href", "https://www.tourinnovacion.cl/transformacion-digital/globot-el-asistente-virtual-para-pymes-que-nunca-duerme/");
 			attr(a2, "target", "_blank");
-			attr(div14, "class", "text svelte-10xqi10");
-			attr(div15, "class", "part2 svelte-10xqi10");
-			set_custom_element_data(sl_carousel_item2, "class", "card svelte-10xqi10");
+			attr(div14, "class", "text svelte-1uj5uge");
+			attr(div15, "class", "part2 svelte-1uj5uge");
+			set_custom_element_data(sl_carousel_item2, "class", "card svelte-1uj5uge");
 			if (!src_url_equal(img3.src, img3_src_value = "https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1726151745924view%201%20(1).svg")) attr(img3, "src", img3_src_value);
 			attr(img3, "alt", "imagen1");
+			attr(img3, "class", "svelte-1uj5uge");
 			set_style(div16, "display", "flex");
 			set_style(div16, "justify-content", "space-between");
 			set_style(div16, "width", "100%");
-			attr(div17, "class", "date svelte-10xqi10");
+			attr(div17, "class", "date svelte-1uj5uge");
 			attr(span11, "class", "label");
 			attr(path3, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path3, "stroke", "#7B5CF5");
@@ -3641,15 +3645,16 @@ function create_fragment(ctx) {
 			attr(a3, "class", "link");
 			attr(a3, "href", "https://www.tourinnovacion.cl/transformacion-digital/globot-el-asistente-virtual-para-pymes-que-nunca-duerme/");
 			attr(a3, "target", "_blank");
-			attr(div19, "class", "text svelte-10xqi10");
-			attr(div20, "class", "part2 svelte-10xqi10");
-			set_custom_element_data(sl_carousel_item3, "class", "card svelte-10xqi10");
+			attr(div19, "class", "text svelte-1uj5uge");
+			attr(div20, "class", "part2 svelte-1uj5uge");
+			set_custom_element_data(sl_carousel_item3, "class", "card svelte-1uj5uge");
 			if (!src_url_equal(img4.src, img4_src_value = "https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1726151745924view%201%20(1).svg")) attr(img4, "src", img4_src_value);
 			attr(img4, "alt", "imagen1");
+			attr(img4, "class", "svelte-1uj5uge");
 			set_style(div21, "display", "flex");
 			set_style(div21, "justify-content", "space-between");
 			set_style(div21, "width", "100%");
-			attr(div22, "class", "date svelte-10xqi10");
+			attr(div22, "class", "date svelte-1uj5uge");
 			attr(span14, "class", "label");
 			attr(path4, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path4, "stroke", "#7B5CF5");
@@ -3664,15 +3669,16 @@ function create_fragment(ctx) {
 			attr(a4, "class", "link");
 			attr(a4, "href", "https://www.tourinnovacion.cl/transformacion-digital/globot-el-asistente-virtual-para-pymes-que-nunca-duerme/");
 			attr(a4, "target", "_blank");
-			attr(div24, "class", "text svelte-10xqi10");
-			attr(div25, "class", "part2 svelte-10xqi10");
-			set_custom_element_data(sl_carousel_item4, "class", "card svelte-10xqi10");
+			attr(div24, "class", "text svelte-1uj5uge");
+			attr(div25, "class", "part2 svelte-1uj5uge");
+			set_custom_element_data(sl_carousel_item4, "class", "card svelte-1uj5uge");
 			if (!src_url_equal(img5.src, img5_src_value = "https://bvyolarusyudhhaxhyjk.supabase.co/storage/v1/object/public/images/8762b14d-dc88-46a2-89e9-945b4c930503/1726151745924view%201%20(1).svg")) attr(img5, "src", img5_src_value);
 			attr(img5, "alt", "imagen1");
+			attr(img5, "class", "svelte-1uj5uge");
 			set_style(div26, "display", "flex");
 			set_style(div26, "justify-content", "space-between");
 			set_style(div26, "width", "100%");
-			attr(div27, "class", "date svelte-10xqi10");
+			attr(div27, "class", "date svelte-1uj5uge");
 			attr(span17, "class", "label");
 			attr(path5, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path5, "stroke", "#7B5CF5");
@@ -3687,16 +3693,16 @@ function create_fragment(ctx) {
 			attr(a5, "class", "link");
 			attr(a5, "href", "https://www.tourinnovacion.cl/transformacion-digital/globot-el-asistente-virtual-para-pymes-que-nunca-duerme/");
 			attr(a5, "target", "_blank");
-			attr(div29, "class", "text svelte-10xqi10");
-			attr(div30, "class", "part2 svelte-10xqi10");
-			set_custom_element_data(sl_carousel_item5, "class", "card svelte-10xqi10");
+			attr(div29, "class", "text svelte-1uj5uge");
+			attr(div30, "class", "part2 svelte-1uj5uge");
+			set_custom_element_data(sl_carousel_item5, "class", "card svelte-1uj5uge");
 			set_custom_element_data(sl_carousel, "loop", "");
 			set_custom_element_data(sl_carousel, "navigation", "");
-			set_custom_element_data(sl_carousel, "per-page", "4");
-			set_custom_element_data(sl_carousel, "slide-per-page", "1");
-			set_custom_element_data(sl_carousel, "class", "cards svelte-10xqi10");
-			attr(div31, "class", "carousel svelte-10xqi10");
-			attr(section, "class", "news-carousel svelte-10xqi10");
+			set_custom_element_data(sl_carousel, "slides-per-page", "4");
+			set_custom_element_data(sl_carousel, "slides-per-move", "1");
+			set_custom_element_data(sl_carousel, "class", "cards svelte-1uj5uge");
+			attr(div31, "class", "carousel svelte-1uj5uge");
+			attr(section, "class", "news-carousel svelte-1uj5uge");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
