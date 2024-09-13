@@ -2858,7 +2858,7 @@ function create_if_block(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = /*link*/ ctx[0].url);
-			attr(a, "class", "button svelte-1pahtlc");
+			attr(a, "class", "button svelte-1tv1m3s");
 			attr(a, "target", "_blank");
 			set_style(a, "display", "flex");
 			set_style(a, "align-items", "center");
@@ -2958,19 +2958,20 @@ function create_fragment(ctx) {
 			if (if_block) if_block.l(div1_nodes);
 			div1_nodes.forEach(detach);
 			t6 = claim_space(div2_nodes);
-			img = claim_element(div2_nodes, "IMG", { src: true, alt: true });
+			img = claim_element(div2_nodes, "IMG", { src: true, alt: true, class: true });
 			div2_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(h1, "class", "headline svelte-1pahtlc");
-			attr(div0, "class", "subheading svelte-1pahtlc");
-			attr(div1, "class", "body svelte-1pahtlc");
+			attr(h1, "class", "headline svelte-1tv1m3s");
+			attr(div0, "class", "subheading svelte-1tv1m3s");
+			attr(div1, "class", "body svelte-1tv1m3s");
 			if (!src_url_equal(img.src, img_src_value = /*image*/ ctx[1].url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*image*/ ctx[1].alt);
-			attr(div2, "class", "section-container svelte-1pahtlc");
-			attr(section, "class", "svelte-1pahtlc");
+			attr(img, "class", "svelte-1tv1m3s");
+			attr(div2, "class", "section-container svelte-1tv1m3s");
+			attr(section, "class", "svelte-1tv1m3s");
 			toggle_class(section, "image-left", /*variation*/ ctx[3] === "image_left");
 		},
 		m(target, anchor) {
