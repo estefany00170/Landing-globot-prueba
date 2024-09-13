@@ -3811,8 +3811,8 @@ function instance($$self, $$props, $$invalidate) {
 		},
 		{
 			link: {
-				url: "https://globot.ai/#benefits",
-				label: "Beneficios"
+				url: "/#funcion",
+				label: "¿Cómo funciona?"
 			}
 		},
 		{
