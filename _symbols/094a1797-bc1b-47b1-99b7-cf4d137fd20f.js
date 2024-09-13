@@ -3108,7 +3108,7 @@ function create_fragment(ctx) {
 			attr(div0, "class", "title");
 			set_custom_element_data(sl_carousel, "navigation", "");
 			set_custom_element_data(sl_carousel, "loop", "");
-			set_custom_element_data(sl_carousel, "slides-per-page", "3");
+			set_custom_element_data(sl_carousel, "slides-per-page", "4");
 			set_custom_element_data(sl_carousel, "slides-per-move", "1");
 			set_custom_element_data(sl_carousel, "class", "cards svelte-k4ha0p");
 			attr(div1, "class", "carousel svelte-k4ha0p");
