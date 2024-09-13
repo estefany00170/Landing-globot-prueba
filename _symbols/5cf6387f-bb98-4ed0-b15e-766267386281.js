@@ -3116,7 +3116,7 @@ function create_fragment(ctx) {
 			var div4_nodes = children(div4);
 			div1 = claim_element(div4_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
-			img0 = claim_element(div1_nodes, "IMG", { src: true });
+			img0 = claim_element(div1_nodes, "IMG", { src: true, loading: true });
 			t0 = claim_space(div1_nodes);
 			div0 = claim_element(div1_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
@@ -3155,7 +3155,7 @@ function create_fragment(ctx) {
 			ul1_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
 			t6 = claim_space(div3_nodes);
-			img1 = claim_element(div3_nodes, "IMG", { src: true });
+			img1 = claim_element(div3_nodes, "IMG", { src: true, loading: true });
 			div3_nodes.forEach(detach);
 			div4_nodes.forEach(detach);
 			section_nodes.forEach(detach);
@@ -3163,6 +3163,7 @@ function create_fragment(ctx) {
 		},
 		h() {
 			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) attr(img0, "src", img0_src_value);
+			attr(img0, "loading", "lazy");
 			attr(h10, "class", "svelte-1hxzmef");
 			attr(ul0, "class", "cards svelte-1hxzmef");
 			attr(div0, "class", "content svelte-1hxzmef");
@@ -3171,6 +3172,7 @@ function create_fragment(ctx) {
 			attr(ul1, "class", "cards svelte-1hxzmef");
 			attr(div2, "class", "content svelte-1hxzmef");
 			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) attr(img1, "src", img1_src_value);
+			attr(img1, "loading", "lazy");
 			attr(div3, "class", "customer svelte-1hxzmef");
 			attr(div4, "class", "container svelte-1hxzmef");
 			attr(section, "id", "benefits");

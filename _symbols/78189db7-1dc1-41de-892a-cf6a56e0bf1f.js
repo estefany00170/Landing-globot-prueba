@@ -2811,7 +2811,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(img, "class", "background svelte-1spzsn5");
+			attr(img, "class", "background svelte-ofheog");
 			if (!src_url_equal(img.src, img_src_value = /*background*/ ctx[2].url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*background*/ ctx[2].alt);
 		},
@@ -2839,6 +2839,7 @@ function create_fragment(ctx) {
 	let t0;
 	let t1;
 	let t2;
+	let div3;
 	let div2;
 	let h2;
 	let t3;
@@ -2853,6 +2854,9 @@ function create_fragment(ctx) {
 	let t7;
 	let icon;
 	let t8;
+	let img;
+	let img_src_value;
+	let t9;
 	let script;
 	let script_src_value;
 	let current;
@@ -2870,6 +2874,7 @@ function create_fragment(ctx) {
 			t1 = space();
 			if (if_block) if_block.c();
 			t2 = space();
+			div3 = element("div");
 			div2 = element("div");
 			h2 = element("h2");
 			t3 = text(/*heading*/ ctx[1]);
@@ -2883,6 +2888,8 @@ function create_fragment(ctx) {
 			t7 = space();
 			create_component(icon.$$.fragment);
 			t8 = space();
+			img = element("img");
+			t9 = space();
 			script = element("script");
 			this.h();
 		},
@@ -2896,7 +2903,9 @@ function create_fragment(ctx) {
 			t1 = claim_space(section_nodes);
 			if (if_block) if_block.l(section_nodes);
 			t2 = claim_space(section_nodes);
-			div2 = claim_element(section_nodes, "DIV", { class: true });
+			div3 = claim_element(section_nodes, "DIV", { class: true });
+			var div3_nodes = children(div3);
+			div2 = claim_element(div3_nodes, "DIV", {});
 			var div2_nodes = children(div2);
 			h2 = claim_element(div2_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
@@ -2920,7 +2929,10 @@ function create_fragment(ctx) {
 			a_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
-			t8 = claim_space(section_nodes);
+			t8 = claim_space(div3_nodes);
+			img = claim_element(div3_nodes, "IMG", { src: true });
+			div3_nodes.forEach(detach);
+			t9 = claim_space(section_nodes);
 			script = claim_element(section_nodes, "SCRIPT", { src: true, type: true });
 			var script_nodes = children(script);
 			script_nodes.forEach(detach);
@@ -2928,16 +2940,17 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-1spzsn5");
-			attr(div0, "class", "body svelte-1spzsn5");
-			attr(a, "class", "button button-0 svelte-1spzsn5");
+			attr(h2, "class", "heading svelte-ofheog");
+			attr(div0, "class", "body svelte-ofheog");
+			attr(a, "class", "button button-0 svelte-ofheog");
 			attr(a, "href", "https://backoffice.globot.ai/dashboard/login");
 			attr(a, "target", "_blank");
-			attr(div1, "class", "buttons svelte-1spzsn5");
-			attr(div2, "class", "card svelte-1spzsn5");
+			attr(div1, "class", "buttons svelte-ofheog");
+			if (!src_url_equal(img.src, img_src_value = /*image*/ ctx[3].url)) attr(img, "src", img_src_value);
+			attr(div3, "class", "card svelte-ofheog");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
-			attr(section, "class", "section-container svelte-1spzsn5");
+			attr(section, "class", "section-container svelte-ofheog");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -2946,7 +2959,8 @@ function create_fragment(ctx) {
 			append_hydration(section, t1);
 			if (if_block) if_block.m(section, null);
 			append_hydration(section, t2);
-			append_hydration(section, div2);
+			append_hydration(section, div3);
+			append_hydration(div3, div2);
 			append_hydration(div2, h2);
 			append_hydration(h2, t3);
 			append_hydration(div2, t4);
@@ -2959,7 +2973,9 @@ function create_fragment(ctx) {
 			append_hydration(span, t6);
 			append_hydration(a, t7);
 			mount_component(icon, a, null);
-			append_hydration(section, t8);
+			append_hydration(div3, t8);
+			append_hydration(div3, img);
+			append_hydration(section, t9);
 			append_hydration(section, script);
 			current = true;
 		},
@@ -2978,7 +2994,11 @@ function create_fragment(ctx) {
 			}
 
 			if (!current || dirty & /*heading*/ 2) set_data(t3, /*heading*/ ctx[1]);
-			if ((!current || dirty & /*body*/ 1) && raw_value !== (raw_value = /*body*/ ctx[0].html + "")) div0.innerHTML = raw_value;		},
+			if ((!current || dirty & /*body*/ 1) && raw_value !== (raw_value = /*body*/ ctx[0].html + "")) div0.innerHTML = raw_value;
+			if (!current || dirty & /*image*/ 8 && !src_url_equal(img.src, img_src_value = /*image*/ ctx[3].url)) {
+				attr(img, "src", img_src_value);
+			}
+		},
 		i(local) {
 			if (current) return;
 			transition_in(icon.$$.fragment, local);
@@ -2999,21 +3019,19 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
 	let { body } = $$props;
-	let { button0 } = $$props;
-	let { button1 } = $$props;
 	let { heading } = $$props;
 	let { background } = $$props;
+	let { image } = $$props;
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(3, props = $$props.props);
+		if ('props' in $$props) $$invalidate(4, props = $$props.props);
 		if ('body' in $$props) $$invalidate(0, body = $$props.body);
-		if ('button0' in $$props) $$invalidate(4, button0 = $$props.button0);
-		if ('button1' in $$props) $$invalidate(5, button1 = $$props.button1);
 		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
 		if ('background' in $$props) $$invalidate(2, background = $$props.background);
+		if ('image' in $$props) $$invalidate(3, image = $$props.image);
 	};
 
-	return [body, heading, background, props, button0, button1];
+	return [body, heading, background, image, props];
 }
 
 class Component extends SvelteComponent {
@@ -3021,12 +3039,11 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 3,
+			props: 4,
 			body: 0,
-			button0: 4,
-			button1: 5,
 			heading: 1,
-			background: 2
+			background: 2,
+			image: 3
 		});
 	}
 }
