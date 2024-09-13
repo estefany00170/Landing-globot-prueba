@@ -3092,7 +3092,7 @@ function get_each_context_1(ctx, list, i) {
 	return child_ctx;
 }
 
-// (211:10) {:else}
+// (212:10) {:else}
 function create_else_block(ctx) {
 	let span;
 	let t_value = /*logo*/ ctx[2].title + "";
@@ -3122,7 +3122,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (209:10) {#if logo.image.url}
+// (210:10) {#if logo.image.url}
 function create_if_block_1(ctx) {
 	let img;
 	let img_src_value;
@@ -3159,7 +3159,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (218:8) {#each site_nav as { link }}
+// (219:8) {#each site_nav as { link }}
 function create_each_block_1(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[8].label + "";
@@ -3200,7 +3200,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (237:4) {#if mobileNavOpen}
+// (238:4) {#if mobileNavOpen}
 function create_if_block(ctx) {
 	let nav;
 	let t0;
@@ -3419,7 +3419,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (244:8) {#each site_nav as { link }}
+// (245:8) {#each site_nav as { link }}
 function create_each_block(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[8].label + "";
@@ -3468,29 +3468,26 @@ function create_fragment(ctx) {
 	let a0;
 	let style___size = `${/*logo*/ ctx[2].size}rem`;
 	let t0;
-	let span;
-	let t1;
-	let t2;
 	let nav;
-	let t3;
+	let t1;
 	let div1;
 	let a1;
-	let t4_value = /*cta*/ ctx[1][0].link.label + "";
-	let t4;
-	let t5;
+	let t2_value = /*cta*/ ctx[1][0].link.label + "";
+	let t2;
+	let t3;
 	let icon0;
 	let a1_href_value;
-	let t6;
+	let t4;
 	let a2;
-	let t7_value = /*cta*/ ctx[1][1].link.label + "";
-	let t7;
-	let t8;
+	let t5_value = /*cta*/ ctx[1][1].link.label + "";
+	let t5;
+	let t6;
 	let icon1;
 	let a2_href_value;
-	let t9;
+	let t7;
 	let button;
 	let icon2;
-	let t10;
+	let t8;
 	let current;
 	let mounted;
 	let dispose;
@@ -3541,30 +3538,27 @@ function create_fragment(ctx) {
 			a0 = element("a");
 			if_block0.c();
 			t0 = space();
-			span = element("span");
-			t1 = text("BETA");
-			t2 = space();
 			nav = element("nav");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
-			t3 = space();
+			t1 = space();
 			div1 = element("div");
 			a1 = element("a");
-			t4 = text(t4_value);
-			t5 = space();
+			t2 = text(t2_value);
+			t3 = space();
 			create_component(icon0.$$.fragment);
-			t6 = space();
+			t4 = space();
 			a2 = element("a");
-			t7 = text(t7_value);
-			t8 = space();
+			t5 = text(t5_value);
+			t6 = space();
 			create_component(icon1.$$.fragment);
-			t9 = space();
+			t7 = space();
 			button = element("button");
 			create_component(icon2.$$.fragment);
-			t10 = space();
+			t8 = space();
 			if (if_block1) if_block1.c();
 			this.h();
 		},
@@ -3581,13 +3575,8 @@ function create_fragment(ctx) {
 			var a0_nodes = children(a0);
 			if_block0.l(a0_nodes);
 			a0_nodes.forEach(detach);
-			t0 = claim_space(div0_nodes);
-			span = claim_element(div0_nodes, "SPAN", { class: true });
-			var span_nodes = children(span);
-			t1 = claim_text(span_nodes, "BETA");
-			span_nodes.forEach(detach);
 			div0_nodes.forEach(detach);
-			t2 = claim_space(div2_nodes);
+			t0 = claim_space(div2_nodes);
 			nav = claim_element(div2_nodes, "NAV", { class: true });
 			var nav_nodes = children(nav);
 
@@ -3595,24 +3584,24 @@ function create_fragment(ctx) {
 				each_blocks[i].l(nav_nodes);
 			}
 
-			t3 = claim_space(nav_nodes);
+			t1 = claim_space(nav_nodes);
 			div1 = claim_element(nav_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
 			a1 = claim_element(div1_nodes, "A", { href: true, class: true, target: true });
 			var a1_nodes = children(a1);
-			t4 = claim_text(a1_nodes, t4_value);
-			t5 = claim_space(a1_nodes);
+			t2 = claim_text(a1_nodes, t2_value);
+			t3 = claim_space(a1_nodes);
 			claim_component(icon0.$$.fragment, a1_nodes);
 			a1_nodes.forEach(detach);
-			t6 = claim_space(div1_nodes);
+			t4 = claim_space(div1_nodes);
 			a2 = claim_element(div1_nodes, "A", { href: true, class: true, target: true });
 			var a2_nodes = children(a2);
-			t7 = claim_text(a2_nodes, t7_value);
-			t8 = claim_space(a2_nodes);
+			t5 = claim_text(a2_nodes, t5_value);
+			t6 = claim_space(a2_nodes);
 			claim_component(icon1.$$.fragment, a2_nodes);
 			a2_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
-			t9 = claim_space(nav_nodes);
+			t7 = claim_space(nav_nodes);
 
 			button = claim_element(nav_nodes, "BUTTON", {
 				id: true,
@@ -3625,7 +3614,7 @@ function create_fragment(ctx) {
 			button_nodes.forEach(detach);
 			nav_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
-			t10 = claim_space(div3_nodes);
+			t8 = claim_space(div3_nodes);
 			if (if_block1) if_block1.l(div3_nodes);
 			div3_nodes.forEach(detach);
 			header_nodes.forEach(detach);
@@ -3635,7 +3624,6 @@ function create_fragment(ctx) {
 			attr(a0, "href", "/");
 			attr(a0, "class", "logo svelte-tktpo7");
 			set_style(a0, "--size", style___size);
-			attr(span, "class", "beta svelte-tktpo7");
 			attr(div0, "class", "logos svelte-tktpo7");
 			attr(a1, "href", a1_href_value = /*cta*/ ctx[1][0].link.url);
 			attr(a1, "class", "button button-0 svelte-tktpo7");
@@ -3659,10 +3647,7 @@ function create_fragment(ctx) {
 			append_hydration(div2, div0);
 			append_hydration(div0, a0);
 			if_block0.m(a0, null);
-			append_hydration(div0, t0);
-			append_hydration(div0, span);
-			append_hydration(span, t1);
-			append_hydration(div2, t2);
+			append_hydration(div2, t0);
 			append_hydration(div2, nav);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -3671,21 +3656,21 @@ function create_fragment(ctx) {
 				}
 			}
 
-			append_hydration(nav, t3);
+			append_hydration(nav, t1);
 			append_hydration(nav, div1);
 			append_hydration(div1, a1);
-			append_hydration(a1, t4);
-			append_hydration(a1, t5);
+			append_hydration(a1, t2);
+			append_hydration(a1, t3);
 			mount_component(icon0, a1, null);
-			append_hydration(div1, t6);
+			append_hydration(div1, t4);
 			append_hydration(div1, a2);
-			append_hydration(a2, t7);
-			append_hydration(a2, t8);
+			append_hydration(a2, t5);
+			append_hydration(a2, t6);
 			mount_component(icon1, a2, null);
-			append_hydration(nav, t9);
+			append_hydration(nav, t7);
 			append_hydration(nav, button);
 			mount_component(icon2, button, null);
-			append_hydration(div3, t10);
+			append_hydration(div3, t8);
 			if (if_block1) if_block1.m(div3, null);
 			current = true;
 
@@ -3723,7 +3708,7 @@ function create_fragment(ctx) {
 					} else {
 						each_blocks[i] = create_each_block_1(child_ctx);
 						each_blocks[i].c();
-						each_blocks[i].m(nav, t3);
+						each_blocks[i].m(nav, t1);
 					}
 				}
 
@@ -3734,13 +3719,13 @@ function create_fragment(ctx) {
 				each_blocks.length = each_value_1.length;
 			}
 
-			if ((!current || dirty & /*cta*/ 2) && t4_value !== (t4_value = /*cta*/ ctx[1][0].link.label + "")) set_data(t4, t4_value);
+			if ((!current || dirty & /*cta*/ 2) && t2_value !== (t2_value = /*cta*/ ctx[1][0].link.label + "")) set_data(t2, t2_value);
 
 			if (!current || dirty & /*cta*/ 2 && a1_href_value !== (a1_href_value = /*cta*/ ctx[1][0].link.url)) {
 				attr(a1, "href", a1_href_value);
 			}
 
-			if ((!current || dirty & /*cta*/ 2) && t7_value !== (t7_value = /*cta*/ ctx[1][1].link.label + "")) set_data(t7, t7_value);
+			if ((!current || dirty & /*cta*/ 2) && t5_value !== (t5_value = /*cta*/ ctx[1][1].link.label + "")) set_data(t5, t5_value);
 
 			if (!current || dirty & /*cta*/ 2 && a2_href_value !== (a2_href_value = /*cta*/ ctx[1][1].link.url)) {
 				attr(a2, "href", a2_href_value);
@@ -3816,16 +3801,13 @@ function instance($$self, $$props, $$invalidate) {
 			}
 		},
 		{
-			link: {
-				url: "https://globot.ai/#live-demo",
-				label: "Live Demo"
-			}
+			link: { url: "/#benefits", label: "Beneficios" }
 		},
 		{
-			link: {
-				url: "https://globot.ai/#contacto",
-				label: "Contacto"
-			}
+			link: { url: "/tutoriales/", label: "Tutoriales" }
+		},
+		{
+			link: { url: "/precios/", label: "Precios" }
 		}
 	];
 
