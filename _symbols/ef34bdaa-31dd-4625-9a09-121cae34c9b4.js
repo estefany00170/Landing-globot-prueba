@@ -3807,10 +3807,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	site_nav = [
 		{
-			link: {
-				url: "https://globot.ai/#funcion",
-				label: "¿Cómo funciona?"
-			}
+			link: { url: "/nosotros/", label: "Nosotros" }
 		},
 		{
 			link: {
