@@ -2893,12 +2893,12 @@ function create_each_block(ctx) {
 		},
 		h() {
 			if (!src_url_equal(img.src, img_src_value = /*card*/ ctx[4].image.url)) attr(img, "src", img_src_value);
-			attr(img, "class", "svelte-1nt2lmo");
-			attr(span0, "class", "name svelte-1nt2lmo");
-			attr(span1, "class", "icon svelte-1nt2lmo");
-			attr(div0, "class", "person svelte-1nt2lmo");
-			attr(div1, "class", "position svelte-1nt2lmo");
-			attr(div2, "class", "card svelte-1nt2lmo");
+			attr(img, "class", "svelte-p5khkj");
+			attr(span0, "class", "name svelte-p5khkj");
+			attr(span1, "class", "icon svelte-p5khkj");
+			attr(div0, "class", "person svelte-p5khkj");
+			attr(div1, "class", "position svelte-p5khkj");
+			attr(div2, "class", "card svelte-p5khkj");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -3030,13 +3030,13 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "superhead svelte-1nt2lmo");
-			attr(h2, "class", "heading svelte-1nt2lmo");
+			attr(div0, "class", "superhead svelte-p5khkj");
+			attr(h2, "class", "heading svelte-p5khkj");
 			attr(header, "class", "heading-group");
-			attr(ul, "class", "cards svelte-1nt2lmo");
-			attr(div1, "class", "content  svelte-1nt2lmo");
-			attr(div2, "class", "section-container svelte-1nt2lmo");
-			attr(section, "class", "svelte-1nt2lmo");
+			attr(ul, "class", "cards svelte-p5khkj");
+			attr(div1, "class", "content  svelte-p5khkj");
+			attr(div2, "class", "section-container svelte-p5khkj");
+			attr(section, "class", "svelte-p5khkj");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
