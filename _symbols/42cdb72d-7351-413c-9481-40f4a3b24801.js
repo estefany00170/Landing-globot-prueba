@@ -3493,7 +3493,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
 	let { items } = $$props;
 	let { heading } = $$props;
-	let activeItem = 0;
+	let activeItem = null;
 
 	function setActiveItem(i) {
 		$$invalidate(2, activeItem = activeItem === i ? null : i);
