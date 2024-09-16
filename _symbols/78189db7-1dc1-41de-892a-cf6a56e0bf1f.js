@@ -2812,18 +2812,18 @@ function create_if_block(ctx) {
 		},
 		h() {
 			attr(img, "class", "background svelte-mp3w1u");
-			if (!src_url_equal(img.src, img_src_value = /*background*/ ctx[2].url)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*background*/ ctx[2].alt);
+			if (!src_url_equal(img.src, img_src_value = /*background*/ ctx[3].url)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*background*/ ctx[3].alt);
 		},
 		m(target, anchor) {
 			insert_hydration(target, img, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*background*/ 4 && !src_url_equal(img.src, img_src_value = /*background*/ ctx[2].url)) {
+			if (dirty & /*background*/ 8 && !src_url_equal(img.src, img_src_value = /*background*/ ctx[3].url)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (dirty & /*background*/ 4 && img_alt_value !== (img_alt_value = /*background*/ ctx[2].alt)) {
+			if (dirty & /*background*/ 8 && img_alt_value !== (img_alt_value = /*background*/ ctx[3].alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 		},
@@ -2861,7 +2861,7 @@ function create_fragment(ctx) {
 	let script;
 	let script_src_value;
 	let current;
-	let if_block = /*background*/ ctx[2].url && create_if_block(ctx);
+	let if_block = /*background*/ ctx[3].url && create_if_block(ctx);
 
 	icon = new Component$1({
 			props: { icon: "akar-icons:arrow-up-right" }
@@ -2879,7 +2879,7 @@ function create_fragment(ctx) {
 			div2 = element("div");
 			div0 = element("div");
 			span0 = element("span");
-			t3 = text(/*heading*/ ctx[1]);
+			t3 = text(/*heading*/ ctx[2]);
 			t4 = space();
 			span1 = element("span");
 			t5 = space();
@@ -2913,7 +2913,7 @@ function create_fragment(ctx) {
 			var div0_nodes = children(div0);
 			span0 = claim_element(div0_nodes, "SPAN", { class: true });
 			var span0_nodes = children(span0);
-			t3 = claim_text(span0_nodes, /*heading*/ ctx[1]);
+			t3 = claim_text(span0_nodes, /*heading*/ ctx[2]);
 			span0_nodes.forEach(detach);
 			t4 = claim_space(div0_nodes);
 			span1 = claim_element(div0_nodes, "SPAN", { class: true });
@@ -2953,7 +2953,7 @@ function create_fragment(ctx) {
 			attr(a, "target", "_blank");
 			attr(div1, "class", "buttons svelte-mp3w1u");
 			attr(div2, "class", "card-text svelte-mp3w1u");
-			if (!src_url_equal(img.src, img_src_value = /*image*/ ctx[3].url)) attr(img, "src", img_src_value);
+			if (!src_url_equal(img.src, img_src_value = /*image*/ ctx[1].url)) attr(img, "src", img_src_value);
 			attr(div3, "class", "card svelte-mp3w1u");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
@@ -2988,7 +2988,7 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (/*background*/ ctx[2].url) {
+			if (/*background*/ ctx[3].url) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 				} else {
@@ -3001,9 +3001,9 @@ function create_fragment(ctx) {
 				if_block = null;
 			}
 
-			if (!current || dirty & /*heading*/ 2) set_data(t3, /*heading*/ ctx[1]);
+			if (!current || dirty & /*heading*/ 4) set_data(t3, /*heading*/ ctx[2]);
 			if ((!current || dirty & /*body*/ 1) && raw_value !== (raw_value = /*body*/ ctx[0].html + "")) span1.innerHTML = raw_value;
-			if (!current || dirty & /*image*/ 8 && !src_url_equal(img.src, img_src_value = /*image*/ ctx[3].url)) {
+			if (!current || dirty & /*image*/ 2 && !src_url_equal(img.src, img_src_value = /*image*/ ctx[1].url)) {
 				attr(img, "src", img_src_value);
 			}
 		},
@@ -3027,19 +3027,19 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
 	let { body } = $$props;
+	let { image } = $$props;
 	let { heading } = $$props;
 	let { background } = $$props;
-	let { image } = $$props;
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(4, props = $$props.props);
 		if ('body' in $$props) $$invalidate(0, body = $$props.body);
-		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
-		if ('background' in $$props) $$invalidate(2, background = $$props.background);
-		if ('image' in $$props) $$invalidate(3, image = $$props.image);
+		if ('image' in $$props) $$invalidate(1, image = $$props.image);
+		if ('heading' in $$props) $$invalidate(2, heading = $$props.heading);
+		if ('background' in $$props) $$invalidate(3, background = $$props.background);
 	};
 
-	return [body, heading, background, image, props];
+	return [body, image, heading, background, props];
 }
 
 class Component extends SvelteComponent {
@@ -3049,9 +3049,9 @@ class Component extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			props: 4,
 			body: 0,
-			heading: 1,
-			background: 2,
-			image: 3
+			image: 1,
+			heading: 2,
+			background: 3
 		});
 	}
 }
