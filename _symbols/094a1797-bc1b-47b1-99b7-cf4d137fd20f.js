@@ -1,4 +1,4 @@
-// carrusel prensa - Updated September 16, 2024
+// carrusel prensa - Updated September 17, 2024
 function noop() { }
 function run(fn) {
     return fn();
