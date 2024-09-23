@@ -2833,7 +2833,220 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (71:6) {#each cards as card, index}
+function get_each_context_1(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[3] = list[i];
+	child_ctx[5] = i;
+	return child_ctx;
+}
+
+// (88:6) {#each cards as card, index}
+function create_each_block_1(ctx) {
+	let sl_carousel_item;
+	let img;
+	let img_src_value;
+	let img_alt_value;
+	let t0;
+	let div4;
+	let div3;
+	let div1;
+	let div0;
+	let span0;
+	let t1_value = /*card*/ ctx[3].subtitle + "";
+	let t1;
+	let t2;
+	let span1;
+	let t3_value = /*card*/ ctx[3].date + "";
+	let t3;
+	let t4;
+	let p;
+	let t5_value = /*card*/ ctx[3].title + "";
+	let t5;
+	let t6;
+	let div2;
+	let a;
+	let span2;
+	let t7_value = /*card*/ ctx[3].link.label + "";
+	let t7;
+	let t8;
+	let svg;
+	let path;
+	let a_href_value;
+	let t9;
+
+	return {
+		c() {
+			sl_carousel_item = element("sl-carousel-item");
+			img = element("img");
+			t0 = space();
+			div4 = element("div");
+			div3 = element("div");
+			div1 = element("div");
+			div0 = element("div");
+			span0 = element("span");
+			t1 = text(t1_value);
+			t2 = space();
+			span1 = element("span");
+			t3 = text(t3_value);
+			t4 = space();
+			p = element("p");
+			t5 = text(t5_value);
+			t6 = space();
+			div2 = element("div");
+			a = element("a");
+			span2 = element("span");
+			t7 = text(t7_value);
+			t8 = space();
+			svg = svg_element("svg");
+			path = svg_element("path");
+			t9 = space();
+			this.h();
+		},
+		l(nodes) {
+			sl_carousel_item = claim_element(nodes, "SL-CAROUSEL-ITEM", { class: true });
+			var sl_carousel_item_nodes = children(sl_carousel_item);
+			img = claim_element(sl_carousel_item_nodes, "IMG", { src: true, alt: true, class: true });
+			t0 = claim_space(sl_carousel_item_nodes);
+			div4 = claim_element(sl_carousel_item_nodes, "DIV", { class: true });
+			var div4_nodes = children(div4);
+			div3 = claim_element(div4_nodes, "DIV", { class: true });
+			var div3_nodes = children(div3);
+			div1 = claim_element(div3_nodes, "DIV", { class: true });
+			var div1_nodes = children(div1);
+			div0 = claim_element(div1_nodes, "DIV", { style: true });
+			var div0_nodes = children(div0);
+			span0 = claim_element(div0_nodes, "SPAN", {});
+			var span0_nodes = children(span0);
+			t1 = claim_text(span0_nodes, t1_value);
+			span0_nodes.forEach(detach);
+			t2 = claim_space(div0_nodes);
+			span1 = claim_element(div0_nodes, "SPAN", {});
+			var span1_nodes = children(span1);
+			t3 = claim_text(span1_nodes, t3_value);
+			span1_nodes.forEach(detach);
+			div0_nodes.forEach(detach);
+			t4 = claim_space(div1_nodes);
+			p = claim_element(div1_nodes, "P", {});
+			var p_nodes = children(p);
+			t5 = claim_text(p_nodes, t5_value);
+			p_nodes.forEach(detach);
+			div1_nodes.forEach(detach);
+			t6 = claim_space(div3_nodes);
+			div2 = claim_element(div3_nodes, "DIV", {});
+			var div2_nodes = children(div2);
+			a = claim_element(div2_nodes, "A", { class: true, href: true, target: true });
+			var a_nodes = children(a);
+			span2 = claim_element(a_nodes, "SPAN", { class: true });
+			var span2_nodes = children(span2);
+			t7 = claim_text(span2_nodes, t7_value);
+			span2_nodes.forEach(detach);
+			t8 = claim_space(a_nodes);
+
+			svg = claim_svg_element(a_nodes, "svg", {
+				xmlns: true,
+				width: true,
+				height: true,
+				viewBox: true,
+				fill: true
+			});
+
+			var svg_nodes = children(svg);
+
+			path = claim_svg_element(svg_nodes, "path", {
+				d: true,
+				stroke: true,
+				"stroke-width": true,
+				"stroke-linecap": true,
+				"stroke-linejoin": true
+			});
+
+			children(path).forEach(detach);
+			svg_nodes.forEach(detach);
+			a_nodes.forEach(detach);
+			div2_nodes.forEach(detach);
+			div3_nodes.forEach(detach);
+			t9 = claim_space(div4_nodes);
+			div4_nodes.forEach(detach);
+			sl_carousel_item_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			if (!src_url_equal(img.src, img_src_value = /*card*/ ctx[3].image.url)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*card*/ ctx[3].title);
+			attr(img, "class", "svelte-1a010q9");
+			set_style(div0, "display", "flex");
+			set_style(div0, "justify-content", "space-between");
+			set_style(div0, "width", "100%");
+			attr(div1, "class", "date svelte-1a010q9");
+			attr(span2, "class", "label");
+			attr(path, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
+			attr(path, "stroke", "#7B5CF5");
+			attr(path, "stroke-width", "2.028");
+			attr(path, "stroke-linecap", "round");
+			attr(path, "stroke-linejoin", "round");
+			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
+			attr(svg, "width", "23");
+			attr(svg, "height", "23");
+			attr(svg, "viewBox", "0 0 23 23");
+			attr(svg, "fill", "none");
+			attr(a, "class", "link");
+			attr(a, "href", a_href_value = /*card*/ ctx[3].link.url);
+			attr(a, "target", "_blank");
+			attr(div3, "class", "text svelte-1a010q9");
+			attr(div4, "class", "part2 svelte-1a010q9");
+			set_custom_element_data(sl_carousel_item, "class", "card svelte-1a010q9");
+		},
+		m(target, anchor) {
+			insert_hydration(target, sl_carousel_item, anchor);
+			append_hydration(sl_carousel_item, img);
+			append_hydration(sl_carousel_item, t0);
+			append_hydration(sl_carousel_item, div4);
+			append_hydration(div4, div3);
+			append_hydration(div3, div1);
+			append_hydration(div1, div0);
+			append_hydration(div0, span0);
+			append_hydration(span0, t1);
+			append_hydration(div0, t2);
+			append_hydration(div0, span1);
+			append_hydration(span1, t3);
+			append_hydration(div1, t4);
+			append_hydration(div1, p);
+			append_hydration(p, t5);
+			append_hydration(div3, t6);
+			append_hydration(div3, div2);
+			append_hydration(div2, a);
+			append_hydration(a, span2);
+			append_hydration(span2, t7);
+			append_hydration(a, t8);
+			append_hydration(a, svg);
+			append_hydration(svg, path);
+			append_hydration(div4, t9);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*cards*/ 1 && !src_url_equal(img.src, img_src_value = /*card*/ ctx[3].image.url)) {
+				attr(img, "src", img_src_value);
+			}
+
+			if (dirty & /*cards*/ 1 && img_alt_value !== (img_alt_value = /*card*/ ctx[3].title)) {
+				attr(img, "alt", img_alt_value);
+			}
+
+			if (dirty & /*cards*/ 1 && t1_value !== (t1_value = /*card*/ ctx[3].subtitle + "")) set_data(t1, t1_value);
+			if (dirty & /*cards*/ 1 && t3_value !== (t3_value = /*card*/ ctx[3].date + "")) set_data(t3, t3_value);
+			if (dirty & /*cards*/ 1 && t5_value !== (t5_value = /*card*/ ctx[3].title + "")) set_data(t5, t5_value);
+			if (dirty & /*cards*/ 1 && t7_value !== (t7_value = /*card*/ ctx[3].link.label + "")) set_data(t7, t7_value);
+
+			if (dirty & /*cards*/ 1 && a_href_value !== (a_href_value = /*card*/ ctx[3].link.url)) {
+				attr(a, "href", a_href_value);
+			}
+		},
+		d(detaching) {
+			if (detaching) detach(sl_carousel_item);
+		}
+	};
+}
+
+// (117:6) {#each cards as card, index}
 function create_each_block(ctx) {
 	let sl_carousel_item;
 	let img;
@@ -2966,11 +3179,11 @@ function create_each_block(ctx) {
 		h() {
 			if (!src_url_equal(img.src, img_src_value = /*card*/ ctx[3].image.url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*card*/ ctx[3].title);
-			attr(img, "class", "svelte-k4ha0p");
+			attr(img, "class", "svelte-1a010q9");
 			set_style(div0, "display", "flex");
 			set_style(div0, "justify-content", "space-between");
 			set_style(div0, "width", "100%");
-			attr(div1, "class", "date svelte-k4ha0p");
+			attr(div1, "class", "date svelte-1a010q9");
 			attr(span2, "class", "label");
 			attr(path, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path, "stroke", "#7B5CF5");
@@ -2985,9 +3198,9 @@ function create_each_block(ctx) {
 			attr(a, "class", "link");
 			attr(a, "href", a_href_value = /*card*/ ctx[3].link.url);
 			attr(a, "target", "_blank");
-			attr(div3, "class", "text svelte-k4ha0p");
-			attr(div4, "class", "part2 svelte-k4ha0p");
-			set_custom_element_data(sl_carousel_item, "class", "card svelte-k4ha0p");
+			attr(div3, "class", "text svelte-1a010q9");
+			attr(div4, "class", "part2 svelte-1a010q9");
+			set_custom_element_data(sl_carousel_item, "class", "card svelte-1a010q9");
 		},
 		m(target, anchor) {
 			insert_hydration(target, sl_carousel_item, anchor);
@@ -3046,7 +3259,17 @@ function create_fragment(ctx) {
 	let t0;
 	let t1;
 	let div1;
-	let sl_carousel;
+	let sl_carousel0;
+	let t2;
+	let div2;
+	let sl_carousel1;
+	let each_value_1 = /*cards*/ ctx[0];
+	let each_blocks_1 = [];
+
+	for (let i = 0; i < each_value_1.length; i += 1) {
+		each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+	}
+
 	let each_value = /*cards*/ ctx[0];
 	let each_blocks = [];
 
@@ -3062,7 +3285,15 @@ function create_fragment(ctx) {
 			t0 = text(/*heading*/ ctx[1]);
 			t1 = space();
 			div1 = element("div");
-			sl_carousel = element("sl-carousel");
+			sl_carousel0 = element("sl-carousel");
+
+			for (let i = 0; i < each_blocks_1.length; i += 1) {
+				each_blocks_1[i].c();
+			}
+
+			t2 = space();
+			div2 = element("div");
+			sl_carousel1 = element("sl-carousel");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
@@ -3084,7 +3315,7 @@ function create_fragment(ctx) {
 			div1 = claim_element(section_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
 
-			sl_carousel = claim_element(div1_nodes, "SL-CAROUSEL", {
+			sl_carousel0 = claim_element(div1_nodes, "SL-CAROUSEL", {
 				navigation: true,
 				loop: true,
 				"slides-per-page": true,
@@ -3092,27 +3323,53 @@ function create_fragment(ctx) {
 				class: true
 			});
 
-			var sl_carousel_nodes = children(sl_carousel);
+			var sl_carousel0_nodes = children(sl_carousel0);
 
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].l(sl_carousel_nodes);
+			for (let i = 0; i < each_blocks_1.length; i += 1) {
+				each_blocks_1[i].l(sl_carousel0_nodes);
 			}
 
-			sl_carousel_nodes.forEach(detach);
+			sl_carousel0_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
+			t2 = claim_space(section_nodes);
+			div2 = claim_element(section_nodes, "DIV", { class: true });
+			var div2_nodes = children(div2);
+
+			sl_carousel1 = claim_element(div2_nodes, "SL-CAROUSEL", {
+				navigation: true,
+				loop: true,
+				"slides-per-page": true,
+				"slides-per-move": true,
+				class: true
+			});
+
+			var sl_carousel1_nodes = children(sl_carousel1);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].l(sl_carousel1_nodes);
+			}
+
+			sl_carousel1_nodes.forEach(detach);
+			div2_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
 			attr(h2, "class", "heading");
 			attr(div0, "class", "title");
-			set_custom_element_data(sl_carousel, "navigation", "");
-			set_custom_element_data(sl_carousel, "loop", "");
-			set_custom_element_data(sl_carousel, "slides-per-page", "4");
-			set_custom_element_data(sl_carousel, "slides-per-move", "1");
-			set_custom_element_data(sl_carousel, "class", "cards svelte-k4ha0p");
-			attr(div1, "class", "carousel svelte-k4ha0p");
-			attr(section, "class", "news-carousel svelte-k4ha0p");
+			set_custom_element_data(sl_carousel0, "navigation", "");
+			set_custom_element_data(sl_carousel0, "loop", "");
+			set_custom_element_data(sl_carousel0, "slides-per-page", "4");
+			set_custom_element_data(sl_carousel0, "slides-per-move", "1");
+			set_custom_element_data(sl_carousel0, "class", "cards svelte-1a010q9");
+			attr(div1, "class", "carousel carouselDesktop svelte-1a010q9");
+			set_custom_element_data(sl_carousel1, "navigation", "");
+			set_custom_element_data(sl_carousel1, "loop", "");
+			set_custom_element_data(sl_carousel1, "slides-per-page", "1");
+			set_custom_element_data(sl_carousel1, "slides-per-move", "1");
+			set_custom_element_data(sl_carousel1, "class", "cards svelte-1a010q9");
+			attr(div2, "class", "carousel carouselMobile svelte-1a010q9");
+			attr(section, "class", "news-carousel svelte-1a010q9");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -3121,16 +3378,49 @@ function create_fragment(ctx) {
 			append_hydration(h2, t0);
 			append_hydration(section, t1);
 			append_hydration(section, div1);
-			append_hydration(div1, sl_carousel);
+			append_hydration(div1, sl_carousel0);
+
+			for (let i = 0; i < each_blocks_1.length; i += 1) {
+				if (each_blocks_1[i]) {
+					each_blocks_1[i].m(sl_carousel0, null);
+				}
+			}
+
+			append_hydration(section, t2);
+			append_hydration(section, div2);
+			append_hydration(div2, sl_carousel1);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				if (each_blocks[i]) {
-					each_blocks[i].m(sl_carousel, null);
+					each_blocks[i].m(sl_carousel1, null);
 				}
 			}
 		},
 		p(ctx, [dirty]) {
 			if (dirty & /*heading*/ 2) set_data(t0, /*heading*/ ctx[1]);
+
+			if (dirty & /*cards*/ 1) {
+				each_value_1 = /*cards*/ ctx[0];
+				let i;
+
+				for (i = 0; i < each_value_1.length; i += 1) {
+					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+
+					if (each_blocks_1[i]) {
+						each_blocks_1[i].p(child_ctx, dirty);
+					} else {
+						each_blocks_1[i] = create_each_block_1(child_ctx);
+						each_blocks_1[i].c();
+						each_blocks_1[i].m(sl_carousel0, null);
+					}
+				}
+
+				for (; i < each_blocks_1.length; i += 1) {
+					each_blocks_1[i].d(1);
+				}
+
+				each_blocks_1.length = each_value_1.length;
+			}
 
 			if (dirty & /*cards*/ 1) {
 				each_value = /*cards*/ ctx[0];
@@ -3144,7 +3434,7 @@ function create_fragment(ctx) {
 					} else {
 						each_blocks[i] = create_each_block(child_ctx);
 						each_blocks[i].c();
-						each_blocks[i].m(sl_carousel, null);
+						each_blocks[i].m(sl_carousel1, null);
 					}
 				}
 
@@ -3159,6 +3449,7 @@ function create_fragment(ctx) {
 		o: noop,
 		d(detaching) {
 			if (detaching) detach(section);
+			destroy_each(each_blocks_1, detaching);
 			destroy_each(each_blocks, detaching);
 		}
 	};

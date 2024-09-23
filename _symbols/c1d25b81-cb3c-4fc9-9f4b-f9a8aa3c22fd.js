@@ -579,19 +579,19 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(img, "class", "background svelte-n6o01v");
-			if (!src_url_equal(img.src, img_src_value = /*background*/ ctx[2].url)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*background*/ ctx[2].alt);
+			attr(img, "class", "background svelte-1qxs853");
+			if (!src_url_equal(img.src, img_src_value = /*background*/ ctx[11].url)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*background*/ ctx[11].alt);
 		},
 		m(target, anchor) {
 			insert_hydration(target, img, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*background*/ 4 && !src_url_equal(img.src, img_src_value = /*background*/ ctx[2].url)) {
+			if (dirty & /*background*/ 2048 && !src_url_equal(img.src, img_src_value = /*background*/ ctx[11].url)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (dirty & /*background*/ 4 && img_alt_value !== (img_alt_value = /*background*/ ctx[2].alt)) {
+			if (dirty & /*background*/ 2048 && img_alt_value !== (img_alt_value = /*background*/ ctx[11].alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 		},
@@ -618,7 +618,7 @@ function create_fragment(ctx) {
 	let t4;
 	let t5;
 	let div0;
-	let raw_value = /*subheading*/ ctx[3].html + "";
+	let raw_value = /*subheading*/ ctx[12].html + "";
 	let t6;
 	let div11;
 	let div10;
@@ -687,7 +687,7 @@ function create_fragment(ctx) {
 	let img9_src_value;
 	let mounted;
 	let dispose;
-	let if_block = /*background*/ ctx[2].url && create_if_block(ctx);
+	let if_block = /*background*/ ctx[11].url && create_if_block(ctx);
 
 	return {
 		c() {
@@ -703,7 +703,7 @@ function create_fragment(ctx) {
 			t3 = space();
 			div1 = element("div");
 			h1 = element("h1");
-			t4 = text(/*heading*/ ctx[1]);
+			t4 = text(/*heading*/ ctx[10]);
 			t5 = space();
 			div0 = element("div");
 			t6 = space();
@@ -786,7 +786,7 @@ function create_fragment(ctx) {
 			var div1_nodes = children(div1);
 			h1 = claim_element(div1_nodes, "H1", { class: true });
 			var h1_nodes = children(h1);
-			t4 = claim_text(h1_nodes, /*heading*/ ctx[1]);
+			t4 = claim_text(h1_nodes, /*heading*/ ctx[10]);
 			h1_nodes.forEach(detach);
 			t5 = claim_space(div1_nodes);
 			div0 = claim_element(div1_nodes, "DIV", { class: true });
@@ -908,55 +908,55 @@ function create_fragment(ctx) {
 			if (!src_url_equal(img0.src, img0_src_value = /*image*/ ctx[0].url)) attr(img0, "src", img0_src_value);
 			attr(img0, "alt", img0_alt_value = /*image*/ ctx[0].alt);
 			attr(figure, "styles", "width: 266.347px; height: 364.736px;");
-			attr(figure, "class", "svelte-n6o01v");
-			attr(h1, "class", "headline svelte-n6o01v");
-			attr(div0, "class", "subheading svelte-n6o01v");
-			attr(div1, "class", "body svelte-n6o01v");
-			attr(div2, "class", "section-container svelte-n6o01v");
-			if (!src_url_equal(img1.src, img1_src_value = /*image1*/ ctx[4].url)) attr(img1, "src", img1_src_value);
+			attr(figure, "class", "svelte-1qxs853");
+			attr(h1, "class", "headline svelte-1qxs853");
+			attr(div0, "class", "subheading svelte-1qxs853");
+			attr(div1, "class", "body svelte-1qxs853");
+			attr(div2, "class", "section-container svelte-1qxs853");
+			if (!src_url_equal(img1.src, img1_src_value = /*image1*/ ctx[1].url)) attr(img1, "src", img1_src_value);
 			attr(img1, "alt", "Imagen 1");
-			attr(img1, "class", "svelte-n6o01v");
-			attr(span0, "class", "text svelte-n6o01v");
-			attr(div3, "class", "carousel-item active svelte-n6o01v");
-			if (!src_url_equal(img2.src, img2_src_value = /*image2*/ ctx[5].url)) attr(img2, "src", img2_src_value);
+			attr(img1, "class", "svelte-1qxs853");
+			attr(span0, "class", "text svelte-1qxs853");
+			attr(div3, "class", "carousel-item active svelte-1qxs853");
+			if (!src_url_equal(img2.src, img2_src_value = /*image2*/ ctx[2].url)) attr(img2, "src", img2_src_value);
 			attr(img2, "alt", "Imagen 2");
-			attr(img2, "class", "svelte-n6o01v");
-			attr(span1, "class", "text svelte-n6o01v");
-			attr(div4, "class", "carousel-item svelte-n6o01v");
-			if (!src_url_equal(img3.src, img3_src_value = /*image3*/ ctx[6].url)) attr(img3, "src", img3_src_value);
+			attr(img2, "class", "svelte-1qxs853");
+			attr(span1, "class", "text svelte-1qxs853");
+			attr(div4, "class", "carousel-item svelte-1qxs853");
+			if (!src_url_equal(img3.src, img3_src_value = /*image3*/ ctx[3].url)) attr(img3, "src", img3_src_value);
 			attr(img3, "alt", "Imagen 3");
-			attr(img3, "class", "svelte-n6o01v");
-			attr(span2, "class", "text svelte-n6o01v");
-			attr(div5, "class", "carousel-item svelte-n6o01v");
-			if (!src_url_equal(img4.src, img4_src_value = /*image4*/ ctx[7].url)) attr(img4, "src", img4_src_value);
+			attr(img3, "class", "svelte-1qxs853");
+			attr(span2, "class", "text svelte-1qxs853");
+			attr(div5, "class", "carousel-item svelte-1qxs853");
+			if (!src_url_equal(img4.src, img4_src_value = /*image4*/ ctx[4].url)) attr(img4, "src", img4_src_value);
 			attr(img4, "alt", "Imagen 4");
-			attr(img4, "class", "svelte-n6o01v");
-			attr(span3, "class", "text svelte-n6o01v");
-			attr(div6, "class", "carousel-item svelte-n6o01v");
-			if (!src_url_equal(img5.src, img5_src_value = /*image5*/ ctx[8].url)) attr(img5, "src", img5_src_value);
+			attr(img4, "class", "svelte-1qxs853");
+			attr(span3, "class", "text svelte-1qxs853");
+			attr(div6, "class", "carousel-item svelte-1qxs853");
+			if (!src_url_equal(img5.src, img5_src_value = /*image5*/ ctx[5].url)) attr(img5, "src", img5_src_value);
 			attr(img5, "alt", "Imagen 5");
-			attr(img5, "class", "svelte-n6o01v");
-			attr(span4, "class", "text svelte-n6o01v");
-			attr(div7, "class", "carousel-item svelte-n6o01v");
-			if (!src_url_equal(img6.src, img6_src_value = /*image6*/ ctx[9].url)) attr(img6, "src", img6_src_value);
+			attr(img5, "class", "svelte-1qxs853");
+			attr(span4, "class", "text svelte-1qxs853");
+			attr(div7, "class", "carousel-item svelte-1qxs853");
+			if (!src_url_equal(img6.src, img6_src_value = /*image6*/ ctx[6].url)) attr(img6, "src", img6_src_value);
 			attr(img6, "alt", "Imagen 6");
-			attr(img6, "class", "svelte-n6o01v");
-			attr(span5, "class", "text svelte-n6o01v");
-			attr(div8, "class", "carousel-item svelte-n6o01v");
-			if (!src_url_equal(img7.src, img7_src_value = /*image7*/ ctx[10].url)) attr(img7, "src", img7_src_value);
+			attr(img6, "class", "svelte-1qxs853");
+			attr(span5, "class", "text svelte-1qxs853");
+			attr(div8, "class", "carousel-item svelte-1qxs853");
+			if (!src_url_equal(img7.src, img7_src_value = /*image7*/ ctx[7].url)) attr(img7, "src", img7_src_value);
 			attr(img7, "alt", "Imagen 7");
-			attr(img7, "class", "svelte-n6o01v");
-			attr(span6, "class", "text svelte-n6o01v");
-			attr(div9, "class", "carousel-item active svelte-n6o01v");
-			attr(div10, "class", "carousel-inner svelte-n6o01v");
-			attr(div11, "class", "carousel svelte-n6o01v");
-			if (!src_url_equal(img8.src, img8_src_value = /*imagep*/ ctx[11].url)) attr(img8, "src", img8_src_value);
+			attr(img7, "class", "svelte-1qxs853");
+			attr(span6, "class", "text svelte-1qxs853");
+			attr(div9, "class", "carousel-item active svelte-1qxs853");
+			attr(div10, "class", "carousel-inner svelte-1qxs853");
+			attr(div11, "class", "carousel svelte-1qxs853");
+			if (!src_url_equal(img8.src, img8_src_value = /*imagep*/ ctx[9].url)) attr(img8, "src", img8_src_value);
 			attr(img8, "alt", "Previous");
-			attr(button0, "class", "carousel-control-prev svelte-n6o01v");
-			if (!src_url_equal(img9.src, img9_src_value = /*imagen*/ ctx[12].url)) attr(img9, "src", img9_src_value);
+			attr(button0, "class", "carousel-control-prev svelte-1qxs853");
+			if (!src_url_equal(img9.src, img9_src_value = /*imagen*/ ctx[8].url)) attr(img9, "src", img9_src_value);
 			attr(img9, "alt", "Next");
-			attr(button1, "class", "carousel-control-next svelte-n6o01v");
-			attr(section, "class", "svelte-n6o01v");
+			attr(button1, "class", "carousel-control-next svelte-1qxs853");
+			attr(section, "class", "svelte-1qxs853");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -1045,7 +1045,7 @@ function create_fragment(ctx) {
 			}
 		},
 		p(ctx, [dirty]) {
-			if (/*background*/ ctx[2].url) {
+			if (/*background*/ ctx[11].url) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 				} else {
@@ -1066,41 +1066,41 @@ function create_fragment(ctx) {
 				attr(img0, "alt", img0_alt_value);
 			}
 
-			if (dirty & /*heading*/ 2) set_data(t4, /*heading*/ ctx[1]);
-			if (dirty & /*subheading*/ 8 && raw_value !== (raw_value = /*subheading*/ ctx[3].html + "")) div0.innerHTML = raw_value;
-			if (dirty & /*image1*/ 16 && !src_url_equal(img1.src, img1_src_value = /*image1*/ ctx[4].url)) {
+			if (dirty & /*heading*/ 1024) set_data(t4, /*heading*/ ctx[10]);
+			if (dirty & /*subheading*/ 4096 && raw_value !== (raw_value = /*subheading*/ ctx[12].html + "")) div0.innerHTML = raw_value;
+			if (dirty & /*image1*/ 2 && !src_url_equal(img1.src, img1_src_value = /*image1*/ ctx[1].url)) {
 				attr(img1, "src", img1_src_value);
 			}
 
-			if (dirty & /*image2*/ 32 && !src_url_equal(img2.src, img2_src_value = /*image2*/ ctx[5].url)) {
+			if (dirty & /*image2*/ 4 && !src_url_equal(img2.src, img2_src_value = /*image2*/ ctx[2].url)) {
 				attr(img2, "src", img2_src_value);
 			}
 
-			if (dirty & /*image3*/ 64 && !src_url_equal(img3.src, img3_src_value = /*image3*/ ctx[6].url)) {
+			if (dirty & /*image3*/ 8 && !src_url_equal(img3.src, img3_src_value = /*image3*/ ctx[3].url)) {
 				attr(img3, "src", img3_src_value);
 			}
 
-			if (dirty & /*image4*/ 128 && !src_url_equal(img4.src, img4_src_value = /*image4*/ ctx[7].url)) {
+			if (dirty & /*image4*/ 16 && !src_url_equal(img4.src, img4_src_value = /*image4*/ ctx[4].url)) {
 				attr(img4, "src", img4_src_value);
 			}
 
-			if (dirty & /*image5*/ 256 && !src_url_equal(img5.src, img5_src_value = /*image5*/ ctx[8].url)) {
+			if (dirty & /*image5*/ 32 && !src_url_equal(img5.src, img5_src_value = /*image5*/ ctx[5].url)) {
 				attr(img5, "src", img5_src_value);
 			}
 
-			if (dirty & /*image6*/ 512 && !src_url_equal(img6.src, img6_src_value = /*image6*/ ctx[9].url)) {
+			if (dirty & /*image6*/ 64 && !src_url_equal(img6.src, img6_src_value = /*image6*/ ctx[6].url)) {
 				attr(img6, "src", img6_src_value);
 			}
 
-			if (dirty & /*image7*/ 1024 && !src_url_equal(img7.src, img7_src_value = /*image7*/ ctx[10].url)) {
+			if (dirty & /*image7*/ 128 && !src_url_equal(img7.src, img7_src_value = /*image7*/ ctx[7].url)) {
 				attr(img7, "src", img7_src_value);
 			}
 
-			if (dirty & /*imagep*/ 2048 && !src_url_equal(img8.src, img8_src_value = /*imagep*/ ctx[11].url)) {
+			if (dirty & /*imagep*/ 512 && !src_url_equal(img8.src, img8_src_value = /*imagep*/ ctx[9].url)) {
 				attr(img8, "src", img8_src_value);
 			}
 
-			if (dirty & /*imagen*/ 4096 && !src_url_equal(img9.src, img9_src_value = /*imagen*/ ctx[12].url)) {
+			if (dirty & /*imagen*/ 256 && !src_url_equal(img9.src, img9_src_value = /*imagen*/ ctx[8].url)) {
 				attr(img9, "src", img9_src_value);
 			}
 		},
@@ -1137,9 +1137,6 @@ function getItemWidth() {
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
 	let { image } = $$props;
-	let { heading } = $$props;
-	let { background } = $$props;
-	let { subheading } = $$props;
 	let { image1 } = $$props;
 	let { image2 } = $$props;
 	let { image3 } = $$props;
@@ -1147,13 +1144,13 @@ function instance($$self, $$props, $$invalidate) {
 	let { image5 } = $$props;
 	let { image6 } = $$props;
 	let { image7 } = $$props;
-	let { imagep } = $$props;
 	let { imagen } = $$props;
+	let { imagep } = $$props;
+	let { heading } = $$props;
+	let { background } = $$props;
+	let { subheading } = $$props;
 	let index = 0;
 	let interval;
-	let startX = 0;
-	let currentX = 0;
-	let isDragging = false;
 
 	function prev() {
 		if (index > 0) {
@@ -1183,29 +1180,6 @@ function instance($$self, $$props, $$invalidate) {
 		}
 	}
 
-	function handleTouchStart(event) {
-		startX = event.touches[0].clientX;
-		isDragging = true;
-	}
-
-	function handleTouchMove(event) {
-		if (!isDragging) return;
-		currentX = event.touches[0].clientX;
-	}
-
-	function handleTouchEnd() {
-		if (!isDragging) return;
-		const diffX = startX - currentX;
-
-		if (diffX > 50) {
-			next();
-		} else if (diffX < -50) {
-			prev();
-		}
-
-		isDragging = false;
-	}
-
 	onMount(() => {
 		const carouselInner = document.querySelector('.carousel-inner');
 		carouselInner.style.transform = `translateX(-${index * (getItemWidth() + margin / getItemsPerView())}%)`;
@@ -1217,12 +1191,6 @@ function instance($$self, $$props, $$invalidate) {
 		window.addEventListener('resize', () => {
 			carouselInner.style.transform = `translateX(-${index * (getItemWidth() + margin / getItemsPerView())}%)`;
 		});
-
-		// Añade eventos de toque
-		carouselInner.addEventListener('touchstart', handleTouchStart);
-
-		carouselInner.addEventListener('touchmove', handleTouchMove);
-		carouselInner.addEventListener('touchend', handleTouchEnd);
 	});
 
 	onDestroy(() => {
@@ -1232,30 +1200,23 @@ function instance($$self, $$props, $$invalidate) {
 		window.removeEventListener('resize', () => {
 			carouselInner.style.transform = `translateX(-${index * (getItemWidth() + margin / getItemsPerView())}%)`;
 		});
-
-		// Elimina eventos de toque
-		const carouselInner = document.querySelector('.carousel-inner');
-
-		carouselInner.removeEventListener('touchstart', handleTouchStart);
-		carouselInner.removeEventListener('touchmove', handleTouchMove);
-		carouselInner.removeEventListener('touchend', handleTouchEnd);
 	});
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(16, props = $$props.props);
 		if ('image' in $$props) $$invalidate(0, image = $$props.image);
-		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
-		if ('background' in $$props) $$invalidate(2, background = $$props.background);
-		if ('subheading' in $$props) $$invalidate(3, subheading = $$props.subheading);
-		if ('image1' in $$props) $$invalidate(4, image1 = $$props.image1);
-		if ('image2' in $$props) $$invalidate(5, image2 = $$props.image2);
-		if ('image3' in $$props) $$invalidate(6, image3 = $$props.image3);
-		if ('image4' in $$props) $$invalidate(7, image4 = $$props.image4);
-		if ('image5' in $$props) $$invalidate(8, image5 = $$props.image5);
-		if ('image6' in $$props) $$invalidate(9, image6 = $$props.image6);
-		if ('image7' in $$props) $$invalidate(10, image7 = $$props.image7);
-		if ('imagep' in $$props) $$invalidate(11, imagep = $$props.imagep);
-		if ('imagen' in $$props) $$invalidate(12, imagen = $$props.imagen);
+		if ('image1' in $$props) $$invalidate(1, image1 = $$props.image1);
+		if ('image2' in $$props) $$invalidate(2, image2 = $$props.image2);
+		if ('image3' in $$props) $$invalidate(3, image3 = $$props.image3);
+		if ('image4' in $$props) $$invalidate(4, image4 = $$props.image4);
+		if ('image5' in $$props) $$invalidate(5, image5 = $$props.image5);
+		if ('image6' in $$props) $$invalidate(6, image6 = $$props.image6);
+		if ('image7' in $$props) $$invalidate(7, image7 = $$props.image7);
+		if ('imagen' in $$props) $$invalidate(8, imagen = $$props.imagen);
+		if ('imagep' in $$props) $$invalidate(9, imagep = $$props.imagep);
+		if ('heading' in $$props) $$invalidate(10, heading = $$props.heading);
+		if ('background' in $$props) $$invalidate(11, background = $$props.background);
+		if ('subheading' in $$props) $$invalidate(12, subheading = $$props.subheading);
 	};
 
 	$$self.$$.update = () => {
@@ -1272,9 +1233,6 @@ function instance($$self, $$props, $$invalidate) {
 
 	return [
 		image,
-		heading,
-		background,
-		subheading,
 		image1,
 		image2,
 		image3,
@@ -1282,8 +1240,11 @@ function instance($$self, $$props, $$invalidate) {
 		image5,
 		image6,
 		image7,
-		imagep,
 		imagen,
+		imagep,
+		heading,
+		background,
+		subheading,
 		prev,
 		next,
 		handleKeydown,
@@ -1299,18 +1260,18 @@ class Component extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			props: 16,
 			image: 0,
-			heading: 1,
-			background: 2,
-			subheading: 3,
-			image1: 4,
-			image2: 5,
-			image3: 6,
-			image4: 7,
-			image5: 8,
-			image6: 9,
-			image7: 10,
-			imagep: 11,
-			imagen: 12
+			image1: 1,
+			image2: 2,
+			image3: 3,
+			image4: 4,
+			image5: 5,
+			image6: 6,
+			image7: 7,
+			imagen: 8,
+			imagep: 9,
+			heading: 10,
+			background: 11,
+			subheading: 12
 		});
 	}
 }
