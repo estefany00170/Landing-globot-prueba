@@ -1,4 +1,4 @@
-// globot - Updated September 17, 2024
+// globot - Updated September 23, 2024
 function noop() { }
 function run(fn) {
     return fn();
@@ -1115,10 +1115,24 @@ function create_fragment(ctx) {
 	};
 }
 
-let totalItems = 6; // Número total de imágenes
-const itemsPerView = 4; // Número de imágenes visibles a la vez
-const itemWidth = 25; // Porcentaje del ancho de cada imagen
+let totalItems = 7; // Número total de imágenes
+const itemsPerViewDesktop = 4; // Número de imágenes visibles a la vez en desktop
+const itemsPerViewMobile = 1; // Número de imágenes visibles a la vez en mobile
+const itemWidthDesktop = 25; // Porcentaje del ancho de cada imagen en desktop
+const itemWidthMobile = 100; // Porcentaje del ancho de cada imagen en mobile
 const margin = 44; // Margen entre las imágenes
+
+function getItemsPerView() {
+	return window.innerWidth <= 768
+	? itemsPerViewMobile
+	: itemsPerViewDesktop;
+}
+
+function getItemWidth() {
+	return window.innerWidth <= 768
+	? itemWidthMobile
+	: itemWidthDesktop;
+}
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
@@ -1137,17 +1151,20 @@ function instance($$self, $$props, $$invalidate) {
 	let { imagen } = $$props;
 	let index = 0;
 	let interval;
+	let startX = 0;
+	let currentX = 0;
+	let isDragging = false;
 
 	function prev() {
 		if (index > 0) {
 			$$invalidate(17, index--, index);
 		} else {
-			$$invalidate(17, index = totalItems - itemsPerView); // Ir al final
+			$$invalidate(17, index = totalItems - getItemsPerView()); // Ir al final
 		}
 	}
 
 	function next() {
-		if (index < totalItems - itemsPerView) {
+		if (index < totalItems - getItemsPerView()) {
 			$$invalidate(17, index++, index);
 		} else {
 			$$invalidate(17, index = 0); // Ir al inicio
@@ -1166,17 +1183,62 @@ function instance($$self, $$props, $$invalidate) {
 		}
 	}
 
+	function handleTouchStart(event) {
+		startX = event.touches[0].clientX;
+		isDragging = true;
+	}
+
+	function handleTouchMove(event) {
+		if (!isDragging) return;
+		currentX = event.touches[0].clientX;
+	}
+
+	function handleTouchEnd() {
+		if (!isDragging) return;
+		const diffX = startX - currentX;
+
+		if (diffX > 50) {
+			next();
+		} else if (diffX < -50) {
+			prev();
+		}
+
+		isDragging = false;
+	}
+
 	onMount(() => {
 		const carouselInner = document.querySelector('.carousel-inner');
-		carouselInner.style.transform = `translateX(-${index * (itemWidth + margin / itemsPerView)}%)`;
+		carouselInner.style.transform = `translateX(-${index * (getItemWidth() + margin / getItemsPerView())}%)`;
 
 		// Inicia el desplazamiento automático
-		interval = setInterval(autoSlide, 4000); // Cambia cada 3 segundos
+		interval = setInterval(autoSlide, 3000); // Cambia cada 3 segundos
+
+		// Ajusta la transformación al cambiar el tamaño de la ventana
+		window.addEventListener('resize', () => {
+			carouselInner.style.transform = `translateX(-${index * (getItemWidth() + margin / getItemsPerView())}%)`;
+		});
+
+		// Añade eventos de toque
+		carouselInner.addEventListener('touchstart', handleTouchStart);
+
+		carouselInner.addEventListener('touchmove', handleTouchMove);
+		carouselInner.addEventListener('touchend', handleTouchEnd);
 	});
 
 	onDestroy(() => {
 		// Limpia el intervalo cuando el componente se destruye
 		clearInterval(interval);
+
+		window.removeEventListener('resize', () => {
+			carouselInner.style.transform = `translateX(-${index * (getItemWidth() + margin / getItemsPerView())}%)`;
+		});
+
+		// Elimina eventos de toque
+		const carouselInner = document.querySelector('.carousel-inner');
+
+		carouselInner.removeEventListener('touchstart', handleTouchStart);
+		carouselInner.removeEventListener('touchmove', handleTouchMove);
+		carouselInner.removeEventListener('touchend', handleTouchEnd);
 	});
 
 	$$self.$$set = $$props => {
@@ -1202,7 +1264,7 @@ function instance($$self, $$props, $$invalidate) {
 				const carouselInner = document.querySelector('.carousel-inner');
 
 				if (carouselInner) {
-					carouselInner.style.transform = `translateX(-${index * (itemWidth + margin / itemsPerView)}%)`;
+					carouselInner.style.transform = `translateX(-${index * (getItemWidth() + margin / getItemsPerView())}%)`;
 				}
 			}
 		}
