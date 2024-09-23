@@ -2840,7 +2840,7 @@ function get_each_context_1(ctx, list, i) {
 	return child_ctx;
 }
 
-// (88:6) {#each cards as card, index}
+// (93:6) {#each cards as card, index}
 function create_each_block_1(ctx) {
 	let sl_carousel_item;
 	let img;
@@ -2973,11 +2973,11 @@ function create_each_block_1(ctx) {
 		h() {
 			if (!src_url_equal(img.src, img_src_value = /*card*/ ctx[3].image.url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*card*/ ctx[3].title);
-			attr(img, "class", "svelte-1a010q9");
+			attr(img, "class", "svelte-biuzgu");
 			set_style(div0, "display", "flex");
 			set_style(div0, "justify-content", "space-between");
 			set_style(div0, "width", "100%");
-			attr(div1, "class", "date svelte-1a010q9");
+			attr(div1, "class", "date svelte-biuzgu");
 			attr(span2, "class", "label");
 			attr(path, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path, "stroke", "#7B5CF5");
@@ -2992,9 +2992,9 @@ function create_each_block_1(ctx) {
 			attr(a, "class", "link");
 			attr(a, "href", a_href_value = /*card*/ ctx[3].link.url);
 			attr(a, "target", "_blank");
-			attr(div3, "class", "text svelte-1a010q9");
-			attr(div4, "class", "part2 svelte-1a010q9");
-			set_custom_element_data(sl_carousel_item, "class", "card svelte-1a010q9");
+			attr(div3, "class", "text svelte-biuzgu");
+			attr(div4, "class", "part2 svelte-biuzgu");
+			set_custom_element_data(sl_carousel_item, "class", "card svelte-biuzgu");
 		},
 		m(target, anchor) {
 			insert_hydration(target, sl_carousel_item, anchor);
@@ -3046,7 +3046,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (117:6) {#each cards as card, index}
+// (122:6) {#each cards as card, index}
 function create_each_block(ctx) {
 	let sl_carousel_item;
 	let img;
@@ -3179,11 +3179,11 @@ function create_each_block(ctx) {
 		h() {
 			if (!src_url_equal(img.src, img_src_value = /*card*/ ctx[3].image.url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*card*/ ctx[3].title);
-			attr(img, "class", "svelte-1a010q9");
+			attr(img, "class", "svelte-biuzgu");
 			set_style(div0, "display", "flex");
 			set_style(div0, "justify-content", "space-between");
 			set_style(div0, "width", "100%");
-			attr(div1, "class", "date svelte-1a010q9");
+			attr(div1, "class", "date svelte-biuzgu");
 			attr(span2, "class", "label");
 			attr(path, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path, "stroke", "#7B5CF5");
@@ -3198,9 +3198,9 @@ function create_each_block(ctx) {
 			attr(a, "class", "link");
 			attr(a, "href", a_href_value = /*card*/ ctx[3].link.url);
 			attr(a, "target", "_blank");
-			attr(div3, "class", "text svelte-1a010q9");
-			attr(div4, "class", "part2 svelte-1a010q9");
-			set_custom_element_data(sl_carousel_item, "class", "card svelte-1a010q9");
+			attr(div3, "class", "text svelte-biuzgu");
+			attr(div4, "class", "part2 svelte-biuzgu");
+			set_custom_element_data(sl_carousel_item, "class", "card svelte-biuzgu");
 		},
 		m(target, anchor) {
 			insert_hydration(target, sl_carousel_item, anchor);
@@ -3336,7 +3336,6 @@ function create_fragment(ctx) {
 			var div2_nodes = children(div2);
 
 			sl_carousel1 = claim_element(div2_nodes, "SL-CAROUSEL", {
-				navigation: true,
 				loop: true,
 				"slides-per-page": true,
 				"slides-per-move": true,
@@ -3361,15 +3360,14 @@ function create_fragment(ctx) {
 			set_custom_element_data(sl_carousel0, "loop", "");
 			set_custom_element_data(sl_carousel0, "slides-per-page", "4");
 			set_custom_element_data(sl_carousel0, "slides-per-move", "1");
-			set_custom_element_data(sl_carousel0, "class", "cards svelte-1a010q9");
-			attr(div1, "class", "carousel carouselDesktop svelte-1a010q9");
-			set_custom_element_data(sl_carousel1, "navigation", "");
+			set_custom_element_data(sl_carousel0, "class", "cards svelte-biuzgu");
+			attr(div1, "class", "carousel carouselDesktop svelte-biuzgu");
 			set_custom_element_data(sl_carousel1, "loop", "");
 			set_custom_element_data(sl_carousel1, "slides-per-page", "1");
 			set_custom_element_data(sl_carousel1, "slides-per-move", "1");
-			set_custom_element_data(sl_carousel1, "class", "cards svelte-1a010q9");
-			attr(div2, "class", "carousel carouselMobile svelte-1a010q9");
-			attr(section, "class", "news-carousel svelte-1a010q9");
+			set_custom_element_data(sl_carousel1, "class", "cards svelte-biuzgu");
+			attr(div2, "class", "carousel carouselMobile svelte-biuzgu");
+			attr(section, "class", "news-carousel svelte-biuzgu");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
