@@ -724,16 +724,16 @@ function create_each_block(ctx) {
 		h() {
 			if (!src_url_equal(img.src, img_src_value = /*card*/ ctx[10].image.url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*card*/ ctx[10].title);
-			attr(img, "class", "svelte-1pk3lvs");
-			attr(span0, "class", "subtitle svelte-1pk3lvs");
-			attr(span1, "class", "fecha svelte-1pk3lvs");
+			attr(img, "class", "svelte-jusuwq");
+			attr(span0, "class", "subtitle svelte-jusuwq");
+			attr(span1, "class", "fecha svelte-jusuwq");
 			set_style(div0, "display", "flex");
 			set_style(div0, "justify-content", "space-between");
 			set_style(div0, "width", "100%");
 			set_style(div0, "font-size", "14.421px");
-			attr(p, "class", "titleContent svelte-1pk3lvs");
-			attr(div1, "class", "date svelte-1pk3lvs");
-			attr(span2, "class", "label svelte-1pk3lvs");
+			attr(p, "class", "titleContent svelte-jusuwq");
+			attr(div1, "class", "date svelte-jusuwq");
+			attr(span2, "class", "label svelte-jusuwq");
 			attr(path, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path, "stroke", "#7B5CF5");
 			attr(path, "stroke-width", "2.028");
@@ -744,12 +744,12 @@ function create_each_block(ctx) {
 			attr(svg, "height", "23");
 			attr(svg, "viewBox", "0 0 23 23");
 			attr(svg, "fill", "none");
-			attr(a, "class", "link svelte-1pk3lvs");
+			attr(a, "class", "link svelte-jusuwq");
 			attr(a, "href", a_href_value = /*card*/ ctx[10].link.url);
 			attr(a, "target", "_blank");
-			attr(div3, "class", "text svelte-1pk3lvs");
-			attr(div4, "class", "part2 svelte-1pk3lvs");
-			attr(div5, "class", "slider-item svelte-1pk3lvs");
+			attr(div3, "class", "text svelte-jusuwq");
+			attr(div4, "class", "part2 svelte-jusuwq");
+			attr(div5, "class", "slider-item svelte-jusuwq");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div5, anchor);
@@ -900,7 +900,7 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-1pk3lvs");
+			attr(h2, "class", "heading svelte-jusuwq");
 			if (!src_url_equal(img0.src, img0_src_value = /*imagep*/ ctx[2].url)) attr(img0, "src", img0_src_value);
 			attr(img0, "alt", "Previous");
 			attr(button0, "class", "slider-control-prev");
@@ -910,10 +910,10 @@ function create_fragment(ctx) {
 			set_style(div0, "display", "flex");
 			set_style(div0, "align-items", "center");
 			set_style(div0, "gap", "12px");
-			attr(div1, "class", "title svelte-1pk3lvs");
-			attr(div2, "class", "slider-inner svelte-1pk3lvs");
-			attr(div3, "class", "slider svelte-1pk3lvs");
-			attr(section, "class", "news-slider svelte-1pk3lvs");
+			attr(div1, "class", "title svelte-jusuwq");
+			attr(div2, "class", "slider-inner svelte-jusuwq");
+			attr(div3, "class", "slider svelte-jusuwq");
+			attr(section, "class", "news-slider svelte-jusuwq");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
