@@ -591,7 +591,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (355:6) {#each cards as card, index}
+// (229:6) {#each cards as card, index}
 function create_each_block(ctx) {
 	let div5;
 	let img;
@@ -685,7 +685,14 @@ function create_each_block(ctx) {
 			t6 = claim_space(div3_nodes);
 			div2 = claim_element(div3_nodes, "DIV", {});
 			var div2_nodes = children(div2);
-			a = claim_element(div2_nodes, "A", { class: true, href: true, target: true });
+
+			a = claim_element(div2_nodes, "A", {
+				class: true,
+				href: true,
+				target: true,
+				style: true
+			});
+
 			var a_nodes = children(a);
 			span2 = claim_element(a_nodes, "SPAN", { class: true });
 			var span2_nodes = children(span2);
@@ -724,15 +731,15 @@ function create_each_block(ctx) {
 		h() {
 			if (!src_url_equal(img.src, img_src_value = /*card*/ ctx[10].image.url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*card*/ ctx[10].title);
-			attr(img, "class", "svelte-1pdi2je");
-			attr(span0, "class", "subtitle svelte-1pdi2je");
-			attr(span1, "class", "fecha svelte-1pdi2je");
+			attr(img, "class", "svelte-h6622k");
+			attr(span0, "class", "subtitle svelte-h6622k");
+			attr(span1, "class", "fecha svelte-h6622k");
 			set_style(div0, "display", "flex");
 			set_style(div0, "justify-content", "space-between");
 			set_style(div0, "width", "100%");
 			set_style(div0, "font-size", "14.421px");
-			attr(p, "class", "titleContent svelte-1pdi2je");
-			attr(div1, "class", "date svelte-1pdi2je");
+			attr(p, "class", "titleContent svelte-h6622k");
+			attr(div1, "class", "date svelte-h6622k");
 			attr(span2, "class", "label");
 			attr(path, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path, "stroke", "#7B5CF5");
@@ -747,9 +754,14 @@ function create_each_block(ctx) {
 			attr(a, "class", "link");
 			attr(a, "href", a_href_value = /*card*/ ctx[10].link.url);
 			attr(a, "target", "_blank");
-			attr(div3, "class", "text svelte-1pdi2je");
-			attr(div4, "class", "part2 svelte-1pdi2je");
-			attr(div5, "class", "slider-item svelte-1pdi2je");
+			set_style(a, "display", "flex");
+			set_style(a, "align-items", "flex-start");
+			set_style(a, "gap", "7.211px");
+			set_style(a, "margin-top", "20px");
+			set_style(a, "color", "#7B5CF5");
+			attr(div3, "class", "text svelte-h6622k");
+			attr(div4, "class", "part2 svelte-h6622k");
+			attr(div5, "class", "slider-item svelte-h6622k");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div5, anchor);
@@ -803,19 +815,22 @@ function create_each_block(ctx) {
 
 function create_fragment(ctx) {
 	let section;
-	let div1;
-	let h2;
+	let style;
 	let t0;
 	let t1;
+	let div1;
+	let h2;
+	let t2;
+	let t3;
 	let div0;
 	let button0;
 	let img0;
 	let img0_src_value;
-	let t2;
+	let t4;
 	let button1;
 	let img1;
 	let img1_src_value;
-	let t3;
+	let t5;
 	let div3;
 	let div2;
 	let mounted;
@@ -830,17 +845,20 @@ function create_fragment(ctx) {
 	return {
 		c() {
 			section = element("section");
+			style = element("style");
+			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
+			t1 = space();
 			div1 = element("div");
 			h2 = element("h2");
-			t0 = text(/*heading*/ ctx[3]);
-			t1 = space();
+			t2 = text(/*heading*/ ctx[3]);
+			t3 = space();
 			div0 = element("div");
 			button0 = element("button");
 			img0 = element("img");
-			t2 = space();
+			t4 = space();
 			button1 = element("button");
 			img1 = element("img");
-			t3 = space();
+			t5 = space();
 			div3 = element("div");
 			div2 = element("div");
 
@@ -853,27 +871,32 @@ function create_fragment(ctx) {
 		l(nodes) {
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
+			style = claim_element(section_nodes, "STYLE", {});
+			var style_nodes = children(style);
+			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto&display=swap');");
+			style_nodes.forEach(detach);
+			t1 = claim_space(section_nodes);
 			div1 = claim_element(section_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
 			h2 = claim_element(div1_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			t0 = claim_text(h2_nodes, /*heading*/ ctx[3]);
+			t2 = claim_text(h2_nodes, /*heading*/ ctx[3]);
 			h2_nodes.forEach(detach);
-			t1 = claim_space(div1_nodes);
-			div0 = claim_element(div1_nodes, "DIV", {});
+			t3 = claim_space(div1_nodes);
+			div0 = claim_element(div1_nodes, "DIV", { style: true });
 			var div0_nodes = children(div0);
 			button0 = claim_element(div0_nodes, "BUTTON", { class: true });
 			var button0_nodes = children(button0);
 			img0 = claim_element(button0_nodes, "IMG", { src: true, alt: true });
 			button0_nodes.forEach(detach);
-			t2 = claim_space(div0_nodes);
+			t4 = claim_space(div0_nodes);
 			button1 = claim_element(div0_nodes, "BUTTON", { class: true });
 			var button1_nodes = children(button1);
 			img1 = claim_element(button1_nodes, "IMG", { src: true, alt: true });
 			button1_nodes.forEach(detach);
 			div0_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
-			t3 = claim_space(section_nodes);
+			t5 = claim_space(section_nodes);
 			div3 = claim_element(section_nodes, "DIV", { class: true });
 			var div3_nodes = children(div3);
 			div2 = claim_element(div3_nodes, "DIV", { class: true });
@@ -889,31 +912,37 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading");
+			attr(h2, "class", "heading svelte-h6622k");
 			if (!src_url_equal(img0.src, img0_src_value = /*imagep*/ ctx[2].url)) attr(img0, "src", img0_src_value);
 			attr(img0, "alt", "Previous");
 			attr(button0, "class", "slider-control-prev");
 			if (!src_url_equal(img1.src, img1_src_value = /*imagen*/ ctx[1].url)) attr(img1, "src", img1_src_value);
 			attr(img1, "alt", "Next");
 			attr(button1, "class", "slider-control-next");
-			attr(div1, "class", "title svelte-1pdi2je");
-			attr(div2, "class", "slider-inner svelte-1pdi2je");
-			attr(div3, "class", "slider svelte-1pdi2je");
-			attr(section, "class", "news-slider svelte-1pdi2je");
+			set_style(div0, "display", "flex");
+			set_style(div0, "align-items", "center");
+			set_style(div0, "gap", "12px");
+			attr(div1, "class", "title svelte-h6622k");
+			attr(div2, "class", "slider-inner svelte-h6622k");
+			attr(div3, "class", "slider svelte-h6622k");
+			attr(section, "class", "news-slider svelte-h6622k");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
+			append_hydration(section, style);
+			append_hydration(style, t0);
+			append_hydration(section, t1);
 			append_hydration(section, div1);
 			append_hydration(div1, h2);
-			append_hydration(h2, t0);
-			append_hydration(div1, t1);
+			append_hydration(h2, t2);
+			append_hydration(div1, t3);
 			append_hydration(div1, div0);
 			append_hydration(div0, button0);
 			append_hydration(button0, img0);
-			append_hydration(div0, t2);
+			append_hydration(div0, t4);
 			append_hydration(div0, button1);
 			append_hydration(button1, img1);
-			append_hydration(section, t3);
+			append_hydration(section, t5);
 			append_hydration(section, div3);
 			append_hydration(div3, div2);
 
@@ -935,7 +964,7 @@ function create_fragment(ctx) {
 			}
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*heading*/ 8) set_data(t0, /*heading*/ ctx[3]);
+			if (dirty & /*heading*/ 8) set_data(t2, /*heading*/ ctx[3]);
 
 			if (dirty & /*imagep*/ 4 && !src_url_equal(img0.src, img0_src_value = /*imagep*/ ctx[2].url)) {
 				attr(img0, "src", img0_src_value);
