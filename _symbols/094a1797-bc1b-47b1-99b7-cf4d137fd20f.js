@@ -591,7 +591,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (336:6) {#each cards as card, index}
+// (355:6) {#each cards as card, index}
 function create_each_block(ctx) {
 	let div5;
 	let img;
@@ -666,18 +666,18 @@ function create_each_block(ctx) {
 			var div1_nodes = children(div1);
 			div0 = claim_element(div1_nodes, "DIV", { style: true });
 			var div0_nodes = children(div0);
-			span0 = claim_element(div0_nodes, "SPAN", {});
+			span0 = claim_element(div0_nodes, "SPAN", { class: true });
 			var span0_nodes = children(span0);
 			t1 = claim_text(span0_nodes, t1_value);
 			span0_nodes.forEach(detach);
 			t2 = claim_space(div0_nodes);
-			span1 = claim_element(div0_nodes, "SPAN", {});
+			span1 = claim_element(div0_nodes, "SPAN", { class: true });
 			var span1_nodes = children(span1);
 			t3 = claim_text(span1_nodes, t3_value);
 			span1_nodes.forEach(detach);
 			div0_nodes.forEach(detach);
 			t4 = claim_space(div1_nodes);
-			p = claim_element(div1_nodes, "P", {});
+			p = claim_element(div1_nodes, "P", { class: true });
 			var p_nodes = children(p);
 			t5 = claim_text(p_nodes, t5_value);
 			p_nodes.forEach(detach);
@@ -724,11 +724,15 @@ function create_each_block(ctx) {
 		h() {
 			if (!src_url_equal(img.src, img_src_value = /*card*/ ctx[10].image.url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*card*/ ctx[10].title);
-			attr(img, "class", "svelte-10i8bzh");
+			attr(img, "class", "svelte-1pdi2je");
+			attr(span0, "class", "subtitle svelte-1pdi2je");
+			attr(span1, "class", "fecha svelte-1pdi2je");
 			set_style(div0, "display", "flex");
 			set_style(div0, "justify-content", "space-between");
 			set_style(div0, "width", "100%");
-			attr(div1, "class", "date svelte-10i8bzh");
+			set_style(div0, "font-size", "14.421px");
+			attr(p, "class", "titleContent svelte-1pdi2je");
+			attr(div1, "class", "date svelte-1pdi2je");
 			attr(span2, "class", "label");
 			attr(path, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path, "stroke", "#7B5CF5");
@@ -743,9 +747,9 @@ function create_each_block(ctx) {
 			attr(a, "class", "link");
 			attr(a, "href", a_href_value = /*card*/ ctx[10].link.url);
 			attr(a, "target", "_blank");
-			attr(div3, "class", "text svelte-10i8bzh");
-			attr(div4, "class", "part2 svelte-10i8bzh");
-			attr(div5, "class", "slider-item svelte-10i8bzh");
+			attr(div3, "class", "text svelte-1pdi2je");
+			attr(div4, "class", "part2 svelte-1pdi2je");
+			attr(div5, "class", "slider-item svelte-1pdi2je");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div5, anchor);
@@ -892,10 +896,10 @@ function create_fragment(ctx) {
 			if (!src_url_equal(img1.src, img1_src_value = /*imagen*/ ctx[1].url)) attr(img1, "src", img1_src_value);
 			attr(img1, "alt", "Next");
 			attr(button1, "class", "slider-control-next");
-			attr(div1, "class", "title svelte-10i8bzh");
-			attr(div2, "class", "slider-inner svelte-10i8bzh");
-			attr(div3, "class", "slider svelte-10i8bzh");
-			attr(section, "class", "news-slider svelte-10i8bzh");
+			attr(div1, "class", "title svelte-1pdi2je");
+			attr(div2, "class", "slider-inner svelte-1pdi2je");
+			attr(div3, "class", "slider svelte-1pdi2je");
+			attr(section, "class", "news-slider svelte-1pdi2je");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
