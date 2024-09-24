@@ -591,7 +591,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (179:6) {#each cards as card, index}
+// (191:6) {#each cards as card, index}
 function create_each_block(ctx) {
 	let div5;
 	let img;
@@ -828,7 +828,7 @@ function create_fragment(ctx) {
 			section = element("section");
 			div1 = element("div");
 			h2 = element("h2");
-			t0 = text(/*heading*/ ctx[1]);
+			t0 = text(/*heading*/ ctx[3]);
 			t1 = space();
 			div0 = element("div");
 			button0 = element("button");
@@ -853,7 +853,7 @@ function create_fragment(ctx) {
 			var div1_nodes = children(div1);
 			h2 = claim_element(div1_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			t0 = claim_text(h2_nodes, /*heading*/ ctx[1]);
+			t0 = claim_text(h2_nodes, /*heading*/ ctx[3]);
 			h2_nodes.forEach(detach);
 			t1 = claim_space(div1_nodes);
 			div0 = claim_element(div1_nodes, "DIV", {});
@@ -889,7 +889,7 @@ function create_fragment(ctx) {
 			if (!src_url_equal(img0.src, img0_src_value = /*imagep*/ ctx[2].url)) attr(img0, "src", img0_src_value);
 			attr(img0, "alt", "Previous");
 			attr(button0, "class", "carousel-control-prev svelte-1ejq76l");
-			if (!src_url_equal(img1.src, img1_src_value = /*imagen*/ ctx[3].url)) attr(img1, "src", img1_src_value);
+			if (!src_url_equal(img1.src, img1_src_value = /*imagen*/ ctx[1].url)) attr(img1, "src", img1_src_value);
 			attr(img1, "alt", "Next");
 			attr(button1, "class", "carousel-control-next svelte-1ejq76l");
 			attr(div1, "class", "title svelte-1ejq76l");
@@ -931,13 +931,13 @@ function create_fragment(ctx) {
 			}
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*heading*/ 2) set_data(t0, /*heading*/ ctx[1]);
+			if (dirty & /*heading*/ 8) set_data(t0, /*heading*/ ctx[3]);
 
 			if (dirty & /*imagep*/ 4 && !src_url_equal(img0.src, img0_src_value = /*imagep*/ ctx[2].url)) {
 				attr(img0, "src", img0_src_value);
 			}
 
-			if (dirty & /*imagen*/ 8 && !src_url_equal(img1.src, img1_src_value = /*imagen*/ ctx[3].url)) {
+			if (dirty & /*imagen*/ 2 && !src_url_equal(img1.src, img1_src_value = /*imagen*/ ctx[1].url)) {
 				attr(img1, "src", img1_src_value);
 			}
 
@@ -983,23 +983,29 @@ const itemWidthMobile = 75; // Porcentaje del ancho de cada imagen en mobile
 const margin = 44; // Margen entre las imágenes
 
 function getItemsPerView() {
-	return window.innerWidth <= 768
+	const itemsPerView = window.innerWidth <= 768
 	? itemsPerViewMobile
 	: itemsPerViewDesktop;
+
+	console.log('Items per view:', itemsPerView);
+	return itemsPerView;
 }
 
 function getItemWidth() {
-	return window.innerWidth <= 768
+	const itemWidth = window.innerWidth <= 768
 	? itemWidthMobile
 	: itemWidthDesktop;
+
+	console.log('Item width:', itemWidth);
+	return itemWidth;
 }
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
 	let { cards } = $$props;
-	let { heading } = $$props;
-	let { imagep } = $$props;
 	let { imagen } = $$props;
+	let { imagep } = $$props;
+	let { heading } = $$props;
 	let index = 0;
 	let interval;
 
@@ -1010,6 +1016,7 @@ function instance($$self, $$props, $$invalidate) {
 			index = totalItems - getItemsPerView(); // Ir al final
 		}
 
+		console.log('Prev button clicked, new index:', index);
 		updateTransform();
 	}
 
@@ -1020,6 +1027,7 @@ function instance($$self, $$props, $$invalidate) {
 			index = 0; // Ir al inicio
 		}
 
+		console.log('Next button clicked, new index:', index);
 		updateTransform();
 	}
 
@@ -1035,11 +1043,16 @@ function instance($$self, $$props, $$invalidate) {
 		const carouselInner = document.querySelector('.carousel-inner');
 
 		if (carouselInner) {
-			carouselInner.style.transform = `translateX(-${index * (getItemWidth() + margin / getItemsPerView())}%)`;
+			const transformValue = `translateX(-${index * (getItemWidth() + margin / getItemsPerView())}%)`;
+			console.log('Updating transform:', transformValue);
+			carouselInner.style.transform = transformValue;
+		} else {
+			console.log('Carousel inner not found');
 		}
 	}
 
 	onMount(() => {
+		console.log('Component mounted');
 		updateTransform();
 
 		// Elimina el desplazamiento automático
@@ -1049,6 +1062,8 @@ function instance($$self, $$props, $$invalidate) {
 	});
 
 	onDestroy(() => {
+		console.log('Component destroyed');
+
 		// Limpia el intervalo cuando el componente se destruye
 		clearInterval(interval);
 
@@ -1058,13 +1073,13 @@ function instance($$self, $$props, $$invalidate) {
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(7, props = $$props.props);
 		if ('cards' in $$props) $$invalidate(0, cards = $$props.cards);
-		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
+		if ('imagen' in $$props) $$invalidate(1, imagen = $$props.imagen);
 		if ('imagep' in $$props) $$invalidate(2, imagep = $$props.imagep);
-		if ('imagen' in $$props) $$invalidate(3, imagen = $$props.imagen);
+		if ('heading' in $$props) $$invalidate(3, heading = $$props.heading);
 	};
 
 	updateTransform();
-	return [cards, heading, imagep, imagen, prev, next, handleKeydown, props];
+	return [cards, imagen, imagep, heading, prev, next, handleKeydown, props];
 }
 
 class Component extends SvelteComponent {
@@ -1074,9 +1089,9 @@ class Component extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			props: 7,
 			cards: 0,
-			heading: 1,
+			imagen: 1,
 			imagep: 2,
-			imagen: 3
+			heading: 3
 		});
 	}
 }
