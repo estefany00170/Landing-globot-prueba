@@ -586,12 +586,12 @@ class SvelteComponent {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[11] = list[i];
-	child_ctx[8] = i;
+	child_ctx[10] = list[i];
+	child_ctx[12] = i;
 	return child_ctx;
 }
 
-// (318:6) {#each cards as card, index}
+// (336:6) {#each cards as card, index}
 function create_each_block(ctx) {
 	let div5;
 	let img;
@@ -603,21 +603,21 @@ function create_each_block(ctx) {
 	let div1;
 	let div0;
 	let span0;
-	let t1_value = /*card*/ ctx[11].subtitle + "";
+	let t1_value = /*card*/ ctx[10].subtitle + "";
 	let t1;
 	let t2;
 	let span1;
-	let t3_value = /*card*/ ctx[11].date + "";
+	let t3_value = /*card*/ ctx[10].date + "";
 	let t3;
 	let t4;
 	let p;
-	let t5_value = /*card*/ ctx[11].title + "";
+	let t5_value = /*card*/ ctx[10].title + "";
 	let t5;
 	let t6;
 	let div2;
 	let a;
 	let span2;
-	let t7_value = /*card*/ ctx[11].link.label + "";
+	let t7_value = /*card*/ ctx[10].link.label + "";
 	let t7;
 	let t8;
 	let svg;
@@ -722,13 +722,13 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			if (!src_url_equal(img.src, img_src_value = /*card*/ ctx[11].image.url)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*card*/ ctx[11].title);
-			attr(img, "class", "svelte-1coista");
+			if (!src_url_equal(img.src, img_src_value = /*card*/ ctx[10].image.url)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*card*/ ctx[10].title);
+			attr(img, "class", "svelte-10i8bzh");
 			set_style(div0, "display", "flex");
 			set_style(div0, "justify-content", "space-between");
 			set_style(div0, "width", "100%");
-			attr(div1, "class", "date svelte-1coista");
+			attr(div1, "class", "date svelte-10i8bzh");
 			attr(span2, "class", "label");
 			attr(path, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path, "stroke", "#7B5CF5");
@@ -741,11 +741,11 @@ function create_each_block(ctx) {
 			attr(svg, "viewBox", "0 0 23 23");
 			attr(svg, "fill", "none");
 			attr(a, "class", "link");
-			attr(a, "href", a_href_value = /*card*/ ctx[11].link.url);
+			attr(a, "href", a_href_value = /*card*/ ctx[10].link.url);
 			attr(a, "target", "_blank");
-			attr(div3, "class", "text svelte-1coista");
-			attr(div4, "class", "part2 svelte-1coista");
-			attr(div5, "class", "carousel-item svelte-1coista");
+			attr(div3, "class", "text svelte-10i8bzh");
+			attr(div4, "class", "part2 svelte-10i8bzh");
+			attr(div5, "class", "slider-item svelte-10i8bzh");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div5, anchor);
@@ -774,20 +774,20 @@ function create_each_block(ctx) {
 			append_hydration(div5, t9);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*cards*/ 1 && !src_url_equal(img.src, img_src_value = /*card*/ ctx[11].image.url)) {
+			if (dirty & /*cards*/ 1 && !src_url_equal(img.src, img_src_value = /*card*/ ctx[10].image.url)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (dirty & /*cards*/ 1 && img_alt_value !== (img_alt_value = /*card*/ ctx[11].title)) {
+			if (dirty & /*cards*/ 1 && img_alt_value !== (img_alt_value = /*card*/ ctx[10].title)) {
 				attr(img, "alt", img_alt_value);
 			}
 
-			if (dirty & /*cards*/ 1 && t1_value !== (t1_value = /*card*/ ctx[11].subtitle + "")) set_data(t1, t1_value);
-			if (dirty & /*cards*/ 1 && t3_value !== (t3_value = /*card*/ ctx[11].date + "")) set_data(t3, t3_value);
-			if (dirty & /*cards*/ 1 && t5_value !== (t5_value = /*card*/ ctx[11].title + "")) set_data(t5, t5_value);
-			if (dirty & /*cards*/ 1 && t7_value !== (t7_value = /*card*/ ctx[11].link.label + "")) set_data(t7, t7_value);
+			if (dirty & /*cards*/ 1 && t1_value !== (t1_value = /*card*/ ctx[10].subtitle + "")) set_data(t1, t1_value);
+			if (dirty & /*cards*/ 1 && t3_value !== (t3_value = /*card*/ ctx[10].date + "")) set_data(t3, t3_value);
+			if (dirty & /*cards*/ 1 && t5_value !== (t5_value = /*card*/ ctx[10].title + "")) set_data(t5, t5_value);
+			if (dirty & /*cards*/ 1 && t7_value !== (t7_value = /*card*/ ctx[10].link.label + "")) set_data(t7, t7_value);
 
-			if (dirty & /*cards*/ 1 && a_href_value !== (a_href_value = /*card*/ ctx[11].link.url)) {
+			if (dirty & /*cards*/ 1 && a_href_value !== (a_href_value = /*card*/ ctx[10].link.url)) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -888,14 +888,14 @@ function create_fragment(ctx) {
 			attr(h2, "class", "heading");
 			if (!src_url_equal(img0.src, img0_src_value = /*imagep*/ ctx[2].url)) attr(img0, "src", img0_src_value);
 			attr(img0, "alt", "Previous");
-			attr(button0, "class", "carousel-control-prev");
+			attr(button0, "class", "slider-control-prev");
 			if (!src_url_equal(img1.src, img1_src_value = /*imagen*/ ctx[1].url)) attr(img1, "src", img1_src_value);
 			attr(img1, "alt", "Next");
-			attr(button1, "class", "carousel-control-next");
-			attr(div1, "class", "title svelte-1coista");
-			attr(div2, "class", "carousel-inner svelte-1coista");
-			attr(div3, "class", "carousel svelte-1coista");
-			attr(section, "class", "news-carousel svelte-1coista");
+			attr(button1, "class", "slider-control-next");
+			attr(div1, "class", "title svelte-10i8bzh");
+			attr(div2, "class", "slider-inner svelte-10i8bzh");
+			attr(div3, "class", "slider svelte-10i8bzh");
+			attr(section, "class", "news-slider svelte-10i8bzh");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -921,10 +921,10 @@ function create_fragment(ctx) {
 
 			if (!mounted) {
 				dispose = [
-					listen(button0, "click", /*prev*/ ctx[4]),
-					listen(button0, "keydown", /*handleKeydown*/ ctx[6]),
-					listen(button1, "click", /*next*/ ctx[5]),
-					listen(button1, "keydown", /*handleKeydown*/ ctx[6])
+					listen(button0, "click", /*goPrev*/ ctx[4]),
+					listen(button0, "keydown", /*handleKeyNavigation*/ ctx[6]),
+					listen(button1, "click", /*goNext*/ ctx[5]),
+					listen(button1, "keydown", /*handleKeyNavigation*/ ctx[6])
 				];
 
 				mounted = true;
@@ -975,23 +975,23 @@ function create_fragment(ctx) {
 	};
 }
 
-let totalItems = 6; // Número total de imágenes
-const itemsPerViewDesktop = 4; // Número de imágenes visibles a la vez en desktop
-const itemsPerViewMobile = 1; // Número de imágenes visibles a la vez en mobile
-const itemWidthDesktop = 25; // Porcentaje del ancho de cada imagen en desktop
-const itemWidthMobile = 75; // Porcentaje del ancho de cada imagen en mobile
-const margin = 44; // Margen entre las imágenes
+let totalSlides = 7; // Número total de imágenes
+const slidesPerViewDesktop = 4; // Número de imágenes visibles a la vez en desktop
+const slidesPerViewMobile = 1; // Número de imágenes visibles a la vez en mobile
+const slideWidthDesktop = 25; // Porcentaje del ancho de cada imagen en desktop
+const slideWidthMobile = 75; // Porcentaje del ancho de cada imagen en mobile
+const slideMargin = 44; // Margen entre las imágenes
 
-function getItemsPerView() {
+function getSlidesPerView() {
 	return window.innerWidth <= 768
-	? itemsPerViewMobile
-	: itemsPerViewDesktop;
+	? slidesPerViewMobile
+	: slidesPerViewDesktop;
 }
 
-function getItemWidth() {
+function getSlideWidth() {
 	return window.innerWidth <= 768
-	? itemWidthMobile
-	: itemWidthDesktop;
+	? slideWidthMobile
+	: slideWidthDesktop;
 }
 
 function instance($$self, $$props, $$invalidate) {
@@ -1000,56 +1000,52 @@ function instance($$self, $$props, $$invalidate) {
 	let { imagen } = $$props;
 	let { imagep } = $$props;
 	let { heading } = $$props;
-	let index = 0;
-	let interval;
+	let currentIndex = 0;
+	let autoSlideInterval;
 
-	function prev() {
-		if (index > 0) {
-			$$invalidate(8, index--, index);
+	function goPrev() {
+		if (currentIndex > 0) {
+			$$invalidate(8, currentIndex--, currentIndex);
 		} else {
-			$$invalidate(8, index = totalItems - getItemsPerView()); // Ir al final
+			$$invalidate(8, currentIndex = totalSlides - getSlidesPerView()); // Ir al final
 		}
 	}
 
-	function next() {
-		if (index < totalItems - getItemsPerView()) {
-			$$invalidate(8, index++, index);
+	function goNext() {
+		if (currentIndex < totalSlides - getSlidesPerView()) {
+			$$invalidate(8, currentIndex++, currentIndex);
 		} else {
-			$$invalidate(8, index = 0); // Ir al inicio
+			$$invalidate(8, currentIndex = 0); // Ir al inicio
 		}
 	}
 
-	function autoSlide() {
-		next();
-	}
-
-	function handleKeydown(event) {
+	function handleKeyNavigation(event) {
 		if (event.key === 'ArrowLeft') {
-			prev();
+			goPrev();
 		} else if (event.key === 'ArrowRight') {
-			next();
+			goNext();
 		}
 	}
 
 	onMount(() => {
-		const carouselInner = document.querySelector('.carousel-inner');
-		carouselInner.style.transform = `translateX(-${index * (getItemWidth() + margin / getItemsPerView())}%)`;
+		const sliderInner = document.querySelector('.slider-inner');
+		sliderInner.style.transform = `translateX(-${currentIndex * (getSlideWidth() + slideMargin / getSlidesPerView())}%)`;
 
-		// Inicia el desplazamiento automático
-		interval = setInterval(autoSlide, 3000); // Cambia cada 3 segundos
-
+		// Elimina el desplazamiento automático
+		// autoSlideInterval = setInterval(autoSlide, 8000); // Cambia cada 3 segundos
 		// Ajusta la transformación al cambiar el tamaño de la ventana
 		window.addEventListener('resize', () => {
-			carouselInner.style.transform = `translateX(-${index * (getItemWidth() + margin / getItemsPerView())}%)`;
+			sliderInner.style.transform = `translateX(-${currentIndex * (getSlideWidth() + slideMargin / getSlidesPerView())}%)`;
 		});
 	});
 
 	onDestroy(() => {
 		// Limpia el intervalo cuando el componente se destruye
-		clearInterval(interval);
+		clearInterval(autoSlideInterval);
 
 		window.removeEventListener('resize', () => {
-			carouselInner.style.transform = `translateX(-${index * (getItemWidth() + margin / getItemsPerView())}%)`;
+			const sliderInner = document.querySelector('.slider-inner');
+			sliderInner.style.transform = `translateX(-${currentIndex * (getSlideWidth() + slideMargin / getSlidesPerView())}%)`;
 		});
 	});
 
@@ -1062,18 +1058,28 @@ function instance($$self, $$props, $$invalidate) {
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*index*/ 256) {
+		if ($$self.$$.dirty & /*currentIndex*/ 256) {
 			{
-				const carouselInner = document.querySelector('.carousel-inner');
+				const sliderInner = document.querySelector('.slider-inner');
 
-				if (carouselInner) {
-					carouselInner.style.transform = `translateX(-${index * (getItemWidth() + margin / getItemsPerView())}%)`;
+				if (sliderInner) {
+					sliderInner.style.transform = `translateX(-${currentIndex * (getSlideWidth() + slideMargin / getSlidesPerView())}%)`;
 				}
 			}
 		}
 	};
 
-	return [cards, imagen, imagep, heading, prev, next, handleKeydown, props, index];
+	return [
+		cards,
+		imagen,
+		imagep,
+		heading,
+		goPrev,
+		goNext,
+		handleKeyNavigation,
+		props,
+		currentIndex
+	];
 }
 
 class Component extends SvelteComponent {
