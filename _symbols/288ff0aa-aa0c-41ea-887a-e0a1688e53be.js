@@ -4070,7 +4070,7 @@ function create_fragment(ctx) {
 			attr(span26, "class", "item svelte-1pox1o3");
 			attr(li9, "class", "svelte-1pox1o3");
 			attr(ul1, "class", "features svelte-1pox1o3");
-			attr(a1, "href", `https://backoffice-dev.globot.ai/subscription/login?subscriptionPlan=${/*BASE*/ ctx[4]}`);
+			attr(a1, "href", `https://backoffice-qa.globot.ai/subscription/login?subscriptionPlan=${/*BASE*/ ctx[4]}`);
 			attr(a1, "class", "button svelte-1pox1o3");
 			attr(div6, "class", "tier tier2 svelte-1pox1o3");
 			attr(span27, "class", "numerator svelte-1pox1o3");
@@ -4103,7 +4103,7 @@ function create_fragment(ctx) {
 			attr(span43, "class", "tooltip svelte-1pox1o3");
 			attr(li15, "class", "svelte-1pox1o3");
 			attr(ul2, "class", "features svelte-1pox1o3");
-			attr(a2, "href", `https://backoffice-dev.globot.ai/subscription/login?subscriptionPlan=${/*PREMIUM*/ ctx[5]}`);
+			attr(a2, "href", `https://backoffice-qa.globot.ai/subscription/login?subscriptionPlan=${/*PREMIUM*/ ctx[5]}`);
 			attr(a2, "class", "button svelte-1pox1o3");
 			attr(div10, "class", "tier tier3 svelte-1pox1o3");
 			attr(span44, "class", "numerator svelte-1pox1o3");
