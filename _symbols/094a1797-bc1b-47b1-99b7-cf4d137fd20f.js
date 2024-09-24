@@ -591,7 +591,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (191:6) {#each cards as card, index}
+// (193:6) {#each cards as card, index}
 function create_each_block(ctx) {
 	let div5;
 	let img;
@@ -724,11 +724,11 @@ function create_each_block(ctx) {
 		h() {
 			if (!src_url_equal(img.src, img_src_value = /*card*/ ctx[11].image.url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*card*/ ctx[11].title);
-			attr(img, "class", "svelte-1ejq76l");
+			attr(img, "class", "svelte-lishb2");
 			set_style(div0, "display", "flex");
 			set_style(div0, "justify-content", "space-between");
 			set_style(div0, "width", "100%");
-			attr(div1, "class", "date svelte-1ejq76l");
+			attr(div1, "class", "date svelte-lishb2");
 			attr(span2, "class", "label");
 			attr(path, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path, "stroke", "#7B5CF5");
@@ -743,9 +743,9 @@ function create_each_block(ctx) {
 			attr(a, "class", "link");
 			attr(a, "href", a_href_value = /*card*/ ctx[11].link.url);
 			attr(a, "target", "_blank");
-			attr(div3, "class", "text svelte-1ejq76l");
-			attr(div4, "class", "part2 svelte-1ejq76l");
-			attr(div5, "class", "card svelte-1ejq76l");
+			attr(div3, "class", "text svelte-lishb2");
+			attr(div4, "class", "part2 svelte-lishb2");
+			attr(div5, "class", "card svelte-lishb2");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div5, anchor);
@@ -888,14 +888,14 @@ function create_fragment(ctx) {
 			attr(h2, "class", "heading");
 			if (!src_url_equal(img0.src, img0_src_value = /*imagep*/ ctx[2].url)) attr(img0, "src", img0_src_value);
 			attr(img0, "alt", "Previous");
-			attr(button0, "class", "carousel-control-prev svelte-1ejq76l");
+			attr(button0, "class", "carousel-control-prev");
 			if (!src_url_equal(img1.src, img1_src_value = /*imagen*/ ctx[1].url)) attr(img1, "src", img1_src_value);
 			attr(img1, "alt", "Next");
-			attr(button1, "class", "carousel-control-next svelte-1ejq76l");
-			attr(div1, "class", "title svelte-1ejq76l");
-			attr(div2, "class", "carousel-inner svelte-1ejq76l");
-			attr(div3, "class", "carousel");
-			attr(section, "class", "news-carousel svelte-1ejq76l");
+			attr(button1, "class", "carousel-control-next");
+			attr(div1, "class", "title svelte-lishb2");
+			attr(div2, "class", "carousel-inner svelte-lishb2");
+			attr(div3, "class", "carousel svelte-lishb2");
+			attr(section, "class", "news-carousel svelte-lishb2");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -987,7 +987,6 @@ function getItemsPerView() {
 	? itemsPerViewMobile
 	: itemsPerViewDesktop;
 
-	console.log('Items per view:', itemsPerView);
 	return itemsPerView;
 }
 
@@ -996,7 +995,6 @@ function getItemWidth() {
 	? itemWidthMobile
 	: itemWidthDesktop;
 
-	console.log('Item width:', itemWidth);
 	return itemWidth;
 }
 
@@ -1016,7 +1014,6 @@ function instance($$self, $$props, $$invalidate) {
 			index = totalItems - getItemsPerView(); // Ir al final
 		}
 
-		console.log('Prev button clicked, new index:', index);
 		updateTransform();
 	}
 
@@ -1027,7 +1024,6 @@ function instance($$self, $$props, $$invalidate) {
 			index = 0; // Ir al inicio
 		}
 
-		console.log('Next button clicked, new index:', index);
 		updateTransform();
 	}
 
@@ -1043,27 +1039,23 @@ function instance($$self, $$props, $$invalidate) {
 		const carouselInner = document.querySelector('.carousel-inner');
 
 		if (carouselInner) {
-			const transformValue = `translateX(-${index * (getItemWidth() + margin / getItemsPerView())}%)`;
-			console.log('Updating transform:', transformValue);
+			const itemWidth = getItemWidth();
+
+			// Calcular el desplazamiento en porcentaje, basado en el número de elementos
+			const transformValue = `translateX(-${index * (itemWidth + margin / totalItems)}%)`;
+
 			carouselInner.style.transform = transformValue;
-		} else {
-			console.log('Carousel inner not found');
 		}
 	}
 
 	onMount(() => {
-		console.log('Component mounted');
 		updateTransform();
 
-		// Elimina el desplazamiento automático
-		// interval = setInterval(autoSlide, 8000); // Cambia cada 3 segundos
 		// Ajusta la transformación al cambiar el tamaño de la ventana
 		window.addEventListener('resize', updateTransform);
 	});
 
 	onDestroy(() => {
-		console.log('Component destroyed');
-
 		// Limpia el intervalo cuando el componente se destruye
 		clearInterval(interval);
 
