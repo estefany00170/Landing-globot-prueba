@@ -2866,7 +2866,7 @@ function create_if_block(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = /*link*/ ctx[0].url);
-			attr(a, "class", "button svelte-d24th6");
+			attr(a, "class", "button svelte-yugq0h");
 			attr(a, "target", "_blank");
 			set_style(a, "display", "flex");
 			set_style(a, "align-items", "center");
@@ -2990,9 +2990,9 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h1, "class", "headline svelte-d24th6");
-			attr(div0, "class", "subheading svelte-d24th6");
-			attr(div1, "class", "body svelte-d24th6");
+			attr(h1, "class", "headline svelte-yugq0h");
+			attr(div0, "class", "subheading svelte-yugq0h");
+			attr(div1, "class", "body svelte-yugq0h");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
 			if (!src_url_equal(dotlottie_player.src, dotlottie_player_src_value = "https://lottie.host/49a14b01-37ac-4a70-b54d-05ae3e673016/foM3bPLkdi.json")) set_custom_element_data(dotlottie_player, "src", dotlottie_player_src_value);
@@ -3003,8 +3003,8 @@ function create_fragment(ctx) {
 			set_style(dotlottie_player, "min-width", "347px");
 			set_custom_element_data(dotlottie_player, "loop", "");
 			set_custom_element_data(dotlottie_player, "autoplay", "");
-			attr(div2, "class", "section-containerF svelte-d24th6");
-			attr(section, "class", "svelte-d24th6");
+			attr(div2, "class", "section-containerF svelte-yugq0h");
+			attr(section, "class", "svelte-yugq0h");
 			toggle_class(section, "image-left", /*variation*/ ctx[2] === "image_left");
 		},
 		m(target, anchor) {
