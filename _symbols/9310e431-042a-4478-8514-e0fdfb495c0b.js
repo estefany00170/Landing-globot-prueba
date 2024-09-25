@@ -3057,7 +3057,7 @@ function create_fragment(ctx) {
 			set_custom_element_data(dotlottie_player, "background", "transparent");
 			set_custom_element_data(dotlottie_player, "speed", "1");
 			set_style(dotlottie_player, "width", "100%");
-			set_style(dotlottie_player, "height", "100%");
+			set_style(dotlottie_player, "height", "auto");
 			set_style(dotlottie_player, "min-width", "347px");
 			set_custom_element_data(dotlottie_player, "loop", "");
 			set_custom_element_data(dotlottie_player, "autoplay", "");
