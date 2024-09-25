@@ -2995,6 +2995,7 @@ function create_fragment(ctx) {
 			attr(div1, "class", "body svelte-yugq0h");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
+			script.defer = true;
 			if (!src_url_equal(dotlottie_player.src, dotlottie_player_src_value = "https://lottie.host/49a14b01-37ac-4a70-b54d-05ae3e673016/foM3bPLkdi.json")) set_custom_element_data(dotlottie_player, "src", dotlottie_player_src_value);
 			set_custom_element_data(dotlottie_player, "background", "transparent");
 			set_custom_element_data(dotlottie_player, "speed", "1");
