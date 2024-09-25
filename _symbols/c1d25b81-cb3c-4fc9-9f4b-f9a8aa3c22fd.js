@@ -736,7 +736,7 @@ function create_fragment(ctx) {
 			var div2_nodes = children(div2);
 			figure = claim_element(div2_nodes, "FIGURE", { styles: true, class: true });
 			var figure_nodes = children(figure);
-			img0 = claim_element(figure_nodes, "IMG", { src: true, alt: true });
+			img0 = claim_element(figure_nodes, "IMG", { src: true, width: true, alt: true });
 			figure_nodes.forEach(detach);
 			t2 = claim_space(div2_nodes);
 			div1 = claim_element(div2_nodes, "DIV", { class: true });
@@ -763,7 +763,14 @@ function create_fragment(ctx) {
 			var div10_nodes = children(div10);
 			div3 = claim_element(div10_nodes, "DIV", { class: true });
 			var div3_nodes = children(div3);
-			img2 = claim_element(div3_nodes, "IMG", { src: true, alt: true, class: true });
+
+			img2 = claim_element(div3_nodes, "IMG", {
+				src: true,
+				width: true,
+				alt: true,
+				class: true
+			});
+
 			t7 = claim_space(div3_nodes);
 			span0 = claim_element(div3_nodes, "SPAN", { class: true });
 			var span0_nodes = children(span0);
@@ -776,7 +783,14 @@ function create_fragment(ctx) {
 			t9 = claim_space(div10_nodes);
 			div4 = claim_element(div10_nodes, "DIV", { class: true });
 			var div4_nodes = children(div4);
-			img3 = claim_element(div4_nodes, "IMG", { src: true, alt: true, class: true });
+
+			img3 = claim_element(div4_nodes, "IMG", {
+				src: true,
+				width: true,
+				alt: true,
+				class: true
+			});
+
 			t10 = claim_space(div4_nodes);
 			span1 = claim_element(div4_nodes, "SPAN", { class: true });
 			var span1_nodes = children(span1);
@@ -789,7 +803,14 @@ function create_fragment(ctx) {
 			t12 = claim_space(div10_nodes);
 			div5 = claim_element(div10_nodes, "DIV", { class: true });
 			var div5_nodes = children(div5);
-			img4 = claim_element(div5_nodes, "IMG", { src: true, alt: true, class: true });
+
+			img4 = claim_element(div5_nodes, "IMG", {
+				src: true,
+				width: true,
+				alt: true,
+				class: true
+			});
+
 			t13 = claim_space(div5_nodes);
 			span2 = claim_element(div5_nodes, "SPAN", { class: true });
 			var span2_nodes = children(span2);
@@ -802,7 +823,14 @@ function create_fragment(ctx) {
 			t15 = claim_space(div10_nodes);
 			div6 = claim_element(div10_nodes, "DIV", { class: true });
 			var div6_nodes = children(div6);
-			img5 = claim_element(div6_nodes, "IMG", { src: true, alt: true, class: true });
+
+			img5 = claim_element(div6_nodes, "IMG", {
+				src: true,
+				width: true,
+				alt: true,
+				class: true
+			});
+
 			t16 = claim_space(div6_nodes);
 			span3 = claim_element(div6_nodes, "SPAN", { class: true });
 			var span3_nodes = children(span3);
@@ -815,7 +843,14 @@ function create_fragment(ctx) {
 			t18 = claim_space(div10_nodes);
 			div7 = claim_element(div10_nodes, "DIV", { class: true });
 			var div7_nodes = children(div7);
-			img6 = claim_element(div7_nodes, "IMG", { src: true, alt: true, class: true });
+
+			img6 = claim_element(div7_nodes, "IMG", {
+				src: true,
+				width: true,
+				alt: true,
+				class: true
+			});
+
 			t19 = claim_space(div7_nodes);
 			span4 = claim_element(div7_nodes, "SPAN", { class: true });
 			var span4_nodes = children(span4);
@@ -828,7 +863,14 @@ function create_fragment(ctx) {
 			t21 = claim_space(div10_nodes);
 			div8 = claim_element(div10_nodes, "DIV", { class: true });
 			var div8_nodes = children(div8);
-			img7 = claim_element(div8_nodes, "IMG", { src: true, alt: true, class: true });
+
+			img7 = claim_element(div8_nodes, "IMG", {
+				src: true,
+				width: true,
+				alt: true,
+				class: true
+			});
+
 			t22 = claim_space(div8_nodes);
 			span5 = claim_element(div8_nodes, "SPAN", { class: true });
 			var span5_nodes = children(span5);
@@ -841,7 +883,14 @@ function create_fragment(ctx) {
 			t24 = claim_space(div10_nodes);
 			div9 = claim_element(div10_nodes, "DIV", { class: true });
 			var div9_nodes = children(div9);
-			img8 = claim_element(div9_nodes, "IMG", { src: true, alt: true, class: true });
+
+			img8 = claim_element(div9_nodes, "IMG", {
+				src: true,
+				width: true,
+				alt: true,
+				class: true
+			});
+
 			t25 = claim_space(div9_nodes);
 			span6 = claim_element(div9_nodes, "SPAN", { class: true });
 			var span6_nodes = children(span6);
@@ -863,57 +912,65 @@ function create_fragment(ctx) {
 		},
 		h() {
 			if (!src_url_equal(img0.src, img0_src_value = /*image*/ ctx[0].url)) attr(img0, "src", img0_src_value);
+			attr(img0, "width", "100%");
 			attr(img0, "alt", img0_alt_value = /*image*/ ctx[0].alt);
 			attr(figure, "styles", "width: 266.347px; height: 364.736px;");
-			attr(figure, "class", "svelte-18x93u3");
-			attr(h1, "class", "headline svelte-18x93u3");
-			attr(div0, "class", "subheading svelte-18x93u3");
-			attr(div1, "class", "body svelte-18x93u3");
-			attr(div2, "class", "section-container svelte-18x93u3");
+			attr(figure, "class", "svelte-1yrgqi");
+			attr(h1, "class", "headline svelte-1yrgqi");
+			attr(div0, "class", "subheading svelte-1yrgqi");
+			attr(div1, "class", "body svelte-1yrgqi");
+			attr(div2, "class", "section-container svelte-1yrgqi");
 			if (!src_url_equal(img1.src, img1_src_value = /*imagep*/ ctx[9].url)) attr(img1, "src", img1_src_value);
 			attr(img1, "alt", "Previous");
-			attr(button0, "class", "carousel-control-prev svelte-18x93u3");
+			attr(button0, "class", "carousel-control-prev svelte-1yrgqi");
 			if (!src_url_equal(img2.src, img2_src_value = /*image1*/ ctx[1].url)) attr(img2, "src", img2_src_value);
+			attr(img2, "width", "100%");
 			attr(img2, "alt", "Imagen 1");
-			attr(img2, "class", "svelte-18x93u3");
-			attr(span0, "class", "text svelte-18x93u3");
-			attr(div3, "class", "carousel-item active svelte-18x93u3");
+			attr(img2, "class", "svelte-1yrgqi");
+			attr(span0, "class", "text svelte-1yrgqi");
+			attr(div3, "class", "carousel-item active svelte-1yrgqi");
 			if (!src_url_equal(img3.src, img3_src_value = /*image2*/ ctx[2].url)) attr(img3, "src", img3_src_value);
+			attr(img3, "width", "100%");
 			attr(img3, "alt", "Imagen 2");
-			attr(img3, "class", "svelte-18x93u3");
-			attr(span1, "class", "text svelte-18x93u3");
-			attr(div4, "class", "carousel-item svelte-18x93u3");
+			attr(img3, "class", "svelte-1yrgqi");
+			attr(span1, "class", "text svelte-1yrgqi");
+			attr(div4, "class", "carousel-item svelte-1yrgqi");
 			if (!src_url_equal(img4.src, img4_src_value = /*image3*/ ctx[3].url)) attr(img4, "src", img4_src_value);
+			attr(img4, "width", "100%");
 			attr(img4, "alt", "Imagen 3");
-			attr(img4, "class", "svelte-18x93u3");
-			attr(span2, "class", "text svelte-18x93u3");
-			attr(div5, "class", "carousel-item svelte-18x93u3");
+			attr(img4, "class", "svelte-1yrgqi");
+			attr(span2, "class", "text svelte-1yrgqi");
+			attr(div5, "class", "carousel-item svelte-1yrgqi");
 			if (!src_url_equal(img5.src, img5_src_value = /*image4*/ ctx[4].url)) attr(img5, "src", img5_src_value);
+			attr(img5, "width", "100%");
 			attr(img5, "alt", "Imagen 4");
-			attr(img5, "class", "svelte-18x93u3");
-			attr(span3, "class", "text svelte-18x93u3");
-			attr(div6, "class", "carousel-item svelte-18x93u3");
+			attr(img5, "class", "svelte-1yrgqi");
+			attr(span3, "class", "text svelte-1yrgqi");
+			attr(div6, "class", "carousel-item svelte-1yrgqi");
 			if (!src_url_equal(img6.src, img6_src_value = /*image5*/ ctx[5].url)) attr(img6, "src", img6_src_value);
+			attr(img6, "width", "100%");
 			attr(img6, "alt", "Imagen 5");
-			attr(img6, "class", "svelte-18x93u3");
-			attr(span4, "class", "text svelte-18x93u3");
-			attr(div7, "class", "carousel-item svelte-18x93u3");
+			attr(img6, "class", "svelte-1yrgqi");
+			attr(span4, "class", "text svelte-1yrgqi");
+			attr(div7, "class", "carousel-item svelte-1yrgqi");
 			if (!src_url_equal(img7.src, img7_src_value = /*image6*/ ctx[6].url)) attr(img7, "src", img7_src_value);
+			attr(img7, "width", "100%");
 			attr(img7, "alt", "Imagen 6");
-			attr(img7, "class", "svelte-18x93u3");
-			attr(span5, "class", "text svelte-18x93u3");
-			attr(div8, "class", "carousel-item svelte-18x93u3");
+			attr(img7, "class", "svelte-1yrgqi");
+			attr(span5, "class", "text svelte-1yrgqi");
+			attr(div8, "class", "carousel-item svelte-1yrgqi");
 			if (!src_url_equal(img8.src, img8_src_value = /*image7*/ ctx[7].url)) attr(img8, "src", img8_src_value);
+			attr(img8, "width", "100%");
 			attr(img8, "alt", "Imagen 7");
-			attr(img8, "class", "svelte-18x93u3");
-			attr(span6, "class", "text svelte-18x93u3");
-			attr(div9, "class", "carousel-item active svelte-18x93u3");
-			attr(div10, "class", "carousel-inner svelte-18x93u3");
-			attr(div11, "class", "carousel svelte-18x93u3");
+			attr(img8, "class", "svelte-1yrgqi");
+			attr(span6, "class", "text svelte-1yrgqi");
+			attr(div9, "class", "carousel-item active svelte-1yrgqi");
+			attr(div10, "class", "carousel-inner svelte-1yrgqi");
+			attr(div11, "class", "carousel svelte-1yrgqi");
 			if (!src_url_equal(img9.src, img9_src_value = /*imagen*/ ctx[8].url)) attr(img9, "src", img9_src_value);
 			attr(img9, "alt", "Next");
-			attr(button1, "class", "carousel-control-next svelte-18x93u3");
-			attr(section, "class", "svelte-18x93u3");
+			attr(button1, "class", "carousel-control-next svelte-1yrgqi");
+			attr(section, "class", "svelte-1yrgqi");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
