@@ -736,7 +736,14 @@ function create_fragment(ctx) {
 			var div2_nodes = children(div2);
 			figure = claim_element(div2_nodes, "FIGURE", { class: true });
 			var figure_nodes = children(figure);
-			img0 = claim_element(figure_nodes, "IMG", { src: true, width: true, alt: true });
+
+			img0 = claim_element(figure_nodes, "IMG", {
+				src: true,
+				width: true,
+				alt: true,
+				loading: true
+			});
+
 			figure_nodes.forEach(detach);
 			t2 = claim_space(div2_nodes);
 			div1 = claim_element(div2_nodes, "DIV", { class: true });
@@ -921,6 +928,7 @@ function create_fragment(ctx) {
 			if (!src_url_equal(img0.src, img0_src_value = /*image*/ ctx[0].url)) attr(img0, "src", img0_src_value);
 			attr(img0, "width", "100%");
 			attr(img0, "alt", img0_alt_value = /*image*/ ctx[0].alt);
+			attr(img0, "loading", "lazy");
 			attr(figure, "class", "svelte-7ybtty");
 			attr(h1, "class", "headline svelte-7ybtty");
 			attr(div0, "class", "subheading svelte-7ybtty");
