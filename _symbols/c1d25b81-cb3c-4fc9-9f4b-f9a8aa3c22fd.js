@@ -754,7 +754,7 @@ function create_fragment(ctx) {
 			t5 = claim_space(section_nodes);
 			button0 = claim_element(section_nodes, "BUTTON", { class: true });
 			var button0_nodes = children(button0);
-			img1 = claim_element(button0_nodes, "IMG", { src: true, alt: true });
+			img1 = claim_element(button0_nodes, "IMG", { src: true, alt: true, loading: true });
 			button0_nodes.forEach(detach);
 			t6 = claim_space(section_nodes);
 			div11 = claim_element(section_nodes, "DIV", { class: true });
@@ -768,6 +768,7 @@ function create_fragment(ctx) {
 				src: true,
 				width: true,
 				alt: true,
+				loading: true,
 				class: true
 			});
 
@@ -788,6 +789,7 @@ function create_fragment(ctx) {
 				src: true,
 				width: true,
 				alt: true,
+				loading: true,
 				class: true
 			});
 
@@ -808,6 +810,7 @@ function create_fragment(ctx) {
 				src: true,
 				width: true,
 				alt: true,
+				loading: true,
 				class: true
 			});
 
@@ -828,6 +831,7 @@ function create_fragment(ctx) {
 				src: true,
 				width: true,
 				alt: true,
+				loading: true,
 				class: true
 			});
 
@@ -848,6 +852,7 @@ function create_fragment(ctx) {
 				src: true,
 				width: true,
 				alt: true,
+				loading: true,
 				class: true
 			});
 
@@ -868,6 +873,7 @@ function create_fragment(ctx) {
 				src: true,
 				width: true,
 				alt: true,
+				loading: true,
 				class: true
 			});
 
@@ -888,6 +894,7 @@ function create_fragment(ctx) {
 				src: true,
 				width: true,
 				alt: true,
+				loading: true,
 				class: true
 			});
 
@@ -922,46 +929,54 @@ function create_fragment(ctx) {
 			attr(div2, "class", "section-container svelte-1yrgqi");
 			if (!src_url_equal(img1.src, img1_src_value = /*imagep*/ ctx[9].url)) attr(img1, "src", img1_src_value);
 			attr(img1, "alt", "Previous");
+			attr(img1, "loading", "lazy");
 			attr(button0, "class", "carousel-control-prev svelte-1yrgqi");
 			if (!src_url_equal(img2.src, img2_src_value = /*image1*/ ctx[1].url)) attr(img2, "src", img2_src_value);
 			attr(img2, "width", "100%");
 			attr(img2, "alt", "Imagen 1");
+			attr(img2, "loading", "lazy");
 			attr(img2, "class", "svelte-1yrgqi");
 			attr(span0, "class", "text svelte-1yrgqi");
 			attr(div3, "class", "carousel-item active svelte-1yrgqi");
 			if (!src_url_equal(img3.src, img3_src_value = /*image2*/ ctx[2].url)) attr(img3, "src", img3_src_value);
 			attr(img3, "width", "100%");
 			attr(img3, "alt", "Imagen 2");
+			attr(img3, "loading", "lazy");
 			attr(img3, "class", "svelte-1yrgqi");
 			attr(span1, "class", "text svelte-1yrgqi");
 			attr(div4, "class", "carousel-item svelte-1yrgqi");
 			if (!src_url_equal(img4.src, img4_src_value = /*image3*/ ctx[3].url)) attr(img4, "src", img4_src_value);
 			attr(img4, "width", "100%");
 			attr(img4, "alt", "Imagen 3");
+			attr(img4, "loading", "lazy");
 			attr(img4, "class", "svelte-1yrgqi");
 			attr(span2, "class", "text svelte-1yrgqi");
 			attr(div5, "class", "carousel-item svelte-1yrgqi");
 			if (!src_url_equal(img5.src, img5_src_value = /*image4*/ ctx[4].url)) attr(img5, "src", img5_src_value);
 			attr(img5, "width", "100%");
 			attr(img5, "alt", "Imagen 4");
+			attr(img5, "loading", "lazy");
 			attr(img5, "class", "svelte-1yrgqi");
 			attr(span3, "class", "text svelte-1yrgqi");
 			attr(div6, "class", "carousel-item svelte-1yrgqi");
 			if (!src_url_equal(img6.src, img6_src_value = /*image5*/ ctx[5].url)) attr(img6, "src", img6_src_value);
 			attr(img6, "width", "100%");
 			attr(img6, "alt", "Imagen 5");
+			attr(img6, "loading", "lazy");
 			attr(img6, "class", "svelte-1yrgqi");
 			attr(span4, "class", "text svelte-1yrgqi");
 			attr(div7, "class", "carousel-item svelte-1yrgqi");
 			if (!src_url_equal(img7.src, img7_src_value = /*image6*/ ctx[6].url)) attr(img7, "src", img7_src_value);
 			attr(img7, "width", "100%");
 			attr(img7, "alt", "Imagen 6");
+			attr(img7, "loading", "lazy");
 			attr(img7, "class", "svelte-1yrgqi");
 			attr(span5, "class", "text svelte-1yrgqi");
 			attr(div8, "class", "carousel-item svelte-1yrgqi");
 			if (!src_url_equal(img8.src, img8_src_value = /*image7*/ ctx[7].url)) attr(img8, "src", img8_src_value);
 			attr(img8, "width", "100%");
 			attr(img8, "alt", "Imagen 7");
+			attr(img8, "loading", "lazy");
 			attr(img8, "class", "svelte-1yrgqi");
 			attr(span6, "class", "text svelte-1yrgqi");
 			attr(div9, "class", "carousel-item active svelte-1yrgqi");
