@@ -2866,7 +2866,7 @@ function create_if_block(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = /*link*/ ctx[0].url);
-			attr(a, "class", "button svelte-fqxgs6");
+			attr(a, "class", "button svelte-n7r97");
 			attr(a, "target", "_blank");
 			set_style(a, "display", "flex");
 			set_style(a, "align-items", "center");
@@ -2927,7 +2927,6 @@ function create_fragment(ctx) {
 	let path0;
 	let path1;
 	let path2;
-	let t9;
 	let current;
 	let if_block = /*link*/ ctx[0].label && create_if_block(ctx);
 
@@ -2956,7 +2955,6 @@ function create_fragment(ctx) {
 			path0 = svg_element("path");
 			path1 = svg_element("path");
 			path2 = svg_element("path");
-			t9 = text(" -->");
 			this.h();
 		},
 		l(nodes) {
@@ -3045,22 +3043,21 @@ function create_fragment(ctx) {
 			children(path2).forEach(detach);
 			svg_nodes.forEach(detach);
 			figure_nodes.forEach(detach);
-			t9 = claim_text(div2_nodes, " -->");
 			div2_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(h1, "class", "headline svelte-fqxgs6");
-			attr(div0, "class", "subheading svelte-fqxgs6");
-			attr(div1, "class", "body svelte-fqxgs6");
+			attr(h1, "class", "headline svelte-n7r97");
+			attr(div0, "class", "subheading svelte-n7r97");
+			attr(div1, "class", "body svelte-n7r97");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
 			if (!src_url_equal(dotlottie_player.src, dotlottie_player_src_value = "https://lottie.host/49a14b01-37ac-4a70-b54d-05ae3e673016/foM3bPLkdi.json")) set_custom_element_data(dotlottie_player, "src", dotlottie_player_src_value);
 			set_custom_element_data(dotlottie_player, "background", "transparent");
 			set_custom_element_data(dotlottie_player, "speed", "1");
-			set_style(dotlottie_player, "width", "680px");
-			set_style(dotlottie_player, "height", "600px");
+			set_style(dotlottie_player, "width", "100%");
+			set_style(dotlottie_player, "height", "100%");
 			set_custom_element_data(dotlottie_player, "loop", "");
 			set_custom_element_data(dotlottie_player, "autoplay", "");
 			attr(path0, "opacity", "0.05");
@@ -3083,10 +3080,10 @@ function create_fragment(ctx) {
 			attr(svg, "viewBox", "0 0 709 689");
 			attr(svg, "fill", "none");
 			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-			attr(svg, "class", "svelte-fqxgs6");
-			attr(figure, "class", "svelte-fqxgs6");
-			attr(div2, "class", "section-container svelte-fqxgs6");
-			attr(section, "class", "svelte-fqxgs6");
+			attr(svg, "class", "svelte-n7r97");
+			attr(figure, "class", "svelte-n7r97");
+			attr(div2, "class", "section-container svelte-n7r97");
+			attr(section, "class", "svelte-n7r97");
 			toggle_class(section, "image-left", /*variation*/ ctx[2] === "image_left");
 		},
 		m(target, anchor) {
@@ -3113,7 +3110,6 @@ function create_fragment(ctx) {
 			append_hydration(svg, path0);
 			append_hydration(svg, path1);
 			append_hydration(svg, path2);
-			append_hydration(div2, t9);
 			current = true;
 		},
 		p(ctx, [dirty]) {
