@@ -2935,7 +2935,7 @@ function create_fragment(ctx) {
 			div1_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
 			t8 = claim_space(div3_nodes);
-			img = claim_element(div3_nodes, "IMG", { src: true });
+			img = claim_element(div3_nodes, "IMG", { src: true, alt: true });
 			div3_nodes.forEach(detach);
 			t9 = claim_space(section_nodes);
 			script = claim_element(section_nodes, "SCRIPT", { src: true, type: true });
@@ -2954,6 +2954,7 @@ function create_fragment(ctx) {
 			attr(div1, "class", "buttons svelte-nytcxr");
 			attr(div2, "class", "card-text svelte-nytcxr");
 			if (!src_url_equal(img.src, img_src_value = /*image*/ ctx[1].url)) attr(img, "src", img_src_value);
+			attr(img, "alt", "globot consultas");
 			attr(div3, "class", "card svelte-nytcxr");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
