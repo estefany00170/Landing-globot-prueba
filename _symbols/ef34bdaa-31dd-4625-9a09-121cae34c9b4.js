@@ -1,4 +1,4 @@
-// Header - Updated September 25, 2024
+// Header - Updated September 26, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3082,13 +3082,13 @@ let Component$1 = class Component extends SvelteComponent {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[8] = list[i].link;
+	child_ctx[9] = list[i].link;
 	return child_ctx;
 }
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[8] = list[i].link;
+	child_ctx[9] = list[i].link;
 	return child_ctx;
 }
 
@@ -3162,7 +3162,7 @@ function create_if_block_1(ctx) {
 // (258:8) {#each site_nav as { link }}
 function create_each_block_1(ctx) {
 	let a;
-	let t_value = /*link*/ ctx[8].label + "";
+	let t_value = /*link*/ ctx[9].label + "";
 	let t;
 	let a_href_value;
 
@@ -3181,16 +3181,16 @@ function create_each_block_1(ctx) {
 		},
 		h() {
 			attr(a, "class", "nav-item svelte-120qp72");
-			attr(a, "href", a_href_value = /*link*/ ctx[8].url);
+			attr(a, "href", a_href_value = /*link*/ ctx[9].url);
 		},
 		m(target, anchor) {
 			insert_hydration(target, a, anchor);
 			append_hydration(a, t);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*site_nav*/ 1 && t_value !== (t_value = /*link*/ ctx[8].label + "")) set_data(t, t_value);
+			if (dirty & /*site_nav*/ 1 && t_value !== (t_value = /*link*/ ctx[9].label + "")) set_data(t, t_value);
 
-			if (dirty & /*site_nav*/ 1 && a_href_value !== (a_href_value = /*link*/ ctx[8].url)) {
+			if (dirty & /*site_nav*/ 1 && a_href_value !== (a_href_value = /*link*/ ctx[9].url)) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -3344,12 +3344,12 @@ function create_if_block(ctx) {
 			current = true;
 
 			if (!mounted) {
-				dispose = listen(button, "click", /*click_handler_1*/ ctx[6]);
+				dispose = listen(button, "click", /*click_handler_2*/ ctx[7]);
 				mounted = true;
 			}
 		},
 		p(ctx, dirty) {
-			if (dirty & /*site_nav*/ 1) {
+			if (dirty & /*site_nav, mobileNavOpen*/ 9) {
 				each_value = /*site_nav*/ ctx[0];
 				let i;
 
@@ -3422,9 +3422,11 @@ function create_if_block(ctx) {
 // (284:8) {#each site_nav as { link }}
 function create_each_block(ctx) {
 	let a;
-	let t_value = /*link*/ ctx[8].label + "";
+	let t_value = /*link*/ ctx[9].label + "";
 	let t;
 	let a_href_value;
+	let mounted;
+	let dispose;
 
 	return {
 		c() {
@@ -3440,22 +3442,29 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "href", a_href_value = /*link*/ ctx[8].url);
+			attr(a, "href", a_href_value = /*link*/ ctx[9].url);
 			attr(a, "class", "svelte-120qp72");
 		},
 		m(target, anchor) {
 			insert_hydration(target, a, anchor);
 			append_hydration(a, t);
+
+			if (!mounted) {
+				dispose = listen(a, "click", /*click_handler_1*/ ctx[6]);
+				mounted = true;
+			}
 		},
 		p(ctx, dirty) {
-			if (dirty & /*site_nav*/ 1 && t_value !== (t_value = /*link*/ ctx[8].label + "")) set_data(t, t_value);
+			if (dirty & /*site_nav*/ 1 && t_value !== (t_value = /*link*/ ctx[9].label + "")) set_data(t, t_value);
 
-			if (dirty & /*site_nav*/ 1 && a_href_value !== (a_href_value = /*link*/ ctx[8].url)) {
+			if (dirty & /*site_nav*/ 1 && a_href_value !== (a_href_value = /*link*/ ctx[9].url)) {
 				attr(a, "href", a_href_value);
 			}
 		},
 		d(detaching) {
 			if (detaching) detach(a);
+			mounted = false;
+			dispose();
 		}
 	};
 }
@@ -3810,6 +3819,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	const click_handler = () => $$invalidate(3, mobileNavOpen = true);
 	const click_handler_1 = () => $$invalidate(3, mobileNavOpen = false);
+	const click_handler_2 = () => $$invalidate(3, mobileNavOpen = false);
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(4, props = $$props.props);
@@ -3818,7 +3828,16 @@ function instance($$self, $$props, $$invalidate) {
 		if ('site_nav' in $$props) $$invalidate(0, site_nav = $$props.site_nav);
 	};
 
-	return [site_nav, cta, logo, mobileNavOpen, props, click_handler, click_handler_1];
+	return [
+		site_nav,
+		cta,
+		logo,
+		mobileNavOpen,
+		props,
+		click_handler,
+		click_handler_1,
+		click_handler_2
+	];
 }
 
 class Component extends SvelteComponent {
