@@ -3092,7 +3092,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-8vaufz");
+			attr(div, "class", "description svelte-dwphva");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3205,12 +3205,12 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-8vaufz");
-			attr(span0, "class", "svelte-8vaufz");
-			attr(span1, "class", "icone svelte-8vaufz");
-			attr(button, "class", "svelte-8vaufz");
-			attr(div1, "class", "item-icon svelte-8vaufz");
-			attr(div3, "class", "item svelte-8vaufz");
+			attr(div0, "class", "menu-icon svelte-dwphva");
+			attr(span0, "class", "svelte-dwphva");
+			attr(span1, "class", "icone svelte-dwphva");
+			attr(button, "class", "svelte-dwphva");
+			attr(div1, "class", "item-icon svelte-dwphva");
+			attr(div3, "class", "item svelte-dwphva");
 			toggle_class(div3, "active", /*activeItem*/ ctx[5] === /*i*/ ctx[15]);
 			this.first = div3;
 		},
@@ -3687,41 +3687,41 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-8vaufz");
+			attr(div0, "class", "menu-icon svelte-dwphva");
 			attr(a0, "href", "/tutoriales/");
-			attr(div1, "class", "item-icon svelte-8vaufz");
+			attr(div1, "class", "item-icon svelte-dwphva");
 			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-8vaufz");
-			attr(div4, "class", "accordion svelte-8vaufz");
-			attr(div5, "class", "box1 svelte-8vaufz");
+			attr(div3, "class", "tutoriales svelte-dwphva");
+			attr(div4, "class", "accordion svelte-dwphva");
+			attr(div5, "class", "box1 svelte-dwphva");
 			attr(a1, "href", "/tutoriales/");
 			set_style(span1, "color", "var(--Primary-2, #7B5CF5)");
-			attr(div6, "class", "steps svelte-8vaufz");
+			attr(div6, "class", "steps svelte-dwphva");
 			set_style(div6, "display", "flex");
 			set_style(div6, "gap", "15px");
 			set_style(div6, "margin-bottom", "20px");
 			set_style(div6, "text-align", "center");
 			set_style(div6, "color", "#C1C2C4");
-			attr(div7, "class", "heading svelte-8vaufz");
-			attr(div8, "class", "heading-group svelte-8vaufz");
+			attr(div7, "class", "heading svelte-dwphva");
+			attr(div8, "class", "heading-group svelte-dwphva");
 			attr(a2, "href", "https://business.facebook.com/business/loginpage/?next=https%3A%2F%2Fbusiness.facebook.com%2F%3Fnav_ref%3Dbiz_unified_f3_login_page_to_mbs&login_options%5B0%5D=FB&login_options%5B1%5D=IG&login_options%5B2%5D=SSO&config_ref=biz_login_tool_flavor_mbs");
-			attr(a2, "class", "link svelte-8vaufz");
+			attr(a2, "class", "link svelte-dwphva");
 			attr(a2, "target", "_blank");
-			attr(a3, "class", "link svelte-8vaufz");
+			attr(a3, "class", "link svelte-dwphva");
 			attr(a3, "href", "https://web.facebook.com/business/help/720478807965744?id=420299598837059&_rdc=1&_rdr");
 			attr(a3, "target", "_blank");
-			attr(div9, "class", "paso1 svelte-8vaufz");
-			attr(p3, "class", "subtitle svelte-8vaufz");
+			attr(div9, "class", "paso1 svelte-dwphva");
+			attr(p3, "class", "subtitle svelte-dwphva");
 			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) attr(img0, "src", img0_src_value);
 			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) attr(img1, "src", img1_src_value);
 			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) attr(img2, "src", img2_src_value);
-			attr(div10, "class", "paso1 svelte-8vaufz");
-			attr(p7, "class", "subtitle svelte-8vaufz");
-			attr(div11, "class", "paso1 svelte-8vaufz");
-			attr(div12, "class", "content svelte-8vaufz");
-			attr(div13, "class", "box2 svelte-8vaufz");
-			attr(div14, "class", "section-container svelte-8vaufz");
-			attr(section, "class", "svelte-8vaufz");
+			attr(div10, "class", "paso1 svelte-dwphva");
+			attr(p7, "class", "subtitle svelte-dwphva");
+			attr(div11, "class", "paso1 svelte-dwphva");
+			attr(div12, "class", "content svelte-dwphva");
+			attr(div13, "class", "box2 svelte-dwphva");
+			attr(div14, "class", "section-container svelte-dwphva");
+			attr(section, "class", "svelte-dwphva");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
