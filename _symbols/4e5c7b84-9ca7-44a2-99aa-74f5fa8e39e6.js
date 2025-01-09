@@ -3092,7 +3092,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-bmbmrb");
+			attr(div, "class", "description svelte-1nzw4ms");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3151,7 +3151,7 @@ function create_each_block(key_1, ctx) {
 		return /*click_handler*/ ctx[12](/*i*/ ctx[15]);
 	}
 
-	let if_block = /*activeItem*/ ctx[9] === /*i*/ ctx[15] && create_if_block(ctx);
+	let if_block = /*activeItem*/ ctx[5] === /*i*/ ctx[15] && create_if_block(ctx);
 
 	return {
 		key: key_1,
@@ -3205,13 +3205,13 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-bmbmrb");
-			attr(span0, "class", "svelte-bmbmrb");
-			attr(span1, "class", "icone svelte-bmbmrb");
-			attr(button, "class", "svelte-bmbmrb");
-			attr(div1, "class", "item-icon svelte-bmbmrb");
-			attr(div3, "class", "item svelte-bmbmrb");
-			toggle_class(div3, "active", /*activeItem*/ ctx[9] === /*i*/ ctx[15]);
+			attr(div0, "class", "menu-icon svelte-1nzw4ms");
+			attr(span0, "class", "svelte-1nzw4ms");
+			attr(span1, "class", "icone svelte-1nzw4ms");
+			attr(button, "class", "svelte-1nzw4ms");
+			attr(div1, "class", "item-icon svelte-1nzw4ms");
+			attr(div3, "class", "item svelte-1nzw4ms");
+			toggle_class(div3, "active", /*activeItem*/ ctx[5] === /*i*/ ctx[15]);
 			this.first = div3;
 		},
 		m(target, anchor) {
@@ -3244,11 +3244,11 @@ function create_each_block(key_1, ctx) {
 			icon0.$set(icon0_changes);
 			if ((!current || dirty & /*items*/ 1) && t1_value !== (t1_value = /*item*/ ctx[13].title + "")) set_data(t1, t1_value);
 
-			if (/*activeItem*/ ctx[9] === /*i*/ ctx[15]) {
+			if (/*activeItem*/ ctx[5] === /*i*/ ctx[15]) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty & /*activeItem, items*/ 513) {
+					if (dirty & /*activeItem, items*/ 33) {
 						transition_in(if_block, 1);
 					}
 				} else {
@@ -3267,8 +3267,8 @@ function create_each_block(key_1, ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*activeItem, items*/ 513) {
-				toggle_class(div3, "active", /*activeItem*/ ctx[9] === /*i*/ ctx[15]);
+			if (!current || dirty & /*activeItem, items*/ 33) {
+				toggle_class(div3, "active", /*activeItem*/ ctx[5] === /*i*/ ctx[15]);
 			}
 		},
 		i(local) {
@@ -3300,7 +3300,7 @@ function create_fragment(ctx) {
 	let style;
 	let t0;
 	let t1;
-	let div13;
+	let div14;
 	let div5;
 	let div3;
 	let div2;
@@ -3315,7 +3315,7 @@ function create_fragment(ctx) {
 	let each_blocks = [];
 	let each_1_lookup = new Map();
 	let t5;
-	let div12;
+	let div13;
 	let div6;
 	let a1;
 	let t6;
@@ -3330,135 +3330,70 @@ function create_fragment(ctx) {
 	let div7;
 	let t12;
 	let t13;
-	let div11;
+	let div12;
 	let div9;
 	let p0;
 	let t14;
 	let t15;
-	let ul0;
-	let li0;
+	let p1;
 	let t16;
 	let strong0;
 	let t17;
 	let t18;
-	let strong1;
+	let a2;
 	let t19;
 	let t20;
 	let t21;
-	let div10;
-	let p1;
+	let p2;
+	let strong1;
 	let t22;
+	let a3;
 	let t23;
-	let ul1;
-	let li1;
 	let t24;
-	let strong2;
 	let t25;
+	let div10;
+	let p3;
 	let t26;
 	let t27;
-	let img0;
-	let img0_src_value;
+	let p4;
 	let t28;
-	let ul2;
-	let li2;
+	let strong2;
 	let t29;
 	let t30;
-	let li4;
 	let t31;
-	let ol0;
-	let li3;
+	let img0;
+	let img0_src_value;
 	let t32;
-	let strong3;
+	let p5;
 	let t33;
 	let t34;
-	let t35;
 	let img1;
 	let img1_src_value;
+	let t35;
+	let p6;
 	let t36;
-	let ul3;
-	let ol1;
-	let li5;
 	let t37;
-	let strong4;
-	let t38;
-	let t39;
-	let t40;
 	let img2;
 	let img2_src_value;
+	let t38;
+	let div11;
+	let p7;
+	let t39;
+	let t40;
+	let p8;
 	let t41;
-	let ul4;
-	let ol2;
-	let li6;
+	let strong3;
 	let t42;
-	let strong5;
 	let t43;
 	let t44;
+	let p9;
 	let t45;
-	let img3;
-	let img3_src_value;
+	let strong4;
 	let t46;
-	let ul5;
-	let ol3;
-	let li7;
 	let t47;
-	let strong6;
+	let strong5;
 	let t48;
 	let t49;
-	let t50;
-	let img4;
-	let img4_src_value;
-	let t51;
-	let ul6;
-	let ol4;
-	let li8;
-	let t52;
-	let strong7;
-	let t53;
-	let t54;
-	let t55;
-	let img5;
-	let img5_src_value;
-	let t56;
-	let p2;
-	let t57;
-	let t58;
-	let ul7;
-	let li9;
-	let t59;
-	let strong8;
-	let t60;
-	let t61;
-	let t62;
-	let p3;
-	let strong9;
-	let t63;
-	let t64;
-	let ul8;
-	let li10;
-	let t65;
-	let a2;
-	let t66;
-	let t67;
-	let li11;
-	let t68;
-	let strong10;
-	let t69;
-	let t70;
-	let img6;
-	let img6_src_value;
-	let t71;
-	let ul9;
-	let li12;
-	let t72;
-	let strong11;
-	let t73;
-	let t74;
-	let t75;
-	let li13;
-	let t76;
-	let strong12;
-	let t77;
-	let t78;
 	let current;
 	icon = new Component$1({ props: { icon: "carbon:home" } });
 	let each_value = /*items*/ ctx[0];
@@ -3476,7 +3411,7 @@ function create_fragment(ctx) {
 			style = element("style");
 			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
 			t1 = space();
-			div13 = element("div");
+			div14 = element("div");
 			div5 = element("div");
 			div3 = element("div");
 			div2 = element("div");
@@ -3494,143 +3429,82 @@ function create_fragment(ctx) {
 			}
 
 			t5 = space();
-			div12 = element("div");
+			div13 = element("div");
 			div6 = element("div");
 			a1 = element("a");
 			t6 = text("Tutoriales");
 			t7 = text(" > ");
 			span0 = element("span");
-			t8 = text("Integración canales");
+			t8 = text("Integración redes sociales");
 			t9 = text(" > ");
 			span1 = element("span");
-			t10 = text("Facebook");
+			t10 = text("Messenger");
 			t11 = space();
 			div8 = element("div");
 			div7 = element("div");
-			t12 = text(/*heading*/ ctx[8]);
+			t12 = text(/*heading*/ ctx[4]);
 			t13 = space();
-			div11 = element("div");
+			div12 = element("div");
 			div9 = element("div");
 			p0 = element("p");
-			t14 = text("Paso 1: Crea tu chatbot");
+			t14 = text("Primero, crea tu chatbot en Globot cargándole la información que necesitará para responder.");
 			t15 = space();
-			ul0 = element("ul");
-			li0 = element("li");
-			t16 = text("Ingresa a tu cuenta de Globot y crea un chatbot cargándose la fuente de información que desees que tenga.\nUna vez creado y configurado, dirígete a ");
-			strong0 = element("strong");
-			t17 = text("“Canales”");
-			t18 = text(" y luego a ");
-			strong1 = element("strong");
-			t19 = text("“Messenger”");
-			t20 = text(".");
-			t21 = space();
-			div10 = element("div");
 			p1 = element("p");
-			t22 = text("Paso 2: Conecta GLOBOT con messenger");
-			t23 = space();
-			ul1 = element("ul");
-			li1 = element("li");
-			t24 = text("Haz click en ");
-			strong2 = element("strong");
-			t25 = text("“Conectar con facebook” ");
-			t26 = text("e inicia sesión con tu cuenta: Asegúrate de tener acceso como administrador. Si no eres tú quién administra el portafolio comercial, contáctate con la persona que tenga acceso.");
-			t27 = space();
-			img0 = element("img");
-			t28 = space();
-			ul2 = element("ul");
-			li2 = element("li");
-			t29 = text("Una vez que hayas conectado tu portfolio siguiendo los pasos puedes ingresar a tu cuenta de facebook y empezar a conversar con los usuarios");
-			t30 = space();
-			li4 = element("li");
-			t31 = text("Una vez iniciada sesión con facebook, conecta tu portfolio comercial a globot y continua con los pasos los siguientes pasos:\n              ");
-			ol0 = element("ol");
-			li3 = element("li");
-			t32 = text("Haz click en el portfolio comercial que quieras vincular y luego en ");
-			strong3 = element("strong");
-			t33 = text("“continuar”");
-			t34 = text(".");
-			t35 = space();
-			img1 = element("img");
-			t36 = space();
-			ul3 = element("ul");
-			ol1 = element("ol");
-			li5 = element("li");
-			t37 = text("Elige la o las páginas que quieras que globot acceda y haz click en ");
-			strong4 = element("strong");
-			t38 = text("“continuar”");
-			t39 = text(".");
-			t40 = space();
-			img2 = element("img");
-			t41 = space();
-			ul4 = element("ul");
-			ol2 = element("ol");
-			li6 = element("li");
-			t42 = text("Confirma las páginas a las que quieras que acceda y haz click en ");
-			strong5 = element("strong");
-			t43 = text("“continuar”");
-			t44 = text(".");
-			t45 = space();
-			img3 = element("img");
-			t46 = space();
-			ul5 = element("ul");
-			ol3 = element("ol");
-			li7 = element("li");
-			t47 = text("Luego revisa lo que globot solicita hacer y haz click en ");
-			strong6 = element("strong");
-			t48 = text("“guardar”");
-			t49 = text(".");
-			t50 = space();
-			img4 = element("img");
-			t51 = space();
-			ul6 = element("ul");
-			ol4 = element("ol");
-			li8 = element("li");
-			t52 = text("Por último solo queda hacer click en ");
-			strong7 = element("strong");
-			t53 = text("“De acuerdo”");
-			t54 = text(" y puedes empezar a utilizar tu chatbot con messenger");
-			t55 = space();
-			img5 = element("img");
-			t56 = space();
-			p2 = element("p");
-			t57 = text("Puedes desactivar tu chatbot en el caso que decidas que no responda.");
-			t58 = space();
-			ul7 = element("ul");
-			li9 = element("li");
-			t59 = text("Haz click en ");
-			strong8 = element("strong");
-			t60 = text("“Desactivar chatbot en este canal”");
-			t61 = text(".");
-			t62 = space();
-			p3 = element("p");
-			strong9 = element("strong");
-			t63 = text("En el caso de no tener tu cuenta comercial creada en Meta sigue estos pasos (si ya tienes creado tu portafolio omite este paso)");
-			t64 = space();
-			ul8 = element("ul");
-			li10 = element("li");
-			t65 = text("Ingresa a Meta Business ");
+			t16 = text("💡 ");
+			strong0 = element("strong");
+			t17 = text("Importante");
+			t18 = text(": Es necesario contar con un portfolio empresarial en ");
 			a2 = element("a");
-			t66 = text("Business Facebook");
-			t67 = space();
-			li11 = element("li");
-			t68 = text("Haz click en “Crear una cuenta” y luego  entra con tu cuenta de Facebook.completa el nombre del negocio, tu nombre y el correo electrónico de tu negocio. Dale clic a ");
-			strong10 = element("strong");
-			t69 = text("\"Enviar\"");
-			t70 = space();
-			img6 = element("img");
-			t71 = space();
-			ul9 = element("ul");
-			li12 = element("li");
-			t72 = text("Proporciona los datos de tu empresa y haz clic en ");
-			strong11 = element("strong");
-			t73 = text("\"Enviar\"");
-			t74 = text(".");
-			t75 = space();
-			li13 = element("li");
-			t76 = text("Ingresa los detalles de tu empresa y haz clic en ");
-			strong12 = element("strong");
-			t77 = text("\"Enviar\"");
-			t78 = text(".");
+			t19 = text("Meta Business");
+			t20 = text(". Si aún no lo has creado, hazlo ahora. Deberás ingresar la información de tu negocio, verificar tu correo electrónico y, si es necesario, completar la verificación con autenticación en dos pasos o subir un documento de identificación.");
+			t21 = space();
+			p2 = element("p");
+			strong1 = element("strong");
+			t22 = text("Tu página de Facebook debe estar vinculada a tu portfolio empresarial. Si no sabes cómo hacerlo, sigue los pasos ");
+			a3 = element("a");
+			t23 = text("desde aquí");
+			t24 = text(".");
+			t25 = space();
+			div10 = element("div");
+			p3 = element("p");
+			t26 = text("Paso 1: Conecta Globot con Facebook");
+			t27 = space();
+			p4 = element("p");
+			t28 = text("Anda a tu chatbot a ");
+			strong2 = element("strong");
+			t29 = text("Agregar a redes > Messenger");
+			t30 = text(" y haz click en Conectar con Facebook.");
+			t31 = space();
+			img0 = element("img");
+			t32 = space();
+			p5 = element("p");
+			t33 = text("Inicia sesión con tu cuenta de Facebook. Luego, selecciona el portfolio empresarial asociado a tu página de Facebook.");
+			t34 = space();
+			img1 = element("img");
+			t35 = space();
+			p6 = element("p");
+			t36 = text("Al seleccionar tu portafolio, aparecerá tu página conectada, la que debes seleccionar y seguir los pasos de confirmación.");
+			t37 = space();
+			img2 = element("img");
+			t38 = space();
+			div11 = element("div");
+			p7 = element("p");
+			t39 = text("Paso 2: Verifica su funcionamiento");
+			t40 = space();
+			p8 = element("p");
+			t41 = text("¡Felicidades! Tu chatbot ya está listo para atender a tus clientes a través de Messenger. Asegúrate de que todo funcione correctamente verificando que el canal aparezca como ");
+			strong3 = element("strong");
+			t42 = text("\"Activo\"");
+			t43 = text(". Para probar su funcionamiento, hazle preguntas desde otro chat y comprueba que responde según la información configurada.");
+			t44 = space();
+			p9 = element("p");
+			t45 = text("💡 ");
+			strong4 = element("strong");
+			t46 = text("Importante");
+			t47 = text(": Si prefieres que el chatbot no responda en este canal, simplemente haz clic en el interruptor ");
+			strong5 = element("strong");
+			t48 = text("Desactivar chatbot");
+			t49 = text(".");
 			this.h();
 		},
 		l(nodes) {
@@ -3641,9 +3515,9 @@ function create_fragment(ctx) {
 			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
 			style_nodes.forEach(detach);
 			t1 = claim_space(section_nodes);
-			div13 = claim_element(section_nodes, "DIV", { class: true });
-			var div13_nodes = children(div13);
-			div5 = claim_element(div13_nodes, "DIV", { class: true });
+			div14 = claim_element(section_nodes, "DIV", { class: true });
+			var div14_nodes = children(div14);
+			div5 = claim_element(div14_nodes, "DIV", { class: true });
 			var div5_nodes = children(div5);
 			div3 = claim_element(div5_nodes, "DIV", { class: true });
 			var div3_nodes = children(div3);
@@ -3673,10 +3547,10 @@ function create_fragment(ctx) {
 
 			div4_nodes.forEach(detach);
 			div5_nodes.forEach(detach);
-			t5 = claim_space(div13_nodes);
-			div12 = claim_element(div13_nodes, "DIV", { class: true });
-			var div12_nodes = children(div12);
-			div6 = claim_element(div12_nodes, "DIV", { class: true, style: true });
+			t5 = claim_space(div14_nodes);
+			div13 = claim_element(div14_nodes, "DIV", { class: true });
+			var div13_nodes = children(div13);
+			div6 = claim_element(div13_nodes, "DIV", { class: true, style: true });
 			var div6_nodes = children(div6);
 			a1 = claim_element(div6_nodes, "A", { href: true });
 			var a1_nodes = children(a1);
@@ -3685,327 +3559,177 @@ function create_fragment(ctx) {
 			t7 = claim_text(div6_nodes, " > ");
 			span0 = claim_element(div6_nodes, "SPAN", {});
 			var span0_nodes = children(span0);
-			t8 = claim_text(span0_nodes, "Integración canales");
+			t8 = claim_text(span0_nodes, "Integración redes sociales");
 			span0_nodes.forEach(detach);
 			t9 = claim_text(div6_nodes, " > ");
 			span1 = claim_element(div6_nodes, "SPAN", { style: true });
 			var span1_nodes = children(span1);
-			t10 = claim_text(span1_nodes, "Facebook");
+			t10 = claim_text(span1_nodes, "Messenger");
 			span1_nodes.forEach(detach);
 			div6_nodes.forEach(detach);
-			t11 = claim_space(div12_nodes);
-			div8 = claim_element(div12_nodes, "DIV", { class: true });
+			t11 = claim_space(div13_nodes);
+			div8 = claim_element(div13_nodes, "DIV", { class: true });
 			var div8_nodes = children(div8);
 			div7 = claim_element(div8_nodes, "DIV", { class: true });
 			var div7_nodes = children(div7);
-			t12 = claim_text(div7_nodes, /*heading*/ ctx[8]);
+			t12 = claim_text(div7_nodes, /*heading*/ ctx[4]);
 			div7_nodes.forEach(detach);
 			div8_nodes.forEach(detach);
-			t13 = claim_space(div12_nodes);
-			div11 = claim_element(div12_nodes, "DIV", { class: true });
-			var div11_nodes = children(div11);
-			div9 = claim_element(div11_nodes, "DIV", { class: true });
+			t13 = claim_space(div13_nodes);
+			div12 = claim_element(div13_nodes, "DIV", { class: true });
+			var div12_nodes = children(div12);
+			div9 = claim_element(div12_nodes, "DIV", { class: true });
 			var div9_nodes = children(div9);
-			p0 = claim_element(div9_nodes, "P", { class: true });
+			p0 = claim_element(div9_nodes, "P", {});
 			var p0_nodes = children(p0);
-			t14 = claim_text(p0_nodes, "Paso 1: Crea tu chatbot");
+			t14 = claim_text(p0_nodes, "Primero, crea tu chatbot en Globot cargándole la información que necesitará para responder.");
 			p0_nodes.forEach(detach);
 			t15 = claim_space(div9_nodes);
-			ul0 = claim_element(div9_nodes, "UL", { class: true });
-			var ul0_nodes = children(ul0);
-			li0 = claim_element(ul0_nodes, "LI", { class: true });
-			var li0_nodes = children(li0);
-			t16 = claim_text(li0_nodes, "Ingresa a tu cuenta de Globot y crea un chatbot cargándose la fuente de información que desees que tenga.\nUna vez creado y configurado, dirígete a ");
-			strong0 = claim_element(li0_nodes, "STRONG", {});
-			var strong0_nodes = children(strong0);
-			t17 = claim_text(strong0_nodes, "“Canales”");
-			strong0_nodes.forEach(detach);
-			t18 = claim_text(li0_nodes, " y luego a ");
-			strong1 = claim_element(li0_nodes, "STRONG", {});
-			var strong1_nodes = children(strong1);
-			t19 = claim_text(strong1_nodes, "“Messenger”");
-			strong1_nodes.forEach(detach);
-			t20 = claim_text(li0_nodes, ".");
-			li0_nodes.forEach(detach);
-			ul0_nodes.forEach(detach);
-			div9_nodes.forEach(detach);
-			t21 = claim_space(div11_nodes);
-			div10 = claim_element(div11_nodes, "DIV", { class: true });
-			var div10_nodes = children(div10);
-			p1 = claim_element(div10_nodes, "P", { class: true });
+			p1 = claim_element(div9_nodes, "P", {});
 			var p1_nodes = children(p1);
-			t22 = claim_text(p1_nodes, "Paso 2: Conecta GLOBOT con messenger");
-			p1_nodes.forEach(detach);
-			t23 = claim_space(div10_nodes);
-			ul1 = claim_element(div10_nodes, "UL", { class: true });
-			var ul1_nodes = children(ul1);
-			li1 = claim_element(ul1_nodes, "LI", { class: true });
-			var li1_nodes = children(li1);
-			t24 = claim_text(li1_nodes, "Haz click en ");
-			strong2 = claim_element(li1_nodes, "STRONG", {});
-			var strong2_nodes = children(strong2);
-			t25 = claim_text(strong2_nodes, "“Conectar con facebook” ");
-			strong2_nodes.forEach(detach);
-			t26 = claim_text(li1_nodes, "e inicia sesión con tu cuenta: Asegúrate de tener acceso como administrador. Si no eres tú quién administra el portafolio comercial, contáctate con la persona que tenga acceso.");
-			li1_nodes.forEach(detach);
-			ul1_nodes.forEach(detach);
-			t27 = claim_space(div10_nodes);
-			img0 = claim_element(div10_nodes, "IMG", { src: true });
-			t28 = claim_space(div10_nodes);
-			ul2 = claim_element(div10_nodes, "UL", { class: true });
-			var ul2_nodes = children(ul2);
-			li2 = claim_element(ul2_nodes, "LI", { class: true });
-			var li2_nodes = children(li2);
-			t29 = claim_text(li2_nodes, "Una vez que hayas conectado tu portfolio siguiendo los pasos puedes ingresar a tu cuenta de facebook y empezar a conversar con los usuarios");
-			li2_nodes.forEach(detach);
-			t30 = claim_space(ul2_nodes);
-			li4 = claim_element(ul2_nodes, "LI", { class: true });
-			var li4_nodes = children(li4);
-			t31 = claim_text(li4_nodes, "Una vez iniciada sesión con facebook, conecta tu portfolio comercial a globot y continua con los pasos los siguientes pasos:\n              ");
-			ol0 = claim_element(li4_nodes, "OL", { class: true });
-			var ol0_nodes = children(ol0);
-			li3 = claim_element(ol0_nodes, "LI", { class: true });
-			var li3_nodes = children(li3);
-			t32 = claim_text(li3_nodes, "Haz click en el portfolio comercial que quieras vincular y luego en ");
-			strong3 = claim_element(li3_nodes, "STRONG", {});
-			var strong3_nodes = children(strong3);
-			t33 = claim_text(strong3_nodes, "“continuar”");
-			strong3_nodes.forEach(detach);
-			t34 = claim_text(li3_nodes, ".");
-			li3_nodes.forEach(detach);
-			ol0_nodes.forEach(detach);
-			li4_nodes.forEach(detach);
-			ul2_nodes.forEach(detach);
-			t35 = claim_space(div10_nodes);
-			img1 = claim_element(div10_nodes, "IMG", { src: true });
-			t36 = claim_space(div10_nodes);
-			ul3 = claim_element(div10_nodes, "UL", { class: true });
-			var ul3_nodes = children(ul3);
-			ol1 = claim_element(ul3_nodes, "OL", { start: true, class: true });
-			var ol1_nodes = children(ol1);
-			li5 = claim_element(ol1_nodes, "LI", { class: true });
-			var li5_nodes = children(li5);
-			t37 = claim_text(li5_nodes, "Elige la o las páginas que quieras que globot acceda y haz click en ");
-			strong4 = claim_element(li5_nodes, "STRONG", {});
-			var strong4_nodes = children(strong4);
-			t38 = claim_text(strong4_nodes, "“continuar”");
-			strong4_nodes.forEach(detach);
-			t39 = claim_text(li5_nodes, ".");
-			li5_nodes.forEach(detach);
-			ol1_nodes.forEach(detach);
-			ul3_nodes.forEach(detach);
-			t40 = claim_space(div10_nodes);
-			img2 = claim_element(div10_nodes, "IMG", { src: true });
-			t41 = claim_space(div10_nodes);
-			ul4 = claim_element(div10_nodes, "UL", { class: true });
-			var ul4_nodes = children(ul4);
-			ol2 = claim_element(ul4_nodes, "OL", { start: true, class: true });
-			var ol2_nodes = children(ol2);
-			li6 = claim_element(ol2_nodes, "LI", { class: true });
-			var li6_nodes = children(li6);
-			t42 = claim_text(li6_nodes, "Confirma las páginas a las que quieras que acceda y haz click en ");
-			strong5 = claim_element(li6_nodes, "STRONG", {});
-			var strong5_nodes = children(strong5);
-			t43 = claim_text(strong5_nodes, "“continuar”");
-			strong5_nodes.forEach(detach);
-			t44 = claim_text(li6_nodes, ".");
-			li6_nodes.forEach(detach);
-			ol2_nodes.forEach(detach);
-			ul4_nodes.forEach(detach);
-			t45 = claim_space(div10_nodes);
-			img3 = claim_element(div10_nodes, "IMG", { src: true });
-			t46 = claim_space(div10_nodes);
-			ul5 = claim_element(div10_nodes, "UL", { class: true });
-			var ul5_nodes = children(ul5);
-			ol3 = claim_element(ul5_nodes, "OL", { start: true, class: true });
-			var ol3_nodes = children(ol3);
-			li7 = claim_element(ol3_nodes, "LI", { class: true });
-			var li7_nodes = children(li7);
-			t47 = claim_text(li7_nodes, "Luego revisa lo que globot solicita hacer y haz click en ");
-			strong6 = claim_element(li7_nodes, "STRONG", {});
-			var strong6_nodes = children(strong6);
-			t48 = claim_text(strong6_nodes, "“guardar”");
-			strong6_nodes.forEach(detach);
-			t49 = claim_text(li7_nodes, ".");
-			li7_nodes.forEach(detach);
-			ol3_nodes.forEach(detach);
-			ul5_nodes.forEach(detach);
-			t50 = claim_space(div10_nodes);
-			img4 = claim_element(div10_nodes, "IMG", { src: true });
-			t51 = claim_space(div10_nodes);
-			ul6 = claim_element(div10_nodes, "UL", { class: true });
-			var ul6_nodes = children(ul6);
-			ol4 = claim_element(ul6_nodes, "OL", { start: true, class: true });
-			var ol4_nodes = children(ol4);
-			li8 = claim_element(ol4_nodes, "LI", { class: true });
-			var li8_nodes = children(li8);
-			t52 = claim_text(li8_nodes, "Por último solo queda hacer click en ");
-			strong7 = claim_element(li8_nodes, "STRONG", {});
-			var strong7_nodes = children(strong7);
-			t53 = claim_text(strong7_nodes, "“De acuerdo”");
-			strong7_nodes.forEach(detach);
-			t54 = claim_text(li8_nodes, " y puedes empezar a utilizar tu chatbot con messenger");
-			li8_nodes.forEach(detach);
-			ol4_nodes.forEach(detach);
-			ul6_nodes.forEach(detach);
-			t55 = claim_space(div10_nodes);
-			img5 = claim_element(div10_nodes, "IMG", { src: true });
-			t56 = claim_space(div10_nodes);
-			p2 = claim_element(div10_nodes, "P", {});
-			var p2_nodes = children(p2);
-			t57 = claim_text(p2_nodes, "Puedes desactivar tu chatbot en el caso que decidas que no responda.");
-			p2_nodes.forEach(detach);
-			t58 = claim_space(div10_nodes);
-			ul7 = claim_element(div10_nodes, "UL", { class: true });
-			var ul7_nodes = children(ul7);
-			li9 = claim_element(ul7_nodes, "LI", { class: true });
-			var li9_nodes = children(li9);
-			t59 = claim_text(li9_nodes, "Haz click en ");
-			strong8 = claim_element(li9_nodes, "STRONG", {});
-			var strong8_nodes = children(strong8);
-			t60 = claim_text(strong8_nodes, "“Desactivar chatbot en este canal”");
-			strong8_nodes.forEach(detach);
-			t61 = claim_text(li9_nodes, ".");
-			li9_nodes.forEach(detach);
-			ul7_nodes.forEach(detach);
-			t62 = claim_space(div10_nodes);
-			p3 = claim_element(div10_nodes, "P", {});
-			var p3_nodes = children(p3);
-			strong9 = claim_element(p3_nodes, "STRONG", {});
-			var strong9_nodes = children(strong9);
-			t63 = claim_text(strong9_nodes, "En el caso de no tener tu cuenta comercial creada en Meta sigue estos pasos (si ya tienes creado tu portafolio omite este paso)");
-			strong9_nodes.forEach(detach);
-			p3_nodes.forEach(detach);
-			div10_nodes.forEach(detach);
-			t64 = claim_space(div11_nodes);
-			ul8 = claim_element(div11_nodes, "UL", { class: true });
-			var ul8_nodes = children(ul8);
-			li10 = claim_element(ul8_nodes, "LI", { class: true });
-			var li10_nodes = children(li10);
-			t65 = claim_text(li10_nodes, "Ingresa a Meta Business ");
-			a2 = claim_element(li10_nodes, "A", { class: true, href: true, target: true });
+			t16 = claim_text(p1_nodes, "💡 ");
+			strong0 = claim_element(p1_nodes, "STRONG", {});
+			var strong0_nodes = children(strong0);
+			t17 = claim_text(strong0_nodes, "Importante");
+			strong0_nodes.forEach(detach);
+			t18 = claim_text(p1_nodes, ": Es necesario contar con un portfolio empresarial en ");
+			a2 = claim_element(p1_nodes, "A", { href: true, class: true, target: true });
 			var a2_nodes = children(a2);
-			t66 = claim_text(a2_nodes, "Business Facebook");
+			t19 = claim_text(a2_nodes, "Meta Business");
 			a2_nodes.forEach(detach);
-			li10_nodes.forEach(detach);
-			t67 = claim_space(ul8_nodes);
-			li11 = claim_element(ul8_nodes, "LI", { class: true });
-			var li11_nodes = children(li11);
-			t68 = claim_text(li11_nodes, "Haz click en “Crear una cuenta” y luego  entra con tu cuenta de Facebook.completa el nombre del negocio, tu nombre y el correo electrónico de tu negocio. Dale clic a ");
-			strong10 = claim_element(li11_nodes, "STRONG", {});
-			var strong10_nodes = children(strong10);
-			t69 = claim_text(strong10_nodes, "\"Enviar\"");
-			strong10_nodes.forEach(detach);
-			li11_nodes.forEach(detach);
-			ul8_nodes.forEach(detach);
-			t70 = claim_space(div11_nodes);
-			img6 = claim_element(div11_nodes, "IMG", { src: true });
-			t71 = claim_space(div11_nodes);
-			ul9 = claim_element(div11_nodes, "UL", { class: true });
-			var ul9_nodes = children(ul9);
-			li12 = claim_element(ul9_nodes, "LI", { class: true });
-			var li12_nodes = children(li12);
-			t72 = claim_text(li12_nodes, "Proporciona los datos de tu empresa y haz clic en ");
-			strong11 = claim_element(li12_nodes, "STRONG", {});
-			var strong11_nodes = children(strong11);
-			t73 = claim_text(strong11_nodes, "\"Enviar\"");
-			strong11_nodes.forEach(detach);
-			t74 = claim_text(li12_nodes, ".");
-			li12_nodes.forEach(detach);
-			t75 = claim_space(ul9_nodes);
-			li13 = claim_element(ul9_nodes, "LI", { class: true });
-			var li13_nodes = children(li13);
-			t76 = claim_text(li13_nodes, "Ingresa los detalles de tu empresa y haz clic en ");
-			strong12 = claim_element(li13_nodes, "STRONG", {});
-			var strong12_nodes = children(strong12);
-			t77 = claim_text(strong12_nodes, "\"Enviar\"");
-			strong12_nodes.forEach(detach);
-			t78 = claim_text(li13_nodes, ".");
-			li13_nodes.forEach(detach);
-			ul9_nodes.forEach(detach);
+			t20 = claim_text(p1_nodes, ". Si aún no lo has creado, hazlo ahora. Deberás ingresar la información de tu negocio, verificar tu correo electrónico y, si es necesario, completar la verificación con autenticación en dos pasos o subir un documento de identificación.");
+			p1_nodes.forEach(detach);
+			t21 = claim_space(div9_nodes);
+			p2 = claim_element(div9_nodes, "P", {});
+			var p2_nodes = children(p2);
+			strong1 = claim_element(p2_nodes, "STRONG", {});
+			var strong1_nodes = children(strong1);
+			t22 = claim_text(strong1_nodes, "Tu página de Facebook debe estar vinculada a tu portfolio empresarial. Si no sabes cómo hacerlo, sigue los pasos ");
+			strong1_nodes.forEach(detach);
+			a3 = claim_element(p2_nodes, "A", { class: true, href: true, target: true });
+			var a3_nodes = children(a3);
+			t23 = claim_text(a3_nodes, "desde aquí");
+			a3_nodes.forEach(detach);
+			t24 = claim_text(p2_nodes, ".");
+			p2_nodes.forEach(detach);
+			div9_nodes.forEach(detach);
+			t25 = claim_space(div12_nodes);
+			div10 = claim_element(div12_nodes, "DIV", { class: true });
+			var div10_nodes = children(div10);
+			p3 = claim_element(div10_nodes, "P", { class: true });
+			var p3_nodes = children(p3);
+			t26 = claim_text(p3_nodes, "Paso 1: Conecta Globot con Facebook");
+			p3_nodes.forEach(detach);
+			t27 = claim_space(div10_nodes);
+			p4 = claim_element(div10_nodes, "P", {});
+			var p4_nodes = children(p4);
+			t28 = claim_text(p4_nodes, "Anda a tu chatbot a ");
+			strong2 = claim_element(p4_nodes, "STRONG", {});
+			var strong2_nodes = children(strong2);
+			t29 = claim_text(strong2_nodes, "Agregar a redes > Messenger");
+			strong2_nodes.forEach(detach);
+			t30 = claim_text(p4_nodes, " y haz click en Conectar con Facebook.");
+			p4_nodes.forEach(detach);
+			t31 = claim_space(div10_nodes);
+			img0 = claim_element(div10_nodes, "IMG", { src: true });
+			t32 = claim_space(div10_nodes);
+			p5 = claim_element(div10_nodes, "P", {});
+			var p5_nodes = children(p5);
+			t33 = claim_text(p5_nodes, "Inicia sesión con tu cuenta de Facebook. Luego, selecciona el portfolio empresarial asociado a tu página de Facebook.");
+			p5_nodes.forEach(detach);
+			t34 = claim_space(div10_nodes);
+			img1 = claim_element(div10_nodes, "IMG", { src: true });
+			t35 = claim_space(div10_nodes);
+			p6 = claim_element(div10_nodes, "P", {});
+			var p6_nodes = children(p6);
+			t36 = claim_text(p6_nodes, "Al seleccionar tu portafolio, aparecerá tu página conectada, la que debes seleccionar y seguir los pasos de confirmación.");
+			p6_nodes.forEach(detach);
+			t37 = claim_space(div10_nodes);
+			img2 = claim_element(div10_nodes, "IMG", { src: true });
+			div10_nodes.forEach(detach);
+			t38 = claim_space(div12_nodes);
+			div11 = claim_element(div12_nodes, "DIV", { class: true });
+			var div11_nodes = children(div11);
+			p7 = claim_element(div11_nodes, "P", { class: true });
+			var p7_nodes = children(p7);
+			t39 = claim_text(p7_nodes, "Paso 2: Verifica su funcionamiento");
+			p7_nodes.forEach(detach);
+			t40 = claim_space(div11_nodes);
+			p8 = claim_element(div11_nodes, "P", {});
+			var p8_nodes = children(p8);
+			t41 = claim_text(p8_nodes, "¡Felicidades! Tu chatbot ya está listo para atender a tus clientes a través de Messenger. Asegúrate de que todo funcione correctamente verificando que el canal aparezca como ");
+			strong3 = claim_element(p8_nodes, "STRONG", {});
+			var strong3_nodes = children(strong3);
+			t42 = claim_text(strong3_nodes, "\"Activo\"");
+			strong3_nodes.forEach(detach);
+			t43 = claim_text(p8_nodes, ". Para probar su funcionamiento, hazle preguntas desde otro chat y comprueba que responde según la información configurada.");
+			p8_nodes.forEach(detach);
+			t44 = claim_space(div11_nodes);
+			p9 = claim_element(div11_nodes, "P", {});
+			var p9_nodes = children(p9);
+			t45 = claim_text(p9_nodes, "💡 ");
+			strong4 = claim_element(p9_nodes, "STRONG", {});
+			var strong4_nodes = children(strong4);
+			t46 = claim_text(strong4_nodes, "Importante");
+			strong4_nodes.forEach(detach);
+			t47 = claim_text(p9_nodes, ": Si prefieres que el chatbot no responda en este canal, simplemente haz clic en el interruptor ");
+			strong5 = claim_element(p9_nodes, "STRONG", {});
+			var strong5_nodes = children(strong5);
+			t48 = claim_text(strong5_nodes, "Desactivar chatbot");
+			strong5_nodes.forEach(detach);
+			t49 = claim_text(p9_nodes, ".");
+			p9_nodes.forEach(detach);
 			div11_nodes.forEach(detach);
 			div12_nodes.forEach(detach);
 			div13_nodes.forEach(detach);
+			div14_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-bmbmrb");
+			attr(div0, "class", "menu-icon svelte-1nzw4ms");
 			attr(a0, "href", "/tutoriales/");
-			attr(div1, "class", "item-icon svelte-bmbmrb");
+			attr(div1, "class", "item-icon svelte-1nzw4ms");
 			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-bmbmrb");
-			attr(div4, "class", "accordion svelte-bmbmrb");
-			attr(div5, "class", "box1 svelte-bmbmrb");
+			attr(div3, "class", "tutoriales svelte-1nzw4ms");
+			attr(div4, "class", "accordion svelte-1nzw4ms");
+			attr(div5, "class", "box1 svelte-1nzw4ms");
 			attr(a1, "href", "/tutoriales/");
 			set_style(span1, "color", "var(--Primary-2, #7B5CF5)");
-			attr(div6, "class", "steps svelte-bmbmrb");
+			attr(div6, "class", "steps svelte-1nzw4ms");
 			set_style(div6, "display", "flex");
 			set_style(div6, "gap", "15px");
 			set_style(div6, "margin-bottom", "20px");
 			set_style(div6, "text-align", "center");
 			set_style(div6, "color", "#C1C2C4");
-			attr(div7, "class", "heading svelte-bmbmrb");
-			attr(div8, "class", "heading-group svelte-bmbmrb");
-			attr(p0, "class", "subtitle svelte-bmbmrb");
-			attr(li0, "class", "svelte-bmbmrb");
-			attr(ul0, "class", "svelte-bmbmrb");
-			attr(div9, "class", "paso1 svelte-bmbmrb");
-			attr(p1, "class", "subtitle svelte-bmbmrb");
-			attr(li1, "class", "svelte-bmbmrb");
-			attr(ul1, "class", "svelte-bmbmrb");
-			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) attr(img0, "src", img0_src_value);
-			attr(li2, "class", "svelte-bmbmrb");
-			attr(li3, "class", "svelte-bmbmrb");
-			attr(ol0, "class", "svelte-bmbmrb");
-			attr(li4, "class", "svelte-bmbmrb");
-			attr(ul2, "class", "svelte-bmbmrb");
-			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) attr(img1, "src", img1_src_value);
-			attr(li5, "class", "svelte-bmbmrb");
-			attr(ol1, "start", "2");
-			attr(ol1, "class", "svelte-bmbmrb");
-			attr(ul3, "class", "svelte-bmbmrb");
-			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) attr(img2, "src", img2_src_value);
-			attr(li6, "class", "svelte-bmbmrb");
-			attr(ol2, "start", "3");
-			attr(ol2, "class", "svelte-bmbmrb");
-			attr(ul4, "class", "svelte-bmbmrb");
-			if (!src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[4].url)) attr(img3, "src", img3_src_value);
-			attr(li7, "class", "svelte-bmbmrb");
-			attr(ol3, "start", "4");
-			attr(ol3, "class", "svelte-bmbmrb");
-			attr(ul5, "class", "svelte-bmbmrb");
-			if (!src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[5].url)) attr(img4, "src", img4_src_value);
-			attr(li8, "class", "svelte-bmbmrb");
-			attr(ol4, "start", "5");
-			attr(ol4, "class", "svelte-bmbmrb");
-			attr(ul6, "class", "svelte-bmbmrb");
-			if (!src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[6].url)) attr(img5, "src", img5_src_value);
-			attr(li9, "class", "svelte-bmbmrb");
-			attr(ul7, "class", "svelte-bmbmrb");
-			attr(div10, "class", "paso1 svelte-bmbmrb");
-			attr(a2, "class", "link svelte-bmbmrb");
+			attr(div7, "class", "heading svelte-1nzw4ms");
+			attr(div8, "class", "heading-group svelte-1nzw4ms");
 			attr(a2, "href", "https://business.facebook.com/business/loginpage/?next=https%3A%2F%2Fbusiness.facebook.com%2F%3Fnav_ref%3Dbiz_unified_f3_login_page_to_mbs&login_options%5B0%5D=FB&login_options%5B1%5D=IG&login_options%5B2%5D=SSO&config_ref=biz_login_tool_flavor_mbs");
+			attr(a2, "class", "link svelte-1nzw4ms");
 			attr(a2, "target", "_blank");
-			attr(li10, "class", "svelte-bmbmrb");
-			attr(li11, "class", "svelte-bmbmrb");
-			attr(ul8, "class", "svelte-bmbmrb");
-			if (!src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[7].url)) attr(img6, "src", img6_src_value);
-			attr(li12, "class", "svelte-bmbmrb");
-			attr(li13, "class", "svelte-bmbmrb");
-			attr(ul9, "class", "svelte-bmbmrb");
-			attr(div11, "class", "content svelte-bmbmrb");
-			attr(div12, "class", "box2 svelte-bmbmrb");
-			attr(div13, "class", "section-container svelte-bmbmrb");
-			attr(section, "class", "svelte-bmbmrb");
+			attr(a3, "class", "link svelte-1nzw4ms");
+			attr(a3, "href", "https://web.facebook.com/business/help/720478807965744?id=420299598837059&_rdc=1&_rdr");
+			attr(a3, "target", "_blank");
+			attr(div9, "class", "paso1 svelte-1nzw4ms");
+			attr(p3, "class", "subtitle svelte-1nzw4ms");
+			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) attr(img0, "src", img0_src_value);
+			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) attr(img1, "src", img1_src_value);
+			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) attr(img2, "src", img2_src_value);
+			attr(div10, "class", "paso1 svelte-1nzw4ms");
+			attr(p7, "class", "subtitle svelte-1nzw4ms");
+			attr(div11, "class", "paso1 svelte-1nzw4ms");
+			attr(div12, "class", "content svelte-1nzw4ms");
+			attr(div13, "class", "box2 svelte-1nzw4ms");
+			attr(div14, "class", "section-container svelte-1nzw4ms");
+			attr(section, "class", "svelte-1nzw4ms");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
 			append_hydration(section, style);
 			append_hydration(style, t0);
 			append_hydration(section, t1);
-			append_hydration(section, div13);
-			append_hydration(div13, div5);
+			append_hydration(section, div14);
+			append_hydration(div14, div5);
 			append_hydration(div5, div3);
 			append_hydration(div3, div2);
 			append_hydration(div2, div1);
@@ -4023,9 +3747,9 @@ function create_fragment(ctx) {
 				}
 			}
 
-			append_hydration(div13, t5);
-			append_hydration(div13, div12);
-			append_hydration(div12, div6);
+			append_hydration(div14, t5);
+			append_hydration(div14, div13);
+			append_hydration(div13, div6);
 			append_hydration(div6, a1);
 			append_hydration(a1, t6);
 			append_hydration(div6, t7);
@@ -4034,144 +3758,83 @@ function create_fragment(ctx) {
 			append_hydration(div6, t9);
 			append_hydration(div6, span1);
 			append_hydration(span1, t10);
-			append_hydration(div12, t11);
-			append_hydration(div12, div8);
+			append_hydration(div13, t11);
+			append_hydration(div13, div8);
 			append_hydration(div8, div7);
 			append_hydration(div7, t12);
-			append_hydration(div12, t13);
-			append_hydration(div12, div11);
-			append_hydration(div11, div9);
+			append_hydration(div13, t13);
+			append_hydration(div13, div12);
+			append_hydration(div12, div9);
 			append_hydration(div9, p0);
 			append_hydration(p0, t14);
 			append_hydration(div9, t15);
-			append_hydration(div9, ul0);
-			append_hydration(ul0, li0);
-			append_hydration(li0, t16);
-			append_hydration(li0, strong0);
+			append_hydration(div9, p1);
+			append_hydration(p1, t16);
+			append_hydration(p1, strong0);
 			append_hydration(strong0, t17);
-			append_hydration(li0, t18);
-			append_hydration(li0, strong1);
-			append_hydration(strong1, t19);
-			append_hydration(li0, t20);
-			append_hydration(div11, t21);
-			append_hydration(div11, div10);
-			append_hydration(div10, p1);
-			append_hydration(p1, t22);
-			append_hydration(div10, t23);
-			append_hydration(div10, ul1);
-			append_hydration(ul1, li1);
-			append_hydration(li1, t24);
-			append_hydration(li1, strong2);
-			append_hydration(strong2, t25);
-			append_hydration(li1, t26);
-			append_hydration(div10, t27);
-			append_hydration(div10, img0);
-			append_hydration(div10, t28);
-			append_hydration(div10, ul2);
-			append_hydration(ul2, li2);
-			append_hydration(li2, t29);
-			append_hydration(ul2, t30);
-			append_hydration(ul2, li4);
-			append_hydration(li4, t31);
-			append_hydration(li4, ol0);
-			append_hydration(ol0, li3);
-			append_hydration(li3, t32);
-			append_hydration(li3, strong3);
-			append_hydration(strong3, t33);
-			append_hydration(li3, t34);
-			append_hydration(div10, t35);
-			append_hydration(div10, img1);
-			append_hydration(div10, t36);
-			append_hydration(div10, ul3);
-			append_hydration(ul3, ol1);
-			append_hydration(ol1, li5);
-			append_hydration(li5, t37);
-			append_hydration(li5, strong4);
-			append_hydration(strong4, t38);
-			append_hydration(li5, t39);
-			append_hydration(div10, t40);
-			append_hydration(div10, img2);
-			append_hydration(div10, t41);
-			append_hydration(div10, ul4);
-			append_hydration(ul4, ol2);
-			append_hydration(ol2, li6);
-			append_hydration(li6, t42);
-			append_hydration(li6, strong5);
-			append_hydration(strong5, t43);
-			append_hydration(li6, t44);
-			append_hydration(div10, t45);
-			append_hydration(div10, img3);
-			append_hydration(div10, t46);
-			append_hydration(div10, ul5);
-			append_hydration(ul5, ol3);
-			append_hydration(ol3, li7);
-			append_hydration(li7, t47);
-			append_hydration(li7, strong6);
-			append_hydration(strong6, t48);
-			append_hydration(li7, t49);
-			append_hydration(div10, t50);
-			append_hydration(div10, img4);
-			append_hydration(div10, t51);
-			append_hydration(div10, ul6);
-			append_hydration(ul6, ol4);
-			append_hydration(ol4, li8);
-			append_hydration(li8, t52);
-			append_hydration(li8, strong7);
-			append_hydration(strong7, t53);
-			append_hydration(li8, t54);
-			append_hydration(div10, t55);
-			append_hydration(div10, img5);
-			append_hydration(div10, t56);
-			append_hydration(div10, p2);
-			append_hydration(p2, t57);
-			append_hydration(div10, t58);
-			append_hydration(div10, ul7);
-			append_hydration(ul7, li9);
-			append_hydration(li9, t59);
-			append_hydration(li9, strong8);
-			append_hydration(strong8, t60);
-			append_hydration(li9, t61);
-			append_hydration(div10, t62);
+			append_hydration(p1, t18);
+			append_hydration(p1, a2);
+			append_hydration(a2, t19);
+			append_hydration(p1, t20);
+			append_hydration(div9, t21);
+			append_hydration(div9, p2);
+			append_hydration(p2, strong1);
+			append_hydration(strong1, t22);
+			append_hydration(p2, a3);
+			append_hydration(a3, t23);
+			append_hydration(p2, t24);
+			append_hydration(div12, t25);
+			append_hydration(div12, div10);
 			append_hydration(div10, p3);
-			append_hydration(p3, strong9);
-			append_hydration(strong9, t63);
-			append_hydration(div11, t64);
-			append_hydration(div11, ul8);
-			append_hydration(ul8, li10);
-			append_hydration(li10, t65);
-			append_hydration(li10, a2);
-			append_hydration(a2, t66);
-			append_hydration(ul8, t67);
-			append_hydration(ul8, li11);
-			append_hydration(li11, t68);
-			append_hydration(li11, strong10);
-			append_hydration(strong10, t69);
-			append_hydration(div11, t70);
-			append_hydration(div11, img6);
-			append_hydration(div11, t71);
-			append_hydration(div11, ul9);
-			append_hydration(ul9, li12);
-			append_hydration(li12, t72);
-			append_hydration(li12, strong11);
-			append_hydration(strong11, t73);
-			append_hydration(li12, t74);
-			append_hydration(ul9, t75);
-			append_hydration(ul9, li13);
-			append_hydration(li13, t76);
-			append_hydration(li13, strong12);
-			append_hydration(strong12, t77);
-			append_hydration(li13, t78);
+			append_hydration(p3, t26);
+			append_hydration(div10, t27);
+			append_hydration(div10, p4);
+			append_hydration(p4, t28);
+			append_hydration(p4, strong2);
+			append_hydration(strong2, t29);
+			append_hydration(p4, t30);
+			append_hydration(div10, t31);
+			append_hydration(div10, img0);
+			append_hydration(div10, t32);
+			append_hydration(div10, p5);
+			append_hydration(p5, t33);
+			append_hydration(div10, t34);
+			append_hydration(div10, img1);
+			append_hydration(div10, t35);
+			append_hydration(div10, p6);
+			append_hydration(p6, t36);
+			append_hydration(div10, t37);
+			append_hydration(div10, img2);
+			append_hydration(div12, t38);
+			append_hydration(div12, div11);
+			append_hydration(div11, p7);
+			append_hydration(p7, t39);
+			append_hydration(div11, t40);
+			append_hydration(div11, p8);
+			append_hydration(p8, t41);
+			append_hydration(p8, strong3);
+			append_hydration(strong3, t42);
+			append_hydration(p8, t43);
+			append_hydration(div11, t44);
+			append_hydration(div11, p9);
+			append_hydration(p9, t45);
+			append_hydration(p9, strong4);
+			append_hydration(strong4, t46);
+			append_hydration(p9, t47);
+			append_hydration(p9, strong5);
+			append_hydration(strong5, t48);
+			append_hydration(p9, t49);
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*activeItem, items, setActiveItem*/ 1537) {
+			if (dirty & /*activeItem, items, setActiveItem*/ 97) {
 				each_value = /*items*/ ctx[0];
 				group_outros();
 				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div4, outro_and_destroy_block, create_each_block, null, get_each_context);
 				check_outros();
 			}
 
-			if (!current || dirty & /*heading*/ 256) set_data(t12, /*heading*/ ctx[8]);
+			if (!current || dirty & /*heading*/ 16) set_data(t12, /*heading*/ ctx[4]);
 
 			if (!current || dirty & /*image1*/ 2 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) {
 				attr(img0, "src", img0_src_value);
@@ -4183,22 +3846,6 @@ function create_fragment(ctx) {
 
 			if (!current || dirty & /*image3*/ 8 && !src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) {
 				attr(img2, "src", img2_src_value);
-			}
-
-			if (!current || dirty & /*image4*/ 16 && !src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[4].url)) {
-				attr(img3, "src", img3_src_value);
-			}
-
-			if (!current || dirty & /*image5*/ 32 && !src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[5].url)) {
-				attr(img4, "src", img4_src_value);
-			}
-
-			if (!current || dirty & /*image6*/ 64 && !src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[6].url)) {
-				attr(img5, "src", img5_src_value);
-			}
-
-			if (!current || dirty & /*image7*/ 128 && !src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[7].url)) {
-				attr(img6, "src", img6_src_value);
 			}
 		},
 		i(local) {
@@ -4245,22 +3892,22 @@ function instance($$self, $$props, $$invalidate) {
 	let activeItem = 0;
 
 	function setActiveItem(i) {
-		$$invalidate(9, activeItem = activeItem === i ? null : i);
+		$$invalidate(5, activeItem = activeItem === i ? null : i);
 	}
 
 	const click_handler = i => setActiveItem(i);
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(11, props = $$props.props);
+		if ('props' in $$props) $$invalidate(7, props = $$props.props);
 		if ('items' in $$props) $$invalidate(0, items = $$props.items);
 		if ('image1' in $$props) $$invalidate(1, image1 = $$props.image1);
 		if ('image2' in $$props) $$invalidate(2, image2 = $$props.image2);
 		if ('image3' in $$props) $$invalidate(3, image3 = $$props.image3);
-		if ('image4' in $$props) $$invalidate(4, image4 = $$props.image4);
-		if ('image5' in $$props) $$invalidate(5, image5 = $$props.image5);
-		if ('image6' in $$props) $$invalidate(6, image6 = $$props.image6);
-		if ('image7' in $$props) $$invalidate(7, image7 = $$props.image7);
-		if ('heading' in $$props) $$invalidate(8, heading = $$props.heading);
+		if ('image4' in $$props) $$invalidate(8, image4 = $$props.image4);
+		if ('image5' in $$props) $$invalidate(9, image5 = $$props.image5);
+		if ('image6' in $$props) $$invalidate(10, image6 = $$props.image6);
+		if ('image7' in $$props) $$invalidate(11, image7 = $$props.image7);
+		if ('heading' in $$props) $$invalidate(4, heading = $$props.heading);
 	};
 
 	return [
@@ -4268,14 +3915,14 @@ function instance($$self, $$props, $$invalidate) {
 		image1,
 		image2,
 		image3,
-		image4,
-		image5,
-		image6,
-		image7,
 		heading,
 		activeItem,
 		setActiveItem,
 		props,
+		image4,
+		image5,
+		image6,
+		image7,
 		click_handler
 	];
 }
@@ -4285,16 +3932,16 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 11,
+			props: 7,
 			items: 0,
 			image1: 1,
 			image2: 2,
 			image3: 3,
-			image4: 4,
-			image5: 5,
-			image6: 6,
-			image7: 7,
-			heading: 8
+			image4: 8,
+			image5: 9,
+			image6: 10,
+			image7: 11,
+			heading: 4
 		});
 	}
 }
