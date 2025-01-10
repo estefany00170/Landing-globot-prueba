@@ -3442,7 +3442,7 @@ function create_fragment(ctx) {
 			t11 = space();
 			div8 = element("div");
 			div7 = element("div");
-			t12 = text(/*heading*/ ctx[1]);
+			t12 = text(/*heading*/ ctx[4]);
 			t13 = space();
 			div12 = element("div");
 			div9 = element("div");
@@ -3572,7 +3572,7 @@ function create_fragment(ctx) {
 			var div8_nodes = children(div8);
 			div7 = claim_element(div8_nodes, "DIV", { class: true });
 			var div7_nodes = children(div7);
-			t12 = claim_text(div7_nodes, /*heading*/ ctx[1]);
+			t12 = claim_text(div7_nodes, /*heading*/ ctx[4]);
 			div7_nodes.forEach(detach);
 			div8_nodes.forEach(detach);
 			t13 = claim_space(div13_nodes);
@@ -3714,11 +3714,11 @@ function create_fragment(ctx) {
 			attr(div9, "class", "paso1 svelte-9gwdht");
 			attr(p3, "class", "subtitle svelte-9gwdht");
 			attr(p4, "class", "svelte-9gwdht");
-			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) attr(img0, "src", img0_src_value);
+			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) attr(img0, "src", img0_src_value);
 			attr(p5, "class", "svelte-9gwdht");
-			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) attr(img1, "src", img1_src_value);
+			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) attr(img1, "src", img1_src_value);
 			attr(p6, "class", "svelte-9gwdht");
-			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[4].url)) attr(img2, "src", img2_src_value);
+			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) attr(img2, "src", img2_src_value);
 			attr(div10, "class", "paso1 svelte-9gwdht");
 			attr(p7, "class", "subtitle svelte-9gwdht");
 			attr(p8, "class", "svelte-9gwdht");
@@ -3840,17 +3840,17 @@ function create_fragment(ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*heading*/ 2) set_data(t12, /*heading*/ ctx[1]);
+			if (!current || dirty & /*heading*/ 16) set_data(t12, /*heading*/ ctx[4]);
 
-			if (!current || dirty & /*image1*/ 4 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) {
+			if (!current || dirty & /*image1*/ 2 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) {
 				attr(img0, "src", img0_src_value);
 			}
 
-			if (!current || dirty & /*image2*/ 8 && !src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) {
+			if (!current || dirty & /*image2*/ 4 && !src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) {
 				attr(img1, "src", img1_src_value);
 			}
 
-			if (!current || dirty & /*image3*/ 16 && !src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[4].url)) {
+			if (!current || dirty & /*image3*/ 8 && !src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) {
 				attr(img2, "src", img2_src_value);
 			}
 		},
@@ -3886,12 +3886,12 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
+	let { icono } = $$props;
 	let { items } = $$props;
-	let { heading } = $$props;
 	let { image1 } = $$props;
 	let { image2 } = $$props;
 	let { image3 } = $$props;
-	let { icono } = $$props;
+	let { heading } = $$props;
 	let activeItem = 0;
 
 	function setActiveItem(i) {
@@ -3902,20 +3902,20 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(7, props = $$props.props);
-		if ('items' in $$props) $$invalidate(0, items = $$props.items);
-		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
-		if ('image1' in $$props) $$invalidate(2, image1 = $$props.image1);
-		if ('image2' in $$props) $$invalidate(3, image2 = $$props.image2);
-		if ('image3' in $$props) $$invalidate(4, image3 = $$props.image3);
 		if ('icono' in $$props) $$invalidate(8, icono = $$props.icono);
+		if ('items' in $$props) $$invalidate(0, items = $$props.items);
+		if ('image1' in $$props) $$invalidate(1, image1 = $$props.image1);
+		if ('image2' in $$props) $$invalidate(2, image2 = $$props.image2);
+		if ('image3' in $$props) $$invalidate(3, image3 = $$props.image3);
+		if ('heading' in $$props) $$invalidate(4, heading = $$props.heading);
 	};
 
 	return [
 		items,
-		heading,
 		image1,
 		image2,
 		image3,
+		heading,
 		activeItem,
 		setActiveItem,
 		props,
@@ -3930,12 +3930,12 @@ class Component extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			props: 7,
+			icono: 8,
 			items: 0,
-			heading: 1,
-			image1: 2,
-			image2: 3,
-			image3: 4,
-			icono: 8
+			image1: 1,
+			image2: 2,
+			image3: 3,
+			heading: 4
 		});
 	}
 }

@@ -3569,7 +3569,7 @@ function create_fragment(ctx) {
 			t6 = text("Tutoriales");
 			t7 = text(" > ");
 			span0 = element("span");
-			t8 = text("Integración canales");
+			t8 = text("Integración Meta");
 			t9 = text(" > ");
 			span1 = element("span");
 			t10 = text("Instagram");
@@ -3814,7 +3814,7 @@ function create_fragment(ctx) {
 			t7 = claim_text(div6_nodes, " > ");
 			span0 = claim_element(div6_nodes, "SPAN", {});
 			var span0_nodes = children(span0);
-			t8 = claim_text(span0_nodes, "Integración canales");
+			t8 = claim_text(span0_nodes, "Integración Meta");
 			span0_nodes.forEach(detach);
 			t9 = claim_text(div6_nodes, " > ");
 			span1 = claim_element(div6_nodes, "SPAN", { style: true });

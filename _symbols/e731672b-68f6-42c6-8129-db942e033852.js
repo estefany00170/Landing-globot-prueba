@@ -3084,7 +3084,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-e978wy");
+			attr(div, "class", "description svelte-cj84j0");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3197,12 +3197,12 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-e978wy");
-			attr(span0, "class", "svelte-e978wy");
-			attr(span1, "class", "icone svelte-e978wy");
-			attr(button, "class", "svelte-e978wy");
-			attr(div1, "class", "item-icon svelte-e978wy");
-			attr(div3, "class", "item svelte-e978wy");
+			attr(div0, "class", "menu-icon svelte-cj84j0");
+			attr(span0, "class", "svelte-cj84j0");
+			attr(span1, "class", "icone svelte-cj84j0");
+			attr(button, "class", "svelte-cj84j0");
+			attr(div1, "class", "item-icon svelte-cj84j0");
+			attr(div3, "class", "item svelte-cj84j0");
 			toggle_class(div3, "active", /*activeItem*/ ctx[2] === /*i*/ ctx[8]);
 			this.first = div3;
 		},
@@ -3674,36 +3674,36 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-e978wy");
+			attr(div0, "class", "menu-icon svelte-cj84j0");
 			attr(a0, "href", "/tutoriales/");
-			attr(div1, "class", "item-icon svelte-e978wy");
+			attr(div1, "class", "item-icon svelte-cj84j0");
 			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-e978wy");
-			attr(div4, "class", "accordion svelte-e978wy");
-			attr(div5, "class", "box1 svelte-e978wy");
+			attr(div3, "class", "tutoriales svelte-cj84j0");
+			attr(div4, "class", "accordion svelte-cj84j0");
+			attr(div5, "class", "box1 svelte-cj84j0");
 			attr(a1, "href", "/tutoriales/");
 			set_style(span1, "color", "var(--Primary-2, #7B5CF5)");
-			attr(div6, "class", "steps svelte-e978wy");
+			attr(div6, "class", "steps svelte-cj84j0");
 			set_style(div6, "display", "flex");
 			set_style(div6, "gap", "15px");
 			set_style(div6, "margin-bottom", "20px");
 			set_style(div6, "text-align", "center");
 			set_style(div6, "color", "#C1C2C4");
-			attr(div7, "class", "heading svelte-e978wy");
-			attr(div8, "class", "heading-group svelte-e978wy");
-			attr(li0, "class", "svelte-e978wy");
-			attr(li1, "class", "svelte-e978wy");
-			attr(li2, "class", "svelte-e978wy");
-			attr(li3, "class", "svelte-e978wy");
-			attr(ul0, "class", "svelte-e978wy");
-			attr(li4, "class", "svelte-e978wy");
-			attr(li5, "class", "svelte-e978wy");
-			attr(ul1, "class", "svelte-e978wy");
-			attr(div9, "class", "paso1 svelte-e978wy");
-			attr(div10, "class", "content svelte-e978wy");
-			attr(div11, "class", "box2 svelte-e978wy");
-			attr(div12, "class", "section-container svelte-e978wy");
-			attr(section, "class", "svelte-e978wy");
+			attr(div7, "class", "heading svelte-cj84j0");
+			attr(div8, "class", "heading-group svelte-cj84j0");
+			attr(li0, "class", "svelte-cj84j0");
+			attr(li1, "class", "svelte-cj84j0");
+			attr(li2, "class", "svelte-cj84j0");
+			attr(li3, "class", "svelte-cj84j0");
+			attr(ul0, "class", "svelte-cj84j0");
+			attr(li4, "class", "svelte-cj84j0");
+			attr(li5, "class", "svelte-cj84j0");
+			attr(ul1, "class", "svelte-cj84j0");
+			attr(div9, "class", "paso1 svelte-cj84j0");
+			attr(div10, "class", "content svelte-cj84j0");
+			attr(div11, "class", "box2 svelte-cj84j0");
+			attr(div12, "class", "section-container svelte-cj84j0");
+			attr(section, "class", "svelte-cj84j0");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
