@@ -1,4 +1,4 @@
-// Facebook - Updated January 9, 2025
+// Facebook - Updated January 10, 2025
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -21,14 +21,6 @@ function is_function(thing) {
 }
 function safe_not_equal(a, b) {
     return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
-}
-let src_url_equal_anchor;
-function src_url_equal(element_src, url) {
-    if (!src_url_equal_anchor) {
-        src_url_equal_anchor = document.createElement('a');
-    }
-    src_url_equal_anchor.href = url;
-    return element_src === src_url_equal_anchor.href;
 }
 function is_empty(obj) {
     return Object.keys(obj).length === 0;
@@ -235,6 +227,12 @@ function detach(node) {
         node.parentNode.removeChild(node);
     }
 }
+function destroy_each(iterations, detaching) {
+    for (let i = 0; i < iterations.length; i += 1) {
+        if (iterations[i])
+            iterations[i].d(detaching);
+    }
+}
 function element(name) {
     return document.createElement(name);
 }
@@ -393,14 +391,6 @@ function set_data(text, data) {
     if (text.data === data)
         return;
     text.data = data;
-}
-function set_style(node, key, value, important) {
-    if (value == null) {
-        node.style.removeProperty(key);
-    }
-    else {
-        node.style.setProperty(key, value, important ? 'important' : '');
-    }
 }
 function toggle_class(element, name, toggle) {
     element.classList[toggle ? 'add' : 'remove'](name);
@@ -3068,15 +3058,21 @@ let Component$1 = class Component extends SvelteComponent {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[13] = list[i];
-	child_ctx[15] = i;
+	child_ctx[14] = list[i].link;
 	return child_ctx;
 }
 
-// (216:10) {#if activeItem === i}
+function get_each_context_1(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[17] = list[i];
+	child_ctx[19] = i;
+	return child_ctx;
+}
+
+// (226:10) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
-	let raw_value = /*item*/ ctx[13].description.html + "";
+	let raw_value = /*item*/ ctx[17].description.html + "";
 	let div_transition;
 	let current;
 
@@ -3092,7 +3088,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-dwphva");
+			attr(div, "class", "description svelte-cchzbs");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3100,7 +3096,7 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if ((!current || dirty & /*items*/ 1) && raw_value !== (raw_value = /*item*/ ctx[13].description.html + "")) div.innerHTML = raw_value;		},
+			if ((!current || dirty & /*items*/ 1) && raw_value !== (raw_value = /*item*/ ctx[17].description.html + "")) div.innerHTML = raw_value;		},
 		i(local) {
 			if (current) return;
 
@@ -3124,8 +3120,8 @@ function create_if_block(ctx) {
 	};
 }
 
-// (203:6) {#each items as item, i (i)}
-function create_each_block(key_1, ctx) {
+// (213:6) {#each items as item, i (i)}
+function create_each_block_1(key_1, ctx) {
 	let div3;
 	let div1;
 	let div0;
@@ -3133,7 +3129,7 @@ function create_each_block(key_1, ctx) {
 	let t0;
 	let button;
 	let span0;
-	let t1_value = /*item*/ ctx[13].title + "";
+	let t1_value = /*item*/ ctx[17].title + "";
 	let t1;
 	let t2;
 	let span1;
@@ -3144,14 +3140,14 @@ function create_each_block(key_1, ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	icon0 = new Component$1({ props: { icon: /*item*/ ctx[13].icon } });
+	icon0 = new Component$1({ props: { icon: /*item*/ ctx[17].icon } });
 	icon1 = new Component$1({ props: { icon: "ph:caret-down-bold" } });
 
 	function click_handler() {
-		return /*click_handler*/ ctx[12](/*i*/ ctx[15]);
+		return /*click_handler*/ ctx[13](/*i*/ ctx[19]);
 	}
 
-	let if_block = /*activeItem*/ ctx[5] === /*i*/ ctx[15] && create_if_block(ctx);
+	let if_block = /*activeItem*/ ctx[3] === /*i*/ ctx[19] && create_if_block(ctx);
 
 	return {
 		key: key_1,
@@ -3205,13 +3201,13 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-dwphva");
-			attr(span0, "class", "svelte-dwphva");
-			attr(span1, "class", "icone svelte-dwphva");
-			attr(button, "class", "svelte-dwphva");
-			attr(div1, "class", "item-icon svelte-dwphva");
-			attr(div3, "class", "item svelte-dwphva");
-			toggle_class(div3, "active", /*activeItem*/ ctx[5] === /*i*/ ctx[15]);
+			attr(div0, "class", "menu-icon svelte-cchzbs");
+			attr(span0, "class", "svelte-cchzbs");
+			attr(span1, "class", "icone svelte-cchzbs");
+			attr(button, "class", "svelte-cchzbs");
+			attr(div1, "class", "item-icon svelte-cchzbs");
+			attr(div3, "class", "item svelte-cchzbs");
+			toggle_class(div3, "active", /*activeItem*/ ctx[3] === /*i*/ ctx[19]);
 			this.first = div3;
 		},
 		m(target, anchor) {
@@ -3240,15 +3236,15 @@ function create_each_block(key_1, ctx) {
 		p(new_ctx, dirty) {
 			ctx = new_ctx;
 			const icon0_changes = {};
-			if (dirty & /*items*/ 1) icon0_changes.icon = /*item*/ ctx[13].icon;
+			if (dirty & /*items*/ 1) icon0_changes.icon = /*item*/ ctx[17].icon;
 			icon0.$set(icon0_changes);
-			if ((!current || dirty & /*items*/ 1) && t1_value !== (t1_value = /*item*/ ctx[13].title + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*items*/ 1) && t1_value !== (t1_value = /*item*/ ctx[17].title + "")) set_data(t1, t1_value);
 
-			if (/*activeItem*/ ctx[5] === /*i*/ ctx[15]) {
+			if (/*activeItem*/ ctx[3] === /*i*/ ctx[19]) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty & /*activeItem, items*/ 33) {
+					if (dirty & /*activeItem, items*/ 9) {
 						transition_in(if_block, 1);
 					}
 				} else {
@@ -3267,8 +3263,8 @@ function create_each_block(key_1, ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*activeItem, items*/ 33) {
-				toggle_class(div3, "active", /*activeItem*/ ctx[5] === /*i*/ ctx[15]);
+			if (!current || dirty & /*activeItem, items*/ 9) {
+				toggle_class(div3, "active", /*activeItem*/ ctx[3] === /*i*/ ctx[19]);
 			}
 		},
 		i(local) {
@@ -3295,12 +3291,53 @@ function create_each_block(key_1, ctx) {
 	};
 }
 
+// (245:4) {#each footer_links as { link }}
+function create_each_block(ctx) {
+	let a;
+	let t_value = /*link*/ ctx[14].label + "";
+	let t;
+	let a_href_value;
+
+	return {
+		c() {
+			a = element("a");
+			t = text(t_value);
+			this.h();
+		},
+		l(nodes) {
+			a = claim_element(nodes, "A", { class: true, href: true });
+			var a_nodes = children(a);
+			t = claim_text(a_nodes, t_value);
+			a_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(a, "class", "link svelte-cchzbs");
+			attr(a, "href", a_href_value = /*link*/ ctx[14].url);
+		},
+		m(target, anchor) {
+			insert_hydration(target, a, anchor);
+			append_hydration(a, t);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*footer_links*/ 4 && t_value !== (t_value = /*link*/ ctx[14].label + "")) set_data(t, t_value);
+
+			if (dirty & /*footer_links*/ 4 && a_href_value !== (a_href_value = /*link*/ ctx[14].url)) {
+				attr(a, "href", a_href_value);
+			}
+		},
+		d(detaching) {
+			if (detaching) detach(a);
+		}
+	};
+}
+
 function create_fragment(ctx) {
 	let section;
 	let style;
 	let t0;
 	let t1;
-	let div14;
+	let div10;
 	let div5;
 	let div3;
 	let div2;
@@ -3308,101 +3345,36 @@ function create_fragment(ctx) {
 	let div0;
 	let icon;
 	let t2;
-	let a0;
+	let a;
 	let t3;
 	let t4;
 	let div4;
-	let each_blocks = [];
-	let each_1_lookup = new Map();
+	let each_blocks_1 = [];
+	let each0_lookup = new Map();
 	let t5;
-	let div13;
+	let div9;
+	let div7;
 	let div6;
-	let a1;
 	let t6;
 	let t7;
-	let span0;
-	let t8;
-	let t9;
-	let span1;
-	let t10;
-	let t11;
 	let div8;
-	let div7;
-	let t12;
-	let t13;
-	let div12;
-	let div9;
-	let p0;
-	let t14;
-	let t15;
-	let p1;
-	let t16;
-	let strong0;
-	let t17;
-	let t18;
-	let a2;
-	let t19;
-	let t20;
-	let t21;
-	let p2;
-	let strong1;
-	let t22;
-	let a3;
-	let t23;
-	let t24;
-	let t25;
-	let div10;
-	let p3;
-	let t26;
-	let t27;
-	let p4;
-	let t28;
-	let strong2;
-	let t29;
-	let t30;
-	let t31;
-	let img0;
-	let img0_src_value;
-	let t32;
-	let p5;
-	let t33;
-	let t34;
-	let img1;
-	let img1_src_value;
-	let t35;
-	let p6;
-	let t36;
-	let t37;
-	let img2;
-	let img2_src_value;
-	let t38;
-	let div11;
-	let p7;
-	let t39;
-	let t40;
-	let p8;
-	let t41;
-	let strong3;
-	let t42;
-	let t43;
-	let t44;
-	let p9;
-	let t45;
-	let strong4;
-	let t46;
-	let t47;
-	let strong5;
-	let t48;
-	let t49;
+	let nav;
 	let current;
 	icon = new Component$1({ props: { icon: "carbon:home" } });
-	let each_value = /*items*/ ctx[0];
-	const get_key = ctx => /*i*/ ctx[15];
+	let each_value_1 = /*items*/ ctx[0];
+	const get_key = ctx => /*i*/ ctx[19];
+
+	for (let i = 0; i < each_value_1.length; i += 1) {
+		let child_ctx = get_each_context_1(ctx, each_value_1, i);
+		let key = get_key(child_ctx);
+		each0_lookup.set(key, each_blocks_1[i] = create_each_block_1(key, child_ctx));
+	}
+
+	let each_value = /*footer_links*/ ctx[2];
+	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
-		let child_ctx = get_each_context(ctx, each_value, i);
-		let key = get_key(child_ctx);
-		each_1_lookup.set(key, each_blocks[i] = create_each_block(key, child_ctx));
+		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
 	}
 
 	return {
@@ -3411,7 +3383,7 @@ function create_fragment(ctx) {
 			style = element("style");
 			t0 = text("@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
 			t1 = space();
-			div14 = element("div");
+			div10 = element("div");
 			div5 = element("div");
 			div3 = element("div");
 			div2 = element("div");
@@ -3419,92 +3391,28 @@ function create_fragment(ctx) {
 			div0 = element("div");
 			create_component(icon.$$.fragment);
 			t2 = space();
-			a0 = element("a");
+			a = element("a");
 			t3 = text("Tutoriales");
 			t4 = space();
 			div4 = element("div");
+
+			for (let i = 0; i < each_blocks_1.length; i += 1) {
+				each_blocks_1[i].c();
+			}
+
+			t5 = space();
+			div9 = element("div");
+			div7 = element("div");
+			div6 = element("div");
+			t6 = text(/*heading*/ ctx[1]);
+			t7 = space();
+			div8 = element("div");
+			nav = element("nav");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
-			t5 = space();
-			div13 = element("div");
-			div6 = element("div");
-			a1 = element("a");
-			t6 = text("Tutoriales");
-			t7 = text(" > ");
-			span0 = element("span");
-			t8 = text("Integración redes sociales");
-			t9 = text(" > ");
-			span1 = element("span");
-			t10 = text("Messenger");
-			t11 = space();
-			div8 = element("div");
-			div7 = element("div");
-			t12 = text(/*heading*/ ctx[4]);
-			t13 = space();
-			div12 = element("div");
-			div9 = element("div");
-			p0 = element("p");
-			t14 = text("Primero, crea tu chatbot en Globot cargándole la información que necesitará para responder.");
-			t15 = space();
-			p1 = element("p");
-			t16 = text("💡 ");
-			strong0 = element("strong");
-			t17 = text("Importante");
-			t18 = text(": Es necesario contar con un portfolio empresarial en ");
-			a2 = element("a");
-			t19 = text("Meta Business");
-			t20 = text(". Si aún no lo has creado, hazlo ahora. Deberás ingresar la información de tu negocio, verificar tu correo electrónico y, si es necesario, completar la verificación con autenticación en dos pasos o subir un documento de identificación.");
-			t21 = space();
-			p2 = element("p");
-			strong1 = element("strong");
-			t22 = text("Tu página de Facebook debe estar vinculada a tu portfolio empresarial. Si no sabes cómo hacerlo, sigue los pasos ");
-			a3 = element("a");
-			t23 = text("desde aquí");
-			t24 = text(".");
-			t25 = space();
-			div10 = element("div");
-			p3 = element("p");
-			t26 = text("Paso 1: Conecta Globot con Facebook");
-			t27 = space();
-			p4 = element("p");
-			t28 = text("Anda a tu chatbot a ");
-			strong2 = element("strong");
-			t29 = text("Agregar a redes > Messenger");
-			t30 = text(" y haz click en Conectar con Facebook.");
-			t31 = space();
-			img0 = element("img");
-			t32 = space();
-			p5 = element("p");
-			t33 = text("Inicia sesión con tu cuenta de Facebook. Luego, selecciona el portfolio empresarial asociado a tu página de Facebook.");
-			t34 = space();
-			img1 = element("img");
-			t35 = space();
-			p6 = element("p");
-			t36 = text("Al seleccionar tu portafolio, aparecerá tu página conectada, la que debes seleccionar y seguir los pasos de confirmación.");
-			t37 = space();
-			img2 = element("img");
-			t38 = space();
-			div11 = element("div");
-			p7 = element("p");
-			t39 = text("Paso 2: Verifica su funcionamiento");
-			t40 = space();
-			p8 = element("p");
-			t41 = text("¡Felicidades! Tu chatbot ya está listo para atender a tus clientes a través de Messenger. Asegúrate de que todo funcione correctamente verificando que el canal aparezca como ");
-			strong3 = element("strong");
-			t42 = text("\"Activo\"");
-			t43 = text(". Para probar su funcionamiento, hazle preguntas desde otro chat y comprueba que responde según la información configurada.");
-			t44 = space();
-			p9 = element("p");
-			t45 = text("💡 ");
-			strong4 = element("strong");
-			t46 = text("Importante");
-			t47 = text(": Si prefieres que el chatbot no responda en este canal, simplemente haz clic en el interruptor ");
-			strong5 = element("strong");
-			t48 = text("Desactivar chatbot");
-			t49 = text(".");
 			this.h();
 		},
 		l(nodes) {
@@ -3515,9 +3423,9 @@ function create_fragment(ctx) {
 			t0 = claim_text(style_nodes, "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Roboto&display=swap');");
 			style_nodes.forEach(detach);
 			t1 = claim_space(section_nodes);
-			div14 = claim_element(section_nodes, "DIV", { class: true });
-			var div14_nodes = children(div14);
-			div5 = claim_element(div14_nodes, "DIV", { class: true });
+			div10 = claim_element(section_nodes, "DIV", { class: true });
+			var div10_nodes = children(div10);
+			div5 = claim_element(div10_nodes, "DIV", { class: true });
 			var div5_nodes = children(div5);
 			div3 = claim_element(div5_nodes, "DIV", { class: true });
 			var div3_nodes = children(div3);
@@ -3530,10 +3438,10 @@ function create_fragment(ctx) {
 			claim_component(icon.$$.fragment, div0_nodes);
 			div0_nodes.forEach(detach);
 			t2 = claim_space(div1_nodes);
-			a0 = claim_element(div1_nodes, "A", { href: true });
-			var a0_nodes = children(a0);
-			t3 = claim_text(a0_nodes, "Tutoriales");
-			a0_nodes.forEach(detach);
+			a = claim_element(div1_nodes, "A", { href: true });
+			var a_nodes = children(a);
+			t3 = claim_text(a_nodes, "Tutoriales");
+			a_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
 			div3_nodes.forEach(detach);
@@ -3541,319 +3449,135 @@ function create_fragment(ctx) {
 			div4 = claim_element(div5_nodes, "DIV", { class: true });
 			var div4_nodes = children(div4);
 
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].l(div4_nodes);
+			for (let i = 0; i < each_blocks_1.length; i += 1) {
+				each_blocks_1[i].l(div4_nodes);
 			}
 
 			div4_nodes.forEach(detach);
 			div5_nodes.forEach(detach);
-			t5 = claim_space(div14_nodes);
-			div13 = claim_element(div14_nodes, "DIV", { class: true });
-			var div13_nodes = children(div13);
-			div6 = claim_element(div13_nodes, "DIV", { class: true, style: true });
-			var div6_nodes = children(div6);
-			a1 = claim_element(div6_nodes, "A", { href: true });
-			var a1_nodes = children(a1);
-			t6 = claim_text(a1_nodes, "Tutoriales");
-			a1_nodes.forEach(detach);
-			t7 = claim_text(div6_nodes, " > ");
-			span0 = claim_element(div6_nodes, "SPAN", {});
-			var span0_nodes = children(span0);
-			t8 = claim_text(span0_nodes, "Integración redes sociales");
-			span0_nodes.forEach(detach);
-			t9 = claim_text(div6_nodes, " > ");
-			span1 = claim_element(div6_nodes, "SPAN", { style: true });
-			var span1_nodes = children(span1);
-			t10 = claim_text(span1_nodes, "Messenger");
-			span1_nodes.forEach(detach);
-			div6_nodes.forEach(detach);
-			t11 = claim_space(div13_nodes);
-			div8 = claim_element(div13_nodes, "DIV", { class: true });
-			var div8_nodes = children(div8);
-			div7 = claim_element(div8_nodes, "DIV", { class: true });
-			var div7_nodes = children(div7);
-			t12 = claim_text(div7_nodes, /*heading*/ ctx[4]);
-			div7_nodes.forEach(detach);
-			div8_nodes.forEach(detach);
-			t13 = claim_space(div13_nodes);
-			div12 = claim_element(div13_nodes, "DIV", { class: true });
-			var div12_nodes = children(div12);
-			div9 = claim_element(div12_nodes, "DIV", { class: true });
+			t5 = claim_space(div10_nodes);
+			div9 = claim_element(div10_nodes, "DIV", { class: true });
 			var div9_nodes = children(div9);
-			p0 = claim_element(div9_nodes, "P", {});
-			var p0_nodes = children(p0);
-			t14 = claim_text(p0_nodes, "Primero, crea tu chatbot en Globot cargándole la información que necesitará para responder.");
-			p0_nodes.forEach(detach);
-			t15 = claim_space(div9_nodes);
-			p1 = claim_element(div9_nodes, "P", {});
-			var p1_nodes = children(p1);
-			t16 = claim_text(p1_nodes, "💡 ");
-			strong0 = claim_element(p1_nodes, "STRONG", {});
-			var strong0_nodes = children(strong0);
-			t17 = claim_text(strong0_nodes, "Importante");
-			strong0_nodes.forEach(detach);
-			t18 = claim_text(p1_nodes, ": Es necesario contar con un portfolio empresarial en ");
-			a2 = claim_element(p1_nodes, "A", { href: true, class: true, target: true });
-			var a2_nodes = children(a2);
-			t19 = claim_text(a2_nodes, "Meta Business");
-			a2_nodes.forEach(detach);
-			t20 = claim_text(p1_nodes, ". Si aún no lo has creado, hazlo ahora. Deberás ingresar la información de tu negocio, verificar tu correo electrónico y, si es necesario, completar la verificación con autenticación en dos pasos o subir un documento de identificación.");
-			p1_nodes.forEach(detach);
-			t21 = claim_space(div9_nodes);
-			p2 = claim_element(div9_nodes, "P", {});
-			var p2_nodes = children(p2);
-			strong1 = claim_element(p2_nodes, "STRONG", {});
-			var strong1_nodes = children(strong1);
-			t22 = claim_text(strong1_nodes, "Tu página de Facebook debe estar vinculada a tu portfolio empresarial. Si no sabes cómo hacerlo, sigue los pasos ");
-			strong1_nodes.forEach(detach);
-			a3 = claim_element(p2_nodes, "A", { class: true, href: true, target: true });
-			var a3_nodes = children(a3);
-			t23 = claim_text(a3_nodes, "desde aquí");
-			a3_nodes.forEach(detach);
-			t24 = claim_text(p2_nodes, ".");
-			p2_nodes.forEach(detach);
+			div7 = claim_element(div9_nodes, "DIV", { class: true });
+			var div7_nodes = children(div7);
+			div6 = claim_element(div7_nodes, "DIV", { class: true });
+			var div6_nodes = children(div6);
+			t6 = claim_text(div6_nodes, /*heading*/ ctx[1]);
+			div6_nodes.forEach(detach);
+			div7_nodes.forEach(detach);
+			t7 = claim_space(div9_nodes);
+			div8 = claim_element(div9_nodes, "DIV", { class: true });
+			var div8_nodes = children(div8);
+			nav = claim_element(div8_nodes, "NAV", { class: true });
+			var nav_nodes = children(nav);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].l(nav_nodes);
+			}
+
+			nav_nodes.forEach(detach);
+			div8_nodes.forEach(detach);
 			div9_nodes.forEach(detach);
-			t25 = claim_space(div12_nodes);
-			div10 = claim_element(div12_nodes, "DIV", { class: true });
-			var div10_nodes = children(div10);
-			p3 = claim_element(div10_nodes, "P", { class: true });
-			var p3_nodes = children(p3);
-			t26 = claim_text(p3_nodes, "Paso 1: Conecta Globot con Facebook");
-			p3_nodes.forEach(detach);
-			t27 = claim_space(div10_nodes);
-			p4 = claim_element(div10_nodes, "P", {});
-			var p4_nodes = children(p4);
-			t28 = claim_text(p4_nodes, "Anda a tu chatbot a ");
-			strong2 = claim_element(p4_nodes, "STRONG", {});
-			var strong2_nodes = children(strong2);
-			t29 = claim_text(strong2_nodes, "Agregar a redes > Messenger");
-			strong2_nodes.forEach(detach);
-			t30 = claim_text(p4_nodes, " y haz click en Conectar con Facebook.");
-			p4_nodes.forEach(detach);
-			t31 = claim_space(div10_nodes);
-			img0 = claim_element(div10_nodes, "IMG", { src: true });
-			t32 = claim_space(div10_nodes);
-			p5 = claim_element(div10_nodes, "P", {});
-			var p5_nodes = children(p5);
-			t33 = claim_text(p5_nodes, "Inicia sesión con tu cuenta de Facebook. Luego, selecciona el portfolio empresarial asociado a tu página de Facebook.");
-			p5_nodes.forEach(detach);
-			t34 = claim_space(div10_nodes);
-			img1 = claim_element(div10_nodes, "IMG", { src: true });
-			t35 = claim_space(div10_nodes);
-			p6 = claim_element(div10_nodes, "P", {});
-			var p6_nodes = children(p6);
-			t36 = claim_text(p6_nodes, "Al seleccionar tu portafolio, aparecerá tu página conectada, la que debes seleccionar y seguir los pasos de confirmación.");
-			p6_nodes.forEach(detach);
-			t37 = claim_space(div10_nodes);
-			img2 = claim_element(div10_nodes, "IMG", { src: true });
 			div10_nodes.forEach(detach);
-			t38 = claim_space(div12_nodes);
-			div11 = claim_element(div12_nodes, "DIV", { class: true });
-			var div11_nodes = children(div11);
-			p7 = claim_element(div11_nodes, "P", { class: true });
-			var p7_nodes = children(p7);
-			t39 = claim_text(p7_nodes, "Paso 2: Verifica su funcionamiento");
-			p7_nodes.forEach(detach);
-			t40 = claim_space(div11_nodes);
-			p8 = claim_element(div11_nodes, "P", {});
-			var p8_nodes = children(p8);
-			t41 = claim_text(p8_nodes, "¡Felicidades! Tu chatbot ya está listo para atender a tus clientes a través de Messenger. Asegúrate de que todo funcione correctamente verificando que el canal aparezca como ");
-			strong3 = claim_element(p8_nodes, "STRONG", {});
-			var strong3_nodes = children(strong3);
-			t42 = claim_text(strong3_nodes, "\"Activo\"");
-			strong3_nodes.forEach(detach);
-			t43 = claim_text(p8_nodes, ". Para probar su funcionamiento, hazle preguntas desde otro chat y comprueba que responde según la información configurada.");
-			p8_nodes.forEach(detach);
-			t44 = claim_space(div11_nodes);
-			p9 = claim_element(div11_nodes, "P", {});
-			var p9_nodes = children(p9);
-			t45 = claim_text(p9_nodes, "💡 ");
-			strong4 = claim_element(p9_nodes, "STRONG", {});
-			var strong4_nodes = children(strong4);
-			t46 = claim_text(strong4_nodes, "Importante");
-			strong4_nodes.forEach(detach);
-			t47 = claim_text(p9_nodes, ": Si prefieres que el chatbot no responda en este canal, simplemente haz clic en el interruptor ");
-			strong5 = claim_element(p9_nodes, "STRONG", {});
-			var strong5_nodes = children(strong5);
-			t48 = claim_text(strong5_nodes, "Desactivar chatbot");
-			strong5_nodes.forEach(detach);
-			t49 = claim_text(p9_nodes, ".");
-			p9_nodes.forEach(detach);
-			div11_nodes.forEach(detach);
-			div12_nodes.forEach(detach);
-			div13_nodes.forEach(detach);
-			div14_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-dwphva");
-			attr(a0, "href", "/tutoriales/");
-			attr(div1, "class", "item-icon svelte-dwphva");
+			attr(div0, "class", "menu-icon svelte-cchzbs");
+			attr(a, "href", "/tutoriales/");
+			attr(div1, "class", "item-icon svelte-cchzbs");
 			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-dwphva");
-			attr(div4, "class", "accordion svelte-dwphva");
-			attr(div5, "class", "box1 svelte-dwphva");
-			attr(a1, "href", "/tutoriales/");
-			set_style(span1, "color", "var(--Primary-2, #7B5CF5)");
-			attr(div6, "class", "steps svelte-dwphva");
-			set_style(div6, "display", "flex");
-			set_style(div6, "gap", "15px");
-			set_style(div6, "margin-bottom", "20px");
-			set_style(div6, "text-align", "center");
-			set_style(div6, "color", "#C1C2C4");
-			attr(div7, "class", "heading svelte-dwphva");
-			attr(div8, "class", "heading-group svelte-dwphva");
-			attr(a2, "href", "https://business.facebook.com/business/loginpage/?next=https%3A%2F%2Fbusiness.facebook.com%2F%3Fnav_ref%3Dbiz_unified_f3_login_page_to_mbs&login_options%5B0%5D=FB&login_options%5B1%5D=IG&login_options%5B2%5D=SSO&config_ref=biz_login_tool_flavor_mbs");
-			attr(a2, "class", "link svelte-dwphva");
-			attr(a2, "target", "_blank");
-			attr(a3, "class", "link svelte-dwphva");
-			attr(a3, "href", "https://web.facebook.com/business/help/720478807965744?id=420299598837059&_rdc=1&_rdr");
-			attr(a3, "target", "_blank");
-			attr(div9, "class", "paso1 svelte-dwphva");
-			attr(p3, "class", "subtitle svelte-dwphva");
-			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) attr(img0, "src", img0_src_value);
-			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) attr(img1, "src", img1_src_value);
-			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) attr(img2, "src", img2_src_value);
-			attr(div10, "class", "paso1 svelte-dwphva");
-			attr(p7, "class", "subtitle svelte-dwphva");
-			attr(div11, "class", "paso1 svelte-dwphva");
-			attr(div12, "class", "content svelte-dwphva");
-			attr(div13, "class", "box2 svelte-dwphva");
-			attr(div14, "class", "section-container svelte-dwphva");
-			attr(section, "class", "svelte-dwphva");
+			attr(div3, "class", "tutoriales svelte-cchzbs");
+			attr(div4, "class", "accordion svelte-cchzbs");
+			attr(div5, "class", "box1 svelte-cchzbs");
+			attr(div6, "class", "heading svelte-cchzbs");
+			attr(div7, "class", "heading-group svelte-cchzbs");
+			attr(nav, "class", "svelte-cchzbs");
+			attr(div8, "class", "content svelte-cchzbs");
+			attr(div9, "class", "box2 svelte-cchzbs");
+			attr(div10, "class", "section-container svelte-cchzbs");
+			attr(section, "class", "svelte-cchzbs");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
 			append_hydration(section, style);
 			append_hydration(style, t0);
 			append_hydration(section, t1);
-			append_hydration(section, div14);
-			append_hydration(div14, div5);
+			append_hydration(section, div10);
+			append_hydration(div10, div5);
 			append_hydration(div5, div3);
 			append_hydration(div3, div2);
 			append_hydration(div2, div1);
 			append_hydration(div1, div0);
 			mount_component(icon, div0, null);
 			append_hydration(div1, t2);
-			append_hydration(div1, a0);
-			append_hydration(a0, t3);
+			append_hydration(div1, a);
+			append_hydration(a, t3);
 			append_hydration(div5, t4);
 			append_hydration(div5, div4);
 
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				if (each_blocks[i]) {
-					each_blocks[i].m(div4, null);
+			for (let i = 0; i < each_blocks_1.length; i += 1) {
+				if (each_blocks_1[i]) {
+					each_blocks_1[i].m(div4, null);
 				}
 			}
 
-			append_hydration(div14, t5);
-			append_hydration(div14, div13);
-			append_hydration(div13, div6);
-			append_hydration(div6, a1);
-			append_hydration(a1, t6);
-			append_hydration(div6, t7);
-			append_hydration(div6, span0);
-			append_hydration(span0, t8);
-			append_hydration(div6, t9);
-			append_hydration(div6, span1);
-			append_hydration(span1, t10);
-			append_hydration(div13, t11);
-			append_hydration(div13, div8);
-			append_hydration(div8, div7);
-			append_hydration(div7, t12);
-			append_hydration(div13, t13);
-			append_hydration(div13, div12);
-			append_hydration(div12, div9);
-			append_hydration(div9, p0);
-			append_hydration(p0, t14);
-			append_hydration(div9, t15);
-			append_hydration(div9, p1);
-			append_hydration(p1, t16);
-			append_hydration(p1, strong0);
-			append_hydration(strong0, t17);
-			append_hydration(p1, t18);
-			append_hydration(p1, a2);
-			append_hydration(a2, t19);
-			append_hydration(p1, t20);
-			append_hydration(div9, t21);
-			append_hydration(div9, p2);
-			append_hydration(p2, strong1);
-			append_hydration(strong1, t22);
-			append_hydration(p2, a3);
-			append_hydration(a3, t23);
-			append_hydration(p2, t24);
-			append_hydration(div12, t25);
-			append_hydration(div12, div10);
-			append_hydration(div10, p3);
-			append_hydration(p3, t26);
-			append_hydration(div10, t27);
-			append_hydration(div10, p4);
-			append_hydration(p4, t28);
-			append_hydration(p4, strong2);
-			append_hydration(strong2, t29);
-			append_hydration(p4, t30);
-			append_hydration(div10, t31);
-			append_hydration(div10, img0);
-			append_hydration(div10, t32);
-			append_hydration(div10, p5);
-			append_hydration(p5, t33);
-			append_hydration(div10, t34);
-			append_hydration(div10, img1);
-			append_hydration(div10, t35);
-			append_hydration(div10, p6);
-			append_hydration(p6, t36);
-			append_hydration(div10, t37);
-			append_hydration(div10, img2);
-			append_hydration(div12, t38);
-			append_hydration(div12, div11);
-			append_hydration(div11, p7);
-			append_hydration(p7, t39);
-			append_hydration(div11, t40);
-			append_hydration(div11, p8);
-			append_hydration(p8, t41);
-			append_hydration(p8, strong3);
-			append_hydration(strong3, t42);
-			append_hydration(p8, t43);
-			append_hydration(div11, t44);
-			append_hydration(div11, p9);
-			append_hydration(p9, t45);
-			append_hydration(p9, strong4);
-			append_hydration(strong4, t46);
-			append_hydration(p9, t47);
-			append_hydration(p9, strong5);
-			append_hydration(strong5, t48);
-			append_hydration(p9, t49);
+			append_hydration(div10, t5);
+			append_hydration(div10, div9);
+			append_hydration(div9, div7);
+			append_hydration(div7, div6);
+			append_hydration(div6, t6);
+			append_hydration(div9, t7);
+			append_hydration(div9, div8);
+			append_hydration(div8, nav);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				if (each_blocks[i]) {
+					each_blocks[i].m(nav, null);
+				}
+			}
+
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*activeItem, items, setActiveItem*/ 97) {
-				each_value = /*items*/ ctx[0];
+			if (dirty & /*activeItem, items, setActiveItem*/ 25) {
+				each_value_1 = /*items*/ ctx[0];
 				group_outros();
-				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value, each_1_lookup, div4, outro_and_destroy_block, create_each_block, null, get_each_context);
+				each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key, 1, ctx, each_value_1, each0_lookup, div4, outro_and_destroy_block, create_each_block_1, null, get_each_context_1);
 				check_outros();
 			}
 
-			if (!current || dirty & /*heading*/ 16) set_data(t12, /*heading*/ ctx[4]);
+			if (!current || dirty & /*heading*/ 2) set_data(t6, /*heading*/ ctx[1]);
 
-			if (!current || dirty & /*image1*/ 2 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[1].url)) {
-				attr(img0, "src", img0_src_value);
-			}
+			if (dirty & /*footer_links*/ 4) {
+				each_value = /*footer_links*/ ctx[2];
+				let i;
 
-			if (!current || dirty & /*image2*/ 4 && !src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[2].url)) {
-				attr(img1, "src", img1_src_value);
-			}
+				for (i = 0; i < each_value.length; i += 1) {
+					const child_ctx = get_each_context(ctx, each_value, i);
 
-			if (!current || dirty & /*image3*/ 8 && !src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[3].url)) {
-				attr(img2, "src", img2_src_value);
+					if (each_blocks[i]) {
+						each_blocks[i].p(child_ctx, dirty);
+					} else {
+						each_blocks[i] = create_each_block(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(nav, null);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+
+				each_blocks.length = each_value.length;
 			}
 		},
 		i(local) {
 			if (current) return;
 			transition_in(icon.$$.fragment, local);
 
-			for (let i = 0; i < each_value.length; i += 1) {
-				transition_in(each_blocks[i]);
+			for (let i = 0; i < each_value_1.length; i += 1) {
+				transition_in(each_blocks_1[i]);
 			}
 
 			current = true;
@@ -3861,8 +3585,8 @@ function create_fragment(ctx) {
 		o(local) {
 			transition_out(icon.$$.fragment, local);
 
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				transition_out(each_blocks[i]);
+			for (let i = 0; i < each_blocks_1.length; i += 1) {
+				transition_out(each_blocks_1[i]);
 			}
 
 			current = false;
@@ -3871,9 +3595,11 @@ function create_fragment(ctx) {
 			if (detaching) detach(section);
 			destroy_component(icon);
 
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].d();
+			for (let i = 0; i < each_blocks_1.length; i += 1) {
+				each_blocks_1[i].d();
 			}
+
+			destroy_each(each_blocks, detaching);
 		}
 	};
 }
@@ -3889,36 +3615,39 @@ function instance($$self, $$props, $$invalidate) {
 	let { image6 } = $$props;
 	let { image7 } = $$props;
 	let { heading } = $$props;
+	let { footer_links } = $$props;
 	let activeItem = 0;
 
 	function setActiveItem(i) {
-		$$invalidate(5, activeItem = activeItem === i ? null : i);
+		$$invalidate(3, activeItem = activeItem === i ? null : i);
 	}
 
 	const click_handler = i => setActiveItem(i);
 
 	$$self.$$set = $$props => {
-		if ('props' in $$props) $$invalidate(7, props = $$props.props);
+		if ('props' in $$props) $$invalidate(5, props = $$props.props);
 		if ('items' in $$props) $$invalidate(0, items = $$props.items);
-		if ('image1' in $$props) $$invalidate(1, image1 = $$props.image1);
-		if ('image2' in $$props) $$invalidate(2, image2 = $$props.image2);
-		if ('image3' in $$props) $$invalidate(3, image3 = $$props.image3);
-		if ('image4' in $$props) $$invalidate(8, image4 = $$props.image4);
-		if ('image5' in $$props) $$invalidate(9, image5 = $$props.image5);
-		if ('image6' in $$props) $$invalidate(10, image6 = $$props.image6);
-		if ('image7' in $$props) $$invalidate(11, image7 = $$props.image7);
-		if ('heading' in $$props) $$invalidate(4, heading = $$props.heading);
+		if ('image1' in $$props) $$invalidate(6, image1 = $$props.image1);
+		if ('image2' in $$props) $$invalidate(7, image2 = $$props.image2);
+		if ('image3' in $$props) $$invalidate(8, image3 = $$props.image3);
+		if ('image4' in $$props) $$invalidate(9, image4 = $$props.image4);
+		if ('image5' in $$props) $$invalidate(10, image5 = $$props.image5);
+		if ('image6' in $$props) $$invalidate(11, image6 = $$props.image6);
+		if ('image7' in $$props) $$invalidate(12, image7 = $$props.image7);
+		if ('heading' in $$props) $$invalidate(1, heading = $$props.heading);
+		if ('footer_links' in $$props) $$invalidate(2, footer_links = $$props.footer_links);
 	};
 
 	return [
 		items,
-		image1,
-		image2,
-		image3,
 		heading,
+		footer_links,
 		activeItem,
 		setActiveItem,
 		props,
+		image1,
+		image2,
+		image3,
 		image4,
 		image5,
 		image6,
@@ -3932,16 +3661,17 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			props: 7,
+			props: 5,
 			items: 0,
-			image1: 1,
-			image2: 2,
-			image3: 3,
-			image4: 8,
-			image5: 9,
-			image6: 10,
-			image7: 11,
-			heading: 4
+			image1: 6,
+			image2: 7,
+			image3: 8,
+			image4: 9,
+			image5: 10,
+			image6: 11,
+			image7: 12,
+			heading: 1,
+			footer_links: 2
 		});
 	}
 }

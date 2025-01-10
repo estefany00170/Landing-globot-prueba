@@ -1,4 +1,4 @@
-// Tutoriales - Updated January 9, 2025
+// Tutoriales - Updated January 10, 2025
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3070,7 +3070,7 @@ function get_each_context_1(ctx, list, i) {
 	return child_ctx;
 }
 
-// (230:10) {#if activeItem === i}
+// (240:10) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
 	let raw_value = /*item*/ ctx[11].description.html + "";
@@ -3089,7 +3089,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-e5jug8");
+			attr(div, "class", "description svelte-1tty3iz");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3121,7 +3121,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (217:6) {#each items as item, i (i)}
+// (227:6) {#each items as item, i (i)}
 function create_each_block_1(key_1, ctx) {
 	let div3;
 	let div1;
@@ -3202,12 +3202,12 @@ function create_each_block_1(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-e5jug8");
-			attr(span0, "class", "svelte-e5jug8");
-			attr(span1, "class", "icone svelte-e5jug8");
-			attr(button, "class", "svelte-e5jug8");
-			attr(div1, "class", "item-icon svelte-e5jug8");
-			attr(div3, "class", "item svelte-e5jug8");
+			attr(div0, "class", "menu-icon svelte-1tty3iz");
+			attr(span0, "class", "svelte-1tty3iz");
+			attr(span1, "class", "icone svelte-1tty3iz");
+			attr(button, "class", "svelte-1tty3iz");
+			attr(div1, "class", "item-icon svelte-1tty3iz");
+			attr(div3, "class", "item svelte-1tty3iz");
 			toggle_class(div3, "active", /*activeItem*/ ctx[4] === /*i*/ ctx[13]);
 			this.first = div3;
 		},
@@ -3292,7 +3292,7 @@ function create_each_block_1(key_1, ctx) {
 	};
 }
 
-// (249:8) {#each cards as card, index}
+// (260:8) {#each cards as card, index}
 function create_each_block(ctx) {
 	let li;
 	let a;
@@ -3351,11 +3351,11 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "icon svelte-e5jug8");
-			attr(div1, "class", "title svelte-e5jug8");
-			attr(div2, "class", "btn svelte-e5jug8");
+			attr(div0, "class", "icon svelte-1tty3iz");
+			attr(div1, "class", "title svelte-1tty3iz");
+			attr(div2, "class", "btn svelte-1tty3iz");
 			attr(a, "href", a_href_value = /*card*/ ctx[8].link.url);
-			attr(li, "class", "svelte-e5jug8");
+			attr(li, "class", "svelte-1tty3iz");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -3564,21 +3564,21 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-e5jug8");
+			attr(div0, "class", "menu-icon svelte-1tty3iz");
 			attr(a, "href", "/tutoriales/");
-			attr(div1, "class", "item-icon svelte-e5jug8");
+			attr(div1, "class", "item-icon svelte-1tty3iz");
 			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-e5jug8");
-			attr(div4, "class", "accordion svelte-e5jug8");
-			attr(div5, "class", "box1 svelte-e5jug8");
-			attr(h1, "class", "heading svelte-e5jug8");
-			attr(h3, "class", "subheading svelte-e5jug8");
-			attr(div6, "class", "heading-group svelte-e5jug8");
-			attr(ul, "class", "cards svelte-e5jug8");
-			attr(div7, "class", "content svelte-e5jug8");
-			attr(div8, "class", "box2 svelte-e5jug8");
-			attr(div9, "class", "section-container svelte-e5jug8");
-			attr(section, "class", "svelte-e5jug8");
+			attr(div3, "class", "tutoriales svelte-1tty3iz");
+			attr(div4, "class", "accordion svelte-1tty3iz");
+			attr(div5, "class", "box1 svelte-1tty3iz");
+			attr(h1, "class", "heading svelte-1tty3iz");
+			attr(h3, "class", "subheading svelte-1tty3iz");
+			attr(div6, "class", "heading-group svelte-1tty3iz");
+			attr(ul, "class", "cards svelte-1tty3iz");
+			attr(div7, "class", "content svelte-1tty3iz");
+			attr(div8, "class", "box2 svelte-1tty3iz");
+			attr(div9, "class", "section-container svelte-1tty3iz");
+			attr(section, "class", "svelte-1tty3iz");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);

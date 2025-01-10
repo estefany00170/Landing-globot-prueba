@@ -1,4 +1,4 @@
-// Opciones - Updated January 9, 2025
+// Opciones - Updated January 10, 2025
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3337,7 +3337,7 @@ function create_fragment(ctx) {
 	let icon1;
 	let t14;
 	let span3;
-	let raw_value = /*information*/ ctx[32].html + "";
+	let raw_value = /*information*/ ctx[34].html + "";
 	let t15;
 	let a2;
 	let t16;
@@ -4841,11 +4841,11 @@ function create_fragment(ctx) {
 			attr(p31, "class", "svelte-hb24bk");
 			if (!src_url_equal(img28.src, img28_src_value = /*image30*/ ctx[31].url)) attr(img28, "src", img28_src_value);
 			attr(p32, "class", "svelte-hb24bk");
-			if (!src_url_equal(img29.src, img29_src_value = /*image31*/ ctx[33].url)) attr(img29, "src", img29_src_value);
+			if (!src_url_equal(img29.src, img29_src_value = /*image31*/ ctx[32].url)) attr(img29, "src", img29_src_value);
 			attr(div17, "class", "paso1 svelte-hb24bk");
 			attr(p33, "class", "svelte-hb24bk");
 			attr(p34, "class", "svelte-hb24bk");
-			if (!src_url_equal(img30.src, img30_src_value = /*image32*/ ctx[34].url)) attr(img30, "src", img30_src_value);
+			if (!src_url_equal(img30.src, img30_src_value = /*image32*/ ctx[33].url)) attr(img30, "src", img30_src_value);
 			attr(div18, "class", "paso1 svelte-hb24bk");
 			attr(div19, "class", "content svelte-hb24bk");
 			attr(div20, "class", "box2 svelte-hb24bk");
@@ -5249,7 +5249,7 @@ function create_fragment(ctx) {
 			const icon1_changes = {};
 			if (dirty[0] & /*icono*/ 1) icon1_changes.icon = /*icono*/ ctx[0];
 			icon1.$set(icon1_changes);
-			if ((!current || dirty[1] & /*information*/ 2) && raw_value !== (raw_value = /*information*/ ctx[32].html + "")) span3.innerHTML = raw_value;
+			if ((!current || dirty[1] & /*information*/ 8) && raw_value !== (raw_value = /*information*/ ctx[34].html + "")) span3.innerHTML = raw_value;
 			if (!current || dirty[0] & /*image1*/ 4 && !src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) {
 				attr(img0, "src", img0_src_value);
 			}
@@ -5366,11 +5366,11 @@ function create_fragment(ctx) {
 				attr(img28, "src", img28_src_value);
 			}
 
-			if (!current || dirty[1] & /*image31*/ 4 && !src_url_equal(img29.src, img29_src_value = /*image31*/ ctx[33].url)) {
+			if (!current || dirty[1] & /*image31*/ 2 && !src_url_equal(img29.src, img29_src_value = /*image31*/ ctx[32].url)) {
 				attr(img29, "src", img29_src_value);
 			}
 
-			if (!current || dirty[1] & /*image32*/ 8 && !src_url_equal(img30.src, img30_src_value = /*image32*/ ctx[34].url)) {
+			if (!current || dirty[1] & /*image32*/ 4 && !src_url_equal(img30.src, img30_src_value = /*image32*/ ctx[33].url)) {
 				attr(img30, "src", img30_src_value);
 			}
 		},
@@ -5443,9 +5443,9 @@ function instance($$self, $$props, $$invalidate) {
 	let { image28 } = $$props;
 	let { image29 } = $$props;
 	let { image30 } = $$props;
-	let { information } = $$props;
 	let { image31 } = $$props;
 	let { image32 } = $$props;
+	let { information } = $$props;
 	let activeItem = 0;
 
 	function setActiveItem(i) {
@@ -5489,9 +5489,9 @@ function instance($$self, $$props, $$invalidate) {
 		if ('image28' in $$props) $$invalidate(29, image28 = $$props.image28);
 		if ('image29' in $$props) $$invalidate(30, image29 = $$props.image29);
 		if ('image30' in $$props) $$invalidate(31, image30 = $$props.image30);
-		if ('information' in $$props) $$invalidate(32, information = $$props.information);
-		if ('image31' in $$props) $$invalidate(33, image31 = $$props.image31);
-		if ('image32' in $$props) $$invalidate(34, image32 = $$props.image32);
+		if ('image31' in $$props) $$invalidate(32, image31 = $$props.image31);
+		if ('image32' in $$props) $$invalidate(33, image32 = $$props.image32);
+		if ('information' in $$props) $$invalidate(34, information = $$props.information);
 	};
 
 	return [
@@ -5527,9 +5527,9 @@ function instance($$self, $$props, $$invalidate) {
 		image28,
 		image29,
 		image30,
-		information,
 		image31,
 		image32,
+		information,
 		activeItem,
 		setActiveItem,
 		props,
@@ -5583,9 +5583,9 @@ class Component extends SvelteComponent {
 				image28: 29,
 				image29: 30,
 				image30: 31,
-				information: 32,
-				image31: 33,
-				image32: 34
+				image31: 32,
+				image32: 33,
+				information: 34
 			},
 			null,
 			[-1, -1]
