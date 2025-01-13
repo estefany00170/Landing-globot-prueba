@@ -1,4 +1,4 @@
-// Planes disponibles - Updated January 10, 2025
+// Planes disponibles - Updated January 13, 2025
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3065,7 +3065,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (237:10) {#if activeItem === i}
+// (241:10) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
 	let raw_value = /*item*/ ctx[6].description.html + "";
@@ -3084,7 +3084,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-nka4zg");
+			attr(div, "class", "description svelte-qrofeh");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3116,7 +3116,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (224:6) {#each items as item, i (i)}
+// (228:6) {#each items as item, i (i)}
 function create_each_block(key_1, ctx) {
 	let div3;
 	let div1;
@@ -3197,12 +3197,12 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-nka4zg");
-			attr(span0, "class", "svelte-nka4zg");
-			attr(span1, "class", "icone svelte-nka4zg");
-			attr(button, "class", "svelte-nka4zg");
-			attr(div1, "class", "item-icon svelte-nka4zg");
-			attr(div3, "class", "item svelte-nka4zg");
+			attr(div0, "class", "menu-icon svelte-qrofeh");
+			attr(span0, "class", "svelte-qrofeh");
+			attr(span1, "class", "icone svelte-qrofeh");
+			attr(button, "class", "svelte-qrofeh");
+			attr(div1, "class", "item-icon svelte-qrofeh");
+			attr(div3, "class", "item svelte-qrofeh");
 			toggle_class(div3, "active", /*activeItem*/ ctx[2] === /*i*/ ctx[8]);
 			this.first = div3;
 		},
@@ -3686,43 +3686,43 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-nka4zg");
+			attr(div0, "class", "menu-icon svelte-qrofeh");
 			attr(a0, "href", "/tutoriales/");
-			attr(div1, "class", "item-icon svelte-nka4zg");
+			attr(div1, "class", "item-icon svelte-qrofeh");
 			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-nka4zg");
-			attr(div4, "class", "accordion svelte-nka4zg");
-			attr(div5, "class", "box1 svelte-nka4zg");
+			attr(div3, "class", "tutoriales svelte-qrofeh");
+			attr(div4, "class", "accordion svelte-qrofeh");
+			attr(div5, "class", "box1 svelte-qrofeh");
 			attr(a1, "href", "/tutoriales/");
 			attr(a2, "href", "/suscripciones-y-pagos/");
 			set_style(span, "color", "var(--Primary-2, #7B5CF5)");
-			attr(div6, "class", "steps svelte-nka4zg");
+			attr(div6, "class", "steps svelte-qrofeh");
 			set_style(div6, "display", "flex");
 			set_style(div6, "gap", "15px");
 			set_style(div6, "margin-bottom", "20px");
 			set_style(div6, "text-align", "center");
 			set_style(div6, "color", "#C1C2C4");
-			attr(div7, "class", "heading svelte-nka4zg");
-			attr(div8, "class", "heading-group svelte-nka4zg");
-			attr(p0, "class", "svelte-nka4zg");
-			attr(li0, "class", "svelte-nka4zg");
-			attr(li1, "class", "svelte-nka4zg");
-			attr(li2, "class", "svelte-nka4zg");
-			attr(li3, "class", "svelte-nka4zg");
-			attr(ul, "class", "svelte-nka4zg");
-			attr(div9, "class", "paso1 svelte-nka4zg");
+			attr(div7, "class", "heading svelte-qrofeh");
+			attr(div8, "class", "heading-group svelte-qrofeh");
+			attr(p0, "class", "svelte-qrofeh");
+			attr(li0, "class", "svelte-qrofeh");
+			attr(li1, "class", "svelte-qrofeh");
+			attr(li2, "class", "svelte-qrofeh");
+			attr(li3, "class", "svelte-qrofeh");
+			attr(ul, "class", "svelte-qrofeh");
+			attr(div9, "class", "paso1 svelte-qrofeh");
 			attr(a3, "href", "/precios/");
-			attr(a3, "class", "link svelte-nka4zg");
-			attr(p1, "class", "svelte-nka4zg");
-			attr(p2, "class", "svelte-nka4zg");
-			attr(ol, "class", "letter svelte-nka4zg");
-			attr(div10, "class", "paso1 svelte-nka4zg");
-			attr(p3, "class", "svelte-nka4zg");
-			attr(div11, "class", "paso1 svelte-nka4zg");
-			attr(div12, "class", "content svelte-nka4zg");
-			attr(div13, "class", "box2 svelte-nka4zg");
-			attr(div14, "class", "section-container svelte-nka4zg");
-			attr(section, "class", "svelte-nka4zg");
+			attr(a3, "class", "link svelte-qrofeh");
+			attr(p1, "class", "svelte-qrofeh");
+			attr(p2, "class", "svelte-qrofeh");
+			attr(ol, "class", "letter svelte-qrofeh");
+			attr(div10, "class", "paso1 svelte-qrofeh");
+			attr(p3, "class", "svelte-qrofeh");
+			attr(div11, "class", "paso1 svelte-qrofeh");
+			attr(div12, "class", "content svelte-qrofeh");
+			attr(div13, "class", "box2 svelte-qrofeh");
+			attr(div14, "class", "section-container svelte-qrofeh");
+			attr(section, "class", "svelte-qrofeh");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
