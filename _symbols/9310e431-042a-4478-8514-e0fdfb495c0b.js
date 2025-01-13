@@ -2786,6 +2786,7 @@ function create_if_block(ctx) {
 
 function create_fragment(ctx) {
 	let section;
+	let div3;
 	let div2;
 	let div1;
 	let h1;
@@ -2800,12 +2801,15 @@ function create_fragment(ctx) {
 	let t5;
 	let dotlottie_player;
 	let dotlottie_player_src_value;
+	let t6;
+	let div4;
 	let current;
 	let if_block = /*link*/ ctx[0].label && create_if_block(ctx);
 
 	return {
 		c() {
 			section = element("section");
+			div3 = element("div");
 			div2 = element("div");
 			div1 = element("div");
 			h1 = element("h1");
@@ -2819,12 +2823,16 @@ function create_fragment(ctx) {
 			script = element("script");
 			t5 = space();
 			dotlottie_player = element("dotlottie-player");
+			t6 = space();
+			div4 = element("div");
 			this.h();
 		},
 		l(nodes) {
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
-			div2 = claim_element(section_nodes, "DIV", { class: true });
+			div3 = claim_element(section_nodes, "DIV", { class: true });
+			var div3_nodes = children(div3);
+			div2 = claim_element(div3_nodes, "DIV", { class: true });
 			var div2_nodes = children(div2);
 			div1 = claim_element(div2_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
@@ -2857,6 +2865,11 @@ function create_fragment(ctx) {
 
 			children(dotlottie_player).forEach(detach);
 			div2_nodes.forEach(detach);
+			div3_nodes.forEach(detach);
+			t6 = claim_space(section_nodes);
+			div4 = claim_element(section_nodes, "DIV", {});
+			var div4_nodes = children(div4);
+			div4_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
@@ -2876,12 +2889,14 @@ function create_fragment(ctx) {
 			set_custom_element_data(dotlottie_player, "loop", "");
 			set_custom_element_data(dotlottie_player, "autoplay", "");
 			attr(div2, "class", "section-containerF svelte-yugq0h");
+			attr(div3, "class", "full-section");
 			attr(section, "class", "svelte-yugq0h");
 			toggle_class(section, "image-left", /*variation*/ ctx[2] === "image_left");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
-			append_hydration(section, div2);
+			append_hydration(section, div3);
+			append_hydration(div3, div2);
 			append_hydration(div2, div1);
 			append_hydration(div1, h1);
 			append_hydration(h1, t0);
@@ -2894,6 +2909,8 @@ function create_fragment(ctx) {
 			append_hydration(div2, script);
 			append_hydration(div2, t5);
 			append_hydration(div2, dotlottie_player);
+			append_hydration(section, t6);
+			append_hydration(section, div4);
 			current = true;
 		},
 		p(ctx, [dirty]) {
