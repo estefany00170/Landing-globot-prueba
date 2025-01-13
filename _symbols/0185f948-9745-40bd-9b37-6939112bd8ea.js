@@ -3320,6 +3320,7 @@ function create_fragment(ctx) {
 	let t11;
 	let div8;
 	let div7;
+	let h1;
 	let t12;
 	let t13;
 	let div12;
@@ -3431,6 +3432,7 @@ function create_fragment(ctx) {
 			t11 = space();
 			div8 = element("div");
 			div7 = element("div");
+			h1 = element("h1");
 			t12 = text(/*heading*/ ctx[1]);
 			t13 = space();
 			div12 = element("div");
@@ -3561,7 +3563,10 @@ function create_fragment(ctx) {
 			var div8_nodes = children(div8);
 			div7 = claim_element(div8_nodes, "DIV", { class: true });
 			var div7_nodes = children(div7);
-			t12 = claim_text(div7_nodes, /*heading*/ ctx[1]);
+			h1 = claim_element(div7_nodes, "H1", {});
+			var h1_nodes = children(h1);
+			t12 = claim_text(h1_nodes, /*heading*/ ctx[1]);
+			h1_nodes.forEach(detach);
 			div7_nodes.forEach(detach);
 			div8_nodes.forEach(detach);
 			t13 = claim_space(div13_nodes);
@@ -3762,7 +3767,8 @@ function create_fragment(ctx) {
 			append_hydration(div13, t11);
 			append_hydration(div13, div8);
 			append_hydration(div8, div7);
-			append_hydration(div7, t12);
+			append_hydration(div7, h1);
+			append_hydration(h1, t12);
 			append_hydration(div13, t13);
 			append_hydration(div13, div12);
 			append_hydration(div12, div9);

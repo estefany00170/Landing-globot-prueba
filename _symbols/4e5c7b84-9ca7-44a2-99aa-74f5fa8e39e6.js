@@ -3069,7 +3069,7 @@ function get_each_context_1(ctx, list, i) {
 	return child_ctx;
 }
 
-// (232:10) {#if activeItem === i}
+// (231:10) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
 	let raw_value = /*item*/ ctx[17].description.html + "";
@@ -3088,7 +3088,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-4p4umz");
+			attr(div, "class", "description svelte-1x24imr");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3120,7 +3120,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (219:6) {#each items as item, i (i)}
+// (218:6) {#each items as item, i (i)}
 function create_each_block_1(key_1, ctx) {
 	let div3;
 	let div1;
@@ -3201,12 +3201,12 @@ function create_each_block_1(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-4p4umz");
-			attr(span0, "class", "svelte-4p4umz");
-			attr(span1, "class", "icone svelte-4p4umz");
-			attr(button, "class", "svelte-4p4umz");
-			attr(div1, "class", "item-icon svelte-4p4umz");
-			attr(div3, "class", "item svelte-4p4umz");
+			attr(div0, "class", "menu-icon svelte-1x24imr");
+			attr(span0, "class", "svelte-1x24imr");
+			attr(span1, "class", "icone svelte-1x24imr");
+			attr(button, "class", "svelte-1x24imr");
+			attr(div1, "class", "item-icon svelte-1x24imr");
+			attr(div3, "class", "item svelte-1x24imr");
 			toggle_class(div3, "active", /*activeItem*/ ctx[3] === /*i*/ ctx[19]);
 			this.first = div3;
 		},
@@ -3291,7 +3291,7 @@ function create_each_block_1(key_1, ctx) {
 	};
 }
 
-// (250:4) {#each footer_links as { link }}
+// (251:4) {#each footer_links as { link }}
 function create_each_block(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[14].label + "";
@@ -3312,7 +3312,7 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "class", "link svelte-4p4umz");
+			attr(a, "class", "link svelte-1x24imr");
 			attr(a, "href", a_href_value = /*link*/ ctx[14].url);
 		},
 		m(target, anchor) {
@@ -3355,6 +3355,7 @@ function create_fragment(ctx) {
 	let div9;
 	let div7;
 	let div6;
+	let h1;
 	let t6;
 	let t7;
 	let div8;
@@ -3404,6 +3405,7 @@ function create_fragment(ctx) {
 			div9 = element("div");
 			div7 = element("div");
 			div6 = element("div");
+			h1 = element("h1");
 			t6 = text(/*heading*/ ctx[1]);
 			t7 = space();
 			div8 = element("div");
@@ -3462,7 +3464,10 @@ function create_fragment(ctx) {
 			var div7_nodes = children(div7);
 			div6 = claim_element(div7_nodes, "DIV", { class: true });
 			var div6_nodes = children(div6);
-			t6 = claim_text(div6_nodes, /*heading*/ ctx[1]);
+			h1 = claim_element(div6_nodes, "H1", {});
+			var h1_nodes = children(h1);
+			t6 = claim_text(h1_nodes, /*heading*/ ctx[1]);
+			h1_nodes.forEach(detach);
 			div6_nodes.forEach(detach);
 			div7_nodes.forEach(detach);
 			t7 = claim_space(div9_nodes);
@@ -3483,20 +3488,20 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-4p4umz");
+			attr(div0, "class", "menu-icon svelte-1x24imr");
 			attr(a, "href", "/tutoriales/");
-			attr(div1, "class", "item-icon svelte-4p4umz");
+			attr(div1, "class", "item-icon svelte-1x24imr");
 			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-4p4umz");
-			attr(div4, "class", "accordion svelte-4p4umz");
-			attr(div5, "class", "box1 svelte-4p4umz");
-			attr(div6, "class", "heading svelte-4p4umz");
-			attr(div7, "class", "heading-group svelte-4p4umz");
-			attr(nav, "class", "svelte-4p4umz");
-			attr(div8, "class", "content svelte-4p4umz");
-			attr(div9, "class", "box2 svelte-4p4umz");
-			attr(div10, "class", "section-container svelte-4p4umz");
-			attr(section, "class", "svelte-4p4umz");
+			attr(div3, "class", "tutoriales svelte-1x24imr");
+			attr(div4, "class", "accordion svelte-1x24imr");
+			attr(div5, "class", "box1 svelte-1x24imr");
+			attr(div6, "class", "heading svelte-1x24imr");
+			attr(div7, "class", "heading-group svelte-1x24imr");
+			attr(nav, "class", "svelte-1x24imr");
+			attr(div8, "class", "content svelte-1x24imr");
+			attr(div9, "class", "box2 svelte-1x24imr");
+			attr(div10, "class", "section-container svelte-1x24imr");
+			attr(section, "class", "svelte-1x24imr");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -3526,7 +3531,8 @@ function create_fragment(ctx) {
 			append_hydration(div10, div9);
 			append_hydration(div9, div7);
 			append_hydration(div7, div6);
-			append_hydration(div6, t6);
+			append_hydration(div6, h1);
+			append_hydration(h1, t6);
 			append_hydration(div9, t7);
 			append_hydration(div9, div8);
 			append_hydration(div8, nav);
