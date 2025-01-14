@@ -2748,7 +2748,7 @@ function create_if_block(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = /*link*/ ctx[0].url);
-			attr(a, "class", "button svelte-1b4lrml");
+			attr(a, "class", "button svelte-u93sjq");
 			attr(a, "target", "_blank");
 			set_style(a, "display", "flex");
 			set_style(a, "align-items", "center");
@@ -3078,9 +3078,9 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h1, "class", "headline svelte-1b4lrml");
-			attr(div0, "class", "subheading svelte-1b4lrml");
-			attr(div1, "class", "body svelte-1b4lrml");
+			attr(h1, "class", "headline svelte-u93sjq");
+			attr(div0, "class", "subheading svelte-u93sjq");
+			attr(div1, "class", "body svelte-u93sjq");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
 			script.defer = true;
@@ -3089,15 +3089,15 @@ function create_fragment(ctx) {
 			set_custom_element_data(dotlottie_player, "speed", "1");
 			set_style(dotlottie_player, "width", "100%");
 			set_style(dotlottie_player, "height", "auto");
-			set_style(dotlottie_player, "min-width", "347px");
+			set_style(dotlottie_player, "min-width", "380px");
 			set_custom_element_data(dotlottie_player, "loop", "");
 			set_custom_element_data(dotlottie_player, "autoplay", "");
-			attr(div2, "class", "section-containerF svelte-1b4lrml");
+			attr(div2, "class", "section-containerF svelte-u93sjq");
 			attr(div3, "class", "full-section");
-			attr(div4, "class", "icon svelte-1b4lrml");
-			attr(h30, "class", "stat svelte-1b4lrml");
-			attr(span0, "class", "description svelte-1b4lrml");
-			attr(li0, "class", "svelte-1b4lrml");
+			attr(div4, "class", "icon svelte-u93sjq");
+			attr(h30, "class", "stat svelte-u93sjq");
+			attr(span0, "class", "description svelte-u93sjq");
+			attr(li0, "class", "svelte-u93sjq");
 			attr(path, "fill-rule", "evenodd");
 			attr(path, "clip-rule", "evenodd");
 			attr(path, "d", "M24.7142 5.39751C13.7372 5.39751 4.33923 13.1222 4.33923 23.2256C4.33923 28.3831 6.83263 32.9674 10.7039 36.1765C10.6684 37.7593 10.2093 39.3036 9.37441 40.6488C9.20131 40.9283 9.10327 41.2477 9.08976 41.5762C9.07626 41.9046 9.14775 42.231 9.29732 42.5237C9.44689 42.8165 9.66947 43.0656 9.94354 43.2472C10.2176 43.4287 10.5339 43.5364 10.8618 43.5599C14.43 43.8274 17.9784 42.8292 20.8837 40.7405C22.1498 40.95 23.431 41.0548 24.7142 41.0538C35.6913 41.0538 45.0893 33.3291 45.0893 23.2256C45.0893 13.1222 35.6913 5.39751 24.7142 5.39751ZM24.7142 35.2386C32.9415 35.2386 39.6111 30.0751 39.6111 23.7056C39.6111 17.3361 32.9415 12.1726 24.7142 12.1726C16.487 12.1726 9.81742 17.3361 9.81742 23.7056C9.81742 30.0751 16.487 35.2386 24.7142 35.2386Z");
@@ -3119,21 +3119,21 @@ function create_fragment(ctx) {
 			attr(svg, "viewBox", "0 0 48 48");
 			attr(svg, "fill", "none");
 			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-			attr(div5, "class", "icon svelte-1b4lrml");
-			attr(h31, "class", "stat svelte-1b4lrml");
-			attr(span1, "class", "description svelte-1b4lrml");
-			attr(li1, "class", "svelte-1b4lrml");
-			attr(div6, "class", "icon svelte-1b4lrml");
-			attr(h32, "class", "stat svelte-1b4lrml");
-			attr(span2, "class", "description svelte-1b4lrml");
-			attr(li2, "class", "svelte-1b4lrml");
-			attr(div7, "class", "icon svelte-1b4lrml");
-			attr(h33, "class", "stat svelte-1b4lrml");
-			attr(span3, "class", "description svelte-1b4lrml");
-			attr(li3, "class", "svelte-1b4lrml");
-			attr(ul, "class", "svelte-1b4lrml");
-			attr(div8, "class", "section-number svelte-1b4lrml");
-			attr(section, "class", "svelte-1b4lrml");
+			attr(div5, "class", "icon svelte-u93sjq");
+			attr(h31, "class", "stat svelte-u93sjq");
+			attr(span1, "class", "description svelte-u93sjq");
+			attr(li1, "class", "svelte-u93sjq");
+			attr(div6, "class", "icon svelte-u93sjq");
+			attr(h32, "class", "stat svelte-u93sjq");
+			attr(span2, "class", "description svelte-u93sjq");
+			attr(li2, "class", "svelte-u93sjq");
+			attr(div7, "class", "icon svelte-u93sjq");
+			attr(h33, "class", "stat svelte-u93sjq");
+			attr(span3, "class", "description svelte-u93sjq");
+			attr(li3, "class", "svelte-u93sjq");
+			attr(ul, "class", "svelte-u93sjq");
+			attr(div8, "class", "section-number svelte-u93sjq");
+			attr(section, "class", "svelte-u93sjq");
 			toggle_class(section, "image-left", /*variation*/ ctx[2] === "image_left");
 		},
 		m(target, anchor) {
