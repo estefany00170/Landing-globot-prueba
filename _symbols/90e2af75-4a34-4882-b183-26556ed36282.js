@@ -3073,7 +3073,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (234:10) {#if activeItem === i}
+// (233:10) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
 	let raw_value = /*item*/ ctx[7].description.html + "";
@@ -3092,7 +3092,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-1uoko8y");
+			attr(div, "class", "description svelte-27ll57");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3124,7 +3124,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (221:6) {#each items as item, i (i)}
+// (220:6) {#each items as item, i (i)}
 function create_each_block(key_1, ctx) {
 	let div3;
 	let div1;
@@ -3205,12 +3205,12 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-1uoko8y");
-			attr(span0, "class", "svelte-1uoko8y");
-			attr(span1, "class", "icone svelte-1uoko8y");
-			attr(button, "class", "svelte-1uoko8y");
-			attr(div1, "class", "item-icon svelte-1uoko8y");
-			attr(div3, "class", "item svelte-1uoko8y");
+			attr(div0, "class", "menu-icon svelte-27ll57");
+			attr(span0, "class", "svelte-27ll57");
+			attr(span1, "class", "icone svelte-27ll57");
+			attr(button, "class", "svelte-27ll57");
+			attr(div1, "class", "item-icon svelte-27ll57");
+			attr(div3, "class", "item svelte-27ll57");
 			toggle_class(div3, "active", /*activeItem*/ ctx[3] === /*i*/ ctx[9]);
 			this.first = div3;
 		},
@@ -3634,44 +3634,44 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-1uoko8y");
+			attr(div0, "class", "menu-icon svelte-27ll57");
 			attr(a0, "href", "/tutoriales/");
-			attr(div1, "class", "item-icon svelte-1uoko8y");
+			attr(div1, "class", "item-icon svelte-27ll57");
 			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-1uoko8y");
-			attr(div4, "class", "accordion svelte-1uoko8y");
-			attr(div5, "class", "box1 svelte-1uoko8y");
+			attr(div3, "class", "tutoriales svelte-27ll57");
+			attr(div4, "class", "accordion svelte-27ll57");
+			attr(div5, "class", "box1 svelte-27ll57");
 			attr(a1, "href", "/tutoriales/");
 			attr(a2, "href", "/suscripciones-y-pagos/");
 			set_style(span0, "color", "var(--Primary-2, #7B5CF5)");
-			attr(div6, "class", "steps svelte-1uoko8y");
+			attr(div6, "class", "steps svelte-27ll57");
 			set_style(div6, "display", "flex");
 			set_style(div6, "gap", "15px");
 			set_style(div6, "margin-bottom", "20px");
 			set_style(div6, "text-align", "center");
 			set_style(div6, "color", "#C1C2C4");
-			attr(div7, "class", "heading svelte-1uoko8y");
-			attr(div8, "class", "heading-group svelte-1uoko8y");
+			attr(div7, "class", "heading svelte-27ll57");
+			attr(div8, "class", "heading-group svelte-27ll57");
 			attr(p0, "style", "#27283B; font-weight: 600; font-size: 16px;");
-			attr(p0, "class", "svelte-1uoko8y");
-			attr(ol0, "class", "letter svelte-1uoko8y");
+			attr(p0, "class", "svelte-27ll57");
+			attr(ol0, "class", "letter svelte-27ll57");
 			set_style(span1, "font-size", "16px");
 			set_style(span1, "font-family", "'Open Sans'");
-			attr(p1, "class", "subtitle svelte-1uoko8y");
-			attr(p2, "class", "svelte-1uoko8y");
-			attr(p3, "class", "subtitle svelte-1uoko8y");
-			attr(p4, "class", "svelte-1uoko8y");
+			attr(p1, "class", "subtitle svelte-27ll57");
+			attr(p2, "class", "svelte-27ll57");
+			attr(p3, "class", "subtitle svelte-27ll57");
+			attr(p4, "class", "svelte-27ll57");
 			attr(p5, "style", "#27283B; font-weight: 600; font-size: 16px;");
-			attr(p5, "class", "svelte-1uoko8y");
-			attr(ol1, "class", "letter svelte-1uoko8y");
+			attr(p5, "class", "svelte-27ll57");
+			attr(ol1, "class", "letter svelte-27ll57");
 			set_style(span2, "font-size", "16px");
 			set_style(span2, "font-family", "'Open Sans'");
 			if (!src_url_equal(img.src, img_src_value = /*image1*/ ctx[1].url)) attr(img, "src", img_src_value);
-			attr(div9, "class", "paso1 svelte-1uoko8y");
-			attr(div10, "class", "content svelte-1uoko8y");
-			attr(div11, "class", "box2 svelte-1uoko8y");
-			attr(div12, "class", "section-container svelte-1uoko8y");
-			attr(section, "class", "svelte-1uoko8y");
+			attr(div9, "class", "paso1 svelte-27ll57");
+			attr(div10, "class", "content svelte-27ll57");
+			attr(div11, "class", "box2 svelte-27ll57");
+			attr(div12, "class", "section-container svelte-27ll57");
+			attr(section, "class", "svelte-27ll57");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
