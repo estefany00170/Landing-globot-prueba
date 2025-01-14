@@ -724,16 +724,16 @@ function create_each_block(ctx) {
 		h() {
 			if (!src_url_equal(img.src, img_src_value = /*card*/ ctx[10].image.url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*card*/ ctx[10].title);
-			attr(img, "class", "svelte-7a4tta");
-			attr(span0, "class", "subtitle svelte-7a4tta");
-			attr(span1, "class", "fecha svelte-7a4tta");
+			attr(img, "class", "svelte-yi88l7");
+			attr(span0, "class", "subtitle svelte-yi88l7");
+			attr(span1, "class", "fecha svelte-yi88l7");
 			set_style(div0, "display", "flex");
 			set_style(div0, "justify-content", "space-between");
 			set_style(div0, "width", "100%");
 			set_style(div0, "font-size", "14.421px");
-			attr(p, "class", "titleContent svelte-7a4tta");
-			attr(div1, "class", "date svelte-7a4tta");
-			attr(span2, "class", "label svelte-7a4tta");
+			attr(p, "class", "titleContent svelte-yi88l7");
+			attr(div1, "class", "date svelte-yi88l7");
+			attr(span2, "class", "label svelte-yi88l7");
 			attr(path, "d", "M11.7747 5.42969L17.8587 11.5137L11.7747 17.5977M17.0137 11.5137H4.67664");
 			attr(path, "stroke", "#7B5CF5");
 			attr(path, "stroke-width", "2.028");
@@ -744,12 +744,12 @@ function create_each_block(ctx) {
 			attr(svg, "height", "23");
 			attr(svg, "viewBox", "0 0 23 23");
 			attr(svg, "fill", "none");
-			attr(a, "class", "link svelte-7a4tta");
+			attr(a, "class", "link svelte-yi88l7");
 			attr(a, "href", a_href_value = /*card*/ ctx[10].link.url);
 			attr(a, "target", "_blank");
-			attr(div3, "class", "text svelte-7a4tta");
-			attr(div4, "class", "part2 svelte-7a4tta");
-			attr(div5, "class", "slider-item svelte-7a4tta");
+			attr(div3, "class", "text svelte-yi88l7");
+			attr(div4, "class", "part2 svelte-yi88l7");
+			attr(div5, "class", "slider-item svelte-yi88l7");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div5, anchor);
@@ -900,7 +900,7 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h2, "class", "heading svelte-7a4tta");
+			attr(h2, "class", "heading svelte-yi88l7");
 			if (!src_url_equal(img0.src, img0_src_value = /*imagep*/ ctx[2].url)) attr(img0, "src", img0_src_value);
 			attr(img0, "alt", "Previous");
 			attr(button0, "class", "slider-control-prev");
@@ -910,10 +910,10 @@ function create_fragment(ctx) {
 			set_style(div0, "display", "flex");
 			set_style(div0, "align-items", "center");
 			set_style(div0, "gap", "12px");
-			attr(div1, "class", "title svelte-7a4tta");
-			attr(div2, "class", "slider-inner svelte-7a4tta");
-			attr(div3, "class", "slider svelte-7a4tta");
-			attr(section, "class", "news-slider svelte-7a4tta");
+			attr(div1, "class", "title svelte-yi88l7");
+			attr(div2, "class", "slider-inner svelte-yi88l7");
+			attr(div3, "class", "slider svelte-yi88l7");
+			attr(section, "class", "news-slider svelte-yi88l7");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
@@ -1000,7 +1000,7 @@ let totalSlides = 9; // Número total de imágenes
 const slidesPerViewDesktop = 4; // Número de imágenes visibles a la vez en desktop
 const slidesPerViewMobile = 1; // Número de imágenes visibles a la vez en mobile
 const slideWidthDesktop = 24; // Porcentaje del ancho de cada imagen en desktop
-const slideWidthMobile = 74; // Porcentaje del ancho de cada imagen en mobile
+const slideWidthMobile = 76; // Porcentaje del ancho de cada imagen en mobile
 const slideMargin = 44; // Margen entre las imágenes
 
 function getSlidesPerView() {
