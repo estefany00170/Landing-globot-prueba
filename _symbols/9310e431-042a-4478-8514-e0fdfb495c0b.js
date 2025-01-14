@@ -1,4 +1,4 @@
-// Primary Hero - Updated January 13, 2025
+// Primary Hero - Updated January 14, 2025
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2748,7 +2748,7 @@ function create_if_block(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = /*link*/ ctx[0].url);
-			attr(a, "class", "button svelte-yugq0h");
+			attr(a, "class", "button svelte-1exjg1a");
 			attr(a, "target", "_blank");
 			set_style(a, "display", "flex");
 			set_style(a, "align-items", "center");
@@ -2802,9 +2802,55 @@ function create_fragment(ctx) {
 	let dotlottie_player;
 	let dotlottie_player_src_value;
 	let t6;
+	let div8;
+	let ul;
+	let li0;
 	let div4;
+	let icon0;
+	let t7;
+	let h30;
+	let t8;
+	let t9;
+	let span0;
+	let t10;
+	let t11;
+	let li1;
+	let div5;
+	let svg;
+	let path;
+	let rect0;
+	let rect1;
+	let t12;
+	let h31;
+	let t13;
+	let t14;
+	let span1;
+	let t15;
+	let t16;
+	let li2;
+	let div6;
+	let icon1;
+	let t17;
+	let h32;
+	let t18;
+	let t19;
+	let span2;
+	let t20;
+	let t21;
+	let li3;
+	let div7;
+	let icon2;
+	let t22;
+	let h33;
+	let t23;
+	let t24;
+	let span3;
+	let t25;
 	let current;
 	let if_block = /*link*/ ctx[0].label && create_if_block(ctx);
+	icon0 = new Component$1({ props: { icon: "mdi:user" } });
+	icon1 = new Component$1({ props: { icon: "mdi:world" } });
+	icon2 = new Component$1({ props: { icon: "mdi:message" } });
 
 	return {
 		c() {
@@ -2824,7 +2870,50 @@ function create_fragment(ctx) {
 			t5 = space();
 			dotlottie_player = element("dotlottie-player");
 			t6 = space();
+			div8 = element("div");
+			ul = element("ul");
+			li0 = element("li");
 			div4 = element("div");
+			create_component(icon0.$$.fragment);
+			t7 = space();
+			h30 = element("h3");
+			t8 = text("300");
+			t9 = space();
+			span0 = element("span");
+			t10 = text("Usuarios");
+			t11 = space();
+			li1 = element("li");
+			div5 = element("div");
+			svg = svg_element("svg");
+			path = svg_element("path");
+			rect0 = svg_element("rect");
+			rect1 = svg_element("rect");
+			t12 = space();
+			h31 = element("h3");
+			t13 = text("450");
+			t14 = space();
+			span1 = element("span");
+			t15 = text("Chatbots activos");
+			t16 = space();
+			li2 = element("li");
+			div6 = element("div");
+			create_component(icon1.$$.fragment);
+			t17 = space();
+			h32 = element("h3");
+			t18 = text("5");
+			t19 = space();
+			span2 = element("span");
+			t20 = text("Países");
+			t21 = space();
+			li3 = element("li");
+			div7 = element("div");
+			create_component(icon2.$$.fragment);
+			t22 = space();
+			h33 = element("h3");
+			t23 = text("+10,000");
+			t24 = space();
+			span3 = element("span");
+			t25 = text("Consultas");
 			this.h();
 		},
 		l(nodes) {
@@ -2867,16 +2956,131 @@ function create_fragment(ctx) {
 			div2_nodes.forEach(detach);
 			div3_nodes.forEach(detach);
 			t6 = claim_space(section_nodes);
-			div4 = claim_element(section_nodes, "DIV", {});
+			div8 = claim_element(section_nodes, "DIV", {});
+			var div8_nodes = children(div8);
+			ul = claim_element(div8_nodes, "UL", { class: true });
+			var ul_nodes = children(ul);
+			li0 = claim_element(ul_nodes, "LI", { class: true });
+			var li0_nodes = children(li0);
+			div4 = claim_element(li0_nodes, "DIV", { class: true });
 			var div4_nodes = children(div4);
+			claim_component(icon0.$$.fragment, div4_nodes);
 			div4_nodes.forEach(detach);
+			t7 = claim_space(li0_nodes);
+			h30 = claim_element(li0_nodes, "H3", { class: true });
+			var h30_nodes = children(h30);
+			t8 = claim_text(h30_nodes, "300");
+			h30_nodes.forEach(detach);
+			t9 = claim_space(li0_nodes);
+			span0 = claim_element(li0_nodes, "SPAN", { class: true });
+			var span0_nodes = children(span0);
+			t10 = claim_text(span0_nodes, "Usuarios");
+			span0_nodes.forEach(detach);
+			li0_nodes.forEach(detach);
+			t11 = claim_space(ul_nodes);
+			li1 = claim_element(ul_nodes, "LI", { class: true });
+			var li1_nodes = children(li1);
+			div5 = claim_element(li1_nodes, "DIV", { class: true });
+			var div5_nodes = children(div5);
+
+			svg = claim_svg_element(div5_nodes, "svg", {
+				width: true,
+				height: true,
+				viewBox: true,
+				fill: true,
+				xmlns: true
+			});
+
+			var svg_nodes = children(svg);
+
+			path = claim_svg_element(svg_nodes, "path", {
+				"fill-rule": true,
+				"clip-rule": true,
+				d: true,
+				fill: true
+			});
+
+			children(path).forEach(detach);
+
+			rect0 = claim_svg_element(svg_nodes, "rect", {
+				x: true,
+				y: true,
+				width: true,
+				height: true,
+				rx: true,
+				fill: true
+			});
+
+			children(rect0).forEach(detach);
+
+			rect1 = claim_svg_element(svg_nodes, "rect", {
+				x: true,
+				y: true,
+				width: true,
+				height: true,
+				rx: true,
+				fill: true
+			});
+
+			children(rect1).forEach(detach);
+			svg_nodes.forEach(detach);
+			div5_nodes.forEach(detach);
+			t12 = claim_space(li1_nodes);
+			h31 = claim_element(li1_nodes, "H3", { class: true });
+			var h31_nodes = children(h31);
+			t13 = claim_text(h31_nodes, "450");
+			h31_nodes.forEach(detach);
+			t14 = claim_space(li1_nodes);
+			span1 = claim_element(li1_nodes, "SPAN", { class: true });
+			var span1_nodes = children(span1);
+			t15 = claim_text(span1_nodes, "Chatbots activos");
+			span1_nodes.forEach(detach);
+			li1_nodes.forEach(detach);
+			t16 = claim_space(ul_nodes);
+			li2 = claim_element(ul_nodes, "LI", { class: true });
+			var li2_nodes = children(li2);
+			div6 = claim_element(li2_nodes, "DIV", { class: true });
+			var div6_nodes = children(div6);
+			claim_component(icon1.$$.fragment, div6_nodes);
+			div6_nodes.forEach(detach);
+			t17 = claim_space(li2_nodes);
+			h32 = claim_element(li2_nodes, "H3", { class: true });
+			var h32_nodes = children(h32);
+			t18 = claim_text(h32_nodes, "5");
+			h32_nodes.forEach(detach);
+			t19 = claim_space(li2_nodes);
+			span2 = claim_element(li2_nodes, "SPAN", { class: true });
+			var span2_nodes = children(span2);
+			t20 = claim_text(span2_nodes, "Países");
+			span2_nodes.forEach(detach);
+			li2_nodes.forEach(detach);
+			t21 = claim_space(ul_nodes);
+			li3 = claim_element(ul_nodes, "LI", { class: true });
+			var li3_nodes = children(li3);
+			div7 = claim_element(li3_nodes, "DIV", { class: true });
+			var div7_nodes = children(div7);
+			claim_component(icon2.$$.fragment, div7_nodes);
+			div7_nodes.forEach(detach);
+			t22 = claim_space(li3_nodes);
+			h33 = claim_element(li3_nodes, "H3", { class: true });
+			var h33_nodes = children(h33);
+			t23 = claim_text(h33_nodes, "+10,000");
+			h33_nodes.forEach(detach);
+			t24 = claim_space(li3_nodes);
+			span3 = claim_element(li3_nodes, "SPAN", { class: true });
+			var span3_nodes = children(span3);
+			t25 = claim_text(span3_nodes, "Consultas");
+			span3_nodes.forEach(detach);
+			li3_nodes.forEach(detach);
+			ul_nodes.forEach(detach);
+			div8_nodes.forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(h1, "class", "headline svelte-yugq0h");
-			attr(div0, "class", "subheading svelte-yugq0h");
-			attr(div1, "class", "body svelte-yugq0h");
+			attr(h1, "class", "headline svelte-1exjg1a");
+			attr(div0, "class", "subheading svelte-1exjg1a");
+			attr(div1, "class", "body svelte-1exjg1a");
 			if (!src_url_equal(script.src, script_src_value = "https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs")) attr(script, "src", script_src_value);
 			attr(script, "type", "module");
 			script.defer = true;
@@ -2888,9 +3092,47 @@ function create_fragment(ctx) {
 			set_style(dotlottie_player, "min-width", "347px");
 			set_custom_element_data(dotlottie_player, "loop", "");
 			set_custom_element_data(dotlottie_player, "autoplay", "");
-			attr(div2, "class", "section-containerF svelte-yugq0h");
+			attr(div2, "class", "section-containerF svelte-1exjg1a");
 			attr(div3, "class", "full-section");
-			attr(section, "class", "svelte-yugq0h");
+			attr(div4, "class", "icon svelte-1exjg1a");
+			attr(h30, "class", "stat svelte-1exjg1a");
+			attr(span0, "class", "description svelte-1exjg1a");
+			attr(li0, "class", "svelte-1exjg1a");
+			attr(path, "fill-rule", "evenodd");
+			attr(path, "clip-rule", "evenodd");
+			attr(path, "d", "M24.7142 5.39751C13.7372 5.39751 4.33923 13.1222 4.33923 23.2256C4.33923 28.3831 6.83263 32.9674 10.7039 36.1765C10.6684 37.7593 10.2093 39.3036 9.37441 40.6488C9.20131 40.9283 9.10327 41.2477 9.08976 41.5762C9.07626 41.9046 9.14775 42.231 9.29732 42.5237C9.44689 42.8165 9.66947 43.0656 9.94354 43.2472C10.2176 43.4287 10.5339 43.5364 10.8618 43.5599C14.43 43.8274 17.9784 42.8292 20.8837 40.7405C22.1498 40.95 23.431 41.0548 24.7142 41.0538C35.6913 41.0538 45.0893 33.3291 45.0893 23.2256C45.0893 13.1222 35.6913 5.39751 24.7142 5.39751ZM24.7142 35.2386C32.9415 35.2386 39.6111 30.0751 39.6111 23.7056C39.6111 17.3361 32.9415 12.1726 24.7142 12.1726C16.487 12.1726 9.81742 17.3361 9.81742 23.7056C9.81742 30.0751 16.487 35.2386 24.7142 35.2386Z");
+			attr(path, "fill", "#DA94FB");
+			attr(rect0, "x", "17.4835");
+			attr(rect0, "y", "19.6791");
+			attr(rect0, "width", "4.44971");
+			attr(rect0, "height", "7.39873");
+			attr(rect0, "rx", "2.22486");
+			attr(rect0, "fill", "#DA94FB");
+			attr(rect1, "x", "27.4954");
+			attr(rect1, "y", "19.679");
+			attr(rect1, "width", "4.44971");
+			attr(rect1, "height", "7.39873");
+			attr(rect1, "rx", "2.22486");
+			attr(rect1, "fill", "#DA94FB");
+			attr(svg, "width", "48");
+			attr(svg, "height", "48");
+			attr(svg, "viewBox", "0 0 48 48");
+			attr(svg, "fill", "none");
+			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
+			attr(div5, "class", "icon svelte-1exjg1a");
+			attr(h31, "class", "stat svelte-1exjg1a");
+			attr(span1, "class", "description svelte-1exjg1a");
+			attr(li1, "class", "svelte-1exjg1a");
+			attr(div6, "class", "icon svelte-1exjg1a");
+			attr(h32, "class", "stat svelte-1exjg1a");
+			attr(span2, "class", "description svelte-1exjg1a");
+			attr(li2, "class", "svelte-1exjg1a");
+			attr(div7, "class", "icon svelte-1exjg1a");
+			attr(h33, "class", "stat svelte-1exjg1a");
+			attr(span3, "class", "description svelte-1exjg1a");
+			attr(li3, "class", "svelte-1exjg1a");
+			attr(ul, "class", "svelte-1exjg1a");
+			attr(section, "class", "svelte-1exjg1a");
 			toggle_class(section, "image-left", /*variation*/ ctx[2] === "image_left");
 		},
 		m(target, anchor) {
@@ -2910,7 +3152,50 @@ function create_fragment(ctx) {
 			append_hydration(div2, t5);
 			append_hydration(div2, dotlottie_player);
 			append_hydration(section, t6);
-			append_hydration(section, div4);
+			append_hydration(section, div8);
+			append_hydration(div8, ul);
+			append_hydration(ul, li0);
+			append_hydration(li0, div4);
+			mount_component(icon0, div4, null);
+			append_hydration(li0, t7);
+			append_hydration(li0, h30);
+			append_hydration(h30, t8);
+			append_hydration(li0, t9);
+			append_hydration(li0, span0);
+			append_hydration(span0, t10);
+			append_hydration(ul, t11);
+			append_hydration(ul, li1);
+			append_hydration(li1, div5);
+			append_hydration(div5, svg);
+			append_hydration(svg, path);
+			append_hydration(svg, rect0);
+			append_hydration(svg, rect1);
+			append_hydration(li1, t12);
+			append_hydration(li1, h31);
+			append_hydration(h31, t13);
+			append_hydration(li1, t14);
+			append_hydration(li1, span1);
+			append_hydration(span1, t15);
+			append_hydration(ul, t16);
+			append_hydration(ul, li2);
+			append_hydration(li2, div6);
+			mount_component(icon1, div6, null);
+			append_hydration(li2, t17);
+			append_hydration(li2, h32);
+			append_hydration(h32, t18);
+			append_hydration(li2, t19);
+			append_hydration(li2, span2);
+			append_hydration(span2, t20);
+			append_hydration(ul, t21);
+			append_hydration(ul, li3);
+			append_hydration(li3, div7);
+			mount_component(icon2, div7, null);
+			append_hydration(li3, t22);
+			append_hydration(li3, h33);
+			append_hydration(h33, t23);
+			append_hydration(li3, t24);
+			append_hydration(li3, span3);
+			append_hydration(span3, t25);
 			current = true;
 		},
 		p(ctx, [dirty]) {
@@ -2947,15 +3232,24 @@ function create_fragment(ctx) {
 		i(local) {
 			if (current) return;
 			transition_in(if_block);
+			transition_in(icon0.$$.fragment, local);
+			transition_in(icon1.$$.fragment, local);
+			transition_in(icon2.$$.fragment, local);
 			current = true;
 		},
 		o(local) {
 			transition_out(if_block);
+			transition_out(icon0.$$.fragment, local);
+			transition_out(icon1.$$.fragment, local);
+			transition_out(icon2.$$.fragment, local);
 			current = false;
 		},
 		d(detaching) {
 			if (detaching) detach(section);
 			if (if_block) if_block.d();
+			destroy_component(icon0);
+			destroy_component(icon1);
+			destroy_component(icon2);
 		}
 	};
 }
