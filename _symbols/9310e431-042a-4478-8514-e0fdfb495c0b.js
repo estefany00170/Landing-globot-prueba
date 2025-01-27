@@ -1,4 +1,4 @@
-// Primary Hero - Updated January 14, 2025
+// Primary Hero - Updated January 27, 2025
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -2877,7 +2877,7 @@ function create_fragment(ctx) {
 			create_component(icon0.$$.fragment);
 			t7 = space();
 			h30 = element("h3");
-			t8 = text("300");
+			t8 = text("+200");
 			t9 = space();
 			span0 = element("span");
 			t10 = text("Usuarios");
@@ -2890,7 +2890,7 @@ function create_fragment(ctx) {
 			rect1 = svg_element("rect");
 			t12 = space();
 			h31 = element("h3");
-			t13 = text("450");
+			t13 = text("+350");
 			t14 = space();
 			span1 = element("span");
 			t15 = text("Chatbots activos");
@@ -2900,7 +2900,7 @@ function create_fragment(ctx) {
 			create_component(icon1.$$.fragment);
 			t17 = space();
 			h32 = element("h3");
-			t18 = text("5");
+			t18 = text("+4");
 			t19 = space();
 			span2 = element("span");
 			t20 = text("Países");
@@ -2910,7 +2910,7 @@ function create_fragment(ctx) {
 			create_component(icon2.$$.fragment);
 			t22 = space();
 			h33 = element("h3");
-			t23 = text("+10,000");
+			t23 = text("+8,000");
 			t24 = space();
 			span3 = element("span");
 			t25 = text("Consultas");
@@ -2969,7 +2969,7 @@ function create_fragment(ctx) {
 			t7 = claim_space(li0_nodes);
 			h30 = claim_element(li0_nodes, "H3", { class: true });
 			var h30_nodes = children(h30);
-			t8 = claim_text(h30_nodes, "300");
+			t8 = claim_text(h30_nodes, "+200");
 			h30_nodes.forEach(detach);
 			t9 = claim_space(li0_nodes);
 			span0 = claim_element(li0_nodes, "SPAN", { class: true });
@@ -3028,7 +3028,7 @@ function create_fragment(ctx) {
 			t12 = claim_space(li1_nodes);
 			h31 = claim_element(li1_nodes, "H3", { class: true });
 			var h31_nodes = children(h31);
-			t13 = claim_text(h31_nodes, "450");
+			t13 = claim_text(h31_nodes, "+350");
 			h31_nodes.forEach(detach);
 			t14 = claim_space(li1_nodes);
 			span1 = claim_element(li1_nodes, "SPAN", { class: true });
@@ -3046,7 +3046,7 @@ function create_fragment(ctx) {
 			t17 = claim_space(li2_nodes);
 			h32 = claim_element(li2_nodes, "H3", { class: true });
 			var h32_nodes = children(h32);
-			t18 = claim_text(h32_nodes, "5");
+			t18 = claim_text(h32_nodes, "+4");
 			h32_nodes.forEach(detach);
 			t19 = claim_space(li2_nodes);
 			span2 = claim_element(li2_nodes, "SPAN", { class: true });
@@ -3064,7 +3064,7 @@ function create_fragment(ctx) {
 			t22 = claim_space(li3_nodes);
 			h33 = claim_element(li3_nodes, "H3", { class: true });
 			var h33_nodes = children(h33);
-			t23 = claim_text(h33_nodes, "+10,000");
+			t23 = claim_text(h33_nodes, "+8,000");
 			h33_nodes.forEach(detach);
 			t24 = claim_space(li3_nodes);
 			span3 = claim_element(li3_nodes, "SPAN", { class: true });

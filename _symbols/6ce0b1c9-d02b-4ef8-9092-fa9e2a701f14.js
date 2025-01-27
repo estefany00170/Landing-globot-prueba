@@ -1,4 +1,4 @@
-// Opciones - Updated January 14, 2025
+// Opciones - Updated January 27, 2025
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3073,7 +3073,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (263:10) {#if activeItem === i}
+// (264:10) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
 	let raw_value = /*item*/ ctx[40].description.html + "";
@@ -3092,7 +3092,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-n33e0c");
+			attr(div, "class", "description svelte-1argip5");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3124,7 +3124,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (250:6) {#each items as item, i (i)}
+// (251:6) {#each items as item, i (i)}
 function create_each_block(key_1, ctx) {
 	let div3;
 	let div1;
@@ -3205,12 +3205,12 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-n33e0c");
-			attr(span0, "class", "svelte-n33e0c");
-			attr(span1, "class", "icone svelte-n33e0c");
-			attr(button, "class", "svelte-n33e0c");
-			attr(div1, "class", "item-icon svelte-n33e0c");
-			attr(div3, "class", "item svelte-n33e0c");
+			attr(div0, "class", "menu-icon svelte-1argip5");
+			attr(span0, "class", "svelte-1argip5");
+			attr(span1, "class", "icone svelte-1argip5");
+			attr(button, "class", "svelte-1argip5");
+			attr(div1, "class", "item-icon svelte-1argip5");
+			attr(div3, "class", "item svelte-1argip5");
 			toggle_class(div3, "active", /*activeItem*/ ctx[35] === /*i*/ ctx[42]);
 			this.first = div3;
 		},
@@ -4759,26 +4759,26 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-n33e0c");
+			attr(div0, "class", "menu-icon svelte-1argip5");
 			attr(a0, "href", "/tutoriales/");
-			attr(div1, "class", "item-icon svelte-n33e0c");
+			attr(div1, "class", "item-icon svelte-1argip5");
 			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-n33e0c");
-			attr(div4, "class", "accordion svelte-n33e0c");
-			attr(div5, "class", "box1 svelte-n33e0c");
+			attr(div3, "class", "tutoriales svelte-1argip5");
+			attr(div4, "class", "accordion svelte-1argip5");
+			attr(div5, "class", "box1 svelte-1argip5");
 			attr(a1, "href", "/tutoriales/");
 			set_style(span1, "color", "var(--Primary-2, #7B5CF5)");
-			attr(div6, "class", "steps svelte-n33e0c");
+			attr(div6, "class", "steps svelte-1argip5");
 			set_style(div6, "display", "flex");
 			set_style(div6, "gap", "15px");
 			set_style(div6, "margin-bottom", "20px");
 			set_style(div6, "text-align", "center");
 			set_style(div6, "color", "#C1C2C4");
-			attr(div7, "class", "heading svelte-n33e0c");
-			attr(div8, "class", "heading-group svelte-n33e0c");
+			attr(div7, "class", "heading svelte-1argip5");
+			attr(div8, "class", "heading-group svelte-1argip5");
 			set_style(span2, "padding-top", "5px");
-			attr(span3, "class", "infoText svelte-n33e0c");
-			attr(div9, "class", "information svelte-n33e0c");
+			attr(span3, "class", "infoText svelte-1argip5");
+			attr(div9, "class", "information svelte-1argip5");
 			attr(a2, "href", "https://developers.facebook.com/docs/whatsapp/cloud-api/phone-numbers");
 			attr(a2, "target", "_blank");
 			set_style(a2, "text-decoration-line", "underline");
@@ -4787,107 +4787,107 @@ function create_fragment(ctx) {
 			set_style(a2, "width", "100%");
 			set_style(a2, "color", "#603FDF");
 			set_style(a2, "font-size", "16px");
-			attr(div10, "class", "info svelte-n33e0c");
-			attr(p0, "class", "svelte-n33e0c");
+			attr(div10, "class", "info svelte-1argip5");
+			attr(p0, "class", "svelte-1argip5");
 			attr(a3, "href", "https://business.facebook.com/business/loginpage/?next=https%3A%2F%2Fbusiness.facebook.com%2F%3Fnav_ref%3Dbiz_unified_f3_login_page_to_mbs&login_options%5B0%5D=FB&login_options%5B1%5D=IG&login_options%5B2%5D=SSO&config_ref=biz_login_tool_flavor_mbs");
-			attr(a3, "class", "link svelte-n33e0c");
+			attr(a3, "class", "link svelte-1argip5");
 			attr(a3, "target", "_blank");
-			attr(p1, "class", "svelte-n33e0c");
-			attr(div11, "class", "paso1 svelte-n33e0c");
-			attr(p2, "class", "subtitle svelte-n33e0c");
+			attr(p1, "class", "svelte-1argip5");
+			attr(div11, "class", "paso1 svelte-1argip5");
+			attr(p2, "class", "subtitle svelte-1argip5");
 			attr(a4, "href", "https://developers.facebook.com/");
-			attr(a4, "class", "link svelte-n33e0c");
+			attr(a4, "class", "link svelte-1argip5");
 			attr(a4, "target", "_blank");
-			attr(p3, "class", "svelte-n33e0c");
+			attr(p3, "class", "svelte-1argip5");
 			if (!src_url_equal(img0.src, img0_src_value = /*image1*/ ctx[2].url)) attr(img0, "src", img0_src_value);
-			attr(p4, "class", "svelte-n33e0c");
+			attr(p4, "class", "svelte-1argip5");
 			if (!src_url_equal(img1.src, img1_src_value = /*image2*/ ctx[3].url)) attr(img1, "src", img1_src_value);
-			attr(p5, "class", "svelte-n33e0c");
+			attr(p5, "class", "svelte-1argip5");
 			if (!src_url_equal(img2.src, img2_src_value = /*image3*/ ctx[4].url)) attr(img2, "src", img2_src_value);
 			if (!src_url_equal(img3.src, img3_src_value = /*image4*/ ctx[5].url)) attr(img3, "src", img3_src_value);
 			if (!src_url_equal(img4.src, img4_src_value = /*image5*/ ctx[6].url)) attr(img4, "src", img4_src_value);
-			attr(div12, "class", "paso1 svelte-n33e0c");
-			attr(p6, "class", "subtitle svelte-n33e0c");
-			attr(p7, "class", "svelte-n33e0c");
+			attr(div12, "class", "paso1 svelte-1argip5");
+			attr(p6, "class", "subtitle svelte-1argip5");
+			attr(p7, "class", "svelte-1argip5");
 			if (!src_url_equal(img5.src, img5_src_value = /*image6*/ ctx[7].url)) attr(img5, "src", img5_src_value);
-			attr(p8, "class", "svelte-n33e0c");
+			attr(p8, "class", "svelte-1argip5");
 			if (!src_url_equal(img6.src, img6_src_value = /*image7*/ ctx[8].url)) attr(img6, "src", img6_src_value);
-			attr(a5, "class", "link svelte-n33e0c");
+			attr(a5, "class", "link svelte-1argip5");
 			attr(a5, "href", "https://globot.ai/politicasprivacidad/");
 			attr(a5, "target", "_blank");
-			attr(p9, "class", "svelte-n33e0c");
+			attr(p9, "class", "svelte-1argip5");
 			if (!src_url_equal(img7.src, img7_src_value = /*image8*/ ctx[9].url)) attr(img7, "src", img7_src_value);
-			attr(p10, "class", "svelte-n33e0c");
+			attr(p10, "class", "svelte-1argip5");
 			if (!src_url_equal(img8.src, img8_src_value = /*image9*/ ctx[10].url)) attr(img8, "src", img8_src_value);
-			attr(div13, "class", "paso1 svelte-n33e0c");
-			attr(p11, "class", "subtitle svelte-n33e0c");
-			attr(a6, "class", "link svelte-n33e0c");
+			attr(div13, "class", "paso1 svelte-1argip5");
+			attr(p11, "class", "subtitle svelte-1argip5");
+			attr(a6, "class", "link svelte-1argip5");
 			attr(a6, "href", "https://business.facebook.com/");
 			attr(a6, "target", "_blank");
-			attr(p12, "class", "svelte-n33e0c");
+			attr(p12, "class", "svelte-1argip5");
 			if (!src_url_equal(img9.src, img9_src_value = /*image10*/ ctx[12].url)) attr(img9, "src", img9_src_value);
-			attr(p13, "class", "svelte-n33e0c");
+			attr(p13, "class", "svelte-1argip5");
 			if (!src_url_equal(img10.src, img10_src_value = /*image11*/ ctx[13].url)) attr(img10, "src", img10_src_value);
-			attr(p14, "class", "svelte-n33e0c");
+			attr(p14, "class", "svelte-1argip5");
 			if (!src_url_equal(img11.src, img11_src_value = /*image12*/ ctx[14].url)) attr(img11, "src", img11_src_value);
-			attr(p15, "class", "svelte-n33e0c");
+			attr(p15, "class", "svelte-1argip5");
 			if (!src_url_equal(img12.src, img12_src_value = /*image13*/ ctx[15].url)) attr(img12, "src", img12_src_value);
-			attr(p16, "class", "svelte-n33e0c");
+			attr(p16, "class", "svelte-1argip5");
 			if (!src_url_equal(img13.src, img13_src_value = /*image14*/ ctx[16].url)) attr(img13, "src", img13_src_value);
-			attr(p17, "class", "svelte-n33e0c");
+			attr(p17, "class", "svelte-1argip5");
 			if (!src_url_equal(img14.src, img14_src_value = /*image15*/ ctx[17].url)) attr(img14, "src", img14_src_value);
-			attr(p18, "class", "svelte-n33e0c");
+			attr(p18, "class", "svelte-1argip5");
 			if (!src_url_equal(img15.src, img15_src_value = /*image16*/ ctx[18].url)) attr(img15, "src", img15_src_value);
-			attr(p19, "class", "svelte-n33e0c");
+			attr(p19, "class", "svelte-1argip5");
 			if (!src_url_equal(img16.src, img16_src_value = /*image17*/ ctx[19].url)) attr(img16, "src", img16_src_value);
-			attr(div14, "class", "paso1 svelte-n33e0c");
-			attr(p20, "class", "subtitle svelte-n33e0c");
-			attr(a7, "class", "link svelte-n33e0c");
+			attr(div14, "class", "paso1 svelte-1argip5");
+			attr(p20, "class", "subtitle svelte-1argip5");
+			attr(a7, "class", "link svelte-1argip5");
 			attr(a7, "href", "https://developers.facebook.com/");
 			attr(a7, "target", "_blank");
-			attr(p21, "class", "svelte-n33e0c");
+			attr(p21, "class", "svelte-1argip5");
 			if (!src_url_equal(img17.src, img17_src_value = /*image18*/ ctx[20].url)) attr(img17, "src", img17_src_value);
-			attr(p22, "class", "svelte-n33e0c");
+			attr(p22, "class", "svelte-1argip5");
 			if (!src_url_equal(img18.src, img18_src_value = /*image19*/ ctx[21].url)) attr(img18, "src", img18_src_value);
-			attr(p23, "class", "svelte-n33e0c");
+			attr(p23, "class", "svelte-1argip5");
 			if (!src_url_equal(img19.src, img19_src_value = /*image20*/ ctx[22].url)) attr(img19, "src", img19_src_value);
-			attr(a8, "class", "link svelte-n33e0c");
+			attr(a8, "class", "link svelte-1argip5");
 			attr(a8, "href", "https://developers.facebook.com/docs/whatsapp/pricing/");
 			attr(a8, "target", "_blank");
-			attr(p24, "class", "svelte-n33e0c");
+			attr(p24, "class", "svelte-1argip5");
 			if (!src_url_equal(img20.src, img20_src_value = /*image21*/ ctx[23].url)) attr(img20, "src", img20_src_value);
-			attr(p25, "class", "svelte-n33e0c");
+			attr(p25, "class", "svelte-1argip5");
 			if (!src_url_equal(img21.src, img21_src_value = /*image22*/ ctx[24].url)) attr(img21, "src", img21_src_value);
-			attr(div15, "class", "paso1 svelte-n33e0c");
-			attr(p26, "class", "subtitle svelte-n33e0c");
-			attr(p27, "class", "svelte-n33e0c");
-			attr(p28, "class", "svelte-n33e0c");
+			attr(div15, "class", "paso1 svelte-1argip5");
+			attr(p26, "class", "subtitle svelte-1argip5");
+			attr(p27, "class", "svelte-1argip5");
+			attr(p28, "class", "svelte-1argip5");
 			if (!src_url_equal(img22.src, img22_src_value = /*image24*/ ctx[25].url)) attr(img22, "src", img22_src_value);
-			attr(a9, "class", "link svelte-n33e0c");
+			attr(a9, "class", "link svelte-1argip5");
 			attr(a9, "href", "https://developers.facebook.com/");
 			attr(a9, "target", "_blank");
-			attr(p29, "class", "svelte-n33e0c");
+			attr(p29, "class", "svelte-1argip5");
 			if (!src_url_equal(img23.src, img23_src_value = /*image25*/ ctx[26].url)) attr(img23, "src", img23_src_value);
 			if (!src_url_equal(img24.src, img24_src_value = /*image26*/ ctx[27].url)) attr(img24, "src", img24_src_value);
 			if (!src_url_equal(img25.src, img25_src_value = /*image27*/ ctx[28].url)) attr(img25, "src", img25_src_value);
-			attr(p30, "class", "svelte-n33e0c");
+			attr(p30, "class", "svelte-1argip5");
 			if (!src_url_equal(img26.src, img26_src_value = /*image28*/ ctx[29].url)) attr(img26, "src", img26_src_value);
 			if (!src_url_equal(img27.src, img27_src_value = /*image29*/ ctx[30].url)) attr(img27, "src", img27_src_value);
-			attr(div16, "class", "paso1 svelte-n33e0c");
-			attr(p31, "class", "subtitle svelte-n33e0c");
-			attr(p32, "class", "svelte-n33e0c");
+			attr(div16, "class", "paso1 svelte-1argip5");
+			attr(p31, "class", "subtitle svelte-1argip5");
+			attr(p32, "class", "svelte-1argip5");
 			if (!src_url_equal(img28.src, img28_src_value = /*image30*/ ctx[31].url)) attr(img28, "src", img28_src_value);
-			attr(p33, "class", "svelte-n33e0c");
+			attr(p33, "class", "svelte-1argip5");
 			if (!src_url_equal(img29.src, img29_src_value = /*image31*/ ctx[32].url)) attr(img29, "src", img29_src_value);
-			attr(div17, "class", "paso1 svelte-n33e0c");
-			attr(p34, "class", "svelte-n33e0c");
-			attr(p35, "class", "svelte-n33e0c");
+			attr(div17, "class", "paso1 svelte-1argip5");
+			attr(p34, "class", "svelte-1argip5");
+			attr(p35, "class", "svelte-1argip5");
 			if (!src_url_equal(img30.src, img30_src_value = /*image32*/ ctx[33].url)) attr(img30, "src", img30_src_value);
-			attr(div18, "class", "paso1 svelte-n33e0c");
-			attr(div19, "class", "content svelte-n33e0c");
-			attr(div20, "class", "box2 svelte-n33e0c");
-			attr(div21, "class", "section-container svelte-n33e0c");
-			attr(section, "class", "svelte-n33e0c");
+			attr(div18, "class", "paso1 svelte-1argip5");
+			attr(div19, "class", "content svelte-1argip5");
+			attr(div20, "class", "box2 svelte-1argip5");
+			attr(div21, "class", "section-container svelte-1argip5");
+			attr(section, "class", "svelte-1argip5");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
