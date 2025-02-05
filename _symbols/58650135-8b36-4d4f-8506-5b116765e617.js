@@ -1,4 +1,4 @@
-// New Block - Updated January 27, 2025
+// New Block - Updated February 5, 2025
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -2974,7 +2974,7 @@ function get_each_context_1(ctx, list, i) {
 	return child_ctx;
 }
 
-// (250:10) {:else}
+// (251:10) {:else}
 function create_else_block(ctx) {
 	let span;
 	let t_value = /*logo*/ ctx[2].title + "";
@@ -3004,7 +3004,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (248:10) {#if logo.image.url}
+// (249:10) {#if logo.image.url}
 function create_if_block_1(ctx) {
 	let img;
 	let img_src_value;
@@ -3041,7 +3041,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (257:8) {#each site_nav as { link }}
+// (258:8) {#each site_nav as { link }}
 function create_each_block_1(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[8].label + "";
@@ -3082,7 +3082,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (276:4) {#if mobileNavOpen}
+// (277:4) {#if mobileNavOpen}
 function create_if_block(ctx) {
 	let nav;
 	let t0;
@@ -3301,7 +3301,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (283:8) {#each site_nav as { link }}
+// (284:8) {#each site_nav as { link }}
 function create_each_block(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[8].label + "";
@@ -3687,6 +3687,9 @@ function instance($$self, $$props, $$invalidate) {
 		},
 		{
 			link: { url: "/tutoriales/", label: "Tutoriales" }
+		},
+		{
+			link: { url: "/precios/", label: "Precios" }
 		}
 	];
 

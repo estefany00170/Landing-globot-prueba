@@ -1,4 +1,4 @@
-// carrusel  - Updated January 27, 2025
+// carrusel  - Updated February 5, 2025
 function noop() { }
 function run(fn) {
     return fn();

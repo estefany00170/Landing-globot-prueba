@@ -1,4 +1,4 @@
-// Pricing Table 2 - Updated January 27, 2025
+// Pricing Table 2 - Updated February 5, 2025
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -3281,7 +3281,7 @@ function create_fragment(ctx) {
 			div9 = element("div");
 			div7 = element("div");
 			span27 = element("span");
-			t62 = text("$20.000");
+			t62 = text("$25.000");
 			t63 = space();
 			span28 = element("span");
 			t64 = text("/Mes");
@@ -3670,7 +3670,7 @@ function create_fragment(ctx) {
 			var div7_nodes = children(div7);
 			span27 = claim_element(div7_nodes, "SPAN", { class: true });
 			var span27_nodes = children(span27);
-			t62 = claim_text(span27_nodes, "$20.000");
+			t62 = claim_text(span27_nodes, "$25.000");
 			span27_nodes.forEach(detach);
 			t63 = claim_space(div7_nodes);
 			span28 = claim_element(div7_nodes, "SPAN", { class: true });
