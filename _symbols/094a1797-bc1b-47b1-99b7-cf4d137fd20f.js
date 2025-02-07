@@ -996,7 +996,7 @@ function create_fragment(ctx) {
 	};
 }
 
-let totalSlides = 10; // Número total de imágenes
+let totalSlides = 13; // Número total de imágenes
 const slidesPerViewDesktop = 4; // Número de imágenes visibles a la vez en desktop
 const slidesPerViewMobile = 1; // Número de imágenes visibles a la vez en mobile
 const slideWidthDesktop = 18; // Porcentaje del ancho de cada imagen en desktop
