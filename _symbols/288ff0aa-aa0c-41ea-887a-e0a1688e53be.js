@@ -1,4 +1,4 @@
-// Pricing Table 2 - Updated February 7, 2025
+// Pricing Table 2 - Updated February 12, 2025
 function noop() { }
 function assign(tar, src) {
     // @ts-ignore
@@ -3835,7 +3835,7 @@ function create_fragment(ctx) {
 			attr(span20, "class", "item svelte-3bjjn3");
 			attr(li6, "class", "svelte-3bjjn3");
 			attr(ul1, "class", "features svelte-3bjjn3");
-			attr(a1, "href", `https://backoffice-qa.globot.ai/subscription/login?subscriptionPlan=${/*BASE*/ ctx[4]}`);
+			attr(a1, "href", `https://backoffice.globot.ai/subscription/login?subscriptionPlan=${/*BASE*/ ctx[4]}`);
 			attr(a1, "class", "button svelte-3bjjn3");
 			attr(div6, "class", "tier tier2 svelte-3bjjn3");
 			attr(span21, "class", "numerator svelte-3bjjn3");
@@ -3865,7 +3865,7 @@ function create_fragment(ctx) {
 			attr(span35, "class", "tooltip svelte-3bjjn3");
 			attr(li11, "class", "svelte-3bjjn3");
 			attr(ul2, "class", "features svelte-3bjjn3");
-			attr(a2, "href", `https://backoffice-qa.globot.ai/subscription/login?subscriptionPlan=${/*PREMIUM*/ ctx[5]}`);
+			attr(a2, "href", `https://backoffice.globot.ai/subscription/login?subscriptionPlan=${/*PREMIUM*/ ctx[5]}`);
 			attr(a2, "class", "button svelte-3bjjn3");
 			attr(div10, "class", "tier tier3 svelte-3bjjn3");
 			attr(span36, "class", "numerator svelte-3bjjn3");
