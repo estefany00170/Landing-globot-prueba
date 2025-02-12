@@ -3065,7 +3065,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (241:10) {#if activeItem === i}
+// (243:10) {#if activeItem === i}
 function create_if_block(ctx) {
 	let div;
 	let raw_value = /*item*/ ctx[6].description.html + "";
@@ -3084,7 +3084,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div, "class", "description svelte-scnmy");
+			attr(div, "class", "description svelte-1gkc0lb");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -3116,7 +3116,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (228:6) {#each items as item, i (i)}
+// (230:6) {#each items as item, i (i)}
 function create_each_block(key_1, ctx) {
 	let div3;
 	let div1;
@@ -3197,12 +3197,12 @@ function create_each_block(key_1, ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-scnmy");
-			attr(span0, "class", "svelte-scnmy");
-			attr(span1, "class", "icone svelte-scnmy");
-			attr(button, "class", "svelte-scnmy");
-			attr(div1, "class", "item-icon svelte-scnmy");
-			attr(div3, "class", "item svelte-scnmy");
+			attr(div0, "class", "menu-icon svelte-1gkc0lb");
+			attr(span0, "class", "svelte-1gkc0lb");
+			attr(span1, "class", "icone svelte-1gkc0lb");
+			attr(button, "class", "svelte-1gkc0lb");
+			attr(div1, "class", "item-icon svelte-1gkc0lb");
+			attr(div3, "class", "item svelte-1gkc0lb");
 			toggle_class(div3, "active", /*activeItem*/ ctx[2] === /*i*/ ctx[8]);
 			this.first = div3;
 		},
@@ -3702,46 +3702,46 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		h() {
-			attr(div0, "class", "menu-icon svelte-scnmy");
+			attr(div0, "class", "menu-icon svelte-1gkc0lb");
 			attr(a0, "href", "/tutoriales/");
-			attr(div1, "class", "item-icon svelte-scnmy");
+			attr(div1, "class", "item-icon svelte-1gkc0lb");
 			attr(div2, "class", "item");
-			attr(div3, "class", "tutoriales svelte-scnmy");
-			attr(div4, "class", "accordion svelte-scnmy");
-			attr(div5, "class", "box1 svelte-scnmy");
+			attr(div3, "class", "tutoriales svelte-1gkc0lb");
+			attr(div4, "class", "accordion svelte-1gkc0lb");
+			attr(div5, "class", "box1 svelte-1gkc0lb");
 			attr(a1, "href", "/tutoriales/");
 			attr(a2, "href", "/suscripciones-y-pagos/");
 			set_style(span, "color", "var(--Primary-2, #7B5CF5)");
-			attr(div6, "class", "steps svelte-scnmy");
+			attr(div6, "class", "steps svelte-1gkc0lb");
 			set_style(div6, "display", "flex");
 			set_style(div6, "gap", "15px");
 			set_style(div6, "margin-bottom", "20px");
 			set_style(div6, "text-align", "center");
 			set_style(div6, "color", "#C1C2C4");
-			attr(div7, "class", "heading svelte-scnmy");
-			attr(div8, "class", "heading-group svelte-scnmy");
-			attr(p0, "class", "svelte-scnmy");
-			attr(li0, "class", "svelte-scnmy");
-			attr(li1, "class", "svelte-scnmy");
-			attr(li2, "class", "svelte-scnmy");
-			attr(a3, "class", "link svelte-scnmy");
+			attr(div7, "class", "heading svelte-1gkc0lb");
+			attr(div8, "class", "heading-group svelte-1gkc0lb");
+			attr(p0, "class", "svelte-1gkc0lb");
+			attr(li0, "class", "svelte-1gkc0lb");
+			attr(li1, "class", "svelte-1gkc0lb");
+			attr(li2, "class", "svelte-1gkc0lb");
+			attr(a3, "class", "link svelte-1gkc0lb");
 			attr(a3, "href", "mailto:contacto@globot.ai");
 			attr(a3, "target", "_blank");
-			attr(li3, "class", "svelte-scnmy");
-			attr(ul, "class", "svelte-scnmy");
-			attr(div9, "class", "paso1 svelte-scnmy");
+			attr(li3, "class", "svelte-1gkc0lb");
+			attr(ul, "class", "svelte-1gkc0lb");
+			attr(div9, "class", "paso1 svelte-1gkc0lb");
 			attr(a4, "href", "/precios/");
-			attr(a4, "class", "link svelte-scnmy");
-			attr(p1, "class", "svelte-scnmy");
-			attr(p2, "class", "svelte-scnmy");
-			attr(ol, "class", "letter svelte-scnmy");
-			attr(div10, "class", "paso1 svelte-scnmy");
-			attr(p3, "class", "svelte-scnmy");
-			attr(div11, "class", "paso1 svelte-scnmy");
-			attr(div12, "class", "content svelte-scnmy");
-			attr(div13, "class", "box2 svelte-scnmy");
-			attr(div14, "class", "section-container svelte-scnmy");
-			attr(section, "class", "svelte-scnmy");
+			attr(a4, "class", "link svelte-1gkc0lb");
+			attr(p1, "class", "svelte-1gkc0lb");
+			attr(p2, "class", "svelte-1gkc0lb");
+			attr(ol, "class", "letter svelte-1gkc0lb");
+			attr(div10, "class", "paso1 svelte-1gkc0lb");
+			attr(p3, "class", "svelte-1gkc0lb");
+			attr(div11, "class", "paso1 svelte-1gkc0lb");
+			attr(div12, "class", "content svelte-1gkc0lb");
+			attr(div13, "class", "box2 svelte-1gkc0lb");
+			attr(div14, "class", "section-container svelte-1gkc0lb");
+			attr(section, "class", "svelte-1gkc0lb");
 		},
 		m(target, anchor) {
 			insert_hydration(target, section, anchor);
